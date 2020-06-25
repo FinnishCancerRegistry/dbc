@@ -51,7 +51,9 @@ NULL
 #' `"(len <- length(x)) == 1L"` you may do `"expected length 1, got ${len}"`.
 #' Finding variables to interpolate into the string is searched for in the
 #' set of variables created in your test first and then in the variables
-#' derived from the result of the test.
+#' derived from the result of the test. You may also interpolate any
+#' transformations of the available variables: e.g.
+#' `"${round(100 * n_fail / length(x))} % were invalid"`
 #'
 #' @return
 #' For `tests_to_report`, a `data.frame` with columns
@@ -84,7 +86,7 @@ NULL
 #' )
 #' # error
 #' tests_to_report(
-#'   tests = "a == c"
+#'   tests = "a == d"
 #' )
 tests_to_report <- function(
   tests,

@@ -2,20 +2,63 @@
 % Please edit documentation in R/manually_written_dataset_checks.R
 \name{dataset_validation}
 \alias{dataset_validation}
+\alias{report_has_only_valid_observations}
+\alias{assert_has_only_valid_observations}
 \alias{identify_invalid_observations}
 \title{Dataset Validation}
 \usage{
+report_has_only_valid_observations(
+  x,
+  x_nm = NULL,
+  tests,
+  fail_messages = NULL,
+  pass_messages = NULL
+)
+
+assert_has_only_valid_observations(
+  x,
+  x_nm = NULL,
+  tests,
+  fail_messages = NULL,
+  pass_messages = NULL
+)
+
 identify_invalid_observations(x, report_df)
 }
 \arguments{
 \item{x}{\verb{[data.frame]} (mandatory, no default)
 dataset to validate}
 
+\item{x_nm}{\verb{[character]} (optional, default \code{NULL})
+
+see e.g. \link{report_is_atom}}
+
+\item{tests}{\verb{[character]} (mandatory, no default)
+
+passed to \link{tests_to_report} as-is}
+
+\item{fail_messages}{\verb{[character]} (mandatory, no default)
+
+passed to \link{tests_to_report} as-is}
+
+\item{pass_messages}{\verb{[character]} (mandatory, no default)
+
+passed to \link{tests_to_report} as-is}
+
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
 a report \code{data.frame} as produced by e.g. \link{tests_to_report}}
 }
 \value{
+\itemize{
+\item \code{report_has_invalid_observations}: returns a report \code{data.frame}.
+}
+
+\itemize{
+\item \code{assert_has_only_valid_observations} always \code{NULL} invisibly;
+this function raises an error if invalid observations are encountered
+}
+
 \itemize{
 \item \code{identify_invalid_observations}: returns a data.frame with columns
 \code{is_valid}, \code{fail_test_set}, and \code{fail_message_set}; new columns are
@@ -24,4 +67,32 @@ populated based on \code{report_df} contents; the data.frame has \code{nrow(x)} 
 }
 \description{
 Functions to ensure that a dataset (data.frame) looks as it should.
+}
+\details{
+\itemize{
+\item \code{report_has_invalid_observations} calls \link{tests_to_report} where the
+dataset \code{x} becomes the environment where the tests are evaluated
+(essentially \code{env = as.environment(x)})
+}
+}
+\examples{
+df <- data.frame(a = 1:5, b = 1:5)
+report_df <- report_has_only_valid_observations(
+  x = df,
+  tests = c("a == b", "a == d", "a != b")
+)
+
+df <- data.frame(a = 1:5, b = 1:5)
+tryCatch(assert_has_only_valid_observations(
+  x = df,
+  tests = c("a == b", "a == d", "a != b")
+), error = function(e) e)
+
+df <- data.frame(a = 1:5, b = 1:5)
+report_df <- report_has_only_valid_observations(
+  x = df,
+  tests = c("a == b", "a == d", "a != b")
+)
+
+identify_invalid_observations(x = df, report_df = report_df)
 }

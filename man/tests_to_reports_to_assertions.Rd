@@ -86,7 +86,9 @@ variables you created in the test, using the same logic, e.g. with test
 \code{"(len <- length(x)) == 1L"} you may do \code{"expected length 1, got ${len}"}.
 Finding variables to interpolate into the string is searched for in the
 set of variables created in your test first and then in the variables
-derived from the result of the test.
+derived from the result of the test. You may also interpolate any
+transformations of the available variables: e.g.
+\code{"${round(100 * n_fail / length(x))} \% were invalid"}
 }
 
 \examples{
@@ -104,7 +106,7 @@ tests_to_report(
 )
 # error
 tests_to_report(
-  tests = "a == c"
+  tests = "a == d"
 )
 # report to assertion
 
