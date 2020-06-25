@@ -12,7 +12,9 @@ report_has_only_valid_observations(
   x_nm = NULL,
   tests,
   fail_messages = NULL,
-  pass_messages = NULL
+  pass_messages = NULL,
+  col_nms = names(x),
+  col_nm_set_list = NULL
 )
 
 assert_has_only_valid_observations(
@@ -20,7 +22,9 @@ assert_has_only_valid_observations(
   x_nm = NULL,
   tests,
   fail_messages = NULL,
-  pass_messages = NULL
+  pass_messages = NULL,
+  col_nms = names(x),
+  col_nm_set_list = NULL
 )
 
 identify_invalid_observations(x, report_df)
@@ -37,13 +41,28 @@ see e.g. \link{report_is_atom}}
 
 passed to \link{tests_to_report} as-is}
 
-\item{fail_messages}{\verb{[character]} (mandatory, no default)
+\item{fail_messages}{\verb{[character]} (optional, default \code{NULL})
 
 passed to \link{tests_to_report} as-is}
 
-\item{pass_messages}{\verb{[character]} (mandatory, no default)
+\item{pass_messages}{\verb{[character]} (optional, default \code{NULL})
 
 passed to \link{tests_to_report} as-is}
+
+\item{col_nms}{\verb{[character]} (optional, default \code{names(x)})
+
+you may limit to such tests which only use these column names; see
+\code{col_nm_set_list}}
+
+\item{col_nm_set_list}{\verb{[NULL, list]} (optional, default \code{NULL})
+\itemize{
+\item \code{NULL}: all tests are used
+\item \code{list}: must be of length \code{length(tests)}, where each element is a
+character vector of column names; the corresponding test is only run
+if \code{all(col_nm_set_list[[i]] \%in\% col_nms)} for all
+\verb{i in seq_along(tests)}. this allows for easy limiting of tests to run
+in when not all of them need to be run.
+}}
 
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
@@ -80,6 +99,15 @@ df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,
   tests = c("a == b", "a == d", "a != b")
+)
+
+# running tests only for some columns
+df <- data.frame(a = 1:5, b = 1:5, c = 1:5)
+report_df <- report_has_only_valid_observations(
+  x = df,
+  tests = c("a == b", "a == c", "a != b"),
+  col_nms = c("a", "b"),
+  col_nm_set_list = list(c("a", "b"), c("a", "c"), c("a", "b"))
 )
 
 df <- data.frame(a = 1:5, b = 1:5)

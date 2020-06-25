@@ -427,7 +427,7 @@ report_is_data.table <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    "inherits(x, data.table)"
+    "inherits(x, \"data.table\")"
   )
   fail_msg_set <- c(
     NA_character_
@@ -453,7 +453,7 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, required_na
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, data.table)",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
+    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, \"data.table\")",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
   )
   fail_msg_set <- c(
     c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}" )
@@ -479,7 +479,7 @@ report_is_data_table <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    "inherits(x, data.table)"
+    "inherits(x, \"data.table\")"
   )
   fail_msg_set <- c(
     NA_character_
@@ -505,7 +505,7 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, required_na
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, data.table)",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
+    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, \"data.table\")",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
   )
   fail_msg_set <- c(
     c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}" )
@@ -531,7 +531,7 @@ report_is_Date <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    "inherits(x, Date)"
+    "inherits(x, \"Date\")"
   )
   fail_msg_set <- c(
     NA_character_
@@ -869,7 +869,7 @@ report_is_list <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    "inherits(x, list)"
+    "inherits(x, \"list\")"
   )
   fail_msg_set <- c(
     NA_character_
@@ -1103,7 +1103,7 @@ report_is_named_list <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("inherits(x, list)", "!is.null(names(x))")
+    c("inherits(x, \"list\")", "!is.null(names(x))")
   )
   fail_msg_set <- c(
     c(NA_character_, NA_character_)
@@ -1285,7 +1285,7 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("inherits(x, list)", "!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)" )
+    c("inherits(x, \"list\")", "!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)" )
   )
   fail_msg_set <- c(
     c(NA, NA, "not every element of ${x_nm} has a different name" )
