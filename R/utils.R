@@ -2,7 +2,27 @@
 
 
 
-handle_x_nm_arg <- function(x_nm = NULL) {
+
+#' @title Utilities
+#' @description
+#' Utility functions, intended primarily for internal use.
+#' @name utilities
+NULL
+
+#' @rdname utilities
+#' @param x_nm `[NULL, character]` (mandatory, no default)
+#'
+#' - `character`: return input as-is
+#' - `NULL`: it is assumed that this function is called within another function,
+#'   and essentially `deparse(substitute(x))` is returned
+#' @export
+#' @details
+#' - `handle_x_nm_arg` is used internally in `report_` and `assert_` functions
+#'   to guess the name of the object passed to argument `x` when it is not
+#'   supplied explicitly.
+#' @return
+#' - `handle_x_nm_arg`: always returns a character vector of length 1
+handle_x_nm_arg <- function(x_nm) {
   stopifnot(
     (is.character(x_nm) && length(x_nm) == 1L && !is.na(x_nm)) || is.null(x_nm)
   )
