@@ -1337,10 +1337,10 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, set) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_vector(x)", "x %in% set")
+    c("assert_is_vector(x)", "in_set <- x %in% set")
   )
   fail_msg_set <- c(
-    c(NA, "some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!x %in% set]), 10L))}" )
+    c(NA, "some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}" )
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
