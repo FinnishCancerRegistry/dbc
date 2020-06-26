@@ -133,7 +133,7 @@ tests_to_report <- function(
   )
 
   test_pos_set <- seq_along(tests)
-  do.call(rbind, lapply(test_pos_set, function(test_pos) {
+  test_df_list <- lapply(test_pos_set, function(test_pos) {
     test_string <- tests[test_pos]
     test_expr <- parse(text = test_string)[[1L]]
 
@@ -174,17 +174,12 @@ tests_to_report <- function(
     if (df[["pass"]]) {
       df[["message"]] <- interpolate(pass_messages[test_pos], env = eval_env)
     } else {
-      msg <- tryCatch(
-        interpolate(fail_messages[test_pos], env = eval_env),
-        error = function(e) e
-      )
-      if (inherits(msg, "error")) {
-        browser()
-      }
+      msg <- interpolate(fail_messages[test_pos], env = eval_env)
       df[["message"]] <- msg
     }
     df[]
-  }))
+  })
+  do.call(rbind, test_df_list)
 }
 
 
@@ -282,7 +277,7 @@ generate_base_report_funs <- function(
   specs_df <- get_report_fun_specs()
   raise_internal_error_if_not(
     is.data.frame(specs_df),
-    c("test_set_nm", "call", "intra_function_action",
+    c("test_set_nm", "call",
       "fail_message", "pass_message", "extra_arg_nm_set") %in% names(specs_df),
 
     is.character(target_script),

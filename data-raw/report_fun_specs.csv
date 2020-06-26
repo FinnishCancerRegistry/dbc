@@ -1,119 +1,93 @@
-test_set_nm;call;intra_function_action;fail_message;pass_message;extra_arg_nm_set
-
-dir_exists;assert_is_character_nonNA_vector(x);internal_assertion;NA;NA;NA
-dir_exists;length(bad_dirs <- x[!dir.exists(x)]) == 0L;report;no such directory/directories: ${bad_dirs};NA;NA
-
-file_exists;assert_is_character_nonNA_vector(x);internal_assertion;NA;NA;NA
-file_exists;length(bad_files <- x[!file.exists(x)]) == 0L;report;no such file(s): ${bad_files};NA;NA
-
-is_number;is.numeric(x);report;NA;NA;NA
-is_numeric;is.numeric(x);report;NA;NA;NA
-is_double;is.double(x);report;NA;NA;NA
-is_integer;is.integer(x);report;NA;NA;NA
-is_character;is.character(x);report;NA;NA;NA
-is_logical;is.logical(x);report;NA;NA;NA
-is_Date;inherits(x, "Date");report;NA;NA;NA
-is_factor;is.factor(x);report;NA;NA;NA
-is_function;is.function(x);report;NA;NA;NA
-is_environment;is.environment(x);report;NA;NA;NA
-is_call;is.call(x);report;NA;NA;NA
-is_name;is.name(x);report;NA;NA;NA
-is_expression;is.expression(x);report;NA;NA;NA
-is_language_object;is.language(x);report;NA;NA;NA
-
-is_of_length;length(x) == expected_length;report;${x_nm} had length ${length(x)} instead of ${expected_length};NA;expected_length
-has_length;length(x) == expected_length;report;${x_nm} had length ${length(x)} instead of ${expected_length};NA;expected_length
-
-has_class;assert_is_character_nonNA_atom(required_class);internal_assertion;NA;NA;required_class
-has_class;inherits(x, required_class);report;expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))};NA;required_class
-
-inherits;assert_is_character_nonNA_atom(required_class);internal_assertion;NA;NA;required_class
-inherits;inherits(x, required_class);report;expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))};NA;required_class
-
-has_one_of_classes;assert_is_character_nonNA_vector(classes);internal_assertion;NA;NA;classes
-has_one_of_classes;inherits(x, classes);report;expected ${x_nm} to have class ${classes}, but it had class(es) ${deparse(class(x))};NA;classes
-
-is_factor_with_levels;assert_is_character_nonNA_vector(expected_levels);internal_assertion;NA;NA;expected_levels
-is_factor_with_levels;is.factor(x);report;${x_nm} is not a factor;NA;expected_levels
-is_factor_with_levels;length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L;report;factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)};NA;expected_levels
-is_factor_with_levels;length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L;report;factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)};NA;expected_levels
-
-is_named;!is.null(names(x));report;NA;NA;NA
-
-has_names;assert_is_character_nonNA_vector(required_names);report;NA;NA;required_names
-has_names;!is.null(names(x));report;NA;NA;required_names
-has_names;length(miss_nms <- setdiff(required_names, names(x))) == 0L;report;${x_nm} did not have the following expected names: ${deparse(miss_nms)};NA;required_names
-
-is_uniquely_named;!is.null(names(x));report;NA;NA;NA
-is_uniquely_named;(n_unique_names <- length(unique(names(x)))) == length(x);report;not every element of ${x_nm} has a different name;NA;NA
-
-has_only_names;assert_is_character_nonNA_vector(required_names);report;NA;NA;required_names
-has_only_names;!is.null(names(x));report;NA;NA;required_names
-has_only_names;length(miss_nms <- setdiff(required_names, names(x))) == 0L;report;${x_nm} did not have the following expected names: ${deparse(miss_nms)};NA;required_names
-has_only_names;length(extra_nms <- setdiff(names(x), required_names)) == 0L;report;${x_nm} had the following unexpected names: ${deparse(extra_nms)};NA;required_names
-
-atom_is_in_set;assert_is_atom(x);internal_assertion;NA;NA;set
-atom_is_in_set;x %in% set;report;${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))};NA;set
-
-vector_elems_are_in_set;assert_is_vector(x);internal_assertion;NA;NA;set
-vector_elems_are_in_set;in_set <- x %in% set;report;some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))};NA;set
-
-is_atom;length(x) == 1L;report;length of ${x_nm} was ${length(x)} instead of 1;NA;NA
-
-is_vector;is.null(dim(x));report;NA;NA;NA
-is_vector;!is.list(x);report;NA;NA;
-
-is_matrix;is.matrix(x);report;NA;NA;NA
-is_NULL;is.null(x);report;NA;NA;NA
-is_list;inherits(x, "list");report;NA;NA;NA
-is_named_list;inherits(x, "list");report;NA;NA;NA
-is_named_list;!is.null(names(x));report;NA;NA;NA
-
-is_uniquely_named_list;inherits(x, "list");report;NA;NA;NA
-is_uniquely_named_list;!is.null(names(x));report;NA;NA;NA
-is_uniquely_named_list;(n_unique_names <- length(unique(names(x)))) == length(x);report;not every element of ${x_nm} has a different name;NA;NA
-
-is_data.frame;is.data.frame(x);report;NA;NA;NA
-is_data.table;inherits(x, "data.table");report;NA;NA;NA
-is_data_table;inherits(x, "data.table");report;NA;NA;NA
-
-is_data.frame_with_required_names;assert_is_character_nonNA_vector(required_names);report;NA;NA;required_names
-is_data.frame_with_required_names;is.data.frame(x);report;NA;NA;required_names
-is_data.frame_with_required_names;length(miss_nms <- setdiff(required_names, names(x))) == 0L;report;${x_nm} did not have the following expected names: ${deparse(miss_nms)};NA;required_names
-
-is_data.table_with_required_names;assert_is_character_nonNA_vector(required_names);report;NA;NA;required_names
-is_data.table_with_required_names;inherits(x, "data.table");report;NA;NA;required_names
-is_data.table_with_required_names;length(miss_nms <- setdiff(required_names, names(x))) == 0L;report;${x_nm} did not have the following expected names: ${deparse(miss_nms)};NA;required_names
-
-is_data_table_with_required_names;assert_is_character_nonNA_vector(required_names);report;NA;NA;required_names
-is_data_table_with_required_names;inherits(x, "data.table");report;NA;NA;required_names
-is_data_table_with_required_names;length(miss_nms <- setdiff(required_names, names(x))) == 0L;report;${x_nm} did not have the following expected names: ${deparse(miss_nms)};NA;required_names
-
-is_nonNA;!is.na(x);report;${x_nm} had ${n_fail} NA values - none are allowed;NA;NA
-
-is_between_inclusive;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;lo, hi
-is_between_inclusive;assert_is_number_nonNA_vector(lo);internal_assertion;NA;NA;lo, hi
-is_between_inclusive;assert_is_number_nonNA_vector(hi);internal_assertion;NA;NA;lo, hi
-is_between_inclusive;dbc::is_between_inclusive(x = x, lo = lo, hi = hi);report;${n_fail} elements were outside inclusive bounds ${lo}, ${hi};NA;lo, hi
-
-is_between_exclusive;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;lo, hi
-is_between_exclusive;assert_is_number_nonNA_vector(lo);internal_assertion;NA;NA;lo, hi
-is_between_exclusive;assert_is_number_nonNA_vector(hi);internal_assertion;NA;NA;lo, hi
-is_between_exclusive;!dbc::is_between_exclusive(x = x, lo = lo, hi = hi);report;${n_fail} elements were outside exclusive bounds ${lo}, ${hi};NA;lo, hi
-
-is_gte;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;lo
-is_gte;x >= lo;report;${n_fail} elements were < ${lo};NA;lo
-is_gt;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;lo
-is_gt;x > lo;report;${n_fail} elements were <= ${lo};NA;lo
-is_lte;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;hi
-is_lte;x <= hi;report;${n_fail} elements were > ${hi};NA;hi
-is_lt;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;lo
-is_lt;x < hi;report;${n_fail} elements were >= ${hi};NA;hi
-is_gtezero;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;NA
-is_gtezero;x >= 0;report;${n_fail} elements were < 0;NA;NA
-is_gtzero;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;NA
-is_gtzero;x > 0;report;${n_fail} elements were <= 0};NA;NA
-is_ltezero;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;NA
-is_ltezero;x <= 0;report;${n_fail} elements were > 0;NA;NA
-is_ltzero;assert_is_number_nonNA_vector(x);internal_assertion;NA;NA;NA
-is_ltzero;x < 0;report;${n_fail} elements were >= 0;NA;NA
+"test_set_nm";"call";"fail_message";"pass_message";"extra_arg_nm_set"
+"dir_exists";"assert_is_character_nonNA_vector(x)";NA;NA;NA
+"dir_exists";"length(bad_dirs <- x[!dir.exists(x)]) == 0L";"no such directory/directories: ${bad_dirs}";NA;NA
+"file_exists";"assert_is_character_nonNA_vector(x)";NA;NA;NA
+"file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"no such file(s): ${bad_files}";NA;NA
+"is_number";"is.numeric(x)";NA;NA;NA
+"is_numeric";"is.numeric(x)";NA;NA;NA
+"is_double";"is.double(x)";NA;NA;NA
+"is_integer";"is.integer(x)";NA;NA;NA
+"is_character";"is.character(x)";NA;NA;NA
+"is_logical";"is.logical(x)";NA;NA;NA
+"is_Date";"inherits(x, 'Date')";NA;NA;NA
+"is_factor";"is.factor(x)";NA;NA;NA
+"is_function";"is.function(x)";NA;NA;NA
+"is_environment";"is.environment(x)";NA;NA;NA
+"is_call";"is.call(x)";NA;NA;NA
+"is_name";"is.name(x)";NA;NA;NA
+"is_expression";"is.expression(x)";NA;NA;NA
+"is_language_object";"is.language(x)";NA;NA;NA
+"is_of_length";"length(x) == expected_length";"${x_nm} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
+"has_length";"length(x) == expected_length";"${x_nm} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
+"has_class";"assert_is_character_nonNA_atom(required_class)";NA;NA;"required_class"
+"has_class";"inherits(x, required_class)";"expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
+"inherits";"assert_is_character_nonNA_atom(required_class)";NA;NA;"required_class"
+"inherits";"inherits(x, required_class)";"expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
+"has_one_of_classes";"assert_is_character_nonNA_vector(classes)";NA;NA;"classes"
+"has_one_of_classes";"inherits(x, classes)";"expected ${x_nm} to have class ${classes}, but it had class(es) ${deparse(class(x))}";NA;"classes"
+"is_factor_with_levels";"assert_is_character_nonNA_vector(expected_levels)";NA;NA;"expected_levels"
+"is_factor_with_levels";"is.factor(x)";"${x_nm} is not a factor";NA;"expected_levels"
+"is_factor_with_levels";"length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L";"factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}";NA;"expected_levels"
+"is_factor_with_levels";"length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L";"factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}";NA;"expected_levels"
+"is_named";"!is.null(names(x))";NA;NA;NA
+"has_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
+"has_names";"!is.null(names(x))";NA;NA;"required_names"
+"has_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_uniquely_named";"!is.null(names(x))";NA;NA;NA
+"is_uniquely_named";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of ${x_nm} has a different name";NA;NA
+"has_only_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
+"has_only_names";"!is.null(names(x))";NA;NA;"required_names"
+"has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"${x_nm} had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
+"atom_is_in_set";"assert_is_atom(x)";NA;NA;"set"
+"atom_is_in_set";"x %in% set";"${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}";NA;"set"
+"vector_elems_are_in_set";"assert_is_vector(x)";NA;NA;"set"
+"vector_elems_are_in_set";"in_set <- x %in% set";"some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}";NA;"set"
+"is_atom";"length(x) == 1L";"length of ${x_nm} was ${length(x)} instead of 1";NA;NA
+"is_vector";"is.null(dim(x))";NA;NA;NA
+"is_vector";"!is.list(x)";NA;NA;""
+"is_matrix";"is.matrix(x)";NA;NA;NA
+"is_NULL";"is.null(x)";NA;NA;NA
+"is_list";"inherits(x, 'list')";NA;NA;NA
+"is_named_list";"inherits(x, 'list')";NA;NA;NA
+"is_named_list";"!is.null(names(x))";NA;NA;NA
+"is_uniquely_named_list";"inherits(x, 'list')";NA;NA;NA
+"is_uniquely_named_list";"!is.null(names(x))";NA;NA;NA
+"is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of ${x_nm} has a different name";NA;NA
+"is_data.frame";"is.data.frame(x)";NA;NA;NA
+"is_data.table";"inherits(x, 'data.table')";NA;NA;NA
+"is_data_table";"inherits(x, 'data.table')";NA;NA;NA
+"is_data.frame_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
+"is_data.frame_with_required_names";"is.data.frame(x)";NA;NA;"required_names"
+"is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_data.table_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
+"is_data.table_with_required_names";"inherits(x, 'data.table')";NA;NA;"required_names"
+"is_data.table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_data_table_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
+"is_data_table_with_required_names";"inherits(x, 'data.table')";NA;NA;"required_names"
+"is_data_table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_nonNA";"!is.na(x)";"${x_nm} had ${n_fail} NA values - none are allowed";NA;NA
+"is_between_inclusive";"assert_is_number_nonNA_vector(x)";NA;NA;"lo, hi"
+"is_between_inclusive";"assert_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"
+"is_between_inclusive";"assert_is_number_nonNA_vector(hi)";NA;NA;"lo, hi"
+"is_between_inclusive";"dbc::is_between_inclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements were outside inclusive bounds ${lo}, ${hi}";NA;"lo, hi"
+"is_between_exclusive";"assert_is_number_nonNA_vector(x)";NA;NA;"lo, hi"
+"is_between_exclusive";"assert_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"
+"is_between_exclusive";"assert_is_number_nonNA_vector(hi)";NA;NA;"lo, hi"
+"is_between_exclusive";"!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements were outside exclusive bounds ${lo}, ${hi}";NA;"lo, hi"
+"is_gte";"assert_is_number_nonNA_vector(x)";NA;NA;"lo"
+"is_gte";"x >= lo";"${n_fail} elements were < ${lo}";NA;"lo"
+"is_gt";"assert_is_number_nonNA_vector(x)";NA;NA;"lo"
+"is_gt";"x > lo";"${n_fail} elements were <= ${lo}";NA;"lo"
+"is_lte";"assert_is_number_nonNA_vector(x)";NA;NA;"hi"
+"is_lte";"x <= hi";"${n_fail} elements were > ${hi}";NA;"hi"
+"is_lt";"assert_is_number_nonNA_vector(x)";NA;NA;"lo"
+"is_lt";"x < hi";"${n_fail} elements were >= ${hi}";NA;"hi"
+"is_gtezero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
+"is_gtezero";"x >= 0";"${n_fail} elements were < 0";NA;NA
+"is_gtzero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
+"is_gtzero";"x > 0";"${n_fail} elements were <= 0}";NA;NA
+"is_ltezero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
+"is_ltezero";"x <= 0";"${n_fail} elements were > 0";NA;NA
+"is_ltzero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
+"is_ltzero";"x < 0";"${n_fail} elements were >= 0";NA;NA
