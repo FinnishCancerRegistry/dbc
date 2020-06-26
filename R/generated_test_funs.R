@@ -2169,6 +2169,7 @@ test_is_logical_vector <- function(
 test_is_lt <- function(
   x, 
   x_nm = NULL, 
+  lo, 
   hi
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
