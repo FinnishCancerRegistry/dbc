@@ -1311,13 +1311,13 @@ report_is_vector <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("is.vector(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.null(dim(x))", "!is.list(x)")
   )
   fail_msg_set <- c(
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   )
   pass_msg_set <- c(
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
     tests = test_set,

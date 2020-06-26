@@ -60,7 +60,6 @@ vector_elems_are_in_set;x %in% set;report;some values of ${x_nm} were not in set
 
 is_atom;length(x) == 1L;report;length of ${x_nm} was ${length(x)} instead of 1;NA;NA
 
-is_vector;is.vector(x);report;NA;NA;NA
 is_vector;is.null(dim(x));report;NA;NA;NA
 is_vector;!is.list(x);report;NA;NA;
 
