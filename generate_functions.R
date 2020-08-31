@@ -1,6 +1,7 @@
 
 
-source("data-raw/sysdata.R")
+e <- new.env()
+source("data-raw/sysdata.R", local = e)
 
 pkgload::load_all(export_all = TRUE)
 generate_base_report_funs(

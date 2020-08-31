@@ -283,38 +283,31 @@ generate_base_report_funs <- function(
     is.character(target_script),
     length(target_script) == 1L
   )
-
+  specs_df[, names(specs_df)] <- lapply(specs_df, as.character)
   base_prefix <- "report_"
   fun_df <- data.frame(suffix = sort(unique(specs_df[["test_set_nm"]])))
+  fun_df[["suffix"]] <- as.character(fun_df[["suffix"]])
   fun_df[["nm"]] <- paste0(base_prefix, fun_df[["suffix"]])
-  fun_df[["extra_arg_set"]] <- stats::aggregate(
-    x = specs_df[["extra_arg_nm_set"]],
-    by = list(specs_df[["test_set_nm"]]),
-    FUN = function(x) {
-      paste0(setdiff(unique(x), c(NA_character_, "")), collapse = ", ")
-    }
-  )[["x"]]
-  fun_df[["test_set"]] <- stats::aggregate(
-    x = specs_df[["call"]],
-    by = list(specs_df[["test_set_nm"]]),
-    FUN = function(x) {
-      paste0(deparse(x), collapse = " ")
-    }
-  )[["x"]]
-  fun_df[["fail_msg_set"]] <- stats::aggregate(
-    x = specs_df[["fail_message"]],
-    by = list(specs_df[["test_set_nm"]]),
-    FUN = function(x) {
-      paste0(deparse(x), collapse = " ")
-    }
-  )[["x"]]
-  fun_df[["pass_msg_set"]] <- stats::aggregate(
-    x = specs_df[["pass_message"]],
-    by = list(specs_df[["test_set_nm"]]),
-    FUN = function(x) {
-      paste0(deparse(x), collapse = " ")
-    }
-  )[["x"]]
+
+  # browser()
+  test_set_nm_set <- fun_df$suffix
+  fun_df[["extra_arg_set"]] <- lapply(test_set_nm_set, function(test_set_nm) {
+    is_test_set <- specs_df[["test_set_nm"]] == test_set_nm
+    values <- specs_df[["extra_arg_nm_set"]][is_test_set]
+    paste0(setdiff(values, c(NA_character_, "")), collapse = ", ")
+  })
+  split_col_nms <- c("test_set" = "call", "fail_msg_set" = "fail_message", "pass_msg_set" = "pass_message")
+  fun_df[, names(split_col_nms)] <- lapply(split_col_nms, function(col_nm) {
+    src_col_nm <- col_nm
+    lapply(test_set_nm_set, function(test_set_nm) {
+      is_test_set <- specs_df[["test_set_nm"]] == test_set_nm
+      values <- specs_df[[src_col_nm]][is_test_set]
+      paste0(deparse(values), collapse = "")
+      # vapply(values, function(elem) {
+      #   paste0(deparse(elem), collapse = "")
+      # }, character(1L))
+    })
+  })
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     body <- paste0("  ", c(
       "x_nm <- handle_x_nm_arg(x_nm)",

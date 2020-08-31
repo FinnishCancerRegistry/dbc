@@ -14,7 +14,7 @@ report_atom_is_in_set <- function(x, x_nm = NULL, set) {
     c("assert_is_atom(x)", "x %in% set")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}" )
+    c(NA, "${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
@@ -37,7 +37,7 @@ report_dir_exists <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(x)", "length(bad_dirs <- x[!dir.exists(x)]) == 0L" )
+    c("assert_is_character_nonNA_vector(x)", "length(bad_dirs <- x[!dir.exists(x)]) == 0L")
   )
   fail_msg_set <- c(
     c(NA, "no such directory/directories: ${bad_dirs}")
@@ -63,7 +63,7 @@ report_file_exists <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(x)", "length(bad_files <- x[!file.exists(x)]) == 0L" )
+    c("assert_is_character_nonNA_vector(x)", "length(bad_files <- x[!file.exists(x)]) == 0L")
   )
   fail_msg_set <- c(
     c(NA, "no such file(s): ${bad_files}")
@@ -89,10 +89,10 @@ report_has_class <- function(x, x_nm = NULL, required_class) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_atom(required_class)", "inherits(x, required_class)" )
+    c("assert_is_character_nonNA_atom(required_class)", "inherits(x, required_class)")
   )
   fail_msg_set <- c(
-    c(NA, "expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))}" )
+    c(NA, "expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
@@ -141,10 +141,10 @@ report_has_names <- function(x, x_nm = NULL, required_names) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "!is.null(names(x))",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
+    c("assert_is_character_nonNA_vector(required_names)", "!is.null(names(x))", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}" )
+    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -167,10 +167,10 @@ report_has_one_of_classes <- function(x, x_nm = NULL, classes) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(classes)", "inherits(x, classes)" )
+    c("assert_is_character_nonNA_vector(classes)", "inherits(x, classes)")
   )
   fail_msg_set <- c(
-    c(NA, "expected ${x_nm} to have class ${classes}, but it had class(es) ${deparse(class(x))}" )
+    c(NA, "expected ${x_nm} to have class ${classes}, but it had class(es) ${deparse(class(x))}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
@@ -193,10 +193,10 @@ report_has_only_names <- function(x, x_nm = NULL, required_names) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "!is.null(names(x))",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L",  "length(extra_nms <- setdiff(names(x), required_names)) == 0L" )
+    c("assert_is_character_nonNA_vector(required_names)", "!is.null(names(x))", "length(miss_nms <- setdiff(required_names, names(x))) == 0L", "length(extra_nms <- setdiff(names(x), required_names)) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}",  "${x_nm} had the following unexpected names: ${deparse(extra_nms)}" )
+    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}", "${x_nm} had the following unexpected names: ${deparse(extra_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
@@ -219,10 +219,10 @@ report_inherits <- function(x, x_nm = NULL, required_class) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_atom(required_class)", "inherits(x, required_class)" )
+    c("assert_is_character_nonNA_atom(required_class)", "inherits(x, required_class)")
   )
   fail_msg_set <- c(
-    c(NA, "expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))}" )
+    c(NA, "expected ${x_nm} to have class ${required_class}, but it had class(es) ${deparse(class(x))}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
@@ -271,10 +271,10 @@ report_is_between_exclusive <- function(x, x_nm = NULL, lo, hi) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_number_nonNA_vector(x)", "assert_is_number_nonNA_vector(lo)",  "assert_is_number_nonNA_vector(hi)", "!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)" )
+    c("assert_is_number_nonNA_vector(x)", "assert_is_number_nonNA_vector(lo)", "assert_is_number_nonNA_vector(hi)", "!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)")
   )
   fail_msg_set <- c(
-    c(NA, NA, NA, "${n_fail} elements were outside exclusive bounds ${lo}, ${hi}" )
+    c(NA, NA, NA, "${n_fail} elements were outside exclusive bounds ${lo}, ${hi}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
@@ -297,10 +297,10 @@ report_is_between_inclusive <- function(x, x_nm = NULL, lo, hi) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_number_nonNA_vector(x)", "assert_is_number_nonNA_vector(lo)",  "assert_is_number_nonNA_vector(hi)", "dbc::is_between_inclusive(x = x, lo = lo, hi = hi)" )
+    c("assert_is_number_nonNA_vector(x)", "assert_is_number_nonNA_vector(lo)", "assert_is_number_nonNA_vector(hi)", "dbc::is_between_inclusive(x = x, lo = lo, hi = hi)")
   )
   fail_msg_set <- c(
-    c(NA, NA, NA, "${n_fail} elements were outside inclusive bounds ${lo}, ${hi}" )
+    c(NA, NA, NA, "${n_fail} elements were outside inclusive bounds ${lo}, ${hi}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
@@ -371,6 +371,58 @@ report_is_character <- function(x, x_nm = NULL) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+report_is_data_table <- function(x, x_nm = NULL) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  fun_eval_env <- environment()
+  test_set <- c(
+    "inherits(x, 'data.table')"
+  )
+  fail_msg_set <- c(
+    NA_character_
+  )
+  pass_msg_set <- c(
+    NA_character_
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = fun_eval_env
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_is_data_table_with_required_names <- function(x, x_nm = NULL, required_names) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  fun_eval_env <- environment()
+  test_set <- c(
+    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+  )
+  fail_msg_set <- c(
+    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
+  )
+  pass_msg_set <- c(
+    c(NA_character_, NA_character_, NA_character_)
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = fun_eval_env
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 report_is_data.frame <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
@@ -401,10 +453,10 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, required_na
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "is.data.frame(x)",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
+    c("assert_is_character_nonNA_vector(required_names)", "is.data.frame(x)", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}" )
+    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -453,62 +505,10 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, required_na
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
+    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}" )
-  )
-  pass_msg_set <- c(
-    c(NA_character_, NA_character_, NA_character_)
-  )
-  report_df <- tests_to_report(
-    tests = test_set,
-    fail_messages = fail_msg_set,
-    pass_messages = pass_msg_set,
-    env = fun_eval_env
-  )
-  return(report_df)
-}
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-report_is_data_table <- function(x, x_nm = NULL) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  fun_eval_env <- environment()
-  test_set <- c(
-    "inherits(x, 'data.table')"
-  )
-  fail_msg_set <- c(
-    NA_character_
-  )
-  pass_msg_set <- c(
-    NA_character_
-  )
-  report_df <- tests_to_report(
-    tests = test_set,
-    fail_messages = fail_msg_set,
-    pass_messages = pass_msg_set,
-    env = fun_eval_env
-  )
-  return(report_df)
-}
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-report_is_data_table_with_required_names <- function(x, x_nm = NULL, required_names) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  fun_eval_env <- environment()
-  test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')",  "length(miss_nms <- setdiff(required_names, names(x))) == 0L" )
-  )
-  fail_msg_set <- c(
-    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}" )
+    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -661,10 +661,10 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, expected_levels) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(expected_levels)", "is.factor(x)",  "length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L",  "length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L" )
+    c("assert_is_character_nonNA_vector(expected_levels)", "is.factor(x)", "length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L", "length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} is not a factor", "factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}",  "factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}" )
+    c(NA, "${x_nm} is not a factor", "factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}", "factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
@@ -1259,7 +1259,7 @@ report_is_uniquely_named <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)" )
+    c("!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)")
   )
   fail_msg_set <- c(
     c(NA, "not every element of ${x_nm} has a different name")
@@ -1285,10 +1285,10 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("inherits(x, 'list')", "!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)" )
+    c("inherits(x, 'list')", "!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)")
   )
   fail_msg_set <- c(
-    c(NA, NA, "not every element of ${x_nm} has a different name" )
+    c(NA, NA, "not every element of ${x_nm} has a different name")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -1340,7 +1340,7 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, set) {
     c("assert_is_vector(x)", "in_set <- x %in% set")
   )
   fail_msg_set <- c(
-    c(NA, "some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}" )
+    c(NA, "some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)

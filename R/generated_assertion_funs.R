@@ -458,6 +458,51 @@ assert_is_character_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_is_data_table <- function(
+  x, 
+  x_nm = NULL
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  report_fun_nm <- "report_is_data_table"
+  arg_list <- mget(names(formals(report_fun_nm)))
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  if (any(!report_df[["pass"]])) {
+    wh_first_fail <- which(!report_df[["pass"]])[1L]
+    stop(report_df[["message"]][wh_first_fail])
+  }
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+assert_is_data_table_with_required_names <- function(
+  x, 
+  x_nm = NULL, 
+  required_names
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  report_fun_nm <- "report_is_data_table_with_required_names"
+  arg_list <- mget(names(formals(report_fun_nm)))
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  if (any(!report_df[["pass"]])) {
+    wh_first_fail <- which(!report_df[["pass"]])[1L]
+    stop(report_df[["message"]][wh_first_fail])
+  }
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_is_data.frame <- function(
   x, 
   x_nm = NULL
@@ -532,51 +577,6 @@ assert_is_data.table_with_required_names <- function(
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
   report_fun_nm <- "report_is_data.table_with_required_names"
-  arg_list <- mget(names(formals(report_fun_nm)))
-  report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  if (any(!report_df[["pass"]])) {
-    wh_first_fail <- which(!report_df[["pass"]])[1L]
-    stop(report_df[["message"]][wh_first_fail])
-  }
-  return(invisible(NULL))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-assert_is_data_table <- function(
-  x, 
-  x_nm = NULL
-) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  report_fun_nm <- "report_is_data_table"
-  arg_list <- mget(names(formals(report_fun_nm)))
-  report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  if (any(!report_df[["pass"]])) {
-    wh_first_fail <- which(!report_df[["pass"]])[1L]
-    stop(report_df[["message"]][wh_first_fail])
-  }
-  return(invisible(NULL))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-assert_is_data_table_with_required_names <- function(
-  x, 
-  x_nm = NULL, 
-  required_names
-) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  report_fun_nm <- "report_is_data_table_with_required_names"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
   if (any(!report_df[["pass"]])) {
