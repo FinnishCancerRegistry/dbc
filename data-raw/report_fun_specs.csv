@@ -40,6 +40,7 @@
 "has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
 "has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"${x_nm} had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
 "atom_is_in_set";"assert_is_atom(x)";NA;NA;"set"
+"atom_is_in_set";"assert_is_vector(set)";NA;NA;"set"
 "atom_is_in_set";"x %in% set";"${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}";NA;"set"
 "vector_elems_are_in_set";"assert_is_vector(x)";NA;NA;"set"
 "vector_elems_are_in_set";"in_set <- x %in% set";"some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}";NA;"set"

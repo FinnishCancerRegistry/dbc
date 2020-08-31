@@ -11,13 +11,13 @@ report_atom_is_in_set <- function(x, x_nm = NULL, set) {
   x_nm <- handle_x_nm_arg(x_nm)
   fun_eval_env <- environment()
   test_set <- c(
-    c("assert_is_atom(x)", "x %in% set")
+    c("assert_is_atom(x)", "assert_is_vector(set)", "x %in% set")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}")
+    c(NA, NA, "${x_nm} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}")
   )
   pass_msg_set <- c(
-    c(NA_character_, NA_character_)
+    c(NA_character_, NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
     tests = test_set,
