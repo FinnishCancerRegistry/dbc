@@ -252,10 +252,16 @@ interpolate <- function(x, env = parent.frame(1L)) {
   )
   m <- gregexpr(pattern = "\\Q${\\E[^{]+\\Q}\\E", text = x, perl = TRUE)
   expr_strings_by_x_elem <- regmatches(x = x, m = m)
+  has_nothing_to_interpolate <- length(expr_strings_by_x_elem) == 1L &&
+    length(expr_strings_by_x_elem[[1L]]) == 0L
+  if (has_nothing_to_interpolate) {
+    return(x)
+  }
   values <- lapply(expr_strings_by_x_elem, function(expr_string_vec) {
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
     vapply(expr_string_vec, function(string) {
-      as.character(eval(parse(text = string)[[1L]], envir = env))
+      paste0(as.character(eval(parse(text = string)[[1L]], envir = env)),
+             collapse = "")
     }, character(1L))
   })
   regmatches(x = x, m = m) <- values
