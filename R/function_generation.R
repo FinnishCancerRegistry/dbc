@@ -183,6 +183,12 @@ tests_to_report <- function(
 }
 
 
+assertion_types <- function() {
+  c("general", "user_input", "prod_input", "dev_input",
+    "prod_output", "dev_output",
+    "prod_interim", "dev_interim")
+}
+
 
 
 #' @rdname tests_to_reports_to_assertions
@@ -241,9 +247,7 @@ report_to_assertion <- function(
     c("pass", "message", "error") %in% names(report_df),
 
     length(assertion_type) == 1L,
-    assertion_type %in% c("general", "user_input", "prod_input", "dev_input",
-                          "prod_output", "dev_output",
-                          "prod_interim", "dev_interim")
+    assertion_type %in% assertion_types()
   )
 
   wh_nonpass <- which(!report_df[["pass"]] %in% TRUE)
@@ -464,14 +468,26 @@ generate_report_derivative_funs <- function(
     x = obj_nms
   )
   report_fun_nms <- gsub("\\Q <- \\E.+", "", obj_nms[is_report_fun_nm])
-  assert_fun_nms <- sub("^report_", paste0(type, "_"), report_fun_nms)
+  if (type == "assert" && assertion_type != "general") {
+    fun_nms <- sub(
+      "^report_", paste0(type, "_", assertion_type, "_"), report_fun_nms
+    )
+  } else {
+    fun_nms <- sub(
+      "^report_", paste0(type, "_"), report_fun_nms
+    )
+  }
 
-  fun_df <- data.frame(fun_nm = assert_fun_nms, report_fun_nm = report_fun_nms)
+  fun_df <- data.frame(fun_nm = fun_nms, report_fun_nm = report_fun_nms)
 
   body_part <- switch(
     type,
     assert = c(
-      "report_to_assertion(report_df, assertion_type = \"", assertion_type, "\")",
+      paste0(
+        "report_to_assertion(report_df, assertion_type = \"",
+        assertion_type,
+        "\")"
+      ),
       "return(invisible(NULL))"
     ),
     test = c(
@@ -561,7 +577,8 @@ generate_assertion_funs <- function(
   generate_report_derivative_funs(
     source_scripts = source_scripts,
     target_script = target_script,
-    type = "assert"
+    type = "assert",
+    assertion_type = assertion_type
   )
 }
 
@@ -589,7 +606,7 @@ generate_function_variants <- function(
   fun_nm_dt <- fun_nm_dt[
     !(fun_nm_dt[["V1"]] %in% non_number_types &
         fun_nm_dt[["V5"]] != ""),
-    ]
+  ]
   fun_nms <- do.call(paste0, fun_nm_dt)
   fun_nms <- paste0(fun_def_prefix, fun_nms)
   fun_nms <- gsub("_{1,}", "_", fun_nms)

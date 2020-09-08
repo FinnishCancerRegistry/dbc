@@ -7,7 +7,7 @@
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_atom_is_in_set <- function(
+assert_prod_output_atom_is_in_set <- function(
   x, 
   x_nm = NULL, 
   set
@@ -16,7 +16,7 @@ assert_atom_is_in_set <- function(
   report_fun_nm <- "report_atom_is_in_set"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -27,7 +27,7 @@ assert_atom_is_in_set <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_dir_exists <- function(
+assert_prod_output_dir_exists <- function(
   x, 
   x_nm = NULL
 ) {
@@ -35,7 +35,7 @@ assert_dir_exists <- function(
   report_fun_nm <- "report_dir_exists"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -46,7 +46,7 @@ assert_dir_exists <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_file_exists <- function(
+assert_prod_output_file_exists <- function(
   x, 
   x_nm = NULL
 ) {
@@ -54,7 +54,7 @@ assert_file_exists <- function(
   report_fun_nm <- "report_file_exists"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -65,7 +65,7 @@ assert_file_exists <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_has_class <- function(
+assert_prod_output_has_class <- function(
   x, 
   x_nm = NULL, 
   required_class
@@ -74,7 +74,7 @@ assert_has_class <- function(
   report_fun_nm <- "report_has_class"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -85,7 +85,7 @@ assert_has_class <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_has_length <- function(
+assert_prod_output_has_length <- function(
   x, 
   x_nm = NULL, 
   expected_length
@@ -94,7 +94,7 @@ assert_has_length <- function(
   report_fun_nm <- "report_has_length"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -105,7 +105,7 @@ assert_has_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_has_names <- function(
+assert_prod_output_has_names <- function(
   x, 
   x_nm = NULL, 
   required_names
@@ -114,7 +114,7 @@ assert_has_names <- function(
   report_fun_nm <- "report_has_names"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -125,7 +125,7 @@ assert_has_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_has_one_of_classes <- function(
+assert_prod_output_has_one_of_classes <- function(
   x, 
   x_nm = NULL, 
   classes
@@ -134,7 +134,7 @@ assert_has_one_of_classes <- function(
   report_fun_nm <- "report_has_one_of_classes"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -145,7 +145,7 @@ assert_has_one_of_classes <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_has_only_names <- function(
+assert_prod_output_has_only_names <- function(
   x, 
   x_nm = NULL, 
   required_names
@@ -154,7 +154,7 @@ assert_has_only_names <- function(
   report_fun_nm <- "report_has_only_names"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -165,7 +165,7 @@ assert_has_only_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_inherits <- function(
+assert_prod_output_inherits <- function(
   x, 
   x_nm = NULL, 
   required_class
@@ -174,7 +174,7 @@ assert_inherits <- function(
   report_fun_nm <- "report_inherits"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -185,7 +185,7 @@ assert_inherits <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_atom <- function(
+assert_prod_output_is_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -193,7 +193,7 @@ assert_is_atom <- function(
   report_fun_nm <- "report_is_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -204,7 +204,7 @@ assert_is_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_between_exclusive <- function(
+assert_prod_output_is_between_exclusive <- function(
   x, 
   x_nm = NULL, 
   lo, 
@@ -214,7 +214,7 @@ assert_is_between_exclusive <- function(
   report_fun_nm <- "report_is_between_exclusive"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -225,7 +225,7 @@ assert_is_between_exclusive <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_between_inclusive <- function(
+assert_prod_output_is_between_inclusive <- function(
   x, 
   x_nm = NULL, 
   lo, 
@@ -235,7 +235,7 @@ assert_is_between_inclusive <- function(
   report_fun_nm <- "report_is_between_inclusive"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -246,7 +246,7 @@ assert_is_between_inclusive <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_call <- function(
+assert_prod_output_is_call <- function(
   x, 
   x_nm = NULL
 ) {
@@ -254,7 +254,7 @@ assert_is_call <- function(
   report_fun_nm <- "report_is_call"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -265,7 +265,7 @@ assert_is_call <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character <- function(
+assert_prod_output_is_character <- function(
   x, 
   x_nm = NULL
 ) {
@@ -273,7 +273,7 @@ assert_is_character <- function(
   report_fun_nm <- "report_is_character"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -284,7 +284,7 @@ assert_is_character <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character_atom <- function(
+assert_prod_output_is_character_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -292,7 +292,7 @@ assert_is_character_atom <- function(
   report_fun_nm <- "report_is_character_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -303,7 +303,7 @@ assert_is_character_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character_matrix <- function(
+assert_prod_output_is_character_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -311,7 +311,7 @@ assert_is_character_matrix <- function(
   report_fun_nm <- "report_is_character_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -322,7 +322,7 @@ assert_is_character_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character_nonNA_atom <- function(
+assert_prod_output_is_character_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -330,7 +330,7 @@ assert_is_character_nonNA_atom <- function(
   report_fun_nm <- "report_is_character_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -341,7 +341,7 @@ assert_is_character_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character_nonNA_matrix <- function(
+assert_prod_output_is_character_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -349,7 +349,7 @@ assert_is_character_nonNA_matrix <- function(
   report_fun_nm <- "report_is_character_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -360,7 +360,7 @@ assert_is_character_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character_nonNA_vector <- function(
+assert_prod_output_is_character_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -368,7 +368,7 @@ assert_is_character_nonNA_vector <- function(
   report_fun_nm <- "report_is_character_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -379,7 +379,7 @@ assert_is_character_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_character_vector <- function(
+assert_prod_output_is_character_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -387,7 +387,7 @@ assert_is_character_vector <- function(
   report_fun_nm <- "report_is_character_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -398,7 +398,7 @@ assert_is_character_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_data_table <- function(
+assert_prod_output_is_data_table <- function(
   x, 
   x_nm = NULL
 ) {
@@ -406,7 +406,7 @@ assert_is_data_table <- function(
   report_fun_nm <- "report_is_data_table"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -417,7 +417,7 @@ assert_is_data_table <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_data_table_with_required_names <- function(
+assert_prod_output_is_data_table_with_required_names <- function(
   x, 
   x_nm = NULL, 
   required_names
@@ -426,7 +426,7 @@ assert_is_data_table_with_required_names <- function(
   report_fun_nm <- "report_is_data_table_with_required_names"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -437,7 +437,7 @@ assert_is_data_table_with_required_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_data.frame <- function(
+assert_prod_output_is_data.frame <- function(
   x, 
   x_nm = NULL
 ) {
@@ -445,7 +445,7 @@ assert_is_data.frame <- function(
   report_fun_nm <- "report_is_data.frame"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -456,7 +456,7 @@ assert_is_data.frame <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_data.frame_with_required_names <- function(
+assert_prod_output_is_data.frame_with_required_names <- function(
   x, 
   x_nm = NULL, 
   required_names
@@ -465,7 +465,7 @@ assert_is_data.frame_with_required_names <- function(
   report_fun_nm <- "report_is_data.frame_with_required_names"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -476,7 +476,7 @@ assert_is_data.frame_with_required_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_data.table <- function(
+assert_prod_output_is_data.table <- function(
   x, 
   x_nm = NULL
 ) {
@@ -484,7 +484,7 @@ assert_is_data.table <- function(
   report_fun_nm <- "report_is_data.table"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -495,7 +495,7 @@ assert_is_data.table <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_data.table_with_required_names <- function(
+assert_prod_output_is_data.table_with_required_names <- function(
   x, 
   x_nm = NULL, 
   required_names
@@ -504,7 +504,7 @@ assert_is_data.table_with_required_names <- function(
   report_fun_nm <- "report_is_data.table_with_required_names"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -515,7 +515,7 @@ assert_is_data.table_with_required_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date <- function(
+assert_prod_output_is_Date <- function(
   x, 
   x_nm = NULL
 ) {
@@ -523,7 +523,7 @@ assert_is_Date <- function(
   report_fun_nm <- "report_is_Date"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -534,7 +534,7 @@ assert_is_Date <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date_atom <- function(
+assert_prod_output_is_Date_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -542,7 +542,7 @@ assert_is_Date_atom <- function(
   report_fun_nm <- "report_is_Date_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -553,7 +553,7 @@ assert_is_Date_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date_matrix <- function(
+assert_prod_output_is_Date_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -561,7 +561,7 @@ assert_is_Date_matrix <- function(
   report_fun_nm <- "report_is_Date_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -572,7 +572,7 @@ assert_is_Date_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date_nonNA_atom <- function(
+assert_prod_output_is_Date_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -580,7 +580,7 @@ assert_is_Date_nonNA_atom <- function(
   report_fun_nm <- "report_is_Date_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -591,7 +591,7 @@ assert_is_Date_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date_nonNA_matrix <- function(
+assert_prod_output_is_Date_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -599,7 +599,7 @@ assert_is_Date_nonNA_matrix <- function(
   report_fun_nm <- "report_is_Date_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -610,7 +610,7 @@ assert_is_Date_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date_nonNA_vector <- function(
+assert_prod_output_is_Date_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -618,7 +618,7 @@ assert_is_Date_nonNA_vector <- function(
   report_fun_nm <- "report_is_Date_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -629,7 +629,7 @@ assert_is_Date_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_Date_vector <- function(
+assert_prod_output_is_Date_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -637,7 +637,7 @@ assert_is_Date_vector <- function(
   report_fun_nm <- "report_is_Date_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -648,7 +648,7 @@ assert_is_Date_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double <- function(
+assert_prod_output_is_double <- function(
   x, 
   x_nm = NULL
 ) {
@@ -656,7 +656,7 @@ assert_is_double <- function(
   report_fun_nm <- "report_is_double"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -667,7 +667,7 @@ assert_is_double <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_atom <- function(
+assert_prod_output_is_double_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -675,7 +675,7 @@ assert_is_double_atom <- function(
   report_fun_nm <- "report_is_double_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -686,7 +686,7 @@ assert_is_double_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_gtezero_atom <- function(
+assert_prod_output_is_double_gtezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -694,7 +694,7 @@ assert_is_double_gtezero_atom <- function(
   report_fun_nm <- "report_is_double_gtezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -705,7 +705,7 @@ assert_is_double_gtezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_gtezero_matrix <- function(
+assert_prod_output_is_double_gtezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -713,7 +713,7 @@ assert_is_double_gtezero_matrix <- function(
   report_fun_nm <- "report_is_double_gtezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -724,7 +724,7 @@ assert_is_double_gtezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_gtezero_vector <- function(
+assert_prod_output_is_double_gtezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -732,7 +732,7 @@ assert_is_double_gtezero_vector <- function(
   report_fun_nm <- "report_is_double_gtezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -743,7 +743,7 @@ assert_is_double_gtezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_gtzero_atom <- function(
+assert_prod_output_is_double_gtzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -751,7 +751,7 @@ assert_is_double_gtzero_atom <- function(
   report_fun_nm <- "report_is_double_gtzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -762,7 +762,7 @@ assert_is_double_gtzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_gtzero_matrix <- function(
+assert_prod_output_is_double_gtzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -770,7 +770,7 @@ assert_is_double_gtzero_matrix <- function(
   report_fun_nm <- "report_is_double_gtzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -781,7 +781,7 @@ assert_is_double_gtzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_gtzero_vector <- function(
+assert_prod_output_is_double_gtzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -789,7 +789,7 @@ assert_is_double_gtzero_vector <- function(
   report_fun_nm <- "report_is_double_gtzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -800,7 +800,7 @@ assert_is_double_gtzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_ltezero_atom <- function(
+assert_prod_output_is_double_ltezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -808,7 +808,7 @@ assert_is_double_ltezero_atom <- function(
   report_fun_nm <- "report_is_double_ltezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -819,7 +819,7 @@ assert_is_double_ltezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_ltezero_matrix <- function(
+assert_prod_output_is_double_ltezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -827,7 +827,7 @@ assert_is_double_ltezero_matrix <- function(
   report_fun_nm <- "report_is_double_ltezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -838,7 +838,7 @@ assert_is_double_ltezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_ltezero_vector <- function(
+assert_prod_output_is_double_ltezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -846,7 +846,7 @@ assert_is_double_ltezero_vector <- function(
   report_fun_nm <- "report_is_double_ltezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -857,7 +857,7 @@ assert_is_double_ltezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_ltzero_atom <- function(
+assert_prod_output_is_double_ltzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -865,7 +865,7 @@ assert_is_double_ltzero_atom <- function(
   report_fun_nm <- "report_is_double_ltzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -876,7 +876,7 @@ assert_is_double_ltzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_ltzero_matrix <- function(
+assert_prod_output_is_double_ltzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -884,7 +884,7 @@ assert_is_double_ltzero_matrix <- function(
   report_fun_nm <- "report_is_double_ltzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -895,7 +895,7 @@ assert_is_double_ltzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_ltzero_vector <- function(
+assert_prod_output_is_double_ltzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -903,7 +903,7 @@ assert_is_double_ltzero_vector <- function(
   report_fun_nm <- "report_is_double_ltzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -914,7 +914,7 @@ assert_is_double_ltzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_matrix <- function(
+assert_prod_output_is_double_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -922,7 +922,7 @@ assert_is_double_matrix <- function(
   report_fun_nm <- "report_is_double_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -933,7 +933,7 @@ assert_is_double_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_atom <- function(
+assert_prod_output_is_double_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -941,7 +941,7 @@ assert_is_double_nonNA_atom <- function(
   report_fun_nm <- "report_is_double_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -952,7 +952,7 @@ assert_is_double_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_gtezero_atom <- function(
+assert_prod_output_is_double_nonNA_gtezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -960,7 +960,7 @@ assert_is_double_nonNA_gtezero_atom <- function(
   report_fun_nm <- "report_is_double_nonNA_gtezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -971,7 +971,7 @@ assert_is_double_nonNA_gtezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_gtezero_matrix <- function(
+assert_prod_output_is_double_nonNA_gtezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -979,7 +979,7 @@ assert_is_double_nonNA_gtezero_matrix <- function(
   report_fun_nm <- "report_is_double_nonNA_gtezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -990,7 +990,7 @@ assert_is_double_nonNA_gtezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_gtezero_vector <- function(
+assert_prod_output_is_double_nonNA_gtezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -998,7 +998,7 @@ assert_is_double_nonNA_gtezero_vector <- function(
   report_fun_nm <- "report_is_double_nonNA_gtezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1009,7 +1009,7 @@ assert_is_double_nonNA_gtezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_gtzero_atom <- function(
+assert_prod_output_is_double_nonNA_gtzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1017,7 +1017,7 @@ assert_is_double_nonNA_gtzero_atom <- function(
   report_fun_nm <- "report_is_double_nonNA_gtzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1028,7 +1028,7 @@ assert_is_double_nonNA_gtzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_gtzero_matrix <- function(
+assert_prod_output_is_double_nonNA_gtzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1036,7 +1036,7 @@ assert_is_double_nonNA_gtzero_matrix <- function(
   report_fun_nm <- "report_is_double_nonNA_gtzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1047,7 +1047,7 @@ assert_is_double_nonNA_gtzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_gtzero_vector <- function(
+assert_prod_output_is_double_nonNA_gtzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1055,7 +1055,7 @@ assert_is_double_nonNA_gtzero_vector <- function(
   report_fun_nm <- "report_is_double_nonNA_gtzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1066,7 +1066,7 @@ assert_is_double_nonNA_gtzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_ltezero_atom <- function(
+assert_prod_output_is_double_nonNA_ltezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1074,7 +1074,7 @@ assert_is_double_nonNA_ltezero_atom <- function(
   report_fun_nm <- "report_is_double_nonNA_ltezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1085,7 +1085,7 @@ assert_is_double_nonNA_ltezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_ltezero_matrix <- function(
+assert_prod_output_is_double_nonNA_ltezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1093,7 +1093,7 @@ assert_is_double_nonNA_ltezero_matrix <- function(
   report_fun_nm <- "report_is_double_nonNA_ltezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1104,7 +1104,7 @@ assert_is_double_nonNA_ltezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_ltezero_vector <- function(
+assert_prod_output_is_double_nonNA_ltezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1112,7 +1112,7 @@ assert_is_double_nonNA_ltezero_vector <- function(
   report_fun_nm <- "report_is_double_nonNA_ltezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1123,7 +1123,7 @@ assert_is_double_nonNA_ltezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_ltzero_atom <- function(
+assert_prod_output_is_double_nonNA_ltzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1131,7 +1131,7 @@ assert_is_double_nonNA_ltzero_atom <- function(
   report_fun_nm <- "report_is_double_nonNA_ltzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1142,7 +1142,7 @@ assert_is_double_nonNA_ltzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_ltzero_matrix <- function(
+assert_prod_output_is_double_nonNA_ltzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1150,7 +1150,7 @@ assert_is_double_nonNA_ltzero_matrix <- function(
   report_fun_nm <- "report_is_double_nonNA_ltzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1161,7 +1161,7 @@ assert_is_double_nonNA_ltzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_ltzero_vector <- function(
+assert_prod_output_is_double_nonNA_ltzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1169,7 +1169,7 @@ assert_is_double_nonNA_ltzero_vector <- function(
   report_fun_nm <- "report_is_double_nonNA_ltzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1180,7 +1180,7 @@ assert_is_double_nonNA_ltzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_matrix <- function(
+assert_prod_output_is_double_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1188,7 +1188,7 @@ assert_is_double_nonNA_matrix <- function(
   report_fun_nm <- "report_is_double_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1199,7 +1199,7 @@ assert_is_double_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_nonNA_vector <- function(
+assert_prod_output_is_double_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1207,7 +1207,7 @@ assert_is_double_nonNA_vector <- function(
   report_fun_nm <- "report_is_double_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1218,7 +1218,7 @@ assert_is_double_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_double_vector <- function(
+assert_prod_output_is_double_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1226,7 +1226,7 @@ assert_is_double_vector <- function(
   report_fun_nm <- "report_is_double_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1237,7 +1237,7 @@ assert_is_double_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_environment <- function(
+assert_prod_output_is_environment <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1245,7 +1245,7 @@ assert_is_environment <- function(
   report_fun_nm <- "report_is_environment"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1256,7 +1256,7 @@ assert_is_environment <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_expression <- function(
+assert_prod_output_is_expression <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1264,7 +1264,7 @@ assert_is_expression <- function(
   report_fun_nm <- "report_is_expression"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1275,7 +1275,7 @@ assert_is_expression <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor <- function(
+assert_prod_output_is_factor <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1283,7 +1283,7 @@ assert_is_factor <- function(
   report_fun_nm <- "report_is_factor"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1294,7 +1294,7 @@ assert_is_factor <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_atom <- function(
+assert_prod_output_is_factor_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1302,7 +1302,7 @@ assert_is_factor_atom <- function(
   report_fun_nm <- "report_is_factor_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1313,7 +1313,7 @@ assert_is_factor_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_matrix <- function(
+assert_prod_output_is_factor_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1321,7 +1321,7 @@ assert_is_factor_matrix <- function(
   report_fun_nm <- "report_is_factor_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1332,7 +1332,7 @@ assert_is_factor_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_nonNA_atom <- function(
+assert_prod_output_is_factor_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1340,7 +1340,7 @@ assert_is_factor_nonNA_atom <- function(
   report_fun_nm <- "report_is_factor_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1351,7 +1351,7 @@ assert_is_factor_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_nonNA_matrix <- function(
+assert_prod_output_is_factor_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1359,7 +1359,7 @@ assert_is_factor_nonNA_matrix <- function(
   report_fun_nm <- "report_is_factor_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1370,7 +1370,7 @@ assert_is_factor_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_nonNA_vector <- function(
+assert_prod_output_is_factor_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1378,7 +1378,7 @@ assert_is_factor_nonNA_vector <- function(
   report_fun_nm <- "report_is_factor_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1389,7 +1389,7 @@ assert_is_factor_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_vector <- function(
+assert_prod_output_is_factor_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1397,7 +1397,7 @@ assert_is_factor_vector <- function(
   report_fun_nm <- "report_is_factor_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1408,7 +1408,7 @@ assert_is_factor_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_factor_with_levels <- function(
+assert_prod_output_is_factor_with_levels <- function(
   x, 
   x_nm = NULL, 
   expected_levels
@@ -1417,7 +1417,7 @@ assert_is_factor_with_levels <- function(
   report_fun_nm <- "report_is_factor_with_levels"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1428,7 +1428,7 @@ assert_is_factor_with_levels <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_function <- function(
+assert_prod_output_is_function <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1436,7 +1436,7 @@ assert_is_function <- function(
   report_fun_nm <- "report_is_function"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1447,7 +1447,7 @@ assert_is_function <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_gt <- function(
+assert_prod_output_is_gt <- function(
   x, 
   x_nm = NULL, 
   lo
@@ -1456,7 +1456,7 @@ assert_is_gt <- function(
   report_fun_nm <- "report_is_gt"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1467,7 +1467,7 @@ assert_is_gt <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_gte <- function(
+assert_prod_output_is_gte <- function(
   x, 
   x_nm = NULL, 
   lo
@@ -1476,7 +1476,7 @@ assert_is_gte <- function(
   report_fun_nm <- "report_is_gte"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1487,7 +1487,7 @@ assert_is_gte <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_gtezero <- function(
+assert_prod_output_is_gtezero <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1495,7 +1495,7 @@ assert_is_gtezero <- function(
   report_fun_nm <- "report_is_gtezero"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1506,7 +1506,7 @@ assert_is_gtezero <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_gtzero <- function(
+assert_prod_output_is_gtzero <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1514,7 +1514,7 @@ assert_is_gtzero <- function(
   report_fun_nm <- "report_is_gtzero"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1525,7 +1525,7 @@ assert_is_gtzero <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer <- function(
+assert_prod_output_is_integer <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1533,7 +1533,7 @@ assert_is_integer <- function(
   report_fun_nm <- "report_is_integer"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1544,7 +1544,7 @@ assert_is_integer <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_atom <- function(
+assert_prod_output_is_integer_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1552,7 +1552,7 @@ assert_is_integer_atom <- function(
   report_fun_nm <- "report_is_integer_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1563,7 +1563,7 @@ assert_is_integer_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_gtezero_atom <- function(
+assert_prod_output_is_integer_gtezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1571,7 +1571,7 @@ assert_is_integer_gtezero_atom <- function(
   report_fun_nm <- "report_is_integer_gtezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1582,7 +1582,7 @@ assert_is_integer_gtezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_gtezero_matrix <- function(
+assert_prod_output_is_integer_gtezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1590,7 +1590,7 @@ assert_is_integer_gtezero_matrix <- function(
   report_fun_nm <- "report_is_integer_gtezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1601,7 +1601,7 @@ assert_is_integer_gtezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_gtezero_vector <- function(
+assert_prod_output_is_integer_gtezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1609,7 +1609,7 @@ assert_is_integer_gtezero_vector <- function(
   report_fun_nm <- "report_is_integer_gtezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1620,7 +1620,7 @@ assert_is_integer_gtezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_gtzero_atom <- function(
+assert_prod_output_is_integer_gtzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1628,7 +1628,7 @@ assert_is_integer_gtzero_atom <- function(
   report_fun_nm <- "report_is_integer_gtzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1639,7 +1639,7 @@ assert_is_integer_gtzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_gtzero_matrix <- function(
+assert_prod_output_is_integer_gtzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1647,7 +1647,7 @@ assert_is_integer_gtzero_matrix <- function(
   report_fun_nm <- "report_is_integer_gtzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1658,7 +1658,7 @@ assert_is_integer_gtzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_gtzero_vector <- function(
+assert_prod_output_is_integer_gtzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1666,7 +1666,7 @@ assert_is_integer_gtzero_vector <- function(
   report_fun_nm <- "report_is_integer_gtzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1677,7 +1677,7 @@ assert_is_integer_gtzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_ltezero_atom <- function(
+assert_prod_output_is_integer_ltezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1685,7 +1685,7 @@ assert_is_integer_ltezero_atom <- function(
   report_fun_nm <- "report_is_integer_ltezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1696,7 +1696,7 @@ assert_is_integer_ltezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_ltezero_matrix <- function(
+assert_prod_output_is_integer_ltezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1704,7 +1704,7 @@ assert_is_integer_ltezero_matrix <- function(
   report_fun_nm <- "report_is_integer_ltezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1715,7 +1715,7 @@ assert_is_integer_ltezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_ltezero_vector <- function(
+assert_prod_output_is_integer_ltezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1723,7 +1723,7 @@ assert_is_integer_ltezero_vector <- function(
   report_fun_nm <- "report_is_integer_ltezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1734,7 +1734,7 @@ assert_is_integer_ltezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_ltzero_atom <- function(
+assert_prod_output_is_integer_ltzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1742,7 +1742,7 @@ assert_is_integer_ltzero_atom <- function(
   report_fun_nm <- "report_is_integer_ltzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1753,7 +1753,7 @@ assert_is_integer_ltzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_ltzero_matrix <- function(
+assert_prod_output_is_integer_ltzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1761,7 +1761,7 @@ assert_is_integer_ltzero_matrix <- function(
   report_fun_nm <- "report_is_integer_ltzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1772,7 +1772,7 @@ assert_is_integer_ltzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_ltzero_vector <- function(
+assert_prod_output_is_integer_ltzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1780,7 +1780,7 @@ assert_is_integer_ltzero_vector <- function(
   report_fun_nm <- "report_is_integer_ltzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1791,7 +1791,7 @@ assert_is_integer_ltzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_matrix <- function(
+assert_prod_output_is_integer_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1799,7 +1799,7 @@ assert_is_integer_matrix <- function(
   report_fun_nm <- "report_is_integer_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1810,7 +1810,7 @@ assert_is_integer_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_atom <- function(
+assert_prod_output_is_integer_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1818,7 +1818,7 @@ assert_is_integer_nonNA_atom <- function(
   report_fun_nm <- "report_is_integer_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1829,7 +1829,7 @@ assert_is_integer_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_gtezero_atom <- function(
+assert_prod_output_is_integer_nonNA_gtezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1837,7 +1837,7 @@ assert_is_integer_nonNA_gtezero_atom <- function(
   report_fun_nm <- "report_is_integer_nonNA_gtezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1848,7 +1848,7 @@ assert_is_integer_nonNA_gtezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_gtezero_matrix <- function(
+assert_prod_output_is_integer_nonNA_gtezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1856,7 +1856,7 @@ assert_is_integer_nonNA_gtezero_matrix <- function(
   report_fun_nm <- "report_is_integer_nonNA_gtezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1867,7 +1867,7 @@ assert_is_integer_nonNA_gtezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_gtezero_vector <- function(
+assert_prod_output_is_integer_nonNA_gtezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1875,7 +1875,7 @@ assert_is_integer_nonNA_gtezero_vector <- function(
   report_fun_nm <- "report_is_integer_nonNA_gtezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1886,7 +1886,7 @@ assert_is_integer_nonNA_gtezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_gtzero_atom <- function(
+assert_prod_output_is_integer_nonNA_gtzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1894,7 +1894,7 @@ assert_is_integer_nonNA_gtzero_atom <- function(
   report_fun_nm <- "report_is_integer_nonNA_gtzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1905,7 +1905,7 @@ assert_is_integer_nonNA_gtzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_gtzero_matrix <- function(
+assert_prod_output_is_integer_nonNA_gtzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1913,7 +1913,7 @@ assert_is_integer_nonNA_gtzero_matrix <- function(
   report_fun_nm <- "report_is_integer_nonNA_gtzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1924,7 +1924,7 @@ assert_is_integer_nonNA_gtzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_gtzero_vector <- function(
+assert_prod_output_is_integer_nonNA_gtzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1932,7 +1932,7 @@ assert_is_integer_nonNA_gtzero_vector <- function(
   report_fun_nm <- "report_is_integer_nonNA_gtzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1943,7 +1943,7 @@ assert_is_integer_nonNA_gtzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_ltezero_atom <- function(
+assert_prod_output_is_integer_nonNA_ltezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1951,7 +1951,7 @@ assert_is_integer_nonNA_ltezero_atom <- function(
   report_fun_nm <- "report_is_integer_nonNA_ltezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1962,7 +1962,7 @@ assert_is_integer_nonNA_ltezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_ltezero_matrix <- function(
+assert_prod_output_is_integer_nonNA_ltezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1970,7 +1970,7 @@ assert_is_integer_nonNA_ltezero_matrix <- function(
   report_fun_nm <- "report_is_integer_nonNA_ltezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -1981,7 +1981,7 @@ assert_is_integer_nonNA_ltezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_ltezero_vector <- function(
+assert_prod_output_is_integer_nonNA_ltezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -1989,7 +1989,7 @@ assert_is_integer_nonNA_ltezero_vector <- function(
   report_fun_nm <- "report_is_integer_nonNA_ltezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2000,7 +2000,7 @@ assert_is_integer_nonNA_ltezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_ltzero_atom <- function(
+assert_prod_output_is_integer_nonNA_ltzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2008,7 +2008,7 @@ assert_is_integer_nonNA_ltzero_atom <- function(
   report_fun_nm <- "report_is_integer_nonNA_ltzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2019,7 +2019,7 @@ assert_is_integer_nonNA_ltzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_ltzero_matrix <- function(
+assert_prod_output_is_integer_nonNA_ltzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2027,7 +2027,7 @@ assert_is_integer_nonNA_ltzero_matrix <- function(
   report_fun_nm <- "report_is_integer_nonNA_ltzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2038,7 +2038,7 @@ assert_is_integer_nonNA_ltzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_ltzero_vector <- function(
+assert_prod_output_is_integer_nonNA_ltzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2046,7 +2046,7 @@ assert_is_integer_nonNA_ltzero_vector <- function(
   report_fun_nm <- "report_is_integer_nonNA_ltzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2057,7 +2057,7 @@ assert_is_integer_nonNA_ltzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_matrix <- function(
+assert_prod_output_is_integer_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2065,7 +2065,7 @@ assert_is_integer_nonNA_matrix <- function(
   report_fun_nm <- "report_is_integer_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2076,7 +2076,7 @@ assert_is_integer_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_nonNA_vector <- function(
+assert_prod_output_is_integer_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2084,7 +2084,7 @@ assert_is_integer_nonNA_vector <- function(
   report_fun_nm <- "report_is_integer_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2095,7 +2095,7 @@ assert_is_integer_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_integer_vector <- function(
+assert_prod_output_is_integer_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2103,7 +2103,7 @@ assert_is_integer_vector <- function(
   report_fun_nm <- "report_is_integer_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2114,7 +2114,7 @@ assert_is_integer_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_language_object <- function(
+assert_prod_output_is_language_object <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2122,7 +2122,7 @@ assert_is_language_object <- function(
   report_fun_nm <- "report_is_language_object"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2133,7 +2133,7 @@ assert_is_language_object <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_list <- function(
+assert_prod_output_is_list <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2141,7 +2141,7 @@ assert_is_list <- function(
   report_fun_nm <- "report_is_list"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2152,7 +2152,7 @@ assert_is_list <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical <- function(
+assert_prod_output_is_logical <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2160,7 +2160,7 @@ assert_is_logical <- function(
   report_fun_nm <- "report_is_logical"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2171,7 +2171,7 @@ assert_is_logical <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical_atom <- function(
+assert_prod_output_is_logical_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2179,7 +2179,7 @@ assert_is_logical_atom <- function(
   report_fun_nm <- "report_is_logical_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2190,7 +2190,7 @@ assert_is_logical_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical_matrix <- function(
+assert_prod_output_is_logical_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2198,7 +2198,7 @@ assert_is_logical_matrix <- function(
   report_fun_nm <- "report_is_logical_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2209,7 +2209,7 @@ assert_is_logical_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical_nonNA_atom <- function(
+assert_prod_output_is_logical_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2217,7 +2217,7 @@ assert_is_logical_nonNA_atom <- function(
   report_fun_nm <- "report_is_logical_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2228,7 +2228,7 @@ assert_is_logical_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical_nonNA_matrix <- function(
+assert_prod_output_is_logical_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2236,7 +2236,7 @@ assert_is_logical_nonNA_matrix <- function(
   report_fun_nm <- "report_is_logical_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2247,7 +2247,7 @@ assert_is_logical_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical_nonNA_vector <- function(
+assert_prod_output_is_logical_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2255,7 +2255,7 @@ assert_is_logical_nonNA_vector <- function(
   report_fun_nm <- "report_is_logical_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2266,7 +2266,7 @@ assert_is_logical_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_logical_vector <- function(
+assert_prod_output_is_logical_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2274,7 +2274,7 @@ assert_is_logical_vector <- function(
   report_fun_nm <- "report_is_logical_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2285,7 +2285,7 @@ assert_is_logical_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_lt <- function(
+assert_prod_output_is_lt <- function(
   x, 
   x_nm = NULL, 
   lo, 
@@ -2295,7 +2295,7 @@ assert_is_lt <- function(
   report_fun_nm <- "report_is_lt"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2306,7 +2306,7 @@ assert_is_lt <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_lte <- function(
+assert_prod_output_is_lte <- function(
   x, 
   x_nm = NULL, 
   hi
@@ -2315,7 +2315,7 @@ assert_is_lte <- function(
   report_fun_nm <- "report_is_lte"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2326,7 +2326,7 @@ assert_is_lte <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_ltezero <- function(
+assert_prod_output_is_ltezero <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2334,7 +2334,7 @@ assert_is_ltezero <- function(
   report_fun_nm <- "report_is_ltezero"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2345,7 +2345,7 @@ assert_is_ltezero <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_ltzero <- function(
+assert_prod_output_is_ltzero <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2353,7 +2353,7 @@ assert_is_ltzero <- function(
   report_fun_nm <- "report_is_ltzero"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2364,7 +2364,7 @@ assert_is_ltzero <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_matrix <- function(
+assert_prod_output_is_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2372,7 +2372,7 @@ assert_is_matrix <- function(
   report_fun_nm <- "report_is_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2383,7 +2383,7 @@ assert_is_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_name <- function(
+assert_prod_output_is_name <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2391,7 +2391,7 @@ assert_is_name <- function(
   report_fun_nm <- "report_is_name"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2402,7 +2402,7 @@ assert_is_name <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_named <- function(
+assert_prod_output_is_named <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2410,7 +2410,7 @@ assert_is_named <- function(
   report_fun_nm <- "report_is_named"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2421,7 +2421,7 @@ assert_is_named <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_named_list <- function(
+assert_prod_output_is_named_list <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2429,7 +2429,7 @@ assert_is_named_list <- function(
   report_fun_nm <- "report_is_named_list"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2440,7 +2440,7 @@ assert_is_named_list <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_nonNA <- function(
+assert_prod_output_is_nonNA <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2448,7 +2448,7 @@ assert_is_nonNA <- function(
   report_fun_nm <- "report_is_nonNA"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2459,7 +2459,7 @@ assert_is_nonNA <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_NULL <- function(
+assert_prod_output_is_NULL <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2467,7 +2467,7 @@ assert_is_NULL <- function(
   report_fun_nm <- "report_is_NULL"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2478,7 +2478,7 @@ assert_is_NULL <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number <- function(
+assert_prod_output_is_number <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2486,7 +2486,7 @@ assert_is_number <- function(
   report_fun_nm <- "report_is_number"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2497,7 +2497,7 @@ assert_is_number <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_atom <- function(
+assert_prod_output_is_number_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2505,7 +2505,7 @@ assert_is_number_atom <- function(
   report_fun_nm <- "report_is_number_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2516,7 +2516,7 @@ assert_is_number_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_gtezero_atom <- function(
+assert_prod_output_is_number_gtezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2524,7 +2524,7 @@ assert_is_number_gtezero_atom <- function(
   report_fun_nm <- "report_is_number_gtezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2535,7 +2535,7 @@ assert_is_number_gtezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_gtezero_matrix <- function(
+assert_prod_output_is_number_gtezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2543,7 +2543,7 @@ assert_is_number_gtezero_matrix <- function(
   report_fun_nm <- "report_is_number_gtezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2554,7 +2554,7 @@ assert_is_number_gtezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_gtezero_vector <- function(
+assert_prod_output_is_number_gtezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2562,7 +2562,7 @@ assert_is_number_gtezero_vector <- function(
   report_fun_nm <- "report_is_number_gtezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2573,7 +2573,7 @@ assert_is_number_gtezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_gtzero_atom <- function(
+assert_prod_output_is_number_gtzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2581,7 +2581,7 @@ assert_is_number_gtzero_atom <- function(
   report_fun_nm <- "report_is_number_gtzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2592,7 +2592,7 @@ assert_is_number_gtzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_gtzero_matrix <- function(
+assert_prod_output_is_number_gtzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2600,7 +2600,7 @@ assert_is_number_gtzero_matrix <- function(
   report_fun_nm <- "report_is_number_gtzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2611,7 +2611,7 @@ assert_is_number_gtzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_gtzero_vector <- function(
+assert_prod_output_is_number_gtzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2619,7 +2619,7 @@ assert_is_number_gtzero_vector <- function(
   report_fun_nm <- "report_is_number_gtzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2630,7 +2630,7 @@ assert_is_number_gtzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_ltezero_atom <- function(
+assert_prod_output_is_number_ltezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2638,7 +2638,7 @@ assert_is_number_ltezero_atom <- function(
   report_fun_nm <- "report_is_number_ltezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2649,7 +2649,7 @@ assert_is_number_ltezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_ltezero_matrix <- function(
+assert_prod_output_is_number_ltezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2657,7 +2657,7 @@ assert_is_number_ltezero_matrix <- function(
   report_fun_nm <- "report_is_number_ltezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2668,7 +2668,7 @@ assert_is_number_ltezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_ltezero_vector <- function(
+assert_prod_output_is_number_ltezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2676,7 +2676,7 @@ assert_is_number_ltezero_vector <- function(
   report_fun_nm <- "report_is_number_ltezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2687,7 +2687,7 @@ assert_is_number_ltezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_ltzero_atom <- function(
+assert_prod_output_is_number_ltzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2695,7 +2695,7 @@ assert_is_number_ltzero_atom <- function(
   report_fun_nm <- "report_is_number_ltzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2706,7 +2706,7 @@ assert_is_number_ltzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_ltzero_matrix <- function(
+assert_prod_output_is_number_ltzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2714,7 +2714,7 @@ assert_is_number_ltzero_matrix <- function(
   report_fun_nm <- "report_is_number_ltzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2725,7 +2725,7 @@ assert_is_number_ltzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_ltzero_vector <- function(
+assert_prod_output_is_number_ltzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2733,7 +2733,7 @@ assert_is_number_ltzero_vector <- function(
   report_fun_nm <- "report_is_number_ltzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2744,7 +2744,7 @@ assert_is_number_ltzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_matrix <- function(
+assert_prod_output_is_number_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2752,7 +2752,7 @@ assert_is_number_matrix <- function(
   report_fun_nm <- "report_is_number_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2763,7 +2763,7 @@ assert_is_number_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_atom <- function(
+assert_prod_output_is_number_nonNA_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2771,7 +2771,7 @@ assert_is_number_nonNA_atom <- function(
   report_fun_nm <- "report_is_number_nonNA_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2782,7 +2782,7 @@ assert_is_number_nonNA_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_gtezero_atom <- function(
+assert_prod_output_is_number_nonNA_gtezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2790,7 +2790,7 @@ assert_is_number_nonNA_gtezero_atom <- function(
   report_fun_nm <- "report_is_number_nonNA_gtezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2801,7 +2801,7 @@ assert_is_number_nonNA_gtezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_gtezero_matrix <- function(
+assert_prod_output_is_number_nonNA_gtezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2809,7 +2809,7 @@ assert_is_number_nonNA_gtezero_matrix <- function(
   report_fun_nm <- "report_is_number_nonNA_gtezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2820,7 +2820,7 @@ assert_is_number_nonNA_gtezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_gtezero_vector <- function(
+assert_prod_output_is_number_nonNA_gtezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2828,7 +2828,7 @@ assert_is_number_nonNA_gtezero_vector <- function(
   report_fun_nm <- "report_is_number_nonNA_gtezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2839,7 +2839,7 @@ assert_is_number_nonNA_gtezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_gtzero_atom <- function(
+assert_prod_output_is_number_nonNA_gtzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2847,7 +2847,7 @@ assert_is_number_nonNA_gtzero_atom <- function(
   report_fun_nm <- "report_is_number_nonNA_gtzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2858,7 +2858,7 @@ assert_is_number_nonNA_gtzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_gtzero_matrix <- function(
+assert_prod_output_is_number_nonNA_gtzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2866,7 +2866,7 @@ assert_is_number_nonNA_gtzero_matrix <- function(
   report_fun_nm <- "report_is_number_nonNA_gtzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2877,7 +2877,7 @@ assert_is_number_nonNA_gtzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_gtzero_vector <- function(
+assert_prod_output_is_number_nonNA_gtzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2885,7 +2885,7 @@ assert_is_number_nonNA_gtzero_vector <- function(
   report_fun_nm <- "report_is_number_nonNA_gtzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2896,7 +2896,7 @@ assert_is_number_nonNA_gtzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_ltezero_atom <- function(
+assert_prod_output_is_number_nonNA_ltezero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2904,7 +2904,7 @@ assert_is_number_nonNA_ltezero_atom <- function(
   report_fun_nm <- "report_is_number_nonNA_ltezero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2915,7 +2915,7 @@ assert_is_number_nonNA_ltezero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_ltezero_matrix <- function(
+assert_prod_output_is_number_nonNA_ltezero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2923,7 +2923,7 @@ assert_is_number_nonNA_ltezero_matrix <- function(
   report_fun_nm <- "report_is_number_nonNA_ltezero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2934,7 +2934,7 @@ assert_is_number_nonNA_ltezero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_ltezero_vector <- function(
+assert_prod_output_is_number_nonNA_ltezero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2942,7 +2942,7 @@ assert_is_number_nonNA_ltezero_vector <- function(
   report_fun_nm <- "report_is_number_nonNA_ltezero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2953,7 +2953,7 @@ assert_is_number_nonNA_ltezero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_ltzero_atom <- function(
+assert_prod_output_is_number_nonNA_ltzero_atom <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2961,7 +2961,7 @@ assert_is_number_nonNA_ltzero_atom <- function(
   report_fun_nm <- "report_is_number_nonNA_ltzero_atom"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2972,7 +2972,7 @@ assert_is_number_nonNA_ltzero_atom <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_ltzero_matrix <- function(
+assert_prod_output_is_number_nonNA_ltzero_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2980,7 +2980,7 @@ assert_is_number_nonNA_ltzero_matrix <- function(
   report_fun_nm <- "report_is_number_nonNA_ltzero_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -2991,7 +2991,7 @@ assert_is_number_nonNA_ltzero_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_ltzero_vector <- function(
+assert_prod_output_is_number_nonNA_ltzero_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -2999,7 +2999,7 @@ assert_is_number_nonNA_ltzero_vector <- function(
   report_fun_nm <- "report_is_number_nonNA_ltzero_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3010,7 +3010,7 @@ assert_is_number_nonNA_ltzero_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_matrix <- function(
+assert_prod_output_is_number_nonNA_matrix <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3018,7 +3018,7 @@ assert_is_number_nonNA_matrix <- function(
   report_fun_nm <- "report_is_number_nonNA_matrix"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3029,7 +3029,7 @@ assert_is_number_nonNA_matrix <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_nonNA_vector <- function(
+assert_prod_output_is_number_nonNA_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3037,7 +3037,7 @@ assert_is_number_nonNA_vector <- function(
   report_fun_nm <- "report_is_number_nonNA_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3048,7 +3048,7 @@ assert_is_number_nonNA_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_number_vector <- function(
+assert_prod_output_is_number_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3056,7 +3056,7 @@ assert_is_number_vector <- function(
   report_fun_nm <- "report_is_number_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3067,7 +3067,7 @@ assert_is_number_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_numeric <- function(
+assert_prod_output_is_numeric <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3075,7 +3075,7 @@ assert_is_numeric <- function(
   report_fun_nm <- "report_is_numeric"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3086,7 +3086,7 @@ assert_is_numeric <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_of_length <- function(
+assert_prod_output_is_of_length <- function(
   x, 
   x_nm = NULL, 
   expected_length
@@ -3095,7 +3095,7 @@ assert_is_of_length <- function(
   report_fun_nm <- "report_is_of_length"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3106,7 +3106,7 @@ assert_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_uniquely_named <- function(
+assert_prod_output_is_uniquely_named <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3114,7 +3114,7 @@ assert_is_uniquely_named <- function(
   report_fun_nm <- "report_is_uniquely_named"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3125,7 +3125,7 @@ assert_is_uniquely_named <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_uniquely_named_list <- function(
+assert_prod_output_is_uniquely_named_list <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3133,7 +3133,7 @@ assert_is_uniquely_named_list <- function(
   report_fun_nm <- "report_is_uniquely_named_list"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3144,7 +3144,7 @@ assert_is_uniquely_named_list <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_is_vector <- function(
+assert_prod_output_is_vector <- function(
   x, 
   x_nm = NULL
 ) {
@@ -3152,7 +3152,7 @@ assert_is_vector <- function(
   report_fun_nm <- "report_is_vector"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
@@ -3163,7 +3163,7 @@ assert_is_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-assert_vector_elems_are_in_set <- function(
+assert_prod_output_vector_elems_are_in_set <- function(
   x, 
   x_nm = NULL, 
   set
@@ -3172,7 +3172,7 @@ assert_vector_elems_are_in_set <- function(
   report_fun_nm <- "report_vector_elems_are_in_set"
   arg_list <- mget(names(formals(report_fun_nm)))
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  report_to_assertion(report_df, assertion_type = "general")
+  report_to_assertion(report_df, assertion_type = "prod_output")
   return(invisible(NULL))
 }
 
