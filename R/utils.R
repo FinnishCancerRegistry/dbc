@@ -110,11 +110,16 @@ call_with_arg_list.character <- function(
 settings_env <- new.env(parent = emptyenv())
 settings_env[["in_dev_mode"]] <- FALSE
 #' @title Development Mode
-#' @decription
+#' @description
 #' Set and get development mode for **dbc** functions.
 #' @param value `[logical]` (mandatory, no default)
 #'
 #' if set to `TRUE`, "dev" assertions will be evaluated; else they won't be
+#' @name dev_mode
+NULL
+
+#' @export
+#' @rdname dev_mode
 set_dev_mode <- function(value) {
   stopifnot(
     length(value) == 1L,
@@ -122,6 +127,9 @@ set_dev_mode <- function(value) {
   )
   settings_env[["in_dev_mode"]] <- value
 }
+
+#' @export
+#' @rdname dev_mode
 get_dev_mode <- function() {
   identical(settings_env[["in_dev_mode"]], TRUE)
 }
