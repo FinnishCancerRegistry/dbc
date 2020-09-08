@@ -13,7 +13,7 @@ tests_to_report(
   env = parent.frame(1L)
 )
 
-report_to_assertion(report_df)
+report_to_assertion(report_df, assertion_type = "general")
 }
 \arguments{
 \item{tests}{\verb{[character]} (mandatory, no default)
@@ -53,6 +53,29 @@ environment}
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
 a report \code{data.frame} as returned by \code{tests_to_report}}
+
+\item{assertion_type}{\verb{[character]} (mandatory, default \code{"general"})
+
+the type of assertion alters the emitted error message to e.g. direct the
+end-user to adjust their arguments supplied to a function or to report
+and internal error; the error messages are altered by type as follows:
+\itemize{
+\item \code{"general"}: just says that assertions did not pass without information
+as to whose fault this was
+\item \code{"user_input"}: the end-user is directed to adjust their arguments.
+\item \code{"prod_input"}: the assertion error is considered to be an internal error,
+and the end-user is directed to report it; the inputs of some function
+were not as expected
+\item \code{"dev_input"}: only the developer is notified (see \link{dbc}\link{dbc})
+\item \code{"prod_output"}: like \code{"prod_input"}, but the output of some function
+was not as expected
+\item \code{"dev_output"}: like \code{"prod_output"}, but only raised in development mode
+(see \link{dbc}\link{dbc})
+\item \code{"prod_interim"}: like \code{"prod_input"}, but the interim result somewhere
+was not as expected
+\item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
+(see \link{dbc}\link{dbc})
+}}
 }
 \value{
 For \code{tests_to_report}, a \code{data.frame} with columns

@@ -190,6 +190,28 @@ tests_to_report <- function(
 #' @param report_df `[data.frame]` (mandatory, no default)
 #'
 #' a report `data.frame` as returned by `tests_to_report`
+#' @param assertion_type `[character]` (mandatory, default `"general"`)
+#'
+#' the type of assertion alters the emitted error message to e.g. direct the
+#' end-user to adjust their arguments supplied to a function or to report
+#' and internal error; the error messages are altered by type as follows:
+#'
+#' - `"general"`: just says that assertions did not pass without information
+#'   as to whose fault this was
+#' - `"user_input"`: the end-user is directed to adjust their arguments.
+#' - `"prod_input"`: the assertion error is considered to be an internal error,
+#'   and the end-user is directed to report it; the inputs of some function
+#'   were not as expected
+#' - `"dev_input"`: only the developer is notified (see \link{dbc}[dbc])
+#' - `"prod_output"`: like `"prod_input"`, but the output of some function
+#'   was not as expected
+#' - `"dev_output"`: like `"prod_output"`, but only raised in development mode
+#'   (see \link{dbc}[dbc])
+#' - `"prod_interim"`: like `"prod_input"`, but the interim result somewhere
+#'   was not as expected
+#' - `"dev_interim"`: like `"prod_interim"`, but only raised in development mode
+#'   (see \link{dbc}[dbc])
+#'
 #' @examples
 #' # report to assertion
 #'
@@ -210,10 +232,18 @@ tests_to_report <- function(
 #'   report_to_assertion(report_df),
 #'   error = function(e) e
 #' )
-report_to_assertion <- function(report_df) {
+report_to_assertion <- function(
+  report_df,
+  assertion_type = "general"
+) {
   stopifnot(
     is.data.frame(report_df),
-    c("pass", "message", "error") %in% names(report_df)
+    c("pass", "message", "error") %in% names(report_df),
+
+    length(assertion_type) == 1L,
+    assertion_type %in% c("general", "user_input", "prod_input", "dev_input",
+                          "prod_output", "dev_output",
+                          "prod_interim", "dev_interim")
   )
 
   wh_nonpass <- which(!report_df[["pass"]] %in% TRUE)
@@ -230,9 +260,49 @@ report_to_assertion <- function(report_df) {
       },
       character(1L)
     )
+    msg_start <- switch(
+      assertion_type,
+      general = "assertion failure(s):",
+      user_input = paste0(
+        "Hi user! One or more arguments you supplied did not comply with ",
+        "their specifications; please see the points below and adjust ",
+        "your arguments."
+      ),
+      prod_input = paste0(
+        "Internal error: one or more arguments supplied to an internally used ",
+        "function did not comply with specfications; please report this error ",
+        "to the author or maintainer of the command you used. These were ",
+        "the errors:"
+      ),
+      dev_input = paste0(
+        "Internal error: one or more arguments supplied to an internally used ",
+        "function did not comply with specfications tested in development ",
+        "mode; these were the errors:"
+      ),
+      prod_output = paste0(
+        "Internal error: the output of an internally used function did not ",
+        "comply with specifications; please report this error ",
+        "to the author or maintainer of the command you used. These were ",
+        "the errors:"
+      ),
+      dev_output = paste0(
+        "Internal error: the output of an internally used function did not ",
+        "comply with specifications tested in development mode; These were ",
+        "the errors:"
+      ),
+      prod_interim = paste0(
+        "Internal error: an interim results of inside a function was not as ",
+        "expected; please report this error ",
+        "to the author or maintainer of the command you used. These were ",
+        "the errors:"
+      ),
+      dev_interim = paste0(
+        "Internal error: an interim results of inside a function was not as ",
+        "expected when in development mode; These were the errors:"
+      )
+    )
     msg <- paste0(
-      c("assertion failure(s):",
-        paste0(" - ", msgs)),
+      c(msg_start, paste0(" - ", msgs)),
       collapse = "\n"
     )
     stop(msg)
@@ -240,8 +310,6 @@ report_to_assertion <- function(report_df) {
 
   return(invisible(NULL))
 }
-
-
 
 
 
@@ -376,11 +444,14 @@ generate_report_derivative_funs <- function(
     "R/generated_report_fun_variants.R"
   ),
   target_script = "R/generated_assertion_funs.R",
-  type = c("assert", "test")[1]
+  type = c("assert", "test")[1],
+  assertion_type = "general"
 ) {
   stopifnot(
     type %in% c("assert", "test"),
-    length(type) == 1L
+    length(type) == 1L,
+
+    length(assertion_type) == 1L, is.character(assertion_type)
   )
   fun_env <- new.env()
   invisible(lapply(source_scripts, function(script_path) {
@@ -400,10 +471,7 @@ generate_report_derivative_funs <- function(
   body_part <- switch(
     type,
     assert = c(
-      "if (any(!report_df[[\"pass\"]])) {",
-      "  wh_first_fail <- which(!report_df[[\"pass\"]])[1L]",
-      "  stop(report_df[[\"message\"]][wh_first_fail])",
-      "}",
+      "report_to_assertion(report_df, assertion_type = \"", assertion_type, "\")",
       "return(invisible(NULL))"
     ),
     test = c(
@@ -487,7 +555,8 @@ generate_assertion_funs <- function(
     "R/generated_base_report_funs.R",
     "R/generated_report_fun_variants.R"
   ),
-  target_script = "R/generated_test_funs.R"
+  target_script = "R/generated_test_funs.R",
+  assertion_type = "general"
 ) {
   generate_report_derivative_funs(
     source_scripts = source_scripts,
