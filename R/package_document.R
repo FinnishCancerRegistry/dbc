@@ -39,7 +39,7 @@
 #'
 #' `assert_dev_input_` and `assert_dev_output_` families assume that the
 #' functions are NOT called in development mode by default; they are executed
-#' if and only if `getOption("dbc_mode") == "dev"`.
+#' if and only if `dbc::get_dev_mode() == TRUE`; see [set_dev_mode].
 #'
 #' In summary, `assert_` functions are intended to check that something has
 #' not happened which should not happen (something is wrong with the function),

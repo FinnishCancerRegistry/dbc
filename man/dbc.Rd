@@ -41,7 +41,7 @@ in dev mode
 
 \code{assert_dev_input_} and \code{assert_dev_output_} families assume that the
 functions are NOT called in development mode by default; they are executed
-if and only if \code{getOption("dbc_mode") == "dev"}.
+if and only if \code{dbc::get_dev_mode() == TRUE}; see \link{set_dev_mode}.
 
 In summary, \code{assert_} functions are intended to check that something has
 not happened which should not happen (something is wrong with the function),

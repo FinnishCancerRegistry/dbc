@@ -188,6 +188,10 @@ assertion_types <- function() {
     "prod_output", "dev_output",
     "prod_interim", "dev_interim")
 }
+dev_assertion_types <- function() {
+  at <- assertion_types()
+  at[grepl("^dev_", at)]
+}
 
 
 
@@ -249,6 +253,10 @@ report_to_assertion <- function(
     length(assertion_type) == 1L,
     assertion_type %in% assertion_types()
   )
+
+  if (assertion_type %in% dev_assertion_types() && get_dev_mode() == FALSE) {
+    return(invisible(NULL))
+  }
 
   wh_nonpass <- which(!report_df[["pass"]] %in% TRUE)
   if (length(wh_nonpass) > 0L) {
