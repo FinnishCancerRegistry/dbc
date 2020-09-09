@@ -18,21 +18,31 @@ report_is_one_of <- function(x, x_nm = NULL, funs) {
     do.call(fun, arg_list)
   }))
 
+  if (any(report_df[["pass"]])) {
+    report_df <- report_df[report_df[["pass"]], ]
+  } else {
+    msg <- paste0(
+      "    * ", report_df[["test"]], "; message: ", report_df[["message"]],
+      collapse = "\n"
+    )
+    report_df <- data.frame(
+      test = "at_least_one_of_the_following_must_pass",
+      error = NA_character_,
+      pass = FALSE,
+      n_fail = NA_integer_,
+      wh_fail = NA_integer_,
+      message = paste0("\n", msg)
+    )
+  }
+
   return(report_df)
 }
 
 
 
 
-#' @title Dataset Validation
-#' @description
-#' Functions to ensure that a dataset (data.frame) looks as it should.
-#' @param x `[data.frame]` (mandatory, no default)
-#' dataset to validate
-#' @name dataset_validation
-NULL
 
-#' @rdname dataset_validation
+#' @rdname assertions
 #' @export
 #' @return
 #' - `report_has_invalid_observations`: returns a report `data.frame`.
@@ -94,7 +104,7 @@ report_has_only_valid_observations <- function(
   assert_is_character_nonNA_vector(tests)
   assert_is_one_of(
     x = col_nm_set_list,
-    funs = c("assert_is_NULL", "assert_is_list")
+    funs = c("report_is_NULL", "report_is_list")
   )
   parent_env <- parent.frame(1L)
   dataset_env <- as.environment(x)

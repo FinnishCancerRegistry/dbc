@@ -1,7 +1,7 @@
 
 
 
-#' @rdname dataset_validation
+#' @rdname assertions
 #' @export
 #' @param report_df `[data.frame]` (mandatory, no default)
 #'
