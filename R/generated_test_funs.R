@@ -157,6 +157,29 @@ test_has_only_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_has_only_valid_observations <- function(
+  x, 
+  x_nm = NULL, 
+  tests, 
+  fail_messages = NULL, 
+  pass_messages = NULL, 
+  col_nms = names(x), 
+  col_nm_set_list = NULL
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  report_fun_nm <- "report_has_only_valid_observations"
+  arg_list <- mget(names(formals(report_fun_nm)))
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_inherits <- function(
   x, 
   x_nm = NULL, 

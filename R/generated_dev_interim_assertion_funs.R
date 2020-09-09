@@ -165,6 +165,30 @@ assert_dev_interim_has_only_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_dev_interim_has_only_valid_observations <- function(
+  x, 
+  x_nm = NULL, 
+  tests, 
+  fail_messages = NULL, 
+  pass_messages = NULL, 
+  col_nms = names(x), 
+  col_nm_set_list = NULL
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  report_fun_nm <- "report_has_only_valid_observations"
+  arg_list <- mget(names(formals(report_fun_nm)))
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  report_to_assertion(report_df, assertion_type = "dev_interim")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_dev_interim_inherits <- function(
   x, 
   x_nm = NULL, 
