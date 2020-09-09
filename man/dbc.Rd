@@ -52,41 +52,54 @@ if it is in fact checking inputs not directly given by the user, i.e.
 the error messages will be poor if a function intended for the user is also
 used internally. To this end it is recommended to write a separate
 internal function and a separate function exposed to the user, which only
-wraps around the internal function. E.g.\preformatted{# internal function
-__my_fun <- function(x) \{
-  assert_prod_input_number(x)
+wraps around the internal function. E.g.\preformatted{# function intended only for use in other functions
+my_fun_ <- function(x) \{
+  dbc::assert_prod_input_number(x)
   output <- x ^ 2
-  assert_prod_output_number(x)
+  dbc::assert_prod_output_number(x)
   return(output)
 \}
 # function exposed to user
 my_fun <- function(x) \{
-  assert_user_input_number(x)
-  __my_fun(x = x)
+  dbc::assert_user_input_number(x)
+  # some other steps...
+  my_fun_(x = x)
 \}
 }
 
-\code{dbc} contains a plethora of (automatically generated) functions to reduce
+when there are many assertions, you may want to turn them into a function:\preformatted{# functions intended only for use in other functions
+my_fun_input_assertions <- function(x, assertion_type) \{
+  dbc::report_to_assertion(
+    report_df = rbind(
+      dbc::report_is_number(x)
+      # ... more checks
+    ),
+    assertion_type = assertion_type
+  )
+\}
+my_fun_ <- function(x) \{
+  my_fun_input_assertions(x, assertion_type = "prod_input")
+  output <- x ^ 2
+  dbc::assert_prod_output_number(x)
+  return(output)
+\}
+# function exposed to user
+my_fun <- function(x) \{
+  my_fun_input_assertions(x, assertion_type = "user_input")
+  my_fun_(x = x)
+\}
+}
+
+\code{dbc} contains a plethora of generated functions to reduce
 repetition, improve readability, and make writing checks easier (they are
 easy to write when you have auto-suggestions on your IDE, and start writing
 e.g. \code{assert_prod_input_} and get a number of suggestions). These are
-recommended when they can be used. When not, use \code{report_on_tests} to
-create your own reports, and pass its output to one of
-\itemize{
-\item \code{signal_user_input_report},
-\item \code{signal_prod_input_report},
-\item \code{signal_dev_input_report},
-\item \code{signal_prod_output_report},
-\item \code{signal_dev_output_report},
-\item \code{signal_prod_interim_report}, and
-\item \code{signal_dev_interim_report}
-}
-
-e.g.\preformatted{my_fun <- function(x) \{
-  signal_user_input_report(
-    report_on_tests(
-      tests = "x \%in\% 1:5",
-      fail_messages = paste0("expected x to be in 1:5, but it was ", x)
+recommended when they can be used. When not, use \verb{[tests_to_report]} to
+create your own reports, and pass its output to \verb{[report_to_assertion]} to
+create an assertion. E.g.\preformatted{my_fun <- function(x) \{
+  dbc::report_to_assertion(
+    dbc::tests_to_report(
+      tests = "x \%in\% 1:5"
     )
   )
 \}
