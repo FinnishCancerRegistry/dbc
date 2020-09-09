@@ -3106,6 +3106,26 @@ assert_prod_output_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_prod_output_is_one_of <- function(
+  x, 
+  x_nm = NULL, 
+  funs
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  report_fun_nm <- "report_is_one_of"
+  arg_list <- mget(names(formals(report_fun_nm)))
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  report_to_assertion(report_df, assertion_type = "prod_output")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_prod_output_is_uniquely_named <- function(
   x, 
   x_nm = NULL

@@ -8,7 +8,7 @@
 %   R/generated_prod_interim_assertion_funs.R,
 %   R/generated_prod_output_assertion_funs.R, R/generated_report_fun_variants.R,
 %   R/generated_test_funs.R, R/generated_user_input_assertion_funs.R,
-%   R/manually_written_check_funs.R
+%   R/manually_written_check_funs.R, R/manually_written_report_funs.R
 \name{assert_atom_is_in_set}
 \alias{assert_atom_is_in_set}
 \alias{assert_dir_exists}
@@ -172,6 +172,7 @@
 \alias{assert_is_number_vector}
 \alias{assert_is_numeric}
 \alias{assert_is_of_length}
+\alias{assert_is_one_of}
 \alias{assert_is_uniquely_named}
 \alias{assert_is_uniquely_named_list}
 \alias{assert_is_vector}
@@ -390,6 +391,7 @@
 \alias{assert_dev_input_is_number_vector}
 \alias{assert_dev_input_is_numeric}
 \alias{assert_dev_input_is_of_length}
+\alias{assert_dev_input_is_one_of}
 \alias{assert_dev_input_is_uniquely_named}
 \alias{assert_dev_input_is_uniquely_named_list}
 \alias{assert_dev_input_is_vector}
@@ -556,6 +558,7 @@
 \alias{assert_dev_interim_is_number_vector}
 \alias{assert_dev_interim_is_numeric}
 \alias{assert_dev_interim_is_of_length}
+\alias{assert_dev_interim_is_one_of}
 \alias{assert_dev_interim_is_uniquely_named}
 \alias{assert_dev_interim_is_uniquely_named_list}
 \alias{assert_dev_interim_is_vector}
@@ -722,6 +725,7 @@
 \alias{assert_dev_output_is_number_vector}
 \alias{assert_dev_output_is_numeric}
 \alias{assert_dev_output_is_of_length}
+\alias{assert_dev_output_is_one_of}
 \alias{assert_dev_output_is_uniquely_named}
 \alias{assert_dev_output_is_uniquely_named_list}
 \alias{assert_dev_output_is_vector}
@@ -888,6 +892,7 @@
 \alias{assert_prod_input_is_number_vector}
 \alias{assert_prod_input_is_numeric}
 \alias{assert_prod_input_is_of_length}
+\alias{assert_prod_input_is_one_of}
 \alias{assert_prod_input_is_uniquely_named}
 \alias{assert_prod_input_is_uniquely_named_list}
 \alias{assert_prod_input_is_vector}
@@ -1054,6 +1059,7 @@
 \alias{assert_prod_interim_is_number_vector}
 \alias{assert_prod_interim_is_numeric}
 \alias{assert_prod_interim_is_of_length}
+\alias{assert_prod_interim_is_one_of}
 \alias{assert_prod_interim_is_uniquely_named}
 \alias{assert_prod_interim_is_uniquely_named_list}
 \alias{assert_prod_interim_is_vector}
@@ -1220,6 +1226,7 @@
 \alias{assert_prod_output_is_number_vector}
 \alias{assert_prod_output_is_numeric}
 \alias{assert_prod_output_is_of_length}
+\alias{assert_prod_output_is_one_of}
 \alias{assert_prod_output_is_uniquely_named}
 \alias{assert_prod_output_is_uniquely_named_list}
 \alias{assert_prod_output_is_vector}
@@ -1500,6 +1507,7 @@
 \alias{test_is_number_vector}
 \alias{test_is_numeric}
 \alias{test_is_of_length}
+\alias{test_is_one_of}
 \alias{test_is_uniquely_named}
 \alias{test_is_uniquely_named_list}
 \alias{test_is_vector}
@@ -1666,12 +1674,13 @@
 \alias{assert_user_input_is_number_vector}
 \alias{assert_user_input_is_numeric}
 \alias{assert_user_input_is_of_length}
+\alias{assert_user_input_is_one_of}
 \alias{assert_user_input_is_uniquely_named}
 \alias{assert_user_input_is_uniquely_named_list}
 \alias{assert_user_input_is_vector}
 \alias{assert_user_input_vector_elems_are_in_set}
 \alias{assertions}
-\alias{assert_is_one_of}
+\alias{report_is_one_of}
 \title{Assertions}
 \usage{
 assert_atom_is_in_set(x, x_nm = NULL, set)
@@ -1997,6 +2006,8 @@ assert_is_number_vector(x, x_nm = NULL)
 assert_is_numeric(x, x_nm = NULL)
 
 assert_is_of_length(x, x_nm = NULL, expected_length)
+
+assert_is_one_of(x, x_nm = NULL, funs)
 
 assert_is_uniquely_named(x, x_nm = NULL)
 
@@ -2446,6 +2457,8 @@ assert_dev_input_is_numeric(x, x_nm = NULL)
 
 assert_dev_input_is_of_length(x, x_nm = NULL, expected_length)
 
+assert_dev_input_is_one_of(x, x_nm = NULL, funs)
+
 assert_dev_input_is_uniquely_named(x, x_nm = NULL)
 
 assert_dev_input_is_uniquely_named_list(x, x_nm = NULL)
@@ -2789,6 +2802,8 @@ assert_dev_interim_is_number_vector(x, x_nm = NULL)
 assert_dev_interim_is_numeric(x, x_nm = NULL)
 
 assert_dev_interim_is_of_length(x, x_nm = NULL, expected_length)
+
+assert_dev_interim_is_one_of(x, x_nm = NULL, funs)
 
 assert_dev_interim_is_uniquely_named(x, x_nm = NULL)
 
@@ -3134,6 +3149,8 @@ assert_dev_output_is_numeric(x, x_nm = NULL)
 
 assert_dev_output_is_of_length(x, x_nm = NULL, expected_length)
 
+assert_dev_output_is_one_of(x, x_nm = NULL, funs)
+
 assert_dev_output_is_uniquely_named(x, x_nm = NULL)
 
 assert_dev_output_is_uniquely_named_list(x, x_nm = NULL)
@@ -3465,6 +3482,8 @@ assert_is_number_vector(x, x_nm = NULL)
 assert_is_numeric(x, x_nm = NULL)
 
 assert_is_of_length(x, x_nm = NULL, expected_length)
+
+assert_is_one_of(x, x_nm = NULL, funs)
 
 assert_is_uniquely_named(x, x_nm = NULL)
 
@@ -3810,6 +3829,8 @@ assert_prod_input_is_numeric(x, x_nm = NULL)
 
 assert_prod_input_is_of_length(x, x_nm = NULL, expected_length)
 
+assert_prod_input_is_one_of(x, x_nm = NULL, funs)
+
 assert_prod_input_is_uniquely_named(x, x_nm = NULL)
 
 assert_prod_input_is_uniquely_named_list(x, x_nm = NULL)
@@ -4154,6 +4175,8 @@ assert_prod_interim_is_numeric(x, x_nm = NULL)
 
 assert_prod_interim_is_of_length(x, x_nm = NULL, expected_length)
 
+assert_prod_interim_is_one_of(x, x_nm = NULL, funs)
+
 assert_prod_interim_is_uniquely_named(x, x_nm = NULL)
 
 assert_prod_interim_is_uniquely_named_list(x, x_nm = NULL)
@@ -4497,6 +4520,8 @@ assert_prod_output_is_number_vector(x, x_nm = NULL)
 assert_prod_output_is_numeric(x, x_nm = NULL)
 
 assert_prod_output_is_of_length(x, x_nm = NULL, expected_length)
+
+assert_prod_output_is_one_of(x, x_nm = NULL, funs)
 
 assert_prod_output_is_uniquely_named(x, x_nm = NULL)
 
@@ -5058,6 +5083,8 @@ test_is_numeric(x, x_nm = NULL)
 
 test_is_of_length(x, x_nm = NULL, expected_length)
 
+test_is_one_of(x, x_nm = NULL, funs)
+
 test_is_uniquely_named(x, x_nm = NULL)
 
 test_is_uniquely_named_list(x, x_nm = NULL)
@@ -5402,6 +5429,8 @@ assert_user_input_is_numeric(x, x_nm = NULL)
 
 assert_user_input_is_of_length(x, x_nm = NULL, expected_length)
 
+assert_user_input_is_one_of(x, x_nm = NULL, funs)
+
 assert_user_input_is_uniquely_named(x, x_nm = NULL)
 
 assert_user_input_is_uniquely_named_list(x, x_nm = NULL)
@@ -5410,7 +5439,7 @@ assert_user_input_is_vector(x, x_nm = NULL)
 
 assert_user_input_vector_elems_are_in_set(x, x_nm = NULL, set)
 
-assert_is_one_of(x, x_nm = NULL, fun_nms, funs_arg_list = NULL)
+report_is_one_of(x, x_nm = NULL, funs)
 }
 \arguments{
 \item{x}{R object to be tested (mandatory, no default)}
@@ -5447,18 +5476,12 @@ upper bound for \code{x}}
 \item{expected_levels}{\verb{[character]} (mandatory, no default)
 set of levels factor is required to have}
 
-\item{fun_nms}{\verb{[character]} (mandatory, no default)
+\item{funs}{\verb{[character, list]} (mandatory, no default)
 
-names of assertion funs to run}
-
-\item{funs_arg_list}{\verb{[list, NULL]} (optional, default \code{NULL})
+report functions that return a report (data.frame);
 \itemize{
-\item \code{NULL}: no additional arguments are passed to functions specified in
-\code{fun_nms}
-\item \code{list}: named elements of this list are matched to the names of arguments
-of each function specified in \code{fun_nms}, and matching arguments are
-used; e.g. if one fun has arg \code{y} and other has \code{z}, you may pass
-\code{list(y = my_y, z = my_z)}.
+\item \code{character}: names of functions that can be found by \verb{[match.fun]}
+\item \code{list}: list of functions
 }}
 }
 \description{
