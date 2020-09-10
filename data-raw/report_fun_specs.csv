@@ -87,7 +87,7 @@
 "is_gtezero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
 "is_gtezero";"x >= 0";"${n_fail} elements were < 0";NA;NA
 "is_gtzero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
-"is_gtzero";"x > 0";"${n_fail} elements were <= 0}";NA;NA
+"is_gtzero";"x > 0";"${n_fail} elements were <= 0";NA;NA
 "is_ltezero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
 "is_ltezero";"x <= 0";"${n_fail} elements were > 0";NA;NA
 "is_ltzero";"assert_is_number_nonNA_vector(x)";NA;NA;NA

@@ -794,7 +794,7 @@ report_is_gtzero <- function(x, x_nm = NULL) {
     c("assert_is_number_nonNA_vector(x)", "x > 0")
   )
   fail_msg_set <- c(
-    c(NA, "${n_fail} elements were <= 0}")
+    c(NA, "${n_fail} elements were <= 0")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
