@@ -179,7 +179,16 @@ tests_to_report <- function(
     }
     df[]
   })
-  do.call(rbind, test_df_list)
+
+  report_df <- do.call(rbind, test_df_list)
+  report_df[, names(report_df)] <- lapply(report_df, function(col) {
+    if (is.factor(col)) {
+      col <- as.character(col)
+    }
+    col
+  })
+
+  return(report_df)
 }
 
 
@@ -257,7 +266,12 @@ report_to_assertion <- function(
   if (assertion_type %in% dev_assertion_types() && get_dev_mode() == FALSE) {
     return(invisible(NULL))
   }
-
+  report_df[, names(report_df)] <- lapply(report_df, function(col) {
+    if (is.factor(col)) {
+      col <- as.character(col)
+    }
+    col
+  })
   wh_nonpass <- which(!report_df[["pass"]] %in% TRUE)
   if (length(wh_nonpass) > 0L) {
     msgs <- vapply(
@@ -268,7 +282,10 @@ report_to_assertion <- function(
         if (!is.na(error_msg)) {
           suffix <- paste0("encountered an ERROR: ", error_msg)
         }
-        paste0("test ", deparse(report_df[["test"]][test_no]), " ", suffix)
+        test_string <- paste0(deparse(
+          report_df[["test"]][test_no]
+        ), collapse = "")
+        paste0("test ", test_string, " ", suffix)
       },
       character(1L)
     )
