@@ -169,6 +169,7 @@ tests_to_report <- function(
     )
     df[["wh_fail"]] <- list(wh_fail)
     df_env <- as.environment(df)
+    df_env[["wh_fail"]] <- df[["wh_fail"]][[1L]]
     parent.env(df_env) <- parent.env(eval_env)
     parent.env(eval_env) <- df_env
     if (df[["pass"]]) {
