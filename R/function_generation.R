@@ -673,7 +673,7 @@ generate_function_variants <- function(
     j = names(fun_nm_dt),
     value = lapply(fun_nm_dt, function(col) {
       fun_nms <- paste0(fun_def_prefix, col)
-      fun_calls <- paste0(fun_nms, "(x = x, x_nm = x_nm)")
+      fun_calls <- paste0(fun_nms, "(x = x, x_nm = x_nm, call = call)")
       fun_calls[col == ""] <- ""
       fun_calls
     })
@@ -681,12 +681,13 @@ generate_function_variants <- function(
 
   fun_definitions <- unlist(lapply(seq_along(fun_nms), function(i) {
     fun_nm <- fun_nms[i]
-    def <- paste0(fun_nm, " <- function(x, x_nm = NULL) {")
+    def <- paste0(fun_nm, " <- function(x, x_nm = NULL, call = NULL) {")
     call_lines <- setdiff(as.character(fun_nm_dt[i, ]), "")
     line_ends <- c(rep(", ", length(call_lines) - 1L), "")
     def <- c(
       def,
       "  x_nm <- handle_x_nm_arg(x_nm)",
+      "  call <- infer_call(call = call, env = parent.frame(1L))",
       "  out <- rbind(",
       paste0("    ", call_lines, line_ends),
       "  )",

@@ -18,11 +18,6 @@ report_fun_scripts <- c(
   "R/manually_written_report_funs.R"
 )
 
-dbc:::generate_assertion_funs(
-  source_scripts = report_fun_scripts,
-  target_script = "R/generated_assertion_funs.R",
-  assertion_type = "general"
-)
 
 invisible(lapply(dbc:::assertion_types(), function(assertion_type) {
   dbc:::generate_assertion_funs(

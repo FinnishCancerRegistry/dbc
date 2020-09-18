@@ -43,7 +43,7 @@ report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
     c("assert_is_character_nonNA_vector(x)", "length(bad_dirs <- x[!dir.exists(x)]) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, "no such directory/directories: ${bad_dirs}")
+    c(NA, "the following directory/directories in ${x_nm} do not exist: ${bad_dirs}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
