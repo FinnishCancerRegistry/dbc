@@ -383,6 +383,7 @@ interpolate <- function(x, env = parent.frame(1L)) {
   if (has_nothing_to_interpolate) {
     return(x)
   }
+
   values <- lapply(expr_strings_by_x_elem, function(expr_string_vec) {
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
     vapply(expr_string_vec, function(string) {
@@ -440,7 +441,8 @@ generate_base_report_funs <- function(
     body <- paste0("  ", c(
       "x_nm <- handle_x_nm_arg(x_nm)",
       "call <- infer_call(call = call, env = parent.frame(1L))",
-      "fun_eval_env <- environment()",
+      "report_env <- as.environment(mget(ls()))",
+      "parent.env(report_env) <- parent.frame(1L)",
       "test_set <- c(",
       paste0("  ", fun_df[["test_set"]][fun_no]),
       ")",
@@ -454,7 +456,7 @@ generate_base_report_funs <- function(
       "  tests = test_set,",
       "  fail_messages = fail_msg_set,",
       "  pass_messages = pass_msg_set,",
-      "  env = fun_eval_env, ",
+      "  env = report_env, ",
       "  call = call",
       ")",
       "return(report_df)"
@@ -546,7 +548,11 @@ generate_report_derivative_funs <- function(
       "return(all(report_df[[\"pass\"]]))"
     )
   )
+
+
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
+    report_fun_nm <- report_fun_nms[fun_no]
+    arg_nms <- names(formals(fun_env[[report_fun_nm]]))
     paste0("  ", c(
       "x_nm <- handle_x_nm_arg(x_nm)",
       "call <- infer_call(call = call, env = parent.frame(1L))",
@@ -554,7 +560,10 @@ generate_report_derivative_funs <- function(
       "  call <- match.call()",
       "}",
       paste0("report_fun_nm <- \"", fun_df[["report_fun_nm"]][fun_no], "\""),
-      "arg_list <- mget(names(formals(report_fun_nm)))",
+      # "arg_list <- mget(names(formals(report_fun_nm)))",
+      "arg_list <- list(",
+      paste0("  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")),
+      ")",
       "report_df <- call_with_arg_list(report_fun_nm, arg_list)",
       body_part
     ))

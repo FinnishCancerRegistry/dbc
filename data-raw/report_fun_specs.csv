@@ -2,21 +2,21 @@
 "dir_exists";"assert_is_character_nonNA_vector(x)";NA;NA;NA
 "dir_exists";"length(bad_dirs <- x[!dir.exists(x)]) == 0L";"the following directory/directories in ${x_nm} do not exist: ${bad_dirs}";NA;NA
 "file_exists";"assert_is_character_nonNA_vector(x)";NA;NA;NA
-"file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"no such file(s): ${bad_files}";NA;NA
-"is_number";"is.numeric(x)";NA;NA;NA
-"is_numeric";"is.numeric(x)";NA;NA;NA
-"is_double";"is.double(x)";NA;NA;NA
-"is_integer";"is.integer(x)";NA;NA;NA
-"is_character";"is.character(x)";NA;NA;NA
-"is_logical";"is.logical(x)";NA;NA;NA
-"is_Date";"inherits(x, 'Date')";NA;NA;NA
-"is_factor";"is.factor(x)";NA;NA;NA
-"is_function";"is.function(x)";NA;NA;NA
-"is_environment";"is.environment(x)";NA;NA;NA
-"is_call";"is.call(x)";NA;NA;NA
-"is_name";"is.name(x)";NA;NA;NA
-"is_expression";"is.expression(x)";NA;NA;NA
-"is_language_object";"is.language(x)";NA;NA;NA
+"file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"the following file(s) in ${x_nm} do not exist: ${bad_files}";NA;NA
+"is_number";"is.numeric(x)";"${x_nm} was not a number";NA;NA
+"is_numeric";"is.numeric(x)";"${x_nm} was not numeric";NA;NA
+"is_double";"is.double(x)";"${x_nm} was not of class numeric";NA;NA
+"is_integer";"is.integer(x)";"${x_nm} was not of class integer";NA;NA
+"is_character";"is.character(x)";"${x_nm} was not of class character";NA;NA
+"is_logical";"is.logical(x)";"${x_nm} was not of class logical";NA;NA
+"is_Date";"inherits(x, 'Date')";"${x_nm} was not of class Date";NA;NA
+"is_factor";"is.factor(x)";"${x_nm} was not of class factor";NA;NA
+"is_function";"is.function(x)";"${x_nm} was not a function";NA;NA
+"is_environment";"is.environment(x)";"${x_nm} was not an environment object";NA;NA
+"is_call";"is.call(x)";"${x_nm} was not a call object";NA;NA
+"is_name";"is.name(x)";"${x_nm} was not a name object";NA;NA
+"is_expression";"is.expression(x)";"${x_nm} was not an R expression object";NA;NA
+"is_language_object";"is.language(x)";"${x_nm} was not an R language object";NA;NA
 "is_of_length";"length(x) == expected_length";"${x_nm} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
 "has_length";"length(x) == expected_length";"${x_nm} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
 "has_class";"assert_is_character_nonNA_atom(required_class)";NA;NA;"required_class"
@@ -29,14 +29,14 @@
 "is_factor_with_levels";"is.factor(x)";"${x_nm} is not a factor";NA;"expected_levels"
 "is_factor_with_levels";"length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L";"factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}";NA;"expected_levels"
 "is_factor_with_levels";"length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L";"factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}";NA;"expected_levels"
-"is_named";"!is.null(names(x))";NA;NA;NA
+"is_named";"!is.null(names(x))";"${x_nm} did not have any names";NA;NA
 "has_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"has_names";"!is.null(names(x))";NA;NA;"required_names"
+"has_names";"!is.null(names(x))";"${x_nm} did not have any names";NA;"required_names"
 "has_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
-"is_uniquely_named";"!is.null(names(x))";NA;NA;NA
+"is_uniquely_named";"!is.null(names(x))";"${x_nm} did not have any names";NA;NA
 "is_uniquely_named";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of ${x_nm} has a different name";NA;NA
 "has_only_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"has_only_names";"!is.null(names(x))";NA;NA;"required_names"
+"has_only_names";"!is.null(names(x))";"${x_nm} did not have any names";NA;"required_names"
 "has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
 "has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"${x_nm} had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
 "atom_is_in_set";"assert_is_atom(x)";NA;NA;"set"
@@ -45,19 +45,19 @@
 "vector_elems_are_in_set";"assert_is_vector(x)";NA;NA;"set"
 "vector_elems_are_in_set";"in_set <- x %in% set";"some values of ${x_nm} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}";NA;"set"
 "is_atom";"length(x) == 1L";"length of ${x_nm} was ${length(x)} instead of 1";NA;NA
-"is_vector";"is.null(dim(x))";NA;NA;NA
-"is_vector";"!is.list(x)";NA;NA;""
-"is_matrix";"is.matrix(x)";NA;NA;NA
-"is_NULL";"is.null(x)";NA;NA;NA
-"is_list";"inherits(x, 'list')";NA;NA;NA
-"is_named_list";"inherits(x, 'list')";NA;NA;NA
-"is_named_list";"!is.null(names(x))";NA;NA;NA
-"is_uniquely_named_list";"inherits(x, 'list')";NA;NA;NA
-"is_uniquely_named_list";"!is.null(names(x))";NA;NA;NA
+"is_vector";"is.null(dim(x))";"${x_nm} had dimensions but was expected to have none";NA;NA
+"is_vector";"!is.list(x)";"${x_nm} was a list";NA;""
+"is_matrix";"is.matrix(x)";"${x_nm} was not a matrix";NA;NA
+"is_NULL";"is.null(x)";"${x_nm} was not NULL";NA;NA
+"is_list";"inherits(x, 'list')";"${x_nm} did not of class list";NA;NA
+"is_named_list";"inherits(x, 'list')";"${x_nm} did not of class list";NA;NA
+"is_named_list";"!is.null(names(x))";"${x_nm} did not have any names";NA;NA
+"is_uniquely_named_list";"inherits(x, 'list')";"${x_nm} did not of class list";NA;NA
+"is_uniquely_named_list";"!is.null(names(x))";"${x_nm} did not have any names";NA;NA
 "is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of ${x_nm} has a different name";NA;NA
-"is_data.frame";"is.data.frame(x)";NA;NA;NA
-"is_data.table";"inherits(x, 'data.table')";NA;NA;NA
-"is_data_table";"inherits(x, 'data.table')";NA;NA;NA
+"is_data.frame";"is.data.frame(x)";"${x_nm} was not a data.frame";NA;NA
+"is_data.table";"inherits(x, 'data.table')";"${x_nm} was not a data.table";NA;NA
+"is_data_table";"inherits(x, 'data.table')";"${x_nm} was not a data.table";NA;NA
 "is_data.frame_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
 "is_data.frame_with_required_names";"is.data.frame(x)";NA;NA;"required_names"
 "is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
