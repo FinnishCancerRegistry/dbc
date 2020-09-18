@@ -60,16 +60,29 @@ handle_x_nm_arg <- function(x_nm) {
 
 
 raise_internal_error_if_not <- function(...) {
-  test_exprs <- substitute(list(...))
+  this_call <- match.call()
+  test_exprs <- as.list(this_call)[-1L]
   test_results <- list(...)
   lapply(seq_along(test_results), function(i) {
     test_result <- test_results[[i]]
     if (!is.logical(test_result)) {
-      stop("test ", deparse(test_exprs[[i]]),
-           " did not evaluate to logical values; ",
-           "result had class(es) ", deparse(class(test_result)))
+      err <- simpleError(
+        message = paste0(
+          "internal error: test ", deparse(test_exprs[[i]]),
+          " did not evaluate to logical values; ",
+          "result had class(es) ", deparse(class(test_result))
+        ),
+        call = this_call
+      )
+      stop(err)
     } else if (!all(test_result)) {
-      stop("not all were TRUE: ", deparse(test_exprs[[i]]))
+      err <- simpleError(
+        message = paste0(
+          "internal error: not all were TRUE: ", deparse(test_exprs[[i]])
+        ),
+        call = this_call
+      )
+      stop(err)
     }
   })
   invisible(NULL)
