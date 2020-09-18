@@ -421,7 +421,6 @@ generate_base_report_funs <- function(
   fun_df[["suffix"]] <- as.character(fun_df[["suffix"]])
   fun_df[["nm"]] <- paste0(base_prefix, fun_df[["suffix"]])
 
-  # browser()
   test_set_nm_set <- fun_df$suffix
   fun_df[["extra_arg_set"]] <- lapply(test_set_nm_set, function(test_set_nm) {
     is_test_set <- specs_df[["test_set_nm"]] == test_set_nm
@@ -435,14 +434,12 @@ generate_base_report_funs <- function(
       is_test_set <- specs_df[["test_set_nm"]] == test_set_nm
       values <- specs_df[[src_col_nm]][is_test_set]
       paste0(deparse(values), collapse = "")
-      # vapply(values, function(elem) {
-      #   paste0(deparse(elem), collapse = "")
-      # }, character(1L))
     })
   })
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     body <- paste0("  ", c(
       "x_nm <- handle_x_nm_arg(x_nm)",
+      "call <- infer_call(call = call, env = parent.frame(1L))",
       "fun_eval_env <- environment()",
       "test_set <- c(",
       paste0("  ", fun_df[["test_set"]][fun_no]),
@@ -457,7 +454,8 @@ generate_base_report_funs <- function(
       "  tests = test_set,",
       "  fail_messages = fail_msg_set,",
       "  pass_messages = pass_msg_set,",
-      "  env = fun_eval_env",
+      "  env = fun_eval_env, ",
+      "  call = call",
       ")",
       "return(report_df)"
     ))
@@ -465,7 +463,7 @@ generate_base_report_funs <- function(
   })
   fun_df[["fun_def"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     body <- fun_df[["body"]][[fun_no]]
-    arg_set <- c("x", "x_nm = NULL")
+    arg_set <- c("x", "x_nm = NULL", "call = NULL")
     arg_set <- setdiff(
       c(arg_set, fun_df[["extra_arg_set"]][fun_no]),
       c(NA_character_, "")
@@ -551,6 +549,10 @@ generate_report_derivative_funs <- function(
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     paste0("  ", c(
       "x_nm <- handle_x_nm_arg(x_nm)",
+      "call <- infer_call(call = call, env = parent.frame(1L))",
+      "if (is.null(call)) {",
+      "  call <- match.call()",
+      "}",
       paste0("report_fun_nm <- \"", fun_df[["report_fun_nm"]][fun_no], "\""),
       "arg_list <- mget(names(formals(report_fun_nm)))",
       "report_df <- call_with_arg_list(report_fun_nm, arg_list)",
