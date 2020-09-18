@@ -12,11 +12,13 @@ NULL
 
 #' @rdname tests_to_reports_to_assertions
 #' @export
-#' @param tests `[character]` (mandatory, no default)
+#' @param tests `[character, list]` (mandatory, no default)
 #'
-#' character string vector of tests to perform; after parsing each string
-#' the evaluated expression must return a logical vector or `NULL`,
-#' where `NULL` is interpreted as pass
+#' - `character`: vector of tests to perform; after parsing each string
+#'   the evaluated expression must return a logical vector or `NULL`,
+#'   where `NULL` is interpreted as pass
+#' - `list`: each element is either a character string as above or a language
+#'   object (see e.g. [quote]) which is deparsed into a string
 #' @param fail_messages `[NULL, character]` (optional, default `NULL`)
 #'
 #' - `NULL`: use `"at least one FALSE value in test: ${test}"`
@@ -92,14 +94,26 @@ tests_to_report <- function(
   tests,
   fail_messages = NULL,
   pass_messages = NULL,
-  env = parent.frame(1L)
+  env = parent.frame(1L),
+  call = NULL
 ) {
 
-  stopifnot(
-    is.character(tests),
-    length(tests) > 0L,
-    !is.na(tests),
+  raise_internal_error_if_not(
+    inherits(tests, c("list", "character"))
+  )
+  if (inherits(tests, "list")) {
+    raise_internal_error_if_not(
+      vapply(tests, is.language, logical(1L)) | vapply(
+        tests, is.character, logical(1L)
+      )
+    )
+    tests <- vapply(tests, function(lang_obj) {
+      paste0(deparse(lang_obj), collapse = "")
+    }, character(1L))
+  }
+  call <- infer_call(call = call, env = env)
 
+  stopifnot(
     is.null(fail_messages) || (
       is.character(fail_messages) &&
         length(fail_messages) %in% c(1L, length(tests))
@@ -189,6 +203,8 @@ tests_to_report <- function(
     col
   })
 
+  report_df[["call"]] <- lapply(1:nrow(report_df), function(i) call)
+
   return(report_df)
 }
 
@@ -258,7 +274,7 @@ report_to_assertion <- function(
 ) {
   stopifnot(
     is.data.frame(report_df),
-    c("pass", "message", "error") %in% names(report_df),
+    c("pass", "message", "error", "call") %in% names(report_df),
 
     length(assertion_type) == 1L,
     assertion_type %in% assertion_types()
@@ -290,6 +306,18 @@ report_to_assertion <- function(
       },
       character(1L)
     )
+    call_strings <- vapply(wh_nonpass, function(test_no) {
+      call <- report_df[["call"]][[test_no]]
+      if (is.null(call)) {
+        call_string <- "in unknown call, "
+      } else {
+        call_string <- paste0("in call ", paste0(deparse(call), collapse = ""),
+                              ", ")
+      }
+      call_string
+    }, character(1L))
+    msgs <- paste0(call_strings, msgs)
+
     msg_start <- switch(
       assertion_type,
       general = "assertion failure(s):",

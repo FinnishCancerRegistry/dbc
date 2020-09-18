@@ -2,6 +2,26 @@
 
 
 
+infer_call <- function(call, env) {
+  raise_internal_error_if_not(
+    is.language(call) || is.null(call)
+  )
+  if (is.language(call)) {
+    return(call)
+  }
+  if (is.null(call) && !identical(env, globalenv())) {
+    call <- tryCatch(
+      eval(quote(match.call()), envir = env),
+      error = function(e) e
+    )
+    if (inherits(call, "error") || identical(call, quote(match.call()))) {
+      call <- NULL
+    }
+  }
+  return(call)
+}
+
+
 
 #' @title Utilities
 #' @description

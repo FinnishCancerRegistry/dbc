@@ -6,11 +6,13 @@
 #' report functions that return a report (data.frame);
 #' - `character`: names of functions that can be found by `[match.fun]`
 #' - `list`: list of functions
-report_is_one_of <- function(x, x_nm = NULL, funs) {
+report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
+  call <- infer_call(call = call, parent.frame(1L))
+
   funs <- lapply(funs, match.fun)
   report_df <- do.call(rbind, lapply(funs, function(fun) {
     arg_list <- formals(fun)
@@ -97,7 +99,8 @@ report_has_only_valid_observations <- function(
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
-  col_nm_set_list = NULL
+  col_nm_set_list = NULL,
+  call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
   assert_is_data.frame(x = x, x_nm = x_nm)
@@ -109,6 +112,7 @@ report_has_only_valid_observations <- function(
   parent_env <- parent.frame(1L)
   dataset_env <- as.environment(x)
   parent.env(dataset_env) <- parent_env
+  call <- infer_call(call = call, parent.frame(1L))
 
   which_tests_to_run <- seq_along(tests)
   if (inherits(col_nm_set_list, "list")) {

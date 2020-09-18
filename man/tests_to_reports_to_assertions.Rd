@@ -10,17 +10,21 @@ tests_to_report(
   tests,
   fail_messages = NULL,
   pass_messages = NULL,
-  env = parent.frame(1L)
+  env = parent.frame(1L),
+  call = NULL
 )
 
 report_to_assertion(report_df, assertion_type = "general")
 }
 \arguments{
-\item{tests}{\verb{[character]} (mandatory, no default)
-
-character string vector of tests to perform; after parsing each string
+\item{tests}{\verb{[character, list]} (mandatory, no default)
+\itemize{
+\item \code{character}: vector of tests to perform; after parsing each string
 the evaluated expression must return a logical vector or \code{NULL},
-where \code{NULL} is interpreted as pass}
+where \code{NULL} is interpreted as pass
+\item \code{list}: each element is either a character string as above or a language
+object (see e.g. \link{quote}) which is deparsed into a string
+}}
 
 \item{fail_messages}{\verb{[NULL, character]} (optional, default \code{NULL})
 \itemize{
