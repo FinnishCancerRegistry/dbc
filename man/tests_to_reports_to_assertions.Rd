@@ -54,6 +54,13 @@ this environment will be the parent environment of each of the temporary
 environments; the default is the parent environment of the function execution
 environment}
 
+\item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
+\itemize{
+\item \code{language}: an R language object such as one produced by \link{match.call} or
+\code{quote}; this call will be reported in an error
+\item \code{NULL}: the call is attempted to be inferred
+}}
+
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
 a report \code{data.frame} as returned by \code{tests_to_report}}
