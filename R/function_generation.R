@@ -113,8 +113,11 @@ tests_to_report <- function(
         tests, is.character, logical(1L)
       )
     )
-    tests <- vapply(tests, function(lang_obj) {
-      paste0(deparse(lang_obj), collapse = "")
+    tests <- vapply(tests, function(elem) {
+      if (!is.character(elem)) {
+        elem <- paste0(deparse(elem), collapse = "")
+      }
+      elem
     }, character(1L))
   }
   call <- infer_call(call = call, env = env)

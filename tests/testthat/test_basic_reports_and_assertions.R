@@ -1,0 +1,39 @@
+
+
+
+
+testthat::test_that("basic report / assertion funs work", {
+
+  df_pass <- report_is_integer_nonNA_gtzero_atom(1L)
+  df_fail <- report_is_integer_nonNA_gtzero_atom(0L)
+
+  testthat::expect_true(all(df_pass[["pass"]]))
+  testthat::expect_true(!all(df_fail[["pass"]]))
+
+  assert_is_integer_nonNA_gtzero_atom(1L)
+  testthat::expect_error(
+    assert_is_integer_nonNA_gtzero_atom(0L)
+  )
+
+})
+
+
+testthat::test_that("enclosing function call included in report", {
+
+  my_fun <- function(x) {
+    assert_is_integer_gtzero_atom(x)
+    x ^ 5
+  }
+
+  call_string <- "my_fun(x = 0L)"
+  call <- parse(text = call_string)[[1L]]
+
+  testthat::expect_error(
+    eval(call),
+    regexp = paste0("\\Q", call_string, "\\E")
+  )
+})
+
+
+
+
