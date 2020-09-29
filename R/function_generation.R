@@ -450,8 +450,7 @@ generate_base_report_funs <- function(
     body <- paste0("  ", c(
       "x_nm <- handle_x_nm_arg(x_nm)",
       "call <- infer_call(call = call, env = parent.frame(1L))",
-      "report_env <- as.environment(mget(ls()))",
-      "parent.env(report_env) <- parent.frame(1L)",
+      "report_env <- environment()",
       "test_set <- c(",
       paste0("  ", fun_df[["test_set"]][fun_no]),
       ")",
