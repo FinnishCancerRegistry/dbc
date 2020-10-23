@@ -15,6 +15,11 @@ testthat::test_that("basic report / assertion funs work", {
     assert_is_integer_nonNA_gtzero_atom(0L)
   )
 
+  dbc::assert_atom_is_in_set(x = 0L, set = 0:5)
+  testthat::expect_error(
+    dbc::assert_atom_is_in_set(x = 0L, set = 1:5)
+  )
+
 })
 
 
