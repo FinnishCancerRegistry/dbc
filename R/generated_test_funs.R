@@ -606,62 +606,6 @@ test_is_character_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-test_is_data_table <- function(
-  x, 
-  x_nm = NULL, 
-  call = NULL
-) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
-  report_fun_nm <- "report_is_data_table"
-  arg_list <- list(
-    x = x, 
-    x_nm = x_nm, 
-    call = call
-  )
-  report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  return(all(report_df[["pass"]]))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-test_is_data_table_with_required_names <- function(
-  x, 
-  x_nm = NULL, 
-  call = NULL, 
-  required_names
-) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
-  report_fun_nm <- "report_is_data_table_with_required_names"
-  arg_list <- list(
-    x = x, 
-    x_nm = x_nm, 
-    call = call, 
-    required_names = required_names
-  )
-  report_df <- call_with_arg_list(report_fun_nm, arg_list)
-  return(all(report_df[["pass"]]))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
 test_is_data.frame <- function(
   x, 
   x_nm = NULL, 
@@ -757,6 +701,62 @@ test_is_data.table_with_required_names <- function(
     call <- match.call()
   }
   report_fun_nm <- "report_is_data.table_with_required_names"
+  arg_list <- list(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    required_names = required_names
+  )
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+test_is_data_table <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
+  report_fun_nm <- "report_is_data_table"
+  arg_list <- list(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+test_is_data_table_with_required_names <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  required_names
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
+  report_fun_nm <- "report_is_data_table_with_required_names"
   arg_list <- list(
     x = x, 
     x_nm = x_nm, 
@@ -2087,6 +2087,35 @@ test_is_function <- function(
     x = x, 
     x_nm = x_nm, 
     call = call
+  )
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+test_is_function_with_required_argument_names <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  required_argument_names
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
+  report_fun_nm <- "report_is_function_with_required_argument_names"
+  arg_list <- list(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    required_argument_names = required_argument_names
   )
   report_df <- call_with_arg_list(report_fun_nm, arg_list)
   return(all(report_df[["pass"]]))

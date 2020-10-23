@@ -38,6 +38,7 @@
 \alias{report_is_factor}
 \alias{report_is_factor_with_levels}
 \alias{report_is_function}
+\alias{report_is_function_with_required_argument_names}
 \alias{report_is_gt}
 \alias{report_is_gte}
 \alias{report_is_gtezero}
@@ -139,6 +140,7 @@
 \alias{assert_dev_input_is_factor_vector}
 \alias{assert_dev_input_is_factor_with_levels}
 \alias{assert_dev_input_is_function}
+\alias{assert_dev_input_is_function_with_required_argument_names}
 \alias{assert_dev_input_is_gt}
 \alias{assert_dev_input_is_gte}
 \alias{assert_dev_input_is_gtezero}
@@ -307,6 +309,7 @@
 \alias{assert_dev_interim_is_factor_vector}
 \alias{assert_dev_interim_is_factor_with_levels}
 \alias{assert_dev_interim_is_function}
+\alias{assert_dev_interim_is_function_with_required_argument_names}
 \alias{assert_dev_interim_is_gt}
 \alias{assert_dev_interim_is_gte}
 \alias{assert_dev_interim_is_gtezero}
@@ -475,6 +478,7 @@
 \alias{assert_dev_output_is_factor_vector}
 \alias{assert_dev_output_is_factor_with_levels}
 \alias{assert_dev_output_is_function}
+\alias{assert_dev_output_is_function_with_required_argument_names}
 \alias{assert_dev_output_is_gt}
 \alias{assert_dev_output_is_gte}
 \alias{assert_dev_output_is_gtezero}
@@ -643,6 +647,7 @@
 \alias{assert_is_factor_vector}
 \alias{assert_is_factor_with_levels}
 \alias{assert_is_function}
+\alias{assert_is_function_with_required_argument_names}
 \alias{assert_is_gt}
 \alias{assert_is_gte}
 \alias{assert_is_gtezero}
@@ -811,6 +816,7 @@
 \alias{assert_prod_input_is_factor_vector}
 \alias{assert_prod_input_is_factor_with_levels}
 \alias{assert_prod_input_is_function}
+\alias{assert_prod_input_is_function_with_required_argument_names}
 \alias{assert_prod_input_is_gt}
 \alias{assert_prod_input_is_gte}
 \alias{assert_prod_input_is_gtezero}
@@ -979,6 +985,7 @@
 \alias{assert_prod_interim_is_factor_vector}
 \alias{assert_prod_interim_is_factor_with_levels}
 \alias{assert_prod_interim_is_function}
+\alias{assert_prod_interim_is_function_with_required_argument_names}
 \alias{assert_prod_interim_is_gt}
 \alias{assert_prod_interim_is_gte}
 \alias{assert_prod_interim_is_gtezero}
@@ -1147,6 +1154,7 @@
 \alias{assert_prod_output_is_factor_vector}
 \alias{assert_prod_output_is_factor_with_levels}
 \alias{assert_prod_output_is_function}
+\alias{assert_prod_output_is_function_with_required_argument_names}
 \alias{assert_prod_output_is_gt}
 \alias{assert_prod_output_is_gte}
 \alias{assert_prod_output_is_gtezero}
@@ -1429,6 +1437,7 @@
 \alias{test_is_factor_vector}
 \alias{test_is_factor_with_levels}
 \alias{test_is_function}
+\alias{test_is_function_with_required_argument_names}
 \alias{test_is_gt}
 \alias{test_is_gte}
 \alias{test_is_gtezero}
@@ -1597,6 +1606,7 @@
 \alias{assert_user_input_is_factor_vector}
 \alias{assert_user_input_is_factor_with_levels}
 \alias{assert_user_input_is_function}
+\alias{assert_user_input_is_function_with_required_argument_names}
 \alias{assert_user_input_is_gt}
 \alias{assert_user_input_is_gte}
 \alias{assert_user_input_is_gtezero}
@@ -1763,6 +1773,13 @@ report_is_factor(x, x_nm = NULL, call = NULL)
 report_is_factor_with_levels(x, x_nm = NULL, call = NULL, expected_levels)
 
 report_is_function(x, x_nm = NULL, call = NULL)
+
+report_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
 
 report_is_gt(x, x_nm = NULL, call = NULL, lo)
 
@@ -1994,6 +2011,13 @@ assert_dev_input_is_factor_with_levels(
 )
 
 assert_dev_input_is_function(x, x_nm = NULL, call = NULL)
+
+assert_dev_input_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
 
 assert_dev_input_is_gt(x, x_nm = NULL, call = NULL, lo)
 
@@ -2360,6 +2384,13 @@ assert_dev_interim_is_factor_with_levels(
 
 assert_dev_interim_is_function(x, x_nm = NULL, call = NULL)
 
+assert_dev_interim_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
+
 assert_dev_interim_is_gt(x, x_nm = NULL, call = NULL, lo)
 
 assert_dev_interim_is_gte(x, x_nm = NULL, call = NULL, lo)
@@ -2725,6 +2756,13 @@ assert_dev_output_is_factor_with_levels(
 
 assert_dev_output_is_function(x, x_nm = NULL, call = NULL)
 
+assert_dev_output_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
+
 assert_dev_output_is_gt(x, x_nm = NULL, call = NULL, lo)
 
 assert_dev_output_is_gte(x, x_nm = NULL, call = NULL, lo)
@@ -3084,6 +3122,13 @@ assert_is_factor_vector(x, x_nm = NULL, call = NULL)
 assert_is_factor_with_levels(x, x_nm = NULL, call = NULL, expected_levels)
 
 assert_is_function(x, x_nm = NULL, call = NULL)
+
+assert_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
 
 assert_is_gt(x, x_nm = NULL, call = NULL, lo)
 
@@ -3450,6 +3495,13 @@ assert_prod_input_is_factor_with_levels(
 
 assert_prod_input_is_function(x, x_nm = NULL, call = NULL)
 
+assert_prod_input_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
+
 assert_prod_input_is_gt(x, x_nm = NULL, call = NULL, lo)
 
 assert_prod_input_is_gte(x, x_nm = NULL, call = NULL, lo)
@@ -3814,6 +3866,13 @@ assert_prod_interim_is_factor_with_levels(
 )
 
 assert_prod_interim_is_function(x, x_nm = NULL, call = NULL)
+
+assert_prod_interim_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
 
 assert_prod_interim_is_gt(x, x_nm = NULL, call = NULL, lo)
 
@@ -4195,6 +4254,13 @@ assert_prod_output_is_factor_with_levels(
 )
 
 assert_prod_output_is_function(x, x_nm = NULL, call = NULL)
+
+assert_prod_output_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
 
 assert_prod_output_is_gt(x, x_nm = NULL, call = NULL, lo)
 
@@ -4784,6 +4850,13 @@ test_is_factor_with_levels(x, x_nm = NULL, call = NULL, expected_levels)
 
 test_is_function(x, x_nm = NULL, call = NULL)
 
+test_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
+
 test_is_gt(x, x_nm = NULL, call = NULL, lo)
 
 test_is_gte(x, x_nm = NULL, call = NULL, lo)
@@ -5148,6 +5221,13 @@ assert_user_input_is_factor_with_levels(
 )
 
 assert_user_input_is_function(x, x_nm = NULL, call = NULL)
+
+assert_user_input_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
 
 assert_user_input_is_gt(x, x_nm = NULL, call = NULL, lo)
 

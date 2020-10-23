@@ -399,62 +399,6 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  report_env <- environment()
-  test_set <- c(
-    "inherits(x, 'data.table')"
-  )
-  fail_msg_set <- c(
-    "${x_nm} was not a data.table"
-  )
-  pass_msg_set <- c(
-    NA_character_
-  )
-  report_df <- tests_to_report(
-    tests = test_set,
-    fail_messages = fail_msg_set,
-    pass_messages = pass_msg_set,
-    env = report_env, 
-    call = call
-  )
-  return(report_df)
-}
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  report_env <- environment()
-  test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
-  )
-  fail_msg_set <- c(
-    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
-  )
-  pass_msg_set <- c(
-    c(NA_character_, NA_character_, NA_character_)
-  )
-  report_df <- tests_to_report(
-    tests = test_set,
-    fail_messages = fail_msg_set,
-    pass_messages = pass_msg_set,
-    env = report_env, 
-    call = call
-  )
-  return(report_df)
-}
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
 report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
   x_nm <- handle_x_nm_arg(x_nm)
   call <- infer_call(call = call, env = parent.frame(1L))
@@ -540,6 +484,62 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  report_env <- environment()
+  test_set <- c(
+    c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+  )
+  fail_msg_set <- c(
+    c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
+  )
+  pass_msg_set <- c(
+    c(NA_character_, NA_character_, NA_character_)
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  report_env <- environment()
+  test_set <- c(
+    "inherits(x, 'data.table')"
+  )
+  fail_msg_set <- c(
+    "${x_nm} was not a data.table"
+  )
+  pass_msg_set <- c(
+    NA_character_
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
   x_nm <- handle_x_nm_arg(x_nm)
   call <- infer_call(call = call, env = parent.frame(1L))
   report_env <- environment()
@@ -747,6 +747,34 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
   )
   pass_msg_set <- c(
     NA_character_
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call = NULL, required_argument_names) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  report_env <- environment()
+  test_set <- c(
+    c("is.function(x)", "all(required_argument_names %in% names(formals(x)))")
+  )
+  fail_msg_set <- c(
+    c("${x_nm} was not a function", "${x_nm} did not have all required arguments ${deparse(required_argument_names)}")
+  )
+  pass_msg_set <- c(
+    c(NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
     tests = test_set,
