@@ -12,6 +12,8 @@
 "is_Date";"inherits(x, 'Date')";"${x_nm} was not of class Date";NA;NA
 "is_factor";"is.factor(x)";"${x_nm} was not of class factor";NA;NA
 "is_function";"is.function(x)";"${x_nm} was not a function";NA;NA
+"is_function_with_required_argument_names";"is.function(x)";"${x_nm} was not a function";NA;required_argument_names
+"is_function_with_required_argument_names";"all(required_argument_names %in% names(formals(x)))";"${x_nm} did not have all required arguments ${deparse(required_argument_names)}";NA;required_argument_names
 "is_environment";"is.environment(x)";"${x_nm} was not an environment object";NA;NA
 "is_call";"is.call(x)";"${x_nm} was not a call object";NA;NA
 "is_name";"is.name(x)";"${x_nm} was not a name object";NA;NA
