@@ -89,22 +89,34 @@ assert_is_one_of <- function(
         message = result[["message"]]
       )
       return(result)
+    } else if (is.null(result)) {
+      result <- data.frame(
+        test = fun_nm,
+        error = NA_character_,
+        pass = TRUE,
+        n_fail = NA_integer_,
+        wh_fail = NA_integer_,
+        message = "test passed"
+      )
     } else {
-      stop("Internal error: result was not data.frame nor an error. If you ",
-           "can see this error, it means that the author of some function ",
+      stop("Internal error: result was not data.frame, NULL, nor an error. If ",
+           "you can see this error, it means that the author of some function ",
            "you are using (or used by the function you are using) is ",
            "using package dbc improperly. please let them know.")
     }
   }))
 
   if (!any(report_df[["pass"]])) {
+    msgs <- report_df[["message"]]
+    msgs <- vapply(strsplit(msgs, split = "test \""), function(char_vec) {
+      char_vec[length(char_vec)]
+    }, character(1L))
+    msgs <- paste0("test \"", msgs)
     msg <- paste0(
-      "    * ", report_df[["test"]], "; message: ", report_df[["message"]],
+      "    * ", msgs,
       collapse = "\n"
     )
-    msg <- paste0(
-      "None of the following assertions passed:\n", msg
-    )
+    msg <- paste0("None of the following assertions passed:\n", msg)
     emit_error <- identical(get_dev_mode(), TRUE) &&
       assertion_type %in% dev_assertion_types()
     emit_error <- emit_error || !assertion_type %in% dev_assertion_types()
