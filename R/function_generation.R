@@ -3,6 +3,62 @@
 
 
 
+test_string_to_report <- function(
+  test_string,
+  pass_message = NA_character_,
+  fail_message = NA_character_,
+  env = parent.frame(1L)
+  ) {
+  test_expr <- parse(text = test_string)[[1L]]
+
+  eval_env <- new.env(parent = env)
+  result <- tryCatch(
+    eval(test_expr, envir = eval_env),
+    error = function(e) e
+  )
+  pass <- FALSE
+  error <- NA_character_
+  n_fail <- NA_integer_
+  wh_fail <- NA_integer_
+  if (inherits(result, "error")) {
+    error <- result[["message"]]
+  } else if (is.null(result)) {
+    pass <- TRUE
+  } else if (is.logical(result)) {
+    pass <- all(result %in% TRUE)
+    if (length(result) != 1L) {
+      n_fail <- sum(!result, na.rm = TRUE)
+      wh_fail <- which(!result)
+    }
+  } else {
+    stop("test ", deparse(test_string), " returned result of class(es) ",
+         deparse(class(result)), "; logical or NULL was expected; see ",
+         "help for argument 'tests'")
+  }
+  df <- data.frame(
+    test = test_string,
+    error = error,
+    pass = pass,
+    n_fail = n_fail
+  )
+  df[["wh_fail"]] <- list(wh_fail)
+  df_env <- as.environment(df)
+  df_env[["wh_fail"]] <- df[["wh_fail"]][[1L]]
+  parent.env(df_env) <- parent.env(eval_env)
+  parent.env(eval_env) <- df_env
+  if (df[["pass"]]) {
+    df[["message"]] <- interpolate(pass_message, env = eval_env)
+  } else {
+    msg <- interpolate(fail_message, env = eval_env)
+    df[["message"]] <- msg
+  }
+  df[]
+}
+
+
+
+
+
 #' @title Tests to Reports to Assertions
 #' @description
 #' Collect tests into a report data.frame, raise assertion errors in failed
@@ -104,6 +160,11 @@ tests_to_report <- function(
   call = NULL
 ) {
 
+  call <- infer_call(call = call, env = env)
+  if (is.null(call)) {
+    call <- match.call()
+  }
+
   raise_internal_error_if_not(
     inherits(tests, c("list", "character"))
   )
@@ -155,53 +216,15 @@ tests_to_report <- function(
     "test passed: ", tests[is.na(pass_messages)]
   )
 
-  test_pos_set <- seq_along(tests)
-  test_df_list <- lapply(test_pos_set, function(test_pos) {
-    test_string <- tests[test_pos]
-    test_expr <- parse(text = test_string)[[1L]]
+  test_df_list <- lapply(seq_along(tests), function(test_pos) {
 
-    eval_env <- new.env(parent = env)
-    result <- tryCatch(
-      eval(test_expr, envir = eval_env),
-      error = function(e) e
+    test_string_to_report(
+      test_string = tests[test_pos],
+      pass_message = pass_messages[test_pos],
+      fail_message = fail_messages[test_pos],
+      env = env
     )
-    pass <- FALSE
-    error <- NA_character_
-    n_fail <- NA_integer_
-    wh_fail <- NA_integer_
-    if (inherits(result, "error")) {
-      error <- result[["message"]]
-    } else if (is.null(result)) {
-      pass <- TRUE
-    } else if (is.logical(result)) {
-      pass <- all(result %in% TRUE)
-      if (length(result) != 1L) {
-        n_fail <- sum(!result, na.rm = TRUE)
-        wh_fail <- which(!result)
-      }
-    } else {
-      stop("test ", deparse(test_string), " returned result of class(es) ",
-           deparse(class(result)), "; logical or NULL was expected; see ",
-           "help for argument 'tests'")
-    }
-    df <- data.frame(
-      test = test_string,
-      error = error,
-      pass = pass,
-      n_fail = n_fail
-    )
-    df[["wh_fail"]] <- list(wh_fail)
-    df_env <- as.environment(df)
-    df_env[["wh_fail"]] <- df[["wh_fail"]][[1L]]
-    parent.env(df_env) <- parent.env(eval_env)
-    parent.env(eval_env) <- df_env
-    if (df[["pass"]]) {
-      df[["message"]] <- interpolate(pass_messages[test_pos], env = eval_env)
-    } else {
-      msg <- interpolate(fail_messages[test_pos], env = eval_env)
-      df[["message"]] <- msg
-    }
-    df[]
+
   })
 
   report_df <- do.call(rbind, test_df_list)

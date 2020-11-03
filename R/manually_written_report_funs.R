@@ -1,45 +1,4 @@
 
-#' @rdname assertions
-#' @export
-#' @param funs `[character, list]` (mandatory, no default)
-#'
-#' report functions that return a report (data.frame);
-#' - `character`: names of functions that can be found by `[match.fun]`
-#' - `list`: list of functions
-report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  raise_internal_error_if_not(
-    inherits(funs, c("list", "character"))
-  )
-  call <- infer_call(call = call, parent.frame(1L))
-
-  funs <- lapply(funs, match.fun)
-  report_df <- do.call(rbind, lapply(funs, function(fun) {
-    arg_list <- formals(fun)
-    arg_list[c("x", "x_nm")] <- list(x = quote(x), x_nm = quote(x_nm))
-    do.call(fun, arg_list)
-  }))
-
-  if (any(report_df[["pass"]])) {
-    report_df <- report_df[report_df[["pass"]], ]
-  } else {
-    msg <- paste0(
-      "    * ", report_df[["test"]], "; message: ", report_df[["message"]],
-      collapse = "\n"
-    )
-    report_df <- data.frame(
-      test = "at_least_one_of_the_following_must_pass",
-      error = NA_character_,
-      pass = FALSE,
-      n_fail = NA_integer_,
-      wh_fail = NA_integer_,
-      message = paste0("\n", msg)
-    )
-  }
-
-  return(report_df)
-}
-
 
 
 

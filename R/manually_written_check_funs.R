@@ -36,6 +36,9 @@
 #' one or more classes; object must have at least one of these as class
 #' @param expected_levels `[character]` (mandatory, no default)
 #' set of levels factor is required to have
+#' @param required_argument_names `[character]` (mandatory, no default)
+#'
+#' names of arguments that function `x` must have
 #'
 NULL
 
