@@ -24,7 +24,7 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -52,7 +52,7 @@ report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -80,7 +80,7 @@ report_file_exists <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -108,7 +108,7 @@ report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -136,7 +136,7 @@ report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -164,7 +164,7 @@ report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -192,7 +192,7 @@ report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -220,7 +220,7 @@ report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -248,7 +248,7 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -276,7 +276,7 @@ report_is_atom <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -304,7 +304,7 @@ report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -332,7 +332,7 @@ report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -360,7 +360,7 @@ report_is_call <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -388,7 +388,7 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -416,7 +416,7 @@ report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -444,7 +444,7 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -472,7 +472,7 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -500,7 +500,7 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -528,7 +528,7 @@ report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -556,7 +556,7 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -584,7 +584,7 @@ report_is_Date <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -612,7 +612,7 @@ report_is_double <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -640,7 +640,7 @@ report_is_environment <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -668,7 +668,7 @@ report_is_expression <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -696,7 +696,7 @@ report_is_factor <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -724,7 +724,7 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_l
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -752,7 +752,7 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -780,7 +780,7 @@ report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -808,7 +808,7 @@ report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -836,7 +836,7 @@ report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -864,7 +864,7 @@ report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -892,7 +892,7 @@ report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -920,7 +920,7 @@ report_is_integer <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -948,7 +948,7 @@ report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -976,7 +976,7 @@ report_is_list <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1004,7 +1004,7 @@ report_is_logical <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1032,7 +1032,7 @@ report_is_lt <- function(x, x_nm = NULL, call = NULL, lo, hi) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1060,7 +1060,7 @@ report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1088,7 +1088,7 @@ report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1116,7 +1116,7 @@ report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1144,7 +1144,7 @@ report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1172,7 +1172,7 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1200,7 +1200,7 @@ report_is_named <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1228,7 +1228,7 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1256,7 +1256,7 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1284,7 +1284,7 @@ report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1312,7 +1312,7 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1340,7 +1340,7 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1368,7 +1368,7 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1396,7 +1396,7 @@ report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1424,7 +1424,7 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1452,7 +1452,7 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
@@ -1480,7 +1480,7 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
     tests = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
-    env = report_env,
+    env = report_env, 
     call = call
   )
   return(report_df)
