@@ -419,8 +419,15 @@ interpolate <- function(x, env = parent.frame(1L)) {
   values <- lapply(expr_strings_by_x_elem, function(expr_string_vec) {
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
     vapply(expr_string_vec, function(string) {
-      paste0(as.character(eval(parse(text = string)[[1L]], envir = env)),
-             collapse = "")
+      evaled <- tryCatch(
+        eval(parse(text = string)[[1L]], envir = env),
+        error = function(e) e
+      )
+      if (inherits(evaled, c("error", "try-error"))) {
+        # browser()
+        evaled <- string
+      }
+      paste0(as.character(evaled), collapse = "")
     }, character(1L))
   })
   regmatches(x = x, m = m) <- values
