@@ -177,6 +177,33 @@ test_has_names <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_has_no_duplicates <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
+  report_fun_nm <- "report_has_no_duplicates"
+  arg_list <- list(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  report_df <- call_with_arg_list(report_fun_nm, arg_list)
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_has_one_of_classes <- function(
   x, 
   x_nm = NULL, 

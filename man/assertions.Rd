@@ -17,6 +17,7 @@
 \alias{report_has_class}
 \alias{report_has_length}
 \alias{report_has_names}
+\alias{report_has_no_duplicates}
 \alias{report_has_one_of_classes}
 \alias{report_has_only_names}
 \alias{report_inherits}
@@ -70,6 +71,7 @@
 \alias{assert_dev_input_has_class}
 \alias{assert_dev_input_has_length}
 \alias{assert_dev_input_has_names}
+\alias{assert_dev_input_has_no_duplicates}
 \alias{assert_dev_input_has_one_of_classes}
 \alias{assert_dev_input_has_only_names}
 \alias{assert_dev_input_has_only_valid_observations}
@@ -238,6 +240,7 @@
 \alias{assert_dev_interim_has_class}
 \alias{assert_dev_interim_has_length}
 \alias{assert_dev_interim_has_names}
+\alias{assert_dev_interim_has_no_duplicates}
 \alias{assert_dev_interim_has_one_of_classes}
 \alias{assert_dev_interim_has_only_names}
 \alias{assert_dev_interim_has_only_valid_observations}
@@ -406,6 +409,7 @@
 \alias{assert_dev_output_has_class}
 \alias{assert_dev_output_has_length}
 \alias{assert_dev_output_has_names}
+\alias{assert_dev_output_has_no_duplicates}
 \alias{assert_dev_output_has_one_of_classes}
 \alias{assert_dev_output_has_only_names}
 \alias{assert_dev_output_has_only_valid_observations}
@@ -574,6 +578,7 @@
 \alias{assert_has_class}
 \alias{assert_has_length}
 \alias{assert_has_names}
+\alias{assert_has_no_duplicates}
 \alias{assert_has_one_of_classes}
 \alias{assert_has_only_names}
 \alias{assert_has_only_valid_observations}
@@ -742,6 +747,7 @@
 \alias{assert_prod_input_has_class}
 \alias{assert_prod_input_has_length}
 \alias{assert_prod_input_has_names}
+\alias{assert_prod_input_has_no_duplicates}
 \alias{assert_prod_input_has_one_of_classes}
 \alias{assert_prod_input_has_only_names}
 \alias{assert_prod_input_has_only_valid_observations}
@@ -910,6 +916,7 @@
 \alias{assert_prod_interim_has_class}
 \alias{assert_prod_interim_has_length}
 \alias{assert_prod_interim_has_names}
+\alias{assert_prod_interim_has_no_duplicates}
 \alias{assert_prod_interim_has_one_of_classes}
 \alias{assert_prod_interim_has_only_names}
 \alias{assert_prod_interim_has_only_valid_observations}
@@ -1078,6 +1085,7 @@
 \alias{assert_prod_output_has_class}
 \alias{assert_prod_output_has_length}
 \alias{assert_prod_output_has_names}
+\alias{assert_prod_output_has_no_duplicates}
 \alias{assert_prod_output_has_one_of_classes}
 \alias{assert_prod_output_has_only_names}
 \alias{assert_prod_output_has_only_valid_observations}
@@ -1360,6 +1368,7 @@
 \alias{test_has_class}
 \alias{test_has_length}
 \alias{test_has_names}
+\alias{test_has_no_duplicates}
 \alias{test_has_one_of_classes}
 \alias{test_has_only_names}
 \alias{test_has_only_valid_observations}
@@ -1528,6 +1537,7 @@
 \alias{assert_user_input_has_class}
 \alias{assert_user_input_has_length}
 \alias{assert_user_input_has_names}
+\alias{assert_user_input_has_no_duplicates}
 \alias{assert_user_input_has_one_of_classes}
 \alias{assert_user_input_has_only_names}
 \alias{assert_user_input_has_only_valid_observations}
@@ -1716,6 +1726,8 @@ report_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 report_has_names(x, x_nm = NULL, call = NULL, required_names)
 
+report_has_no_duplicates(x, x_nm = NULL, call = NULL)
+
 report_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
 report_has_only_names(x, x_nm = NULL, call = NULL, required_names)
@@ -1841,6 +1853,8 @@ assert_dev_input_has_class(x, x_nm = NULL, call = NULL, required_class)
 assert_dev_input_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_input_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_dev_input_has_no_duplicates(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
@@ -2212,6 +2226,8 @@ assert_dev_interim_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_interim_has_names(x, x_nm = NULL, call = NULL, required_names)
 
+assert_dev_interim_has_no_duplicates(x, x_nm = NULL, call = NULL)
+
 assert_dev_interim_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
 assert_dev_interim_has_only_names(x, x_nm = NULL, call = NULL, required_names)
@@ -2581,6 +2597,8 @@ assert_dev_output_has_class(x, x_nm = NULL, call = NULL, required_class)
 assert_dev_output_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_output_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_dev_output_has_no_duplicates(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
@@ -2952,6 +2970,8 @@ assert_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_has_names(x, x_nm = NULL, call = NULL, required_names)
 
+assert_has_no_duplicates(x, x_nm = NULL, call = NULL)
+
 assert_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
 assert_has_only_names(x, x_nm = NULL, call = NULL, required_names)
@@ -3316,6 +3336,8 @@ assert_prod_input_has_class(x, x_nm = NULL, call = NULL, required_class)
 assert_prod_input_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_input_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_prod_input_has_no_duplicates(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
@@ -3686,6 +3708,8 @@ assert_prod_interim_has_class(x, x_nm = NULL, call = NULL, required_class)
 assert_prod_interim_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_interim_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_prod_interim_has_no_duplicates(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
@@ -4072,6 +4096,8 @@ assert_prod_output_has_class(x, x_nm = NULL, call = NULL, required_class)
 assert_prod_output_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_output_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_prod_output_has_no_duplicates(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
@@ -4671,6 +4697,8 @@ test_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 test_has_names(x, x_nm = NULL, call = NULL, required_names)
 
+test_has_no_duplicates(x, x_nm = NULL, call = NULL)
+
 test_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 
 test_has_only_names(x, x_nm = NULL, call = NULL, required_names)
@@ -5035,6 +5063,8 @@ assert_user_input_has_class(x, x_nm = NULL, call = NULL, required_class)
 assert_user_input_has_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_user_input_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_user_input_has_no_duplicates(x, x_nm = NULL, call = NULL)
 
 assert_user_input_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
 

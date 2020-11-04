@@ -94,3 +94,4 @@
 "is_ltezero";"x <= 0";"${n_fail} elements were > 0";NA;NA
 "is_ltzero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
 "is_ltzero";"x < 0";"${n_fail} elements were >= 0";NA;NA
+"has_no_duplicates";"!duplicated(x)";"In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::tail(unique(x[duplicated(x)]), 5L))}";"object ${deparse(x_nm)} had no duplicates";NA

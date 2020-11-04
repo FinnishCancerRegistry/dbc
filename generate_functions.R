@@ -33,3 +33,6 @@ dbc:::generate_test_funs(
   source_scripts = report_fun_scripts,
   target_script = "R/generated_test_funs.R"
 )
+
+
+devtools::document()

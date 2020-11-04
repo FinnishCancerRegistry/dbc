@@ -175,6 +175,34 @@ report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  report_env <- environment()
+  test_set <- c(
+    "!duplicated(x)"
+  )
+  fail_msg_set <- c(
+    "In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::tail(unique(x[duplicated(x)]), 5L))}"
+  )
+  pass_msg_set <- c(
+    "object ${deparse(x_nm)} had no duplicates"
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
   x_nm <- handle_x_nm_arg(x_nm)
   call <- infer_call(call = call, env = parent.frame(1L))
