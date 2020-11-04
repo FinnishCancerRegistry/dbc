@@ -590,12 +590,11 @@ generate_report_derivative_funs <- function(
       "if (is.null(call)) {",
       "  call <- match.call()",
       "}",
-      paste0("report_fun_nm <- \"", fun_df[["report_fun_nm"]][fun_no], "\""),
-      # "arg_list <- mget(names(formals(report_fun_nm)))",
-      "arg_list <- list(",
-      paste0("  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")),
+      paste0("report_df <- ", fun_df[["report_fun_nm"]][fun_no], "("),
+      paste0(
+        "  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")
+      ),
       ")",
-      "report_df <- call_with_arg_list(report_fun_nm, arg_list)",
       body_part
     ))
   })
