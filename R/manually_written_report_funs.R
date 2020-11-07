@@ -72,6 +72,9 @@ report_has_only_valid_observations <- function(
   dataset_env <- as.environment(x)
   parent.env(dataset_env) <- parent_env
   call <- infer_call(call = call, parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
 
   which_tests_to_run <- seq_along(tests)
   if (inherits(col_nm_set_list, "list")) {

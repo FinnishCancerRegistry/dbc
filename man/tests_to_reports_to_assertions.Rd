@@ -14,7 +14,11 @@ tests_to_report(
   call = NULL
 )
 
-report_to_assertion(report_df, assertion_type = "general")
+report_to_assertion(
+  report_df,
+  assertion_type = "general",
+  raise_error_call = NULL
+)
 }
 \arguments{
 \item{tests}{\verb{[character, list]} (mandatory, no default)
@@ -86,6 +90,17 @@ was not as expected
 was not as expected
 \item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
 (see \link{dbc}\link{dbc})
+}}
+
+\item{raise_error_call}{\verb{[NULL, language]} (optional, default \code{NULL})
+
+the call to display in the error call; passed to arg \code{call} of
+\link[base:conditions]{base::simpleError}.
+\itemize{
+\item \code{NULL}: use the parent call; when this function is called in another
+function (as it is intended to be used), the function call of the
+surrounding function is used; see \strong{Examples}
+\item \code{language}: this call is used as-is.
 }}
 }
 \value{
@@ -159,6 +174,14 @@ tryCatch(
 report_df <- tests_to_report(c("1 == 2", "1 == 1", "2 == 2", "2 == 1"))
 tryCatch(
   report_to_assertion(report_df),
+  error = function(e) e
+)
+
+my_fun <- function(my_arg) {
+  report_to_assertion(tests_to_report("is.character(my_arg)"))
+}
+tryCatch(
+  my_fun(my_arg = 1L),
   error = function(e) e
 )
 }

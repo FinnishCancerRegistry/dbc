@@ -280,6 +280,17 @@ dev_assertion_types <- function() {
 #' - `"dev_interim"`: like `"prod_interim"`, but only raised in development mode
 #'   (see \link{dbc}[dbc])
 #'
+#' @param raise_error_call `[NULL, language]` (optional, default `NULL`)
+#'
+#' the call to display in the error call; passed to arg `call` of
+#' [base::simpleError].
+#'
+#' - `NULL`: use the parent call; when this function is called in another
+#'   function (as it is intended to be used), the function call of the
+#'   surrounding function is used; see **Examples**
+#' - `language`: this call is used as-is.
+#'
+#'
 #' @examples
 #' # report to assertion
 #'
@@ -300,17 +311,37 @@ dev_assertion_types <- function() {
 #'   report_to_assertion(report_df),
 #'   error = function(e) e
 #' )
+#'
+#' my_fun <- function(my_arg) {
+#'   report_to_assertion(tests_to_report("is.character(my_arg)"))
+#' }
+#' tryCatch(
+#'   my_fun(my_arg = 1L),
+#'   error = function(e) e
+#' )
 report_to_assertion <- function(
   report_df,
-  assertion_type = "general"
+  assertion_type = "general",
+  raise_error_call = NULL
 ) {
-  stopifnot(
+  raise_internal_error_if_not(
     is.data.frame(report_df),
     c("pass", "message", "error", "call") %in% names(report_df),
 
     length(assertion_type) == 1L,
-    assertion_type %in% assertion_types()
+    assertion_type %in% assertion_types(),
+
+    is.null(raise_error_call) || is.language(raise_error_call)
   )
+  if (is.null(raise_error_call)) {
+    raise_error_call <- tryCatch(
+      eval(quote(match.call()), parent.frame(1L)),
+      error = function(e) e
+    )
+    if (inherits(raise_error_call, c("error", "try-error"))) {
+      raise_error_call <- match.call()
+    }
+  }
 
   if (assertion_type %in% dev_assertion_types() && get_dev_mode() == FALSE) {
     return(invisible(NULL))
@@ -395,7 +426,7 @@ report_to_assertion <- function(
       c(msg_start, paste0(" - ", msgs)),
       collapse = "\n"
     )
-    stop(msg)
+    stop(simpleError(msg, raise_error_call))
   }
 
   return(invisible(NULL))
