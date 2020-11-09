@@ -379,7 +379,7 @@ report_is_call <- function(x, x_nm = NULL, call = NULL) {
     "is.call(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a call object"
+    "${x_nm} was not a call object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -407,7 +407,7 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
     "is.character(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not of class character"
+    "${x_nm} was not of class character; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -435,7 +435,7 @@ report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
     "is.data.frame(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a data.frame"
+    "${x_nm} was not a data.frame; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -460,7 +460,7 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
   call <- infer_call(call = call, env = parent.frame(1L))
   report_env <- environment()
   test_set <- c(
-    c("assert_is_character_nonNA_vector(required_names)", "is.data.frame(x)", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+    c("assert_is_character_nonNA_vector(required_names)", "is.data.frame(x); instead it had class(es) ${deparse(class(x))}", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
     c(NA, NA, "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
@@ -491,7 +491,7 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'data.table')"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a data.table"
+    "${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -547,7 +547,7 @@ report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'data.table')"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a data.table"
+    "${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -603,7 +603,7 @@ report_is_Date <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'Date')"
   )
   fail_msg_set <- c(
-    "${x_nm} was not of class Date"
+    "${x_nm} was not of class Date; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -631,7 +631,7 @@ report_is_double <- function(x, x_nm = NULL, call = NULL) {
     "is.double(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not of class numeric"
+    "${x_nm} was not of class numeric; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -687,7 +687,7 @@ report_is_expression <- function(x, x_nm = NULL, call = NULL) {
     "is.expression(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not an R expression object"
+    "${x_nm} was not an R expression object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -715,7 +715,7 @@ report_is_factor <- function(x, x_nm = NULL, call = NULL) {
     "is.factor(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not of class factor"
+    "${x_nm} was not of class factor; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -743,7 +743,7 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_l
     c("assert_is_character_nonNA_vector(expected_levels)", "is.factor(x)", "length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L", "length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} is not a factor", "factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}", "factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}")
+    c(NA, "${x_nm} is not a factor; instead it had class(es) ${deparse(class(x))}", "factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}", "factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
@@ -771,7 +771,7 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
     "is.function(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a function"
+    "${x_nm} was not a function; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -939,7 +939,7 @@ report_is_integer <- function(x, x_nm = NULL, call = NULL) {
     "is.integer(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not of class integer"
+    "${x_nm} was not of class integer; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -967,7 +967,7 @@ report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
     "is.language(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not an R language object"
+    "${x_nm} was not an R language object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1023,7 +1023,7 @@ report_is_logical <- function(x, x_nm = NULL, call = NULL) {
     "is.logical(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not of class logical"
+    "${x_nm} was not of class logical; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1191,7 +1191,7 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
     "is.name(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a name object"
+    "${x_nm} was not a name object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1331,7 +1331,7 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not a number"
+    "${x_nm} was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1359,7 +1359,7 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_msg_set <- c(
-    "${x_nm} was not numeric"
+    "${x_nm} was not numeric; instead it had class(es) ${deparse(class(x))}"
   )
   pass_msg_set <- c(
     NA_character_

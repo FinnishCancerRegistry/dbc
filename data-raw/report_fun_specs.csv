@@ -3,22 +3,22 @@
 "dir_exists";"length(bad_dirs <- x[!dir.exists(x)]) == 0L";"the following directory/directories in ${x_nm} do not exist: ${bad_dirs}";NA;NA
 "file_exists";"assert_is_character_nonNA_vector(x)";NA;NA;NA
 "file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"the following file(s) in ${x_nm} do not exist: ${bad_files}";NA;NA
-"is_number";"is.numeric(x)";"${x_nm} was not a number";NA;NA
-"is_numeric";"is.numeric(x)";"${x_nm} was not numeric";NA;NA
-"is_double";"is.double(x)";"${x_nm} was not of class numeric";NA;NA
-"is_integer";"is.integer(x)";"${x_nm} was not of class integer";NA;NA
-"is_character";"is.character(x)";"${x_nm} was not of class character";NA;NA
-"is_logical";"is.logical(x)";"${x_nm} was not of class logical";NA;NA
-"is_Date";"inherits(x, 'Date')";"${x_nm} was not of class Date";NA;NA
-"is_factor";"is.factor(x)";"${x_nm} was not of class factor";NA;NA
-"is_function";"is.function(x)";"${x_nm} was not a function";NA;NA
+"is_number";"is.numeric(x)";"${x_nm} was not a number; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_numeric";"is.numeric(x)";"${x_nm} was not numeric; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_double";"is.double(x)";"${x_nm} was not of class numeric; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_integer";"is.integer(x)";"${x_nm} was not of class integer; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_character";"is.character(x)";"${x_nm} was not of class character; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_logical";"is.logical(x)";"${x_nm} was not of class logical; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_Date";"inherits(x, 'Date')";"${x_nm} was not of class Date; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_factor";"is.factor(x)";"${x_nm} was not of class factor; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_function";"is.function(x)";"${x_nm} was not a function; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_function_with_required_argument_names";"is.function(x)";"${x_nm} was not a function";NA;required_argument_names
 "is_function_with_required_argument_names";"all(required_argument_names %in% names(formals(x)))";"${x_nm} did not have all required arguments ${deparse(required_argument_names)}";NA;required_argument_names
 "is_environment";"is.environment(x)";"${x_nm} was not an environment object";NA;NA
-"is_call";"is.call(x)";"${x_nm} was not a call object";NA;NA
-"is_name";"is.name(x)";"${x_nm} was not a name object";NA;NA
-"is_expression";"is.expression(x)";"${x_nm} was not an R expression object";NA;NA
-"is_language_object";"is.language(x)";"${x_nm} was not an R language object";NA;NA
+"is_call";"is.call(x)";"${x_nm} was not a call object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_name";"is.name(x)";"${x_nm} was not a name object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_expression";"is.expression(x)";"${x_nm} was not an R expression object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_language_object";"is.language(x)";"${x_nm} was not an R language object; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_of_length";"length(x) == expected_length";"${x_nm} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
 "has_length";"length(x) == expected_length";"${x_nm} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
 "has_class";"assert_is_character_nonNA_atom(required_class)";NA;NA;"required_class"
@@ -28,7 +28,7 @@
 "has_one_of_classes";"assert_is_character_nonNA_vector(classes)";NA;NA;"classes"
 "has_one_of_classes";"inherits(x, classes)";"expected ${x_nm} to have class ${classes}, but it had class(es) ${deparse(class(x))}";NA;"classes"
 "is_factor_with_levels";"assert_is_character_nonNA_vector(expected_levels)";NA;NA;"expected_levels"
-"is_factor_with_levels";"is.factor(x)";"${x_nm} is not a factor";NA;"expected_levels"
+"is_factor_with_levels";"is.factor(x)";"${x_nm} is not a factor; instead it had class(es) ${deparse(class(x))}";NA;"expected_levels"
 "is_factor_with_levels";"length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L";"factor ${x_nm} had these unexpected levels: ${deparse(extra_levels)}";NA;"expected_levels"
 "is_factor_with_levels";"length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L";"factor ${x_nm} did not have these expected levels: ${deparse(miss_levels)}";NA;"expected_levels"
 "is_named";"!is.null(names(x))";"${x_nm} did not have any names";NA;NA
@@ -57,11 +57,11 @@
 "is_uniquely_named_list";"inherits(x, 'list')";"${x_nm} did not of class list";NA;NA
 "is_uniquely_named_list";"!is.null(names(x))";"${x_nm} did not have any names";NA;NA
 "is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of ${x_nm} has a different name";NA;NA
-"is_data.frame";"is.data.frame(x)";"${x_nm} was not a data.frame";NA;NA
-"is_data.table";"inherits(x, 'data.table')";"${x_nm} was not a data.table";NA;NA
-"is_data_table";"inherits(x, 'data.table')";"${x_nm} was not a data.table";NA;NA
+"is_data.frame";"is.data.frame(x)";"${x_nm} was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_data.table";"inherits(x, 'data.table')";"${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_data_table";"inherits(x, 'data.table')";"${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_data.frame_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"is_data.frame_with_required_names";"is.data.frame(x)";NA;NA;"required_names"
+"is_data.frame_with_required_names";"is.data.frame(x); instead it had class(es) ${deparse(class(x))}";NA;NA;"required_names"
 "is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
 "is_data.table_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
 "is_data.table_with_required_names";"inherits(x, 'data.table')";NA;NA;"required_names"
