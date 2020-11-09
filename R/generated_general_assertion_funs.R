@@ -611,6 +611,60 @@ assert_is_character_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_is_data_table <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
+  report_df <- report_is_data_table(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  report_to_assertion(report_df, assertion_type = "general")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+assert_is_data_table_with_required_names <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  required_names
+) {
+  x_nm <- handle_x_nm_arg(x_nm)
+  call <- infer_call(call = call, env = parent.frame(1L))
+  if (is.null(call)) {
+    call <- match.call()
+  }
+  report_df <- report_is_data_table_with_required_names(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    required_names = required_names
+  )
+  report_to_assertion(report_df, assertion_type = "general")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_is_data.frame <- function(
   x, 
   x_nm = NULL, 
@@ -703,60 +757,6 @@ assert_is_data.table_with_required_names <- function(
     call <- match.call()
   }
   report_df <- report_is_data.table_with_required_names(
-    x = x, 
-    x_nm = x_nm, 
-    call = call, 
-    required_names = required_names
-  )
-  report_to_assertion(report_df, assertion_type = "general")
-  return(invisible(NULL))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-assert_is_data_table <- function(
-  x, 
-  x_nm = NULL, 
-  call = NULL
-) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
-  report_df <- report_is_data_table(
-    x = x, 
-    x_nm = x_nm, 
-    call = call
-  )
-  report_to_assertion(report_df, assertion_type = "general")
-  return(invisible(NULL))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-assert_is_data_table_with_required_names <- function(
-  x, 
-  x_nm = NULL, 
-  call = NULL, 
-  required_names
-) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
-  report_df <- report_is_data_table_with_required_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
