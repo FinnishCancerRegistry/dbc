@@ -374,8 +374,9 @@ report_to_assertion <- function(
       if (is.null(call)) {
         call_string <- "in unknown call, "
       } else {
-        call_string <- paste0("in call ", paste0(deparse(call), collapse = ""),
-                              ", ")
+        call_string <- paste0(
+          "in call ", paste0(deparse(call), collapse = ""), ", "
+        )
       }
       call_string
     }, character(1L))
@@ -450,13 +451,23 @@ interpolate <- function(x, env = parent.frame(1L)) {
   values <- lapply(expr_strings_by_x_elem, function(expr_string_vec) {
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
     vapply(expr_string_vec, function(string) {
-      evaled <- tryCatch(
-        eval(parse(text = string)[[1L]], envir = env),
-        error = function(e) e
-      )
-      if (inherits(evaled, c("error", "try-error"))) {
-        # browser()
+      expr <- parse(text = string)[[1L]]
+      expr_nms <- all.names(expr, unique = TRUE)
+      expr_object_exists <- vapply(expr_nms, function(obj_nm) {
+        !isFALSE(tryCatch(expr = get(obj_nm, envir = env),
+                          warning = function(w) FALSE,
+                          error = function(e) FALSE))
+      }, logical(1L))
+      if (!all(expr_object_exists)) {
         evaled <- string
+      } else {
+        evaled <- tryCatch(
+          eval(expr, envir = env),
+          error = function(e) e
+        )
+        if (inherits(evaled, c("error", "try-error"))) {
+          evaled <- string
+        }
       }
       paste0(as.character(evaled), collapse = "")
     }, character(1L))

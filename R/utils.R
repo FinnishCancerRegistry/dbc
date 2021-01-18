@@ -14,6 +14,12 @@ infer_call <- function(call, env) {
       eval(quote(match.call()), envir = env),
       error = function(e) e
     )
+    if (inherits(call, "error")) {
+      call <- tryCatch(
+        eval(quote(match.call()), envir = parent.frame(1L)),
+        error = function(e) e
+      )
+    }
     if (inherits(call, "error") || identical(call, quote(match.call()))) {
       call <- NULL
     }
