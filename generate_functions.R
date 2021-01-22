@@ -34,5 +34,6 @@ dbc:::generate_test_funs(
   target_script = "R/generated_test_funs.R"
 )
 
+dbc:::generate_assert_is_funs()
 
 devtools::document()
