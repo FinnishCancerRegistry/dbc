@@ -378,7 +378,7 @@ report_to_assertion <- function(
           "in call ", paste0(deparse(call), collapse = ""), ", "
         )
       }
-      call_string
+      gsub("\\s+", " ", call_string)
     }, character(1L))
     msgs <- paste0(call_strings, msgs)
 
