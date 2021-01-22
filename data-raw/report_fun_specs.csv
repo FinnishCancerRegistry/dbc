@@ -62,13 +62,13 @@
 "is_data_table";"inherits(x, 'data.table')";"${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_data.frame_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
 "is_data.frame_with_required_names";"is.data.frame(x)";"${x_nm} was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
-"is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
 "is_data.table_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
 "is_data.table_with_required_names";"inherits(x, 'data.table')";"${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
-"is_data.table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_data.table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
 "is_data_table_with_required_names";"assert_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
 "is_data_table_with_required_names";"inherits(x, 'data.table')";"${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
-"is_data_table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_data_table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"${x_nm} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
 "is_nonNA";"!is.na(x)";"${x_nm} had ${n_fail} NA values - none are allowed";NA;NA
 "is_between_inclusive";"assert_is_number_nonNA_vector(x)";NA;NA;"lo, hi"
 "is_between_inclusive";"assert_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"

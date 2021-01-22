@@ -463,7 +463,7 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL
     c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}", "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
+    c(NA, "${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}", "${x_nm} did not have the following expected columns: ${deparse(miss_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -519,7 +519,7 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
     c("assert_is_character_nonNA_vector(required_names)", "is.data.frame(x)", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} was not a data.frame; instead it had class(es) ${deparse(class(x))}", "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
+    c(NA, "${x_nm} was not a data.frame; instead it had class(es) ${deparse(class(x))}", "${x_nm} did not have the following expected columns: ${deparse(miss_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -575,7 +575,7 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL
     c("assert_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   )
   fail_msg_set <- c(
-    c(NA, "${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}", "${x_nm} did not have the following expected names: ${deparse(miss_nms)}")
+    c(NA, "${x_nm} was not a data.table; instead it had class(es) ${deparse(class(x))}", "${x_nm} did not have the following expected columns: ${deparse(miss_nms)}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
