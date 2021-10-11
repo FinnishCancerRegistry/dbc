@@ -1,7 +1,7 @@
 Package: dbc
 Type: Package
 Title: Utilities To Design By Contract
-Version: 0.3.12
+Version: 0.3.13
 Author: Joonas Miettinen
 Maintainer: Joonas Miettinen <joonas.miettinen@cancer.fi>
 Description: Enables easy verification of function arguments, interim results,
@@ -12,7 +12,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Depends: 
     R (>= 2.10)
