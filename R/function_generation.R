@@ -440,7 +440,7 @@ interpolate <- function(x, env = parent.frame(1L)) {
     is.character(x),
     is.environment(env)
   )
-  m <- gregexpr(pattern = "\\Q${\\E[^{]+\\Q}\\E", text = x, perl = TRUE)
+  m <- gregexpr(pattern = "[$][{][^{]+[}]", text = x, perl = TRUE)
   expr_strings_by_x_elem <- regmatches(x = x, m = m)
   has_nothing_to_interpolate <- length(expr_strings_by_x_elem) == 1L &&
     length(expr_strings_by_x_elem[[1L]]) == 0L
@@ -452,23 +452,11 @@ interpolate <- function(x, env = parent.frame(1L)) {
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
     vapply(expr_string_vec, function(string) {
       expr <- parse(text = string)[[1L]]
-      expr_nms <- all.names(expr, unique = TRUE)
-      expr_object_exists <- vapply(expr_nms, function(obj_nm) {
-        !isFALSE(tryCatch(expr = get(obj_nm, envir = env),
-                          warning = function(w) FALSE,
-                          error = function(e) FALSE))
-      }, logical(1L))
-      if (!all(expr_object_exists)) {
-        evaled <- string
-      } else {
-        evaled <- tryCatch(
-          eval(expr, envir = env),
-          error = function(e) e
-        )
-        if (inherits(evaled, c("error", "try-error"))) {
-          evaled <- string
-        }
-      }
+      evaled <- tryCatch(
+        eval(expr, envir = env),
+        error = function(e) string,
+        warning = function(w) string
+      )
       paste0(as.character(evaled), collapse = "")
     }, character(1L))
   })
