@@ -177,7 +177,7 @@ get_dev_mode <- function() {
 
 
 
-.__ERROR_DATA_ENV <- environment()
+.__ERROR_DATA_ENV <- new.env(parent = emptyenv())
 .__ERROR_DATA_ENV[["data"]] <- list()
 
 get_error_dataset <- function() {
