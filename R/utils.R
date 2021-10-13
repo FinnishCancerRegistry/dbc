@@ -175,3 +175,67 @@ get_dev_mode <- function() {
 
 
 
+
+
+.__ERROR_DATA_ENV <- environment()
+.__ERROR_DATA_ENV[["data"]] <- list()
+
+get_error_dataset <- function() {
+  .__ERROR_DATA_ENV[["data"]]
+}
+add_error_data <- function(data) {
+  raise_internal_error_if_not(
+    inherits(data, "list"),
+    c("sys.calls", "call", "msg") %in% names(data)
+  )
+  .__ERROR_DATA_ENV[["data"]] <- c(list(data), .__ERROR_DATA_ENV[["data"]])
+  return(invisible(NULL))
+}
+#' @title Error Data
+#' @description Retrieve data about previous errors.
+#' @name error_data
+#' @return
+#' Both `get_error_data` and `get_newest_error_data` return a list containing
+#' elements
+#'
+#' - `msg`: `character`; error message
+#' - `call`: `call`; call where error was raised
+#' - `sys.calls`: output of `[base::sys.calls]` in the context of where the
+#'   error was generated
+
+#' @param n `[integer]` (optional, default `1L`)
+#'
+#' position of error in list of errors in chronological order recorded during
+#' this R session; `n = 1L` is the position of the newest error
+#' @rdname error_data
+#' @export
+get_error_data <- function(n = 1L) {
+  raise_internal_error_if_not(
+    length(n) == 1L,
+    n %% 1L == 0L,
+    n > 0L
+  )
+  ds <- get_error_dataset()
+  if (length(ds) == 0L) {
+    stop("No errors recorded, cannot return anything")
+  } else if (n > length(ds)) {
+    stop("n = ", n, " is too large: only ", length(ds), " errors have been ",
+         "recorded")
+  }
+  ds[[n]]
+}
+
+#' @rdname error_data
+#' @export
+get_newest_error_data <- function() {
+  get_error_data(n = 1L)
+}
+
+
+
+
+
+
+
+
+

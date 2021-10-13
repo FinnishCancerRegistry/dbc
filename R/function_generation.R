@@ -388,44 +388,70 @@ report_to_assertion <- function(
       user_input = paste0(
         "Hi user! One or more arguments you supplied did not comply with ",
         "their specifications; please see the points below and adjust ",
-        "your arguments."
+        "your arguments. You can also use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred."
       ),
       prod_input = paste0(
         "Internal error: one or more arguments supplied to an internally used ",
-        "function did not comply with specfications; please report this error ",
+        "function did not comply with specfications. ",
+        "You can use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred. ",
+        "Please report this error ",
         "to the author or maintainer of the command you used. These were ",
         "the errors:"
       ),
       dev_input = paste0(
         "Internal error: one or more arguments supplied to an internally used ",
         "function did not comply with specfications tested in development ",
-        "mode; these were the errors:"
+        "mode. ",
+        "You can use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred. ",
+        "These were the errors:"
       ),
       prod_output = paste0(
         "Internal error: the output of an internally used function did not ",
-        "comply with specifications; please report this error ",
+        "comply with specifications. ",
+        "You can use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred. ",
+        "Please report this error ",
         "to the author or maintainer of the command you used. These were ",
         "the errors:"
       ),
       dev_output = paste0(
         "Internal error: the output of an internally used function did not ",
-        "comply with specifications tested in development mode; These were ",
-        "the errors:"
+        "comply with specifications tested in development mode. ",
+        "You can use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred. ",
+        "These were the errors:"
       ),
       prod_interim = paste0(
         "Internal error: an interim results of inside a function was not as ",
-        "expected; please report this error ",
+        "expected. ",
+        "You can use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred. ",
+        "Please report this error ",
         "to the author or maintainer of the command you used. These were ",
         "the errors:"
       ),
       dev_interim = paste0(
         "Internal error: an interim results of inside a function was not as ",
-        "expected when in development mode; These were the errors:"
+        "expected when in development mode. ",
+        "You can use dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred. ",
+        "These were the errors:"
       )
     )
     msg <- paste0(
       c(msg_start, paste0(" - ", msgs)),
       collapse = "\n"
+    )
+    sys_calls <- sys.calls()
+    add_error_data(
+      list(
+        call = raise_error_call,
+        msg = msg,
+        sys.calls = sys_calls[-length(sys_calls)]
+      )
     )
     stop(simpleError(msg, raise_error_call))
   }
