@@ -385,7 +385,11 @@ report_to_assertion <- function(
 
     msg_start <- switch(
       assertion_type,
-      general = "assertion failure(s):",
+      general = paste0(
+        "One or more assertions failed. You can use ",
+        "dbc::get_newest_error_data() to inspect ",
+        "in more detail where the error occurred."
+      ),
       user_input = paste0(
         "Hi user! One or more arguments you supplied did not comply with ",
         "their specifications; please see the points below and adjust ",
