@@ -506,7 +506,9 @@ generate_base_report_funs <- function(
   raise_internal_error_if_not(
     is.data.frame(specs_df),
     c("test_set_nm", "call",
-      "fail_message", "pass_message", "extra_arg_nm_set") %in% names(specs_df),
+      "fail_message", "pass_message",
+      "extra_arg_nm_set"
+    ) %in% names(specs_df),
 
     is.character(target_script),
     length(target_script) == 1L
@@ -523,7 +525,11 @@ generate_base_report_funs <- function(
     values <- specs_df[["extra_arg_nm_set"]][is_test_set]
     paste0(setdiff(values, c(NA_character_, "")), collapse = ", ")
   })
-  split_col_nms <- c("test_set" = "call", "fail_msg_set" = "fail_message", "pass_msg_set" = "pass_message")
+  split_col_nms <- c(
+    "test_set" = "call",
+    "fail_msg_set" = "fail_message",
+    "pass_msg_set" = "pass_message"
+  )
   fun_df[, names(split_col_nms)] <- lapply(split_col_nms, function(col_nm) {
     src_col_nm <- col_nm
     lapply(test_set_nm_set, function(test_set_nm) {

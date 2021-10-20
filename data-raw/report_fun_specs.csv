@@ -82,9 +82,9 @@
 "is_gte";"x >= lo";"${n_fail} elements were < ${lo}";NA;"lo"
 "is_gt";"assert_is_number_nonNA_vector(x)";NA;NA;"lo"
 "is_gt";"x > lo";"${n_fail} elements were <= ${lo}";NA;"lo"
-"is_lte";"assert_is_number_nonNA_vector(x)";NA;NA;"hi"
+"is_lte";"assert_is_number_nonNA_vector(x)";NA;NA;""
 "is_lte";"x <= hi";"${n_fail} elements were > ${hi}";NA;"hi"
-"is_lt";"assert_is_number_nonNA_vector(x)";NA;NA;"lo"
+"is_lt";"assert_is_number_nonNA_vector(x)";NA;NA;""
 "is_lt";"x < hi";"${n_fail} elements were >= ${hi}";NA;"hi"
 "is_gtezero";"assert_is_number_nonNA_vector(x)";NA;NA;NA
 "is_gtezero";"x >= 0";"${n_fail} elements were < 0";NA;NA

@@ -35,12 +35,12 @@
 \alias{report_is_between_inclusive}
 \alias{report_is_call}
 \alias{report_is_character}
-\alias{report_is_data_table}
-\alias{report_is_data_table_with_required_names}
 \alias{report_is_data.frame}
 \alias{report_is_data.frame_with_required_names}
 \alias{report_is_data.table}
 \alias{report_is_data.table_with_required_names}
+\alias{report_is_data_table}
+\alias{report_is_data_table_with_required_names}
 \alias{report_is_Date}
 \alias{report_is_double}
 \alias{report_is_environment}
@@ -96,12 +96,12 @@
 \alias{assert_dev_input_is_character_nonNA_matrix}
 \alias{assert_dev_input_is_character_nonNA_vector}
 \alias{assert_dev_input_is_character_vector}
-\alias{assert_dev_input_is_data_table}
-\alias{assert_dev_input_is_data_table_with_required_names}
 \alias{assert_dev_input_is_data.frame}
 \alias{assert_dev_input_is_data.frame_with_required_names}
 \alias{assert_dev_input_is_data.table}
 \alias{assert_dev_input_is_data.table_with_required_names}
+\alias{assert_dev_input_is_data_table}
+\alias{assert_dev_input_is_data_table_with_required_names}
 \alias{assert_dev_input_is_Date}
 \alias{assert_dev_input_is_Date_atom}
 \alias{assert_dev_input_is_Date_matrix}
@@ -265,12 +265,12 @@
 \alias{assert_dev_interim_is_character_nonNA_matrix}
 \alias{assert_dev_interim_is_character_nonNA_vector}
 \alias{assert_dev_interim_is_character_vector}
-\alias{assert_dev_interim_is_data_table}
-\alias{assert_dev_interim_is_data_table_with_required_names}
 \alias{assert_dev_interim_is_data.frame}
 \alias{assert_dev_interim_is_data.frame_with_required_names}
 \alias{assert_dev_interim_is_data.table}
 \alias{assert_dev_interim_is_data.table_with_required_names}
+\alias{assert_dev_interim_is_data_table}
+\alias{assert_dev_interim_is_data_table_with_required_names}
 \alias{assert_dev_interim_is_Date}
 \alias{assert_dev_interim_is_Date_atom}
 \alias{assert_dev_interim_is_Date_matrix}
@@ -434,12 +434,12 @@
 \alias{assert_dev_output_is_character_nonNA_matrix}
 \alias{assert_dev_output_is_character_nonNA_vector}
 \alias{assert_dev_output_is_character_vector}
-\alias{assert_dev_output_is_data_table}
-\alias{assert_dev_output_is_data_table_with_required_names}
 \alias{assert_dev_output_is_data.frame}
 \alias{assert_dev_output_is_data.frame_with_required_names}
 \alias{assert_dev_output_is_data.table}
 \alias{assert_dev_output_is_data.table_with_required_names}
+\alias{assert_dev_output_is_data_table}
+\alias{assert_dev_output_is_data_table_with_required_names}
 \alias{assert_dev_output_is_Date}
 \alias{assert_dev_output_is_Date_atom}
 \alias{assert_dev_output_is_Date_matrix}
@@ -603,12 +603,12 @@
 \alias{assert_is_character_nonNA_matrix}
 \alias{assert_is_character_nonNA_vector}
 \alias{assert_is_character_vector}
-\alias{assert_is_data_table}
-\alias{assert_is_data_table_with_required_names}
 \alias{assert_is_data.frame}
 \alias{assert_is_data.frame_with_required_names}
 \alias{assert_is_data.table}
 \alias{assert_is_data.table_with_required_names}
+\alias{assert_is_data_table}
+\alias{assert_is_data_table_with_required_names}
 \alias{assert_is_Date}
 \alias{assert_is_Date_atom}
 \alias{assert_is_Date_matrix}
@@ -772,12 +772,12 @@
 \alias{assert_prod_input_is_character_nonNA_matrix}
 \alias{assert_prod_input_is_character_nonNA_vector}
 \alias{assert_prod_input_is_character_vector}
-\alias{assert_prod_input_is_data_table}
-\alias{assert_prod_input_is_data_table_with_required_names}
 \alias{assert_prod_input_is_data.frame}
 \alias{assert_prod_input_is_data.frame_with_required_names}
 \alias{assert_prod_input_is_data.table}
 \alias{assert_prod_input_is_data.table_with_required_names}
+\alias{assert_prod_input_is_data_table}
+\alias{assert_prod_input_is_data_table_with_required_names}
 \alias{assert_prod_input_is_Date}
 \alias{assert_prod_input_is_Date_atom}
 \alias{assert_prod_input_is_Date_matrix}
@@ -941,12 +941,12 @@
 \alias{assert_prod_interim_is_character_nonNA_matrix}
 \alias{assert_prod_interim_is_character_nonNA_vector}
 \alias{assert_prod_interim_is_character_vector}
-\alias{assert_prod_interim_is_data_table}
-\alias{assert_prod_interim_is_data_table_with_required_names}
 \alias{assert_prod_interim_is_data.frame}
 \alias{assert_prod_interim_is_data.frame_with_required_names}
 \alias{assert_prod_interim_is_data.table}
 \alias{assert_prod_interim_is_data.table_with_required_names}
+\alias{assert_prod_interim_is_data_table}
+\alias{assert_prod_interim_is_data_table_with_required_names}
 \alias{assert_prod_interim_is_Date}
 \alias{assert_prod_interim_is_Date_atom}
 \alias{assert_prod_interim_is_Date_matrix}
@@ -1110,12 +1110,12 @@
 \alias{assert_prod_output_is_character_nonNA_matrix}
 \alias{assert_prod_output_is_character_nonNA_vector}
 \alias{assert_prod_output_is_character_vector}
-\alias{assert_prod_output_is_data_table}
-\alias{assert_prod_output_is_data_table_with_required_names}
 \alias{assert_prod_output_is_data.frame}
 \alias{assert_prod_output_is_data.frame_with_required_names}
 \alias{assert_prod_output_is_data.table}
 \alias{assert_prod_output_is_data.table_with_required_names}
+\alias{assert_prod_output_is_data_table}
+\alias{assert_prod_output_is_data_table_with_required_names}
 \alias{assert_prod_output_is_Date}
 \alias{assert_prod_output_is_Date_atom}
 \alias{assert_prod_output_is_Date_matrix}
@@ -1393,12 +1393,12 @@
 \alias{test_is_character_nonNA_matrix}
 \alias{test_is_character_nonNA_vector}
 \alias{test_is_character_vector}
-\alias{test_is_data_table}
-\alias{test_is_data_table_with_required_names}
 \alias{test_is_data.frame}
 \alias{test_is_data.frame_with_required_names}
 \alias{test_is_data.table}
 \alias{test_is_data.table_with_required_names}
+\alias{test_is_data_table}
+\alias{test_is_data_table_with_required_names}
 \alias{test_is_Date}
 \alias{test_is_Date_atom}
 \alias{test_is_Date_matrix}
@@ -1562,12 +1562,12 @@
 \alias{assert_user_input_is_character_nonNA_matrix}
 \alias{assert_user_input_is_character_nonNA_vector}
 \alias{assert_user_input_is_character_vector}
-\alias{assert_user_input_is_data_table}
-\alias{assert_user_input_is_data_table_with_required_names}
 \alias{assert_user_input_is_data.frame}
 \alias{assert_user_input_is_data.frame_with_required_names}
 \alias{assert_user_input_is_data.table}
 \alias{assert_user_input_is_data.table_with_required_names}
+\alias{assert_user_input_is_data_table}
+\alias{assert_user_input_is_data_table_with_required_names}
 \alias{assert_user_input_is_Date}
 \alias{assert_user_input_is_Date_atom}
 \alias{assert_user_input_is_Date_matrix}
@@ -1771,15 +1771,6 @@ report_is_call(x, x_nm = NULL, call = NULL)
 
 report_is_character(x, x_nm = NULL, call = NULL)
 
-report_is_data_table(x, x_nm = NULL, call = NULL)
-
-report_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 report_is_data.frame(x, x_nm = NULL, call = NULL)
 
 report_is_data.frame_with_required_names(
@@ -1792,6 +1783,15 @@ report_is_data.frame_with_required_names(
 report_is_data.table(x, x_nm = NULL, call = NULL)
 
 report_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+report_is_data_table(x, x_nm = NULL, call = NULL)
+
+report_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -1835,7 +1835,7 @@ report_is_list(x, x_nm = NULL, call = NULL)
 
 report_is_logical(x, x_nm = NULL, call = NULL)
 
-report_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+report_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 report_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -1922,15 +1922,6 @@ assert_dev_input_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_dev_input_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_dev_input_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_dev_input_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_data.frame_with_required_names(
@@ -1943,6 +1934,15 @@ assert_dev_input_is_data.frame_with_required_names(
 assert_dev_input_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_dev_input_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_dev_input_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -2147,7 +2147,7 @@ assert_dev_input_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_dev_input_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_dev_input_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_dev_input_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -2294,15 +2294,6 @@ assert_dev_interim_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_dev_interim_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_dev_interim_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_dev_interim_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_data.frame_with_required_names(
@@ -2315,6 +2306,15 @@ assert_dev_interim_is_data.frame_with_required_names(
 assert_dev_interim_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_dev_interim_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_dev_interim_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -2519,7 +2519,7 @@ assert_dev_interim_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_dev_interim_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_dev_interim_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_dev_interim_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -2666,15 +2666,6 @@ assert_dev_output_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_dev_output_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_dev_output_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_dev_output_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_data.frame_with_required_names(
@@ -2687,6 +2678,15 @@ assert_dev_output_is_data.frame_with_required_names(
 assert_dev_output_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_dev_output_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_dev_output_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -2891,7 +2891,7 @@ assert_dev_output_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_dev_output_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_dev_output_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_dev_output_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -3038,15 +3038,6 @@ assert_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_is_data.frame_with_required_names(
@@ -3059,6 +3050,15 @@ assert_is_data.frame_with_required_names(
 assert_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -3258,7 +3258,7 @@ assert_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -3405,15 +3405,6 @@ assert_prod_input_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_prod_input_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_prod_input_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_prod_input_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_data.frame_with_required_names(
@@ -3426,6 +3417,15 @@ assert_prod_input_is_data.frame_with_required_names(
 assert_prod_input_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_prod_input_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_prod_input_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -3630,7 +3630,7 @@ assert_prod_input_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_prod_input_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_prod_input_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_prod_input_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -3777,15 +3777,6 @@ assert_prod_interim_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_prod_interim_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_prod_interim_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_prod_interim_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_data.frame_with_required_names(
@@ -3798,6 +3789,15 @@ assert_prod_interim_is_data.frame_with_required_names(
 assert_prod_interim_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_prod_interim_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_prod_interim_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -4018,7 +4018,7 @@ assert_prod_interim_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_prod_interim_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_prod_interim_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_prod_interim_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -4165,15 +4165,6 @@ assert_prod_output_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_prod_output_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_prod_output_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_prod_output_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_data.frame_with_required_names(
@@ -4186,6 +4177,15 @@ assert_prod_output_is_data.frame_with_required_names(
 assert_prod_output_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_prod_output_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_prod_output_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -4390,7 +4390,7 @@ assert_prod_output_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_prod_output_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_prod_output_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_prod_output_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -4765,15 +4765,6 @@ test_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 test_is_character_vector(x, x_nm = NULL, call = NULL)
 
-test_is_data_table(x, x_nm = NULL, call = NULL)
-
-test_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 test_is_data.frame(x, x_nm = NULL, call = NULL)
 
 test_is_data.frame_with_required_names(
@@ -4786,6 +4777,15 @@ test_is_data.frame_with_required_names(
 test_is_data.table(x, x_nm = NULL, call = NULL)
 
 test_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+test_is_data_table(x, x_nm = NULL, call = NULL)
+
+test_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -4985,7 +4985,7 @@ test_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 test_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-test_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+test_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 test_is_lte(x, x_nm = NULL, call = NULL, hi)
 
@@ -5132,15 +5132,6 @@ assert_user_input_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_character_vector(x, x_nm = NULL, call = NULL)
 
-assert_user_input_is_data_table(x, x_nm = NULL, call = NULL)
-
-assert_user_input_is_data_table_with_required_names(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-)
-
 assert_user_input_is_data.frame(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_data.frame_with_required_names(
@@ -5153,6 +5144,15 @@ assert_user_input_is_data.frame_with_required_names(
 assert_user_input_is_data.table(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_user_input_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_user_input_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
@@ -5357,7 +5357,7 @@ assert_user_input_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_logical_vector(x, x_nm = NULL, call = NULL)
 
-assert_user_input_is_lt(x, x_nm = NULL, call = NULL, lo, hi)
+assert_user_input_is_lt(x, x_nm = NULL, call = NULL, hi)
 
 assert_user_input_is_lte(x, x_nm = NULL, call = NULL, hi)
 
