@@ -40,5 +40,19 @@ testthat::test_that("enclosing function call included in report", {
 })
 
 
+testthat::test_that("n_fail used even for atomic input", {
+  report_df <- dbc::report_is_nonNA(x = NA)
+  testthat::expect_equal(
+    report_df[["n_fail"]][1L],
+    1L
+  )
+  report_df <- dbc::report_is_nonNA(x = 1)
+  testthat::expect_equal(
+    report_df[["n_fail"]][1L],
+    0L
+  )
+})
+
+
 
 
