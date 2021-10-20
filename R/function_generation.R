@@ -25,10 +25,11 @@ test_string_to_report <- function(
   } else if (is.null(result)) {
     pass <- TRUE
   } else if (is.logical(result)) {
-    pass <- all(result %in% TRUE)
+    passing_elems <- result %in% TRUE # %in% avoids NA's. NA == TRUE -> NA
+    pass <- all(passing_elems)
     if (length(result) != 1L) {
-      n_fail <- sum(!result, na.rm = TRUE)
-      wh_fail <- which(!result)
+      wh_fail <- which(!passing_elems)
+      n_fail <- length(wh_fail)
     }
   } else {
     stop("test ", deparse(test_string), " returned result of class(es) ",
