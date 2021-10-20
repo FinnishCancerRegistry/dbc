@@ -29,8 +29,8 @@ test_string_to_report <- function(
     pass <- all(passing_elems)
     if (length(result) != 1L) {
       wh_fail <- which(!passing_elems)
-      n_fail <- length(wh_fail)
     }
+    n_fail <- sum(!passing_elems)
   } else {
     stop("test ", deparse(test_string), " returned result of class(es) ",
          deparse(class(result)), "; logical or NULL was expected; see ",
