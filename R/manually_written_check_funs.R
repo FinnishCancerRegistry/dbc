@@ -8,17 +8,9 @@
 #' Collection of assertion functions which raise an error if the test does not
 #' pass.
 #' @name assertions
-#' @param x R object to be tested (mandatory, no default)
-#' @param x_nm `[NULL, character]` (optional, default `NULL`)
-#'
-#' the name of the object `x` to mention in possible error message.
-#' - `NULL`: taken as `deparse(substitute(x))`
-#' - `character`: the name as a string
-#' @param call `[language, NULL]` (optional, default `NULL`)
-#'
-#' - `language`: an R language object such as one produced by [match.call] or
-#'   `quote`; this call will be reported in an error
-#' - `NULL`: the call is attempted to be inferred
+#' @template arg_x
+#' @template arg_x_nm
+#' @template arg_call
 #' @param lo `[number]` (mandatory, no default)
 #' lower bound for `x`
 #'
