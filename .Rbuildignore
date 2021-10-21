@@ -5,3 +5,4 @@
 ^data-raw$
 ^generate_functions\.R$
 ^.github$
+^man-roxygen$
