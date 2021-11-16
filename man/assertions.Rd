@@ -8,8 +8,8 @@
 %   R/generated_prod_interim_assertion_funs.R,
 %   R/generated_prod_output_assertion_funs.R, R/generated_report_fun_variants.R,
 %   R/generated_test_funs.R, R/generated_user_input_assertion_funs.R,
-%   R/is_one_of.R, R/manually_written_check_funs.R,
-%   R/manually_written_dataset_checks.R, R/manually_written_report_funs.R
+%   R/manually_written_check_funs.R, R/manually_written_dataset_check_funs.R,
+%   R/manually_written_is_one_of_check_funs.R, R/manually_written_report_funs.R
 \name{report_is}
 \alias{report_is}
 \alias{assert_is}
@@ -1709,6 +1709,8 @@
 \alias{assert_user_input_is_uniquely_named_list}
 \alias{assert_user_input_is_vector}
 \alias{assert_user_input_vector_elems_are_in_set}
+\alias{assertions}
+\alias{identify_invalid_observations}
 \alias{report_is_one_of}
 \alias{assert_is_one_of}
 \alias{assert_prod_input_is_one_of}
@@ -1718,8 +1720,6 @@
 \alias{assert_dev_input_is_one_of}
 \alias{assert_dev_interim_is_one_of}
 \alias{assert_dev_output_is_one_of}
-\alias{assertions}
-\alias{identify_invalid_observations}
 \alias{report_has_only_valid_observations}
 \title{Assertions}
 \usage{
@@ -5451,6 +5451,8 @@ assert_user_input_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_user_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
+identify_invalid_observations(x, report_df)
+
 report_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
 assert_is_one_of(x, x_nm = NULL, funs, call = NULL, assertion_type = "general")
@@ -5468,8 +5470,6 @@ assert_dev_input_is_one_of(x, x_nm = NULL, funs, call = NULL)
 assert_dev_interim_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
 assert_dev_output_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-identify_invalid_observations(x, report_df)
 
 report_has_only_valid_observations(
   x,
@@ -5551,6 +5551,10 @@ if \code{all(col_nm_set_list[[i]] \%in\% col_nms)} for all
 in when not all of them need to be run.
 }}
 
+\item{report_df}{\verb{[data.frame]} (mandatory, no default)
+
+a report \code{data.frame} as produced by e.g. \link{tests_to_report}}
+
 \item{funs}{\verb{[character, list]} (mandatory, no default)
 
 report functions that return a report (data.frame);
@@ -5562,10 +5566,6 @@ report functions that return a report (data.frame);
 \item{assertion_type}{\verb{[character]} (mandatory, default \code{"general"})
 
 one of "user_input", "prod_input", etc.}
-
-\item{report_df}{\verb{[data.frame]} (mandatory, no default)
-
-a report \code{data.frame} as produced by e.g. \link{tests_to_report}}
 }
 \value{
 \itemize{
