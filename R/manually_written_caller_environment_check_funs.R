@@ -1,43 +1,38 @@
 
 #' @title Caller Environment Checks
 #' @description Functions to check caller environment of a function.
-#' @param x `[environment]` (mandatory, no default)
+#' @param x `[NULL, environment]` (default `NULL`)
 #'
-#' This should be the caller environment of a function. See **Examples** for
-#' more information.
-#' @template arg_x_nm
+#' - `environment`: this environment is compared against `[globalenv]` output
+#' - `NULL`: `x` is taken to be `parent.frame(2L)` in the check function,
+#'   which should be the caller environment of the function you are trying
+#'   to check; See **Examples**
+#' @param x_nm `[NULL, character]` (default `NULL`)
+#'
+#' - `NULL`: The name of the function you are checking is guessed via
+#'   `eval(quote(match.call()), parent.frame(1L))`
+#' - `character`: This should be the name of the function you are checking.
+#'
 #' @template arg_call
 #' @name caller_environment_checks
 #' @examples
 #' # for use in other functions only
 #' my_fun_ <- function() {
-#'   caller_env <- parent.frame(1)
-#'   dbc::test_function_caller_environment_is_not_global_environment(
-#'     x = caller_env,
-#'     x_nm = "my_fun_"
-#'   )
+#'   dbc::test_function_caller_environment_is_not_global_environment()
 #' }
 #' result <- my_fun_()
 #' stopifnot(identical(result, FALSE))
 #'
 #' # for use by the user only
 #' my_fun <- function() {
-#'   caller_env <- parent.frame(1)
-#'   dbc::test_function_caller_environment_is_global_environment(
-#'     x = caller_env,
-#'     x_nm = "my_fun"
-#'   )
+#'   dbc::test_function_caller_environment_is_global_environment()
 #' }
 #' result <- my_fun()
 #' stopifnot(identical(result, TRUE))
 #'
 #' # for use by the user only
 #' my_fun <- function() {
-#'   caller_env <- parent.frame(1)
-#'   dbc::assert_function_caller_environment_is_global_environment(
-#'     x = caller_env,
-#'     x_nm = "my_fun"
-#'   )
+#'   dbc::assert_function_caller_environment_is_global_environment()
 #'   my_fun_()
 #' }
 #' result <- my_fun()
@@ -57,11 +52,17 @@
 #' @rdname caller_environment_checks
 #' @export
 report_function_caller_environment_is_not_global_environment <- function(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
+  if (is.null(x)) {
+    x <- parent.frame(2L)
+  }
+  if (is.null(x_nm)) {
+    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    x_nm <- deparse(parent_call[[1L]])
+  }
   call <- infer_call(call, parent.frame(1L))
   dbc::tests_to_report(
     tests = paste0(
@@ -83,11 +84,17 @@ report_function_caller_environment_is_not_global_environment <- function(
 #' @rdname caller_environment_checks
 #' @export
 report_function_caller_environment_is_global_environment <- function(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
+  if (is.null(x)) {
+    x <- parent.frame(2L)
+  }
+  if (is.null(x_nm)) {
+    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    x_nm <- deparse(parent_call[[1L]])
+  }
   call <- infer_call(call, parent.frame(1L))
   dbc::tests_to_report(
     tests = paste0(
@@ -110,12 +117,18 @@ report_function_caller_environment_is_global_environment <- function(
 #' @rdname caller_environment_checks
 #' @export
 assert_function_caller_environment_is_not_global_environment <- function(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 ) {
-  caller_env <- parent.frame(1L)
-  call <- infer_call(call, caller_env)
+  if (is.null(x)) {
+    x <- parent.frame(2L)
+  }
+  if (is.null(x_nm)) {
+    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    x_nm <- deparse(parent_call[[1L]])
+  }
+  call <- infer_call(call, parent.frame(1L))
   report_df <- report_function_caller_environment_is_not_global_environment(
     x = x, x_nm = x_nm, call = call
   )
@@ -129,12 +142,18 @@ assert_function_caller_environment_is_not_global_environment <- function(
 #' @rdname caller_environment_checks
 #' @export
 assert_function_caller_environment_is_global_environment <- function(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 ) {
-  caller_env <- parent.frame(1L)
-  call <- infer_call(call, caller_env)
+  if (is.null(x)) {
+    x <- parent.frame(2L)
+  }
+  if (is.null(x_nm)) {
+    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    x_nm <- deparse(parent_call[[1L]])
+  }
+  call <- infer_call(call, parent.frame(1L))
   report_df <- report_function_caller_environment_is_global_environment(
     x = x, x_nm = x_nm, call = call
   )
@@ -149,15 +168,18 @@ assert_function_caller_environment_is_global_environment <- function(
 #' @rdname caller_environment_checks
 #' @export
 test_function_caller_environment_is_not_global_environment <- function(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
+  if (is.null(x)) {
+    x <- parent.frame(2L)
   }
+  if (is.null(x_nm)) {
+    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    x_nm <- deparse(parent_call[[1L]])
+  }
+  call <- infer_call(call, parent.frame(1L))
   report_df <- report_function_caller_environment_is_not_global_environment(
     x = x,
     x_nm = x_nm,
@@ -169,15 +191,18 @@ test_function_caller_environment_is_not_global_environment <- function(
 #' @rdname caller_environment_checks
 #' @export
 test_function_caller_environment_is_global_environment <- function(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
+  if (is.null(x)) {
+    x <- parent.frame(2L)
   }
+  if (is.null(x_nm)) {
+    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    x_nm <- deparse(parent_call[[1L]])
+  }
+  call <- infer_call(call, parent.frame(1L))
   report_df <- report_function_caller_environment_is_global_environment(
     x = x,
     x_nm = x_nm,

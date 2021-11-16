@@ -12,41 +12,55 @@
 \title{Caller Environment Checks}
 \usage{
 report_function_caller_environment_is_not_global_environment(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 )
 
-report_function_caller_environment_is_global_environment(x, x_nm, call = NULL)
+report_function_caller_environment_is_global_environment(
+  x = NULL,
+  x_nm = NULL,
+  call = NULL
+)
 
 assert_function_caller_environment_is_not_global_environment(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 )
 
-assert_function_caller_environment_is_global_environment(x, x_nm, call = NULL)
+assert_function_caller_environment_is_global_environment(
+  x = NULL,
+  x_nm = NULL,
+  call = NULL
+)
 
 test_function_caller_environment_is_not_global_environment(
-  x,
-  x_nm,
+  x = NULL,
+  x_nm = NULL,
   call = NULL
 )
 
-test_function_caller_environment_is_global_environment(x, x_nm, call = NULL)
+test_function_caller_environment_is_global_environment(
+  x = NULL,
+  x_nm = NULL,
+  call = NULL
+)
 }
 \arguments{
-\item{x}{\verb{[environment]} (mandatory, no default)
-
-This should be the caller environment of a function. See \strong{Examples} for
-more information.}
-
-\item{x_nm}{\verb{[NULL, character]} (optional, default \code{NULL})
-
-the name of the object \code{x} to mention in possible error message.
+\item{x}{\verb{[NULL, environment]} (default \code{NULL})
 \itemize{
-\item \code{NULL}: taken as \code{deparse(substitute(x))}
-\item \code{character}: the name as a string
+\item \code{environment}: this environment is compared against \verb{[globalenv]} output
+\item \code{NULL}: \code{x} is taken to be \code{parent.frame(2L)} in the check function,
+which should be the caller environment of the function you are trying
+to check; See \strong{Examples}
+}}
+
+\item{x_nm}{\verb{[NULL, character]} (default \code{NULL})
+\itemize{
+\item \code{NULL}: The name of the function you are checking is guessed via
+\code{eval(quote(match.call()), parent.frame(1L))}
+\item \code{character}: This should be the name of the function you are checking.
 }}
 
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
@@ -62,33 +76,21 @@ Functions to check caller environment of a function.
 \examples{
 # for use in other functions only
 my_fun_ <- function() {
-  caller_env <- parent.frame(1)
-  dbc::test_function_caller_environment_is_not_global_environment(
-    x = caller_env,
-    x_nm = "my_fun_"
-  )
+  dbc::test_function_caller_environment_is_not_global_environment()
 }
 result <- my_fun_()
 stopifnot(identical(result, FALSE))
 
 # for use by the user only
 my_fun <- function() {
-  caller_env <- parent.frame(1)
-  dbc::test_function_caller_environment_is_global_environment(
-    x = caller_env,
-    x_nm = "my_fun"
-  )
+  dbc::test_function_caller_environment_is_global_environment()
 }
 result <- my_fun()
 stopifnot(identical(result, TRUE))
 
 # for use by the user only
 my_fun <- function() {
-  caller_env <- parent.frame(1)
-  dbc::assert_function_caller_environment_is_global_environment(
-    x = caller_env,
-    x_nm = "my_fun"
-  )
+  dbc::assert_function_caller_environment_is_global_environment()
   my_fun_()
 }
 result <- my_fun()
