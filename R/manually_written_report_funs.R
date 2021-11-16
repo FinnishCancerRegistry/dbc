@@ -71,7 +71,7 @@ report_has_only_valid_observations <- function(
   parent_env <- parent.frame(1L)
   dataset_env <- as.environment(x)
   parent.env(dataset_env) <- parent_env
-  call <- infer_call(call = call, parent.frame(1L))
+  call <- handle_arg_call(call = call, parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }

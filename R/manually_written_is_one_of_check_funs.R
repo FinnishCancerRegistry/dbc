@@ -11,7 +11,7 @@ report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
-  call <- infer_call(call = call, parent.frame(1L))
+  call <- handle_arg_call(call = call, parent.frame(1L))
 
   funs <- lapply(funs, match.fun)
   report_df <- do.call(rbind, lapply(funs, function(fun) {
@@ -60,7 +60,7 @@ assert_is_one_of <- function(
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
-  call <- infer_call(call = call, parent.frame(1L))
+  call <- handle_arg_call(call = call, parent.frame(1L))
 
   fun_list <- lapply(funs, match.fun)
   if (is.character(funs)) {

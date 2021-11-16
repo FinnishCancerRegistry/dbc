@@ -1,26 +1,43 @@
 
 
+#' @title Argument Handlers
+#' @description
+#' Functions which handle arguments of check functions.
+#' @name argument_handlers
 
-
-infer_call <- function(call, env) {
+#' @rdname argument_handlers
+#' @export
+#' @template arg_call
+#' @param env `[NULL, environment]` (no default)
+#'
+#' - `environment`: use this environment
+#' - `NULL`: use `parent.frame(2)`
+#'
+#' When `call` is `NULL`, it will be guessed to be
+#' `eval(quote(match.call()), envir = env)`.
+handle_arg_call <- function(call = NULL, env = NULL) {
   raise_internal_error_if_not(
-    is.language(call) || is.null(call)
+    is.language(call) || is.null(call),
+    is.environment(env) || i.null(env)
   )
   if (is.language(call)) {
     return(call)
   }
-  if (is.null(call) && !identical(env, globalenv())) {
-    call <- tryCatch(
-      eval(quote(match.call()), envir = env),
-      error = function(e) e
-    )
-    if (inherits(call, "error")) {
+  if (is.null(env)) {
+    env <- parent.frame(2L)
+  }
+  if (is.null(call)) {
+    env_list <- unique(list(env, parent.frame(2L), parent.frame(1L)))
+    for (env_list_elem in env_list) {
       call <- tryCatch(
-        eval(quote(match.call()), envir = parent.frame(1L)),
+        eval(quote(match.call()), envir = env_list_elem),
         error = function(e) e
       )
+      if (is.language(call) && !identical(call, quote(match.call()))) {
+        break()
+      }
     }
-    if (inherits(call, "error") || identical(call, quote(match.call()))) {
+    if (!is.language(call) || identical(call, quote(match.call()))) {
       call <- NULL
     }
   }

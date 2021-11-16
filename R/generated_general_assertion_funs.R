@@ -14,7 +14,7 @@ assert_atom_is_in_set <- function(
   set
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -41,7 +41,7 @@ assert_dir_exists <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -67,7 +67,7 @@ assert_file_exists <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -94,7 +94,7 @@ assert_has_class <- function(
   required_class
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -122,7 +122,7 @@ assert_has_length <- function(
   expected_length
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -150,7 +150,7 @@ assert_has_names <- function(
   required_names
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -177,7 +177,7 @@ assert_has_no_duplicates <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -204,7 +204,7 @@ assert_has_one_of_classes <- function(
   classes
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -232,7 +232,7 @@ assert_has_only_names <- function(
   required_names
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -264,7 +264,7 @@ assert_has_only_valid_observations <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -296,7 +296,7 @@ assert_inherits <- function(
   required_class
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -323,7 +323,7 @@ assert_is_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -351,7 +351,7 @@ assert_is_between_exclusive <- function(
   hi
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -381,7 +381,7 @@ assert_is_between_inclusive <- function(
   hi
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -409,7 +409,7 @@ assert_is_call <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -435,7 +435,7 @@ assert_is_character <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -461,7 +461,7 @@ assert_is_character_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -487,7 +487,7 @@ assert_is_character_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -513,7 +513,7 @@ assert_is_character_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -539,7 +539,7 @@ assert_is_character_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -565,7 +565,7 @@ assert_is_character_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -591,7 +591,7 @@ assert_is_character_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -617,7 +617,7 @@ assert_is_data.frame <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -644,7 +644,7 @@ assert_is_data.frame_with_required_names <- function(
   required_names
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -671,7 +671,7 @@ assert_is_data.table <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -698,7 +698,7 @@ assert_is_data.table_with_required_names <- function(
   required_names
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -725,7 +725,7 @@ assert_is_data_table <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -752,7 +752,7 @@ assert_is_data_table_with_required_names <- function(
   required_names
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -779,7 +779,7 @@ assert_is_Date <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -805,7 +805,7 @@ assert_is_Date_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -831,7 +831,7 @@ assert_is_Date_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -857,7 +857,7 @@ assert_is_Date_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -883,7 +883,7 @@ assert_is_Date_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -909,7 +909,7 @@ assert_is_Date_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -935,7 +935,7 @@ assert_is_Date_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -961,7 +961,7 @@ assert_is_double <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -987,7 +987,7 @@ assert_is_double_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1013,7 +1013,7 @@ assert_is_double_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1039,7 +1039,7 @@ assert_is_double_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1065,7 +1065,7 @@ assert_is_double_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1091,7 +1091,7 @@ assert_is_double_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1117,7 +1117,7 @@ assert_is_double_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1143,7 +1143,7 @@ assert_is_double_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1169,7 +1169,7 @@ assert_is_double_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1195,7 +1195,7 @@ assert_is_double_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1221,7 +1221,7 @@ assert_is_double_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1247,7 +1247,7 @@ assert_is_double_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1273,7 +1273,7 @@ assert_is_double_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1299,7 +1299,7 @@ assert_is_double_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1325,7 +1325,7 @@ assert_is_double_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1351,7 +1351,7 @@ assert_is_double_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1377,7 +1377,7 @@ assert_is_double_nonNA_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1403,7 +1403,7 @@ assert_is_double_nonNA_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1429,7 +1429,7 @@ assert_is_double_nonNA_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1455,7 +1455,7 @@ assert_is_double_nonNA_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1481,7 +1481,7 @@ assert_is_double_nonNA_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1507,7 +1507,7 @@ assert_is_double_nonNA_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1533,7 +1533,7 @@ assert_is_double_nonNA_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1559,7 +1559,7 @@ assert_is_double_nonNA_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1585,7 +1585,7 @@ assert_is_double_nonNA_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1611,7 +1611,7 @@ assert_is_double_nonNA_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1637,7 +1637,7 @@ assert_is_double_nonNA_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1663,7 +1663,7 @@ assert_is_double_nonNA_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1689,7 +1689,7 @@ assert_is_double_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1715,7 +1715,7 @@ assert_is_double_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1741,7 +1741,7 @@ assert_is_double_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1767,7 +1767,7 @@ assert_is_environment <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1793,7 +1793,7 @@ assert_is_expression <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1819,7 +1819,7 @@ assert_is_factor <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1845,7 +1845,7 @@ assert_is_factor_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1871,7 +1871,7 @@ assert_is_factor_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1897,7 +1897,7 @@ assert_is_factor_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1923,7 +1923,7 @@ assert_is_factor_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1949,7 +1949,7 @@ assert_is_factor_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -1975,7 +1975,7 @@ assert_is_factor_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2002,7 +2002,7 @@ assert_is_factor_with_levels <- function(
   expected_levels
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2029,7 +2029,7 @@ assert_is_function <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2056,7 +2056,7 @@ assert_is_function_with_required_argument_names <- function(
   required_argument_names
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2084,7 +2084,7 @@ assert_is_gt <- function(
   lo
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2112,7 +2112,7 @@ assert_is_gte <- function(
   lo
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2139,7 +2139,7 @@ assert_is_gtezero <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2165,7 +2165,7 @@ assert_is_gtzero <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2191,7 +2191,7 @@ assert_is_integer <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2217,7 +2217,7 @@ assert_is_integer_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2243,7 +2243,7 @@ assert_is_integer_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2269,7 +2269,7 @@ assert_is_integer_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2295,7 +2295,7 @@ assert_is_integer_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2321,7 +2321,7 @@ assert_is_integer_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2347,7 +2347,7 @@ assert_is_integer_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2373,7 +2373,7 @@ assert_is_integer_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2399,7 +2399,7 @@ assert_is_integer_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2425,7 +2425,7 @@ assert_is_integer_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2451,7 +2451,7 @@ assert_is_integer_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2477,7 +2477,7 @@ assert_is_integer_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2503,7 +2503,7 @@ assert_is_integer_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2529,7 +2529,7 @@ assert_is_integer_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2555,7 +2555,7 @@ assert_is_integer_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2581,7 +2581,7 @@ assert_is_integer_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2607,7 +2607,7 @@ assert_is_integer_nonNA_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2633,7 +2633,7 @@ assert_is_integer_nonNA_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2659,7 +2659,7 @@ assert_is_integer_nonNA_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2685,7 +2685,7 @@ assert_is_integer_nonNA_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2711,7 +2711,7 @@ assert_is_integer_nonNA_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2737,7 +2737,7 @@ assert_is_integer_nonNA_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2763,7 +2763,7 @@ assert_is_integer_nonNA_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2789,7 +2789,7 @@ assert_is_integer_nonNA_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2815,7 +2815,7 @@ assert_is_integer_nonNA_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2841,7 +2841,7 @@ assert_is_integer_nonNA_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2867,7 +2867,7 @@ assert_is_integer_nonNA_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2893,7 +2893,7 @@ assert_is_integer_nonNA_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2919,7 +2919,7 @@ assert_is_integer_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2945,7 +2945,7 @@ assert_is_integer_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2971,7 +2971,7 @@ assert_is_integer_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -2997,7 +2997,7 @@ assert_is_language_object <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3023,7 +3023,7 @@ assert_is_list <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3049,7 +3049,7 @@ assert_is_logical <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3075,7 +3075,7 @@ assert_is_logical_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3101,7 +3101,7 @@ assert_is_logical_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3127,7 +3127,7 @@ assert_is_logical_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3153,7 +3153,7 @@ assert_is_logical_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3179,7 +3179,7 @@ assert_is_logical_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3205,7 +3205,7 @@ assert_is_logical_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3232,7 +3232,7 @@ assert_is_lt <- function(
   hi
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3260,7 +3260,7 @@ assert_is_lte <- function(
   hi
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3287,7 +3287,7 @@ assert_is_ltezero <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3313,7 +3313,7 @@ assert_is_ltzero <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3339,7 +3339,7 @@ assert_is_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3365,7 +3365,7 @@ assert_is_name <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3391,7 +3391,7 @@ assert_is_named <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3417,7 +3417,7 @@ assert_is_named_list <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3443,7 +3443,7 @@ assert_is_nonNA <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3469,7 +3469,7 @@ assert_is_NULL <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3495,7 +3495,7 @@ assert_is_number <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3521,7 +3521,7 @@ assert_is_number_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3547,7 +3547,7 @@ assert_is_number_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3573,7 +3573,7 @@ assert_is_number_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3599,7 +3599,7 @@ assert_is_number_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3625,7 +3625,7 @@ assert_is_number_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3651,7 +3651,7 @@ assert_is_number_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3677,7 +3677,7 @@ assert_is_number_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3703,7 +3703,7 @@ assert_is_number_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3729,7 +3729,7 @@ assert_is_number_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3755,7 +3755,7 @@ assert_is_number_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3781,7 +3781,7 @@ assert_is_number_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3807,7 +3807,7 @@ assert_is_number_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3833,7 +3833,7 @@ assert_is_number_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3859,7 +3859,7 @@ assert_is_number_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3885,7 +3885,7 @@ assert_is_number_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3911,7 +3911,7 @@ assert_is_number_nonNA_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3937,7 +3937,7 @@ assert_is_number_nonNA_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3963,7 +3963,7 @@ assert_is_number_nonNA_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -3989,7 +3989,7 @@ assert_is_number_nonNA_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4015,7 +4015,7 @@ assert_is_number_nonNA_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4041,7 +4041,7 @@ assert_is_number_nonNA_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4067,7 +4067,7 @@ assert_is_number_nonNA_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4093,7 +4093,7 @@ assert_is_number_nonNA_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4119,7 +4119,7 @@ assert_is_number_nonNA_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4145,7 +4145,7 @@ assert_is_number_nonNA_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4171,7 +4171,7 @@ assert_is_number_nonNA_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4197,7 +4197,7 @@ assert_is_number_nonNA_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4223,7 +4223,7 @@ assert_is_number_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4249,7 +4249,7 @@ assert_is_number_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4275,7 +4275,7 @@ assert_is_number_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4301,7 +4301,7 @@ assert_is_numeric <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4328,7 +4328,7 @@ assert_is_of_length <- function(
   expected_length
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4355,7 +4355,7 @@ assert_is_uniquely_named <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4381,7 +4381,7 @@ assert_is_uniquely_named_list <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4407,7 +4407,7 @@ assert_is_vector <- function(
   call = NULL
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -4434,7 +4434,7 @@ assert_vector_elems_are_in_set <- function(
   set
 ) {
   x_nm <- handle_x_nm_arg(x_nm)
-  call <- infer_call(call = call, env = parent.frame(1L))
+  call <- handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }

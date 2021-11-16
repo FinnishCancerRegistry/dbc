@@ -33,7 +33,7 @@ generate_assert_is_funs <- function() {
       "  call = NULL",
       ") {",
       "  x_nm <- handle_x_nm_arg(x_nm)",
-      "  call <- infer_call(call = call, env = parent.frame(1L))",
+      "  call <- handle_arg_call(call = call, env = parent.frame(1L))",
       "  if (is.null(call)) {",
       "    call <- match.call()",
       "  }",
