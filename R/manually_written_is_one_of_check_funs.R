@@ -7,7 +7,7 @@
 #' - `character`: names of functions that can be found by `[match.fun]`
 #' - `list`: list of functions
 report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
-  x_nm <- handle_x_nm_arg(x_nm)
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
@@ -56,7 +56,7 @@ assert_is_one_of <- function(
   assertion_type = "general"
 ) {
 
-  x_nm <- handle_x_nm_arg(x_nm)
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )

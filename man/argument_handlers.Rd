@@ -3,9 +3,12 @@
 \name{argument_handlers}
 \alias{argument_handlers}
 \alias{handle_arg_call}
+\alias{handle_arg_x_nm}
 \title{Argument Handlers}
 \usage{
 handle_arg_call(call = NULL, env = NULL)
+
+handle_arg_x_nm(x_nm)
 }
 \arguments{
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
@@ -23,7 +26,41 @@ handle_arg_call(call = NULL, env = NULL)
 
 When \code{call} is \code{NULL}, it will be guessed to be
 \code{eval(quote(match.call()), envir = env)}.}
+
+\item{x_nm}{\verb{[NULL, character]} (optional, default \code{NULL})
+
+the name of the object \code{x} to mention in possible error message.
+\itemize{
+\item \code{NULL}: taken as \code{deparse(substitute(x))}
+\item \code{character}: the name as a string
+}}
+}
+\value{
+\itemize{
+\item \code{dbc::handle_arg_call}: returns an R \code{language} object, or \code{NULL} upon
+failure to guess the call
+}
+
+\itemize{
+\item \code{dbc::handle_x_nm_arg}: always returns a character vector of length 1
+}
 }
 \description{
 Functions which handle arguments of check functions.
 }
+\section{Functions}{
+
+\itemize{
+\item \code{dbc::handle_arg_call} is used internally in other functions
+to guess \code{call} which is to be reported if there is a problem
+}
+
+
+\itemize{
+\item \code{dbc::handle_x_nm_arg} is used internally in other functions
+to guess the name of the object passed to argument \code{x} when it is not
+supplied explicitly. It uses object \code{x} in its caller environment
+to guess \code{x_nm} if it is \code{NULL}.
+}
+}
+

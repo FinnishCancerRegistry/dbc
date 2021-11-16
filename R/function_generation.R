@@ -161,7 +161,7 @@ tests_to_report <- function(
   call = NULL
 ) {
 
-  call <- handle_arg_call(call = call, env = env)
+  call <- dbc::handle_arg_call(call = call, env = env)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -182,7 +182,7 @@ tests_to_report <- function(
       elem
     }, character(1L))
   }
-  call <- handle_arg_call(call = call, env = env)
+  call <- dbc::handle_arg_call(call = call, env = env)
 
   stopifnot(
     is.null(fail_messages) || (
@@ -545,8 +545,8 @@ generate_base_report_funs <- function(
   })
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     body <- paste0("  ", c(
-      "x_nm <- handle_x_nm_arg(x_nm)",
-      "call <- handle_arg_call(call = call, env = parent.frame(1L))",
+      "x_nm <- dbc::handle_arg_x_nm(x_nm)",
+      "call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))",
       "report_env <- environment()",
       "test_set <- c(",
       paste0("  ", fun_df[["test_set"]][fun_no]),
@@ -659,8 +659,8 @@ generate_report_derivative_funs <- function(
     report_fun_nm <- report_fun_nms[fun_no]
     arg_nms <- names(formals(fun_env[[report_fun_nm]]))
     paste0("  ", c(
-      "x_nm <- handle_x_nm_arg(x_nm)",
-      "call <- handle_arg_call(call = call, env = parent.frame(1L))",
+      "x_nm <- dbc::handle_arg_x_nm(x_nm)",
+      "call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))",
       "if (is.null(call)) {",
       "  call <- match.call()",
       "}",
@@ -799,8 +799,8 @@ generate_function_variants <- function(
     line_ends <- c(rep(", ", length(call_lines) - 1L), "")
     def <- c(
       def,
-      "  x_nm <- handle_x_nm_arg(x_nm)",
-      "  call <- handle_arg_call(call = call, env = parent.frame(1L))",
+      "  x_nm <- dbc::handle_arg_x_nm(x_nm)",
+      "  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))",
       "  out <- rbind(",
       paste0("    ", call_lines, line_ends),
       "  )",

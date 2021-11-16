@@ -10,8 +10,8 @@ assert_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -36,8 +36,8 @@ assert_user_input_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -62,8 +62,8 @@ assert_prod_input_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -88,8 +88,8 @@ assert_dev_input_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -114,8 +114,8 @@ assert_prod_output_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -140,8 +140,8 @@ assert_dev_output_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -166,8 +166,8 @@ assert_prod_interim_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }
@@ -192,8 +192,8 @@ assert_dev_interim_is <- function(
   x_nm = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
-  call <- handle_arg_call(call = call, env = parent.frame(1L))
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
   if (is.null(call)) {
     call <- match.call()
   }

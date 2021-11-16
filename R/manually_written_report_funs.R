@@ -61,7 +61,7 @@ report_has_only_valid_observations <- function(
   col_nm_set_list = NULL,
   call = NULL
 ) {
-  x_nm <- handle_x_nm_arg(x_nm)
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
   assert_is_data.frame(x = x, x_nm = x_nm)
   assert_is_character_nonNA_vector(tests)
   assert_is_one_of(

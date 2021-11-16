@@ -15,10 +15,16 @@
 #'
 #' When `call` is `NULL`, it will be guessed to be
 #' `eval(quote(match.call()), envir = env)`.
+#' @section Functions:
+#' - `dbc::handle_arg_call` is used internally in other functions
+#'   to guess `call` which is to be reported if there is a problem
+#' @return
+#' - `dbc::handle_arg_call`: returns an R `language` object, or `NULL` upon
+#'   failure to guess the call
 handle_arg_call <- function(call = NULL, env = NULL) {
   raise_internal_error_if_not(
     is.language(call) || is.null(call),
-    is.environment(env) || i.null(env)
+    is.environment(env) || is.null(env)
   )
   if (is.language(call)) {
     return(call)
@@ -44,29 +50,18 @@ handle_arg_call <- function(call = NULL, env = NULL) {
   return(call)
 }
 
-
-
-#' @title Utilities
-#' @description
-#' Utility functions, intended primarily for internal use.
-#' @name utilities
-NULL
-
-#' @rdname utilities
-#' @param x_nm `[NULL, character]` (mandatory, no default)
-#'
-#' - `character`: return input as-is
-#' - `NULL`: it is assumed that this function is called within another function,
-#'   and essentially `deparse(substitute(x))` is returned
+#' @rdname argument_handlers
+#' @template arg_x_nm
 #' @export
-#' @details
-#' - `handle_x_nm_arg` is used internally in `report_` and `assert_` functions
+#' @section Functions:
+#' - `dbc::handle_x_nm_arg` is used internally in other functions
 #'   to guess the name of the object passed to argument `x` when it is not
-#'   supplied explicitly.
+#'   supplied explicitly. It uses object `x` in its caller environment
+#'   to guess `x_nm` if it is `NULL`.
 #' @return
-#' - `handle_x_nm_arg`: always returns a character vector of length 1
-handle_x_nm_arg <- function(x_nm) {
-  stopifnot(
+#' - `dbc::handle_x_nm_arg`: always returns a character vector of length 1
+handle_arg_x_nm <- function(x_nm) {
+  raise_internal_error_if_not(
     (is.character(x_nm) && length(x_nm) == 1L && !is.na(x_nm)) || is.null(x_nm)
   )
   if (is.null(x_nm)) {
@@ -77,8 +72,6 @@ handle_x_nm_arg <- function(x_nm) {
   }
   x_nm
 }
-
-
 
 
 
