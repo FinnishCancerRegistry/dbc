@@ -37,7 +37,7 @@ failure to guess the call
 }
 
 \itemize{
-\item \code{dbc::handle_x_nm_arg}: always returns a character vector of length 1
+\item \code{dbc::handle_arg_x_nm}: always returns a character vector of length 1
 }
 }
 \description{
@@ -52,7 +52,7 @@ to guess \code{call} which is to be reported if there is a problem
 
 
 \itemize{
-\item \code{dbc::handle_x_nm_arg} is used internally in other functions
+\item \code{dbc::handle_arg_x_nm} is used internally in other functions
 to guess the name of the object passed to argument \code{x} when it is not
 supplied explicitly. It uses object \code{x} in its caller environment
 to guess \code{x_nm} if it is \code{NULL}.

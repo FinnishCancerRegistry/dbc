@@ -147,12 +147,12 @@ handle_arg_call <- function(call = NULL, env = NULL) {
 #' @template arg_x_nm
 #' @export
 #' @section Functions:
-#' - `dbc::handle_x_nm_arg` is used internally in other functions
+#' - `dbc::handle_arg_x_nm` is used internally in other functions
 #'   to guess the name of the object passed to argument `x` when it is not
 #'   supplied explicitly. It uses object `x` in its caller environment
 #'   to guess `x_nm` if it is `NULL`.
 #' @return
-#' - `dbc::handle_x_nm_arg`: always returns a character vector of length 1
+#' - `dbc::handle_arg_x_nm`: always returns a character vector of length 1
 handle_arg_x_nm <- function(x_nm) {
   raise_internal_error_if_not(
     (is.character(x_nm) && length(x_nm) == 1L && !is.na(x_nm)) || is.null(x_nm)
