@@ -14,10 +14,7 @@ test_atom_is_in_set <- function(
   set
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_atom_is_in_set(
     x = x, 
     x_nm = x_nm, 
@@ -40,10 +37,7 @@ test_dir_exists <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_dir_exists(
     x = x, 
     x_nm = x_nm, 
@@ -65,10 +59,7 @@ test_file_exists <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_file_exists(
     x = x, 
     x_nm = x_nm, 
@@ -91,10 +82,7 @@ test_has_class <- function(
   required_class
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_class(
     x = x, 
     x_nm = x_nm, 
@@ -118,10 +106,7 @@ test_has_length <- function(
   expected_length
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_length(
     x = x, 
     x_nm = x_nm, 
@@ -145,10 +130,7 @@ test_has_names <- function(
   required_names
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_names(
     x = x, 
     x_nm = x_nm, 
@@ -171,10 +153,7 @@ test_has_no_duplicates <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_no_duplicates(
     x = x, 
     x_nm = x_nm, 
@@ -197,10 +176,7 @@ test_has_one_of_classes <- function(
   classes
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_one_of_classes(
     x = x, 
     x_nm = x_nm, 
@@ -224,10 +200,7 @@ test_has_only_names <- function(
   required_names
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_only_names(
     x = x, 
     x_nm = x_nm, 
@@ -255,10 +228,7 @@ test_has_only_valid_observations <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_has_only_valid_observations(
     x = x, 
     x_nm = x_nm, 
@@ -286,10 +256,7 @@ test_inherits <- function(
   required_class
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_inherits(
     x = x, 
     x_nm = x_nm, 
@@ -312,10 +279,7 @@ test_is_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_atom(
     x = x, 
     x_nm = x_nm, 
@@ -339,10 +303,7 @@ test_is_between_exclusive <- function(
   hi
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_between_exclusive(
     x = x, 
     x_nm = x_nm, 
@@ -368,10 +329,7 @@ test_is_between_inclusive <- function(
   hi
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_between_inclusive(
     x = x, 
     x_nm = x_nm, 
@@ -395,10 +353,7 @@ test_is_call <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_call(
     x = x, 
     x_nm = x_nm, 
@@ -420,10 +375,7 @@ test_is_character <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character(
     x = x, 
     x_nm = x_nm, 
@@ -445,10 +397,7 @@ test_is_character_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character_atom(
     x = x, 
     x_nm = x_nm, 
@@ -470,10 +419,7 @@ test_is_character_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -495,10 +441,7 @@ test_is_character_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -520,10 +463,7 @@ test_is_character_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -545,10 +485,7 @@ test_is_character_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -570,10 +507,7 @@ test_is_character_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_character_vector(
     x = x, 
     x_nm = x_nm, 
@@ -595,10 +529,7 @@ test_is_data.frame <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_data.frame(
     x = x, 
     x_nm = x_nm, 
@@ -621,10 +552,7 @@ test_is_data.frame_with_required_names <- function(
   required_names
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_data.frame_with_required_names(
     x = x, 
     x_nm = x_nm, 
@@ -647,10 +575,7 @@ test_is_data.table <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_data.table(
     x = x, 
     x_nm = x_nm, 
@@ -673,10 +598,7 @@ test_is_data.table_with_required_names <- function(
   required_names
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_data.table_with_required_names(
     x = x, 
     x_nm = x_nm, 
@@ -699,10 +621,7 @@ test_is_data_table <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_data_table(
     x = x, 
     x_nm = x_nm, 
@@ -725,10 +644,7 @@ test_is_data_table_with_required_names <- function(
   required_names
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_data_table_with_required_names(
     x = x, 
     x_nm = x_nm, 
@@ -751,10 +667,7 @@ test_is_Date <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date(
     x = x, 
     x_nm = x_nm, 
@@ -776,10 +689,7 @@ test_is_Date_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date_atom(
     x = x, 
     x_nm = x_nm, 
@@ -801,10 +711,7 @@ test_is_Date_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -826,10 +733,7 @@ test_is_Date_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -851,10 +755,7 @@ test_is_Date_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -876,10 +777,7 @@ test_is_Date_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -901,10 +799,7 @@ test_is_Date_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_Date_vector(
     x = x, 
     x_nm = x_nm, 
@@ -926,10 +821,7 @@ test_is_double <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double(
     x = x, 
     x_nm = x_nm, 
@@ -951,10 +843,7 @@ test_is_double_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_atom(
     x = x, 
     x_nm = x_nm, 
@@ -976,10 +865,7 @@ test_is_double_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1001,10 +887,7 @@ test_is_double_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1026,10 +909,7 @@ test_is_double_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1051,10 +931,7 @@ test_is_double_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1076,10 +953,7 @@ test_is_double_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1101,10 +975,7 @@ test_is_double_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1126,10 +997,7 @@ test_is_double_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1151,10 +1019,7 @@ test_is_double_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1176,10 +1041,7 @@ test_is_double_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1201,10 +1063,7 @@ test_is_double_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1226,10 +1085,7 @@ test_is_double_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1251,10 +1107,7 @@ test_is_double_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1276,10 +1129,7 @@ test_is_double_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1301,10 +1151,7 @@ test_is_double_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1326,10 +1173,7 @@ test_is_double_nonNA_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1351,10 +1195,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1376,10 +1217,7 @@ test_is_double_nonNA_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1401,10 +1239,7 @@ test_is_double_nonNA_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1426,10 +1261,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1451,10 +1283,7 @@ test_is_double_nonNA_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1476,10 +1305,7 @@ test_is_double_nonNA_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1501,10 +1327,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1526,10 +1349,7 @@ test_is_double_nonNA_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1551,10 +1371,7 @@ test_is_double_nonNA_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1576,10 +1393,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1601,10 +1415,7 @@ test_is_double_nonNA_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1626,10 +1437,7 @@ test_is_double_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1651,10 +1459,7 @@ test_is_double_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1676,10 +1481,7 @@ test_is_double_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_double_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1701,10 +1503,7 @@ test_is_environment <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_environment(
     x = x, 
     x_nm = x_nm, 
@@ -1726,10 +1525,7 @@ test_is_expression <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_expression(
     x = x, 
     x_nm = x_nm, 
@@ -1751,10 +1547,7 @@ test_is_factor <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor(
     x = x, 
     x_nm = x_nm, 
@@ -1776,10 +1569,7 @@ test_is_factor_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1801,10 +1591,7 @@ test_is_factor_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1826,10 +1613,7 @@ test_is_factor_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -1851,10 +1635,7 @@ test_is_factor_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -1876,10 +1657,7 @@ test_is_factor_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1901,10 +1679,7 @@ test_is_factor_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_vector(
     x = x, 
     x_nm = x_nm, 
@@ -1927,10 +1702,7 @@ test_is_factor_with_levels <- function(
   expected_levels
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_factor_with_levels(
     x = x, 
     x_nm = x_nm, 
@@ -1953,10 +1725,7 @@ test_is_function <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_function(
     x = x, 
     x_nm = x_nm, 
@@ -1979,10 +1748,7 @@ test_is_function_with_required_argument_names <- function(
   required_argument_names
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_function_with_required_argument_names(
     x = x, 
     x_nm = x_nm, 
@@ -2006,10 +1772,7 @@ test_is_gt <- function(
   lo
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_gt(
     x = x, 
     x_nm = x_nm, 
@@ -2033,10 +1796,7 @@ test_is_gte <- function(
   lo
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_gte(
     x = x, 
     x_nm = x_nm, 
@@ -2059,10 +1819,7 @@ test_is_gtezero <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_gtezero(
     x = x, 
     x_nm = x_nm, 
@@ -2084,10 +1841,7 @@ test_is_gtzero <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_gtzero(
     x = x, 
     x_nm = x_nm, 
@@ -2109,10 +1863,7 @@ test_is_integer <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer(
     x = x, 
     x_nm = x_nm, 
@@ -2134,10 +1885,7 @@ test_is_integer_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2159,10 +1907,7 @@ test_is_integer_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2184,10 +1929,7 @@ test_is_integer_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2209,10 +1951,7 @@ test_is_integer_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2234,10 +1973,7 @@ test_is_integer_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2259,10 +1995,7 @@ test_is_integer_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2284,10 +2017,7 @@ test_is_integer_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2309,10 +2039,7 @@ test_is_integer_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2334,10 +2061,7 @@ test_is_integer_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2359,10 +2083,7 @@ test_is_integer_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2384,10 +2105,7 @@ test_is_integer_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2409,10 +2127,7 @@ test_is_integer_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2434,10 +2149,7 @@ test_is_integer_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2459,10 +2171,7 @@ test_is_integer_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2484,10 +2193,7 @@ test_is_integer_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2509,10 +2215,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2534,10 +2237,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2559,10 +2259,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2584,10 +2281,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2609,10 +2303,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2634,10 +2325,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2659,10 +2347,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2684,10 +2369,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2709,10 +2391,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2734,10 +2413,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2759,10 +2435,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2784,10 +2457,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2809,10 +2479,7 @@ test_is_integer_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -2834,10 +2501,7 @@ test_is_integer_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2859,10 +2523,7 @@ test_is_integer_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_integer_vector(
     x = x, 
     x_nm = x_nm, 
@@ -2884,10 +2545,7 @@ test_is_language_object <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_language_object(
     x = x, 
     x_nm = x_nm, 
@@ -2909,10 +2567,7 @@ test_is_list <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_list(
     x = x, 
     x_nm = x_nm, 
@@ -2934,10 +2589,7 @@ test_is_logical <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical(
     x = x, 
     x_nm = x_nm, 
@@ -2959,10 +2611,7 @@ test_is_logical_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical_atom(
     x = x, 
     x_nm = x_nm, 
@@ -2984,10 +2633,7 @@ test_is_logical_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3009,10 +2655,7 @@ test_is_logical_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3034,10 +2677,7 @@ test_is_logical_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3059,10 +2699,7 @@ test_is_logical_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3084,10 +2721,7 @@ test_is_logical_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_logical_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3110,10 +2744,7 @@ test_is_lt <- function(
   hi
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_lt(
     x = x, 
     x_nm = x_nm, 
@@ -3137,10 +2768,7 @@ test_is_lte <- function(
   hi
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_lte(
     x = x, 
     x_nm = x_nm, 
@@ -3163,10 +2791,7 @@ test_is_ltezero <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_ltezero(
     x = x, 
     x_nm = x_nm, 
@@ -3188,10 +2813,7 @@ test_is_ltzero <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_ltzero(
     x = x, 
     x_nm = x_nm, 
@@ -3213,10 +2835,7 @@ test_is_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3238,10 +2857,7 @@ test_is_name <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_name(
     x = x, 
     x_nm = x_nm, 
@@ -3263,10 +2879,7 @@ test_is_named <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_named(
     x = x, 
     x_nm = x_nm, 
@@ -3288,10 +2901,7 @@ test_is_named_list <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_named_list(
     x = x, 
     x_nm = x_nm, 
@@ -3313,10 +2923,7 @@ test_is_nonNA <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_nonNA(
     x = x, 
     x_nm = x_nm, 
@@ -3338,10 +2945,7 @@ test_is_NULL <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_NULL(
     x = x, 
     x_nm = x_nm, 
@@ -3363,10 +2967,7 @@ test_is_number <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number(
     x = x, 
     x_nm = x_nm, 
@@ -3388,10 +2989,7 @@ test_is_number_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3413,10 +3011,7 @@ test_is_number_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3438,10 +3033,7 @@ test_is_number_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3463,10 +3055,7 @@ test_is_number_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3488,10 +3077,7 @@ test_is_number_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3513,10 +3099,7 @@ test_is_number_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3538,10 +3121,7 @@ test_is_number_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3563,10 +3143,7 @@ test_is_number_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3588,10 +3165,7 @@ test_is_number_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3613,10 +3187,7 @@ test_is_number_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3638,10 +3209,7 @@ test_is_number_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3663,10 +3231,7 @@ test_is_number_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3688,10 +3253,7 @@ test_is_number_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3713,10 +3275,7 @@ test_is_number_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3738,10 +3297,7 @@ test_is_number_nonNA_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3763,10 +3319,7 @@ test_is_number_nonNA_gtezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3788,10 +3341,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3813,10 +3363,7 @@ test_is_number_nonNA_gtezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3838,10 +3385,7 @@ test_is_number_nonNA_gtzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3863,10 +3407,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3888,10 +3429,7 @@ test_is_number_nonNA_gtzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3913,10 +3451,7 @@ test_is_number_nonNA_ltezero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -3938,10 +3473,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -3963,10 +3495,7 @@ test_is_number_nonNA_ltezero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -3988,10 +3517,7 @@ test_is_number_nonNA_ltzero_atom <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
@@ -4013,10 +3539,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -4038,10 +3561,7 @@ test_is_number_nonNA_ltzero_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
@@ -4063,10 +3583,7 @@ test_is_number_nonNA_matrix <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
@@ -4088,10 +3605,7 @@ test_is_number_nonNA_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
@@ -4113,10 +3627,7 @@ test_is_number_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_number_vector(
     x = x, 
     x_nm = x_nm, 
@@ -4138,10 +3649,7 @@ test_is_numeric <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_numeric(
     x = x, 
     x_nm = x_nm, 
@@ -4164,10 +3672,7 @@ test_is_of_length <- function(
   expected_length
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_of_length(
     x = x, 
     x_nm = x_nm, 
@@ -4190,10 +3695,7 @@ test_is_uniquely_named <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_uniquely_named(
     x = x, 
     x_nm = x_nm, 
@@ -4215,10 +3717,7 @@ test_is_uniquely_named_list <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_uniquely_named_list(
     x = x, 
     x_nm = x_nm, 
@@ -4240,10 +3739,7 @@ test_is_vector <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_is_vector(
     x = x, 
     x_nm = x_nm, 
@@ -4266,10 +3762,7 @@ test_vector_elems_are_in_set <- function(
   set
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
-  if (is.null(call)) {
-    call <- match.call()
-  }
+  call <- dbc::handle_arg_call(call)
   report_df <- report_vector_elems_are_in_set(
     x = x, 
     x_nm = x_nm, 

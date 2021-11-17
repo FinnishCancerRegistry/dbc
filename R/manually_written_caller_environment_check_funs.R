@@ -18,6 +18,12 @@
 #' @examples
 #' # for use in other functions only
 #' my_fun_ <- function() {
+#'   dbc::report_function_caller_environment_is_not_global_environment()
+#' }
+#' result <- my_fun_()
+#' stopifnot(is.data.frame(result), "message" %in% names(result),
+#'           grepl("my_fun_", result[["message"]]))
+#' my_fun_ <- function() {
 #'   dbc::test_function_caller_environment_is_not_global_environment()
 #' }
 #' result <- my_fun_()
@@ -60,10 +66,10 @@ report_function_caller_environment_is_not_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    parent_call <- dbc::get_parent_call()
     x_nm <- deparse(parent_call[[1L]])
   }
-  call <- handle_arg_call(call, parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   dbc::tests_to_report(
     tests = paste0(
       "!identical(x, globalenv())"
@@ -92,11 +98,10 @@ report_function_caller_environment_is_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    call_stack <- sys.calls()
-    parent_call <- call_stack[[max(1L, length(call_stack) - 1L)]]
+    parent_call <- dbc::get_parent_call()
     x_nm <- deparse(parent_call[[1L]])
   }
-  call <- handle_arg_call(call, parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   dbc::tests_to_report(
     tests = c(
       "is.environment(x)",
@@ -133,10 +138,10 @@ assert_function_caller_environment_is_not_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    parent_call <- dbc::get_parent_call()
     x_nm <- deparse(parent_call[[1L]])
   }
-  call <- handle_arg_call(call, parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   report_df <- report_function_caller_environment_is_not_global_environment(
     x = x, x_nm = x_nm, call = call
   )
@@ -158,10 +163,10 @@ assert_function_caller_environment_is_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    parent_call <- dbc::get_parent_call()
     x_nm <- deparse(parent_call[[1L]])
   }
-  call <- handle_arg_call(call, parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   report_df <- report_function_caller_environment_is_global_environment(
     x = x, x_nm = x_nm, call = call
   )
@@ -184,10 +189,10 @@ test_function_caller_environment_is_not_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    parent_call <- dbc::get_parent_call()
     x_nm <- deparse(parent_call[[1L]])
   }
-  call <- handle_arg_call(call, parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   report_df <- report_function_caller_environment_is_not_global_environment(
     x = x,
     x_nm = x_nm,
@@ -207,10 +212,10 @@ test_function_caller_environment_is_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    parent_call <- dbc::get_parent_call()
     x_nm <- deparse(parent_call[[1L]])
   }
-  call <- handle_arg_call(call, parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   report_df <- report_function_caller_environment_is_global_environment(
     x = x,
     x_nm = x_nm,

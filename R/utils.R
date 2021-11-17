@@ -132,12 +132,16 @@ handle_arg_call <- function(call = NULL, env = NULL) {
     warning("dbc::handle_arg_call argument \"env\" has been deprecated")
   }
   if (is.null(call)) {
-    bad_call <- quote(handle_arg_call())
+    bad_call_strings <- c(deparse(match.call()), "get_nth_call(n = i)")
     for (i in 3:1) {
       call <- tryCatch(get_nth_call(i), error = function(e) e)
-      if (!inherits(call, "error") && !identical(call, bad_call)) {
+      call_string <- paste0(deparse(call), collapse = "")
+      if (!inherits(call, "error") && !call_string %in% bad_call_strings) {
         break()
       }
+    }
+    if (call_string %in% bad_call_strings) {
+      call <- match.call()
     }
   }
   return(call)

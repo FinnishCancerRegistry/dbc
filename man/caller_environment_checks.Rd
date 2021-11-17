@@ -76,6 +76,12 @@ Functions to check caller environment of a function.
 \examples{
 # for use in other functions only
 my_fun_ <- function() {
+  dbc::report_function_caller_environment_is_not_global_environment()
+}
+result <- my_fun_()
+stopifnot(is.data.frame(result), "message" \%in\% names(result),
+          grepl("my_fun_", result[["message"]]))
+my_fun_ <- function() {
   dbc::test_function_caller_environment_is_not_global_environment()
 }
 result <- my_fun_()

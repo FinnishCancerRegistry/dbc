@@ -11,7 +11,7 @@ assert_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -37,7 +37,7 @@ assert_user_input_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -63,7 +63,7 @@ assert_prod_input_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -89,7 +89,7 @@ assert_dev_input_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -115,7 +115,7 @@ assert_prod_output_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -141,7 +141,7 @@ assert_dev_output_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -167,7 +167,7 @@ assert_prod_interim_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
@@ -193,7 +193,7 @@ assert_dev_interim_is <- function(
   call = NULL
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))
+  call <- dbc::handle_arg_call(call)
   if (is.null(call)) {
     call <- match.call()
   }
