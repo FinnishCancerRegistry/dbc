@@ -1,4 +1,103 @@
 
+#' @title Function Calls
+#' @description
+#' Retrieve upsteam function calls.
+#' @name function_calls
+#' @examples
+#' tf1 <- function(tf1_arg = 1) {
+#'   get_current_call()
+#' }
+#' stopifnot(
+#'   identical(tf1(), quote(tf1()))
+#' )
+#' tf2 <- function(tf2_arg = 2) {
+#'   get_parent_call()
+#' }
+#' tf3 <- function(tf3_arg = 3) {
+#'   tf2()
+#' }
+#' stopifnot(
+#'   identical(tf3(), quote(tf3()))
+#' )
+#' tf4 <- function(tf4_arg = 4) {
+#'   get_parent_call()
+#' }
+#' stopifnot(
+#'   inherits(tryCatch(get_current_call(), error = function(e) e), "error"),
+#'   inherits(tryCatch(get_parent_call(), error = function(e) e), "error"),
+#'   inherits(tryCatch(tf5(), error = function(e) e), "error")
+#' )
+NULL
+
+#' @rdname function_calls
+#' @export
+#' @section Functions:
+#' - `get_current_call`: when called inside another function, gives the call
+#'   of that function. See **Examples**.
+get_current_call <- function() {
+  n <- 1L
+  call <- tryCatch(
+    match.call(
+      definition = sys.function(sys.parent(n)),
+      call = sys.call(sys.parent(n)),
+      envir = parent.frame(n)
+    ),
+    error = function(e) e
+  )
+  if (inherits(call, "error") || identical(call, quote(get_current_call()))) {
+    stop("Could not determine crreunt call. Was get_current_call not ",
+         "called in another function?")
+  }
+  call
+}
+
+#' @rdname function_calls
+#' @export
+#' @section Functions:
+#' - `get_parent_call`: when called inside another function, gives the call
+#'   of the function calling that one. See **Examples**.
+get_parent_call <- function() {
+  n <- 2L
+  call <- tryCatch(
+    match.call(
+      definition = sys.function(sys.parent(n)),
+      call = sys.call(sys.parent(n)),
+      envir = parent.frame(n)
+    ),
+    error = function(e) e
+  )
+  if (inherits(call, "error") || identical(call, quote(get_parent_call()))) {
+    stop("Could not determine parent call. get_parent_call can only be used ",
+         "in a function called by another.")
+  }
+  call
+}
+
+#' @rdname function_calls
+#' @export
+#' @section Functions:
+#' - `get_nth_call`: when called inside another function, gives the `n`'th
+#'   parent call of that function.
+#' @param n `[integer]` (default `1L`)
+#'
+#' Integer larger than zero. `1L` gives the call of the function which calls
+#' `get_nth_call`.
+get_nth_call <- function(n = 1L) {
+  call <- tryCatch(
+    match.call(
+      definition = sys.function(sys.parent(n)),
+      call = sys.call(sys.parent(n)),
+      envir = parent.frame(n)
+    ),
+    error = function(e) e
+  )
+  if (inherits(call, "error") || identical(call, quote(get_nth_call()))) {
+    stop("Could not determine parent call. get_parent_call can only be used ",
+         "in a function called by another.")
+  }
+  call
+}
+
 
 #' @title Argument Handlers
 #' @description
@@ -29,22 +128,16 @@ handle_arg_call <- function(call = NULL, env = NULL) {
   if (is.language(call)) {
     return(call)
   }
-  if (is.null(env)) {
-    env <- parent.frame(2L)
+  if (!is.null(env)) {
+    warning("dbc::handle_arg_call argument \"env\" has been deprecated")
   }
   if (is.null(call)) {
-    env_list <- unique(list(env, parent.frame(2L), parent.frame(1L)))
-    for (env_list_elem in env_list) {
-      call <- tryCatch(
-        eval(quote(match.call()), envir = env_list_elem),
-        error = function(e) e
-      )
-      if (is.language(call) && !identical(call, quote(match.call()))) {
+    bad_call <- quote(handle_arg_call())
+    for (i in 3:1) {
+      call <- tryCatch(get_nth_call(i), error = function(e) e)
+      if (!inherits(call, "error") && !identical(call, bad_call)) {
         break()
       }
-    }
-    if (!is.language(call) || identical(call, quote(match.call()))) {
-      call <- NULL
     }
   }
   return(call)

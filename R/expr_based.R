@@ -33,7 +33,7 @@ generate_assert_is_funs <- function() {
       "  call = NULL",
       ") {",
       "  x_nm <- dbc::handle_arg_x_nm(x_nm)",
-      "  call <- dbc::handle_arg_call(call = call, env = parent.frame(1L))",
+      "  call <- dbc::handle_arg_call(call)",
       "  if (is.null(call)) {",
       "    call <- match.call()",
       "  }",

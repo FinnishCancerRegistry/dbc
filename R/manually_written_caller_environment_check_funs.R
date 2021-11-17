@@ -92,23 +92,31 @@ report_function_caller_environment_is_global_environment <- function(
     x <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    parent_call <- eval(quote(match.call()), parent.frame(1L))
+    call_stack <- sys.calls()
+    parent_call <- call_stack[[max(1L, length(call_stack) - 1L)]]
     x_nm <- deparse(parent_call[[1L]])
   }
   call <- handle_arg_call(call, parent.frame(1L))
   dbc::tests_to_report(
-    tests = paste0(
+    tests = c(
+      "is.environment(x)",
       "identical(x, globalenv())"
     ),
-    fail_messages = paste0(
-      "Looks like function ", deparse(x_nm), " was not called in the global ",
-      "environment; ", deparse(x_nm), " is intended to be only called in ",
-      "the global environment, and not in other environments, such as in ",
-      "other functions."
+    fail_messages = c(
+      "Object ${deparse(x)} is not an environment.",
+      paste0(
+        "Looks like function ", deparse(x_nm), " was not called in the global ",
+        "environment; ", deparse(x_nm), " is intended to be only called in ",
+        "the global environment, and not in other environments, such as in ",
+        "other functions."
+      )
     ),
-    pass_messages = paste0(
-      "Looks like function ", deparse(x_nm), " was called in the global ",
-      "environment, as expected."
+    pass_messages = c(
+      "Object ${deparse(x)} is an environment.",
+      paste0(
+        "Looks like function ", deparse(x_nm), " was called in the global ",
+        "environment, as expected."
+      )
     ),
     call = call
   )
