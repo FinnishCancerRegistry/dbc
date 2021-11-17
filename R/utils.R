@@ -107,13 +107,9 @@ get_nth_call <- function(n = 1L) {
 #' @rdname argument_handlers
 #' @export
 #' @template arg_call
-#' @param env `[NULL, environment]` (no default)
+#' @param env `[NULL, environment]` (DEPRECATED)
 #'
-#' - `environment`: use this environment
-#' - `NULL`: use `parent.frame(2)`
-#'
-#' When `call` is `NULL`, it will be guessed to be
-#' `eval(quote(match.call()), envir = env)`.
+#' Deprecated in 0.3.21.
 #' @section Functions:
 #' - `dbc::handle_arg_call` is used internally in other functions
 #'   to guess `call` which is to be reported if there is a problem

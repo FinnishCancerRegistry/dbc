@@ -58,8 +58,8 @@ to check; See \strong{Examples}
 
 \item{x_nm}{\verb{[NULL, character]} (default \code{NULL})
 \itemize{
-\item \code{NULL}: The name of the function you are checking is guessed via
-\code{eval(quote(match.call()), parent.frame(1L))}
+\item \code{NULL}: The name of the function you are checking is guessed from
+\code{dbc::get_parent_call()} output
 \item \code{character}: This should be the name of the function you are checking.
 }}
 

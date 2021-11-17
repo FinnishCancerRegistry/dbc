@@ -12,9 +12,6 @@ assert_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -38,9 +35,6 @@ assert_user_input_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -64,9 +58,6 @@ assert_prod_input_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -90,9 +81,6 @@ assert_dev_input_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -116,9 +104,6 @@ assert_prod_output_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -142,9 +127,6 @@ assert_dev_output_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -168,9 +150,6 @@ assert_prod_interim_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))
@@ -194,9 +173,6 @@ assert_dev_interim_is <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
   report_df <- eval(substitute(
     report_is(x = x, x_nm = x_nm, call = call),
     list(x = substitute(x))

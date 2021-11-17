@@ -72,9 +72,6 @@ report_has_only_valid_observations <- function(
   dataset_env <- as.environment(x)
   parent.env(dataset_env) <- parent_env
   call <- dbc::handle_arg_call(call)
-  if (is.null(call)) {
-    call <- match.call()
-  }
 
   which_tests_to_run <- seq_along(tests)
   if (inherits(col_nm_set_list, "list")) {

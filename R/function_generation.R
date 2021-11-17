@@ -329,15 +329,7 @@ report_to_assertion <- function(
 
     is.null(raise_error_call) || is.language(raise_error_call)
   )
-  if (is.null(raise_error_call)) {
-    raise_error_call <- tryCatch(
-      eval(quote(match.call()), parent.frame(1L)),
-      error = function(e) e
-    )
-    if (inherits(raise_error_call, c("error", "try-error"))) {
-      raise_error_call <- match.call()
-    }
-  }
+  raise_error_call <- dbc::handle_arg_call(raise_error_call)
 
   if (assertion_type %in% dev_assertion_types() && get_dev_mode() == FALSE) {
     return(invisible(NULL))

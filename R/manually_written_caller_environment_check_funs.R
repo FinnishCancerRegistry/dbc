@@ -9,8 +9,8 @@
 #'   to check; See **Examples**
 #' @param x_nm `[NULL, character]` (default `NULL`)
 #'
-#' - `NULL`: The name of the function you are checking is guessed via
-#'   `eval(quote(match.call()), parent.frame(1L))`
+#' - `NULL`: The name of the function you are checking is guessed from
+#'   `dbc::get_parent_call()` output
 #' - `character`: This should be the name of the function you are checking.
 #'
 #' @template arg_call

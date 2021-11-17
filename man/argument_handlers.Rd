@@ -18,14 +18,9 @@ handle_arg_x_nm(x_nm)
 \item \code{NULL}: the call is attempted to be inferred
 }}
 
-\item{env}{\verb{[NULL, environment]} (no default)
-\itemize{
-\item \code{environment}: use this environment
-\item \code{NULL}: use \code{parent.frame(2)}
-}
+\item{env}{\verb{[NULL, environment]} (DEPRECATED)
 
-When \code{call} is \code{NULL}, it will be guessed to be
-\code{eval(quote(match.call()), envir = env)}.}
+Deprecated in 0.3.21.}
 
 \item{x_nm}{\verb{[NULL, character]} (optional, default \code{NULL})
 
