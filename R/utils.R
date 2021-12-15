@@ -117,10 +117,20 @@ get_nth_call <- function(n = 1L) {
 #' - `dbc::handle_arg_call`: returns an R `language` object, or `NULL` upon
 #'   failure to guess the call
 handle_arg_call <- function(call = NULL, env = NULL) {
-  raise_internal_error_if_not(
-    is.language(call) || is.null(call),
-    is.environment(env) || is.null(env)
+  call_test <- tryCatch(
+    raise_internal_error_if_not(
+      is.language(call) || is.null(call),
+      is.environment(env) || is.null(env)
+    ),
+    error = function(e) e
   )
+  if (inherits(call_test, "error")) {
+    call <- substitute(call, parent.frame(1L))
+    raise_internal_error_if_not(
+      is.language(call) || is.null(call),
+      is.environment(env) || is.null(env)
+    )
+  }
   if (is.language(call)) {
     return(call)
   }
