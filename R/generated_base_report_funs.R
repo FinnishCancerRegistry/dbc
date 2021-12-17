@@ -8,6 +8,7 @@
 #' @rdname assertions
 #' @export
 report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -36,6 +37,7 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
 #' @rdname assertions
 #' @export
 report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -64,6 +66,7 @@ report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_file_exists <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -92,6 +95,7 @@ report_file_exists <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -120,6 +124,7 @@ report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
 #' @rdname assertions
 #' @export
 report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -148,6 +153,7 @@ report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
 #' @rdname assertions
 #' @export
 report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -176,6 +182,7 @@ report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
 #' @rdname assertions
 #' @export
 report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -204,6 +211,7 @@ report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -232,6 +240,7 @@ report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
 #' @rdname assertions
 #' @export
 report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -260,6 +269,7 @@ report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
 #' @rdname assertions
 #' @export
 report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -288,6 +298,7 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
 #' @rdname assertions
 #' @export
 report_is_atom <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -316,6 +327,7 @@ report_is_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -344,6 +356,7 @@ report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
 #' @rdname assertions
 #' @export
 report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -372,6 +385,7 @@ report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
 #' @rdname assertions
 #' @export
 report_is_call <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -400,6 +414,7 @@ report_is_call <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -428,6 +443,7 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -456,6 +472,7 @@ report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -484,6 +501,7 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
 #' @rdname assertions
 #' @export
 report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -512,6 +530,7 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -540,6 +559,7 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL
 #' @rdname assertions
 #' @export
 report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -568,6 +588,7 @@ report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -596,6 +617,7 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL
 #' @rdname assertions
 #' @export
 report_is_Date <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -624,6 +646,7 @@ report_is_Date <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -652,6 +675,7 @@ report_is_double <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_environment <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -680,6 +704,7 @@ report_is_environment <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_expression <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -708,6 +733,7 @@ report_is_expression <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -736,6 +762,7 @@ report_is_factor <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_levels) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -764,6 +791,7 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_l
 #' @rdname assertions
 #' @export
 report_is_function <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -792,6 +820,7 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call = NULL, required_argument_names) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -820,6 +849,7 @@ report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call
 #' @rdname assertions
 #' @export
 report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -848,6 +878,7 @@ report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
 #' @rdname assertions
 #' @export
 report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -876,6 +907,7 @@ report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
 #' @rdname assertions
 #' @export
 report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -904,6 +936,7 @@ report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -932,6 +965,7 @@ report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -960,6 +994,7 @@ report_is_integer <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -988,6 +1023,7 @@ report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_list <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1016,6 +1052,7 @@ report_is_list <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1044,6 +1081,7 @@ report_is_logical <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1072,6 +1110,7 @@ report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
 #' @rdname assertions
 #' @export
 report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1100,6 +1139,7 @@ report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
 #' @rdname assertions
 #' @export
 report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1128,6 +1168,7 @@ report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1156,6 +1197,7 @@ report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1184,6 +1226,7 @@ report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_name <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1212,6 +1255,7 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_named <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1240,6 +1284,7 @@ report_is_named <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1268,6 +1313,7 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1296,6 +1342,7 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1324,6 +1371,7 @@ report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1352,6 +1400,7 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1380,6 +1429,7 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1408,6 +1458,7 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
 #' @rdname assertions
 #' @export
 report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1436,6 +1487,7 @@ report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1464,6 +1516,7 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_vector <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
@@ -1492,6 +1545,7 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()

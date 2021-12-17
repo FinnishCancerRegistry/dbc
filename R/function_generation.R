@@ -532,6 +532,7 @@ generate_base_report_funs <- function(
   })
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     body <- paste0("  ", c(
+      "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
       "x_nm <- dbc::handle_arg_x_nm(x_nm)",
       "call <- dbc::handle_arg_call(call)",
       "report_env <- environment()",
@@ -646,6 +647,7 @@ generate_report_derivative_funs <- function(
     report_fun_nm <- report_fun_nms[fun_no]
     arg_nms <- names(formals(fun_env[[report_fun_nm]]))
     paste0("  ", c(
+      "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
       "x_nm <- dbc::handle_arg_x_nm(x_nm)",
       "call <- dbc::handle_arg_call(call)",
       paste0("report_df <- ", fun_df[["report_fun_nm"]][fun_no], "("),
