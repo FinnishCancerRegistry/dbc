@@ -42,13 +42,7 @@ report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
 }
 
 
-
-#' @rdname assertions
-#' @export
-#' @param assertion_type `[character]` (mandatory, default `"general"`)
-#'
-#' one of "user_input", "prod_input", etc.
-assert_is_one_of <- function(
+assert_is_one_of__ <- function(
   x,
   x_nm = NULL,
   funs,
@@ -73,8 +67,11 @@ assert_is_one_of <- function(
     arg_list <- formals(fun)
     arg_list[c("x", "x_nm", "call")] <- list(x = quote(x), x_nm = quote(x_nm),
                                              call = quote(call))
+    call_string <- paste0("fun(x = x, x_nm = x_nm, call = call)")
+    call <- parse(text = call_string)[[1L]]
+
     result <- tryCatch(
-      do.call(fun, arg_list),
+      eval(call, envir = environment()),
       error = function(e) e
     )
     if (is.data.frame(result) && all(c("pass", "test") %in% names(result))) {
@@ -128,6 +125,20 @@ assert_is_one_of <- function(
   return(invisible(NULL))
 }
 
+#' @rdname assertions
+#' @export
+assert_is_one_of <- function(
+  x,
+  x_nm = NULL,
+  funs,
+  call = NULL
+) {
+  assert_is_one_of__(
+    x = x, x_nm = x_nm, funs = funs, call = call,
+    assertion_type = "general"
+  )
+}
+
 
 #' @rdname assertions
 #' @export
@@ -138,7 +149,7 @@ assert_prod_input_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "prod_input"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
@@ -155,7 +166,7 @@ assert_prod_output_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "prod_output"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
@@ -172,7 +183,7 @@ assert_prod_interim_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "prod_interim"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
@@ -189,7 +200,7 @@ assert_user_input_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "user_input"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
@@ -206,7 +217,7 @@ assert_dev_input_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "dev_input"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
@@ -223,7 +234,7 @@ assert_dev_interim_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "dev_interim"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
@@ -240,7 +251,7 @@ assert_dev_output_is_one_of <- function(
   call = NULL
 ) {
   assertion_type <- "dev_output"
-  assert_is_one_of(
+  assert_is_one_of__(
     x = x,
     x_nm = x_nm,
     funs = funs,
