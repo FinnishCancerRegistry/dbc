@@ -346,7 +346,16 @@ get_newest_error_data <- function() {
 
 
 
-
+list_union <- function(x) {
+  stopifnot(inherits(x, "list"))
+  out <- NULL
+  fun_env <- environment()
+  invisible(lapply(seq_along(x), function(i) {
+    fun_env[["out"]] <- union(out, x[[i]])
+    NULL
+  }))
+  return(out)
+}
 
 
 
