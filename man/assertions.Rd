@@ -5455,7 +5455,7 @@ identify_invalid_observations(x, report_df)
 
 report_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
-assert_is_one_of(x, x_nm = NULL, funs, call = NULL, assertion_type = "general")
+assert_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
 assert_prod_input_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
@@ -5562,10 +5562,6 @@ report functions that return a report (data.frame);
 \item \code{character}: names of functions that can be found by \verb{[match.fun]}
 \item \code{list}: list of functions
 }}
-
-\item{assertion_type}{\verb{[character]} (mandatory, default \code{"general"})
-
-one of "user_input", "prod_input", etc.}
 }
 \value{
 \itemize{
