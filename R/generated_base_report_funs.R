@@ -1031,7 +1031,7 @@ report_is_list <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'list')"
   )
   fail_msg_set <- c(
-    "object ${deparse(x_nm)} did not of class list"
+    "object ${deparse(x_nm)} was not of class list"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1292,7 +1292,7 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
     c("inherits(x, 'list')", "!is.null(names(x))")
   )
   fail_msg_set <- c(
-    c("object ${deparse(x_nm)} did not of class list", "object ${deparse(x_nm)} did not have any names")
+    c("object ${deparse(x_nm)} was not of class list", "object ${deparse(x_nm)} did not have any names")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
@@ -1495,7 +1495,7 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
     c("inherits(x, 'list')", "!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)")
   )
   fail_msg_set <- c(
-    c("object ${deparse(x_nm)} did not of class list", "object ${deparse(x_nm)} did not have any names", "not every element of object ${deparse(x_nm)} has a different name")
+    c("object ${deparse(x_nm)} was not of class list", "object ${deparse(x_nm)} did not have any names", "not every element of object ${deparse(x_nm)} has a different name")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)

@@ -49,10 +49,10 @@
 "is_vector";"!is.list(x)";"object ${deparse(x_nm)} was a list";NA;""
 "is_matrix";"is.matrix(x)";"object ${deparse(x_nm)} was not a matrix";NA;NA
 "is_NULL";"is.null(x)";"object ${deparse(x_nm)} was not NULL";NA;NA
-"is_list";"inherits(x, 'list')";"object ${deparse(x_nm)} did not of class list";NA;NA
-"is_named_list";"inherits(x, 'list')";"object ${deparse(x_nm)} did not of class list";NA;NA
+"is_list";"inherits(x, 'list')";"object ${deparse(x_nm)} was not of class list";NA;NA
+"is_named_list";"inherits(x, 'list')";"object ${deparse(x_nm)} was not of class list";NA;NA
 "is_named_list";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;NA
-"is_uniquely_named_list";"inherits(x, 'list')";"object ${deparse(x_nm)} did not of class list";NA;NA
+"is_uniquely_named_list";"inherits(x, 'list')";"object ${deparse(x_nm)} was not of class list";NA;NA
 "is_uniquely_named_list";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;NA
 "is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object ${deparse(x_nm)} has a different name";NA;NA
 "is_data.frame";"is.data.frame(x)";"object ${deparse(x_nm)} was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;NA
