@@ -7,6 +7,35 @@
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+report_all_are_TRUE <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  test_set <- c(
+    "all(x %in% TRUE)"
+  )
+  fail_msg_set <- c(
+    "${n_fail} elements were FALSE or NA"
+  )
+  pass_msg_set <- c(
+    NA_character_
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)

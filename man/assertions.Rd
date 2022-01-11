@@ -20,6 +20,7 @@
 \alias{assert_dev_output_is}
 \alias{assert_prod_interim_is}
 \alias{assert_dev_interim_is}
+\alias{report_all_are_TRUE}
 \alias{report_atom_is_in_set}
 \alias{report_dir_exists}
 \alias{report_file_exists}
@@ -74,6 +75,7 @@
 \alias{report_is_uniquely_named_list}
 \alias{report_is_vector}
 \alias{report_vector_elems_are_in_set}
+\alias{assert_dev_input_all_are_TRUE}
 \alias{assert_dev_input_atom_is_in_set}
 \alias{assert_dev_input_dir_exists}
 \alias{assert_dev_input_file_exists}
@@ -243,6 +245,7 @@
 \alias{assert_dev_input_is_uniquely_named_list}
 \alias{assert_dev_input_is_vector}
 \alias{assert_dev_input_vector_elems_are_in_set}
+\alias{assert_dev_interim_all_are_TRUE}
 \alias{assert_dev_interim_atom_is_in_set}
 \alias{assert_dev_interim_dir_exists}
 \alias{assert_dev_interim_file_exists}
@@ -412,6 +415,7 @@
 \alias{assert_dev_interim_is_uniquely_named_list}
 \alias{assert_dev_interim_is_vector}
 \alias{assert_dev_interim_vector_elems_are_in_set}
+\alias{assert_dev_output_all_are_TRUE}
 \alias{assert_dev_output_atom_is_in_set}
 \alias{assert_dev_output_dir_exists}
 \alias{assert_dev_output_file_exists}
@@ -581,6 +585,7 @@
 \alias{assert_dev_output_is_uniquely_named_list}
 \alias{assert_dev_output_is_vector}
 \alias{assert_dev_output_vector_elems_are_in_set}
+\alias{assert_all_are_TRUE}
 \alias{assert_atom_is_in_set}
 \alias{assert_dir_exists}
 \alias{assert_file_exists}
@@ -750,6 +755,7 @@
 \alias{assert_is_uniquely_named_list}
 \alias{assert_is_vector}
 \alias{assert_vector_elems_are_in_set}
+\alias{assert_prod_input_all_are_TRUE}
 \alias{assert_prod_input_atom_is_in_set}
 \alias{assert_prod_input_dir_exists}
 \alias{assert_prod_input_file_exists}
@@ -919,6 +925,7 @@
 \alias{assert_prod_input_is_uniquely_named_list}
 \alias{assert_prod_input_is_vector}
 \alias{assert_prod_input_vector_elems_are_in_set}
+\alias{assert_prod_interim_all_are_TRUE}
 \alias{assert_prod_interim_atom_is_in_set}
 \alias{assert_prod_interim_dir_exists}
 \alias{assert_prod_interim_file_exists}
@@ -1088,6 +1095,7 @@
 \alias{assert_prod_interim_is_uniquely_named_list}
 \alias{assert_prod_interim_is_vector}
 \alias{assert_prod_interim_vector_elems_are_in_set}
+\alias{assert_prod_output_all_are_TRUE}
 \alias{assert_prod_output_atom_is_in_set}
 \alias{assert_prod_output_dir_exists}
 \alias{assert_prod_output_file_exists}
@@ -1371,6 +1379,7 @@
 \alias{report_is_number_nonNA_ltzero_atom}
 \alias{report_is_number_nonNA_ltzero_matrix}
 \alias{report_is_number_nonNA_ltzero_vector}
+\alias{test_all_are_TRUE}
 \alias{test_atom_is_in_set}
 \alias{test_dir_exists}
 \alias{test_file_exists}
@@ -1540,6 +1549,7 @@
 \alias{test_is_uniquely_named_list}
 \alias{test_is_vector}
 \alias{test_vector_elems_are_in_set}
+\alias{assert_user_input_all_are_TRUE}
 \alias{assert_user_input_atom_is_in_set}
 \alias{assert_user_input_dir_exists}
 \alias{assert_user_input_file_exists}
@@ -1741,6 +1751,8 @@ assert_prod_interim_is(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is(x, x_nm = NULL, call = NULL)
 
+report_all_are_TRUE(x, x_nm = NULL, call = NULL)
+
 report_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
 report_dir_exists(x, x_nm = NULL, call = NULL)
@@ -1868,6 +1880,8 @@ report_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 report_is_vector(x, x_nm = NULL, call = NULL)
 
 report_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_dev_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -2241,6 +2255,8 @@ assert_dev_input_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
+assert_dev_interim_all_are_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_dev_interim_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
 assert_dev_interim_dir_exists(x, x_nm = NULL, call = NULL)
@@ -2612,6 +2628,8 @@ assert_dev_interim_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 assert_dev_interim_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_dev_output_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -2985,6 +3003,8 @@ assert_dev_output_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
+assert_all_are_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
 assert_dir_exists(x, x_nm = NULL, call = NULL)
@@ -3351,6 +3371,8 @@ assert_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 assert_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_prod_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -3723,6 +3745,8 @@ assert_prod_input_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 assert_prod_input_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_prod_interim_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -4111,6 +4135,8 @@ assert_prod_interim_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 assert_prod_interim_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_prod_output_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -4712,6 +4738,8 @@ report_is_number_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
 
 report_is_number_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
 
+test_all_are_TRUE(x, x_nm = NULL, call = NULL)
+
 test_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
 test_dir_exists(x, x_nm = NULL, call = NULL)
@@ -5078,6 +5106,8 @@ test_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 test_is_vector(x, x_nm = NULL, call = NULL)
 
 test_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_user_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_user_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 

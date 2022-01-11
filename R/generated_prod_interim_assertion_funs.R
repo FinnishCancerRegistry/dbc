@@ -7,6 +7,30 @@
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_prod_interim_all_are_TRUE <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- report_all_are_TRUE(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  report_to_assertion(report_df, assertion_type = "prod_interim")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_prod_interim_atom_is_in_set <- function(
   x, 
   x_nm = NULL, 

@@ -7,6 +7,29 @@
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_all_are_TRUE <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- report_all_are_TRUE(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_atom_is_in_set <- function(
   x, 
   x_nm = NULL, 
