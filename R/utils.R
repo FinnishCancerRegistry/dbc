@@ -117,10 +117,12 @@ get_nth_call <- function(n = 1L) {
 #' - `dbc::handle_arg_call`: returns an R `language` object, or `NULL` upon
 #'   failure to guess the call
 handle_arg_call <- function(call = NULL, env = NULL) {
+  if (!is.null(env)) {
+    stop("Argument 'env' has been deprecated.")
+  }
   call_test <- tryCatch(
-    raise_internal_error_if_not(
-      is.language(call) || is.null(call),
-      is.environment(env) || is.null(env)
+    stopifnot(
+      is.language(call) || is.null(call)
     ),
     error = function(e) e
   )
