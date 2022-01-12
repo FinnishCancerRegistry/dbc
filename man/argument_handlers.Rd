@@ -8,7 +8,7 @@
 \usage{
 handle_arg_call(call = NULL, env = NULL)
 
-handle_arg_x_nm(x_nm)
+handle_arg_x_nm(x_nm, env = NULL)
 }
 \arguments{
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
@@ -18,9 +18,11 @@ handle_arg_x_nm(x_nm)
 \item \code{NULL}: the call is attempted to be inferred
 }}
 
-\item{env}{\verb{[NULL, environment]} (DEPRECATED)
+\item{env}{\verb{[NULL, environment, other]} (optional, default \code{NULL})
 
-Deprecated in 0.3.21.}
+Environment where \code{call} / \code{x.nm} is inferred in using \verb{[substitute]}
+(\code{substitute(call, env)} / \code{substitute(x, env = env)}), if
+\code{call} is \code{NULL}.}
 
 \item{x_nm}{\verb{[NULL, character]} (optional, default \code{NULL})
 

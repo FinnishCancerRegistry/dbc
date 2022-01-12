@@ -107,9 +107,11 @@ get_nth_call <- function(n = 1L) {
 #' @rdname argument_handlers
 #' @export
 #' @template arg_call
-#' @param env `[NULL, environment]` (DEPRECATED)
+#' @param env `[NULL, environment, other]` (optional, default `NULL`)
 #'
-#' Deprecated in 0.3.21.
+#' Environment where `call` / `x.nm` is inferred in using `[substitute]`
+#' (`substitute(call, env)` / `substitute(x, env = env)`), if
+#' `call` is `NULL`.
 #' @section Functions:
 #' - `dbc::handle_arg_call` is used internally in other functions
 #'   to guess `call` which is to be reported if there is a problem
@@ -117,8 +119,11 @@ get_nth_call <- function(n = 1L) {
 #' - `dbc::handle_arg_call`: returns an R `language` object, or `NULL` upon
 #'   failure to guess the call
 handle_arg_call <- function(call = NULL, env = NULL) {
-  if (!is.null(env)) {
-    stop("Argument 'env' has been deprecated.")
+  raise_internal_error_if_not(
+    is.environment(env) || is.null(env)
+  )
+  if (is.null(env)) {
+    env <- parent.frame(1L)
   }
   call_test <- tryCatch(
     stopifnot(
@@ -127,17 +132,13 @@ handle_arg_call <- function(call = NULL, env = NULL) {
     error = function(e) e
   )
   if (inherits(call_test, "error")) {
-    call <- substitute(call, parent.frame(1L))
+    call <- substitute(call, env)
     raise_internal_error_if_not(
-      is.language(call) || is.null(call),
-      is.environment(env) || is.null(env)
+      is.language(call) || is.null(call)
     )
   }
   if (is.language(call)) {
     return(call)
-  }
-  if (!is.null(env)) {
-    warning("dbc::handle_arg_call argument \"env\" has been deprecated")
   }
   if (is.null(call)) {
     bad_call_strings <- c(deparse(match.call()), "get_nth_call(n = i)")
@@ -165,13 +166,17 @@ handle_arg_call <- function(call = NULL, env = NULL) {
 #'   to guess `x_nm` if it is `NULL`.
 #' @return
 #' - `dbc::handle_arg_x_nm`: always returns a character vector of length 1
-handle_arg_x_nm <- function(x_nm) {
+handle_arg_x_nm <- function(x_nm, env = NULL) {
+  if (is.null(env)) {
+    env <- parent.frame(1L)
+  }
   raise_internal_error_if_not(
-    (is.character(x_nm) && length(x_nm) == 1L && !is.na(x_nm)) || is.null(x_nm)
+    (is.character(x_nm) && length(x_nm) == 1L && !is.na(x_nm)) || is.null(x_nm),
+    is.environment(env) || is.null(env)
   )
   if (is.null(x_nm)) {
     x_nm <- paste0(
-      deparse(substitute(x, env = parent.frame(1L))),
+      deparse(substitute(x, env = env)),
       collapse = ""
     )
   }
