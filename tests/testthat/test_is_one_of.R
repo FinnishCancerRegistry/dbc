@@ -3,33 +3,31 @@
 
 
 
-testthat::test_that("report_is_one_of works", {
+testthat::test_that("dbc::report_is_one_of works", {
 
 
-  report_df <- report_is_one_of(
+  report_df <- dbc::report_is_one_of(
     x = 1L,
     funs = c("report_is_data.table", "report_is_integer")
   )
 
-  testthat::expect_identical(report_df[["pass"]], TRUE)
-  testthat::expect_identical(report_df[["test"]], "is.integer(x)")
+  testthat::expect_identical(report_df[["pass"]], c(FALSE, TRUE))
 
-  report_df <- report_is_one_of(
+  report_df <- dbc::report_is_one_of(
     x = 1L,
     funs = list(dbc::report_is_data.table, dbc::report_is_integer)
   )
 
-  testthat::expect_identical(report_df[["pass"]], TRUE)
-  testthat::expect_identical(report_df[["test"]], "is.integer(x)")
+  testthat::expect_identical(report_df[["pass"]], c(FALSE, TRUE))
 
 })
 
 
 
-testthat::test_that("assert_is_one_of works", {
+testthat::test_that("dbc::assert_is_one_of works", {
 
   tf <- function(x) {
-    assert_is_one_of(
+    dbc::assert_is_one_of(
       x = 1L,
       funs = c("report_is_data.table", "report_is_integer")
     )
@@ -38,7 +36,7 @@ testthat::test_that("assert_is_one_of works", {
   tf(1L) # no error
 
   tf <- function(x) {
-    assert_is_one_of(
+    dbc::assert_is_one_of(
       x = "wat",
       funs = c("report_is_data.table", "report_is_integer")
     )
@@ -50,9 +48,9 @@ testthat::test_that("assert_is_one_of works", {
   )
 
   tf <- function(x) {
-    assert_is_one_of(
+    dbc::assert_is_one_of(
       x = "wat",
-      funs = c("assert_is_data.table", "assert_is_integer")
+      funs = c("report_is_data.table", "report_is_integer")
     )
   }
   # should cause error
@@ -62,9 +60,9 @@ testthat::test_that("assert_is_one_of works", {
   )
 
   tf <- function(x) {
-    assert_is_one_of(
+    dbc::assert_is_one_of(
       x = "wat",
-      funs = list(dbc::assert_is_data.table, dbc::assert_is_integer)
+      funs = list(dbc::report_is_data.table, dbc::report_is_integer)
     )
   }
   # should cause error
