@@ -92,8 +92,8 @@ get_nth_call <- function(n = 1L) {
     error = function(e) e
   )
   if (inherits(call, "error") || identical(call, quote(get_nth_call()))) {
-    stop("Could not determine parent call. get_parent_call can only be used ",
-         "in a function called by another.")
+    stop("Could not determine nth call. get_nth_call can only be used ",
+         "in a function.")
   }
   call
 }
@@ -120,37 +120,39 @@ get_nth_call <- function(n = 1L) {
 #'   failure to guess the call
 handle_arg_call <- function(call = NULL, env = NULL) {
   raise_internal_error_if_not(
-    is.environment(env) || is.null(env)
+    is.environment(env) || is.null(env),
+    is.language(call) || is.null(call)
   )
-  if (is.null(env)) {
-    env <- parent.frame(1L)
-  }
-  call_test <- tryCatch(
-    stopifnot(
-      is.language(call) || is.null(call)
-    ),
-    error = function(e) e
-  )
-  if (inherits(call_test, "error")) {
-    call <- substitute(call, env)
-    raise_internal_error_if_not(
-      is.language(call) || is.null(call)
-    )
-  }
   if (is.language(call)) {
     return(call)
   }
+  if (is.null(env)) {
+    env <- parent.frame(2L)
+  }
   if (is.null(call)) {
-    bad_call_strings <- c(deparse(match.call()), "get_nth_call(n = i)")
-    for (i in 3:1) {
-      call <- tryCatch(get_nth_call(i), error = function(e) e)
-      call_string <- paste0(deparse(call), collapse = "")
-      if (!inherits(call, "error") && !call_string %in% bad_call_strings) {
-        break()
+    call_inferrer <- quote(match.call())
+    call <- tryCatch(
+      eval(call_inferrer, envir = env),
+      error = function(e) e
+    )
+    is_bad_call <- inherits(call, "error") || identical(call, call_inferrer)
+    if (is_bad_call) {
+      for (i in 2:1) {
+        call <- tryCatch(
+          eval(call_inferrer, envir = parent.frame(i)),
+          error = function(e) e
+        )
+        is_bad_call <- inherits(call, "error") || identical(call, call_inferrer)
+        if (!is_bad_call) {
+          break()
+        }
       }
-    }
-    if (call_string %in% bad_call_strings) {
-      call <- match.call()
+      if (is_bad_call) {
+        warning("Could not infer in which call an assertion was used, ",
+                "\"could_not_infer_call\" will be reported as the call in ",
+                "any error message")
+        call <- parse(text = "could_not_infer_call")[[1L]]
+      }
     }
   }
   return(call)
