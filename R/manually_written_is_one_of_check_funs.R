@@ -15,10 +15,9 @@ report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
 
   funs <- lapply(funs, match.fun)
   report_df <- do.call(rbind, lapply(funs, function(fun) {
-    arg_list <- formals(fun)
-    arg_list[c("x", "x_nm", "call")] <- list(x = quote(x), x_nm = quote(x_nm),
-                                             call = quote(call))
-    report_df <- do.call(fun, arg_list)
+    call_string <- paste0("fun(x = x, x_nm = x_nm, call = call)")
+    call <- parse(text = call_string)[[1L]]
+    report_df <- eval(call)
     report_df[["all_pass"]] <- all(report_df[["pass"]] %in% TRUE)
     total_report_df <- data.frame(
       test = paste0(report_df[["test"]], collapse = " & "),
@@ -46,7 +45,6 @@ assert_is_one_of__ <- function(
   call = NULL,
   assertion_type = "general"
 ) {
-
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
