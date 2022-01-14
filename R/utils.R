@@ -16,17 +16,17 @@
 #' tf3 <- function(tf3_arg = 3) {
 #'   tf2()
 #' }
-#' stopifnot(
-#'   identical(tf3(), quote(tf3()))
-#' )
 #' tf4 <- function(tf4_arg = 4) {
 #'   get_parent_call()
 #' }
+#' \donttest{
 #' stopifnot(
+#'   identical(tf3(), quote(tf3())),
 #'   inherits(tryCatch(get_current_call(), error = function(e) e), "error"),
 #'   inherits(tryCatch(get_parent_call(), error = function(e) e), "error"),
-#'   inherits(tryCatch(tf5(), error = function(e) e), "error")
+#'   inherits(tryCatch(tf4(), error = function(e) e), "error")
 #' )
+#' }
 NULL
 
 #' @rdname function_calls
