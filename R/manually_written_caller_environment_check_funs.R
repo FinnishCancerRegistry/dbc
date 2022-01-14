@@ -15,45 +15,6 @@
 #'
 #' @template arg_call
 #' @name caller_environment_checks
-#' @examples
-#' # for use in other functions only
-#' my_fun_ <- function() {
-#'   dbc::report_function_caller_environment_is_not_global_environment()
-#' }
-#' result <- my_fun_()
-#' stopifnot(is.data.frame(result), "message" %in% names(result),
-#'           grepl("my_fun_", result[["message"]]))
-#' my_fun_ <- function() {
-#'   dbc::test_function_caller_environment_is_not_global_environment()
-#' }
-#' result <- my_fun_()
-#' stopifnot(identical(result, FALSE))
-#'
-#' # for use by the user only
-#' my_fun <- function() {
-#'   dbc::test_function_caller_environment_is_global_environment()
-#' }
-#' result <- my_fun()
-#' stopifnot(identical(result, TRUE))
-#'
-#' # for use by the user only
-#' my_fun <- function() {
-#'   dbc::assert_function_caller_environment_is_global_environment()
-#'   my_fun_()
-#' }
-#' result <- my_fun()
-#' stopifnot(identical(result, TRUE))
-#'
-#' # this would be a mistake
-#' my_other_fun <- function() {
-#'   my_fun()
-#' }
-#' result <- tryCatch(my_other_fun(), error = function(e) e)
-#' stopifnot(
-#'   is.character(result[["message"]]),
-#'   grepl("global", result[["message"]])
-#' )
-#'
 
 #' @rdname caller_environment_checks
 #' @export
