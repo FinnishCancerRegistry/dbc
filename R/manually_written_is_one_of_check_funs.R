@@ -6,18 +6,16 @@
 #' report functions that return a report (data.frame);
 #' - `character`: names of functions that can be found by `[match.fun]`
 #' - `list`: list of functions
-report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
+report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
-  call <- dbc::handle_arg_call(call)
 
   funs <- lapply(funs, match.fun)
   report_df <- do.call(rbind, lapply(funs, function(fun) {
-    call_string <- paste0("fun(x = x, x_nm = x_nm, call = call)")
-    call <- parse(text = call_string)[[1L]]
-    report_df <- eval(call)
+    report_df <- fun(x = x, x_nm = x_nm, call = call)
     report_df[["all_pass"]] <- all(report_df[["pass"]] %in% TRUE)
     total_report_df <- data.frame(
       test = paste0(report_df[["test"]], collapse = " & "),
@@ -32,7 +30,7 @@ report_is_one_of <- function(x, x_nm = NULL, funs, call = NULL) {
                                               NA_integer_)
     }
     return(total_report_df)
-  }))
+  }), quote = TRUE)
 
   return(report_df)
 }
