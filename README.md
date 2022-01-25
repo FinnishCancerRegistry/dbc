@@ -39,7 +39,7 @@ my_fun <- function(x) {
 # in other functions only (or reuse the same code for some other reason)
 my_fun__ <- function(x, y, assertion_type, call = NULL) {
   call <- dbc::handle_arg_call(call)
-  dbc::report_is_integer_ltezero_vector(x)
+  dbc::assert_is_integer_ltezero_vector(x)
   dbc::assert_is_character_nonNA_atom(y)
   switch(
     y,
@@ -56,6 +56,15 @@ my_fun <- function(x, y) {
   my_fun__(x, y, "user_input", call)
 }
 
+# want to be extra sure that an interim result and output are correct
+my_fun <- function(x) {
+  dbc::assert_prod_input_is_integer_ltezero_vector(x)
+  # some complicated code here...
+  dbc::assert_prod_interim_is_integer_ltezero_vector(out)
+  # some more complicated code here...
+  dbc::assert_prod_output_is_integer_ltezero_vector(out)
+  return(out)
+}
 
 ```
 
