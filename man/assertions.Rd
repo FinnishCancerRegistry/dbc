@@ -5624,6 +5624,20 @@ report_df <- report_has_only_valid_observations(
 )
 
 identify_invalid_observations(x = df, report_df = report_df)
+my_var <- 1:3
+df1 <- dbc::report_is_one_of(
+  my_var,
+  funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
+)
+df2 <- dbc::report_is_NULL(my_var)
+df3 <- dbc::report_is_character_nonNA_vector(my_var)
+stopifnot(
+  identical(names(df1), names(df2)),
+  identical(lapply(df1, class), lapply(df2, class)),
+  nrow(df1) == 2L,
+  nrow(df2) + nrow(df3) > 2L
+)
+
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,

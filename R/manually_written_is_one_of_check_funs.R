@@ -6,6 +6,21 @@
 #' report functions that return a report (data.frame);
 #' - `character`: names of functions that can be found by `[match.fun]`
 #' - `list`: list of functions
+#' @examples
+#' my_var <- 1:3
+#' df1 <- dbc::report_is_one_of(
+#'   my_var,
+#'   funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
+#' )
+#' df2 <- dbc::report_is_NULL(my_var)
+#' df3 <- dbc::report_is_character_nonNA_vector(my_var)
+#' stopifnot(
+#'   identical(names(df1), names(df2)),
+#'   identical(lapply(df1, class), lapply(df2, class)),
+#'   nrow(df1) == 2L,
+#'   nrow(df2) + nrow(df3) > 2L
+#' )
+#'
 report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
@@ -22,9 +37,12 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
       error = paste0(report_df[["error"]], collapse = "; "),
       pass = all(report_df[["pass"]] %in% TRUE),
       n_fail = max(report_df[["n_fail"]], na.rm = TRUE),
-      wh_fail = list_union(report_df[["wh_fail"]]),
-      message = paste0(report_df[["message"]], collapse = "; ")
+      wh_fail = NA_character_,
+      message = paste0(report_df[["message"]], collapse = "; "),
+      call = NA_character_
     )
+    total_report_df[["wh_fail"]] <- list(list_union(report_df[["wh_fail"]]))
+    total_report_df[["call"]] <- list(report_df[["call"]][[1L]])
     if (any(!is.na(total_report_df[["wh_fail"]]))) {
       total_report_df[["wh_fail"]] <- setdiff(total_report_df[["wh_fail"]],
                                               NA_integer_)
