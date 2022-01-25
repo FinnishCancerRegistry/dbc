@@ -18,7 +18,8 @@
 #'   identical(names(df1), names(df2)),
 #'   identical(lapply(df1, class), lapply(df2, class)),
 #'   nrow(df1) == 2L,
-#'   nrow(df2) + nrow(df3) > 2L
+#'   nrow(df2) + nrow(df3) > 2L,
+#'   is.na(df1[["error"]])
 #' )
 #'
 report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
@@ -34,13 +35,19 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
     report_df[["all_pass"]] <- all(report_df[["pass"]] %in% TRUE)
     total_report_df <- data.frame(
       test = paste0(report_df[["test"]], collapse = " & "),
-      error = paste0(report_df[["error"]], collapse = "; "),
+      error = NA_character_,
       pass = all(report_df[["pass"]] %in% TRUE),
       n_fail = max(report_df[["n_fail"]], na.rm = TRUE),
       wh_fail = NA_character_,
       message = paste0(report_df[["message"]], collapse = "; "),
       call = NA_character_
     )
+
+    errors <- report_df[["error"]]
+    if (!all(is.na(errors))) {
+      errors[is.na(errors)] <- "no error"
+      total_report_df <- paste0(errors, collapse = "; ")
+    }
     total_report_df[["wh_fail"]] <- list(list_union(report_df[["wh_fail"]]))
     total_report_df[["call"]] <- list(report_df[["call"]][[1L]])
     if (any(!is.na(total_report_df[["wh_fail"]]))) {

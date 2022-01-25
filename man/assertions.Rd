@@ -5635,7 +5635,8 @@ stopifnot(
   identical(names(df1), names(df2)),
   identical(lapply(df1, class), lapply(df2, class)),
   nrow(df1) == 2L,
-  nrow(df2) + nrow(df3) > 2L
+  nrow(df2) + nrow(df3) > 2L,
+  is.na(df1[["error"]])
 )
 
 df <- data.frame(a = 1:5, b = 1:5)
