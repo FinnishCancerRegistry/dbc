@@ -23,15 +23,39 @@ dbc functions:
 ``` r
 # function outside a packge
 my_fun <- function(x) {
-  requireNamespace("easyassertions")
+  requireNamespace("dbc")
   dbc::assert_is_integer_ltezero_vector(x)
+  x + 1
 }
 
 
 # function within a package
-#' @importFrom dbc assert_is_integer_ltezero_vector
 my_fun <- function(x) {
   dbc::assert_is_integer_ltezero_vector(x)
+  x + 1
 }
+
+# want to distinguish functions intended for user and intended for use
+# in other functions only (or reuse the same code for some other reason)
+my_fun__ <- function(x, y, assertion_type, call = NULL) {
+  call <- dbc::handle_arg_call(call)
+  dbc::report_is_integer_ltezero_vector(x)
+  dbc::assert_is_character_nonNA_atom(y)
+  switch(
+    y,
+    add = x + 1,
+    subtract = x - 1
+  )
+}
+my_fun_ <- function(x, y) {
+  call <- dbc::handle_arg_call(NULL)
+  my_fun__(x, y, "prod_input", call)
+}
+my_fun <- function(x, y) {
+  call <- dbc::handle_arg_call(NULL)
+  my_fun__(x, y, "user_input", call)
+}
+
+
 ```
 
