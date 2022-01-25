@@ -16,3 +16,4 @@ testthat::test_that("can create reports from both strings & lang objs", {
   # as.list only to get rid of row names
   testthat::expect_equal(as.list(df[1L, ]), as.list(df[2L, ]))
 })
+

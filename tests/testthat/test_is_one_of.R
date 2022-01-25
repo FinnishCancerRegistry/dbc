@@ -71,3 +71,4 @@ testthat::test_that("dbc::assert_is_one_of works", {
     regexp = "\\QNone of the following assertions passed:\\E"
   )
 })
+
