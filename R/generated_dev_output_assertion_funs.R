@@ -4115,6 +4115,56 @@ assert_dev_output_is_vector <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_dev_output_match_regex <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  grepl.arg.list = list()
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- report_match_regex(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    grepl.arg.list = grepl.arg.list
+  )
+  report_to_assertion(report_df, assertion_type = "dev_output")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+assert_dev_output_TRUE <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- report_TRUE(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  report_to_assertion(report_df, assertion_type = "dev_output")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_dev_output_vector_elems_are_in_set <- function(
   x, 
   x_nm = NULL, 

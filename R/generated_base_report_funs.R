@@ -16,7 +16,7 @@ report_all_are_TRUE <- function(x, x_nm = NULL, call = NULL) {
     "all(x %in% TRUE)"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were FALSE or NA"
+    "Not all elements of ${deparse(x_nm)} were TRUE"
   )
   pass_msg_set <- c(
     NA_character_
@@ -364,7 +364,7 @@ report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
     c("dbc::test_is_number_nonNA_vector(lo)", "dbc::test_is_number_nonNA_vector(hi)", "!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)")
   )
   fail_msg_set <- c(
-    c(NA, NA, "${n_fail} elements were outside exclusive bounds ${lo}, ${hi}")
+    c(NA, NA, "${n_fail} elements of ${deparse(x_nm)} were outside exclusive bounds ${lo}, ${hi}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -393,7 +393,7 @@ report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
     c("dbc::test_is_number_nonNA_vector(lo)", "dbc::test_is_number_nonNA_vector(hi)", "dbc::is_between_inclusive(x = x, lo = lo, hi = hi)")
   )
   fail_msg_set <- c(
-    c(NA, NA, "${n_fail} elements were outside inclusive bounds ${lo}, ${hi}")
+    c(NA, NA, "${n_fail} elements of ${deparse(x_nm)} were outside inclusive bounds ${lo}, ${hi}")
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
@@ -886,7 +886,7 @@ report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
     "x > lo"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were <= ${lo}"
+    "${n_fail} elements of ${deparse(x_nm)} were <= ${lo}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -915,7 +915,7 @@ report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
     "x >= lo"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were < ${lo}"
+    "${n_fail} elements of ${deparse(x_nm)} were < ${lo}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -944,7 +944,7 @@ report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
     "x >= 0"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were < 0"
+    "${n_fail} elements of ${deparse(x_nm)} were < 0"
   )
   pass_msg_set <- c(
     NA_character_
@@ -973,7 +973,7 @@ report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
     "x > 0"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were <= 0"
+    "${n_fail} elements of ${deparse(x_nm)} were <= 0"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1118,7 +1118,7 @@ report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
     "x < hi"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were >= ${hi}"
+    "${n_fail} elements of ${deparse(x_nm)} were >= ${hi}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1147,7 +1147,7 @@ report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
     "x <= hi"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were > ${hi}"
+    "${n_fail} elements of ${deparse(x_nm)} were > ${hi}"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1176,7 +1176,7 @@ report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
     "x <= 0"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were > 0"
+    "${n_fail} elements of ${deparse(x_nm)} were > 0"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1205,7 +1205,7 @@ report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
     "x < 0"
   )
   fail_msg_set <- c(
-    "${n_fail} elements were >= 0"
+    "${n_fail} elements of ${deparse(x_nm)} were >= 0"
   )
   pass_msg_set <- c(
     NA_character_
@@ -1557,6 +1557,64 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
   )
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_match_regex <- function(x, x_nm = NULL, call = NULL, grepl.arg.list = list()) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  test_set <- c(
+    "{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}"
+  )
+  fail_msg_set <- c(
+    "${n_fail} elements of ${deparse(x_nm)} did not match regex ${deparse(grepl.arg.list[['pattern']])}"
+  )
+  pass_msg_set <- c(
+    "All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}"
+  )
+  report_df <- tests_to_report(
+    tests = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_TRUE <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  test_set <- c(
+    "x %in% TRUE"
+  )
+  fail_msg_set <- c(
+    "${n_fail} elements of ${deparse(x_nm)} were FALSE or NA"
+  )
+  pass_msg_set <- c(
+    NA_character_
   )
   report_df <- tests_to_report(
     tests = test_set,
