@@ -31,6 +31,9 @@
 #' @param required_argument_names `[character]` (mandatory, no default)
 #'
 #' names of arguments that function `x` must have
+#' @param grepl.arg.list `[list]` (default `list()`)
+#'
+#' list of (optional) arguments passed to `[grepl]`
 #'
 NULL
 

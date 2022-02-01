@@ -5649,6 +5649,10 @@ set of levels factor is required to have}
 
 names of arguments that function \code{x} must have}
 
+\item{grepl.arg.list}{\verb{[list]} (default \code{list()})
+
+list of (optional) arguments passed to \verb{[grepl]}}
+
 \item{tests}{\verb{[character]} (mandatory, no default)
 
 passed to \link{tests_to_report} as-is}
