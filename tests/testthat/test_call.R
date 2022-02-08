@@ -26,7 +26,7 @@ testthat::test_that("report_to_assertion shows correct call in error msg", {
   tf <- function(arg) {
 
     dbc::report_to_assertion(
-      dbc::tests_to_report(
+      dbc::expressions_to_report(
         expressions = "is.character(arg)"
       )
     )

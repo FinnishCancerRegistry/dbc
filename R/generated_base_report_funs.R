@@ -1239,7 +1239,7 @@ report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- expression_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1268,7 +1268,7 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- expression_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1297,7 +1297,7 @@ report_is_named <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- expression_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1326,7 +1326,7 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- expression_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1347,15 +1347,15 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
   test_set <- c(
-    "!is.na(x)"
+    c("!is.na(x)", "!is.na(x)")
   )
   fail_msg_set <- c(
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    c("object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", "${n_fail} elements of ${deparse(x_nm)} were NA")
   )
   pass_msg_set <- c(
-    NA_character_
+    c(NA_character_, NA_character_)
   )
-  report_df <- expression_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1384,7 +1384,7 @@ report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- expression_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1413,7 +1413,7 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1442,7 +1442,7 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1471,7 +1471,36 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
+    expressions = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+report_is_TRUE <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  test_set <- c(
+    "x %in% TRUE"
+  )
+  fail_msg_set <- c(
+    "${n_fail} elements of ${deparse(x_nm)} were FALSE or NA"
+  )
+  pass_msg_set <- c(
+    NA_character_
+  )
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1500,7 +1529,7 @@ report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1529,7 +1558,7 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1558,7 +1587,7 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1587,36 +1616,7 @@ report_match_regex <- function(x, x_nm = NULL, call = NULL, grepl.arg.list = lis
   pass_msg_set <- c(
     "All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}"
   )
-  report_df <- tests_to_report(
-    expressions = test_set,
-    fail_messages = fail_msg_set,
-    pass_messages = pass_msg_set,
-    env = report_env, 
-    call = call
-  )
-  return(report_df)
-}
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-report_TRUE <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call)
-  report_env <- environment()
-  test_set <- c(
-    "x %in% TRUE"
-  )
-  fail_msg_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were FALSE or NA"
-  )
-  pass_msg_set <- c(
-    NA_character_
-  )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
@@ -1645,7 +1645,7 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
+  report_df <- expressions_to_report(
     expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,

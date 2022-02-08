@@ -9,7 +9,7 @@ testthat::test_that("can create reports from both strings & lang objs", {
     quote(my_obj > 0L)
   )
 
-  df <- tests_to_report(
+  df <- expressions_to_report(
     expressions = my_tests
   )
 

@@ -71,11 +71,11 @@
 \alias{report_is_number}
 \alias{report_is_numeric}
 \alias{report_is_of_length}
+\alias{report_is_TRUE}
 \alias{report_is_uniquely_named}
 \alias{report_is_uniquely_named_list}
 \alias{report_is_vector}
 \alias{report_match_regex}
-\alias{report_TRUE}
 \alias{report_vector_elems_are_in_set}
 \alias{assert_dev_input_all_are_TRUE}
 \alias{assert_dev_input_atom_is_in_set}
@@ -243,11 +243,11 @@
 \alias{assert_dev_input_is_number_vector}
 \alias{assert_dev_input_is_numeric}
 \alias{assert_dev_input_is_of_length}
+\alias{assert_dev_input_is_TRUE}
 \alias{assert_dev_input_is_uniquely_named}
 \alias{assert_dev_input_is_uniquely_named_list}
 \alias{assert_dev_input_is_vector}
 \alias{assert_dev_input_match_regex}
-\alias{assert_dev_input_TRUE}
 \alias{assert_dev_input_vector_elems_are_in_set}
 \alias{assert_dev_interim_all_are_TRUE}
 \alias{assert_dev_interim_atom_is_in_set}
@@ -415,11 +415,11 @@
 \alias{assert_dev_interim_is_number_vector}
 \alias{assert_dev_interim_is_numeric}
 \alias{assert_dev_interim_is_of_length}
+\alias{assert_dev_interim_is_TRUE}
 \alias{assert_dev_interim_is_uniquely_named}
 \alias{assert_dev_interim_is_uniquely_named_list}
 \alias{assert_dev_interim_is_vector}
 \alias{assert_dev_interim_match_regex}
-\alias{assert_dev_interim_TRUE}
 \alias{assert_dev_interim_vector_elems_are_in_set}
 \alias{assert_dev_output_all_are_TRUE}
 \alias{assert_dev_output_atom_is_in_set}
@@ -587,11 +587,11 @@
 \alias{assert_dev_output_is_number_vector}
 \alias{assert_dev_output_is_numeric}
 \alias{assert_dev_output_is_of_length}
+\alias{assert_dev_output_is_TRUE}
 \alias{assert_dev_output_is_uniquely_named}
 \alias{assert_dev_output_is_uniquely_named_list}
 \alias{assert_dev_output_is_vector}
 \alias{assert_dev_output_match_regex}
-\alias{assert_dev_output_TRUE}
 \alias{assert_dev_output_vector_elems_are_in_set}
 \alias{assert_all_are_TRUE}
 \alias{assert_atom_is_in_set}
@@ -759,11 +759,11 @@
 \alias{assert_is_number_vector}
 \alias{assert_is_numeric}
 \alias{assert_is_of_length}
+\alias{assert_is_TRUE}
 \alias{assert_is_uniquely_named}
 \alias{assert_is_uniquely_named_list}
 \alias{assert_is_vector}
 \alias{assert_match_regex}
-\alias{assert_TRUE}
 \alias{assert_vector_elems_are_in_set}
 \alias{assert_prod_input_all_are_TRUE}
 \alias{assert_prod_input_atom_is_in_set}
@@ -931,11 +931,11 @@
 \alias{assert_prod_input_is_number_vector}
 \alias{assert_prod_input_is_numeric}
 \alias{assert_prod_input_is_of_length}
+\alias{assert_prod_input_is_TRUE}
 \alias{assert_prod_input_is_uniquely_named}
 \alias{assert_prod_input_is_uniquely_named_list}
 \alias{assert_prod_input_is_vector}
 \alias{assert_prod_input_match_regex}
-\alias{assert_prod_input_TRUE}
 \alias{assert_prod_input_vector_elems_are_in_set}
 \alias{assert_prod_interim_all_are_TRUE}
 \alias{assert_prod_interim_atom_is_in_set}
@@ -1103,11 +1103,11 @@
 \alias{assert_prod_interim_is_number_vector}
 \alias{assert_prod_interim_is_numeric}
 \alias{assert_prod_interim_is_of_length}
+\alias{assert_prod_interim_is_TRUE}
 \alias{assert_prod_interim_is_uniquely_named}
 \alias{assert_prod_interim_is_uniquely_named_list}
 \alias{assert_prod_interim_is_vector}
 \alias{assert_prod_interim_match_regex}
-\alias{assert_prod_interim_TRUE}
 \alias{assert_prod_interim_vector_elems_are_in_set}
 \alias{assert_prod_output_all_are_TRUE}
 \alias{assert_prod_output_atom_is_in_set}
@@ -1275,11 +1275,11 @@
 \alias{assert_prod_output_is_number_vector}
 \alias{assert_prod_output_is_numeric}
 \alias{assert_prod_output_is_of_length}
+\alias{assert_prod_output_is_TRUE}
 \alias{assert_prod_output_is_uniquely_named}
 \alias{assert_prod_output_is_uniquely_named_list}
 \alias{assert_prod_output_is_vector}
 \alias{assert_prod_output_match_regex}
-\alias{assert_prod_output_TRUE}
 \alias{assert_prod_output_vector_elems_are_in_set}
 \alias{report_is_Date_atom}
 \alias{report_is_Date_matrix}
@@ -1561,11 +1561,11 @@
 \alias{test_is_number_vector}
 \alias{test_is_numeric}
 \alias{test_is_of_length}
+\alias{test_is_TRUE}
 \alias{test_is_uniquely_named}
 \alias{test_is_uniquely_named_list}
 \alias{test_is_vector}
 \alias{test_match_regex}
-\alias{test_TRUE}
 \alias{test_vector_elems_are_in_set}
 \alias{assert_user_input_all_are_TRUE}
 \alias{assert_user_input_atom_is_in_set}
@@ -1733,11 +1733,11 @@
 \alias{assert_user_input_is_number_vector}
 \alias{assert_user_input_is_numeric}
 \alias{assert_user_input_is_of_length}
+\alias{assert_user_input_is_TRUE}
 \alias{assert_user_input_is_uniquely_named}
 \alias{assert_user_input_is_uniquely_named_list}
 \alias{assert_user_input_is_vector}
 \alias{assert_user_input_match_regex}
-\alias{assert_user_input_TRUE}
 \alias{assert_user_input_vector_elems_are_in_set}
 \alias{assertions}
 \alias{identify_invalid_observations}
@@ -1893,6 +1893,8 @@ report_is_numeric(x, x_nm = NULL, call = NULL)
 
 report_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+report_is_TRUE(x, x_nm = NULL, call = NULL)
+
 report_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 report_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -1900,8 +1902,6 @@ report_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 report_is_vector(x, x_nm = NULL, call = NULL)
 
 report_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
-
-report_TRUE(x, x_nm = NULL, call = NULL)
 
 report_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -2271,6 +2271,8 @@ assert_dev_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_dev_input_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_dev_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -2283,8 +2285,6 @@ assert_dev_input_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_dev_input_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -2654,6 +2654,8 @@ assert_dev_interim_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_dev_interim_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_dev_interim_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -2666,8 +2668,6 @@ assert_dev_interim_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_dev_interim_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -3037,6 +3037,8 @@ assert_dev_output_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_dev_output_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_dev_output_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -3049,8 +3051,6 @@ assert_dev_output_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_dev_output_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -3415,6 +3415,8 @@ assert_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -3422,8 +3424,6 @@ assert_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 assert_is_vector(x, x_nm = NULL, call = NULL)
 
 assert_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
-
-assert_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -3793,6 +3793,8 @@ assert_prod_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_prod_input_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_prod_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -3805,8 +3807,6 @@ assert_prod_input_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_prod_input_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -4192,6 +4192,8 @@ assert_prod_interim_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_prod_interim_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_prod_interim_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -4204,8 +4206,6 @@ assert_prod_interim_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_prod_interim_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -4575,6 +4575,8 @@ assert_prod_output_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_prod_output_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_prod_output_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -4587,8 +4589,6 @@ assert_prod_output_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_prod_output_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -5181,6 +5181,8 @@ test_is_numeric(x, x_nm = NULL, call = NULL)
 
 test_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+test_is_TRUE(x, x_nm = NULL, call = NULL)
+
 test_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 test_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -5188,8 +5190,6 @@ test_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
 test_is_vector(x, x_nm = NULL, call = NULL)
 
 test_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
-
-test_TRUE(x, x_nm = NULL, call = NULL)
 
 test_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -5559,6 +5559,8 @@ assert_user_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_user_input_is_TRUE(x, x_nm = NULL, call = NULL)
+
 assert_user_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
@@ -5571,8 +5573,6 @@ assert_user_input_match_regex(
   call = NULL,
   grepl.arg.list = list()
 )
-
-assert_user_input_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_user_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
@@ -5599,7 +5599,7 @@ assert_dev_output_is_one_of(x, x_nm = NULL, funs, call = NULL)
 report_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -5653,36 +5653,32 @@ names of arguments that function \code{x} must have}
 
 list of (optional) arguments passed to \verb{[grepl]}}
 
-\item{tests}{\verb{[character]} (mandatory, no default)
-
-passed to \link{tests_to_report} as-is}
-
 \item{fail_messages}{\verb{[character]} (optional, default \code{NULL})
 
-passed to \link{tests_to_report} as-is}
+passed to \link{expressions_to_report} as-is}
 
 \item{pass_messages}{\verb{[character]} (optional, default \code{NULL})
 
-passed to \link{tests_to_report} as-is}
+passed to \link{expressions_to_report} as-is}
 
 \item{col_nms}{\verb{[character]} (optional, default \code{names(x)})
 
-you may limit to such tests which only use these column names; see
+you may limit to such expressions which only use these column names; see
 \code{col_nm_set_list}}
 
 \item{col_nm_set_list}{\verb{[NULL, list]} (optional, default \code{NULL})
 \itemize{
-\item \code{NULL}: all tests are used
-\item \code{list}: must be of length \code{length(tests)}, where each element is a
+\item \code{NULL}: all expressions are used
+\item \code{list}: must be of length \code{length(expressions)}, where each element is a
 character vector of column names; the corresponding test is only run
 if \code{all(col_nm_set_list[[i]] \%in\% col_nms)} for all
-\verb{i in seq_along(tests)}. this allows for easy limiting of tests to run
+\verb{i in seq_along(expressions)}. this allows for easy limiting of expressions to run
 in when not all of them need to be run.
 }}
 
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
-a report \code{data.frame} as produced by e.g. \link{tests_to_report}}
+a report \code{data.frame} as produced by e.g. \link{expressions_to_report}}
 
 \item{funs}{\verb{[character, list]} (mandatory, no default)
 
@@ -5691,6 +5687,10 @@ report functions that return a report (data.frame);
 \item \code{character}: names of functions that can be found by \verb{[match.fun]}
 \item \code{list}: list of functions
 }}
+
+\item{expressions}{\verb{[character]} (mandatory, no default)
+
+passed to \link{expressions_to_report} as-is}
 }
 \value{
 \itemize{
@@ -5709,8 +5709,8 @@ pass.
 }
 \details{
 \itemize{
-\item \code{report_has_invalid_observations} calls \link{tests_to_report} where the
-dataset \code{x} becomes the environment where the tests are evaluated
+\item \code{report_has_invalid_observations} calls \link{expressions_to_report} where the
+dataset \code{x} becomes the environment where the expressions are evaluated
 (essentially \code{env = as.environment(x)})
 }
 }
@@ -5744,7 +5744,7 @@ report_df <- report_has_only_valid_observations(
   expressions = c("a == b", "a == d", "a != b")
 )
 
-# running tests only for some columns
+# running expressions only for some columns
 df <- data.frame(a = 1:5, b = 1:5, c = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,

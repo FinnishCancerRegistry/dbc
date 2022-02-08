@@ -265,7 +265,7 @@ test_has_only_valid_observations <- function(
   report_df <- report_has_only_valid_observations(
     x = x, 
     x_nm = x_nm, 
-    expressions = tests, 
+    tests = tests, 
     fail_messages = fail_messages, 
     pass_messages = pass_messages, 
     col_nms = col_nms, 
@@ -3877,6 +3877,29 @@ test_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_is_TRUE <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- report_is_TRUE(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_is_uniquely_named <- function(
   x, 
   x_nm = NULL, 
@@ -3960,29 +3983,6 @@ test_match_regex <- function(
     x_nm = x_nm, 
     call = call, 
     grepl.arg.list = grepl.arg.list
-  )
-  return(all(report_df[["pass"]]))
-}
-
-
-
-
-
-# this function was generated automatically. do not edit by hand!
-#' @rdname assertions
-#' @export
-test_TRUE <- function(
-  x, 
-  x_nm = NULL, 
-  call = NULL
-) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call)
-  report_df <- report_TRUE(
-    x = x, 
-    x_nm = x_nm, 
-    call = call
   )
   return(all(report_df[["pass"]]))
 }

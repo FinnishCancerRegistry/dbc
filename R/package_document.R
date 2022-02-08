@@ -97,14 +97,14 @@
 #' repetition, improve readability, and make writing checks easier (they are
 #' easy to write when you have auto-suggestions on your IDE, and start writing
 #' e.g. `assert_prod_input_` and get a number of suggestions). These are
-#' recommended when they can be used. When not, use `[tests_to_report]` to
+#' recommended when they can be used. When not, use `[expressions_to_report]` to
 #' create your own reports, and pass its output to `[report_to_assertion]` to
 #' create an assertion. E.g.
 #'
 #' ```
 #' my_fun <- function(x) {
 #'   dbc::report_to_assertion(
-#'     dbc::tests_to_report(
+#'     dbc::expressions_to_report(
 #'       expressions = "x %in% 1:5"
 #'     )
 #'   )

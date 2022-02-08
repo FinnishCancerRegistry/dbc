@@ -31,7 +31,7 @@ report_function_caller_environment_is_not_global_environment <- function(
     x_nm <- deparse(parent_call[[1L]])
   }
   call <- dbc::handle_arg_call(call)
-  dbc::tests_to_report(
+  dbc::expressions_to_report(
     expressions = paste0(
       "!identical(x, globalenv())"
     ),
@@ -63,7 +63,7 @@ report_function_caller_environment_is_global_environment <- function(
     x_nm <- deparse(parent_call[[1L]])
   }
   call <- dbc::handle_arg_call(call)
-  dbc::tests_to_report(
+  dbc::expressions_to_report(
     expressions = c(
       "is.environment(x)",
       "identical(x, globalenv())"

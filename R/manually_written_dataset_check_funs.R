@@ -5,7 +5,7 @@
 #' @export
 #' @param report_df `[data.frame]` (mandatory, no default)
 #'
-#' a report `data.frame` as produced by e.g. [tests_to_report]
+#' a report `data.frame` as produced by e.g. [expressions_to_report]
 #' @return
 #' - `identify_invalid_observations`: returns a data.frame with columns
 #'   `is_valid`, `fail_test_set`, and `fail_message_set`; new columns are

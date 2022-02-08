@@ -10,30 +10,30 @@
 #' @param x_nm `[character]` (optional, default `NULL`)
 #'
 #' see e.g. [report_is_atom]
-#' @param tests `[character]` (mandatory, no default)
+#' @param expressions `[character]` (mandatory, no default)
 #'
-#' passed to [tests_to_report] as-is
+#' passed to [expressions_to_report] as-is
 #' @param fail_messages `[character]` (optional, default `NULL`)
 #'
-#' passed to [tests_to_report] as-is
+#' passed to [expressions_to_report] as-is
 #' @param pass_messages `[character]` (optional, default `NULL`)
 #'
-#' passed to [tests_to_report] as-is
+#' passed to [expressions_to_report] as-is
 #' @param col_nms `[character]` (optional, default `names(x)`)
 #'
-#' you may limit to such tests which only use these column names; see
+#' you may limit to such expressions which only use these column names; see
 #' `col_nm_set_list`
 #' @param col_nm_set_list `[NULL, list]` (optional, default `NULL`)
 #'
-#' - `NULL`: all tests are used
-#' - `list`: must be of length `length(tests)`, where each element is a
+#' - `NULL`: all expressions are used
+#' - `list`: must be of length `length(expressions)`, where each element is a
 #'   character vector of column names; the corresponding test is only run
 #'   if `all(col_nm_set_list[[i]] %in% col_nms)` for all
-#'   `i in seq_along(tests)`. this allows for easy limiting of tests to run
+#'   `i in seq_along(expressions)`. this allows for easy limiting of expressions to run
 #'   in when not all of them need to be run.
 #' @details
-#' - `report_has_invalid_observations` calls [tests_to_report] where the
-#'   dataset `x` becomes the environment where the tests are evaluated
+#' - `report_has_invalid_observations` calls [expressions_to_report] where the
+#'   dataset `x` becomes the environment where the expressions are evaluated
 #'   (essentially `env = as.environment(x)`)
 #'
 #' @examples
@@ -43,7 +43,7 @@
 #'   expressions = c("a == b", "a == d", "a != b")
 #' )
 #'
-#' # running tests only for some columns
+#' # running expressions only for some columns
 #' df <- data.frame(a = 1:5, b = 1:5, c = 1:5)
 #' report_df <- report_has_only_valid_observations(
 #'   x = df,
@@ -54,7 +54,7 @@
 report_has_only_valid_observations <- function(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -63,7 +63,7 @@ report_has_only_valid_observations <- function(
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   assert_is_data.frame(x = x, x_nm = x_nm)
-  assert_is_character_nonNA_vector(tests)
+  assert_is_character_nonNA_vector(expressions)
   assert_is_one_of(
     x = col_nm_set_list,
     funs = c("report_is_NULL", "report_is_list")
@@ -73,15 +73,15 @@ report_has_only_valid_observations <- function(
   parent.env(dataset_env) <- parent_env
   call <- dbc::handle_arg_call(call)
 
-  which_tests_to_run <- seq_along(tests)
+  which_tests_to_run <- seq_along(expressions)
   if (inherits(col_nm_set_list, "list")) {
     lapply(col_nm_set_list, assert_is_character_nonNA_vector)
     assert_is_character_nonNA_vector(col_nms)
     assert_vector_elems_are_in_set(col_nms, set = names(x))
-    assert_is_of_length(col_nm_set_list, expected_length = length(tests))
+    assert_is_of_length(col_nm_set_list, expected_length = length(expressions))
 
     which_tests_to_run <- which(vapply(
-      seq_along(tests),
+      seq_along(expressions),
       function(test_no) {
         test_col_nm_set <- col_nm_set_list[[test_no]]
         all(test_col_nm_set %in% col_nms)
@@ -89,7 +89,7 @@ report_has_only_valid_observations <- function(
       logical(1L)
     ))
     if (length(which_tests_to_run) == 0L) {
-      report_df <- tests_to_report(
+      report_df <- expressions_to_report(
         expressions = "1 == 1",
         fail_messages = fail_messages,
         pass_messages = pass_messages,
@@ -106,8 +106,8 @@ report_has_only_valid_observations <- function(
     pass_messages <- rep(pass_messages, length(which_tests_to_run))
   }
 
-  tests_to_report(
-    expressions = tests[which_tests_to_run],
+  expressions_to_report(
+    expressions = expressions[which_tests_to_run],
     fail_messages = fail_messages,
     pass_messages = pass_messages,
     env = dataset_env
