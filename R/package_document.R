@@ -105,7 +105,7 @@
 #' my_fun <- function(x) {
 #'   dbc::report_to_assertion(
 #'     dbc::tests_to_report(
-#'       tests = "x %in% 1:5"
+#'       expressions = "x %in% 1:5"
 #'     )
 #'   )
 #' }

@@ -5719,7 +5719,7 @@ dataset \code{x} becomes the environment where the tests are evaluated
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,
-  tests = c("a == b", "a == d", "a != b")
+  expressions = c("a == b", "a == d", "a != b")
 )
 
 identify_invalid_observations(x = df, report_df = report_df)
@@ -5741,14 +5741,14 @@ stopifnot(
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,
-  tests = c("a == b", "a == d", "a != b")
+  expressions = c("a == b", "a == d", "a != b")
 )
 
 # running tests only for some columns
 df <- data.frame(a = 1:5, b = 1:5, c = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,
-  tests = c("a == b", "a == c", "a != b"),
+  expressions = c("a == b", "a == c", "a != b"),
   col_nms = c("a", "b"),
   col_nm_set_list = list(c("a", "b"), c("a", "c"), c("a", "b"))
 )

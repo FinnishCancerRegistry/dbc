@@ -32,7 +32,7 @@ report_function_caller_environment_is_not_global_environment <- function(
   }
   call <- dbc::handle_arg_call(call)
   dbc::tests_to_report(
-    tests = paste0(
+    expressions = paste0(
       "!identical(x, globalenv())"
     ),
     fail_messages = paste0(
@@ -64,7 +64,7 @@ report_function_caller_environment_is_global_environment <- function(
   }
   call <- dbc::handle_arg_call(call)
   dbc::tests_to_report(
-    tests = c(
+    expressions = c(
       "is.environment(x)",
       "identical(x, globalenv())"
     ),

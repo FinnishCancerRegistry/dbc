@@ -10,7 +10,7 @@ testthat::test_that("can create reports from both strings & lang objs", {
   )
 
   df <- tests_to_report(
-    tests = my_tests
+    expressions = my_tests
   )
 
   # as.list only to get rid of row names

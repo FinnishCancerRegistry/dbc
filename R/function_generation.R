@@ -64,10 +64,10 @@ test_string_to_report <- function(
 #' @description
 #' Collect tests into a report data.frame, raise assertion errors in failed
 #' tests in report.
-#' @name tests_to_reports_to_assertions
+#' @name expressions_to_reports_to_assertions
 NULL
 
-#' @rdname tests_to_reports_to_assertions
+#' @rdname expressions_to_reports_to_assertions
 #' @export
 #' @param tests `[character, list]` (mandatory, no default)
 #'
@@ -121,7 +121,7 @@ NULL
 #' `"${round(100 * n_fail / length(x))} % were invalid"`
 #'
 #' @return
-#' For `tests_to_report`, a `data.frame` with columns
+#' For `expressions_to_report`, a `data.frame` with columns
 #'
 #' - `test`: argument `tests` as-is
 #' - `error`: the error message if the test resulted in an error; `NA` if it
@@ -137,24 +137,33 @@ NULL
 #'   element (after interpolation) depending on `pass`
 #'
 #' @examples
-#' # tests_to_report
+#' # expressions_to_report
 #'
 #' a <- 1:5
 #' b <- 1:5
 #' # pass
-#' tests_to_report(
-#'   tests = "a == b"
+#' expressions_to_report(
+#'   expressions = "a == b"
 #' )
+#' # pass
+#' expressions_to_report(
+#'   expressions = list(quote(a == b))
+#' )
+#' # expressions_to_report raises error
+#' out <- tryCatch(expressions_to_report(
+#'   expressions = a == (b + 1)
+#' ), error = function(e) e)
+#' stopifnot(inherits(out, "error"))
 #' # fail
-#' tests_to_report(
-#'   tests = "a == (b + 1)"
+#' expressions_to_report(
+#'   expressions = "a == (b + 1)"
 #' )
-#' # error
-#' tests_to_report(
-#'   tests = "a == d"
+#' # expressions_to_report does not raise error, but shows it in output
+#' expressions_to_report(
+#'   expressions = "a == d"
 #' )
-tests_to_report <- function(
-  tests,
+expressions_to_report <- function(
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   env = parent.frame(1L),
@@ -163,15 +172,15 @@ tests_to_report <- function(
   call <- dbc::handle_arg_call(call)
 
   raise_internal_error_if_not(
-    inherits(tests, c("list", "character"))
+    inherits(expressions, c("list", "character"))
   )
-  if (inherits(tests, "list")) {
+  if (inherits(expressions, "list")) {
     raise_internal_error_if_not(
-      vapply(tests, is.language, logical(1L)) | vapply(
-        tests, is.character, logical(1L)
+      vapply(expressions, is.language, logical(1L)) | vapply(
+        expressions, is.character, logical(1L)
       )
     )
-    tests <- vapply(tests, function(elem) {
+    expressions <- vapply(expressions, function(elem) {
       if (!is.character(elem)) {
         elem <- paste0(deparse(elem), collapse = "")
       }
@@ -182,12 +191,12 @@ tests_to_report <- function(
   stopifnot(
     is.null(fail_messages) || (
       is.character(fail_messages) &&
-        length(fail_messages) %in% c(1L, length(tests))
+        length(fail_messages) %in% c(1L, length(expressions))
     ),
 
     is.null(pass_messages) || (
       is.character(pass_messages) &&
-        length(pass_messages) %in% c(1L, length(tests))
+        length(pass_messages) %in% c(1L, length(expressions))
     ),
 
     is.environment(env)
@@ -197,27 +206,27 @@ tests_to_report <- function(
     fail_messages <- "at least one FALSE value in test: ${test}"
   }
   if (length(fail_messages) == 1L) {
-    fail_messages <- rep(fail_messages, length(tests))
+    fail_messages <- rep(fail_messages, length(expressions))
   }
   fail_messages[is.na(fail_messages)] <- paste0(
-    "test failed: ", tests[is.na(fail_messages)]
+    "test failed: ", expressions[is.na(fail_messages)]
   )
   if (is.null(pass_messages)) {
     pass_messages <- "all were TRUE in test: ${test}"
   }
   if (length(pass_messages) == 1L) {
-    pass_messages <- rep(pass_messages, length(tests))
+    pass_messages <- rep(pass_messages, length(expressions))
   }
   pass_messages[is.na(pass_messages)] <- paste0(
-    "test passed: ", tests[is.na(pass_messages)]
+    "test passed: ", expressions[is.na(pass_messages)]
   )
 
-  test_df_list <- lapply(seq_along(tests), function(test_pos) {
+  test_df_list <- lapply(seq_along(expressions), function(expr_pos) {
 
     test_string_to_report(
-      test_string = tests[test_pos],
-      pass_message = pass_messages[test_pos],
-      fail_message = fail_messages[test_pos],
+      test_string = expressions[expr_pos],
+      pass_message = pass_messages[expr_pos],
+      fail_message = fail_messages[expr_pos],
       env = env
     )
 
@@ -249,11 +258,11 @@ dev_assertion_types <- function() {
 
 
 
-#' @rdname tests_to_reports_to_assertions
+#' @rdname expressions_to_reports_to_assertions
 #' @export
 #' @param report_df `[data.frame]` (mandatory, no default)
 #'
-#' a report `data.frame` as returned by `tests_to_report`
+#' a report `data.frame` as returned by `expressions_to_report`
 #' @param assertion_type `[character]` (mandatory, default `"general"`)
 #'
 #' the type of assertion alters the emitted error message to e.g. direct the
@@ -291,25 +300,25 @@ dev_assertion_types <- function() {
 #' # report to assertion
 #'
 #' # pass
-#' report_df <- tests_to_report("1 == 1")
+#' report_df <- expressions_to_report("1 == 1")
 #' report_to_assertion(report_df)
 #'
 #' # fail
-#' report_df <- tests_to_report("1 == 2")
+#' report_df <- expressions_to_report("1 == 2")
 #' tryCatch(
 #'   report_to_assertion(report_df),
 #'   error = function(e) e
 #' )
 #'
 #' # 2 passes, 2 failures
-#' report_df <- tests_to_report(c("1 == 2", "1 == 1", "2 == 2", "2 == 1"))
+#' report_df <- expressions_to_report(c("1 == 2", "1 == 1", "2 == 2", "2 == 1"))
 #' tryCatch(
 #'   report_to_assertion(report_df),
 #'   error = function(e) e
 #' )
 #'
 #' my_fun <- function(my_arg) {
-#'   report_to_assertion(tests_to_report("is.character(my_arg)"))
+#'   report_to_assertion(expressions_to_report("is.character(my_arg)"))
 #' }
 #' tryCatch(
 #'   my_fun(my_arg = 1L),
@@ -545,8 +554,8 @@ generate_base_report_funs <- function(
       "pass_msg_set <- c(",
       paste0("  ", fun_df[["pass_msg_set"]][fun_no]),
       ")",
-      "report_df <- tests_to_report(",
-      "  tests = test_set,",
+      "report_df <- expressions_to_report(",
+      "  expressions = test_set,",
       "  fail_messages = fail_msg_set,",
       "  pass_messages = pass_msg_set,",
       "  env = report_env, ",

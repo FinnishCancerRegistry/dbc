@@ -27,7 +27,7 @@ testthat::test_that("report_to_assertion shows correct call in error msg", {
 
     dbc::report_to_assertion(
       dbc::tests_to_report(
-        tests = "is.character(arg)"
+        expressions = "is.character(arg)"
       )
     )
 

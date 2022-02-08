@@ -40,14 +40,14 @@
 #' df <- data.frame(a = 1:5, b = 1:5)
 #' report_df <- report_has_only_valid_observations(
 #'   x = df,
-#'   tests = c("a == b", "a == d", "a != b")
+#'   expressions = c("a == b", "a == d", "a != b")
 #' )
 #'
 #' # running tests only for some columns
 #' df <- data.frame(a = 1:5, b = 1:5, c = 1:5)
 #' report_df <- report_has_only_valid_observations(
 #'   x = df,
-#'   tests = c("a == b", "a == c", "a != b"),
+#'   expressions = c("a == b", "a == c", "a != b"),
 #'   col_nms = c("a", "b"),
 #'   col_nm_set_list = list(c("a", "b"), c("a", "c"), c("a", "b"))
 #' )
@@ -90,7 +90,7 @@ report_has_only_valid_observations <- function(
     ))
     if (length(which_tests_to_run) == 0L) {
       report_df <- tests_to_report(
-        tests = "1 == 1",
+        expressions = "1 == 1",
         fail_messages = fail_messages,
         pass_messages = pass_messages,
         env = dataset_env
@@ -107,7 +107,7 @@ report_has_only_valid_observations <- function(
   }
 
   tests_to_report(
-    tests = tests[which_tests_to_run],
+    expressions = tests[which_tests_to_run],
     fail_messages = fail_messages,
     pass_messages = pass_messages,
     env = dataset_env

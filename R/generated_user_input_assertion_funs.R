@@ -275,7 +275,7 @@ assert_user_input_has_only_valid_observations <- function(
   report_df <- report_has_only_valid_observations(
     x = x, 
     x_nm = x_nm, 
-    tests = tests, 
+    expressions = tests, 
     fail_messages = fail_messages, 
     pass_messages = pass_messages, 
     col_nms = col_nms, 

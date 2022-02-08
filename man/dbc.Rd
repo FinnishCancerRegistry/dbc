@@ -99,7 +99,7 @@ create your own reports, and pass its output to \verb{[report_to_assertion]} to
 create an assertion. E.g.\preformatted{my_fun <- function(x) \{
   dbc::report_to_assertion(
     dbc::tests_to_report(
-      tests = "x \%in\% 1:5"
+      expressions = "x \%in\% 1:5"
     )
   )
 \}

@@ -21,8 +21,8 @@ report_all_are_TRUE <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -50,8 +50,8 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -79,8 +79,8 @@ report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -108,8 +108,8 @@ report_file_exists <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -137,8 +137,8 @@ report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -166,8 +166,8 @@ report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -195,8 +195,8 @@ report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -224,8 +224,8 @@ report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     "object ${deparse(x_nm)} had no duplicates"
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -253,8 +253,8 @@ report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -282,8 +282,8 @@ report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -311,8 +311,8 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -340,8 +340,8 @@ report_is_atom <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -369,8 +369,8 @@ report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -398,8 +398,8 @@ report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -427,8 +427,8 @@ report_is_call <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -456,8 +456,8 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -485,8 +485,8 @@ report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -514,8 +514,8 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -543,8 +543,8 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -572,8 +572,8 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -601,8 +601,8 @@ report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -630,8 +630,8 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -659,8 +659,8 @@ report_is_Date <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -688,8 +688,8 @@ report_is_double <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -717,8 +717,8 @@ report_is_environment <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -746,8 +746,8 @@ report_is_expression <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -775,8 +775,8 @@ report_is_factor <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -804,8 +804,8 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_l
   pass_msg_set <- c(
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -833,8 +833,8 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -862,8 +862,8 @@ report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -891,8 +891,8 @@ report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -920,8 +920,8 @@ report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -949,8 +949,8 @@ report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -978,8 +978,8 @@ report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1007,8 +1007,8 @@ report_is_integer <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1036,8 +1036,8 @@ report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1065,8 +1065,8 @@ report_is_list <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1094,8 +1094,8 @@ report_is_logical <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1123,8 +1123,8 @@ report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1152,8 +1152,8 @@ report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1181,8 +1181,8 @@ report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1210,8 +1210,8 @@ report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expressions_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1239,8 +1239,8 @@ report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expression_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1268,8 +1268,8 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expression_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1297,8 +1297,8 @@ report_is_named <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expression_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1326,8 +1326,8 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     c(NA_character_, NA_character_)
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expression_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1355,8 +1355,8 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expression_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1384,8 +1384,8 @@ report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
   pass_msg_set <- c(
     NA_character_
   )
-  report_df <- tests_to_report(
-    tests = test_set,
+  report_df <- expression_to_report(
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1414,7 +1414,7 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
     NA_character_
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1443,7 +1443,7 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
     NA_character_
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1472,7 +1472,7 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
     NA_character_
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1501,7 +1501,7 @@ report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
     c(NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1530,7 +1530,7 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
     c(NA_character_, NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1559,7 +1559,7 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
     c(NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1588,7 +1588,7 @@ report_match_regex <- function(x, x_nm = NULL, call = NULL, grepl.arg.list = lis
     "All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}"
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1617,7 +1617,7 @@ report_TRUE <- function(x, x_nm = NULL, call = NULL) {
     NA_character_
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 
@@ -1646,7 +1646,7 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
     c(NA_character_, NA_character_)
   )
   report_df <- tests_to_report(
-    tests = test_set,
+    expressions = test_set,
     fail_messages = fail_msg_set,
     pass_messages = pass_msg_set,
     env = report_env, 

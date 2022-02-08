@@ -8,8 +8,8 @@ report_is <- function(
   call = NULL
 ) {
   x_expr <- substitute(x)
-  tests_to_report(
-    tests = list(x_expr)
+  expressions_to_report(
+    expressions = list(x_expr)
   )
 }
 
