@@ -1928,7 +1928,7 @@ assert_dev_input_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_dev_input_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -2311,7 +2311,7 @@ assert_dev_interim_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_dev_interim_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -2694,7 +2694,7 @@ assert_dev_output_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_dev_output_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -3077,7 +3077,7 @@ assert_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -3450,7 +3450,7 @@ assert_prod_input_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_prod_input_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -3833,7 +3833,7 @@ assert_prod_interim_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_prod_interim_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -4232,7 +4232,7 @@ assert_prod_output_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_prod_output_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -4843,7 +4843,7 @@ test_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 test_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -5216,7 +5216,7 @@ assert_user_input_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 assert_user_input_has_only_valid_observations(
   x,
   x_nm = NULL,
-  tests,
+  expressions,
   fail_messages = NULL,
   pass_messages = NULL,
   col_nms = names(x),
@@ -5653,6 +5653,10 @@ names of arguments that function \code{x} must have}
 
 list of (optional) arguments passed to \verb{[grepl]}}
 
+\item{expressions}{\verb{[character]} (mandatory, no default)
+
+passed to \link{expressions_to_report} as-is}
+
 \item{fail_messages}{\verb{[character]} (optional, default \code{NULL})
 
 passed to \link{expressions_to_report} as-is}
@@ -5687,10 +5691,6 @@ report functions that return a report (data.frame);
 \item \code{character}: names of functions that can be found by \verb{[match.fun]}
 \item \code{list}: list of functions
 }}
-
-\item{expressions}{\verb{[character]} (mandatory, no default)
-
-passed to \link{expressions_to_report} as-is}
 }
 \value{
 \itemize{

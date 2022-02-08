@@ -262,7 +262,7 @@ assert_dev_interim_has_only_names <- function(
 assert_dev_interim_has_only_valid_observations <- function(
   x, 
   x_nm = NULL, 
-  tests, 
+  expressions, 
   fail_messages = NULL, 
   pass_messages = NULL, 
   col_nms = names(x), 
@@ -275,7 +275,7 @@ assert_dev_interim_has_only_valid_observations <- function(
   report_df <- report_has_only_valid_observations(
     x = x, 
     x_nm = x_nm, 
-    tests = tests, 
+    expressions = expressions, 
     fail_messages = fail_messages, 
     pass_messages = pass_messages, 
     col_nms = col_nms, 

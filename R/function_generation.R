@@ -69,9 +69,9 @@ NULL
 
 #' @rdname expressions_to_reports_to_assertions
 #' @export
-#' @param tests `[character, list]` (mandatory, no default)
+#' @param expressions `[character, list]` (mandatory, no default)
 #'
-#' - `character`: vector of tests to perform; after parsing each string
+#' - `character`: vector of expressions to perform; after parsing each string
 #'   the evaluated expression must return a logical vector or `NULL`,
 #'   where `NULL` is interpreted as pass
 #' - `list`: each element is either a character string as above or a language

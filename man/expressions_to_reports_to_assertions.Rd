@@ -21,6 +21,15 @@ report_to_assertion(
 )
 }
 \arguments{
+\item{expressions}{\verb{[character, list]} (mandatory, no default)
+\itemize{
+\item \code{character}: vector of expressions to perform; after parsing each string
+the evaluated expression must return a logical vector or \code{NULL},
+where \code{NULL} is interpreted as pass
+\item \code{list}: each element is either a character string as above or a language
+object (see e.g. \link{quote}) which is deparsed into a string
+}}
+
 \item{fail_messages}{\verb{[NULL, character]} (optional, default \code{NULL})
 \itemize{
 \item \code{NULL}: use \code{"at least one FALSE value in test: ${test}"}
@@ -92,15 +101,6 @@ the call to display in the error call; passed to arg \code{call} of
 function (as it is intended to be used), the function call of the
 surrounding function is used; see \strong{Examples}
 \item \code{language}: this call is used as-is.
-}}
-
-\item{tests}{\verb{[character, list]} (mandatory, no default)
-\itemize{
-\item \code{character}: vector of tests to perform; after parsing each string
-the evaluated expression must return a logical vector or \code{NULL},
-where \code{NULL} is interpreted as pass
-\item \code{list}: each element is either a character string as above or a language
-object (see e.g. \link{quote}) which is deparsed into a string
 }}
 }
 \value{

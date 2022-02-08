@@ -1347,13 +1347,13 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
   test_set <- c(
-    c("!is.na(x)", "!is.na(x)")
+    "!is.na(x)"
   )
   fail_msg_set <- c(
-    c("object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", "${n_fail} elements of ${deparse(x_nm)} were NA")
+    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
   )
   pass_msg_set <- c(
-    c(NA_character_, NA_character_)
+    NA_character_
   )
   report_df <- expressions_to_report(
     expressions = test_set,
