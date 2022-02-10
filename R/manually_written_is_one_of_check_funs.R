@@ -64,8 +64,8 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
 assert_is_one_of__ <- function(
   x,
   x_nm = NULL,
-  funs,
   call = NULL,
+  funs,
   assertion_type = "general"
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
@@ -99,7 +99,7 @@ assert_is_one_of__ <- function(
       stop(msg)
     }
   }
-
+  invisible(NULL)
   return(invisible(NULL))
 }
 
