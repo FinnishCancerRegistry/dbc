@@ -67,7 +67,7 @@
 "is_data_table_with_required_names";"dbc::test_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
 "is_data_table_with_required_names";"inherits(x, 'data.table')";"object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
 "is_data_table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
-"is_nonNA";"!is.na(x)";"object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed";NA;NA
+"is_nonNA";"if (!is.function(x)) !is.na(x) else TRUE";"object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed";NA;NA
 "is_between_inclusive";"dbc::test_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"
 "is_between_inclusive";"dbc::test_is_number_nonNA_vector(hi)";NA;NA;"lo, hi"
 "is_between_inclusive";"dbc::is_between_inclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of ${deparse(x_nm)} were outside inclusive bounds ${lo}, ${hi}";NA;"lo, hi"
