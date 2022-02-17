@@ -251,8 +251,7 @@ expressions_to_report <- function(
 #' @param report_df `[data.frame]` (mandatory, no default)
 #'
 #' a report `data.frame` as returned by `expressions_to_report`
-#' @template arg_assertion_type
-#'
+#' @eval arg_assertion_type_docs()
 #' @param raise_error_call `[NULL, language]` (optional, default `NULL`)
 #'
 #' the call to display in the error call; passed to arg `call` of

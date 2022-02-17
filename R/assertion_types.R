@@ -83,18 +83,11 @@ arg_assertion_type_docs <- function() {
     "",
     "Must be exactly one of the following: ",
     "",
-    assertion_type_summary_lines_in_markdown()
-  )
-  lines <- paste0("#' ", lines)
-  lines <- c(
-    "",
-    "# this file generated automatically by dbc:::arg_assertion_type_docs",
-    lines,
+    assertion_type_summary_lines_in_markdown(),
     ""
   )
-  writeLines(lines, "man-roxygen/arg_assertion_type.R")
+  lines
 }
-arg_assertion_type_docs()
 
 assertion_type_error_messages <- function() {
   msg_append <- c(
