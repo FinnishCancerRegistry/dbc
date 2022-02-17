@@ -15,12 +15,13 @@ assert_dev_input_all_are_TRUE <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_all_are_TRUE(
+  report_df <- dbc::report_all_are_TRUE(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -40,13 +41,14 @@ assert_dev_input_atom_is_in_set <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_atom_is_in_set(
+  report_df <- dbc::report_atom_is_in_set(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     set = set
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -65,12 +67,13 @@ assert_dev_input_dir_exists <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_dir_exists(
+  report_df <- dbc::report_dir_exists(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -89,12 +92,13 @@ assert_dev_input_file_exists <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_file_exists(
+  report_df <- dbc::report_file_exists(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -114,13 +118,14 @@ assert_dev_input_has_class <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_class(
+  report_df <- dbc::report_has_class(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_class = required_class
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -140,13 +145,14 @@ assert_dev_input_has_length <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_length(
+  report_df <- dbc::report_has_length(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     expected_length = expected_length
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -166,13 +172,14 @@ assert_dev_input_has_names <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_names(
+  report_df <- dbc::report_has_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_names = required_names
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -191,12 +198,13 @@ assert_dev_input_has_no_duplicates <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_no_duplicates(
+  report_df <- dbc::report_has_no_duplicates(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -216,13 +224,14 @@ assert_dev_input_has_one_of_classes <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_one_of_classes(
+  report_df <- dbc::report_has_one_of_classes(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     classes = classes
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -242,13 +251,14 @@ assert_dev_input_has_only_names <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_only_names(
+  report_df <- dbc::report_has_only_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_names = required_names
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -272,7 +282,7 @@ assert_dev_input_has_only_valid_observations <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_has_only_valid_observations(
+  report_df <- dbc::report_has_only_valid_observations(
     x = x, 
     x_nm = x_nm, 
     expressions = expressions, 
@@ -282,7 +292,8 @@ assert_dev_input_has_only_valid_observations <- function(
     col_nm_set_list = col_nm_set_list, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -302,13 +313,14 @@ assert_dev_input_inherits <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_inherits(
+  report_df <- dbc::report_inherits(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_class = required_class
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -327,12 +339,13 @@ assert_dev_input_is_assertion_type <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_assertion_type(
+  report_df <- dbc::report_is_assertion_type(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -351,12 +364,13 @@ assert_dev_input_is_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_atom(
+  report_df <- dbc::report_is_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -377,14 +391,15 @@ assert_dev_input_is_between_exclusive <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_between_exclusive(
+  report_df <- dbc::report_is_between_exclusive(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     lo = lo, 
     hi = hi
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -405,14 +420,15 @@ assert_dev_input_is_between_inclusive <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_between_inclusive(
+  report_df <- dbc::report_is_between_inclusive(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     lo = lo, 
     hi = hi
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -431,12 +447,13 @@ assert_dev_input_is_call <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_call(
+  report_df <- dbc::report_is_call(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -455,12 +472,13 @@ assert_dev_input_is_character <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character(
+  report_df <- dbc::report_is_character(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -479,12 +497,13 @@ assert_dev_input_is_character_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character_atom(
+  report_df <- dbc::report_is_character_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -503,12 +522,13 @@ assert_dev_input_is_character_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character_matrix(
+  report_df <- dbc::report_is_character_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -527,12 +547,13 @@ assert_dev_input_is_character_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character_nonNA_atom(
+  report_df <- dbc::report_is_character_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -551,12 +572,13 @@ assert_dev_input_is_character_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character_nonNA_matrix(
+  report_df <- dbc::report_is_character_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -575,12 +597,13 @@ assert_dev_input_is_character_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character_nonNA_vector(
+  report_df <- dbc::report_is_character_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -599,12 +622,13 @@ assert_dev_input_is_character_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_character_vector(
+  report_df <- dbc::report_is_character_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -623,12 +647,13 @@ assert_dev_input_is_data.frame <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_data.frame(
+  report_df <- dbc::report_is_data.frame(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -648,13 +673,14 @@ assert_dev_input_is_data.frame_with_required_names <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_data.frame_with_required_names(
+  report_df <- dbc::report_is_data.frame_with_required_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_names = required_names
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -673,12 +699,13 @@ assert_dev_input_is_data.table <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_data.table(
+  report_df <- dbc::report_is_data.table(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -698,13 +725,14 @@ assert_dev_input_is_data.table_with_required_names <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_data.table_with_required_names(
+  report_df <- dbc::report_is_data.table_with_required_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_names = required_names
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -723,12 +751,13 @@ assert_dev_input_is_data_table <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_data_table(
+  report_df <- dbc::report_is_data_table(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -748,13 +777,14 @@ assert_dev_input_is_data_table_with_required_names <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_data_table_with_required_names(
+  report_df <- dbc::report_is_data_table_with_required_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_names = required_names
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -773,12 +803,13 @@ assert_dev_input_is_Date <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date(
+  report_df <- dbc::report_is_Date(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -797,12 +828,13 @@ assert_dev_input_is_Date_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date_atom(
+  report_df <- dbc::report_is_Date_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -821,12 +853,13 @@ assert_dev_input_is_Date_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date_matrix(
+  report_df <- dbc::report_is_Date_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -845,12 +878,13 @@ assert_dev_input_is_Date_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date_nonNA_atom(
+  report_df <- dbc::report_is_Date_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -869,12 +903,13 @@ assert_dev_input_is_Date_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date_nonNA_matrix(
+  report_df <- dbc::report_is_Date_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -893,12 +928,13 @@ assert_dev_input_is_Date_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date_nonNA_vector(
+  report_df <- dbc::report_is_Date_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -917,12 +953,13 @@ assert_dev_input_is_Date_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_Date_vector(
+  report_df <- dbc::report_is_Date_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -941,12 +978,13 @@ assert_dev_input_is_double <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double(
+  report_df <- dbc::report_is_double(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -965,12 +1003,13 @@ assert_dev_input_is_double_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_atom(
+  report_df <- dbc::report_is_double_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -989,12 +1028,13 @@ assert_dev_input_is_double_gtezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_gtezero_atom(
+  report_df <- dbc::report_is_double_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1013,12 +1053,13 @@ assert_dev_input_is_double_gtezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_gtezero_matrix(
+  report_df <- dbc::report_is_double_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1037,12 +1078,13 @@ assert_dev_input_is_double_gtezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_gtezero_vector(
+  report_df <- dbc::report_is_double_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1061,12 +1103,13 @@ assert_dev_input_is_double_gtzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_gtzero_atom(
+  report_df <- dbc::report_is_double_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1085,12 +1128,13 @@ assert_dev_input_is_double_gtzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_gtzero_matrix(
+  report_df <- dbc::report_is_double_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1109,12 +1153,13 @@ assert_dev_input_is_double_gtzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_gtzero_vector(
+  report_df <- dbc::report_is_double_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1133,12 +1178,13 @@ assert_dev_input_is_double_ltezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_ltezero_atom(
+  report_df <- dbc::report_is_double_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1157,12 +1203,13 @@ assert_dev_input_is_double_ltezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_ltezero_matrix(
+  report_df <- dbc::report_is_double_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1181,12 +1228,13 @@ assert_dev_input_is_double_ltezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_ltezero_vector(
+  report_df <- dbc::report_is_double_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1205,12 +1253,13 @@ assert_dev_input_is_double_ltzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_ltzero_atom(
+  report_df <- dbc::report_is_double_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1229,12 +1278,13 @@ assert_dev_input_is_double_ltzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_ltzero_matrix(
+  report_df <- dbc::report_is_double_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1253,12 +1303,13 @@ assert_dev_input_is_double_ltzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_ltzero_vector(
+  report_df <- dbc::report_is_double_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1277,12 +1328,13 @@ assert_dev_input_is_double_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_matrix(
+  report_df <- dbc::report_is_double_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1301,12 +1353,13 @@ assert_dev_input_is_double_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_atom(
+  report_df <- dbc::report_is_double_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1325,12 +1378,13 @@ assert_dev_input_is_double_nonNA_gtezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_gtezero_atom(
+  report_df <- dbc::report_is_double_nonNA_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1349,12 +1403,13 @@ assert_dev_input_is_double_nonNA_gtezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_gtezero_matrix(
+  report_df <- dbc::report_is_double_nonNA_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1373,12 +1428,13 @@ assert_dev_input_is_double_nonNA_gtezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_gtezero_vector(
+  report_df <- dbc::report_is_double_nonNA_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1397,12 +1453,13 @@ assert_dev_input_is_double_nonNA_gtzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_gtzero_atom(
+  report_df <- dbc::report_is_double_nonNA_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1421,12 +1478,13 @@ assert_dev_input_is_double_nonNA_gtzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_gtzero_matrix(
+  report_df <- dbc::report_is_double_nonNA_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1445,12 +1503,13 @@ assert_dev_input_is_double_nonNA_gtzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_gtzero_vector(
+  report_df <- dbc::report_is_double_nonNA_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1469,12 +1528,13 @@ assert_dev_input_is_double_nonNA_ltezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_ltezero_atom(
+  report_df <- dbc::report_is_double_nonNA_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1493,12 +1553,13 @@ assert_dev_input_is_double_nonNA_ltezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_ltezero_matrix(
+  report_df <- dbc::report_is_double_nonNA_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1517,12 +1578,13 @@ assert_dev_input_is_double_nonNA_ltezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_ltezero_vector(
+  report_df <- dbc::report_is_double_nonNA_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1541,12 +1603,13 @@ assert_dev_input_is_double_nonNA_ltzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_ltzero_atom(
+  report_df <- dbc::report_is_double_nonNA_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1565,12 +1628,13 @@ assert_dev_input_is_double_nonNA_ltzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_ltzero_matrix(
+  report_df <- dbc::report_is_double_nonNA_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1589,12 +1653,13 @@ assert_dev_input_is_double_nonNA_ltzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_ltzero_vector(
+  report_df <- dbc::report_is_double_nonNA_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1613,12 +1678,13 @@ assert_dev_input_is_double_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_matrix(
+  report_df <- dbc::report_is_double_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1637,12 +1703,13 @@ assert_dev_input_is_double_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_nonNA_vector(
+  report_df <- dbc::report_is_double_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1661,12 +1728,13 @@ assert_dev_input_is_double_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_double_vector(
+  report_df <- dbc::report_is_double_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1685,12 +1753,13 @@ assert_dev_input_is_environment <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_environment(
+  report_df <- dbc::report_is_environment(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1709,12 +1778,13 @@ assert_dev_input_is_expression <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_expression(
+  report_df <- dbc::report_is_expression(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1733,12 +1803,13 @@ assert_dev_input_is_factor <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor(
+  report_df <- dbc::report_is_factor(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1757,12 +1828,13 @@ assert_dev_input_is_factor_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_atom(
+  report_df <- dbc::report_is_factor_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1781,12 +1853,13 @@ assert_dev_input_is_factor_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_matrix(
+  report_df <- dbc::report_is_factor_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1805,12 +1878,13 @@ assert_dev_input_is_factor_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_nonNA_atom(
+  report_df <- dbc::report_is_factor_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1829,12 +1903,13 @@ assert_dev_input_is_factor_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_nonNA_matrix(
+  report_df <- dbc::report_is_factor_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1853,12 +1928,13 @@ assert_dev_input_is_factor_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_nonNA_vector(
+  report_df <- dbc::report_is_factor_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1877,12 +1953,13 @@ assert_dev_input_is_factor_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_vector(
+  report_df <- dbc::report_is_factor_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1902,13 +1979,14 @@ assert_dev_input_is_factor_with_levels <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_factor_with_levels(
+  report_df <- dbc::report_is_factor_with_levels(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     expected_levels = expected_levels
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1927,12 +2005,13 @@ assert_dev_input_is_function <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_function(
+  report_df <- dbc::report_is_function(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1952,13 +2031,14 @@ assert_dev_input_is_function_with_required_argument_names <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_function_with_required_argument_names(
+  report_df <- dbc::report_is_function_with_required_argument_names(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     required_argument_names = required_argument_names
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -1978,13 +2058,14 @@ assert_dev_input_is_gt <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_gt(
+  report_df <- dbc::report_is_gt(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     lo = lo
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2004,13 +2085,14 @@ assert_dev_input_is_gte <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_gte(
+  report_df <- dbc::report_is_gte(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     lo = lo
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2029,12 +2111,13 @@ assert_dev_input_is_gtezero <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_gtezero(
+  report_df <- dbc::report_is_gtezero(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2053,12 +2136,13 @@ assert_dev_input_is_gtzero <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_gtzero(
+  report_df <- dbc::report_is_gtzero(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2077,12 +2161,13 @@ assert_dev_input_is_integer <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer(
+  report_df <- dbc::report_is_integer(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2101,12 +2186,13 @@ assert_dev_input_is_integer_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_atom(
+  report_df <- dbc::report_is_integer_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2125,12 +2211,13 @@ assert_dev_input_is_integer_gtezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_gtezero_atom(
+  report_df <- dbc::report_is_integer_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2149,12 +2236,13 @@ assert_dev_input_is_integer_gtezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_gtezero_matrix(
+  report_df <- dbc::report_is_integer_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2173,12 +2261,13 @@ assert_dev_input_is_integer_gtezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_gtezero_vector(
+  report_df <- dbc::report_is_integer_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2197,12 +2286,13 @@ assert_dev_input_is_integer_gtzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_gtzero_atom(
+  report_df <- dbc::report_is_integer_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2221,12 +2311,13 @@ assert_dev_input_is_integer_gtzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_gtzero_matrix(
+  report_df <- dbc::report_is_integer_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2245,12 +2336,13 @@ assert_dev_input_is_integer_gtzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_gtzero_vector(
+  report_df <- dbc::report_is_integer_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2269,12 +2361,13 @@ assert_dev_input_is_integer_ltezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_ltezero_atom(
+  report_df <- dbc::report_is_integer_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2293,12 +2386,13 @@ assert_dev_input_is_integer_ltezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_ltezero_matrix(
+  report_df <- dbc::report_is_integer_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2317,12 +2411,13 @@ assert_dev_input_is_integer_ltezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_ltezero_vector(
+  report_df <- dbc::report_is_integer_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2341,12 +2436,13 @@ assert_dev_input_is_integer_ltzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_ltzero_atom(
+  report_df <- dbc::report_is_integer_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2365,12 +2461,13 @@ assert_dev_input_is_integer_ltzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_ltzero_matrix(
+  report_df <- dbc::report_is_integer_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2389,12 +2486,13 @@ assert_dev_input_is_integer_ltzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_ltzero_vector(
+  report_df <- dbc::report_is_integer_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2413,12 +2511,13 @@ assert_dev_input_is_integer_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_matrix(
+  report_df <- dbc::report_is_integer_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2437,12 +2536,13 @@ assert_dev_input_is_integer_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_atom(
+  report_df <- dbc::report_is_integer_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2461,12 +2561,13 @@ assert_dev_input_is_integer_nonNA_gtezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_gtezero_atom(
+  report_df <- dbc::report_is_integer_nonNA_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2485,12 +2586,13 @@ assert_dev_input_is_integer_nonNA_gtezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_gtezero_matrix(
+  report_df <- dbc::report_is_integer_nonNA_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2509,12 +2611,13 @@ assert_dev_input_is_integer_nonNA_gtezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_gtezero_vector(
+  report_df <- dbc::report_is_integer_nonNA_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2533,12 +2636,13 @@ assert_dev_input_is_integer_nonNA_gtzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_gtzero_atom(
+  report_df <- dbc::report_is_integer_nonNA_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2557,12 +2661,13 @@ assert_dev_input_is_integer_nonNA_gtzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_gtzero_matrix(
+  report_df <- dbc::report_is_integer_nonNA_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2581,12 +2686,13 @@ assert_dev_input_is_integer_nonNA_gtzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_gtzero_vector(
+  report_df <- dbc::report_is_integer_nonNA_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2605,12 +2711,13 @@ assert_dev_input_is_integer_nonNA_ltezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_ltezero_atom(
+  report_df <- dbc::report_is_integer_nonNA_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2629,12 +2736,13 @@ assert_dev_input_is_integer_nonNA_ltezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_ltezero_matrix(
+  report_df <- dbc::report_is_integer_nonNA_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2653,12 +2761,13 @@ assert_dev_input_is_integer_nonNA_ltezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_ltezero_vector(
+  report_df <- dbc::report_is_integer_nonNA_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2677,12 +2786,13 @@ assert_dev_input_is_integer_nonNA_ltzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_ltzero_atom(
+  report_df <- dbc::report_is_integer_nonNA_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2701,12 +2811,13 @@ assert_dev_input_is_integer_nonNA_ltzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_ltzero_matrix(
+  report_df <- dbc::report_is_integer_nonNA_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2725,12 +2836,13 @@ assert_dev_input_is_integer_nonNA_ltzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_ltzero_vector(
+  report_df <- dbc::report_is_integer_nonNA_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2749,12 +2861,13 @@ assert_dev_input_is_integer_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_matrix(
+  report_df <- dbc::report_is_integer_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2773,12 +2886,13 @@ assert_dev_input_is_integer_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_nonNA_vector(
+  report_df <- dbc::report_is_integer_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2797,12 +2911,13 @@ assert_dev_input_is_integer_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_integer_vector(
+  report_df <- dbc::report_is_integer_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2821,12 +2936,13 @@ assert_dev_input_is_language_object <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_language_object(
+  report_df <- dbc::report_is_language_object(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2845,12 +2961,13 @@ assert_dev_input_is_list <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_list(
+  report_df <- dbc::report_is_list(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2869,12 +2986,13 @@ assert_dev_input_is_logical <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical(
+  report_df <- dbc::report_is_logical(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2893,12 +3011,13 @@ assert_dev_input_is_logical_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical_atom(
+  report_df <- dbc::report_is_logical_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2917,12 +3036,13 @@ assert_dev_input_is_logical_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical_matrix(
+  report_df <- dbc::report_is_logical_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2941,12 +3061,13 @@ assert_dev_input_is_logical_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical_nonNA_atom(
+  report_df <- dbc::report_is_logical_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2965,12 +3086,13 @@ assert_dev_input_is_logical_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical_nonNA_matrix(
+  report_df <- dbc::report_is_logical_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -2989,12 +3111,13 @@ assert_dev_input_is_logical_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical_nonNA_vector(
+  report_df <- dbc::report_is_logical_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3013,12 +3136,13 @@ assert_dev_input_is_logical_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_logical_vector(
+  report_df <- dbc::report_is_logical_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3038,13 +3162,14 @@ assert_dev_input_is_lt <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_lt(
+  report_df <- dbc::report_is_lt(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     hi = hi
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3064,13 +3189,14 @@ assert_dev_input_is_lte <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_lte(
+  report_df <- dbc::report_is_lte(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     hi = hi
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3089,12 +3215,13 @@ assert_dev_input_is_ltezero <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_ltezero(
+  report_df <- dbc::report_is_ltezero(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3113,12 +3240,13 @@ assert_dev_input_is_ltzero <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_ltzero(
+  report_df <- dbc::report_is_ltzero(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3137,12 +3265,13 @@ assert_dev_input_is_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_matrix(
+  report_df <- dbc::report_is_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3161,12 +3290,13 @@ assert_dev_input_is_name <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_name(
+  report_df <- dbc::report_is_name(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3185,12 +3315,13 @@ assert_dev_input_is_named <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_named(
+  report_df <- dbc::report_is_named(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3209,12 +3340,13 @@ assert_dev_input_is_named_list <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_named_list(
+  report_df <- dbc::report_is_named_list(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3233,12 +3365,13 @@ assert_dev_input_is_nonNA <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_nonNA(
+  report_df <- dbc::report_is_nonNA(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3257,12 +3390,13 @@ assert_dev_input_is_NULL <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_NULL(
+  report_df <- dbc::report_is_NULL(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3281,12 +3415,13 @@ assert_dev_input_is_number <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number(
+  report_df <- dbc::report_is_number(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3305,12 +3440,13 @@ assert_dev_input_is_number_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_atom(
+  report_df <- dbc::report_is_number_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3329,12 +3465,13 @@ assert_dev_input_is_number_gtezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_gtezero_atom(
+  report_df <- dbc::report_is_number_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3353,12 +3490,13 @@ assert_dev_input_is_number_gtezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_gtezero_matrix(
+  report_df <- dbc::report_is_number_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3377,12 +3515,13 @@ assert_dev_input_is_number_gtezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_gtezero_vector(
+  report_df <- dbc::report_is_number_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3401,12 +3540,13 @@ assert_dev_input_is_number_gtzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_gtzero_atom(
+  report_df <- dbc::report_is_number_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3425,12 +3565,13 @@ assert_dev_input_is_number_gtzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_gtzero_matrix(
+  report_df <- dbc::report_is_number_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3449,12 +3590,13 @@ assert_dev_input_is_number_gtzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_gtzero_vector(
+  report_df <- dbc::report_is_number_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3473,12 +3615,13 @@ assert_dev_input_is_number_ltezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_ltezero_atom(
+  report_df <- dbc::report_is_number_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3497,12 +3640,13 @@ assert_dev_input_is_number_ltezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_ltezero_matrix(
+  report_df <- dbc::report_is_number_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3521,12 +3665,13 @@ assert_dev_input_is_number_ltezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_ltezero_vector(
+  report_df <- dbc::report_is_number_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3545,12 +3690,13 @@ assert_dev_input_is_number_ltzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_ltzero_atom(
+  report_df <- dbc::report_is_number_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3569,12 +3715,13 @@ assert_dev_input_is_number_ltzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_ltzero_matrix(
+  report_df <- dbc::report_is_number_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3593,12 +3740,13 @@ assert_dev_input_is_number_ltzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_ltzero_vector(
+  report_df <- dbc::report_is_number_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3617,12 +3765,13 @@ assert_dev_input_is_number_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_matrix(
+  report_df <- dbc::report_is_number_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3641,12 +3790,13 @@ assert_dev_input_is_number_nonNA_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_atom(
+  report_df <- dbc::report_is_number_nonNA_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3665,12 +3815,13 @@ assert_dev_input_is_number_nonNA_gtezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_gtezero_atom(
+  report_df <- dbc::report_is_number_nonNA_gtezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3689,12 +3840,13 @@ assert_dev_input_is_number_nonNA_gtezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_gtezero_matrix(
+  report_df <- dbc::report_is_number_nonNA_gtezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3713,12 +3865,13 @@ assert_dev_input_is_number_nonNA_gtezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_gtezero_vector(
+  report_df <- dbc::report_is_number_nonNA_gtezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3737,12 +3890,13 @@ assert_dev_input_is_number_nonNA_gtzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_gtzero_atom(
+  report_df <- dbc::report_is_number_nonNA_gtzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3761,12 +3915,13 @@ assert_dev_input_is_number_nonNA_gtzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_gtzero_matrix(
+  report_df <- dbc::report_is_number_nonNA_gtzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3785,12 +3940,13 @@ assert_dev_input_is_number_nonNA_gtzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_gtzero_vector(
+  report_df <- dbc::report_is_number_nonNA_gtzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3809,12 +3965,13 @@ assert_dev_input_is_number_nonNA_ltezero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_ltezero_atom(
+  report_df <- dbc::report_is_number_nonNA_ltezero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3833,12 +3990,13 @@ assert_dev_input_is_number_nonNA_ltezero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_ltezero_matrix(
+  report_df <- dbc::report_is_number_nonNA_ltezero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3857,12 +4015,13 @@ assert_dev_input_is_number_nonNA_ltezero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_ltezero_vector(
+  report_df <- dbc::report_is_number_nonNA_ltezero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3881,12 +4040,13 @@ assert_dev_input_is_number_nonNA_ltzero_atom <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_ltzero_atom(
+  report_df <- dbc::report_is_number_nonNA_ltzero_atom(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3905,12 +4065,13 @@ assert_dev_input_is_number_nonNA_ltzero_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_ltzero_matrix(
+  report_df <- dbc::report_is_number_nonNA_ltzero_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3929,12 +4090,13 @@ assert_dev_input_is_number_nonNA_ltzero_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_ltzero_vector(
+  report_df <- dbc::report_is_number_nonNA_ltzero_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3953,12 +4115,13 @@ assert_dev_input_is_number_nonNA_matrix <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_matrix(
+  report_df <- dbc::report_is_number_nonNA_matrix(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -3977,12 +4140,13 @@ assert_dev_input_is_number_nonNA_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_nonNA_vector(
+  report_df <- dbc::report_is_number_nonNA_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4001,12 +4165,13 @@ assert_dev_input_is_number_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_number_vector(
+  report_df <- dbc::report_is_number_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4025,12 +4190,13 @@ assert_dev_input_is_numeric <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_numeric(
+  report_df <- dbc::report_is_numeric(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4050,13 +4216,14 @@ assert_dev_input_is_of_length <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_of_length(
+  report_df <- dbc::report_is_of_length(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     expected_length = expected_length
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4075,12 +4242,13 @@ assert_dev_input_is_TRUE <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_TRUE(
+  report_df <- dbc::report_is_TRUE(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4099,12 +4267,13 @@ assert_dev_input_is_uniquely_named <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_uniquely_named(
+  report_df <- dbc::report_is_uniquely_named(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4123,12 +4292,13 @@ assert_dev_input_is_uniquely_named_list <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_uniquely_named_list(
+  report_df <- dbc::report_is_uniquely_named_list(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4147,12 +4317,13 @@ assert_dev_input_is_vector <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_is_vector(
+  report_df <- dbc::report_is_vector(
     x = x, 
     x_nm = x_nm, 
     call = call
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4172,13 +4343,14 @@ assert_dev_input_match_regex <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_match_regex(
+  report_df <- dbc::report_match_regex(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     grepl.arg.list = grepl.arg.list
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 
@@ -4198,13 +4370,14 @@ assert_dev_input_vector_elems_are_in_set <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
-  report_df <- report_vector_elems_are_in_set(
+  report_df <- dbc::report_vector_elems_are_in_set(
     x = x, 
     x_nm = x_nm, 
     call = call, 
     set = set
   )
-  report_to_assertion(report_df, assertion_type = "dev_input")
+  assertion_type <- "dev_input"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
 }
 

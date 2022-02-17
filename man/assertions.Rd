@@ -3248,25 +3248,66 @@ assert_dev_output_match_regex(
 
 assert_dev_output_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_all_are_TRUE(x, x_nm = NULL, call = NULL)
+assert_all_are_TRUE(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
+assert_atom_is_in_set(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  set,
+  assertion_type = "general"
+)
 
-assert_dir_exists(x, x_nm = NULL, call = NULL)
+assert_dir_exists(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_file_exists(x, x_nm = NULL, call = NULL)
+assert_file_exists(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_has_class(x, x_nm = NULL, call = NULL, required_class)
+assert_has_class(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_class,
+  assertion_type = "general"
+)
 
-assert_has_length(x, x_nm = NULL, call = NULL, expected_length)
+assert_has_length(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_length,
+  assertion_type = "general"
+)
 
-assert_has_names(x, x_nm = NULL, call = NULL, required_names)
+assert_has_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names,
+  assertion_type = "general"
+)
 
-assert_has_no_duplicates(x, x_nm = NULL, call = NULL)
+assert_has_no_duplicates(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
+assert_has_one_of_classes(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  classes,
+  assertion_type = "general"
+)
 
-assert_has_only_names(x, x_nm = NULL, call = NULL, required_names)
+assert_has_only_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names,
+  assertion_type = "general"
+)
 
 assert_has_only_valid_observations(
   x,
@@ -3276,352 +3317,951 @@ assert_has_only_valid_observations(
   pass_messages = NULL,
   col_nms = names(x),
   col_nm_set_list = NULL,
-  call = NULL
+  call = NULL,
+  assertion_type = "general"
 )
 
-assert_inherits(x, x_nm = NULL, call = NULL, required_class)
+assert_inherits(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_class,
+  assertion_type = "general"
+)
 
-assert_is_assertion_type(x, x_nm = NULL, call = NULL)
+assert_is_assertion_type(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_atom(x, x_nm = NULL, call = NULL)
+assert_is_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
+assert_is_between_exclusive(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  lo,
+  hi,
+  assertion_type = "general"
+)
 
-assert_is_between_inclusive(x, x_nm = NULL, call = NULL, lo, hi)
+assert_is_between_inclusive(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  lo,
+  hi,
+  assertion_type = "general"
+)
 
-assert_is_call(x, x_nm = NULL, call = NULL)
+assert_is_call(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_character(x, x_nm = NULL, call = NULL)
+assert_is_character(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_character_atom(x, x_nm = NULL, call = NULL)
+assert_is_character_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_character_matrix(x, x_nm = NULL, call = NULL)
+assert_is_character_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_character_nonNA_atom(x, x_nm = NULL, call = NULL)
+assert_is_character_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_character_nonNA_matrix(x, x_nm = NULL, call = NULL)
+assert_is_character_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
+assert_is_character_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_character_vector(x, x_nm = NULL, call = NULL)
+assert_is_character_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_data.frame(x, x_nm = NULL, call = NULL)
+assert_is_data.frame(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 assert_is_data.frame_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  assertion_type = "general"
 )
 
-assert_is_data.table(x, x_nm = NULL, call = NULL)
+assert_is_data.table(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 assert_is_data.table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  assertion_type = "general"
 )
 
-assert_is_data_table(x, x_nm = NULL, call = NULL)
+assert_is_data_table(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 assert_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  assertion_type = "general"
 )
 
-assert_is_Date(x, x_nm = NULL, call = NULL)
+assert_is_Date(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_Date_atom(x, x_nm = NULL, call = NULL)
+assert_is_Date_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_Date_matrix(x, x_nm = NULL, call = NULL)
+assert_is_Date_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_Date_nonNA_atom(x, x_nm = NULL, call = NULL)
+assert_is_Date_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_Date_nonNA_matrix(x, x_nm = NULL, call = NULL)
+assert_is_Date_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_Date_nonNA_vector(x, x_nm = NULL, call = NULL)
+assert_is_Date_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_Date_vector(x, x_nm = NULL, call = NULL)
+assert_is_Date_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_double(x, x_nm = NULL, call = NULL)
+assert_is_double(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_double_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_double_gtezero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_gtezero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_gtezero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_gtzero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_gtzero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_gtzero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_ltezero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_ltezero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_ltezero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_ltzero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_ltzero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_ltzero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_matrix(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_nonNA_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_double_vector(x, x_nm = NULL, call = NULL)
+assert_is_double_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_environment(x, x_nm = NULL, call = NULL)
+assert_is_environment(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_expression(x, x_nm = NULL, call = NULL)
+assert_is_expression(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_factor(x, x_nm = NULL, call = NULL)
+assert_is_factor(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_factor_atom(x, x_nm = NULL, call = NULL)
+assert_is_factor_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-assert_is_factor_matrix(x, x_nm = NULL, call = NULL)
+assert_is_factor_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_factor_nonNA_atom(x, x_nm = NULL, call = NULL)
+assert_is_factor_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_factor_nonNA_matrix(x, x_nm = NULL, call = NULL)
+assert_is_factor_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_factor_nonNA_vector(x, x_nm = NULL, call = NULL)
+assert_is_factor_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_factor_vector(x, x_nm = NULL, call = NULL)
+assert_is_factor_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-assert_is_factor_with_levels(x, x_nm = NULL, call = NULL, expected_levels)
+assert_is_factor_with_levels(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_levels,
+  assertion_type = "general"
+)
 
-assert_is_function(x, x_nm = NULL, call = NULL)
+assert_is_function(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 assert_is_function_with_required_argument_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_argument_names
+  required_argument_names,
+  assertion_type = "general"
 )
 
-assert_is_gt(x, x_nm = NULL, call = NULL, lo)
-
-assert_is_gte(x, x_nm = NULL, call = NULL, lo)
-
-assert_is_gtezero(x, x_nm = NULL, call = NULL)
-
-assert_is_gtzero(x, x_nm = NULL, call = NULL)
-
-assert_is_integer(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_nonNA_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_integer_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_language_object(x, x_nm = NULL, call = NULL)
-
-assert_is_list(x, x_nm = NULL, call = NULL)
-
-assert_is_logical(x, x_nm = NULL, call = NULL)
-
-assert_is_logical_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_logical_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_logical_nonNA_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_logical_nonNA_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_logical_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_lt(x, x_nm = NULL, call = NULL, hi)
-
-assert_is_lte(x, x_nm = NULL, call = NULL, hi)
-
-assert_is_ltezero(x, x_nm = NULL, call = NULL)
-
-assert_is_ltzero(x, x_nm = NULL, call = NULL)
-
-assert_is_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_name(x, x_nm = NULL, call = NULL)
-
-assert_is_named(x, x_nm = NULL, call = NULL)
-
-assert_is_named_list(x, x_nm = NULL, call = NULL)
-
-assert_is_nonNA(x, x_nm = NULL, call = NULL)
-
-assert_is_NULL(x, x_nm = NULL, call = NULL)
-
-assert_is_number(x, x_nm = NULL, call = NULL)
-
-assert_is_number_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_matrix(x, x_nm = NULL, call = NULL)
-
-assert_is_number_nonNA_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_number_vector(x, x_nm = NULL, call = NULL)
-
-assert_is_numeric(x, x_nm = NULL, call = NULL)
-
-assert_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
-
-assert_is_TRUE(x, x_nm = NULL, call = NULL)
-
-assert_is_uniquely_named(x, x_nm = NULL, call = NULL)
-
-assert_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
-
-assert_is_vector(x, x_nm = NULL, call = NULL)
-
-assert_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
-
-assert_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+assert_is_gt(x, x_nm = NULL, call = NULL, lo, assertion_type = "general")
+
+assert_is_gte(x, x_nm = NULL, call = NULL, lo, assertion_type = "general")
+
+assert_is_gtezero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_gtzero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_integer(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_integer_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_integer_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_integer_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_language_object(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_list(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_logical(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_logical_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_logical_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_logical_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_logical_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_logical_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_logical_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_lt(x, x_nm = NULL, call = NULL, hi, assertion_type = "general")
+
+assert_is_lte(x, x_nm = NULL, call = NULL, hi, assertion_type = "general")
+
+assert_is_ltezero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_ltzero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_name(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_named(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_named_list(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_nonNA(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_NULL(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_number(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_number_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_number_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_number_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_numeric(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_of_length(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_length,
+  assertion_type = "general"
+)
+
+assert_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_uniquely_named(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_uniquely_named_list(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+assert_is_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_match_regex(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  grepl.arg.list = list(),
+  assertion_type = "general"
+)
+
+assert_vector_elems_are_in_set(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  set,
+  assertion_type = "general"
+)
 
 assert_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5402,25 +6042,61 @@ report_is_number_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
 
 report_is_number_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
 
-test_all_are_TRUE(x, x_nm = NULL, call = NULL)
+test_all_are_TRUE(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
+test_atom_is_in_set(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  set,
+  assertion_type = "general"
+)
 
-test_dir_exists(x, x_nm = NULL, call = NULL)
+test_dir_exists(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_file_exists(x, x_nm = NULL, call = NULL)
+test_file_exists(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_has_class(x, x_nm = NULL, call = NULL, required_class)
+test_has_class(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_class,
+  assertion_type = "general"
+)
 
-test_has_length(x, x_nm = NULL, call = NULL, expected_length)
+test_has_length(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_length,
+  assertion_type = "general"
+)
 
-test_has_names(x, x_nm = NULL, call = NULL, required_names)
+test_has_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names,
+  assertion_type = "general"
+)
 
-test_has_no_duplicates(x, x_nm = NULL, call = NULL)
+test_has_no_duplicates(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
+test_has_one_of_classes(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  classes,
+  assertion_type = "general"
+)
 
-test_has_only_names(x, x_nm = NULL, call = NULL, required_names)
+test_has_only_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names,
+  assertion_type = "general"
+)
 
 test_has_only_valid_observations(
   x,
@@ -5430,352 +6106,886 @@ test_has_only_valid_observations(
   pass_messages = NULL,
   col_nms = names(x),
   col_nm_set_list = NULL,
-  call = NULL
+  call = NULL,
+  assertion_type = "general"
 )
 
-test_inherits(x, x_nm = NULL, call = NULL, required_class)
+test_inherits(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_class,
+  assertion_type = "general"
+)
 
-test_is_assertion_type(x, x_nm = NULL, call = NULL)
+test_is_assertion_type(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_atom(x, x_nm = NULL, call = NULL)
+test_is_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
+test_is_between_exclusive(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  lo,
+  hi,
+  assertion_type = "general"
+)
 
-test_is_between_inclusive(x, x_nm = NULL, call = NULL, lo, hi)
+test_is_between_inclusive(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  lo,
+  hi,
+  assertion_type = "general"
+)
 
-test_is_call(x, x_nm = NULL, call = NULL)
+test_is_call(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_character(x, x_nm = NULL, call = NULL)
+test_is_character(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_character_atom(x, x_nm = NULL, call = NULL)
+test_is_character_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_character_matrix(x, x_nm = NULL, call = NULL)
+test_is_character_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_character_nonNA_atom(x, x_nm = NULL, call = NULL)
+test_is_character_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_character_nonNA_matrix(x, x_nm = NULL, call = NULL)
+test_is_character_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
+test_is_character_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_character_vector(x, x_nm = NULL, call = NULL)
+test_is_character_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_data.frame(x, x_nm = NULL, call = NULL)
+test_is_data.frame(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_data.frame_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  assertion_type = "general"
 )
 
-test_is_data.table(x, x_nm = NULL, call = NULL)
+test_is_data.table(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_data.table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  assertion_type = "general"
 )
 
-test_is_data_table(x, x_nm = NULL, call = NULL)
+test_is_data_table(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  assertion_type = "general"
 )
 
-test_is_Date(x, x_nm = NULL, call = NULL)
+test_is_Date(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_Date_atom(x, x_nm = NULL, call = NULL)
+test_is_Date_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_Date_matrix(x, x_nm = NULL, call = NULL)
+test_is_Date_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_Date_nonNA_atom(x, x_nm = NULL, call = NULL)
+test_is_Date_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_Date_nonNA_matrix(x, x_nm = NULL, call = NULL)
+test_is_Date_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_Date_nonNA_vector(x, x_nm = NULL, call = NULL)
+test_is_Date_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_Date_vector(x, x_nm = NULL, call = NULL)
+test_is_Date_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_double(x, x_nm = NULL, call = NULL)
+test_is_double(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_double_atom(x, x_nm = NULL, call = NULL)
+test_is_double_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_double_gtezero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_gtezero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_gtezero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_gtzero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_gtzero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_gtzero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_ltezero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_ltezero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_ltezero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_ltzero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_ltzero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_ltzero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_double_nonNA_atom(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_matrix(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_nonNA_vector(x, x_nm = NULL, call = NULL)
+test_is_double_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_double_vector(x, x_nm = NULL, call = NULL)
+test_is_double_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_environment(x, x_nm = NULL, call = NULL)
+test_is_environment(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_expression(x, x_nm = NULL, call = NULL)
+test_is_expression(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_factor(x, x_nm = NULL, call = NULL)
+test_is_factor(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_factor_atom(x, x_nm = NULL, call = NULL)
+test_is_factor_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_factor_matrix(x, x_nm = NULL, call = NULL)
+test_is_factor_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_factor_nonNA_atom(x, x_nm = NULL, call = NULL)
+test_is_factor_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_factor_nonNA_matrix(x, x_nm = NULL, call = NULL)
+test_is_factor_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_factor_nonNA_vector(x, x_nm = NULL, call = NULL)
+test_is_factor_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
 
-test_is_factor_vector(x, x_nm = NULL, call = NULL)
+test_is_factor_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
-test_is_factor_with_levels(x, x_nm = NULL, call = NULL, expected_levels)
+test_is_factor_with_levels(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_levels,
+  assertion_type = "general"
+)
 
-test_is_function(x, x_nm = NULL, call = NULL)
+test_is_function(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_function_with_required_argument_names(
   x,
   x_nm = NULL,
   call = NULL,
-  required_argument_names
+  required_argument_names,
+  assertion_type = "general"
 )
 
-test_is_gt(x, x_nm = NULL, call = NULL, lo)
-
-test_is_gte(x, x_nm = NULL, call = NULL, lo)
-
-test_is_gtezero(x, x_nm = NULL, call = NULL)
-
-test_is_gtzero(x, x_nm = NULL, call = NULL)
-
-test_is_integer(x, x_nm = NULL, call = NULL)
-
-test_is_integer_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_integer_nonNA_vector(x, x_nm = NULL, call = NULL)
-
-test_is_integer_vector(x, x_nm = NULL, call = NULL)
-
-test_is_language_object(x, x_nm = NULL, call = NULL)
-
-test_is_list(x, x_nm = NULL, call = NULL)
-
-test_is_logical(x, x_nm = NULL, call = NULL)
-
-test_is_logical_atom(x, x_nm = NULL, call = NULL)
-
-test_is_logical_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_logical_nonNA_atom(x, x_nm = NULL, call = NULL)
-
-test_is_logical_nonNA_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
-
-test_is_logical_vector(x, x_nm = NULL, call = NULL)
-
-test_is_lt(x, x_nm = NULL, call = NULL, hi)
-
-test_is_lte(x, x_nm = NULL, call = NULL, hi)
-
-test_is_ltezero(x, x_nm = NULL, call = NULL)
-
-test_is_ltzero(x, x_nm = NULL, call = NULL)
-
-test_is_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_name(x, x_nm = NULL, call = NULL)
-
-test_is_named(x, x_nm = NULL, call = NULL)
-
-test_is_named_list(x, x_nm = NULL, call = NULL)
-
-test_is_nonNA(x, x_nm = NULL, call = NULL)
-
-test_is_NULL(x, x_nm = NULL, call = NULL)
-
-test_is_number(x, x_nm = NULL, call = NULL)
-
-test_is_number_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_matrix(x, x_nm = NULL, call = NULL)
-
-test_is_number_nonNA_vector(x, x_nm = NULL, call = NULL)
-
-test_is_number_vector(x, x_nm = NULL, call = NULL)
-
-test_is_numeric(x, x_nm = NULL, call = NULL)
-
-test_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
-
-test_is_TRUE(x, x_nm = NULL, call = NULL)
-
-test_is_uniquely_named(x, x_nm = NULL, call = NULL)
-
-test_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
-
-test_is_vector(x, x_nm = NULL, call = NULL)
-
-test_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
-
-test_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+test_is_gt(x, x_nm = NULL, call = NULL, lo, assertion_type = "general")
+
+test_is_gte(x, x_nm = NULL, call = NULL, lo, assertion_type = "general")
+
+test_is_gtezero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_gtzero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_integer(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_integer_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_integer_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_integer_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_integer_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_language_object(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_list(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_logical(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_logical_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_logical_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_logical_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_logical_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_logical_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_logical_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_lt(x, x_nm = NULL, call = NULL, hi, assertion_type = "general")
+
+test_is_lte(x, x_nm = NULL, call = NULL, hi, assertion_type = "general")
+
+test_is_ltezero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_ltzero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_name(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_named(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_named_list(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_nonNA(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_NULL(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_number(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_number_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_number_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_matrix(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_number_nonNA_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_gtezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_gtezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_gtezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_gtzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_gtzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_gtzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_ltezero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_ltezero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_ltezero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_ltzero_atom(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_ltzero_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_ltzero_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_matrix(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_nonNA_vector(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_number_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_numeric(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_of_length(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_length,
+  assertion_type = "general"
+)
+
+test_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_uniquely_named(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_uniquely_named_list(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = "general"
+)
+
+test_is_vector(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_match_regex(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  grepl.arg.list = list(),
+  assertion_type = "general"
+)
+
+test_vector_elems_are_in_set(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  set,
+  assertion_type = "general"
+)
 
 assert_user_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 

@@ -545,13 +545,17 @@ generate_report_derivative_funs <- function(
 
   body_part <- switch(
     type,
-    assert = c(
-      paste0(
-        "report_to_assertion(report_df, assertion_type = \"",
-        assertion_type,
-        "\")"
+    assert = switch(
+      assertion_type,
+      general = c(
+        "dbc::report_to_assertion(report_df, assertion_type = assertion_type)",
+        "return(invisible(NULL))"
       ),
-      "return(invisible(NULL))"
+      c(
+        paste0("assertion_type <- \"", assertion_type, "\""),
+        "dbc::report_to_assertion(report_df, assertion_type = assertion_type)",
+        "return(invisible(NULL))"
+      )
     ),
     test = c(
       "return(all(report_df[[\"pass\"]]))"
@@ -566,7 +570,7 @@ generate_report_derivative_funs <- function(
       "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
       "x_nm <- dbc::handle_arg_x_nm(x_nm)",
       "call <- dbc::handle_arg_call(call)",
-      paste0("report_df <- ", fun_df[["report_fun_nm"]][fun_no], "("),
+      paste0("report_df <- dbc::", fun_df[["report_fun_nm"]][fun_no], "("),
       paste0(
         "  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")
       ),
@@ -577,6 +581,9 @@ generate_report_derivative_funs <- function(
 
   fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {
     formals <- formals(fun_env[[report_fun_nm]])
+    if (assertion_type == "general") {
+      formals[["assertion_type"]] <- "general"
+    }
     arg_set <- vapply(
       seq_along(formals),
       function(formal_no) {
@@ -592,11 +599,13 @@ generate_report_derivative_funs <- function(
 
   fun_df[["def"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     fun_nm <- fun_df[["fun_nm"]][fun_no]
+    assign_line <- paste0(fun_nm, " <- function(")
     body <- fun_df[["body"]][[fun_no]]
     arg_set <- fun_df[["arg_set"]][[fun_no]]
+    arg_lines <- paste0("  ", arg_set, c(rep(", ", length(arg_set) - 1L), ""))
     def <- c(
-      paste0(fun_nm, " <- function("),
-      paste0("  ", arg_set, c(rep(", ", length(arg_set) - 1L), "")),
+      assign_line,
+      arg_lines,
       ") {",
       body,
       "}"
