@@ -117,6 +117,14 @@ report_has_only_valid_observations <- function(
 get_report_df_template <- function() {
   report_df_template #internal dataset
 }
+#' @title `report_df` Report
+#' @description
+#' Report whether an object is a valid report data.frame as produced by e.g.
+#' `[dbc::expressions_to_report]`.
+#' @template arg_x
+#' @template arg_x_nm
+#' @template arg_call
+#' @export
 report_is_report_df <- function(x, x_nm = NULL, call = NULL) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
