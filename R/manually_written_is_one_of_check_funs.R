@@ -28,7 +28,6 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
-
   funs <- lapply(funs, match.fun)
   report_df <- do.call(rbind, lapply(funs, function(fun) {
     report_df <- fun(x = x, x_nm = x_nm, call = call)
@@ -37,7 +36,7 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
       test = paste0(report_df[["test"]], collapse = " & "),
       error = NA_character_,
       pass = all(report_df[["pass"]] %in% TRUE),
-      n_fail = max(report_df[["n_fail"]], na.rm = TRUE),
+      n_fail = NA_integer_,
       wh_fail = NA_character_,
       message = paste0(report_df[["message"]], collapse = "; "),
       call = NA_character_
@@ -46,9 +45,10 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
     errors <- report_df[["error"]]
     if (!all(is.na(errors))) {
       errors[is.na(errors)] <- "no error"
-      total_report_df <- paste0(errors, collapse = "; ")
+      total_report_df[["error"]] <- paste0(errors, collapse = "; ")
     }
     total_report_df[["wh_fail"]] <- list(list_union(report_df[["wh_fail"]]))
+    total_report_df[["n_fail"]] <- length(total_report_df[["wh_fail"]])
     total_report_df[["call"]] <- list(report_df[["call"]][[1L]])
     if (any(!is.na(total_report_df[["wh_fail"]]))) {
       total_report_df[["wh_fail"]] <- setdiff(total_report_df[["wh_fail"]],
