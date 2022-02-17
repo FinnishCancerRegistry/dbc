@@ -148,11 +148,12 @@ assert_is_one_of <- function(
   x,
   x_nm = NULL,
   funs,
-  call = NULL
+  call = NULL,
+  assertion_type = "general"
 ) {
   assert_is_one_of__(
     x = x, x_nm = x_nm, funs = funs, call = call,
-    assertion_type = "general"
+    assertion_type = assertion_type
   )
 }
 

@@ -7407,7 +7407,7 @@ identify_invalid_observations(x, report_df)
 
 report_is_one_of(x, x_nm = NULL, call = NULL, funs)
 
-assert_is_one_of(x, x_nm = NULL, funs, call = NULL)
+assert_is_one_of(x, x_nm = NULL, funs, call = NULL, assertion_type = "general")
 
 assert_prod_input_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
