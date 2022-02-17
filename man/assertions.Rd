@@ -3,7 +3,7 @@
 %   R/generated_base_report_funs.R, R/generated_dev_input_assertion_funs.R,
 %   R/generated_dev_interim_assertion_funs.R,
 %   R/generated_dev_output_assertion_funs.R,
-%   R/generated_general_assertion_funs.R,
+%   R/generated_general_assertion_funs.R, R/generated_input_assertion_funs.R,
 %   R/generated_prod_input_assertion_funs.R,
 %   R/generated_prod_interim_assertion_funs.R,
 %   R/generated_prod_output_assertion_funs.R, R/generated_report_fun_variants.R,
@@ -13,6 +13,7 @@
 \name{report_is}
 \alias{report_is}
 \alias{assert_is}
+\alias{assert_input_is}
 \alias{assert_user_input_is}
 \alias{assert_prod_input_is}
 \alias{assert_dev_input_is}
@@ -765,6 +766,178 @@
 \alias{assert_is_vector}
 \alias{assert_match_regex}
 \alias{assert_vector_elems_are_in_set}
+\alias{assert_input_all_are_TRUE}
+\alias{assert_input_atom_is_in_set}
+\alias{assert_input_dir_exists}
+\alias{assert_input_file_exists}
+\alias{assert_input_has_class}
+\alias{assert_input_has_length}
+\alias{assert_input_has_names}
+\alias{assert_input_has_no_duplicates}
+\alias{assert_input_has_one_of_classes}
+\alias{assert_input_has_only_names}
+\alias{assert_input_has_only_valid_observations}
+\alias{assert_input_inherits}
+\alias{assert_input_is_atom}
+\alias{assert_input_is_between_exclusive}
+\alias{assert_input_is_between_inclusive}
+\alias{assert_input_is_call}
+\alias{assert_input_is_character}
+\alias{assert_input_is_character_atom}
+\alias{assert_input_is_character_matrix}
+\alias{assert_input_is_character_nonNA_atom}
+\alias{assert_input_is_character_nonNA_matrix}
+\alias{assert_input_is_character_nonNA_vector}
+\alias{assert_input_is_character_vector}
+\alias{assert_input_is_data.frame}
+\alias{assert_input_is_data.frame_with_required_names}
+\alias{assert_input_is_data.table}
+\alias{assert_input_is_data.table_with_required_names}
+\alias{assert_input_is_data_table}
+\alias{assert_input_is_data_table_with_required_names}
+\alias{assert_input_is_Date}
+\alias{assert_input_is_Date_atom}
+\alias{assert_input_is_Date_matrix}
+\alias{assert_input_is_Date_nonNA_atom}
+\alias{assert_input_is_Date_nonNA_matrix}
+\alias{assert_input_is_Date_nonNA_vector}
+\alias{assert_input_is_Date_vector}
+\alias{assert_input_is_double}
+\alias{assert_input_is_double_atom}
+\alias{assert_input_is_double_gtezero_atom}
+\alias{assert_input_is_double_gtezero_matrix}
+\alias{assert_input_is_double_gtezero_vector}
+\alias{assert_input_is_double_gtzero_atom}
+\alias{assert_input_is_double_gtzero_matrix}
+\alias{assert_input_is_double_gtzero_vector}
+\alias{assert_input_is_double_ltezero_atom}
+\alias{assert_input_is_double_ltezero_matrix}
+\alias{assert_input_is_double_ltezero_vector}
+\alias{assert_input_is_double_ltzero_atom}
+\alias{assert_input_is_double_ltzero_matrix}
+\alias{assert_input_is_double_ltzero_vector}
+\alias{assert_input_is_double_matrix}
+\alias{assert_input_is_double_nonNA_atom}
+\alias{assert_input_is_double_nonNA_gtezero_atom}
+\alias{assert_input_is_double_nonNA_gtezero_matrix}
+\alias{assert_input_is_double_nonNA_gtezero_vector}
+\alias{assert_input_is_double_nonNA_gtzero_atom}
+\alias{assert_input_is_double_nonNA_gtzero_matrix}
+\alias{assert_input_is_double_nonNA_gtzero_vector}
+\alias{assert_input_is_double_nonNA_ltezero_atom}
+\alias{assert_input_is_double_nonNA_ltezero_matrix}
+\alias{assert_input_is_double_nonNA_ltezero_vector}
+\alias{assert_input_is_double_nonNA_ltzero_atom}
+\alias{assert_input_is_double_nonNA_ltzero_matrix}
+\alias{assert_input_is_double_nonNA_ltzero_vector}
+\alias{assert_input_is_double_nonNA_matrix}
+\alias{assert_input_is_double_nonNA_vector}
+\alias{assert_input_is_double_vector}
+\alias{assert_input_is_environment}
+\alias{assert_input_is_expression}
+\alias{assert_input_is_factor}
+\alias{assert_input_is_factor_atom}
+\alias{assert_input_is_factor_matrix}
+\alias{assert_input_is_factor_nonNA_atom}
+\alias{assert_input_is_factor_nonNA_matrix}
+\alias{assert_input_is_factor_nonNA_vector}
+\alias{assert_input_is_factor_vector}
+\alias{assert_input_is_factor_with_levels}
+\alias{assert_input_is_function}
+\alias{assert_input_is_function_with_required_argument_names}
+\alias{assert_input_is_gt}
+\alias{assert_input_is_gte}
+\alias{assert_input_is_gtezero}
+\alias{assert_input_is_gtzero}
+\alias{assert_input_is_integer}
+\alias{assert_input_is_integer_atom}
+\alias{assert_input_is_integer_gtezero_atom}
+\alias{assert_input_is_integer_gtezero_matrix}
+\alias{assert_input_is_integer_gtezero_vector}
+\alias{assert_input_is_integer_gtzero_atom}
+\alias{assert_input_is_integer_gtzero_matrix}
+\alias{assert_input_is_integer_gtzero_vector}
+\alias{assert_input_is_integer_ltezero_atom}
+\alias{assert_input_is_integer_ltezero_matrix}
+\alias{assert_input_is_integer_ltezero_vector}
+\alias{assert_input_is_integer_ltzero_atom}
+\alias{assert_input_is_integer_ltzero_matrix}
+\alias{assert_input_is_integer_ltzero_vector}
+\alias{assert_input_is_integer_matrix}
+\alias{assert_input_is_integer_nonNA_atom}
+\alias{assert_input_is_integer_nonNA_gtezero_atom}
+\alias{assert_input_is_integer_nonNA_gtezero_matrix}
+\alias{assert_input_is_integer_nonNA_gtezero_vector}
+\alias{assert_input_is_integer_nonNA_gtzero_atom}
+\alias{assert_input_is_integer_nonNA_gtzero_matrix}
+\alias{assert_input_is_integer_nonNA_gtzero_vector}
+\alias{assert_input_is_integer_nonNA_ltezero_atom}
+\alias{assert_input_is_integer_nonNA_ltezero_matrix}
+\alias{assert_input_is_integer_nonNA_ltezero_vector}
+\alias{assert_input_is_integer_nonNA_ltzero_atom}
+\alias{assert_input_is_integer_nonNA_ltzero_matrix}
+\alias{assert_input_is_integer_nonNA_ltzero_vector}
+\alias{assert_input_is_integer_nonNA_matrix}
+\alias{assert_input_is_integer_nonNA_vector}
+\alias{assert_input_is_integer_vector}
+\alias{assert_input_is_language_object}
+\alias{assert_input_is_list}
+\alias{assert_input_is_logical}
+\alias{assert_input_is_logical_atom}
+\alias{assert_input_is_logical_matrix}
+\alias{assert_input_is_logical_nonNA_atom}
+\alias{assert_input_is_logical_nonNA_matrix}
+\alias{assert_input_is_logical_nonNA_vector}
+\alias{assert_input_is_logical_vector}
+\alias{assert_input_is_lt}
+\alias{assert_input_is_lte}
+\alias{assert_input_is_ltezero}
+\alias{assert_input_is_ltzero}
+\alias{assert_input_is_matrix}
+\alias{assert_input_is_name}
+\alias{assert_input_is_named}
+\alias{assert_input_is_named_list}
+\alias{assert_input_is_nonNA}
+\alias{assert_input_is_NULL}
+\alias{assert_input_is_number}
+\alias{assert_input_is_number_atom}
+\alias{assert_input_is_number_gtezero_atom}
+\alias{assert_input_is_number_gtezero_matrix}
+\alias{assert_input_is_number_gtezero_vector}
+\alias{assert_input_is_number_gtzero_atom}
+\alias{assert_input_is_number_gtzero_matrix}
+\alias{assert_input_is_number_gtzero_vector}
+\alias{assert_input_is_number_ltezero_atom}
+\alias{assert_input_is_number_ltezero_matrix}
+\alias{assert_input_is_number_ltezero_vector}
+\alias{assert_input_is_number_ltzero_atom}
+\alias{assert_input_is_number_ltzero_matrix}
+\alias{assert_input_is_number_ltzero_vector}
+\alias{assert_input_is_number_matrix}
+\alias{assert_input_is_number_nonNA_atom}
+\alias{assert_input_is_number_nonNA_gtezero_atom}
+\alias{assert_input_is_number_nonNA_gtezero_matrix}
+\alias{assert_input_is_number_nonNA_gtezero_vector}
+\alias{assert_input_is_number_nonNA_gtzero_atom}
+\alias{assert_input_is_number_nonNA_gtzero_matrix}
+\alias{assert_input_is_number_nonNA_gtzero_vector}
+\alias{assert_input_is_number_nonNA_ltezero_atom}
+\alias{assert_input_is_number_nonNA_ltezero_matrix}
+\alias{assert_input_is_number_nonNA_ltezero_vector}
+\alias{assert_input_is_number_nonNA_ltzero_atom}
+\alias{assert_input_is_number_nonNA_ltzero_matrix}
+\alias{assert_input_is_number_nonNA_ltzero_vector}
+\alias{assert_input_is_number_nonNA_matrix}
+\alias{assert_input_is_number_nonNA_vector}
+\alias{assert_input_is_number_vector}
+\alias{assert_input_is_numeric}
+\alias{assert_input_is_of_length}
+\alias{assert_input_is_TRUE}
+\alias{assert_input_is_uniquely_named}
+\alias{assert_input_is_uniquely_named_list}
+\alias{assert_input_is_vector}
+\alias{assert_input_match_regex}
+\alias{assert_input_vector_elems_are_in_set}
 \alias{assert_prod_input_all_are_TRUE}
 \alias{assert_prod_input_atom_is_in_set}
 \alias{assert_prod_input_dir_exists}
@@ -1756,6 +1929,8 @@
 report_is(x, x_nm = NULL, call = NULL)
 
 assert_is(x, x_nm = NULL, call = NULL)
+
+assert_input_is(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is(x, x_nm = NULL, call = NULL)
 
@@ -3426,6 +3601,384 @@ assert_is_vector(x, x_nm = NULL, call = NULL)
 assert_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
 
 assert_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
+
+assert_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
+
+assert_input_dir_exists(x, x_nm = NULL, call = NULL)
+
+assert_input_file_exists(x, x_nm = NULL, call = NULL)
+
+assert_input_has_class(x, x_nm = NULL, call = NULL, required_class)
+
+assert_input_has_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_input_has_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_input_has_no_duplicates(x, x_nm = NULL, call = NULL)
+
+assert_input_has_one_of_classes(x, x_nm = NULL, call = NULL, classes)
+
+assert_input_has_only_names(x, x_nm = NULL, call = NULL, required_names)
+
+assert_input_has_only_valid_observations(
+  x,
+  x_nm = NULL,
+  expressions,
+  fail_messages = NULL,
+  pass_messages = NULL,
+  col_nms = names(x),
+  col_nm_set_list = NULL,
+  call = NULL
+)
+
+assert_input_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_input_is_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
+
+assert_input_is_between_inclusive(x, x_nm = NULL, call = NULL, lo, hi)
+
+assert_input_is_call(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_character_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_data.frame(x, x_nm = NULL, call = NULL)
+
+assert_input_is_data.frame_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_input_is_data.table(x, x_nm = NULL, call = NULL)
+
+assert_input_is_data.table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_input_is_data_table(x, x_nm = NULL, call = NULL)
+
+assert_input_is_data_table_with_required_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names
+)
+
+assert_input_is_Date(x, x_nm = NULL, call = NULL)
+
+assert_input_is_Date_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_Date_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_Date_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_Date_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_Date_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_Date_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_gtezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_gtezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_gtezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_gtzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_gtzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_gtzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_ltezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_ltezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_ltezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_ltzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_ltzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_ltzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_double_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_environment(x, x_nm = NULL, call = NULL)
+
+assert_input_is_expression(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_factor_with_levels(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  expected_levels
+)
+
+assert_input_is_function(x, x_nm = NULL, call = NULL)
+
+assert_input_is_function_with_required_argument_names(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_argument_names
+)
+
+assert_input_is_gt(x, x_nm = NULL, call = NULL, lo)
+
+assert_input_is_gte(x, x_nm = NULL, call = NULL, lo)
+
+assert_input_is_gtezero(x, x_nm = NULL, call = NULL)
+
+assert_input_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_gtezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_gtezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_gtezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_gtzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_gtzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_gtzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_ltezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_ltezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_ltezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_ltzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_ltzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_ltzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_integer_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_language_object(x, x_nm = NULL, call = NULL)
+
+assert_input_is_list(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_logical_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_lt(x, x_nm = NULL, call = NULL, hi)
+
+assert_input_is_lte(x, x_nm = NULL, call = NULL, hi)
+
+assert_input_is_ltezero(x, x_nm = NULL, call = NULL)
+
+assert_input_is_ltzero(x, x_nm = NULL, call = NULL)
+
+assert_input_is_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_name(x, x_nm = NULL, call = NULL)
+
+assert_input_is_named(x, x_nm = NULL, call = NULL)
+
+assert_input_is_named_list(x, x_nm = NULL, call = NULL)
+
+assert_input_is_nonNA(x, x_nm = NULL, call = NULL)
+
+assert_input_is_NULL(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_gtezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_gtezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_gtezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_gtzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_gtzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_gtzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_ltezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_ltezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_ltezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_ltzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_ltzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_ltzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_gtezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_gtezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_gtezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_gtzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_gtzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_gtzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_ltezero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_ltezero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_ltezero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_ltzero_atom(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_ltzero_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_ltzero_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_matrix(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_nonNA_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_number_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_is_numeric(x, x_nm = NULL, call = NULL)
+
+assert_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_input_is_TRUE(x, x_nm = NULL, call = NULL)
+
+assert_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
+
+assert_input_is_uniquely_named_list(x, x_nm = NULL, call = NULL)
+
+assert_input_is_vector(x, x_nm = NULL, call = NULL)
+
+assert_input_match_regex(x, x_nm = NULL, call = NULL, grepl.arg.list = list())
+
+assert_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
 assert_prod_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
