@@ -10,4 +10,9 @@ report_fun_specs <- read.table(
 )
 report_fun_specs <- as.data.frame(lapply(report_fun_specs, as.character))
 
-usethis::use_data(report_fun_specs, internal = TRUE, overwrite = TRUE)
+pkgload::load_all(export_all = FALSE)
+report_df_template <- dbc::expressions_to_report("1 == 1")
+
+usethis::use_data(
+  report_fun_specs, report_df_template, internal = TRUE, overwrite = TRUE
+)

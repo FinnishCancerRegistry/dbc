@@ -70,5 +70,50 @@ testthat::test_that("dbc::assert_is_one_of works", {
     tf(1L),
     regexp = "\\QNone of the following assertions passed:\\E"
   )
+
+  bad_report_fun_1 <- function(y) {
+    dbc::report_is_NULL(x = y)
+  }
+  tf <- function(x) {
+    dbc::assert_is_one_of(
+      x = x,
+      funs = list(dbc::report_is_data.table, bad_report_fun_1)
+    )
+    x
+  }
+  testthat::expect_error(
+    tf(1L),
+    regexp = "\\Qdid not have all mandatory arguments\\E"
+  )
+
+  bad_report_fun_2 <- function(x, x_nm, call) {
+    data.frame(pass = TRUE)
+  }
+  tf <- function(x) {
+    dbc::assert_is_one_of(
+      x = x,
+      funs = list(dbc::report_is_data.table, bad_report_fun_2)
+    )
+    x
+  }
+  testthat::expect_error(
+    tf(1L),
+    regexp = "\\Qdid not contain all the expected columns\\E"
+  )
+
+  bad_report_fun_3 <- function(x, x_nm, call) {
+    NULL
+  }
+  tf <- function(x) {
+    dbc::assert_is_one_of(
+      x = x,
+      funs = list(dbc::report_is_data.table, bad_report_fun_3)
+    )
+    x
+  }
+  testthat::expect_error(
+    tf(1L),
+    regexp = "\\Qwas not a data.frame\\E"
+  )
 })
 

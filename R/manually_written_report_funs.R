@@ -114,6 +114,38 @@ report_has_only_valid_observations <- function(
   )
 }
 
+get_report_df_template <- function() {
+  report_df_template #internal dataset
+}
+report_is_report_df <- function(x, x_nm = NULL, call = NULL) {
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  expected_col_nms <- names(get_report_df_template())
+  miss_col_nms <- setdiff(names(expected_col_nms), names(x))
+
+  expressions <- c(
+    "is.data.frame(x)",
+    paste0("all(", deparse1(expected_col_nms), " %in% names(x))")
+  )
+  fail_msgs <- c(
+    paste0(deparse1(x_nm), " was not a data.frame"),
+    paste0(deparse1(x_nm), " did not contain all the expected columns; it ",
+           "had columns ", deparse1(names(x)), "; expected ",
+           deparse1(expected_col_nms), "; missing columns ",
+           deparse1(miss_col_nms))
+  )
+  fail_msgs <- paste0(
+    fail_msgs, "; if you can see this error, the command you used has one or ",
+    "more misspecified assertions, and you should complain to the command's ",
+    "maintainer."
+  )
+  report_df <- dbc::expressions_to_report(
+    expressions,
+    fail_messages = fail_msgs,
+    call = call
+  )
+  return(report_df)
+}
 
 
 

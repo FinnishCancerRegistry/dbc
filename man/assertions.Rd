@@ -248,6 +248,7 @@
 \alias{assert_dev_input_is_number_vector}
 \alias{assert_dev_input_is_numeric}
 \alias{assert_dev_input_is_of_length}
+\alias{assert_dev_input_is_report_df}
 \alias{assert_dev_input_is_TRUE}
 \alias{assert_dev_input_is_uniquely_named}
 \alias{assert_dev_input_is_uniquely_named_list}
@@ -421,6 +422,7 @@
 \alias{assert_dev_interim_is_number_vector}
 \alias{assert_dev_interim_is_numeric}
 \alias{assert_dev_interim_is_of_length}
+\alias{assert_dev_interim_is_report_df}
 \alias{assert_dev_interim_is_TRUE}
 \alias{assert_dev_interim_is_uniquely_named}
 \alias{assert_dev_interim_is_uniquely_named_list}
@@ -594,6 +596,7 @@
 \alias{assert_dev_output_is_number_vector}
 \alias{assert_dev_output_is_numeric}
 \alias{assert_dev_output_is_of_length}
+\alias{assert_dev_output_is_report_df}
 \alias{assert_dev_output_is_TRUE}
 \alias{assert_dev_output_is_uniquely_named}
 \alias{assert_dev_output_is_uniquely_named_list}
@@ -767,6 +770,7 @@
 \alias{assert_is_number_vector}
 \alias{assert_is_numeric}
 \alias{assert_is_of_length}
+\alias{assert_is_report_df}
 \alias{assert_is_TRUE}
 \alias{assert_is_uniquely_named}
 \alias{assert_is_uniquely_named_list}
@@ -940,6 +944,7 @@
 \alias{assert_input_is_number_vector}
 \alias{assert_input_is_numeric}
 \alias{assert_input_is_of_length}
+\alias{assert_input_is_report_df}
 \alias{assert_input_is_TRUE}
 \alias{assert_input_is_uniquely_named}
 \alias{assert_input_is_uniquely_named_list}
@@ -1113,6 +1118,7 @@
 \alias{assert_prod_input_is_number_vector}
 \alias{assert_prod_input_is_numeric}
 \alias{assert_prod_input_is_of_length}
+\alias{assert_prod_input_is_report_df}
 \alias{assert_prod_input_is_TRUE}
 \alias{assert_prod_input_is_uniquely_named}
 \alias{assert_prod_input_is_uniquely_named_list}
@@ -1286,6 +1292,7 @@
 \alias{assert_prod_interim_is_number_vector}
 \alias{assert_prod_interim_is_numeric}
 \alias{assert_prod_interim_is_of_length}
+\alias{assert_prod_interim_is_report_df}
 \alias{assert_prod_interim_is_TRUE}
 \alias{assert_prod_interim_is_uniquely_named}
 \alias{assert_prod_interim_is_uniquely_named_list}
@@ -1459,6 +1466,7 @@
 \alias{assert_prod_output_is_number_vector}
 \alias{assert_prod_output_is_numeric}
 \alias{assert_prod_output_is_of_length}
+\alias{assert_prod_output_is_report_df}
 \alias{assert_prod_output_is_TRUE}
 \alias{assert_prod_output_is_uniquely_named}
 \alias{assert_prod_output_is_uniquely_named_list}
@@ -1746,6 +1754,7 @@
 \alias{test_is_number_vector}
 \alias{test_is_numeric}
 \alias{test_is_of_length}
+\alias{test_is_report_df}
 \alias{test_is_TRUE}
 \alias{test_is_uniquely_named}
 \alias{test_is_uniquely_named_list}
@@ -1919,6 +1928,7 @@
 \alias{assert_user_input_is_number_vector}
 \alias{assert_user_input_is_numeric}
 \alias{assert_user_input_is_of_length}
+\alias{assert_user_input_is_report_df}
 \alias{assert_user_input_is_TRUE}
 \alias{assert_user_input_is_uniquely_named}
 \alias{assert_user_input_is_uniquely_named_list}
@@ -2462,6 +2472,8 @@ assert_dev_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_dev_input_is_report_df(x, x_nm = NULL, call = NULL)
+
 assert_dev_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -2847,6 +2859,8 @@ assert_dev_interim_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_dev_interim_is_report_df(x, x_nm = NULL, call = NULL)
+
 assert_dev_interim_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -3231,6 +3245,8 @@ assert_dev_output_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_dev_output_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_dev_output_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -4230,6 +4246,8 @@ assert_is_of_length(
   assertion_type = "general"
 )
 
+assert_is_report_df(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
 assert_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 assert_is_uniquely_named(
@@ -4632,6 +4650,8 @@ assert_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_input_is_report_df(x, x_nm = NULL, call = NULL)
+
 assert_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -5011,6 +5031,8 @@ assert_prod_input_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_prod_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_prod_input_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5413,6 +5435,8 @@ assert_prod_interim_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_prod_interim_is_report_df(x, x_nm = NULL, call = NULL)
+
 assert_prod_interim_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -5797,6 +5821,8 @@ assert_prod_output_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_prod_output_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_prod_output_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -6959,6 +6985,8 @@ test_is_of_length(
   assertion_type = "general"
 )
 
+test_is_report_df(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
 test_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_uniquely_named(x, x_nm = NULL, call = NULL, assertion_type = "general")
@@ -7355,6 +7383,8 @@ assert_user_input_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_user_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_user_input_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_TRUE(x, x_nm = NULL, call = NULL)
 

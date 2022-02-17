@@ -346,7 +346,8 @@ report_to_assertion <- function(
     }, character(1L))
     msgs <- paste0(call_strings, msgs)
 
-    msg_start <- assertion_type_error_messages()[[assertion_type]]
+    msg_start <- paste0(assertion_type_error_messages()[[assertion_type]],
+                        collapse = "")
     msg <- paste0(
       c(msg_start, paste0(" - ", msgs)),
       collapse = "\n"

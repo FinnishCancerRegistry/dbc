@@ -4067,6 +4067,30 @@ test_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_is_report_df <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  assertion_type = "general"
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_report_df(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_is_TRUE <- function(
   x, 
   x_nm = NULL, 

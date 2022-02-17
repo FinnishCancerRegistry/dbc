@@ -25,12 +25,49 @@
 report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  report_is_one_of_call <- match.call()
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
   )
-  funs <- lapply(funs, match.fun)
-  report_df <- do.call(rbind, lapply(funs, function(fun) {
+  funs <- as.list(funs)
+  funs <- lapply(seq_along(funs), function(i) {
+    fun <- funs[[i]]
+    out <- tryCatch(match.fun(fun), error = function(e) e)
+    if (inherits(out, "error") && is.character(fun)) {
+      stop(
+        "Internal error: Could not find function ", deparse(fun),
+        "; complain to the maintainer of the command you used"
+      )
+    } else if (!inherits(out, "function")) {
+      stop(
+        "Internal error: funs[[", i, "]] was not a function nor a character ",
+        "string; complain to the maintainer of the command you used"
+      )
+    } else {
+      mandatory_arg_nms <- c("x", "x_nm", "call")
+      actual_arg_nms <- names(formals(fun))
+      miss_arg_nms <- setdiff(mandatory_arg_nms, actual_arg_nms)
+      if (length(miss_arg_nms) > 0) {
+        stop(
+          "Internal error: funs[[", i, "]] did not have all mandatory ",
+          "arguments ", deparse(mandatory_arg_nms), "; it had arguments ",
+          deparse(actual_arg_nms), "; missing args ",
+          deparse(miss_arg_nms), "; complain to the maintainer of the command ",
+          "you used"
+        )
+      }
+    }
+    out
+  })
+  report_df <- do.call(rbind, lapply(seq_along(funs), function(i) {
+    fun <- funs[[i]]
     report_df <- fun(x = x, x_nm = x_nm, call = call)
+    dbc::assert_prod_interim_is_report_df(
+      report_df,
+      x_nm = paste0("funs[[", i,"]](x = x, x_nm = x_nm, call = call)"),
+      call = report_is_one_of_call
+    )
+    is_valid_report_df <- all(names(report_df_template) %in% names(report_df))
     report_df[["all_pass"]] <- all(report_df[["pass"]] %in% TRUE)
     total_report_df <- data.frame(
       test = paste0(report_df[["test"]], collapse = " & "),
@@ -47,7 +84,9 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
       errors[is.na(errors)] <- "no error"
       total_report_df[["error"]] <- paste0(errors, collapse = "; ")
     }
-    total_report_df[["wh_fail"]] <- list(list_union(report_df[["wh_fail"]]))
+    total_report_df[["wh_fail"]] <- list(list_union(
+      as.list(report_df[["wh_fail"]])
+    ))
     total_report_df[["n_fail"]] <- length(total_report_df[["wh_fail"]])
     total_report_df[["call"]] <- list(report_df[["call"]][[1L]])
     if (any(!is.na(total_report_df[["wh_fail"]]))) {
