@@ -326,6 +326,35 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+report_is_assertion_type <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  test_set <- c(
+    c("dbc::test_is_atom(x)", "dbc::test_is_character(x)", "dbc::test_is_nonNA(x)", "dbc::test_atom_is_in_set(x, set = dbc::assertion_types())")
+  )
+  fail_msg_set <- c(
+    c("${deparse(x_nm)} was not atomic", "${deparse(x_nm)} was not a string", "${deparse(x_nm)} was NA", "${deparse(x_nm)} was not one of the strings given by dbc::assertion_types()")
+  )
+  pass_msg_set <- c(
+    c(NA_character_, NA_character_, NA_character_, NA_character_)
+  )
+  report_df <- expressions_to_report(
+    expressions = test_set,
+    fail_messages = fail_msg_set,
+    pass_messages = pass_msg_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 report_is_atom <- function(x, x_nm = NULL, call = NULL) {
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)

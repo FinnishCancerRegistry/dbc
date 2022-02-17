@@ -319,6 +319,30 @@ assert_user_input_inherits <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_user_input_is_assertion_type <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- report_is_assertion_type(
+    x = x, 
+    x_nm = x_nm, 
+    call = call
+  )
+  report_to_assertion(report_df, assertion_type = "user_input")
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_user_input_is_atom <- function(
   x, 
   x_nm = NULL, 

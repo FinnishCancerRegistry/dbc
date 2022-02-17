@@ -32,6 +32,7 @@
 \alias{report_has_one_of_classes}
 \alias{report_has_only_names}
 \alias{report_inherits}
+\alias{report_is_assertion_type}
 \alias{report_is_atom}
 \alias{report_is_between_exclusive}
 \alias{report_is_between_inclusive}
@@ -90,6 +91,7 @@
 \alias{assert_dev_input_has_only_names}
 \alias{assert_dev_input_has_only_valid_observations}
 \alias{assert_dev_input_inherits}
+\alias{assert_dev_input_is_assertion_type}
 \alias{assert_dev_input_is_atom}
 \alias{assert_dev_input_is_between_exclusive}
 \alias{assert_dev_input_is_between_inclusive}
@@ -262,6 +264,7 @@
 \alias{assert_dev_interim_has_only_names}
 \alias{assert_dev_interim_has_only_valid_observations}
 \alias{assert_dev_interim_inherits}
+\alias{assert_dev_interim_is_assertion_type}
 \alias{assert_dev_interim_is_atom}
 \alias{assert_dev_interim_is_between_exclusive}
 \alias{assert_dev_interim_is_between_inclusive}
@@ -434,6 +437,7 @@
 \alias{assert_dev_output_has_only_names}
 \alias{assert_dev_output_has_only_valid_observations}
 \alias{assert_dev_output_inherits}
+\alias{assert_dev_output_is_assertion_type}
 \alias{assert_dev_output_is_atom}
 \alias{assert_dev_output_is_between_exclusive}
 \alias{assert_dev_output_is_between_inclusive}
@@ -606,6 +610,7 @@
 \alias{assert_has_only_names}
 \alias{assert_has_only_valid_observations}
 \alias{assert_inherits}
+\alias{assert_is_assertion_type}
 \alias{assert_is_atom}
 \alias{assert_is_between_exclusive}
 \alias{assert_is_between_inclusive}
@@ -778,6 +783,7 @@
 \alias{assert_input_has_only_names}
 \alias{assert_input_has_only_valid_observations}
 \alias{assert_input_inherits}
+\alias{assert_input_is_assertion_type}
 \alias{assert_input_is_atom}
 \alias{assert_input_is_between_exclusive}
 \alias{assert_input_is_between_inclusive}
@@ -950,6 +956,7 @@
 \alias{assert_prod_input_has_only_names}
 \alias{assert_prod_input_has_only_valid_observations}
 \alias{assert_prod_input_inherits}
+\alias{assert_prod_input_is_assertion_type}
 \alias{assert_prod_input_is_atom}
 \alias{assert_prod_input_is_between_exclusive}
 \alias{assert_prod_input_is_between_inclusive}
@@ -1122,6 +1129,7 @@
 \alias{assert_prod_interim_has_only_names}
 \alias{assert_prod_interim_has_only_valid_observations}
 \alias{assert_prod_interim_inherits}
+\alias{assert_prod_interim_is_assertion_type}
 \alias{assert_prod_interim_is_atom}
 \alias{assert_prod_interim_is_between_exclusive}
 \alias{assert_prod_interim_is_between_inclusive}
@@ -1294,6 +1302,7 @@
 \alias{assert_prod_output_has_only_names}
 \alias{assert_prod_output_has_only_valid_observations}
 \alias{assert_prod_output_inherits}
+\alias{assert_prod_output_is_assertion_type}
 \alias{assert_prod_output_is_atom}
 \alias{assert_prod_output_is_between_exclusive}
 \alias{assert_prod_output_is_between_inclusive}
@@ -1580,6 +1589,7 @@
 \alias{test_has_only_names}
 \alias{test_has_only_valid_observations}
 \alias{test_inherits}
+\alias{test_is_assertion_type}
 \alias{test_is_atom}
 \alias{test_is_between_exclusive}
 \alias{test_is_between_inclusive}
@@ -1752,6 +1762,7 @@
 \alias{assert_user_input_has_only_names}
 \alias{assert_user_input_has_only_valid_observations}
 \alias{assert_user_input_inherits}
+\alias{assert_user_input_is_assertion_type}
 \alias{assert_user_input_is_atom}
 \alias{assert_user_input_is_between_exclusive}
 \alias{assert_user_input_is_between_inclusive}
@@ -1968,6 +1979,8 @@ report_has_only_names(x, x_nm = NULL, call = NULL, required_names)
 
 report_inherits(x, x_nm = NULL, call = NULL, required_class)
 
+report_is_assertion_type(x, x_nm = NULL, call = NULL)
+
 report_is_atom(x, x_nm = NULL, call = NULL)
 
 report_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
@@ -2112,6 +2125,8 @@ assert_dev_input_has_only_valid_observations(
 )
 
 assert_dev_input_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_dev_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_atom(x, x_nm = NULL, call = NULL)
 
@@ -2496,6 +2511,8 @@ assert_dev_interim_has_only_valid_observations(
 
 assert_dev_interim_inherits(x, x_nm = NULL, call = NULL, required_class)
 
+assert_dev_interim_is_assertion_type(x, x_nm = NULL, call = NULL)
+
 assert_dev_interim_is_atom(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
@@ -2878,6 +2895,8 @@ assert_dev_output_has_only_valid_observations(
 )
 
 assert_dev_output_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_dev_output_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_atom(x, x_nm = NULL, call = NULL)
 
@@ -3262,6 +3281,8 @@ assert_has_only_valid_observations(
 
 assert_inherits(x, x_nm = NULL, call = NULL, required_class)
 
+assert_is_assertion_type(x, x_nm = NULL, call = NULL)
+
 assert_is_atom(x, x_nm = NULL, call = NULL)
 
 assert_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
@@ -3634,6 +3655,8 @@ assert_input_has_only_valid_observations(
 )
 
 assert_input_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_input_is_atom(x, x_nm = NULL, call = NULL)
 
@@ -4012,6 +4035,8 @@ assert_prod_input_has_only_valid_observations(
 )
 
 assert_prod_input_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_prod_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_atom(x, x_nm = NULL, call = NULL)
 
@@ -4395,6 +4420,8 @@ assert_prod_interim_has_only_valid_observations(
 )
 
 assert_prod_interim_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_prod_interim_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_atom(x, x_nm = NULL, call = NULL)
 
@@ -4794,6 +4821,8 @@ assert_prod_output_has_only_valid_observations(
 )
 
 assert_prod_output_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_prod_output_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_atom(x, x_nm = NULL, call = NULL)
 
@@ -5406,6 +5435,8 @@ test_has_only_valid_observations(
 
 test_inherits(x, x_nm = NULL, call = NULL, required_class)
 
+test_is_assertion_type(x, x_nm = NULL, call = NULL)
+
 test_is_atom(x, x_nm = NULL, call = NULL)
 
 test_is_between_exclusive(x, x_nm = NULL, call = NULL, lo, hi)
@@ -5778,6 +5809,8 @@ assert_user_input_has_only_valid_observations(
 )
 
 assert_user_input_inherits(x, x_nm = NULL, call = NULL, required_class)
+
+assert_user_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_atom(x, x_nm = NULL, call = NULL)
 

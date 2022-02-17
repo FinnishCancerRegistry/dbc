@@ -86,3 +86,7 @@
 "all_are_TRUE";"all(x %in% TRUE)";"Not all elements of ${deparse(x_nm)} were TRUE";NA;NA
 "is_TRUE";"x %in% TRUE";"${n_fail} elements of ${deparse(x_nm)} were FALSE or NA";NA;NA
 "match_regex";"{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}";"${n_fail} elements of ${deparse(x_nm)} did not match regex ${deparse(grepl.arg.list[['pattern']])}";"All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}";"grepl.arg.list = list()"
+"is_assertion_type";"dbc::test_is_atom(x)";"${deparse(x_nm)} was not atomic";NA;NA
+"is_assertion_type";"dbc::test_is_character(x)";"${deparse(x_nm)} was not a string";NA;NA
+"is_assertion_type";"dbc::test_is_nonNA(x)";"${deparse(x_nm)} was NA";NA;NA
+"is_assertion_type";"dbc::test_atom_is_in_set(x, set = dbc::assertion_types())";"${deparse(x_nm)} was not one of the strings given by dbc::assertion_types()";NA;NA
