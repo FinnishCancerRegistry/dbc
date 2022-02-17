@@ -61,7 +61,8 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
   })
   report_df <- do.call(rbind, lapply(seq_along(funs), function(i) {
     fun <- funs[[i]]
-    report_df <- fun(x = x, x_nm = x_nm, call = call)
+    report_df <- tryCatch(fun(x = x, x_nm = x_nm, call = call),
+                          error = function(e) e)
     dbc::assert_prod_interim_is_report_df(
       report_df,
       x_nm = paste0("funs[[", i,"]](x = x, x_nm = x_nm, call = call)"),
