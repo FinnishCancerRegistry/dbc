@@ -15,7 +15,7 @@ report_is <- function(
 
 generate_assert_is_funs <- function() {
 
-  lines <- unlist(lapply(assertion_types(), function(assertion_type) {
+  lines <- unlist(lapply(dbc::assertion_types(), function(assertion_type) {
     if (assertion_type == "general") {
       fun_nm <- "assert_is"
     } else {

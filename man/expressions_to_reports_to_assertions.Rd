@@ -69,27 +69,29 @@ environment}
 
 a report \code{data.frame} as returned by \code{expressions_to_report}}
 
-\item{assertion_type}{\verb{[character]} (mandatory, default \code{"general"})
+\item{assertion_type}{\verb{[character]}
+(default usually \code{"general"})
 
-the type of assertion alters the emitted error message to e.g. direct the
-end-user to adjust their arguments supplied to a function or to report
-and internal error; the error messages are altered by type as follows:
+Must be exactly one of the following:
 \itemize{
 \item \code{"general"}: just says that assertions did not pass without information
-as to whose fault this was
+as to whose fault this was --- just that some object was not as expected
+\item \code{"input"}: assertion error messages direct the attention towards the
+inputs (arguments) of guilty function
 \item \code{"user_input"}: the end-user is directed to adjust their arguments.
 \item \code{"prod_input"}: the assertion error is considered to be an internal error,
 and the end-user is directed to report it; the inputs of some function
 were not as expected
-\item \code{"dev_input"}: only the developer is notified (see \link{dbc}\link{dbc})
+\item \code{"dev_input"}: only the developer is notified (see
+\verb{[dbc::set_dev_mode]})
 \item \code{"prod_output"}: like \code{"prod_input"}, but the output of some function
 was not as expected
 \item \code{"dev_output"}: like \code{"prod_output"}, but only raised in development mode
-(see \link{dbc}\link{dbc})
+(see \verb{[dbc::set_dev_mode]})
 \item \code{"prod_interim"}: like \code{"prod_input"}, but the interim result somewhere
 was not as expected
 \item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
-(see \link{dbc}\link{dbc})
+(see \verb{[dbc::set_dev_mode]})
 }}
 
 \item{raise_error_call}{\verb{[NULL, language]} (optional, default \code{NULL})

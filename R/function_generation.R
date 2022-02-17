@@ -246,44 +246,12 @@ expressions_to_report <- function(
 }
 
 
-assertion_types <- function() {
-  c("general", "user_input", "prod_input", "dev_input",
-    "prod_output", "dev_output",
-    "prod_interim", "dev_interim")
-}
-dev_assertion_types <- function() {
-  at <- assertion_types()
-  at[grepl("^dev_", at)]
-}
-
-
-
 #' @rdname expressions_to_reports_to_assertions
 #' @export
 #' @param report_df `[data.frame]` (mandatory, no default)
 #'
 #' a report `data.frame` as returned by `expressions_to_report`
-#' @param assertion_type `[character]` (mandatory, default `"general"`)
-#'
-#' the type of assertion alters the emitted error message to e.g. direct the
-#' end-user to adjust their arguments supplied to a function or to report
-#' and internal error; the error messages are altered by type as follows:
-#'
-#' - `"general"`: just says that assertions did not pass without information
-#'   as to whose fault this was
-#' - `"user_input"`: the end-user is directed to adjust their arguments.
-#' - `"prod_input"`: the assertion error is considered to be an internal error,
-#'   and the end-user is directed to report it; the inputs of some function
-#'   were not as expected
-#' - `"dev_input"`: only the developer is notified (see \link{dbc}[dbc])
-#' - `"prod_output"`: like `"prod_input"`, but the output of some function
-#'   was not as expected
-#' - `"dev_output"`: like `"prod_output"`, but only raised in development mode
-#'   (see \link{dbc}[dbc])
-#' - `"prod_interim"`: like `"prod_input"`, but the interim result somewhere
-#'   was not as expected
-#' - `"dev_interim"`: like `"prod_interim"`, but only raised in development mode
-#'   (see \link{dbc}[dbc])
+#' @template arg_assertion_type
 #'
 #' @param raise_error_call `[NULL, language]` (optional, default `NULL`)
 #'
@@ -379,69 +347,7 @@ report_to_assertion <- function(
     }, character(1L))
     msgs <- paste0(call_strings, msgs)
 
-    msg_start <- switch(
-      assertion_type,
-      general = paste0(
-        "One or more assertions failed. You can use ",
-        "dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred."
-      ),
-      user_input = paste0(
-        "Hi user! One or more arguments you supplied did not comply with ",
-        "their specifications; please see the points below and adjust ",
-        "your arguments. You can also use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred."
-      ),
-      prod_input = paste0(
-        "Internal error: one or more arguments supplied to an internally used ",
-        "function did not comply with specfications. ",
-        "You can use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred. ",
-        "Please report this error ",
-        "to the author or maintainer of the command you used. These were ",
-        "the errors:"
-      ),
-      dev_input = paste0(
-        "Internal error: one or more arguments supplied to an internally used ",
-        "function did not comply with specfications tested in development ",
-        "mode. ",
-        "You can use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred. ",
-        "These were the errors:"
-      ),
-      prod_output = paste0(
-        "Internal error: the output of an internally used function did not ",
-        "comply with specifications. ",
-        "You can use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred. ",
-        "Please report this error ",
-        "to the author or maintainer of the command you used. These were ",
-        "the errors:"
-      ),
-      dev_output = paste0(
-        "Internal error: the output of an internally used function did not ",
-        "comply with specifications tested in development mode. ",
-        "You can use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred. ",
-        "These were the errors:"
-      ),
-      prod_interim = paste0(
-        "Internal error: an interim results of inside a function was not as ",
-        "expected. ",
-        "You can use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred. ",
-        "Please report this error ",
-        "to the author or maintainer of the command you used. These were ",
-        "the errors:"
-      ),
-      dev_interim = paste0(
-        "Internal error: an interim results of inside a function was not as ",
-        "expected when in development mode. ",
-        "You can use dbc::get_newest_error_data() to inspect ",
-        "in more detail where the error occurred. ",
-        "These were the errors:"
-      )
-    )
+    msg_start <- assertion_type_error_messages()[[assertion_type]]
     msg <- paste0(
       c(msg_start, paste0(" - ", msgs)),
       collapse = "\n"
