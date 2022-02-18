@@ -368,16 +368,3 @@ list_union <- function(x) {
 
 
 
-table_flip <- function() {
-  path <- tryCatch(
-    system.file("table_flip.txt", package = "dbc", mustWork = TRUE),
-    error = function(e) e
-  )
-  if (inherits(path, "error")) {
-    return(NULL)
-  }
-  tf <- readLines(path, encoding = "UTF-8")
-  Encoding(tf) <- "UTF-8"
-  return(tf)
-}
-

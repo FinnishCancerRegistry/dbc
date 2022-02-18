@@ -352,8 +352,6 @@ report_to_assertion <- function(
       c(msg_start, paste0(" - ", msgs)),
       collapse = "\n"
     )
-    cat(table_flip())
-    cat("\n")
     sys_calls <- sys.calls()
     add_error_data(
       list(
