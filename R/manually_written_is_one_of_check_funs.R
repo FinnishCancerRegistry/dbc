@@ -1,4 +1,31 @@
 
+get_function <- function(x, env = environment(get_function)) {
+  if (is.character(x)) {
+    fun <- tryCatch(
+      get(x = x, envir = env, mode = "function"),
+      error = function(e) e
+    )
+    if (inherits(fun, "error")) {
+      fun <- tryCatch(
+        eval(parse(text = x)[[1]], envir = env),
+        error = function(e) e
+      )
+    }
+    if (inherits(fun, "error")) {
+      stop("Internal error: Cannot find function based on string ", deparse(x),
+           "; if you can see this, complain to the maintainer of the command ",
+           "you just used")
+    }
+  } else if (!is.function(x)) {
+    stop("Internal error: neither string nor function passed to get_function; ",
+         "if you can see this, complain to the maintainer of the command ",
+         "you just used")
+  } else {
+    fun <- x
+  }
+  return(fun)
+}
+
 #' @rdname assertions
 #' @export
 #' @param funs `[character, list]` (mandatory, no default)
@@ -32,32 +59,14 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
   funs <- as.list(funs)
   funs <- lapply(seq_along(funs), function(i) {
     fun <- funs[[i]]
-    out <- tryCatch(match.fun(fun), error = function(e) e)
-    if (inherits(out, "error") && is.character(fun)) {
-      stop(
-        "Internal error: Could not find function ", deparse(fun),
-        "; complain to the maintainer of the command you used"
-      )
-    } else if (!inherits(out, "function")) {
-      stop(
-        "Internal error: funs[[", i, "]] was not a function nor a character ",
-        "string; complain to the maintainer of the command you used"
-      )
-    } else {
-      mandatory_arg_nms <- c("x", "x_nm", "call")
-      actual_arg_nms <- names(formals(fun))
-      miss_arg_nms <- setdiff(mandatory_arg_nms, actual_arg_nms)
-      if (length(miss_arg_nms) > 0) {
-        stop(
-          "Internal error: funs[[", i, "]] did not have all mandatory ",
-          "arguments ", deparse(mandatory_arg_nms), "; it had arguments ",
-          deparse(actual_arg_nms), "; missing args ",
-          deparse(miss_arg_nms), "; complain to the maintainer of the command ",
-          "you used"
-        )
-      }
-    }
-    out
+    fun <- get_function(fun)
+    dbc::assert_prod_input_is_function_with_required_argument_names(
+      fun,
+      x_nm = paste0("funs[[", i, "]]"),
+      call = report_is_one_of_call,
+      required_argument_names = c("x", "x_nm", "call")
+    )
+    fun
   })
   report_df <- do.call(rbind, lapply(seq_along(funs), function(i) {
     fun <- funs[[i]]
@@ -114,12 +123,6 @@ assert_is_one_of__ <- function(
   )
   call <- dbc::handle_arg_call(call)
 
-  fun_list <- lapply(funs, match.fun)
-  if (is.character(funs)) {
-    names(fun_list) <- funs
-  } else {
-    names(fun_list) <- paste0("fun_", seq_along(fun_list))
-  }
   report_df <- dbc::report_is_one_of(
     x = x, x_nm = x_nm, funs = funs, call = call
   )

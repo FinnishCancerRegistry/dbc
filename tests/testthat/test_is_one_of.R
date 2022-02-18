@@ -83,7 +83,7 @@ testthat::test_that("dbc::assert_is_one_of works", {
   }
   testthat::expect_error(
     tf(1L),
-    regexp = "\\Qdid not have all mandatory arguments\\E"
+    regexp = "\\Qdid not have all required arguments\\E"
   )
 
   bad_report_fun_2 <- function(x, x_nm, call) {
