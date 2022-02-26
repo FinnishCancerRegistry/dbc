@@ -3,14 +3,35 @@
 
 
 
-test_string_to_report <- function(
-  test_string,
+expression_string_to_report <- function(
+  expression_string,
   pass_message = NA_character_,
   fail_message = NA_character_,
   env = parent.frame(1L)
   ) {
-  test_expr <- parse(text = test_string)[[1L]]
+  raise_internal_error_if_not(
+    is.character(expression_string),
+    length(expression_string) == 1L,
+    !is.na(expression_string),
 
+    is.character(pass_message),
+    length(pass_message) == 1L,
+
+    is.character(fail_message),
+    length(fail_message) == 1L,
+
+    is.environment(env)
+  )
+  test_expr <- parse(text = expression_string)[[1L]]
+
+  # @codedoc_comment_block dbc::expressions_to_report::env
+  # @param env `[environment]` (default `parent.frame(1L)`)
+  #
+  # `env` will be the parent environment of the environment where each element
+  # of `expressions` is evaluated. A new, separate environment is created for
+  # each separate expression (*expression evaluation environment*).
+  # They all have `env` as the parent environment (*context environment*).
+  # @codedoc_comment_block dbc::expressions_to_report::env
   eval_env <- new.env(parent = env)
   result <- tryCatch(
     eval(test_expr, envir = eval_env),
@@ -32,27 +53,60 @@ test_string_to_report <- function(
     }
     n_fail <- sum(!passing_elems)
   } else {
-    stop("test ", deparse(test_string), " returned result of class(es) ",
+    stop("test ", deparse(expression_string), " returned result of class(es) ",
          deparse(class(result)), "; logical or NULL was expected; see ",
          "help for argument 'tests'")
   }
+  # @codedoc_comment_block dbc::expressions_to_report::env
+  #
+  # `env` is also used in interpolation --- see section
+  # **Message interpolation**.
+  # @codedoc_comment_block dbc::expressions_to_report::env
+
+  # @codedoc_comment_block dbc::expressions_to_report::interpolation
+  # @section Message interpolation:
+  #
+  # Simple string interpolation is supported in `pass_messages` and
+  # `fail_messages`. For the purpose of evaluating the expression substrings
+  # in the messages, a new empty environment (*interpolation environment*)
+  # is created. This contains any objects created when the `expressions` element
+  # was evaluated. It's parent environment (*report environment*) contains
+  # objects
+  # `test`, `error`, `pass`, `n_fail`, and `wh_fail`, respectively. These are
+  # the data with which the report data.frame is created, ultimately.
+  # The parent environment of the *report environment* is the same as that env
+  # where the `expressions` element was evaluated.
+  #
+  # *context environment*
+  #  -> *expression evaluation environment*
+  #
+  # *context environment*
+  #  -> *report environment*
+  #    -> *interpolation environment*
+  #
+  # These environment tricks allows one to use objects in the
+  # *context environment* in both expression evaluation and in interpolation.
+  # The objects in the *report environment* can be used in interpolation.
+  #
+  # @codedoc_insert_comment_block dbc:::interpolate
+  # @codedoc_comment_block dbc::expressions_to_report::interpolation
   df <- data.frame(
-    test = test_string,
+    test = expression_string,
     error = error,
     pass = pass,
     n_fail = n_fail
   )
   df[["wh_fail"]] <- list(wh_fail)
-  df_env <- as.environment(df)
-  df_env[["wh_fail"]] <- df[["wh_fail"]][[1L]]
-  parent.env(df_env) <- parent.env(eval_env)
-  parent.env(eval_env) <- df_env
-  if (df[["pass"]]) {
-    df[["message"]] <- interpolate(pass_message, env = eval_env)
-  } else {
-    msg <- interpolate(fail_message, env = eval_env)
-    df[["message"]] <- msg
+  report_environment <- as.environment(df)
+  report_environment[["wh_fail"]] <- df[["wh_fail"]][[1L]]
+  interpolation_environment <- eval_env
+  parent.env(interpolation_environment) <- report_environment
+  parent.env(report_environment) <- env
+  msg <- pass_message
+  if (!df[["pass"]]) {
+    msg <- fail_message
   }
+  df[["message"]] <- interpolate(msg, env = eval_env)
   df[]
 }
 
@@ -69,13 +123,7 @@ NULL
 
 #' @rdname expressions_to_reports_to_assertions
 #' @export
-#' @param expressions `[character, list]` (mandatory, no default)
-#'
-#' - `character`: vector of expressions to perform; after parsing each string
-#'   the evaluated expression must return a logical vector or `NULL`,
-#'   where `NULL` is interpreted as pass
-#' - `list`: each element is either a character string as above or a language
-#'   object (see e.g. [quote]) which is deparsed into a string
+#' @eval codedoc::codedoc_lines("^dbc::expressions_to_report")
 #' @param fail_messages `[NULL, character]` (optional, default `NULL`)
 #'
 #' - `NULL`: use `"at least one FALSE value in test: ${test}"`
@@ -93,32 +141,7 @@ NULL
 #'   `NULL`
 #'
 #' as `fail_messages` but for tests successes
-#' @param env `[environment]` (optional, default `parent.frame(1L)`)
-#'
-#' a new environment is created for evaluating each test given in `tests`;
-#' this environment will be the parent environment of each of the temporary
-#' environments; the default is the parent environment of the function execution
-#' environment
-
-#' @param call `[language, NULL]` (optional, default `NULL`)
-#'
-#' - `language`: an R language object such as one produced by [match.call] or
-#'   `quote`; this call will be reported in an error
-#' - `NULL`: the call is attempted to be inferred
-#'
-#' @section Interpolation in messages:
-#' `fail_messages` and `pass_messages` can use variables you create in a test
-#' and information created based on the result of the test. For an individual
-#' message, you may include any of the variables listed in **Value** for that
-#' test except the message itself by using the syntax `${object}` in your
-#' test string; e.g. `"this many failed: ${n_fail}"`. You may include any
-#' variables you created in the test, using the same logic, e.g. with test
-#' `"(len <- length(x)) == 1L"` you may do `"expected length 1, got ${len}"`.
-#' Finding variables to interpolate into the string is searched for in the
-#' set of variables created in your test first and then in the variables
-#' derived from the result of the test. You may also interpolate any
-#' transformations of the available variables: e.g.
-#' `"${round(100 * n_fail / length(x))} % were invalid"`
+#' @template arg_call
 #'
 #' @return
 #' For `expressions_to_report`, a `data.frame` with columns
@@ -162,6 +185,17 @@ NULL
 #' expressions_to_report(
 #'   expressions = "a == d"
 #' )
+#'
+#' # interpolation example
+#' a <- 1
+#' rdf <- dbc::expressions_to_report(
+#'   expressions = "a == 1",
+#'   pass_messages = "a = ${a} is equal to one",
+#'   env = environment()
+#' )
+#' stopifnot(
+#'   rdf[["message"]] == "a = 1 is equal to one"
+#' )
 expressions_to_report <- function(
   expressions,
   fail_messages = NULL,
@@ -171,6 +205,15 @@ expressions_to_report <- function(
 ) {
   call <- dbc::handle_arg_call(call)
 
+  # @codedoc_comment_block dbc::expressions_to_report::expressions
+  # @param expressions `[character, list]` (mandatory, no default)
+  #
+  # - `character`: vector of expressions to perform; after parsing each string
+  #   the evaluated expression must return a logical vector or `NULL`,
+  #   where `NULL` is interpreted as pass
+  # - `list`: each element is either a character string as above or a language
+  #   object (see e.g. [quote]) which is deparsed into a string
+  # @codedoc_comment_block dbc::expressions_to_report::expressions
   raise_internal_error_if_not(
     inherits(expressions, c("list", "character"))
   )
@@ -222,9 +265,8 @@ expressions_to_report <- function(
   )
 
   test_df_list <- lapply(seq_along(expressions), function(expr_pos) {
-
-    test_string_to_report(
-      test_string = expressions[expr_pos],
+    expression_string_to_report(
+      expression_string = expressions[expr_pos],
       pass_message = pass_messages[expr_pos],
       fail_message = fail_messages[expr_pos],
       env = env
@@ -326,10 +368,10 @@ report_to_assertion <- function(
         if (!is.na(error_msg)) {
           suffix <- paste0("encountered an ERROR: ", error_msg)
         }
-        test_string <- paste0(deparse(
+        expression_string <- paste0(deparse(
           report_df[["test"]][test_no]
         ), collapse = "")
-        paste0("test ", test_string, " ", suffix)
+        paste0("test ", expression_string, " ", suffix)
       },
       character(1L)
     )
@@ -373,6 +415,17 @@ interpolate <- function(x, env = parent.frame(1L)) {
     is.character(x),
     is.environment(env)
   )
+  # @codedoc_comment_block dbc:::interpolate
+  # Given the *interpolation environment* and a string, interpolation is
+  # performed as follows:
+  #
+  # 1. Expressions to interpolate in a string are detected using regex
+  #    `"[$][{][^{]+[}]"`. E.g. in `"A total of $ {1 + 1} things"`
+  #    substring `$ {1 + 1}` is detected (without the whitespace after $).
+  #    Multiline expressions are not detected.
+  #    Expressions that contain `}` (e.g. `"One is $ {{my_var <- 1; my_var}}"`)
+  #    will not be parsed correctly.
+  # @codedoc_comment_block dbc:::interpolate
   m <- gregexpr(pattern = "[$][{][^{]+[}]", text = x, perl = TRUE)
   expr_strings_by_x_elem <- regmatches(x = x, m = m)
   has_nothing_to_interpolate <- length(expr_strings_by_x_elem) == 1L &&
@@ -382,17 +435,30 @@ interpolate <- function(x, env = parent.frame(1L)) {
   }
 
   values <- lapply(expr_strings_by_x_elem, function(expr_string_vec) {
+    # @codedoc_comment_block dbc:::interpolate
+    # 2. Each expression substring is evaluated in the
+    #    *interpolation environment*, via
+    #    `eval(parse(text = expression_substring)[[1]])`.
+    #    Evaluation is done within a `[tryCatch]` call; if an error or warning
+    #    is caught, interpolation fails, and the original expression substring
+    #    is used as the result of the evaluation. Otherwise the result is
+    #    what `eval` gives.
+    # @codedoc_comment_block dbc:::interpolate
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
-    vapply(expr_string_vec, function(string) {
-      expr <- parse(text = string)[[1L]]
+    vapply(expr_string_vec, function(expression_substring) {
+      expr <- parse(text = expression_substring)[[1L]]
       evaled <- tryCatch(
         eval(expr, envir = env),
-        error = function(e) string,
-        warning = function(w) string
+        error = function(e) expression_substring,
+        warning = function(w) expression_substring
       )
       paste0(as.character(evaled), collapse = "")
     }, character(1L))
   })
+  # @codedoc_comment_block dbc:::interpolate
+  # 3. Each expression substring in the original string is substituted with
+  #    its result. This modified string is returned.
+  # @codedoc_comment_block dbc:::interpolate
   regmatches(x = x, m = m) <- values
   x
 }

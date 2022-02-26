@@ -51,12 +51,15 @@ values are replaced with the same message as when this argument is
 
 as \code{fail_messages} but for tests successes}
 
-\item{env}{\verb{[environment]} (optional, default \code{parent.frame(1L)})
+\item{env}{\verb{[environment]} (default \code{parent.frame(1L)})
 
-a new environment is created for evaluating each test given in \code{tests};
-this environment will be the parent environment of each of the temporary
-environments; the default is the parent environment of the function execution
-environment}
+\code{env} will be the parent environment of the environment where each element
+of \code{expressions} is evaluated. A new, separate environment is created for
+each separate expression (\emph{expression evaluation environment}).
+They all have \code{env} as the parent environment (\emph{context environment}).
+
+\code{env} is also used in interpolation --- see section
+\strong{Message interpolation}.}
 
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
 \itemize{
@@ -126,20 +129,50 @@ element (after interpolation) depending on \code{pass}
 Collect tests into a report data.frame, raise assertion errors in failed
 tests in report.
 }
-\section{Interpolation in messages}{
+\section{Message interpolation}{
 
-\code{fail_messages} and \code{pass_messages} can use variables you create in a test
-and information created based on the result of the test. For an individual
-message, you may include any of the variables listed in \strong{Value} for that
-test except the message itself by using the syntax \verb{$\{object\}} in your
-test string; e.g. \code{"this many failed: ${n_fail}"}. You may include any
-variables you created in the test, using the same logic, e.g. with test
-\code{"(len <- length(x)) == 1L"} you may do \code{"expected length 1, got ${len}"}.
-Finding variables to interpolate into the string is searched for in the
-set of variables created in your test first and then in the variables
-derived from the result of the test. You may also interpolate any
-transformations of the available variables: e.g.
-\code{"${round(100 * n_fail / length(x))} \% were invalid"}
+
+Simple string interpolation is supported in \code{pass_messages} and
+\code{fail_messages}. For the purpose of evaluating the expression substrings
+in the messages, a new empty environment (\emph{interpolation environment})
+is created. This contains any objects created when the \code{expressions} element
+was evaluated. It's parent environment (\emph{report environment}) contains
+objects
+\code{test}, \code{error}, \code{pass}, \code{n_fail}, and \code{wh_fail}, respectively. These are
+the data with which the report data.frame is created, ultimately.
+The parent environment of the \emph{report environment} is the same as that env
+where the \code{expressions} element was evaluated.
+
+\emph{context environment}
+-> \emph{expression evaluation environment}
+
+\emph{context environment}
+-> \emph{report environment}
+-> \emph{interpolation environment}
+
+These environment tricks allows one to use objects in the
+\emph{context environment} in both expression evaluation and in interpolation.
+The objects in the \emph{report environment} can be used in interpolation.
+
+Given the \emph{interpolation environment} and a string, interpolation is
+performed as follows:
+\enumerate{
+\item Expressions to interpolate in a string are detected using regex
+\code{"[$][{][^{]+[}]"}. E.g. in \code{"A total of $ {1 + 1} things"}
+substring \verb{$ \{1 + 1\}} is detected (without the whitespace after $).
+Multiline expressions are not detected.
+Expressions that contain \verb{\}} (e.g. \code{"One is $ {{my_var <- 1; my_var}}"})
+will not be parsed correctly.
+\item Each expression substring is evaluated in the
+\emph{interpolation environment}, via
+\code{eval(parse(text = expression_substring)[[1]])}.
+Evaluation is done within a \verb{[tryCatch]} call; if an error or warning
+is caught, interpolation fails, and the original expression substring
+is used as the result of the evaluation. Otherwise the result is
+what \code{eval} gives.
+\item Each expression substring in the original string is substituted with
+its result. This modified string is returned.
+}
 }
 
 \examples{
@@ -167,6 +200,17 @@ expressions_to_report(
 # expressions_to_report does not raise error, but shows it in output
 expressions_to_report(
   expressions = "a == d"
+)
+
+# interpolation example
+a <- 1
+rdf <- dbc::expressions_to_report(
+  expressions = "a == 1",
+  pass_messages = "a = ${a} is equal to one",
+  env = environment()
+)
+stopifnot(
+  rdf[["message"]] == "a = 1 is equal to one"
 )
 # report to assertion
 
