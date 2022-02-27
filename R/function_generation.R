@@ -124,7 +124,7 @@ NULL
 #' @rdname expressions_to_reports_to_assertions
 #' @export
 #' @eval codedoc::codedoc_lines("^dbc::expressions_to_report")
-#' @param fail_messages `[NULL, character]` (optional, default `NULL`)
+#' @param fail_messages `[NULL, character]` (default `NULL`)
 #'
 #' - `NULL`: use `"at least one FALSE value in test: ${test}"`
 #' - `character`: use these messages (one for each test); `NA_character_`
@@ -133,7 +133,7 @@ NULL
 #'
 #' messages (one for each test) to include in report upon failure; see section
 #' **Interpolation in messages**
-#' @param pass_messages `[NULL, character]` (optional, default `NULL`)
+#' @param pass_messages `[NULL, character]` (default `NULL`)
 #'
 #' - `NULL`: use `"all were TRUE in test: ${test}"`
 #' - `character`: use these messages (one for each test); `NA_character_`
@@ -206,7 +206,7 @@ expressions_to_report <- function(
   call <- dbc::handle_arg_call(call)
 
   # @codedoc_comment_block dbc::expressions_to_report::expressions
-  # @param expressions `[character, list]` (mandatory, no default)
+  # @param expressions `[character, list]` (no default)
   #
   # - `character`: vector of expressions to perform; after parsing each string
   #   the evaluated expression must return a logical vector or `NULL`,
@@ -290,11 +290,11 @@ expressions_to_report <- function(
 
 #' @rdname expressions_to_reports_to_assertions
 #' @export
-#' @param report_df `[data.frame]` (mandatory, no default)
+#' @param report_df `[data.frame]` (no default)
 #'
 #' a report `data.frame` as returned by `expressions_to_report`
 #' @eval arg_assertion_type_docs()
-#' @param raise_error_call `[NULL, language]` (optional, default `NULL`)
+#' @param raise_error_call `[NULL, language]` (default `NULL`)
 #'
 #' the call to display in the error call; passed to arg `call` of
 #' [base::simpleError].

@@ -21,7 +21,7 @@ report_to_assertion(
 )
 }
 \arguments{
-\item{expressions}{\verb{[character, list]} (mandatory, no default)
+\item{expressions}{\verb{[character, list]} (no default)
 \itemize{
 \item \code{character}: vector of expressions to perform; after parsing each string
 the evaluated expression must return a logical vector or \code{NULL},
@@ -30,7 +30,7 @@ where \code{NULL} is interpreted as pass
 object (see e.g. \link{quote}) which is deparsed into a string
 }}
 
-\item{fail_messages}{\verb{[NULL, character]} (optional, default \code{NULL})
+\item{fail_messages}{\verb{[NULL, character]} (default \code{NULL})
 \itemize{
 \item \code{NULL}: use \code{"at least one FALSE value in test: ${test}"}
 \item \code{character}: use these messages (one for each test); \code{NA_character_}
@@ -41,7 +41,7 @@ values are replaced with the same message as when this argument is
 messages (one for each test) to include in report upon failure; see section
 \strong{Interpolation in messages}}
 
-\item{pass_messages}{\verb{[NULL, character]} (optional, default \code{NULL})
+\item{pass_messages}{\verb{[NULL, character]} (default \code{NULL})
 \itemize{
 \item \code{NULL}: use \code{"all were TRUE in test: ${test}"}
 \item \code{character}: use these messages (one for each test); \code{NA_character_}
@@ -68,7 +68,7 @@ They all have \code{env} as the parent environment (\emph{context environment}).
 \item \code{NULL}: the call is attempted to be inferred
 }}
 
-\item{report_df}{\verb{[data.frame]} (mandatory, no default)
+\item{report_df}{\verb{[data.frame]} (no default)
 
 a report \code{data.frame} as returned by \code{expressions_to_report}}
 
@@ -97,7 +97,7 @@ was not as expected
 (see \verb{[dbc::set_dev_mode]})
 }}
 
-\item{raise_error_call}{\verb{[NULL, language]} (optional, default \code{NULL})
+\item{raise_error_call}{\verb{[NULL, language]} (default \code{NULL})
 
 the call to display in the error call; passed to arg \code{call} of
 \link[base:conditions]{base::simpleError}.
