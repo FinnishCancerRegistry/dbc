@@ -3,117 +3,6 @@
 
 
 
-expression_string_to_report <- function(
-  expression_string,
-  pass_message = NA_character_,
-  fail_message = NA_character_,
-  env = parent.frame(1L)
-  ) {
-  raise_internal_error_if_not(
-    is.character(expression_string),
-    length(expression_string) == 1L,
-    !is.na(expression_string),
-
-    is.character(pass_message),
-    length(pass_message) == 1L,
-
-    is.character(fail_message),
-    length(fail_message) == 1L,
-
-    is.environment(env)
-  )
-  test_expr <- parse(text = expression_string)[[1L]]
-
-  # @codedoc_comment_block dbc::expressions_to_report::env
-  # @param env `[environment]` (default `parent.frame(1L)`)
-  #
-  # `env` will be the parent environment of the environment where each element
-  # of `expressions` is evaluated. A new, separate environment is created for
-  # each separate expression (*expression evaluation environment*).
-  # They all have `env` as the parent environment (*context environment*).
-  # @codedoc_comment_block dbc::expressions_to_report::env
-  eval_env <- new.env(parent = env)
-  result <- tryCatch(
-    eval(test_expr, envir = eval_env),
-    error = function(e) e
-  )
-  pass <- FALSE
-  error <- NA_character_
-  n_fail <- NA_integer_
-  wh_fail <- NA_integer_
-  if (inherits(result, "error")) {
-    error <- result[["message"]]
-  } else if (is.null(result)) {
-    pass <- TRUE
-  } else if (is.logical(result)) {
-    passing_elems <- result %in% TRUE # %in% avoids NA's. NA == TRUE -> NA
-    pass <- all(passing_elems)
-    if (length(result) != 1L) {
-      wh_fail <- which(!passing_elems)
-    }
-    n_fail <- sum(!passing_elems)
-  } else {
-    stop("test ", deparse(expression_string), " returned result of class(es) ",
-         deparse(class(result)), "; logical or NULL was expected; see ",
-         "help for argument 'tests'")
-  }
-  # @codedoc_comment_block dbc::expressions_to_report::env
-  #
-  # `env` is also used in interpolation --- see section
-  # **Message interpolation**.
-  # @codedoc_comment_block dbc::expressions_to_report::env
-
-  # @codedoc_comment_block dbc::expressions_to_report::interpolation
-  # @section Message interpolation:
-  #
-  # Simple string interpolation is supported in `pass_messages` and
-  # `fail_messages`. For the purpose of evaluating the expression substrings
-  # in the messages, a new empty environment (*interpolation environment*)
-  # is created. This contains any objects created when the `expressions` element
-  # was evaluated. It's parent environment (*report environment*) contains
-  # objects
-  # `test`, `error`, `pass`, `n_fail`, and `wh_fail`, respectively. These are
-  # the data with which the report data.frame is created, ultimately.
-  # The parent environment of the *report environment* is the same as that env
-  # where the `expressions` element was evaluated.
-  #
-  # *context environment*
-  #  -> *expression evaluation environment*
-  #
-  # *context environment*
-  #  -> *report environment*
-  #    -> *interpolation environment*
-  #
-  # These environment tricks allows one to use objects in the
-  # *context environment* in both expression evaluation and in interpolation.
-  # The objects in the *report environment* can be used in interpolation.
-  #
-  # @codedoc_insert_comment_block dbc:::interpolate
-  # @codedoc_comment_block dbc::expressions_to_report::interpolation
-  df <- data.frame(
-    test = expression_string,
-    error = error,
-    pass = pass,
-    n_fail = n_fail
-  )
-  df[["wh_fail"]] <- list(wh_fail)
-  report_environment <- as.environment(df)
-  report_environment[["wh_fail"]] <- df[["wh_fail"]][[1L]]
-  interpolation_environment <- eval_env
-  parent.env(interpolation_environment) <- report_environment
-  parent.env(report_environment) <- env
-  msg <- pass_message
-  if (!df[["pass"]]) {
-    msg <- fail_message
-  }
-  df[["message"]] <- interpolate(msg, env = eval_env)
-  df[]
-}
-
-
-
-
-
 #' @title Tests to Reports to Assertions
 #' @description
 #' Collect tests into a report data.frame, raise assertion errors in failed
@@ -203,6 +92,8 @@ expressions_to_report <- function(
   env = parent.frame(1L),
   call = NULL
 ) {
+  # assertions etc -------------------------------------------------------------
+  # t1 <- proc.time()
   call <- dbc::handle_arg_call(call)
 
   # @codedoc_comment_block dbc::expressions_to_report::expressions
@@ -217,21 +108,22 @@ expressions_to_report <- function(
   raise_internal_error_if_not(
     inherits(expressions, c("list", "character"))
   )
-  if (inherits(expressions, "list")) {
+  expressions <- as.list(expressions)
+  expressions <- lapply(seq_along(expressions), function(i) {
     raise_internal_error_if_not(
-      vapply(expressions, is.language, logical(1L)) | vapply(
-        expressions, is.character, logical(1L)
-      )
+      is.language(expressions[[i]]) || is.character(expressions[[i]])
     )
-    expressions <- vapply(expressions, function(elem) {
-      if (!is.character(elem)) {
-        elem <- paste0(deparse(elem), collapse = "")
-      }
-      elem
-    }, character(1L))
-  }
+    expr <- expressions[[i]]
+    if (is.character(expr)) {
+      expr <- parse(text = expr)[[1L]]
+    }
+    return(expr)
+  })
+  expression_strings <- vapply(expressions, function(expr) {
+    deparse(expr)
+  }, character(1L))
 
-  stopifnot(
+  raise_internal_error_if_not(
     is.null(fail_messages) || (
       is.character(fail_messages) &&
         length(fail_messages) %in% c(1L, length(expressions))
@@ -244,46 +136,139 @@ expressions_to_report <- function(
 
     is.environment(env)
   )
+  # message("t1: ", data.table::timetaken(t1))
 
+  # fail / pass messages -------------------------------------------------------
+  # t2 <- proc.time()
   if (is.null(fail_messages)) {
-    fail_messages <- "at least one FALSE value in test: ${test}"
-  }
-  if (length(fail_messages) == 1L) {
+    fail_messages <- rep(NA_character_, length(expressions))
+  } else if (length(fail_messages) == 1L) {
     fail_messages <- rep(fail_messages, length(expressions))
   }
   fail_messages[is.na(fail_messages)] <- paste0(
     "test failed: ", expressions[is.na(fail_messages)]
   )
   if (is.null(pass_messages)) {
-    pass_messages <- "all were TRUE in test: ${test}"
-  }
-  if (length(pass_messages) == 1L) {
+    pass_messages <- rep(NA_character_, length(expressions))
+  } else if (length(pass_messages) == 1L) {
     pass_messages <- rep(pass_messages, length(expressions))
   }
   pass_messages[is.na(pass_messages)] <- paste0(
     "test passed: ", expressions[is.na(pass_messages)]
   )
+  # message("t2: ", data.table::timetaken(t2))
 
-  test_df_list <- lapply(seq_along(expressions), function(expr_pos) {
-    expression_string_to_report(
-      expression_string = expressions[expr_pos],
-      pass_message = pass_messages[expr_pos],
-      fail_message = fail_messages[expr_pos],
-      env = env
+  # report_df ------------------------------------------------------------------
+  # t3 <- proc.time()
+  report_df <- data.frame(
+    test = expression_strings,
+    error = NA_character_,
+    pass = NA,
+    n_fail = NA_integer_,
+    wh_fail = NA_integer_,
+    message = NA_character_,
+    call = NA_character_,
+    stringsAsFactors = FALSE
+  )
+  report_df[["wh_fail"]] <- rep(list(integer(0L)), nrow(report_df))
+  report_df[["call"]] <- rep(list(call), nrow(report_df))
+
+  # message("t3: ", data.table::timetaken(t3))
+
+  # evaluation -----------------------------------------------------------------
+  # t4 <- proc.time()
+  fun_env <- environment()
+  lapply(seq_along(expressions), function(i) {
+    expression_string <- expressions[i]
+    test_expr <- parse(text = expression_string)[[1L]]
+
+    # @codedoc_comment_block dbc::expressions_to_report::env
+    # @param env `[environment]` (default `parent.frame(1L)`)
+    #
+    # `env` will be the parent environment of the environment where each element
+    # of `expressions` is evaluated. A new, separate environment is created for
+    # each separate expression (*expression evaluation environment*).
+    # They all have `env` as the parent environment (*context environment*).
+    # @codedoc_comment_block dbc::expressions_to_report::env
+    eval_env <- new.env(parent = env)
+    result <- tryCatch(
+      eval(test_expr, envir = eval_env),
+      error = function(e) e
     )
-
-  })
-
-  report_df <- do.call(rbind, test_df_list)
-  report_df[, names(report_df)] <- lapply(report_df, function(col) {
-    if (is.factor(col)) {
-      col <- as.character(col)
+    pass <- FALSE
+    error <- NA_character_
+    n_fail <- NA_integer_
+    wh_fail <- NA_integer_
+    if (inherits(result, "error")) {
+      error <- result[["message"]]
+    } else if (is.null(result)) {
+      pass <- TRUE
+    } else if (is.logical(result)) {
+      passing_elems <- result %in% TRUE # %in% avoids NA's. NA == TRUE -> NA
+      pass <- all(passing_elems)
+      if (length(result) != 1L) {
+        wh_fail <- which(!passing_elems)
+      }
+      n_fail <- sum(!passing_elems)
+    } else {
+      stop("test ", deparse(expression_string), " returned result of class(es) ",
+           deparse(class(result)), "; logical or NULL was expected; see ",
+           "help for argument 'tests'")
     }
-    col
+    # @codedoc_comment_block dbc::expressions_to_report::env
+    #
+    # `env` is also used in interpolation --- see section
+    # **Message interpolation**.
+    # @codedoc_comment_block dbc::expressions_to_report::env
+
+    # @codedoc_comment_block dbc::expressions_to_report::interpolation
+    # @section Message interpolation:
+    #
+    # Simple string interpolation is supported in `pass_messages` and
+    # `fail_messages`. For the purpose of evaluating the expression substrings
+    # in the messages, a new empty environment (*interpolation environment*)
+    # is created. This contains any objects created when the `expressions` element
+    # was evaluated. It's parent environment (*report environment*) contains
+    # objects
+    # `test`, `error`, `pass`, `n_fail`, and `wh_fail`, respectively. These are
+    # the data with which the report data.frame is created, ultimately.
+    # The parent environment of the *report environment* is the same as that env
+    # where the `expressions` element was evaluated.
+    #
+    # *context environment*
+    #  -> *expression evaluation environment*
+    #
+    # *context environment*
+    #  -> *report environment*
+    #    -> *interpolation environment*
+    #
+    # These environment tricks allows one to use objects in the
+    # *context environment* in both expression evaluation and in interpolation.
+    # The objects in the *report environment* can be used in interpolation.
+    #
+    # @codedoc_insert_comment_block dbc:::interpolate
+    # @codedoc_comment_block dbc::expressions_to_report::interpolation
+    fun_env[["report_df"]][["error"]][i] <- error
+    fun_env[["report_df"]][["pass"]][i]  <- pass
+    fun_env[["report_df"]][["n_fail"]][i] <- n_fail
+    fun_env[["report_df"]][["wh_fail"]][[i]] <- wh_fail
+
+    report_environment <- as.environment(mget(
+      c("error", "pass", "n_fail")
+    ))
+    report_environment[["wh_fail"]] <- fun_env[["report_df"]][["wh_fail"]][[1L]]
+    interpolation_environment <- eval_env
+    parent.env(interpolation_environment) <- report_environment
+    parent.env(report_environment) <- env
+    msg <- pass_messages[i]
+    if (!fun_env[["report_df"]][["pass"]][i]) {
+      msg <- fail_messages[i]
+    }
+    fun_env[["report_df"]][["message"]][i] <- interpolate(msg, env = eval_env)
+    NULL
   })
 
-  report_df[["call"]] <- lapply(1:nrow(report_df), function(i) call)
-
+  # message("t4: ", data.table::timetaken(t4))
   return(report_df)
 }
 
