@@ -206,11 +206,23 @@ expressions_to_report(
 a <- 1
 rdf <- dbc::expressions_to_report(
   expressions = "a == 1",
-  pass_messages = "a = ${a} is equal to one",
+  pass_messages = "a was ${a} as expected",
   env = environment()
 )
 stopifnot(
-  rdf[["message"]] == "a = 1 is equal to one"
+  rdf[["message"]] == "a was 1 as expected"
+)
+
+# interpolation example
+a <- 1:4
+rdf <- dbc::expressions_to_report(
+  expressions = "(a_len <- length(a)) == 5L",
+  pass_messages = "Length of a was ${a_len} as expected",
+  fail_messages = "Length of a was ${a_len}; 5 was expected",
+  env = environment()
+)
+stopifnot(
+  rdf[["message"]] == "Length of a was 4; 5 was expected"
 )
 # report to assertion
 

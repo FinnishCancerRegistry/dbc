@@ -79,11 +79,23 @@ NULL
 #' a <- 1
 #' rdf <- dbc::expressions_to_report(
 #'   expressions = "a == 1",
-#'   pass_messages = "a = ${a} is equal to one",
+#'   pass_messages = "a was ${a} as expected",
 #'   env = environment()
 #' )
 #' stopifnot(
-#'   rdf[["message"]] == "a = 1 is equal to one"
+#'   rdf[["message"]] == "a was 1 as expected"
+#' )
+#'
+#' # interpolation example
+#' a <- 1:4
+#' rdf <- dbc::expressions_to_report(
+#'   expressions = "(a_len <- length(a)) == 5L",
+#'   pass_messages = "Length of a was ${a_len} as expected",
+#'   fail_messages = "Length of a was ${a_len}; 5 was expected",
+#'   env = environment()
+#' )
+#' stopifnot(
+#'   rdf[["message"]] == "Length of a was 4; 5 was expected"
 #' )
 expressions_to_report <- function(
   expressions,
@@ -93,7 +105,6 @@ expressions_to_report <- function(
   call = NULL
 ) {
   # assertions etc -------------------------------------------------------------
-  # t1 <- proc.time()
   call <- dbc::handle_arg_call(call)
 
   # @codedoc_comment_block dbc::expressions_to_report::expressions
@@ -120,7 +131,7 @@ expressions_to_report <- function(
     return(expr)
   })
   expression_strings <- vapply(expressions, function(expr) {
-    deparse(expr)
+    deparse1(expr)
   }, character(1L))
 
   raise_internal_error_if_not(
@@ -136,10 +147,8 @@ expressions_to_report <- function(
 
     is.environment(env)
   )
-  # message("t1: ", data.table::timetaken(t1))
 
   # fail / pass messages -------------------------------------------------------
-  # t2 <- proc.time()
   if (is.null(fail_messages)) {
     fail_messages <- rep(NA_character_, length(expressions))
   } else if (length(fail_messages) == 1L) {
@@ -156,10 +165,8 @@ expressions_to_report <- function(
   pass_messages[is.na(pass_messages)] <- paste0(
     "test passed: ", expressions[is.na(pass_messages)]
   )
-  # message("t2: ", data.table::timetaken(t2))
 
   # report_df ------------------------------------------------------------------
-  # t3 <- proc.time()
   report_df <- data.frame(
     test = expression_strings,
     error = NA_character_,
@@ -173,10 +180,7 @@ expressions_to_report <- function(
   report_df[["wh_fail"]] <- rep(list(integer(0L)), nrow(report_df))
   report_df[["call"]] <- rep(list(call), nrow(report_df))
 
-  # message("t3: ", data.table::timetaken(t3))
-
   # evaluation -----------------------------------------------------------------
-  # t4 <- proc.time()
   fun_env <- environment()
   lapply(seq_along(expressions), function(i) {
     expression_string <- expressions[i]
@@ -268,7 +272,6 @@ expressions_to_report <- function(
     NULL
   })
 
-  # message("t4: ", data.table::timetaken(t4))
   return(report_df)
 }
 
