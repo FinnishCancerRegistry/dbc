@@ -3,6 +3,7 @@
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/WetRobot/easyassertions.svg?branch=master)](https://travis-ci.org/WetRobot/dbc)
+[![R-CMD-check](https://github.com/finnishcancerregistry/dbc/workflows/R-CMD-check/badge.svg)](https://github.com/finnishcancerregistry/dbc/actions)
 <!-- badges: end -->
 
 ## Description

@@ -6,3 +6,4 @@
 ^generate_functions\.R$
 ^.github$
 ^man-roxygen$
+^\.github$
