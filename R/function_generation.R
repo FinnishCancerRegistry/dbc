@@ -12,6 +12,7 @@ get_report_fun_specs <- function() {
 
 
 get_report_fun_df <- function() {
+  requireNamespace("data.table")
   specs_df <- get_report_fun_specs()
   specs_df_col_nms <- c("test_set_nm", "call",
                         "fail_message", "pass_message",
@@ -46,6 +47,9 @@ get_report_fun_df <- function() {
     all.x = FALSE, all.y = FALSE
   )
   data.table::setDT(deriv_fun_df)
+  data.table::set(deriv_fun_df, j = "test_set_nm", value = sub(
+    "^report_", "", deriv_fun_df[["deriv_fun_nm"]]
+  ))
   data.table::set(deriv_fun_df, j = "deriv_fun_nm", value = NULL)
   data.table::setcolorder(deriv_fun_df, names(fun_df))
 
@@ -53,6 +57,7 @@ get_report_fun_df <- function() {
   rm("deriv_fun_df")
   data.table::setDF(fun_df)
   fun_df[["fun_nm"]] <- paste0(base_prefix, fun_df[["test_set_nm"]])
+  fun_df <- unique(fun_df, by = c("test_set_nm", "call"))
 
   fun_df <- stats::aggregate(
     fun_df[, c("call", "fail_message", "pass_message", "extra_arg_nm_set")],
@@ -69,7 +74,6 @@ get_report_fun_df <- function() {
 
 
 
-#' @importFrom data.table := .SD
 generate_report_funs <- function(
   target_script = "R/generated_report_funs.R"
 ) {
@@ -86,7 +90,7 @@ generate_report_funs <- function(
 
     is.data.frame(fun_df),
     fun_df_col_nms %in% names(fun_df),
-    !duplicated(fun_df[["nm"]])
+    !duplicated(fun_df[["fun_nm"]])
   )
 
 
@@ -140,7 +144,7 @@ generate_report_funs <- function(
     def <- c(
       "#' @rdname assertions",
       "#' @export",
-      paste0(fun_df[["nm"]][fun_no], " <- function(", arg_set, ") {"),
+      paste0(fun_df[["fun_nm"]][fun_no], " <- function(", arg_set, ") {"),
       body,
       "}"
     )
@@ -316,8 +320,8 @@ generate_assertion_funs <- function(
   )
 }
 
-#' @importFrom data.table .SD
 report_function_variant_space <- function() {
+  requireNamespace("data.table")
 
   levels <- list(
     class = c(
