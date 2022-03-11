@@ -270,51 +270,63 @@ generate_assertion_funs <- function(
   )
 }
 
-generate_function_variants <- function(
-  prefix = c("report", "assert", "test")[1],
-  target_script = "R/generated_report_fun_variants.R",
-  pad = rep("", 5)
-) {
-  requireNamespace("data.table")
+#' @importFrom data.table .SD
+report_function_variant_space <- function() {
+
   levels <- list(
-    c("double", "number", "integer", "Date", "character", "logical",  "factor"),
-    "_",
-    c("nonNA", ""),
-    "_",
-    c("gtezero", "gtzero", "ltezero", "ltzero", ""),
-    "_",
-    c("atom", "vector", "matrix")
+    class = c(
+      "double", "number", "integer", "Date", "character", "logical",  "factor"
+    ),
+    na_status = c("nonNA", ""),
+    number_range = c("gtezero", "gtzero", "ltezero", "ltzero", ""),
+    storage_type = c("atom", "vector", "matrix")
   )
-
-  fun_def_prefix <- paste0(prefix, "_is_")
-
   fun_nm_dt <- do.call(data.table::CJ, levels)
   data.table::setkeyv(fun_nm_dt, names(fun_nm_dt))
   non_number_types <- c("character", "logical", "Date", "factor")
   fun_nm_dt <- fun_nm_dt[
-    !(fun_nm_dt[["V1"]] %in% non_number_types &
-        fun_nm_dt[["V5"]] != ""),
+    !(fun_nm_dt[["class"]] %in% non_number_types &
+        fun_nm_dt[["number_range"]] != ""),
   ]
-  fun_nms <- do.call(paste0, fun_nm_dt)
-  fun_nms <- paste0(fun_def_prefix, fun_nms)
-  fun_nms <- gsub("_{1,}", "_", fun_nms)
+  data.table::setDT(fun_nm_dt)
 
-  data.table::set(fun_nm_dt, j = c("V2", "V4", "V6"), value = NULL)
+  fun_def_prefix <- "report_is_"
+  fun_nms <- vapply(1:nrow(fun_nm_dt), function(i) {
+    paste0(setdiff(unlist(fun_nm_dt[i, ]), ""), collapse = "_")
+  }, character(1L))
+  fun_nms <- paste0(fun_def_prefix, fun_nms)
+  data.table::set(fun_nm_dt, j = "fun_nm", value = fun_nms)
+
   data.table::set(
     fun_nm_dt,
-    j = names(fun_nm_dt),
-    value = lapply(fun_nm_dt, function(col) {
+    j = setdiff(names(fun_nm_dt), "fun_nm"),
+    value = lapply(setdiff(names(fun_nm_dt), "fun_nm"), function(col_nm) {
+      col <- fun_nm_dt[[col_nm]]
       fun_nms <- paste0(fun_def_prefix, col)
       fun_calls <- paste0(fun_nms, "(x = x, x_nm = x_nm, call = call)")
       fun_calls[col == ""] <- ""
       fun_calls
     })
   )
+  return(fun_nm_dt[])
+}
 
+#' @importFrom data.table .SD
+generate_report_function_variants <- function(
+  target_script = "R/generated_report_fun_variants.R",
+  pad = rep("", 5)
+) {
+  requireNamespace("data.table")
+
+  rfvs <- report_function_variant_space()
+  fun_nms <- rfvs[["fun_nm"]]
   fun_definitions <- unlist(lapply(seq_along(fun_nms), function(i) {
     fun_nm <- fun_nms[i]
     def <- paste0(fun_nm, " <- function(x, x_nm = NULL, call = NULL) {")
-    call_lines <- setdiff(as.character(fun_nm_dt[i, ]), "")
+    call_lines <- setdiff(
+      as.character(rfvs[i, .SD, .SDcols = setdiff(names(rfvs), "fun_nm")]),
+      ""
+    )
     line_ends <- c(rep(", ", length(call_lines) - 1L), "")
     def <- c(
       def,

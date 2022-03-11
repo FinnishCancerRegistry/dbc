@@ -7,8 +7,7 @@ pkgload::load_all(export_all = TRUE)
 dbc:::generate_base_report_funs(
   target_script = "R/generated_base_report_funs.R"
 )
-dbc:::generate_function_variants(
-  prefix = "report",
+dbc:::generate_report_function_variants(
   target_script = "R/generated_report_fun_variants.R"
 )
 
