@@ -5,66 +5,67 @@
 [![Travis build status](https://travis-ci.org/WetRobot/easyassertions.svg?branch=master)](https://travis-ci.org/WetRobot/dbc)
 <!-- badges: end -->
 
-dbc assists in design-by-contract development of R functions. 
-It also enables you to write simple, one-line and one-function-call assertions.
+## Description
 
-## Installation
+`dbc` is designed to aid writing functions under the design by contract
+philosophy, where function inputs and outputs are programmatically
+asserted to adhere to specifications.
 
-``` r
-devtools::install_github("WetRobot/dbc")
+## Details
+
+Recommended ways of using assertions:
+
+```
+# function intended only for use in other functions
+my_workhorse_fun_ <- function(x) {
+  dbc::assert_prod_input_is_number(x)
+  # ... something complicated that makes assertion on output actually
+  # worth having
+  dbc::assert_prod_output_is_number(output)
+  return(output)
+}
+# function exposed to user
+my_fun <- function(x) {
+  dbc::assert_user_input_is_number(x)
+  # some steps...
+  output <- my_workhorse_fun_(x = x)
+  # some steps...
+  return(output)
+}
 ```
 
-## Example
-
-You would probably use this package to write assertions for your own functions
-and possibly your own package. I recommend the following style of using
-dbc functions:
-
-``` r
-# function outside a packge
-my_fun <- function(x) {
-  requireNamespace("dbc")
-  dbc::assert_is_integer_ltezero_vector(x)
-  x + 1
+Alternative:
+```
+# functions intended only for use in other functions
+# function used internally & exposed to user
+my_fun <- function(x, assertion_type = "input") {
+  dbc::assert_is_number(x, assertion_type = assertion_type)
+  # some steps...
+  return(output)
 }
+```
 
+Writing your own assertions should done using `[dbc::expressions_to_report]`
+and `[dbc::report_to_assertion]` when possible. Write a separate report
+function first.
 
-# function within a package
-my_fun <- function(x) {
-  dbc::assert_is_integer_ltezero_vector(x)
-  x + 1
-}
-
-# want to distinguish functions intended for user and intended for use
-# in other functions only (or reuse the same code for some other reason)
-my_fun__ <- function(x, y, assertion_type, call = NULL) {
-  call <- dbc::handle_arg_call(call)
-  dbc::assert_is_integer_ltezero_vector(x)
-  dbc::assert_is_character_nonNA_atom(y)
-  switch(
-    y,
-    add = x + 1,
-    subtract = x - 1
+```
+report_is_my_arg <- function(x, x_nm = NULL, call = NULL) {
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_x_nm(call)
+  dbc::expressions_to_report(
+    expressions = "x %in% 1:5",
+    fail_messages = paste0(x_nm, " was not in set 1:5"),
+    call = call
   )
 }
-my_fun_ <- function(x, y) {
-  call <- dbc::handle_arg_call(NULL)
-  my_fun__(x, y, "prod_input", call)
-}
-my_fun <- function(x, y) {
-  call <- dbc::handle_arg_call(NULL)
-  my_fun__(x, y, "user_input", call)
-}
 
-# want to be extra sure that an interim result and output are correct
-my_fun <- function(x) {
-  dbc::assert_prod_input_is_integer_ltezero_vector(x)
-  # some complicated code here...
-  dbc::assert_prod_interim_is_integer_ltezero_vector(out)
-  # some more complicated code here...
-  dbc::assert_prod_output_is_integer_ltezero_vector(out)
-  return(out)
+assert_is_my_arg <- function(
+  x, x_nm = NULL, call = NULL, assertion_type = "input"
+) {
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_x_nm(call)
+  dbc::report_to_assertion(report_is_my_arg(x, x_nm, call),
+                           assertion_type = assertion_type)
 }
-
 ```
-
