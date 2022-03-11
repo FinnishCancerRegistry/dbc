@@ -4,16 +4,12 @@ e <- new.env()
 source("data-raw/sysdata.R", local = e)
 
 pkgload::load_all(export_all = TRUE)
-dbc:::generate_base_report_funs(
-  target_script = "R/generated_base_report_funs.R"
-)
-dbc:::generate_report_function_variants(
-  target_script = "R/generated_report_fun_variants.R"
+dbc:::generate_report_funs(
+  target_script = "R/generated_report_funs.R"
 )
 
 report_fun_scripts <- c(
-  "R/generated_base_report_funs.R",
-  "R/generated_report_fun_variants.R",
+  "R/generated_report_funs.R",
   "R/manually_written_report_funs.R"
 )
 

@@ -6,73 +6,122 @@
 
 
 
-
-
 get_report_fun_specs <- function() {
   report_fun_specs
 }
 
 
-
-#' @importFrom stats aggregate
-generate_base_report_funs <- function(
-  target_script = "R/generated_base_report_funs.R"
-) {
+get_report_fun_df <- function() {
   specs_df <- get_report_fun_specs()
+  specs_df_col_nms <- c("test_set_nm", "call",
+                        "fail_message", "pass_message",
+                        "extra_arg_nm_set")
   raise_internal_error_if_not(
     is.data.frame(specs_df),
-    c("test_set_nm", "call",
-      "fail_message", "pass_message",
-      "extra_arg_nm_set"
-    ) %in% names(specs_df),
-
-    is.character(target_script),
-    length(target_script) == 1L
+    specs_df_col_nms %in% names(specs_df)
   )
   specs_df[, names(specs_df)] <- lapply(specs_df, as.character)
   base_prefix <- "report_"
-  fun_df <- data.frame(suffix = sort(unique(specs_df[["test_set_nm"]])))
-  fun_df[["suffix"]] <- as.character(fun_df[["suffix"]])
-  fun_df[["nm"]] <- paste0(base_prefix, fun_df[["suffix"]])
+  fun_df <- data.table::copy(specs_df)
 
-  test_set_nm_set <- fun_df$suffix
-  fun_df[["extra_arg_set"]] <- lapply(test_set_nm_set, function(test_set_nm) {
-    is_test_set <- specs_df[["test_set_nm"]] == test_set_nm
-    values <- specs_df[["extra_arg_nm_set"]][is_test_set]
-    paste0(setdiff(values, c(NA_character_, "")), collapse = ", ")
-  })
-  split_col_nms <- c(
-    "test_set" = "call",
-    "fail_msg_set" = "fail_message",
-    "pass_msg_set" = "pass_message"
+  deriv_fun_df <- report_function_variant_space()
+  deriv_fun_df <- data.table::melt(
+    deriv_fun_df,
+    id.vars = "fun_nm",
+    measure.vars = setdiff(names(deriv_fun_df), "fun_nm"),
+    value.name = "test_set_nm",
+    variable.name = "type"
   )
-  fun_df[, names(split_col_nms)] <- lapply(split_col_nms, function(col_nm) {
-    src_col_nm <- col_nm
-    lapply(test_set_nm_set, function(test_set_nm) {
-      is_test_set <- specs_df[["test_set_nm"]] == test_set_nm
-      values <- specs_df[[src_col_nm]][is_test_set]
-      paste0(deparse(values), collapse = "")
-    })
-  })
+  data.table::setnames(deriv_fun_df, "fun_nm", "deriv_fun_nm")
+  data.table::set(deriv_fun_df, j = "type", value = NULL)
+  data.table::set(deriv_fun_df, j = "test_set_nm", value = sub(
+    "^report_",
+    "",
+    sub("\\(.+", "", deriv_fun_df[["test_set_nm"]])
+  ))
+  deriv_fun_df <- merge(
+    x = fun_df,
+    y = deriv_fun_df,
+    by = "test_set_nm",
+    all.x = FALSE, all.y = FALSE
+  )
+  data.table::setDT(deriv_fun_df)
+  data.table::set(deriv_fun_df, j = "deriv_fun_nm", value = NULL)
+  data.table::setcolorder(deriv_fun_df, names(fun_df))
+
+  fun_df <- rbind(fun_df, deriv_fun_df)
+  rm("deriv_fun_df")
+  data.table::setDF(fun_df)
+  fun_df[["fun_nm"]] <- paste0(base_prefix, fun_df[["test_set_nm"]])
+
+  fun_df <- stats::aggregate(
+    fun_df[, c("call", "fail_message", "pass_message", "extra_arg_nm_set")],
+    by = list(fun_nm = fun_df[["fun_nm"]], test_set_nm = fun_df[["test_set_nm"]]),
+    FUN = function(x) list(unlist(x))
+  )
+  data.table::setnames(
+    fun_df,
+    c("call", "fail_message", "pass_message"),
+    c("expression_set", "fail_message_set", "pass_message_set")
+  )
+  return(fun_df)
+}
+
+
+
+#' @importFrom data.table := .SD
+generate_report_funs <- function(
+  target_script = "R/generated_report_funs.R"
+) {
+  requireNamespace("data.table")
+  fun_df <- get_report_fun_df()
+  fun_df_col_nms <- c(
+    "test_set_nm", "fun_nm",
+    "expression_set", "fail_message_set", "pass_message_set", "extra_arg_nm_set"
+  )
+  stopifnot(
+    is.character(target_script),
+    length(target_script) == 1L,
+    !is.na(target_script),
+
+    is.data.frame(fun_df),
+    fun_df_col_nms %in% names(fun_df),
+    !duplicated(fun_df[["nm"]])
+  )
+
+
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
+    expression_set <- fun_df[["expression_set"]][[fun_no]]
+    fail_message_set <- fun_df[["fail_message_set"]][[fun_no]]
+    pass_message_set <- fun_df[["pass_message_set"]][[fun_no]]
+    expression_set <- paste0("\"", expression_set, "\"")
+    fail_message_set <- paste0("\"", fail_message_set, "\"")
+    pass_message_set <- paste0("\"", pass_message_set, "\"")
+    n <- length(expression_set)
+    if (n > 1L) {
+      expression_set[1:(n - 1L)] <- paste0(expression_set[1:(n - 1L)], ", ")
+      fail_message_set[1:(n - 1L)] <- paste0(fail_message_set[1:(n - 1L)], ", ")
+      pass_message_set[1:(n - 1L)] <- paste0(pass_message_set[1:(n - 1L)], ", ")
+    }
+
     body <- paste0("  ", c(
       "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
       "x_nm <- dbc::handle_arg_x_nm(x_nm)",
       "call <- dbc::handle_arg_call(call)",
       "report_env <- environment()",
-      "test_set <- c(",
-      paste0("  ", fun_df[["test_set"]][fun_no]),
+      "expression_set <- c(",
+      paste0("  ", expression_set),
       ")",
-      "fail_msg_set <- c(",
-      paste0("  ", fun_df[["fail_msg_set"]][fun_no]),
+      "fail_message_set <- c(",
+      paste0("  ", fail_message_set),
       ")",
-      "pass_msg_set <- c(",
-      paste0("  ", fun_df[["pass_msg_set"]][fun_no]),
+      "pass_message_set <- c(",
+      paste0("  ", pass_message_set),
       ")",
-      "report_df <- expressions_to_report(",
-      "  expressions = test_set,",
-      "  fail_messages = fail_msg_set,",
-      "  pass_messages = pass_msg_set,",
+      "report_df <- dbc::expressions_to_report(",
+      "  expressions = expression_set,",
+      "  fail_messages = fail_message_set,",
+      "  pass_messages = pass_message_set,",
       "  env = report_env, ",
       "  call = call",
       ")",
@@ -84,7 +133,7 @@ generate_base_report_funs <- function(
     body <- fun_df[["body"]][[fun_no]]
     arg_set <- c("x", "x_nm = NULL", "call = NULL")
     arg_set <- setdiff(
-      c(arg_set, fun_df[["extra_arg_set"]][fun_no]),
+      c(arg_set, fun_df[["extra_arg_nm_set"]][[fun_no]]),
       c(NA_character_, "")
     )
     arg_set <- paste0(arg_set, collapse = ", ")
@@ -115,8 +164,7 @@ generate_base_report_funs <- function(
 
 generate_report_derivative_funs <- function(
   source_scripts = c(
-    "R/generated_base_report_funs.R",
-    "R/generated_report_fun_variants.R"
+    "R/generated_report_funs.R"
   ),
   target_script = "R/generated_assertion_funs.R",
   type = c("assert", "test")[1],
@@ -242,8 +290,7 @@ generate_report_derivative_funs <- function(
 
 generate_test_funs <- function(
   source_scripts = c(
-    "R/generated_base_report_funs.R",
-    "R/generated_report_fun_variants.R"
+    "R/generated_report_funs.R"
   ),
   target_script = "R/generated_assertion_funs.R"
 ) {
@@ -256,8 +303,7 @@ generate_test_funs <- function(
 
 generate_assertion_funs <- function(
   source_scripts = c(
-    "R/generated_base_report_funs.R",
-    "R/generated_report_fun_variants.R"
+    "R/generated_report_funs.R"
   ),
   target_script = "R/generated_test_funs.R",
   assertion_type = "general"
@@ -310,47 +356,6 @@ report_function_variant_space <- function() {
   )
   return(fun_nm_dt[])
 }
-
-#' @importFrom data.table .SD
-generate_report_function_variants <- function(
-  target_script = "R/generated_report_fun_variants.R",
-  pad = rep("", 5)
-) {
-  requireNamespace("data.table")
-
-  rfvs <- report_function_variant_space()
-  fun_nms <- rfvs[["fun_nm"]]
-  fun_definitions <- unlist(lapply(seq_along(fun_nms), function(i) {
-    fun_nm <- fun_nms[i]
-    def <- paste0(fun_nm, " <- function(x, x_nm = NULL, call = NULL) {")
-    call_lines <- setdiff(
-      as.character(rfvs[i, .SD, .SDcols = setdiff(names(rfvs), "fun_nm")]),
-      ""
-    )
-    line_ends <- c(rep(", ", length(call_lines) - 1L), "")
-    def <- c(
-      def,
-      "  x_nm <- dbc::handle_arg_x_nm(x_nm)",
-      "  call <- dbc::handle_arg_call(call)",
-      "  out <- rbind(",
-      paste0("    ", call_lines, line_ends),
-      "  )",
-      "  return(out)"
-    )
-    def <- c(def, "}", rep("", 1))
-    def <- c(
-      "#' @rdname assertions",
-      "#' @export",
-      def
-    )
-  }))
-
-  lines <- c(pad, fun_definitions)
-
-  writeLines(text = lines, con = target_script)
-  invisible(NULL)
-}
-
 
 
 
