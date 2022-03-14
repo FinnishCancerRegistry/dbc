@@ -188,31 +188,26 @@ handle_arg_x_nm <- function(x_nm, env = NULL) {
 
 
 raise_internal_error_if_not <- function(...) {
-  this_call <- match.call()
-  test_exprs <- as.list(this_call)[-1L]
-  test_results <- list(...)
-  lapply(seq_along(test_results), function(i) {
-    test_result <- test_results[[i]]
-    if (!is.logical(test_result)) {
-      err <- simpleError(
-        message = paste0(
-          "internal error: test ", deparse(test_exprs[[i]]),
-          " did not evaluate to logical values; ",
-          "result had class(es) ", deparse(class(test_result))
-        ),
-        call = this_call
+  this_call <- match.call(expand.dots = TRUE)
+  ddd_exprs <- match.call(expand.dots = FALSE)[["..."]]
+  for (i in seq_along(ddd_exprs)) {
+    error_msg <- NULL
+    result <- eval(ddd_exprs[[i]], parent.frame(1L))
+    if (!is.logical(result)) {
+      error_msg <- paste0(
+        "internal error: test ", deparse(ddd_exprs[[i]]),
+        " did not evaluate to logical values; ",
+        "result had class(es) ", deparse(class(result))
       )
-      stop(err)
-    } else if (!all(test_result)) {
-      err <- simpleError(
-        message = paste0(
-          "internal error: not all were TRUE: ", deparse(test_exprs[[i]])
-        ),
-        call = this_call
+    } else if (!all(result %in% TRUE)) {
+      error_msg <- paste0(
+        "internal error: not all were TRUE: ", deparse(ddd_exprs[[i]])
       )
-      stop(err)
     }
-  })
+    if (!is.null(error_msg)) {
+      stop(simpleError(error_msg, this_call))
+    }
+  }
   invisible(NULL)
 }
 
