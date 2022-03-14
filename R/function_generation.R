@@ -202,7 +202,6 @@ generate_report_derivative_funs <- function(
   }
 
   fun_df <- data.frame(fun_nm = fun_nms, report_fun_nm = report_fun_nms)
-
   body_part <- switch(
     type,
     assert = switch(
@@ -222,11 +221,10 @@ generate_report_derivative_funs <- function(
     )
   )
 
-
   fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
     report_fun_nm <- report_fun_nms[fun_no]
     arg_nms <- names(formals(fun_env[[report_fun_nm]]))
-    paste0("  ", c(
+    body <- paste0("  ", c(
       "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
       "x_nm <- dbc::handle_arg_x_nm(x_nm)",
       "call <- dbc::handle_arg_call(call)",
@@ -237,6 +235,24 @@ generate_report_derivative_funs <- function(
       ")",
       body_part
     ))
+    if (type == "assert" && assertion_type %in% dev_assertion_types()) {
+      body <- c(
+        "  if (!dbc::get_dev_mode()) {",
+        "    return(invisible(NULL))",
+        "  }",
+        "",
+        body
+      )
+    } else if (type == "assert" && assertion_type == "general") {
+      body <- c(
+        "  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {",
+        "    return(invisible(NULL))",
+        "  }",
+        "",
+        body
+      )
+    }
+    return(body)
   })
 
   fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {

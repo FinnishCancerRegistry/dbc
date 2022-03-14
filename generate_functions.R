@@ -15,6 +15,8 @@ report_fun_scripts <- c(
 
 
 invisible(lapply(dbc::assertion_types(), function(assertion_type) {
+  message("* generating assertion_type = ", deparse(assertion_type),
+          " funs...")
   dbc:::generate_assertion_funs(
     source_scripts = report_fun_scripts,
     target_script = paste0("R/generated_", assertion_type, "_assertion_funs.R"),
