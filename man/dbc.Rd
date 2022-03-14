@@ -11,7 +11,7 @@ asserted to adhere to specifications.
 }
 \details{
 Recommended ways of using assertions:\preformatted{# function intended only for use in other functions
-my_workhorse_fun_ <- function(x) \{
+my_workhorse_fun <- function(x) \{
   dbc::assert_prod_input_is_number(x)
   # ... something complicated that makes assertion on output actually
   # worth having
@@ -22,14 +22,13 @@ my_workhorse_fun_ <- function(x) \{
 my_fun <- function(x) \{
   dbc::assert_user_input_is_number(x)
   # some steps...
-  output <- my_workhorse_fun_(x = x)
+  output <- my_workhorse_fun(x = x)
   # some steps...
   return(output)
 \}
 }
 
-Alternative:\preformatted{# functions intended only for use in other functions
-# function used internally & exposed to user
+Alternative:\preformatted{# function used internally & exposed to user
 my_fun <- function(x, assertion_type = "input") \{
   dbc::assert_is_number(x, assertion_type = assertion_type)
   # some steps...
