@@ -90,3 +90,5 @@
 "is_assertion_type";"dbc::test_is_character(x)";"${deparse(x_nm)} was not a string";NA;NA
 "is_assertion_type";"dbc::test_is_nonNA(x)";"${deparse(x_nm)} was NA";NA;NA
 "is_assertion_type";"dbc::test_atom_is_in_set(x, set = dbc::assertion_types())";"${deparse(x_nm)} was not one of the strings given by dbc::assertion_types()";NA;NA
+"is_report_df";"is.data.frame(x)";"${deparse(x_nm)} was not a data.frame";NA;NA
+"is_report_df";"length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L";"Following columns were expected but not in ${deparse(x_nm)}: ${deparse(miss_col_nms)}";NA;NA

@@ -98,7 +98,7 @@ testthat::test_that("dbc::assert_is_one_of works", {
   }
   testthat::expect_error(
     tf(1L),
-    regexp = "\\Qdid not contain all the expected columns\\E"
+    regexp = "\\QFollowing columns were expected but not in\\E"
   )
 
   bad_report_fun_3 <- function(x, x_nm, call) {

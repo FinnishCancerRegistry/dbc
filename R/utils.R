@@ -363,3 +363,10 @@ list_union <- function(x) {
 
 
 
+
+get_report_df_template <- function() {
+  report_df_template #internal dataset
+}
+
+
+

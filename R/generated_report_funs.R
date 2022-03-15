@@ -5748,6 +5748,38 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+report_is_report_df <- function(x, x_nm = NULL, call = NULL) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  expression_set <- c(
+    "is.data.frame(x)", 
+    "length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L"
+  )
+  fail_message_set <- c(
+    "${deparse(x_nm)} was not a data.frame", 
+    "Following columns were expected but not in ${deparse(x_nm)}: ${deparse(miss_col_nms)}"
+  )
+  pass_message_set <- c(
+    "NA", 
+    "NA"
+  )
+  report_df <- dbc::expressions_to_report(
+    expressions = expression_set,
+    fail_messages = fail_message_set,
+    pass_messages = pass_message_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 report_is_TRUE <- function(x, x_nm = NULL, call = NULL) {
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)

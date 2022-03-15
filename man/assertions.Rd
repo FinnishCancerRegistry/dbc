@@ -1580,6 +1580,7 @@
 \alias{report_is_number_vector}
 \alias{report_is_numeric}
 \alias{report_is_of_length}
+\alias{report_is_report_df}
 \alias{report_is_TRUE}
 \alias{report_is_uniquely_named}
 \alias{report_is_uniquely_named_list}
@@ -6055,6 +6056,8 @@ report_is_number_vector(x, x_nm = NULL, call = NULL)
 report_is_numeric(x, x_nm = NULL, call = NULL)
 
 report_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+report_is_report_df(x, x_nm = NULL, call = NULL)
 
 report_is_TRUE(x, x_nm = NULL, call = NULL)
 
