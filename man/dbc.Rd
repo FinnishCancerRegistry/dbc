@@ -58,3 +58,15 @@ assert_is_my_arg <- function(
 \}
 }
 }
+\section{News}{
+
+\subsection{News for version 0.4.6}{
+\subsection{Object dbc::report_is news:}{
+
+\code{dbc::report_is} gains arg \code{env} it is passed to
+\code{dbc::expressions_to_report}, so that's where \code{x} will be evaluated.
+}
+
+}
+}
+

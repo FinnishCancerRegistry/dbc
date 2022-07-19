@@ -64,6 +64,7 @@
 #'                            assertion_type = assertion_type)
 #' }
 #' ```
+#' @eval codedoc::codedoc_news_for_R_package()
 NULL
 
 

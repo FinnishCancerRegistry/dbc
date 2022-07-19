@@ -14,6 +14,10 @@ report_is <- function(
   call = NULL,
   env = NULL
 ) {
+  # @codedoc_comment_block news("dbc::report_is", "2022-07-19", "0.4.6")
+  # `dbc::report_is` gains arg `env` it is passed to
+  # `dbc::expressions_to_report`, so that's where `x` will be evaluated.
+  # @codedoc_comment_block news("dbc::report_is", "2022-07-19", "0.4.6")
   if (is.null(env)) {
     env <- parent.frame(1L)
   }
