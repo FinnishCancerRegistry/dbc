@@ -2,14 +2,25 @@
 
 #' @rdname assertions
 #' @export
+#' @param env `[NULL, environment]` (default `NULL`)
+#'
+#' - `NULL`: Take the env where this function was called.
+#' - `environment`: Use this environment.
+#'
+#' Passed to `[dbc::expressions_to_report]`.
 report_is <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  env = NULL
 ) {
+  if (is.null(env)) {
+    env <- parent.frame(1L)
+  }
   x_expr <- substitute(x)
-  expressions_to_report(
-    expressions = list(x_expr)
+  dbc::expressions_to_report(
+    expressions = list(x_expr),
+    env = env
   )
 }
 

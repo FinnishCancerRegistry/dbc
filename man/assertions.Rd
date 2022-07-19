@@ -1948,7 +1948,7 @@
 \alias{report_has_only_valid_observations}
 \title{Assertions}
 \usage{
-report_is(x, x_nm = NULL, call = NULL)
+report_is(x, x_nm = NULL, call = NULL, env = NULL)
 
 assert_is(x, x_nm = NULL, call = NULL)
 
@@ -7449,6 +7449,14 @@ see e.g. \link{report_is_atom}}
 \code{quote}; this call will be reported in an error
 \item \code{NULL}: the call is attempted to be inferred
 }}
+
+\item{env}{\verb{[NULL, environment]} (default \code{NULL})
+\itemize{
+\item \code{NULL}: Take the env where this function was called.
+\item \code{environment}: Use this environment.
+}
+
+Passed to \verb{[dbc::expressions_to_report]}.}
 
 \item{set}{\verb{[any vector]} (mandatory, no default)
 set of values to compare to}
