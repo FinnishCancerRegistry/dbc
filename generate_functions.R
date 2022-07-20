@@ -10,7 +10,8 @@ dbc:::generate_report_funs(
 
 report_fun_scripts <- c(
   "R/generated_report_funs.R",
-  "R/manually_written_report_funs.R"
+  "R/manually_written_report_funs.R",
+  "R/expr_based.R"
 )
 
 
@@ -30,7 +31,5 @@ dbc:::generate_test_funs(
   source_scripts = report_fun_scripts,
   target_script = "R/generated_test_funs.R"
 )
-
-dbc:::generate_assert_is_funs()
 
 devtools::document()

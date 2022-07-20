@@ -235,6 +235,28 @@ generate_report_derivative_funs <- function(
       ")",
       body_part
     ))
+    if ("env" %in% names(formals(fun_env[[report_fun_nm]]))) {
+      body <- c(
+        "  if (is.null(env)) {",
+        "    env <- parent.frame(1L)",
+        "  }",
+        body
+      )
+    }
+    if (report_fun_nm == "report_is") {
+      body <- c(
+        "  x_test <- tryCatch(",
+        "    is.character(x) || is.language(x),",
+        "    error = function(e) e,",
+        "    warning = function(w) w",
+        "  )",
+        "  if (!identical(x_test, TRUE)) {",
+        "    x <- substitute(x)",
+        "  }",
+        "",
+        body
+      )
+    }
     if (type == "assert" && assertion_type %in% dev_assertion_types()) {
       body <- c(
         "  if (!dbc::get_dev_mode()) {",
@@ -256,6 +278,9 @@ generate_report_derivative_funs <- function(
   })
 
   fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {
+    # if (grepl("_is$", report_fun_nm)) {
+    #   browser()
+    # }
     formals <- formals(fun_env[[report_fun_nm]])
     if (assertion_type == "general") {
       formals[["assertion_type"]] <- "general"

@@ -116,6 +116,134 @@ report_has_only_valid_observations <- function(
 
 
 
+#' @rdname assertions
+#' @param template `[any R object]` (no default)
+#'
+#' `x` must look similar to this object. See `compare` for what information
+#' is compared between the two.
+#' @param compare `[NULL, character]` (default `NULL`)
+#'
+#' If `NULL`, use all options.
+#'
+#' These are the options:
+#' - `"names"`: Compare names of the objects. `x` must have all names that
+#'    `template` has. It may have additional names.
+#' - `"classes"`: Compare classes of the objects. `x` must have all the classes
+#'   that template has. It may have additional classes.
+#' - `"lengths"`: Compare lengths of objects. `x` must have the same length
+#'   that `template` has.
+#'
+#' If `template` and `x` return `TRUE` for `is.list`, comparisons are performed
+#' recursively on all elements and their elements, and so on, until a list
+#' object is no longer encountered. See **Examples**.
+#' @examples
+#'
+#' # dbc::report_is_like_template
+#'
+#' x_1 <- data.frame(a = 1:3, b = c("a", "b", "c"), c = factor(1:3))
+#' template_1 <- data.frame(a = integer(0L), b = character(0L),
+#'                          c = numeric(0L))
+#' report_1 <- dbc::report_is_like_template(x = x_1, template = template_1,
+#'                                          compare = c("names", "classes"))
+#' stopifnot(sum(report_1$pass == FALSE) == 1)
+#'
+#' x_2 <- list(a = list(a1 = 1:3, a2 = 1:3 + 0.5), b = 1L)
+#' template_2 <- list(a = list(a1 = integer(0L), a2 = numeric(0L)),
+#'                    b = list(b1 = character(0L)))
+#' report_2 <- dbc::report_is_like_template(x = x_2, template = template_2,
+#'                                          compare = c("names", "classes"))
+#' stopifnot(sum(report_2$pass == FALSE) == 3)
+#'
+#' x_3 <- 2:4
+#' template_3 <- 1:3
+#' report_3 <- dbc::report_is_like_template(
+#'   x = x_3, template = template_3,
+#'   compare = c("names", "classes", "lengths")
+#' )
+#' stopifnot(all(report_3$pass))
+#'
+#' @export
+report_is_like_template <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  template,
+  compare = NULL
+) {
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  dbc::assert_prod_input_is_one_of(
+    x = compare,
+    funs = list(dbc::report_is_NULL,
+                dbc::report_is_character_nonNA_vector)
+  )
+  compare_options <- c("names", "classes", "lengths")
+  if (is.null(compare)) {
+    compare <- compare_options
+  } else {
+    dbc::assert_prod_input_vector_elems_are_in_set(
+      compare, set = compare_options
+    )
+  }
+
+  df <- NULL
+  if ("names" %in% compare && !is.null(names(template))) {
+    df_nm <- dbc::report_has_names(
+      x = x,
+      x_nm = x_nm,
+      call = call,
+      required_names = names(template)
+    )
+    df <- rbind(df, df_nm)
+  }
+  if ("classes" %in% compare) {
+    df_class <- dbc::report_inherits(
+      x = x,
+      x_nm = x_nm,
+      call = call,
+      required_class = class(template)
+    )
+    df <- rbind(df, df_class)
+  }
+  if ("lengths" %in% compare) {
+    df_length <- dbc::report_has_length(
+      x = x,
+      x_nm = x_nm,
+      call = call,
+      expected_length = length(template)
+    )
+    df <- rbind(df, df_length)
+  }
+  if (is.list(template) && identical(class(template), class(x))) {
+    df_recursive <- do.call(
+      rbind,
+      lapply(
+        seq_along(x),
+        function(i) {
+          ref_nm <- i
+          if (!is.null(names(template))) {
+            ref_nm <- paste0("\"", names(template)[i], "\"")
+          }
+          report_is_like_template(
+            x = x[[i]],
+            x_nm = paste0(x_nm, "[[", ref_nm, "]]"),
+            call = call,
+            template = template[[i]],
+            compare = compare
+          )
+        }
+      ),
+      quote = TRUE
+    )
+    df <- rbind(df, df_recursive)
+  }
+
+  return(df)
+}
+
+
+
+
 
 
 

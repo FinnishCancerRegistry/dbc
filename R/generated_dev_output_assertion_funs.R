@@ -379,6 +379,49 @@ assert_dev_output_inherits <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_dev_output_is <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  env = NULL
+) {
+  if (!dbc::get_dev_mode()) {
+    return(invisible(NULL))
+  }
+
+  x_test <- tryCatch(
+    is.character(x) || is.language(x),
+    error = function(e) e,
+    warning = function(w) w
+  )
+  if (!identical(x_test, TRUE)) {
+    x <- substitute(x)
+  }
+
+  if (is.null(env)) {
+    env <- parent.frame(1L)
+  }
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    env = env
+  )
+  assertion_type <- "dev_output"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_dev_output_is_assertion_type <- function(
   x, 
   x_nm = NULL, 
@@ -3404,6 +3447,39 @@ assert_dev_output_is_language_object <- function(
     x = x, 
     x_nm = x_nm, 
     call = call
+  )
+  assertion_type <- "dev_output"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+assert_dev_output_is_like_template <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  template, 
+  compare = NULL
+) {
+  if (!dbc::get_dev_mode()) {
+    return(invisible(NULL))
+  }
+
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_like_template(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    template = template, 
+    compare = compare
   )
   assertion_type <- "dev_output"
   dbc::report_to_assertion(report_df, assertion_type = assertion_type)

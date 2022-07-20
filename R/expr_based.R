@@ -8,6 +8,36 @@
 #' - `environment`: Use this environment.
 #'
 #' Passed to `[dbc::expressions_to_report]`.
+#' @examples
+#'
+#' # dbc::report_is
+#' df_1 <- dbc::report_is(1 + 1 == 2)
+#' df_2 <- dbc::report_is("1 + 1 == 2")
+#' df_3 <- dbc::report_is(list(quote(1 + 1 == 2), "1 + 1 == 2"))
+#' stopifnot(
+#'   df_1[["pass"]],
+#'   df_2[["pass"]],
+#'   df_3[["pass"]]
+#' )
+#'
+#' # dbc::assert_is
+#' dbc::assert_is(1 + 1 == 2)
+#' dbc::assert_is("1 + 1 == 2")
+#' dbc::assert_is(list(quote(1 + 1 == 2), "1 + 1 == 2"))
+#' my_fun <- function(x) {
+#'   dbc::assert_is(length(x) == 1)
+#'   dbc::assert_is("length(x) == 1")
+#'   dbc::assert_is(list(quote(length(x) == 1), "length(x) == 1"))
+#'   x ^ 2
+#' }
+#' my_fun(1L)
+#' my_assert_is_fun <- function(x) {
+#'   env <- parent.frame(1L)
+#'   dbc::assert_is(x, env = env)
+#' }
+#' my_obj <- 1:3
+#' my_assert_is_fun("length(my_obj) == 3")
+#'
 report_is <- function(
   x,
   x_nm = NULL,
@@ -21,65 +51,27 @@ report_is <- function(
   if (is.null(env)) {
     env <- parent.frame(1L)
   }
-  x_expr <- substitute(x)
+  x_expr <- tryCatch(
+    is.character(x) || is.language(x),
+    error = function(e) e,
+    warning = function(w) w
+  )
+  if (!identical(x_expr, TRUE)) {
+    x_expr <- substitute(x)
+  } else {
+    x_expr <- x
+  }
+  if (is.call(x_expr) && identical(x_expr[[1]], quote(list))) {
+    # assume a list of quoted / substituted expressions or strings
+    expressions <- eval(x_expr, envir = env)
+  } else {
+    expressions <- list(x_expr)
+  }
   dbc::expressions_to_report(
-    expressions = list(x_expr),
+    expressions = expressions,
     env = env
   )
 }
-
-generate_assert_is_funs <- function() {
-
-  lines <- unlist(lapply(dbc::assertion_types(), function(assertion_type) {
-    if (assertion_type == "general") {
-      fun_nm <- "assert_is"
-    } else {
-      fun_nm <- paste0("assert_", assertion_type, "_is")
-    }
-
-    lines <- c(
-      "",
-      "# this function was generated automatically. do not edit by hand!",
-      "#' @rdname assertions",
-      "#' @export",
-      "%%FUN_NM%% <- function(",
-      "  x,",
-      "  x_nm = NULL,",
-      "  call = NULL",
-      ") {",
-      "  x_nm <- dbc::handle_arg_x_nm(x_nm)",
-      "  call <- dbc::handle_arg_call(call)",
-      "  report_df <- eval(substitute(",
-      "    report_is(x = x, x_nm = x_nm, call = call),",
-      "    list(x = substitute(x))",
-      "  ))",
-      "  report_df[[\"call\"]][[1L]] <- call",
-      "  report_to_assertion(",
-      "    report_df,",
-      "    assertion_type = \"%%ASSERTION_TYPE%%\",",
-      "    raise_error_call = call",
-      "  )",
-      "}",
-      ""
-    )
-    lines <- gsub(
-      "%%FUN_NM%%", fun_nm, lines
-    )
-    lines <- gsub(
-      "%%ASSERTION_TYPE%%", assertion_type, lines
-    )
-  }))
-
-  lines <- c(
-    "# this script was generated automatically. do not edit by hand!",
-    "",
-    "",
-    lines
-  )
-
-  writeLines(lines, "R/generated_assert_is_funs.R")
-}
-
 
 
 
