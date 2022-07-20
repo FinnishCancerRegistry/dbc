@@ -170,6 +170,11 @@ report_is_like_template <- function(
   template,
   compare = NULL
 ) {
+  # @codedoc_comment_block news("dbc::report_is_like_template", "2022-07-20", "0.4.7")
+  # New fun `dbc::report_is_like_template`. Generated correspoding assertion
+  # funs. Compare an object's names, class, and length to a template. Recursive
+  # for lists.
+  # @codedoc_comment_block news("dbc::report_is_like_template", "2022-07-20", "0.4.7")
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   dbc::assert_prod_input_is_one_of(

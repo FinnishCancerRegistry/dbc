@@ -60,6 +60,22 @@ assert_is_my_arg <- function(
 }
 \section{News}{
 
+\subsection{News for version 0.4.7}{
+\subsection{Object dbc::report_is news:}{
+
+\code{dbc::report_is} and all corresponding assertion functions now handle
+string and expression inputs more robustly.
+}
+
+\subsection{Object dbc::report_is_like_template news:}{
+
+New fun \code{dbc::report_is_like_template}. Generated correspoding assertion
+funs. Compare an object's names, class, and length to a template. Recursive
+for lists.
+}
+
+}
+
 \subsection{News for version 0.4.6}{
 \subsection{Object dbc::report_is news:}{
 

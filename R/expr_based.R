@@ -44,6 +44,11 @@ report_is <- function(
   call = NULL,
   env = NULL
 ) {
+  # @codedoc_comment_block news("dbc::report_is", "2022-07-20", "0.4.7")
+  # `dbc::report_is` and all corresponding assertion functions now handle
+  # string and expression inputs more robustly.
+  # @codedoc_comment_block news("dbc::report_is", "2022-07-20", "0.4.7")
+
   # @codedoc_comment_block news("dbc::report_is", "2022-07-19", "0.4.6")
   # `dbc::report_is` gains arg `env` it is passed to
   # `dbc::expressions_to_report`, so that's where `x` will be evaluated.

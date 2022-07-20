@@ -7728,7 +7728,6 @@ my_obj <- 1:3
 my_assert_is_fun("length(my_obj) == 3")
 
 
-
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,
