@@ -19,9 +19,9 @@
 "is_language_object";"is.language(x)";"object ${deparse(x_nm)} was not an R language object; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_of_length";"length(x) == expected_length";"object ${deparse(x_nm)} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
 "has_length";"length(x) == expected_length";"object ${deparse(x_nm)} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
-"has_class";"dbc::test_is_character_nonNA_atom(required_class)";NA;NA;"required_class"
+"has_class";"dbc::test_is_character_nonNA_atom(required_class)";"Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ";NA;"required_class"
 "has_class";"inherits(x, required_class)";"expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
-"inherits";"dbc::test_is_character_nonNA_atom(required_class)";NA;NA;"required_class"
+"inherits";"dbc::test_is_character_nonNA_atom(required_class)";"Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ";NA;"required_class"
 "inherits";"inherits(x, required_class)";"expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
 "has_one_of_classes";"dbc::test_is_character_nonNA_vector(classes)";NA;NA;"classes"
 "has_one_of_classes";"inherits(x, classes)";"expected object ${deparse(x_nm)} to have class ${classes}, but it had class(es) ${deparse(class(x))}";NA;"classes"

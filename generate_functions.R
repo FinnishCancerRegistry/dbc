@@ -3,6 +3,11 @@
 e <- new.env()
 source("data-raw/sysdata.R", local = e)
 
+unlink(
+  dir("R/", pattern = "^generated_", full.names = TRUE),
+  force = TRUE
+)
+
 pkgload::load_all(export_all = TRUE)
 dbc:::generate_report_funs(
   target_script = "R/generated_report_funs.R"
@@ -14,7 +19,6 @@ report_fun_scripts <- c(
   "R/expr_based.R"
 )
 
-
 invisible(lapply(dbc::assertion_types(), function(assertion_type) {
   message("* generating assertion_type = ", deparse(assertion_type),
           " funs...")
@@ -25,7 +29,6 @@ invisible(lapply(dbc::assertion_types(), function(assertion_type) {
   )
   NULL
 }))
-
 
 dbc:::generate_test_funs(
   source_scripts = report_fun_scripts,

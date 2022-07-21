@@ -139,7 +139,7 @@ report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
     "inherits(x, required_class)"
   )
   fail_message_set <- c(
-    "NA", 
+    "Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ", 
     "expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
@@ -334,7 +334,7 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
     "inherits(x, required_class)"
   )
   fail_message_set <- c(
-    "NA", 
+    "Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ", 
     "expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(

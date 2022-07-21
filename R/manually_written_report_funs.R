@@ -202,11 +202,15 @@ report_is_like_template <- function(
     df <- rbind(df, df_nm)
   }
   if ("classes" %in% compare) {
-    df_class <- dbc::report_inherits(
-      x = x,
-      x_nm = x_nm,
+    df_class <- dbc::expressions_to_report(
+      expressions = "class(template) %in% class(x)",
+      fail_messages = paste0(
+        "expected ", x_nm, " to have all of the following classes: ",
+        deparse(class(template)), "; instead it had this set of classes: ",
+        deparse(class(x))
+      ),
       call = call,
-      required_class = class(template)
+      env = environment()
     )
     df <- rbind(df, df_class)
   }
@@ -223,19 +227,22 @@ report_is_like_template <- function(
     df_recursive <- do.call(
       rbind,
       lapply(
-        seq_along(x),
+        seq_along(template),
         function(i) {
+          ref <- i
           ref_nm <- i
           if (!is.null(names(template))) {
-            ref_nm <- paste0("\"", names(template)[i], "\"")
+            ref <- names(template)[i]
+            ref_nm <- paste0("\"", ref, "\"")
           }
-          report_is_like_template(
-            x = x[[i]],
+          sub_df <- report_is_like_template(
+            x = x[[ref]],
             x_nm = paste0(x_nm, "[[", ref_nm, "]]"),
             call = call,
-            template = template[[i]],
+            template = template[[ref]],
             compare = compare
           )
+          return(sub_df)
         }
       ),
       quote = TRUE
