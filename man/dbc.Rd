@@ -60,6 +60,21 @@ assert_is_my_arg <- function(
 }
 \section{News}{
 
+\subsection{News for version 0.4.8}{
+\subsection{Object dbc::report_has_class news:}{
+
+\code{dbc::report_has_class} and \code{dbc::report_inherits} error message improved for
+when \code{required_class} is improper.
+}
+
+\subsection{Object dbc::report_inherits news:}{
+
+\code{dbc::report_has_class} and \code{dbc::report_inherits} error message improved for
+when \code{required_class} is improper.
+}
+
+}
+
 \subsection{News for version 0.4.7}{
 \subsection{Object dbc::report_is news:}{
 

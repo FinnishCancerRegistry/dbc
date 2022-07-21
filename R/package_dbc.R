@@ -67,4 +67,11 @@
 #' @eval codedoc::codedoc_news_for_R_package()
 NULL
 
-
+# @codedoc_comment_block news("dbc::report_has_class", "2022-07-21", "0.4.8")
+# @codedoc_comment_block news("dbc::report_inherits", "2022-07-21", "0.4.8")
+#
+# `dbc::report_has_class` and `dbc::report_inherits` error message improved for
+# when `required_class` is improper.
+#
+# @codedoc_comment_block news("dbc::report_inherits", "2022-07-21", "0.4.8")
+# @codedoc_comment_block news("dbc::report_has_class", "2022-07-21", "0.4.8")
