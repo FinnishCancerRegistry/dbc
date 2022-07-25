@@ -7661,6 +7661,7 @@ was not as expected
 was not as expected
 \item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
 (see \verb{[dbc::set_dev_mode]})
+\item \code{"none"}: added for convenience, this means that the assertion is not performed
 }}
 
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)

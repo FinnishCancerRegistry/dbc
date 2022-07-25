@@ -19,7 +19,9 @@ report_fun_scripts <- c(
   "R/expr_based.R"
 )
 
-invisible(lapply(dbc::assertion_types(), function(assertion_type) {
+assertion_types <- dbc::assertion_types()
+assertion_types <- setdiff(assertion_types, "none")
+invisible(lapply(assertion_types, function(assertion_type) {
   message("* generating assertion_type = ", deparse(assertion_type),
           " funs...")
   dbc:::generate_assertion_funs(

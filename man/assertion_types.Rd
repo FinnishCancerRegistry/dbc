@@ -12,7 +12,8 @@ dev_assertion_types()
 \value{
 \verb{[dbc::assertion_types]} returns vector
 c("general", "input", "user_input", "prod_input", "dev_input",
-"prod_output", "dev_output", "prod_interim", "dev_interim")
+"prod_output", "dev_output", "prod_interim", "dev_interim", "none"
+)
 
 \verb{[dbc::dev_assertion_types]} returns vector
 c("dev_input", "dev_output", "dev_interim")

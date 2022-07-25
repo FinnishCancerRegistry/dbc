@@ -64,6 +64,9 @@ assertion_type_summaries <- function() {
     dev_interim = c(
       "like `\"prod_interim\"`, but only raised in development mode",
       "(see `[dbc::set_dev_mode]`)"
+    ),
+    none = c(
+      "added for convenience, this means that the assertion is not performed"
     )
   )
 }
