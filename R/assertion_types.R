@@ -28,6 +28,11 @@ dev_assertion_types <- function() {
 }
 
 assertion_type_summaries <- function() {
+  # @codedoc_comment_block news("dbc::assertion_types", "2022-07-25", "0.4.9")
+  # Added new assertion type `"none"`. This was added for convenience:
+  # using `assertion_type = "none"` means that the assertion is not performed.
+  # This can save computation time.
+  # @codedoc_comment_block news("dbc::assertion_types", "2022-07-25", "0.4.9")
   list(
     general = c(
       "just says that assertions did not pass without information",
@@ -141,6 +146,9 @@ assertion_type_error_messages <- function() {
     dev_interim = c(
       "Internal error: an interim results of inside a function was not as ",
       "expected when in development mode. "
+    ),
+    none = c(
+      "One or more assertions failed. Object(s) were mis-specified. "
     )
   )
   out <- lapply(out, c, msg_append)

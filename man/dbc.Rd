@@ -60,6 +60,16 @@ assert_is_my_arg <- function(
 }
 \section{News}{
 
+\subsection{News for version 0.4.9}{
+\subsection{Object dbc::assertion_types news:}{
+
+Added new assertion type \code{"none"}. This was added for convenience:
+using \code{assertion_type = "none"} means that the assertion is not performed.
+This can save computation time.
+}
+
+}
+
 \subsection{News for version 0.4.8}{
 \subsection{Object dbc::report_has_class news:}{
 
