@@ -60,6 +60,21 @@ assert_is_my_arg <- function(
 }
 \section{News}{
 
+\subsection{News for version 0.4.10}{
+\subsection{Object dbc::report_is_all_equal news:}{
+
+New fun \code{dbc::report_is_all_equal}. Generated correspoding assertion
+funs.
+}
+
+\subsection{Object dbc::report_is_identical news:}{
+
+New fun \code{dbc::report_is_identical}. Generated correspoding assertion
+funs.
+}
+
+}
+
 \subsection{News for version 0.4.9}{
 \subsection{Object dbc::assertion_types news:}{
 

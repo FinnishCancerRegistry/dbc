@@ -260,3 +260,152 @@ report_is_like_template <- function(
 
 
 
+#' @rdname assertions
+#' @param y `[any R object]` (no default)
+#'
+#' Compare `x` to this.
+#' @param y_nm `[NULL, character]` (no default)
+#'
+#' As `x_nm`, but for `y`.
+#' @examples
+#'
+#' # dbc::report_is_identical
+#' a <- 1L
+#' b <- 1.0
+#' c <- 1L
+#' stopifnot(
+#'   !dbc::report_is_identical(x = a, y = b)[["pass"]],
+#'    dbc::report_is_identical(x = a, y = c)[["pass"]]
+#' )
+#'
+#' @export
+report_is_identical <- function(
+    x,
+    x_nm = NULL,
+    call = NULL,
+    y,
+    y_nm = NULL
+) {
+  # @codedoc_comment_block news("dbc::report_is_identical", "2022-08-18", "0.4.10")
+  # New fun `dbc::report_is_identical`. Generated correspoding assertion
+  # funs.
+  # @codedoc_comment_block news("dbc::report_is_identical", "2022-08-18", "0.4.10")
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  if (is.null(y_nm)) {
+    y_nm <- deparse1(substitute(y))
+  }
+  eval_env <- environment()
+  df <- dbc::expressions_to_report(
+    expressions = "identical(x, y)",
+    fail_messages = paste0(
+      x_nm, " was not identical to ", y_nm
+    ),
+    env = eval_env,
+    call = call
+  )
+  return(df)
+}
+
+
+
+#' @rdname assertions
+#' @param y `[any R object]` (no default)
+#'
+#' Compare `x` to this.
+#' @param y_nm `[NULL, character]` (no default)
+#'
+#' As `x_nm`, but for `y`.
+#' @param all_equal_arg_list `[NULL, list]` (default `NULL`)
+#'
+#' - `NULL`: No effect, call `[all.equal]` with defaults.
+#' - `list`: Pass these additional arguments to `[all.equal]`.
+#' @examples
+#'
+#' # dbc::report_is_equal
+#' a <- 1L
+#' b <- 1.0
+#' c <- 2L
+#' stopifnot(
+#'   dbc::report_is_all_equal(x = a, y = b)[["pass"]],
+#'  !dbc::report_is_all_equal(x = a, y = c)[["pass"]]
+#' )
+#' df1 <- data.frame(a1 = 1:5, b1 = 5:1)
+#' df2 <- data.frame(a2 = 1:5, b2 = 5:1)
+#' rdf1 <- dbc::report_is_all_equal(
+#'   x = df1, y = df2
+#' )
+#' rdf2 <- dbc::report_is_all_equal(
+#'   x = df1, y = df2, all_equal_arg_list = list(check.attributes = FALSE)
+#' )
+#' stopifnot(
+#'  !rdf1[["pass"]],
+#'   rdf2[["pass"]]
+#' )
+#'
+#' @export
+report_is_all_equal <- function(
+    x,
+    x_nm = NULL,
+    call = NULL,
+    y,
+    y_nm = NULL,
+    all_equal_arg_list = NULL
+) {
+  # @codedoc_comment_block news("dbc::report_is_all_equal", "2022-08-18", "0.4.10")
+  # New fun `dbc::report_is_all_equal`. Generated correspoding assertion
+  # funs.
+  # @codedoc_comment_block news("dbc::report_is_all_equal", "2022-08-18", "0.4.10")
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  if (is.null(y_nm)) {
+    y_nm <- deparse1(substitute(y))
+  }
+  dbc::assert_is_one_of(
+    all_equal_arg_list,
+    funs = list(dbc::report_is_NULL,
+                dbc::report_is_list),
+    assertion_type = "prod_input"
+  )
+  eval_env <- environment()
+  all_equal_arg_list <- as.list(all_equal_arg_list)
+  if (is.null(names(all_equal_arg_list))) {
+    names(all_equal_arg_list) <- rep("", length(all_equal_arg_list))
+  }
+  arg_symbol_list <- c(
+    list(target = quote(x), current = quote(y)),
+    structure(lapply(seq_along(all_equal_arg_list), function(i) {
+      obj <- all_equal_arg_list[[i]]
+      is_small <- is.vector(obj) && !is.list(obj) && length(obj) <= 5
+      if (is_small) {
+        return(all_equal_arg_list[[i]])
+      }
+      nm_i <- names(all_equal_arg_list)[i]
+      if (nm_i == "") {
+        substitute(all_equal_arg_list[[i]], list(i = i))
+      } else {
+        substitute(all_equal_arg_list[[nm]], list(nm = nm_i))
+      }
+    }), names = names(all_equal_arg_list))
+  )
+  expr <- do.call(
+    what = "call",
+    args = c(list(name = "all.equal"), arg_symbol_list),
+    quote = TRUE
+  )
+  expr <- substitute(isTRUE(eq <- call), list(call = expr))
+  df <- dbc::expressions_to_report(
+    expressions = list(expr),
+    fail_messages = paste0(
+      x_nm, " was not identical to ", y_nm, "; message from all.equal: ",
+      "${deparse(eq)}"
+    ),
+    env = eval_env,
+    call = call
+  )
+  return(df)
+}
+
+
+
+

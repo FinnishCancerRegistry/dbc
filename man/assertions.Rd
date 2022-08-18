@@ -1958,6 +1958,8 @@
 \alias{assert_dev_output_is_one_of}
 \alias{report_has_only_valid_observations}
 \alias{report_is_like_template}
+\alias{report_is_identical}
+\alias{report_is_all_equal}
 \title{Assertions}
 \usage{
 report_is(x, x_nm = NULL, call = NULL, env = NULL)
@@ -7533,6 +7535,17 @@ report_has_only_valid_observations(
 )
 
 report_is_like_template(x, x_nm = NULL, call = NULL, template, compare = NULL)
+
+report_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
+
+report_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
 }
 \arguments{
 \item{x}{R object to be tested (mandatory, no default)}
@@ -7675,6 +7688,20 @@ report functions that return a report (data.frame);
 \item \code{character}: names of functions that can be found by \verb{[match.fun]}
 \item \code{list}: list of functions
 }}
+
+\item{y}{\verb{[any R object]} (no default)
+
+Compare \code{x} to this.}
+
+\item{y_nm}{\verb{[NULL, character]} (no default)
+
+As \code{x_nm}, but for \code{y}.}
+
+\item{all_equal_arg_list}{\verb{[NULL, list]} (default \code{NULL})
+\itemize{
+\item \code{NULL}: No effect, call \verb{[all.equal]} with defaults.
+\item \code{list}: Pass these additional arguments to \verb{[all.equal]}.
+}}
 }
 \value{
 \itemize{
@@ -7789,5 +7816,37 @@ report_3 <- dbc::report_is_like_template(
   compare = c("names", "classes", "lengths")
 )
 stopifnot(all(report_3$pass))
+
+
+# dbc::report_is_identical
+a <- 1L
+b <- 1.0
+c <- 1L
+stopifnot(
+  !dbc::report_is_identical(x = a, y = b)[["pass"]],
+   dbc::report_is_identical(x = a, y = c)[["pass"]]
+)
+
+
+# dbc::report_is_equal
+a <- 1L
+b <- 1.0
+c <- 2L
+stopifnot(
+  dbc::report_is_all_equal(x = a, y = b)[["pass"]],
+ !dbc::report_is_all_equal(x = a, y = c)[["pass"]]
+)
+df1 <- data.frame(a1 = 1:5, b1 = 5:1)
+df2 <- data.frame(a2 = 1:5, b2 = 5:1)
+rdf1 <- dbc::report_is_all_equal(
+  x = df1, y = df2
+)
+rdf2 <- dbc::report_is_all_equal(
+  x = df1, y = df2, all_equal_arg_list = list(check.attributes = FALSE)
+)
+stopifnot(
+ !rdf1[["pass"]],
+  rdf2[["pass"]]
+)
 
 }
