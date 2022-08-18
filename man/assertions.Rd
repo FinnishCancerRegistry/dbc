@@ -26,6 +26,7 @@
 \alias{assert_dev_input_has_only_valid_observations}
 \alias{assert_dev_input_inherits}
 \alias{assert_dev_input_is}
+\alias{assert_dev_input_is_all_equal}
 \alias{assert_dev_input_is_assertion_type}
 \alias{assert_dev_input_is_atom}
 \alias{assert_dev_input_is_between_exclusive}
@@ -98,6 +99,7 @@
 \alias{assert_dev_input_is_gte}
 \alias{assert_dev_input_is_gtezero}
 \alias{assert_dev_input_is_gtzero}
+\alias{assert_dev_input_is_identical}
 \alias{assert_dev_input_is_integer}
 \alias{assert_dev_input_is_integer_atom}
 \alias{assert_dev_input_is_integer_gtezero_atom}
@@ -202,6 +204,7 @@
 \alias{assert_dev_interim_has_only_valid_observations}
 \alias{assert_dev_interim_inherits}
 \alias{assert_dev_interim_is}
+\alias{assert_dev_interim_is_all_equal}
 \alias{assert_dev_interim_is_assertion_type}
 \alias{assert_dev_interim_is_atom}
 \alias{assert_dev_interim_is_between_exclusive}
@@ -274,6 +277,7 @@
 \alias{assert_dev_interim_is_gte}
 \alias{assert_dev_interim_is_gtezero}
 \alias{assert_dev_interim_is_gtzero}
+\alias{assert_dev_interim_is_identical}
 \alias{assert_dev_interim_is_integer}
 \alias{assert_dev_interim_is_integer_atom}
 \alias{assert_dev_interim_is_integer_gtezero_atom}
@@ -378,6 +382,7 @@
 \alias{assert_dev_output_has_only_valid_observations}
 \alias{assert_dev_output_inherits}
 \alias{assert_dev_output_is}
+\alias{assert_dev_output_is_all_equal}
 \alias{assert_dev_output_is_assertion_type}
 \alias{assert_dev_output_is_atom}
 \alias{assert_dev_output_is_between_exclusive}
@@ -450,6 +455,7 @@
 \alias{assert_dev_output_is_gte}
 \alias{assert_dev_output_is_gtezero}
 \alias{assert_dev_output_is_gtzero}
+\alias{assert_dev_output_is_identical}
 \alias{assert_dev_output_is_integer}
 \alias{assert_dev_output_is_integer_atom}
 \alias{assert_dev_output_is_integer_gtezero_atom}
@@ -554,6 +560,7 @@
 \alias{assert_has_only_valid_observations}
 \alias{assert_inherits}
 \alias{assert_is}
+\alias{assert_is_all_equal}
 \alias{assert_is_assertion_type}
 \alias{assert_is_atom}
 \alias{assert_is_between_exclusive}
@@ -626,6 +633,7 @@
 \alias{assert_is_gte}
 \alias{assert_is_gtezero}
 \alias{assert_is_gtzero}
+\alias{assert_is_identical}
 \alias{assert_is_integer}
 \alias{assert_is_integer_atom}
 \alias{assert_is_integer_gtezero_atom}
@@ -730,6 +738,7 @@
 \alias{assert_input_has_only_valid_observations}
 \alias{assert_input_inherits}
 \alias{assert_input_is}
+\alias{assert_input_is_all_equal}
 \alias{assert_input_is_assertion_type}
 \alias{assert_input_is_atom}
 \alias{assert_input_is_between_exclusive}
@@ -802,6 +811,7 @@
 \alias{assert_input_is_gte}
 \alias{assert_input_is_gtezero}
 \alias{assert_input_is_gtzero}
+\alias{assert_input_is_identical}
 \alias{assert_input_is_integer}
 \alias{assert_input_is_integer_atom}
 \alias{assert_input_is_integer_gtezero_atom}
@@ -906,6 +916,7 @@
 \alias{assert_prod_input_has_only_valid_observations}
 \alias{assert_prod_input_inherits}
 \alias{assert_prod_input_is}
+\alias{assert_prod_input_is_all_equal}
 \alias{assert_prod_input_is_assertion_type}
 \alias{assert_prod_input_is_atom}
 \alias{assert_prod_input_is_between_exclusive}
@@ -978,6 +989,7 @@
 \alias{assert_prod_input_is_gte}
 \alias{assert_prod_input_is_gtezero}
 \alias{assert_prod_input_is_gtzero}
+\alias{assert_prod_input_is_identical}
 \alias{assert_prod_input_is_integer}
 \alias{assert_prod_input_is_integer_atom}
 \alias{assert_prod_input_is_integer_gtezero_atom}
@@ -1082,6 +1094,7 @@
 \alias{assert_prod_interim_has_only_valid_observations}
 \alias{assert_prod_interim_inherits}
 \alias{assert_prod_interim_is}
+\alias{assert_prod_interim_is_all_equal}
 \alias{assert_prod_interim_is_assertion_type}
 \alias{assert_prod_interim_is_atom}
 \alias{assert_prod_interim_is_between_exclusive}
@@ -1154,6 +1167,7 @@
 \alias{assert_prod_interim_is_gte}
 \alias{assert_prod_interim_is_gtezero}
 \alias{assert_prod_interim_is_gtzero}
+\alias{assert_prod_interim_is_identical}
 \alias{assert_prod_interim_is_integer}
 \alias{assert_prod_interim_is_integer_atom}
 \alias{assert_prod_interim_is_integer_gtezero_atom}
@@ -1258,6 +1272,7 @@
 \alias{assert_prod_output_has_only_valid_observations}
 \alias{assert_prod_output_inherits}
 \alias{assert_prod_output_is}
+\alias{assert_prod_output_is_all_equal}
 \alias{assert_prod_output_is_assertion_type}
 \alias{assert_prod_output_is_atom}
 \alias{assert_prod_output_is_between_exclusive}
@@ -1330,6 +1345,7 @@
 \alias{assert_prod_output_is_gte}
 \alias{assert_prod_output_is_gtezero}
 \alias{assert_prod_output_is_gtzero}
+\alias{assert_prod_output_is_identical}
 \alias{assert_prod_output_is_integer}
 \alias{assert_prod_output_is_integer_atom}
 \alias{assert_prod_output_is_integer_gtezero_atom}
@@ -1607,6 +1623,7 @@
 \alias{test_has_only_valid_observations}
 \alias{test_inherits}
 \alias{test_is}
+\alias{test_is_all_equal}
 \alias{test_is_assertion_type}
 \alias{test_is_atom}
 \alias{test_is_between_exclusive}
@@ -1679,6 +1696,7 @@
 \alias{test_is_gte}
 \alias{test_is_gtezero}
 \alias{test_is_gtzero}
+\alias{test_is_identical}
 \alias{test_is_integer}
 \alias{test_is_integer_atom}
 \alias{test_is_integer_gtezero_atom}
@@ -1783,6 +1801,7 @@
 \alias{assert_user_input_has_only_valid_observations}
 \alias{assert_user_input_inherits}
 \alias{assert_user_input_is}
+\alias{assert_user_input_is_all_equal}
 \alias{assert_user_input_is_assertion_type}
 \alias{assert_user_input_is_atom}
 \alias{assert_user_input_is_between_exclusive}
@@ -1855,6 +1874,7 @@
 \alias{assert_user_input_is_gte}
 \alias{assert_user_input_is_gtezero}
 \alias{assert_user_input_is_gtzero}
+\alias{assert_user_input_is_identical}
 \alias{assert_user_input_is_integer}
 \alias{assert_user_input_is_integer_atom}
 \alias{assert_user_input_is_integer_gtezero_atom}
@@ -1998,6 +2018,15 @@ assert_dev_input_has_only_valid_observations(
 assert_dev_input_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_dev_input_is(x, x_nm = NULL, call = NULL, env = NULL)
+
+assert_dev_input_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
 
 assert_dev_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
@@ -2167,6 +2196,8 @@ assert_dev_input_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_dev_input_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_dev_input_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_dev_input_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -2396,6 +2427,15 @@ assert_dev_interim_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_dev_interim_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_dev_interim_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_dev_interim_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_atom(x, x_nm = NULL, call = NULL)
@@ -2564,6 +2604,8 @@ assert_dev_interim_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_dev_interim_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_dev_interim_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_dev_interim_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -2793,6 +2835,15 @@ assert_dev_output_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_dev_output_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_dev_output_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_dev_output_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_atom(x, x_nm = NULL, call = NULL)
@@ -2961,6 +3012,8 @@ assert_dev_output_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_dev_output_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_dev_output_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_dev_output_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -3237,6 +3290,16 @@ assert_inherits(
 )
 
 assert_is(x, x_nm = NULL, call = NULL, env = NULL, assertion_type = "general")
+
+assert_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL,
+  assertion_type = "general"
+)
 
 assert_is_assertion_type(
   x,
@@ -3645,6 +3708,15 @@ assert_is_gte(x, x_nm = NULL, call = NULL, lo, assertion_type = "general")
 assert_is_gtezero(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 assert_is_gtzero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+assert_is_identical(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  assertion_type = "general"
+)
 
 assert_is_integer(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
@@ -4218,6 +4290,15 @@ assert_input_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_input_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_input_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_input_is_atom(x, x_nm = NULL, call = NULL)
@@ -4386,6 +4467,8 @@ assert_input_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_input_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_input_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_input_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_input_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -4610,6 +4693,15 @@ assert_prod_input_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_prod_input_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_prod_input_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_prod_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_atom(x, x_nm = NULL, call = NULL)
@@ -4778,6 +4870,8 @@ assert_prod_input_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_prod_input_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_prod_input_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_prod_input_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -5007,6 +5101,15 @@ assert_prod_interim_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_prod_interim_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_prod_interim_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_prod_interim_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_atom(x, x_nm = NULL, call = NULL)
@@ -5175,6 +5278,8 @@ assert_prod_interim_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_prod_interim_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_prod_interim_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_prod_interim_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -5420,6 +5525,15 @@ assert_prod_output_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_prod_output_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_prod_output_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_prod_output_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_atom(x, x_nm = NULL, call = NULL)
@@ -5588,6 +5702,8 @@ assert_prod_output_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_prod_output_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_prod_output_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_prod_output_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -6226,6 +6342,16 @@ test_inherits(
 
 test_is(x, x_nm = NULL, call = NULL, env = NULL, assertion_type = "general")
 
+test_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL,
+  assertion_type = "general"
+)
+
 test_is_assertion_type(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_atom(x, x_nm = NULL, call = NULL, assertion_type = "general")
@@ -6603,6 +6729,15 @@ test_is_gte(x, x_nm = NULL, call = NULL, lo, assertion_type = "general")
 test_is_gtezero(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
 test_is_gtzero(x, x_nm = NULL, call = NULL, assertion_type = "general")
+
+test_is_identical(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  assertion_type = "general"
+)
 
 test_is_integer(x, x_nm = NULL, call = NULL, assertion_type = "general")
 
@@ -7141,6 +7276,15 @@ assert_user_input_inherits(x, x_nm = NULL, call = NULL, required_class)
 
 assert_user_input_is(x, x_nm = NULL, call = NULL, env = NULL)
 
+assert_user_input_is_all_equal(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
+)
+
 assert_user_input_is_assertion_type(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_atom(x, x_nm = NULL, call = NULL)
@@ -7309,6 +7453,8 @@ assert_user_input_is_gte(x, x_nm = NULL, call = NULL, lo)
 assert_user_input_is_gtezero(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_gtzero(x, x_nm = NULL, call = NULL)
+
+assert_user_input_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 assert_user_input_is_integer(x, x_nm = NULL, call = NULL)
 
@@ -7611,6 +7757,20 @@ if \code{all(col_nm_set_list[[i]] \%in\% col_nms)} for all
 in when not all of them need to be run.
 }}
 
+\item{y}{\verb{[any R object]} (no default)
+
+Compare \code{x} to this.}
+
+\item{y_nm}{\verb{[NULL, character]} (no default)
+
+As \code{x_nm}, but for \code{y}.}
+
+\item{all_equal_arg_list}{\verb{[NULL, list]} (default \code{NULL})
+\itemize{
+\item \code{NULL}: No effect, call \verb{[all.equal]} with defaults.
+\item \code{list}: Pass these additional arguments to \verb{[all.equal]}.
+}}
+
 \item{lo}{\verb{[number]} (mandatory, no default)
 lower bound for \code{x}}
 
@@ -7687,20 +7847,6 @@ report functions that return a report (data.frame);
 \itemize{
 \item \code{character}: names of functions that can be found by \verb{[match.fun]}
 \item \code{list}: list of functions
-}}
-
-\item{y}{\verb{[any R object]} (no default)
-
-Compare \code{x} to this.}
-
-\item{y_nm}{\verb{[NULL, character]} (no default)
-
-As \code{x_nm}, but for \code{y}.}
-
-\item{all_equal_arg_list}{\verb{[NULL, list]} (default \code{NULL})
-\itemize{
-\item \code{NULL}: No effect, call \verb{[all.equal]} with defaults.
-\item \code{list}: Pass these additional arguments to \verb{[all.equal]}.
 }}
 }
 \value{

@@ -370,6 +370,37 @@ assert_prod_interim_is <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_prod_interim_is_all_equal <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  y, 
+  y_nm = NULL, 
+  all_equal_arg_list = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_all_equal(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    y = y, 
+    y_nm = y_nm, 
+    all_equal_arg_list = all_equal_arg_list
+  )
+  assertion_type <- "prod_interim"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_prod_interim_is_assertion_type <- function(
   x, 
   x_nm = NULL, 
@@ -2179,6 +2210,35 @@ assert_prod_interim_is_gtzero <- function(
     x = x, 
     x_nm = x_nm, 
     call = call
+  )
+  assertion_type <- "prod_interim"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+assert_prod_interim_is_identical <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  y, 
+  y_nm = NULL
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_identical(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    y = y, 
+    y_nm = y_nm
   )
   assertion_type <- "prod_interim"
   dbc::report_to_assertion(report_df, assertion_type = assertion_type)

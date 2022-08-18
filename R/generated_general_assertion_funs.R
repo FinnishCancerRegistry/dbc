@@ -474,6 +474,45 @@ assert_is <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_is_all_equal <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  y, 
+  y_nm = NULL, 
+  all_equal_arg_list = NULL, 
+  assertion_type = "general"
+) {
+  if (identical(assertion_type, "none")) {
+    return(invisible(NULL))
+  }
+
+  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {
+    return(invisible(NULL))
+  }
+
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_all_equal(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    y = y, 
+    y_nm = y_nm, 
+    all_equal_arg_list = all_equal_arg_list
+  )
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_is_assertion_type <- function(
   x, 
   x_nm = NULL, 
@@ -2860,6 +2899,43 @@ assert_is_gtzero <- function(
     x = x, 
     x_nm = x_nm, 
     call = call
+  )
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
+assert_is_identical <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  y, 
+  y_nm = NULL, 
+  assertion_type = "general"
+) {
+  if (identical(assertion_type, "none")) {
+    return(invisible(NULL))
+  }
+
+  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {
+    return(invisible(NULL))
+  }
+
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_identical(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    y = y, 
+    y_nm = y_nm
   )
   dbc::report_to_assertion(report_df, assertion_type = assertion_type)
   return(invisible(NULL))
