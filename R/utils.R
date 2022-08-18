@@ -161,6 +161,9 @@ handle_arg_call <- function(call = NULL, env = NULL) {
 #' @rdname argument_handlers
 #' @template arg_x_nm
 #' @export
+#' @param arg_nm `[character]` (default `"x"`)
+#'
+#' Actual name of argument, which must exist in `env`.
 #' @section Functions:
 #' - `dbc::handle_arg_x_nm` is used internally in other functions
 #'   to guess the name of the object passed to argument `x` when it is not
@@ -168,7 +171,21 @@ handle_arg_call <- function(call = NULL, env = NULL) {
 #'   to guess `x_nm` if it is `NULL`.
 #' @return
 #' - `dbc::handle_arg_x_nm`: always returns a character vector of length 1
-handle_arg_x_nm <- function(x_nm, env = NULL) {
+#' @examples
+#'
+#' # dbc::handle_arg_x_nm
+#' fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
+#'   x_nm <- dbc::handle_arg_x_nm(x_nm)
+#'   y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
+#'   return(mget(c("x_nm", "y_nm")))
+#' }
+#' obj_for_x <- 1
+#' obj_for_y <- 2
+#' stopifnot(identical(
+#'   fun(x = obj_for_x, y = obj_for_y),
+#'   list(x_nm = "obj_for_x", y_nm = "obj_for_y")
+#' ))
+handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
   if (is.null(env)) {
     env <- parent.frame(1L)
   }
@@ -177,8 +194,11 @@ handle_arg_x_nm <- function(x_nm, env = NULL) {
     is.environment(env) || is.null(env)
   )
   if (is.null(x_nm)) {
+    expr <- substitute(substitute(arg_nm, env = env),
+                       list(arg_nm = parse(text = arg_nm)[[1]]))
+    expr <- eval(expr)
     x_nm <- paste0(
-      deparse(substitute(x, env = env)),
+      deparse(expr),
       collapse = ""
     )
   }

@@ -437,6 +437,8 @@ assert_dev_output_is_all_equal <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+is.null(y) # trigger lazy eval
+y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
   report_df <- dbc::report_is_all_equal(
     x = x, 
     x_nm = x_nm, 
@@ -2581,6 +2583,8 @@ assert_dev_output_is_identical <- function(
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+is.null(y) # trigger lazy eval
+y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
   report_df <- dbc::report_is_identical(
     x = x, 
     x_nm = x_nm, 

@@ -8,7 +8,7 @@
 \usage{
 handle_arg_call(call = NULL, env = NULL)
 
-handle_arg_x_nm(x_nm, env = NULL)
+handle_arg_x_nm(x_nm, env = NULL, arg_nm = "x")
 }
 \arguments{
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
@@ -31,6 +31,10 @@ the name of the object \code{x} to mention in possible error message.
 \item \code{NULL}: taken as \code{deparse(substitute(x))}
 \item \code{character}: the name as a string
 }}
+
+\item{arg_nm}{\verb{[character]} (default \code{"x"})
+
+Actual name of argument, which must exist in \code{env}.}
 }
 \value{
 \itemize{
@@ -61,3 +65,18 @@ to guess \code{x_nm} if it is \code{NULL}.
 }
 }
 
+\examples{
+
+# dbc::handle_arg_x_nm
+fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
+  return(mget(c("x_nm", "y_nm")))
+}
+obj_for_x <- 1
+obj_for_y <- 2
+stopifnot(identical(
+  fun(x = obj_for_x, y = obj_for_y),
+  list(x_nm = "obj_for_x", y_nm = "obj_for_y")
+))
+}

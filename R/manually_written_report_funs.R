@@ -397,7 +397,8 @@ report_is_all_equal <- function(
   df <- dbc::expressions_to_report(
     expressions = list(expr),
     fail_messages = paste0(
-      x_nm, " was not identical to ", y_nm, "; message from all.equal: ",
+      x_nm, " was not equal to ", y_nm, "; ",
+      "message from all.equal: ",
       "${deparse(eq)}"
     ),
     env = eval_env,

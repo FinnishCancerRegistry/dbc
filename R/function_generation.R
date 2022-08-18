@@ -235,6 +235,14 @@ generate_report_derivative_funs <- function(
       ")",
       body_part
     ))
+    if (all(c("y_nm", "y") %in% names(formals(fun_env[[report_fun_nm]])))) {
+      body <- c(
+        body[1:3],
+        "is.null(y) # trigger lazy eval",
+        "y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = \"y\")",
+        body[4:length(body)]
+      )
+    }
     if ("env" %in% names(formals(fun_env[[report_fun_nm]]))) {
       body <- c(
         "  if (is.null(env)) {",
