@@ -18,4 +18,4 @@ Roxygen: list(markdown = TRUE)
 Depends: 
     R (>= 2.10)
 Remotes:
-    github::WetRobot/codedoc
+    github::FinnishCancerRegistry/codedoc
