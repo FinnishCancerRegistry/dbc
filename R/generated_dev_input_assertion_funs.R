@@ -71,7 +71,7 @@ assert_dev_input_data_table_has_no_duplicates <- function(
   x, 
   x_nm = NULL, 
   call = NULL, 
-  by
+  by = names(x)
 ) {
   if (!dbc::get_dev_mode()) {
     return(invisible(NULL))

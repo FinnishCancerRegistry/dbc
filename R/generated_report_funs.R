@@ -71,16 +71,16 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
-report_data_table_has_no_duplicates <- function(x, x_nm = NULL, call = NULL, by) {
+report_data_table_has_no_duplicates <- function(x, x_nm = NULL, call = NULL, by = names(x)) {
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_env <- environment()
   expression_set <- c(
-    "not_dup <- !duplicated(x, by = by)"
+    "!(dup <- duplicated(x, by = by))"
   )
   fail_message_set <- c(
-    "In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse(utils::head(which(!not_dup), 5}"
+    "In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse1(utils::head(which(dup), 5))}"
   )
   pass_message_set <- c(
     "data.table ${deparse1(x_nm)} had no duplicates (by ${deparse1(by)})"

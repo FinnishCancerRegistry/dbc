@@ -1999,7 +1999,12 @@ assert_dev_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_dev_input_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by)
+assert_dev_input_data_table_has_no_duplicates(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  by = names(x)
+)
 
 assert_dev_input_dir_exists(x, x_nm = NULL, call = NULL)
 
@@ -2413,7 +2418,7 @@ assert_dev_interim_data_table_has_no_duplicates(
   x,
   x_nm = NULL,
   call = NULL,
-  by
+  by = names(x)
 )
 
 assert_dev_interim_dir_exists(x, x_nm = NULL, call = NULL)
@@ -2824,7 +2829,12 @@ assert_dev_output_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_dev_output_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by)
+assert_dev_output_data_table_has_no_duplicates(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  by = names(x)
+)
 
 assert_dev_output_dir_exists(x, x_nm = NULL, call = NULL)
 
@@ -3244,7 +3254,7 @@ assert_data_table_has_no_duplicates(
   x,
   x_nm = NULL,
   call = NULL,
-  by,
+  by = names(x),
   assertion_type = "general"
 )
 
@@ -4289,7 +4299,12 @@ assert_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_input_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by)
+assert_input_data_table_has_no_duplicates(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  by = names(x)
+)
 
 assert_input_dir_exists(x, x_nm = NULL, call = NULL)
 
@@ -4694,7 +4709,12 @@ assert_prod_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_prod_input_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by)
+assert_prod_input_data_table_has_no_duplicates(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  by = names(x)
+)
 
 assert_prod_input_dir_exists(x, x_nm = NULL, call = NULL)
 
@@ -5108,7 +5128,7 @@ assert_prod_interim_data_table_has_no_duplicates(
   x,
   x_nm = NULL,
   call = NULL,
-  by
+  by = names(x)
 )
 
 assert_prod_interim_dir_exists(x, x_nm = NULL, call = NULL)
@@ -5539,7 +5559,7 @@ assert_prod_output_data_table_has_no_duplicates(
   x,
   x_nm = NULL,
   call = NULL,
-  by
+  by = names(x)
 )
 
 assert_prod_output_dir_exists(x, x_nm = NULL, call = NULL)
@@ -5950,7 +5970,7 @@ report_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 report_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
-report_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by)
+report_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by = names(x))
 
 report_dir_exists(x, x_nm = NULL, call = NULL)
 
@@ -6328,7 +6348,7 @@ test_data_table_has_no_duplicates(
   x,
   x_nm = NULL,
   call = NULL,
-  by,
+  by = names(x),
   assertion_type = "general"
 )
 
@@ -7303,7 +7323,12 @@ assert_user_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_user_input_atom_is_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_user_input_data_table_has_no_duplicates(x, x_nm = NULL, call = NULL, by)
+assert_user_input_data_table_has_no_duplicates(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  by = names(x)
+)
 
 assert_user_input_dir_exists(x, x_nm = NULL, call = NULL)
 
@@ -7777,6 +7802,10 @@ Passed to \verb{[dbc::expressions_to_report]}.}
 
 \item{set}{\verb{[any vector]} (mandatory, no default)
 set of values to compare to}
+
+\item{by}{\verb{[character]} (no default)
+
+Column names as strings.}
 
 \item{required_class}{\verb{[character]} (mandatory, no default)
 class that object must have}

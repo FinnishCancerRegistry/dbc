@@ -79,7 +79,7 @@ assert_data_table_has_no_duplicates <- function(
   x, 
   x_nm = NULL, 
   call = NULL, 
-  by, 
+  by = names(x), 
   assertion_type = "general"
 ) {
   if (identical(assertion_type, "none")) {

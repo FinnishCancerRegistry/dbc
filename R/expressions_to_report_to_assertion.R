@@ -211,9 +211,11 @@ expressions_to_report <- function(
       }
       n_fail <- sum(!passing_elems)
     } else {
-      stop("test ", deparse(expression_string), " returned result of class(es) ",
-           deparse(class(result)), "; logical or NULL was expected; see ",
-           "help for argument 'tests'")
+      stop(
+        "test ", deparse(expression_string), " returned result of class(es) ",
+        deparse(class(result)), "; logical or NULL was expected; see ",
+        "help for argument 'tests'"
+      )
     }
     # @codedoc_comment_block dbc::expressions_to_report::env
     #
@@ -264,7 +266,9 @@ expressions_to_report <- function(
     if (!fun_env[["report_df"]][["pass"]][i]) {
       msg <- fail_messages[i]
     }
-    fun_env[["report_df"]][["message"]][i] <- interpolate(msg, env = eval_env)
+    fun_env[["report_df"]][["message"]][i] <- interpolate(
+      msg, env = interpolation_environment
+    )
     NULL
   })
 

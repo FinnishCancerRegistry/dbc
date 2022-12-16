@@ -63,7 +63,7 @@ assert_prod_interim_data_table_has_no_duplicates <- function(
   x, 
   x_nm = NULL, 
   call = NULL, 
-  by
+  by = names(x)
 ) {
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)

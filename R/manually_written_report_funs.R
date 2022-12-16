@@ -31,6 +31,9 @@
 #'   if `all(col_nm_set_list[[i]] %in% col_nms)` for all
 #'   `i in seq_along(expressions)`. this allows for easy limiting of expressions to run
 #'   in when not all of them need to be run.
+#' @param by `[character]` (no default)
+#' 
+#' Column names as strings.
 #' @details
 #' - `report_has_invalid_observations` calls [expressions_to_report] where the
 #'   dataset `x` becomes the environment where the expressions are evaluated
