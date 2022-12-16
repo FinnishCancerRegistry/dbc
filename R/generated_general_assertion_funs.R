@@ -75,6 +75,41 @@ assert_atom_is_in_set <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_data_table_has_no_duplicates <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  by, 
+  assertion_type = "general"
+) {
+  if (identical(assertion_type, "none")) {
+    return(invisible(NULL))
+  }
+
+  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {
+    return(invisible(NULL))
+  }
+
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_data_table_has_no_duplicates(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    by = by
+  )
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_dir_exists <- function(
   x, 
   x_nm = NULL, 

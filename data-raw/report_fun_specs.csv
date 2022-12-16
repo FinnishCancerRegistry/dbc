@@ -82,7 +82,8 @@
 "is_gtzero";"x > 0";"${n_fail} elements of ${deparse(x_nm)} were <= 0";NA;NA
 "is_ltezero";"x <= 0";"${n_fail} elements of ${deparse(x_nm)} were > 0";NA;NA
 "is_ltzero";"x < 0";"${n_fail} elements of ${deparse(x_nm)} were >= 0";NA;NA
-"has_no_duplicates";"!duplicated(x)";"In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::tail(unique(x[duplicated(x)]), 5L))}";"object ${deparse(x_nm)} had no duplicates";NA
+"has_no_duplicates";"!duplicated(x)";"In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}";"object ${deparse(x_nm)} had no duplicates";NA
+"data_table_has_no_duplicates";"not_dup <- !duplicated(x, by = by)";"In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse(utils::head(which(!not_dup), 5}";"data.table ${deparse1(x_nm)} had no duplicates (by ${deparse1(by)})";by
 "all_are_TRUE";"all(x %in% TRUE)";"Not all elements of ${deparse(x_nm)} were TRUE";NA;NA
 "is_TRUE";"x %in% TRUE";"${n_fail} elements of ${deparse(x_nm)} were FALSE or NA";NA;NA
 "match_regex";"{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}";"${n_fail} elements of ${deparse(x_nm)} did not match regex ${deparse(grepl.arg.list[['pattern']])}";"All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}";"grepl.arg.list = list()"

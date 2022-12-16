@@ -10,7 +10,9 @@ philosophy, where function inputs and outputs are programmatically
 asserted to adhere to specifications.
 }
 \details{
-Recommended ways of using assertions:\preformatted{# function intended only for use in other functions
+Recommended ways of using assertions:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# function intended only for use in other functions
 my_workhorse_fun <- function(x) \{
   dbc::assert_prod_input_is_number(x)
   # ... something complicated that makes assertion on output actually
@@ -26,19 +28,23 @@ my_fun <- function(x) \{
   # some steps...
   return(output)
 \}
-}
+}\if{html}{\out{</div>}}
 
-Alternative:\preformatted{# function used internally & exposed to user
+Alternative:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# function used internally & exposed to user
 my_fun <- function(x, assertion_type = "input") \{
   dbc::assert_is_number(x, assertion_type = assertion_type)
   # some steps...
   return(output)
 \}
-}
+}\if{html}{\out{</div>}}
 
 Writing your own assertions should done using \verb{[dbc::expressions_to_report]}
 and \verb{[dbc::report_to_assertion]} when possible. Write a separate report
-function first.\preformatted{report_is_my_arg <- function(x, x_nm = NULL, call = NULL) \{
+function first.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{report_is_my_arg <- function(x, x_nm = NULL, call = NULL) \{
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_x_nm(call)
   dbc::expressions_to_report(
@@ -56,7 +62,7 @@ assert_is_my_arg <- function(
   dbc::report_to_assertion(report_is_my_arg(x, x_nm, call),
                            assertion_type = assertion_type)
 \}
-}
+}\if{html}{\out{</div>}}
 }
 \section{News}{
 

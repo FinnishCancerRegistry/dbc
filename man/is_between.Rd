@@ -30,8 +30,8 @@ Test if elements are between upper and lower bounds.
 }
 \section{Functions}{
 \itemize{
-\item \code{is_between_inclusive}: \code{is_between} with \code{inclusive = TRUE}
+\item \code{is_between_inclusive()}: \code{is_between} with \code{inclusive = TRUE}
 
-\item \code{is_between_exclusive}: \code{is_between} with \code{inclusive = FALSE}
+\item \code{is_between_exclusive()}: \code{is_between} with \code{inclusive = FALSE}
+
 }}
-

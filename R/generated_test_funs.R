@@ -57,6 +57,32 @@ test_atom_is_in_set <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_data_table_has_no_duplicates <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  by, 
+  assertion_type = "general"
+) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_data_table_has_no_duplicates(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    by = by
+  )
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_dir_exists <- function(
   x, 
   x_nm = NULL, 

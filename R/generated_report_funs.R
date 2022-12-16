@@ -71,6 +71,35 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+report_data_table_has_no_duplicates <- function(x, x_nm = NULL, call = NULL, by) {
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_env <- environment()
+  expression_set <- c(
+    "not_dup <- !duplicated(x, by = by)"
+  )
+  fail_message_set <- c(
+    "In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse(utils::head(which(!not_dup), 5}"
+  )
+  pass_message_set <- c(
+    "data.table ${deparse1(x_nm)} had no duplicates (by ${deparse1(by)})"
+  )
+  report_df <- dbc::expressions_to_report(
+    expressions = expression_set,
+    fail_messages = fail_message_set,
+    pass_messages = pass_message_set,
+    env = report_env, 
+    call = call
+  )
+  return(report_df)
+}
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
   is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
@@ -234,7 +263,7 @@ report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
     "!duplicated(x)"
   )
   fail_message_set <- c(
-    "In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::tail(unique(x[duplicated(x)]), 5L))}"
+    "In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}"
   )
   pass_message_set <- c(
     "object ${deparse(x_nm)} had no duplicates"

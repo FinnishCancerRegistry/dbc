@@ -67,6 +67,37 @@ assert_dev_interim_atom_is_in_set <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_dev_interim_data_table_has_no_duplicates <- function(
+  x, 
+  x_nm = NULL, 
+  call = NULL, 
+  by
+) {
+  if (!dbc::get_dev_mode()) {
+    return(invisible(NULL))
+  }
+
+  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_data_table_has_no_duplicates(
+    x = x, 
+    x_nm = x_nm, 
+    call = call, 
+    by = by
+  )
+  assertion_type <- "dev_interim"
+  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_dev_interim_dir_exists <- function(
   x, 
   x_nm = NULL, 
