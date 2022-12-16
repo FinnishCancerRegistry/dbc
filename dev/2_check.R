@@ -1,0 +1,2 @@
+
+chk <- devtools::check()
