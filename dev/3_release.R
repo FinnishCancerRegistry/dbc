@@ -9,7 +9,7 @@ if (readline(": ") == "y") {
   s2 <- git2r::status()
   if (!identical(s1, s2)) {
     new_v <- desc::desc_get_version()
-    system2("git", c("commit", paste0("-m 'build: v", new_v, "'")))
+    system2("git", c("commit", paste0("-m \"build: v", new_v, "\"")))
     system2("git", c("tag", paste0("v", new_v)))
   }
 }
