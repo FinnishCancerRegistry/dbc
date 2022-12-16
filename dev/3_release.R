@@ -1,6 +1,6 @@
 
 message("which number to bump in version? [major/minor/patch]")
-desc::desc_set_version(readline(": "))
+desc::desc_bump_version(readline(": "))
 
 s1 <- git2r::status()
 git2r::add(path = "DESCRIPTION")
