@@ -1,71 +1,57 @@
-
-
 #' @name dbc
 #' @docType package
 #' @title dbc: Functions To Aid Design By Contract
-#' @description
-#' `dbc` is designed to aid writing functions under the design by contract
-#' philosophy, where function inputs and outputs are programmatically
-#' asserted to adhere to specifications.
 #'
-#' @details
-#' Recommended ways of using assertions:
-#'
-#' ```
-#' # function intended only for use in other functions
-#' my_workhorse_fun <- function(x) {
-#'   dbc::assert_prod_input_is_number(x)
-#'   # ... something complicated that makes assertion on output actually
-#'   # worth having
-#'   dbc::assert_prod_output_is_number(output)
-#'   return(output)
-#' }
-#' # function exposed to user
-#' my_fun <- function(x) {
-#'   dbc::assert_user_input_is_number(x)
-#'   # some steps...
-#'   output <- my_workhorse_fun(x = x)
-#'   # some steps...
-#'   return(output)
-#' }
-#' ```
-#'
-#' Alternative:
-#' ```
-#' # function used internally & exposed to user
-#' my_fun <- function(x, assertion_type = "input") {
-#'   dbc::assert_is_number(x, assertion_type = assertion_type)
-#'   # some steps...
-#'   return(output)
-#' }
-#' ```
-#'
-#' Writing your own assertions should done using `[dbc::expressions_to_report]`
-#' and `[dbc::report_to_assertion]` when possible. Write a separate report
-#' function first.
-#'
-#' ```
-#' report_is_my_arg <- function(x, x_nm = NULL, call = NULL) {
-#'   x_nm <- dbc::handle_arg_x_nm(x_nm)
-#'   call <- dbc::handle_arg_x_nm(call)
-#'   dbc::expressions_to_report(
-#'     expressions = "x %in% 1:5",
-#'     fail_messages = paste0(x_nm, " was not in set 1:5"),
-#'     call = call
-#'   )
-#' }
-#'
-#' assert_is_my_arg <- function(
-#'   x, x_nm = NULL, call = NULL, assertion_type = "input"
-#' ) {
-#'   x_nm <- dbc::handle_arg_x_nm(x_nm)
-#'   call <- dbc::handle_arg_x_nm(call)
-#'   dbc::report_to_assertion(report_is_my_arg(x, x_nm, call),
-#'                            assertion_type = assertion_type)
-#' }
-#' ```
-#' @eval codedoc::codedoc_news_for_R_package()
+#' @eval c(
+#'   codedoc::codedoc_R_package_description("dbc"),
+#'   codedoc::codedoc_news_for_R_package()
+#' )
 NULL
+
+# @codedoc_comment_block R_package_example(dbc)
+# # by adding arg assertion_type, you can use the same function for end-user
+# # purposes and internal purposes with clear error messages.
+# my_fun <- function(df, by, assertion_type = NULL) {
+#   if (is.null(assertion_type)) {
+#     assertion_type <- dbc::assertion_type_default()
+#   }
+#   dbc::assert_is_character_nonNA_vector(
+#     x = by,
+#     assertion_type = assertion_type
+#   )
+#   dbc::assert_is_data.frame_with_required_names(
+#     x = df,
+#     required_names = by,
+#     assertion_type = assertion_type
+#   )
+#   return(table(df[,by]))
+# }
+# my_fun(df, c("var_1", "var_2"))
+# my_fun_2 <- function(df) {
+#   my_fun(df, c("var_1", "var_2"), assertion_type = "prod_input")
+# }
+# @codedoc_comment_block R_package_example(dbc)
+
+# @codedoc_comment_block R_package_description(dbc)
+# `dbc` is designed to aid writing functions under the design by contract
+# philosophy, where function inputs and outputs are programmatically
+# asserted to adhere to specifications.
+#
+# # Recommended installation
+#
+# ```r
+# devtools::install_github(
+#   "FinnishCancerRegistry/dbc",
+#   ref = readline("enter latest tag on github: ")
+# )
+# ```
+#
+# # Example
+# ```r
+# @codedoc_insert_comment_block R_package_example(dbc)
+# ```
+#
+# @codedoc_comment_block R_package_description(dbc)
 
 # @codedoc_comment_block news("dbc::report_has_class", "2022-07-21", "0.4.8")
 # @codedoc_comment_block news("dbc::report_inherits", "2022-07-21", "0.4.8")

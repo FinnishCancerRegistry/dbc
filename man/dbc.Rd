@@ -9,62 +9,50 @@
 philosophy, where function inputs and outputs are programmatically
 asserted to adhere to specifications.
 }
-\details{
-Recommended ways of using assertions:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{# function intended only for use in other functions
-my_workhorse_fun <- function(x) \{
-  dbc::assert_prod_input_is_number(x)
-  # ... something complicated that makes assertion on output actually
-  # worth having
-  dbc::assert_prod_output_is_number(output)
-  return(output)
-\}
-# function exposed to user
-my_fun <- function(x) \{
-  dbc::assert_user_input_is_number(x)
-  # some steps...
-  output <- my_workhorse_fun(x = x)
-  # some steps...
-  return(output)
-\}
+\section{Recommended installation}{
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{devtools::install_github(
+  "FinnishCancerRegistry/dbc",
+  ref = readline("enter latest tag on github: ")
+)
 }\if{html}{\out{</div>}}
+}
 
-Alternative:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{# function used internally & exposed to user
-my_fun <- function(x, assertion_type = "input") \{
-  dbc::assert_is_number(x, assertion_type = assertion_type)
-  # some steps...
-  return(output)
-\}
-}\if{html}{\out{</div>}}
-
-Writing your own assertions should done using \verb{[dbc::expressions_to_report]}
-and \verb{[dbc::report_to_assertion]} when possible. Write a separate report
-function first.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{report_is_my_arg <- function(x, x_nm = NULL, call = NULL) \{
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_x_nm(call)
-  dbc::expressions_to_report(
-    expressions = "x \%in\% 1:5",
-    fail_messages = paste0(x_nm, " was not in set 1:5"),
-    call = call
+\section{Example}{
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{# by adding arg assertion_type, you can use the same function for end-user
+# purposes and internal purposes with clear error messages.
+my_fun <- function(df, by, assertion_type = NULL) \{
+  if (is.null(assertion_type)) \{
+    assertion_type <- dbc::assertion_type_default()
+  \}
+  dbc::assert_is_character_nonNA_vector(
+    x = by,
+    assertion_type = assertion_type
   )
+  dbc::assert_is_data.frame_with_required_names(
+    x = df,
+    required_names = by,
+    assertion_type = assertion_type
+  )
+  return(table(df[,by]))
 \}
-
-assert_is_my_arg <- function(
-  x, x_nm = NULL, call = NULL, assertion_type = "input"
-) \{
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_x_nm(call)
-  dbc::report_to_assertion(report_is_my_arg(x, x_nm, call),
-                           assertion_type = assertion_type)
+my_fun(df, c("var_1", "var_2"))
+my_fun_2 <- function(df) \{
+  my_fun(df, c("var_1", "var_2"), assertion_type = "prod_input")
 \}
 }\if{html}{\out{</div>}}
 }
+
 \section{News}{
+
+\subsection{News for version 0.4.12}{
+\subsection{Object dbc::assertion_type_default news:}{
+
+New fun \code{dbc::assertion_type_default}.
+This returns the default value for the \code{assertion_type} arg used by all
+funs that have that arg.
+}
+
+}
 
 \subsection{News for version 0.4.10}{
 \subsection{Object dbc::report_is_all_equal news:}{
