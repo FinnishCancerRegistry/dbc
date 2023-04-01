@@ -9,6 +9,13 @@ This returns the default value for the `assertion_type` arg used by all
 funs that have that arg.
 
 
+## News for version 0.4.11
+
+### Object dbc::report_data_table_has_no_duplicates news:
+
+New fun `dbc::report_data_table_has_no_duplicates` and derivatives.
+
+
 ## News for version 0.4.10
 
 ### Object dbc::report_is_all_equal news:

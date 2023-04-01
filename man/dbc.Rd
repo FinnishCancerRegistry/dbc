@@ -54,6 +54,14 @@ funs that have that arg.
 
 }
 
+\subsection{News for version 0.4.11}{
+\subsection{Object dbc::report_data_table_has_no_duplicates news:}{
+
+New fun \code{dbc::report_data_table_has_no_duplicates} and derivatives.
+}
+
+}
+
 \subsection{News for version 0.4.10}{
 \subsection{Object dbc::report_is_all_equal news:}{
 
