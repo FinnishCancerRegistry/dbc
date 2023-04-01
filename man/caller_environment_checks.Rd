@@ -71,6 +71,32 @@ to check; See \strong{Examples}
 \code{quote}; this call will be reported in an error
 \item \code{NULL}: the call is attempted to be inferred
 }}
+
+\item{assertion_type}{\verb{[character]}
+(default usually \code{"general"})
+
+Must be exactly one of the following:
+\itemize{
+\item \code{"general"}: just says that assertions did not pass without information
+as to whose fault this was --- just that some object was not as expected
+\item \code{"input"}: assertion error messages direct the attention towards the
+inputs (arguments) of guilty function
+\item \code{"user_input"}: the end-user is directed to adjust their arguments.
+\item \code{"prod_input"}: the assertion error is considered to be an internal error,
+and the end-user is directed to report it; the inputs of some function
+were not as expected
+\item \code{"dev_input"}: only the developer is notified (see
+\verb{[dbc::set_dev_mode]})
+\item \code{"prod_output"}: like \code{"prod_input"}, but the output of some function
+was not as expected
+\item \code{"dev_output"}: like \code{"prod_output"}, but only raised in development mode
+(see \verb{[dbc::set_dev_mode]})
+\item \code{"prod_interim"}: like \code{"prod_input"}, but the interim result somewhere
+was not as expected
+\item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
+(see \verb{[dbc::set_dev_mode]})
+\item \code{"none"}: added for convenience, this means that the assertion is not performed
+}}
 }
 \description{
 Functions to check caller environment of a function.

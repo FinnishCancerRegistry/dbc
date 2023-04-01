@@ -14,6 +14,7 @@
 #' - `character`: This should be the name of the function you are checking.
 #'
 #' @template arg_call
+#' @eval arg_assertion_type_docs()
 #' @name caller_environment_checks
 
 #' @rdname caller_environment_checks
