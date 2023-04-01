@@ -323,7 +323,7 @@ expressions_to_report <- function(
 #' )
 report_to_assertion <- function(
   report_df,
-  assertion_type = "general",
+  assertion_type = dbc::assertion_type_default(),
   raise_error_call = NULL
 ) {
   raise_internal_error_if_not(

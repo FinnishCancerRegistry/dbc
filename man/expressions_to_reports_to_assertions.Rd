@@ -16,7 +16,7 @@ expressions_to_report(
 
 report_to_assertion(
   report_df,
-  assertion_type = "general",
+  assertion_type = dbc::assertion_type_default(),
   raise_error_call = NULL
 )
 }

@@ -291,12 +291,12 @@ generate_report_derivative_funs <- function(
   })
 
   fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {
-    # if (grepl("_is$", report_fun_nm)) {
-    #   browser()
-    # }
     formals <- formals(fun_env[[report_fun_nm]])
     if (assertion_type == "general") {
-      formals[["assertion_type"]] <- "general"
+      formals[["assertion_type"]] <- quote(dbc::assertion_type_default())
+    }
+    if (type == "test") {
+      formals["assertion_type"] <- NULL
     }
     arg_set <- vapply(
       seq_along(formals),
@@ -311,7 +311,7 @@ generate_report_derivative_funs <- function(
     arg_set
   })
 
-  fun_df[["def"]] <- lapply(1:nrow(fun_df), function(fun_no) {
+  fun_df[["def"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
     fun_nm <- fun_df[["fun_nm"]][fun_no]
     assign_line <- paste0(fun_nm, " <- function(")
     body <- fun_df[["body"]][[fun_no]]
@@ -341,6 +341,8 @@ generate_report_derivative_funs <- function(
     "# this script was generated automatically. do not edit by hand!",
     lines, rep("", 5)
   )
+
+  lines <- sub("[ ]+$", "", lines)
 
   writeLines(lines, con = target_script)
 

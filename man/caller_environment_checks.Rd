@@ -26,13 +26,15 @@ report_function_caller_environment_is_global_environment(
 assert_function_caller_environment_is_not_global_environment(
   x = NULL,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  assertion_type = dbc::assertion_type_default()
 )
 
 assert_function_caller_environment_is_global_environment(
   x = NULL,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  assertion_type = dbc::assertion_type_default()
 )
 
 test_function_caller_environment_is_not_global_environment(

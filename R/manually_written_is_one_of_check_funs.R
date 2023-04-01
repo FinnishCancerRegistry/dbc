@@ -115,7 +115,7 @@ assert_is_one_of__ <- function(
   x_nm = NULL,
   call = NULL,
   funs,
-  assertion_type = "general"
+  assertion_type = dbc::assertion_type_default()
 ) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   raise_internal_error_if_not(
@@ -153,7 +153,7 @@ assert_is_one_of <- function(
   x_nm = NULL,
   funs,
   call = NULL,
-  assertion_type = "general"
+  assertion_type = dbc::assertion_type_default()
 ) {
   assert_is_one_of__(
     x = x, x_nm = x_nm, funs = funs, call = call,

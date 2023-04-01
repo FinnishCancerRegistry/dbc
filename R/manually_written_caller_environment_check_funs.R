@@ -93,7 +93,8 @@ report_function_caller_environment_is_global_environment <- function(
 assert_function_caller_environment_is_not_global_environment <- function(
   x = NULL,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  assertion_type = dbc::assertion_type_default()
 ) {
   if (is.null(x)) {
     x <- parent.frame(2L)
@@ -108,7 +109,7 @@ assert_function_caller_environment_is_not_global_environment <- function(
   )
   dbc::report_to_assertion(
     report_df = report_df,
-    assertion_type = "general",
+    assertion_type = assertion_type,
     raise_error_call = call
   )
 }
@@ -118,7 +119,8 @@ assert_function_caller_environment_is_not_global_environment <- function(
 assert_function_caller_environment_is_global_environment <- function(
   x = NULL,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  assertion_type = dbc::assertion_type_default()
 ) {
   if (is.null(x)) {
     x <- parent.frame(2L)
@@ -133,7 +135,7 @@ assert_function_caller_environment_is_global_environment <- function(
   )
   dbc::report_to_assertion(
     report_df = report_df,
-    assertion_type = "general",
+    assertion_type = assertion_type,
     raise_error_call = call
   )
 }
