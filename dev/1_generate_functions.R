@@ -1,5 +1,10 @@
 
 
+stopifnot(
+  vapply(git2r::status(), length, 1L) == 0L
+)
+
+s1 <- git2r::status()
 e <- new.env()
 source("data-raw/sysdata.R", local = e)
 
@@ -38,3 +43,9 @@ dbc:::generate_test_funs(
 )
 
 devtools::document()
+
+s2 <- git2r::status()
+if (!identical(s1, s2)) {
+  git2r::add(path = ".")
+  git2r::commit(message = "feat: run dev/1_generate_functions.R")
+}
