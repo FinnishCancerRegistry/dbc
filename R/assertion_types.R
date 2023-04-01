@@ -9,6 +9,21 @@ NULL
 #' @export
 #' @eval c(
 #'   "@return",
+#'   "`[dbc::assertion_type_default]` returns ",
+#'   deparse1(dbc::assertion_type_default())
+#' )
+assertion_type_default <- function() {
+  # @codedoc_comment_block news("dbc::assertion_type_default", "2023-04-01", "0.4.12")
+  # New fun `dbc::assertion_type_default`.
+  # This returns the default value for the `assertion_type` arg used by all
+  # funs that have that arg.
+  # @codedoc_comment_block news("dbc::assertion_type_default", "2023-04-01", "0.4.12")
+  "input"
+}
+#' @rdname assertion_types
+#' @export
+#' @eval c(
+#'   "@return",
 #'   "`[dbc::assertion_types]` returns vector ",
 #'   deparse(dbc::assertion_types())
 #' )

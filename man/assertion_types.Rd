@@ -2,14 +2,20 @@
 % Please edit documentation in R/assertion_types.R
 \name{assertion_types}
 \alias{assertion_types}
+\alias{assertion_type_default}
 \alias{dev_assertion_types}
 \title{Assertion Types}
 \usage{
+assertion_type_default()
+
 assertion_types()
 
 dev_assertion_types()
 }
 \value{
+\verb{[dbc::assertion_type_default]} returns
+"input"
+
 \verb{[dbc::assertion_types]} returns vector
 c("general", "input", "user_input", "prod_input", "dev_input",
 "prod_output", "dev_output", "prod_interim", "dev_interim", "none"
