@@ -8,6 +8,8 @@
 \code{dbc} is designed to aid writing functions under the design by contract
 philosophy, where function inputs and outputs are programmatically
 asserted to adhere to specifications.
+
+\href{https://github.com/WetRobot/dbc/actions/workflows/R-CMD-check.yaml}{\if{html}{\figure{https://github.com/WetRobot/dbc/actions/workflows/R-CMD-check.yaml/badge.svg}}}
 }
 \section{Recommended installation}{
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{devtools::install_github(
