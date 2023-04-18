@@ -65,3 +65,8 @@ NULL
 #
 # @codedoc_comment_block news("dbc::report_inherits", "2022-07-21", "0.4.8")
 # @codedoc_comment_block news("dbc::report_has_class", "2022-07-21", "0.4.8")
+
+# @codedoc_comment_block news("dbc", "2023-04-18", "0.4.13")
+# Improved `*_vector_elems_are_in_set` funs: assertion failure message
+# also shows first ten elems of `set`.
+# @codedoc_comment_block news("dbc", "2023-04-18", "0.4.13")

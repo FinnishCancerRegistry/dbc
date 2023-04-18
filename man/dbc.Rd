@@ -46,6 +46,15 @@ my_fun(df, c("var_1", "var_2"), assertion_type = "prod_input")
 
 \section{News}{
 
+\subsection{News for version 0.4.13}{
+\subsection{Object dbc news:}{
+
+Improved \verb{*_vector_elems_are_in_set} funs: assertion failure message
+also shows first ten elems of \code{set}.
+}
+
+}
+
 \subsection{News for version 0.4.12}{
 \subsection{Object dbc::assertion_type_default news:}{
 
