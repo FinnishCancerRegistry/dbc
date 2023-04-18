@@ -43,7 +43,7 @@
 "atom_is_in_set";"dbc::test_is_vector(set)";NA;NA;"set"
 "atom_is_in_set";"x %in% set";"object ${deparse(x_nm)} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}";NA;"set"
 "vector_elems_are_in_set";"dbc::test_is_vector(x)";NA;NA;"set"
-"vector_elems_are_in_set";"in_set <- x %in% set";"some values of object ${deparse(x_nm)} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}";NA;"set"
+"vector_elems_are_in_set";"in_set <- x %in% set";"some values of object ${deparse(x_nm)} were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}";NA;"set"
 "is_atom";"length(x) == 1L";"length of object ${deparse(x_nm)} was ${length(x)} instead of 1";NA;NA
 "is_vector";"is.null(dim(x))";"object ${deparse(x_nm)} had dimensions but was expected to have none";NA;NA
 "is_vector";"!is.list(x)";"object ${deparse(x_nm)} was a list";NA;""

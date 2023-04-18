@@ -5977,7 +5977,7 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
   )
   fail_message_set <- c(
     "NA", 
-    "some values of object ${deparse(x_nm)} were not in set of expected values (first ten bad values): ${deparse(utils::head(unique(x[!in_set]), 10L))}"
+    "some values of object ${deparse(x_nm)} were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}"
   )
   pass_message_set <- c(
     "NA", 
