@@ -337,6 +337,14 @@ report_to_assertion <- function(
   )
   raise_error_call <- dbc::handle_arg_call(raise_error_call)
 
+  # @codedoc_comment_block news("dbc::report_to_assertion", "2023-06-27", "0.4.14")
+  # `[dbc::report_to_assertion]` now accepts (and has as default)
+  # `assertion_type = NULL`. This causes `[dbc::report_to_assertion]` to take
+  # `assertion_type <- dbc::assertion_type_default()`.
+  # 
+  # Every assertion function with `assertion_type` argument now has as default
+  # value `NULL`.
+  # @codedoc_comment_block news("dbc::report_to_assertion", "2023-06-27", "0.4.14")
   if (is.null(assertion_type)) {
     assertion_type <- dbc::assertion_type_default()
   }

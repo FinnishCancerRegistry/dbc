@@ -27,14 +27,14 @@ assert_function_caller_environment_is_not_global_environment(
   x = NULL,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_function_caller_environment_is_global_environment(
   x = NULL,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 test_function_caller_environment_is_not_global_environment(

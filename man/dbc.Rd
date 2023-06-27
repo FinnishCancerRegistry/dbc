@@ -46,6 +46,19 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.4.14}{
+\subsection{Object dbc::report_to_assertion news:}{
+
+\verb{[dbc::report_to_assertion]} now accepts (and has as default)
+\code{assertion_type = NULL}. This causes \verb{[dbc::report_to_assertion]} to take
+\code{assertion_type <- dbc::assertion_type_default()}.
+
+Every assertion function with \code{assertion_type} argument now has as default
+value \code{NULL}.
+}
+
+}
+
 \subsection{News for version 0.4.13}{
 \subsection{Object dbc news:}{
 
