@@ -95,7 +95,7 @@ assert_function_caller_environment_is_not_global_environment <- function(
   x = NULL,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 ) {
   if (is.null(x)) {
     x <- parent.frame(2L)
@@ -121,7 +121,7 @@ assert_function_caller_environment_is_global_environment <- function(
   x = NULL,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 ) {
   if (is.null(x)) {
     x <- parent.frame(2L)
