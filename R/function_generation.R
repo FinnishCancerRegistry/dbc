@@ -191,7 +191,7 @@ generate_report_derivative_funs <- function(
     x = obj_nms
   )
   report_fun_nms <- gsub("\\Q <- \\E.+", "", obj_nms[is_report_fun_nm])
-  if (type == "assert" && assertion_type != "general") {
+  if (type == "assert" && !assertion_type != "general") {
     fun_nms <- sub(
       "^report_", paste0(type, "_", assertion_type, "_"), report_fun_nms
     )
@@ -221,11 +221,13 @@ generate_report_derivative_funs <- function(
     )
   )
 
-  fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
+  fun_df[["body"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
     report_fun_nm <- report_fun_nms[fun_no]
     arg_nms <- names(formals(fun_env[[report_fun_nm]]))
     body <- paste0("  ", c(
-      "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
+      "# trigger lazy eval of x",
+      "# -> no \"restarting interrupted promise evaluation\"",
+      "is.null(x)",
       "x_nm <- dbc::handle_arg_x_nm(x_nm)",
       "call <- dbc::handle_arg_call(call)",
       paste0("report_df <- dbc::", fun_df[["report_fun_nm"]][fun_no], "("),
@@ -293,9 +295,9 @@ generate_report_derivative_funs <- function(
   fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {
     formals <- formals(fun_env[[report_fun_nm]])
     if (assertion_type == "general") {
-      formals[["assertion_type"]] <- quote(dbc::assertion_type_default())
+      formals[["assertion_type"]] <- quote(NULL)
     }
-    if (type == "test") {
+    if (type != "assert") {
       formals["assertion_type"] <- NULL
     }
     arg_set <- vapply(

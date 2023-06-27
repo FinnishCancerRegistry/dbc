@@ -101,11 +101,12 @@ assertion_type_summary_lines_in_markdown <- function()  {
 arg_assertion_type_docs <- function() {
   lines <- c(
     "@param assertion_type",
-    "`[character]`",
-    "(default usually `\"general\"`)",
+    "`[NULL, character]`",
+    "(default `NULL`)",
     "",
-    "Must be exactly one of the following: ",
+    "Must be one of the following: ",
     "",
+    " - `NULL`: take `dbc::assertion_type_default()`",
     assertion_type_summary_lines_in_markdown(),
     ""
   )

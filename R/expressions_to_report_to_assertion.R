@@ -323,20 +323,23 @@ expressions_to_report <- function(
 #' )
 report_to_assertion <- function(
   report_df,
-  assertion_type = dbc::assertion_type_default(),
+  assertion_type = NULL,
   raise_error_call = NULL
 ) {
   raise_internal_error_if_not(
     is.data.frame(report_df),
     c("pass", "message", "error", "call") %in% names(report_df),
 
-    length(assertion_type) == 1L,
-    assertion_type %in% assertion_types(),
+    length(assertion_type) %in% 0:1,
+    assertion_type %in% c(as.list(assertion_types()), list(NULL)),
 
     is.null(raise_error_call) || is.language(raise_error_call)
   )
   raise_error_call <- dbc::handle_arg_call(raise_error_call)
 
+  if (is.null(assertion_type)) {
+    assertion_type <- dbc::assertion_type_default()
+  }
   if (assertion_type %in% dev_assertion_types() && get_dev_mode() == FALSE) {
     return(invisible(NULL))
   }
