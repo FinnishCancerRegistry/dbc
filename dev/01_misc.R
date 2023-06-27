@@ -11,5 +11,5 @@ s2 <- git2r::status()
 
 if (!identical(s1, s2)) {
   git2r::add(path = ".")
-  git2r::commit(message = "build: run dev/01_license_and_ci.R")
+  git2r::commit(message = "build: run dev/01_misc.R")
 }
