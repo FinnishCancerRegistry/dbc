@@ -23,9 +23,6 @@ asserted to adhere to specifications.
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{# by adding arg assertion_type, you can use the same function for end-user
 # purposes and internal purposes with clear error messages.
 my_fun <- function(df, by, assertion_type = NULL) \{
-  if (is.null(assertion_type)) \{
-    assertion_type <- dbc::assertion_type_default()
-  \}
   dbc::assert_is_character_nonNA_vector(
     x = by,
     assertion_type = assertion_type
@@ -47,11 +44,20 @@ my_fun_2 <- function(df) \{
 \section{News}{
 
 \subsection{News for version 0.4.14}{
+\subsection{Object dbc::handle_arg_assertion_type news:}{
+
+New function \verb{[dbc::handle_arg_assertion_type]}. Currently returns
+\code{assertion_type} as-is, except \code{assertion_type = NULL}
+is replaced with \code{assertion_type <- dbc::assertion_type_default()}.
+Raises an error if \code{assertion_type} is not \code{NULL} nor one of
+\code{dbc::assertion_types()}.
+}
+
 \subsection{Object dbc::report_to_assertion news:}{
 
 \verb{[dbc::report_to_assertion]} now accepts (and has as default)
-\code{assertion_type = NULL}. This causes \verb{[dbc::report_to_assertion]} to take
-\code{assertion_type <- dbc::assertion_type_default()}.
+\code{assertion_type = NULL}. Arg \code{assertion_type} is handled by
+\verb{[dbc::handle_arg_assertion_type]}.
 
 Every assertion function with \code{assertion_type} argument now has as default
 value \code{NULL}.

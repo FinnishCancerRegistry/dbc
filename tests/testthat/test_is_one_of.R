@@ -61,13 +61,13 @@ testthat::test_that("dbc::assert_is_one_of works", {
 
   tf <- function(x) {
     dbc::assert_is_one_of(
-      x = "wat",
+      x = x,
       funs = list(dbc::report_is_data.table, dbc::report_is_integer)
     )
   }
   # should cause error
   testthat::expect_error(
-    tf(1L),
+    tf("wat"),
     regexp = "\\QNone of the following assertions passed:\\E"
   )
 

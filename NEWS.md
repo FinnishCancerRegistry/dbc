@@ -2,11 +2,19 @@
 
 ## News for version 0.4.14
 
+### Object dbc::handle_arg_assertion_type news:
+
+New function `[dbc::handle_arg_assertion_type]`. Currently returns
+`assertion_type` as-is, except `assertion_type = NULL`
+is replaced with `assertion_type <- dbc::assertion_type_default()`.
+Raises an error if `assertion_type` is not `NULL` nor one of
+`dbc::assertion_types()`.
+
 ### Object dbc::report_to_assertion news:
 
 `[dbc::report_to_assertion]` now accepts (and has as default)
-`assertion_type = NULL`. This causes `[dbc::report_to_assertion]` to take
-`assertion_type <- dbc::assertion_type_default()`.
+`assertion_type = NULL`. Arg `assertion_type` is handled by
+`[dbc::handle_arg_assertion_type]`.
 
 Every assertion function with `assertion_type` argument now has as default
 value `NULL`.

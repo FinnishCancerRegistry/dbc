@@ -4,6 +4,7 @@
 \alias{assertion_types}
 \alias{assertion_type_default}
 \alias{dev_assertion_types}
+\alias{handle_arg_assertion_type}
 \title{Assertion Types}
 \usage{
 assertion_type_default()
@@ -11,6 +12,36 @@ assertion_type_default()
 assertion_types()
 
 dev_assertion_types()
+
+handle_arg_assertion_type(assertion_type)
+}
+\arguments{
+\item{assertion_type}{\verb{[NULL, character]}
+(default \code{NULL})
+
+Must be one of the following:
+\itemize{
+\item \code{NULL}: take \code{dbc::assertion_type_default()}
+\item \code{"general"}: just says that assertions did not pass without information
+as to whose fault this was --- just that some object was not as expected
+\item \code{"input"}: assertion error messages direct the attention towards the
+inputs (arguments) of guilty function
+\item \code{"user_input"}: the end-user is directed to adjust their arguments.
+\item \code{"prod_input"}: the assertion error is considered to be an internal error,
+and the end-user is directed to report it; the inputs of some function
+were not as expected
+\item \code{"dev_input"}: only the developer is notified (see
+\verb{[dbc::set_dev_mode]})
+\item \code{"prod_output"}: like \code{"prod_input"}, but the output of some function
+was not as expected
+\item \code{"dev_output"}: like \code{"prod_output"}, but only raised in development mode
+(see \verb{[dbc::set_dev_mode]})
+\item \code{"prod_interim"}: like \code{"prod_input"}, but the interim result somewhere
+was not as expected
+\item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
+(see \verb{[dbc::set_dev_mode]})
+\item \code{"none"}: added for convenience, this means that the assertion is not performed
+}}
 }
 \value{
 \verb{[dbc::assertion_type_default]} returns
@@ -23,6 +54,10 @@ c("general", "input", "user_input", "prod_input", "dev_input",
 
 \verb{[dbc::dev_assertion_types]} returns vector
 c("dev_input", "dev_output", "dev_interim")
+
+\verb{[dbc::handle_assertion_type]} returns \code{assertion_type},
+except \code{assertion_type = NULL}
+is replaced with \code{assertion_type <- dbc::assertion_type_default()}.
 }
 \description{
 Tools to process assertion types.

@@ -26,9 +26,6 @@ devtools::install_github(
 # by adding arg assertion_type, you can use the same function for end-user
 # purposes and internal purposes with clear error messages.
 my_fun <- function(df, by, assertion_type = NULL) {
-  if (is.null(assertion_type)) {
-    assertion_type <- dbc::assertion_type_default()
-  }
   dbc::assert_is_character_nonNA_vector(
     x = by,
     assertion_type = assertion_type

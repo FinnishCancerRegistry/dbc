@@ -170,3 +170,29 @@ assertion_type_error_messages <- function() {
   out <- lapply(out, c, msg_append)
   return(out)
 }
+
+#' @rdname assertion_types
+#' @export
+#' @eval arg_assertion_type_docs()
+#' @return
+#' `[dbc::handle_assertion_type]` returns `assertion_type`,
+#' except `assertion_type = NULL`
+#' is replaced with `assertion_type <- dbc::assertion_type_default()`.
+handle_arg_assertion_type <- function(assertion_type) {
+  # @codedoc_comment_block news("dbc::handle_arg_assertion_type", "2023-06-27", "0.4.14")
+  # New function `[dbc::handle_arg_assertion_type]`. Currently returns
+  # `assertion_type` as-is, except `assertion_type = NULL`
+  # is replaced with `assertion_type <- dbc::assertion_type_default()`.
+  # Raises an error if `assertion_type` is not `NULL` nor one of
+  # `dbc::assertion_types()`.
+  # @codedoc_comment_block news("dbc::handle_arg_assertion_type", "2023-06-27", "0.4.14")
+  if (is.null(assertion_type)) {
+    assertion_type <- dbc::assertion_type_default()
+  } else {
+    if (!assertion_type %in% dbc::assertion_types()) {
+      stop("assertion_type must be NULL or one of ",
+           deparse1(dbc::assertion_types()))
+    }
+  }
+  return(assertion_type)
+}

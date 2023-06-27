@@ -278,9 +278,7 @@ generate_report_derivative_funs <- function(
       )
     } else if (type == "assert" && assertion_type == "general") {
       body <- c(
-        "  if (identical(assertion_type, NULL)) {",
-        "    assertion_type <- dbc::assertion_type_default()",
-        "  }",
+        "  assertion_type <- dbc::handle_arg_assertion_type(assertion_type)",
         "  if (identical(assertion_type, \"none\")) {",
         "    return(invisible(NULL))",
         "  }",
