@@ -3240,49 +3240,28 @@ assert_dev_output_match_regex(
 
 assert_dev_output_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
-assert_all_are_TRUE(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_all_are_TRUE(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_atom_is_in_set(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  set,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_atom_is_in_set(x, x_nm = NULL, call = NULL, set, assertion_type = NULL)
 
 assert_data_table_has_no_duplicates(
   x,
   x_nm = NULL,
   call = NULL,
   by = names(x),
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_dir_exists(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_dir_exists(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_file_exists(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_file_exists(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_has_class(
   x,
   x_nm = NULL,
   call = NULL,
   required_class,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_has_length(
@@ -3290,7 +3269,7 @@ assert_has_length(
   x_nm = NULL,
   call = NULL,
   expected_length,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_has_names(
@@ -3298,22 +3277,17 @@ assert_has_names(
   x_nm = NULL,
   call = NULL,
   required_names,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_has_no_duplicates(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_has_no_duplicates(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_has_one_of_classes(
   x,
   x_nm = NULL,
   call = NULL,
   classes,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_has_only_names(
@@ -3321,7 +3295,7 @@ assert_has_only_names(
   x_nm = NULL,
   call = NULL,
   required_names,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_has_only_valid_observations(
@@ -3333,7 +3307,7 @@ assert_has_only_valid_observations(
   col_nms = names(x),
   col_nm_set_list = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_inherits(
@@ -3341,16 +3315,10 @@ assert_inherits(
   x_nm = NULL,
   call = NULL,
   required_class,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  env = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is(x, x_nm = NULL, call = NULL, env = NULL, assertion_type = NULL)
 
 assert_is_all_equal(
   x,
@@ -3359,22 +3327,12 @@ assert_is_all_equal(
   y,
   y_nm = NULL,
   all_equal_arg_list = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_assertion_type(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_assertion_type(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_between_exclusive(
   x,
@@ -3382,7 +3340,7 @@ assert_is_between_exclusive(
   call = NULL,
   lo,
   hi,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_between_inclusive(
@@ -3391,491 +3349,329 @@ assert_is_between_inclusive(
   call = NULL,
   lo,
   hi,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_call(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_call(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_character(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_character(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_character_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_character_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_character_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_character_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_character_nonNA_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_character_nonNA_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_character_nonNA_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_character_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_character_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_data.frame(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_data.frame(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_data.frame_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
   required_names,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_data.table(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_data.table(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_data.table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
   required_names,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_data_table(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_data_table(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_data_table_with_required_names(
   x,
   x_nm = NULL,
   call = NULL,
   required_names,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_Date(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_Date_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_Date_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_Date_nonNA_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date_nonNA_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_Date_nonNA_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date_nonNA_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_Date_nonNA_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date_nonNA_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_Date_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_Date_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_double(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_double(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_double_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_double_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_double_gtezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_gtezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_gtezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_gtzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_gtzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_gtzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_ltezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_ltezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_ltezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_ltzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_ltzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_ltzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_double_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_double_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_double_nonNA_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_double_nonNA_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_double_nonNA_gtezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_gtezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_gtezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_gtzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_gtzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_gtzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_ltezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_ltezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_ltezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_ltzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_ltzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_ltzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_double_nonNA_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_double_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_double_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_environment(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_environment(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_expression(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_expression(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_factor(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_factor(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_factor_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_factor_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_factor_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_factor_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_factor_nonNA_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_factor_nonNA_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_factor_nonNA_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_factor_nonNA_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_factor_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_factor_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_factor_with_levels(
   x,
   x_nm = NULL,
   call = NULL,
   expected_levels,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_function(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_function(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_function_with_required_argument_names(
   x,
   x_nm = NULL,
   call = NULL,
   required_argument_names,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_gt(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  lo,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_gt(x, x_nm = NULL, call = NULL, lo, assertion_type = NULL)
 
-assert_is_gte(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  lo,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_gte(x, x_nm = NULL, call = NULL, lo, assertion_type = NULL)
 
-assert_is_gtezero(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_gtezero(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_gtzero(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_gtzero(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_identical(
   x,
@@ -3883,232 +3679,207 @@ assert_is_identical(
   call = NULL,
   y,
   y_nm = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_integer(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_integer(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_integer_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_integer_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_integer_gtezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_gtezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_gtezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_gtzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_gtzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_gtzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_ltezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_ltezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_ltezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_ltzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_ltzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_ltzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_integer_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_integer_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_integer_nonNA_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_gtezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_gtezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_gtezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_gtzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_gtzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_gtzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_ltezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_ltezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_ltezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_ltzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_ltzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_ltzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_integer_nonNA_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_integer_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_integer_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_language_object(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_language_object(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_like_template(
   x,
@@ -4116,410 +3887,283 @@ assert_is_like_template(
   call = NULL,
   template,
   compare = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_list(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_list(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_logical(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_logical(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_logical_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_logical_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_logical_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_logical_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_logical_nonNA_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_logical_nonNA_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_logical_nonNA_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_logical_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_logical_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_lt(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  hi,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_lt(x, x_nm = NULL, call = NULL, hi, assertion_type = NULL)
 
-assert_is_lte(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  hi,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_lte(x, x_nm = NULL, call = NULL, hi, assertion_type = NULL)
 
-assert_is_ltezero(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_ltezero(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_ltzero(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_ltzero(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_name(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_name(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_named(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_named(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_named_list(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_named_list(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_nonNA(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_nonNA(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_NULL(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_NULL(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_number(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_number(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_number_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_number_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_number_gtezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_gtezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_gtezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_gtzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_gtzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_gtzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_ltezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_ltezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_ltezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_ltzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_ltzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_ltzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_number_matrix(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_number_matrix(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_number_nonNA_atom(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_number_nonNA_atom(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_number_nonNA_gtezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_gtezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_gtezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_gtzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_gtzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_gtzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_ltezero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_ltezero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_ltezero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_ltzero_atom(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_ltzero_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_ltzero_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_matrix(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_is_number_nonNA_vector(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_number_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_number_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_numeric(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_numeric(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_of_length(
   x,
   x_nm = NULL,
   call = NULL,
   expected_length,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_report_df(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_report_df(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_TRUE(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
-assert_is_uniquely_named(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_uniquely_named(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_uniquely_named_list(
   x,
   x_nm = NULL,
   call = NULL,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
-assert_is_vector(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  assertion_type = dbc::assertion_type_default()
-)
+assert_is_vector(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_match_regex(
   x,
   x_nm = NULL,
   call = NULL,
   grepl.arg.list = list(),
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_vector_elems_are_in_set(
@@ -4527,7 +4171,7 @@ assert_vector_elems_are_in_set(
   x_nm = NULL,
   call = NULL,
   set,
-  assertion_type = dbc::assertion_type_default()
+  assertion_type = NULL
 )
 
 assert_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
@@ -7550,11 +7194,12 @@ object is no longer encountered. See \strong{Examples}.}
 
 list of (optional) arguments passed to \verb{[grepl]}}
 
-\item{assertion_type}{\verb{[character]}
-(default usually \code{"general"})
+\item{assertion_type}{\verb{[NULL, character]}
+(default \code{NULL})
 
-Must be exactly one of the following:
+Must be one of the following:
 \itemize{
+\item \code{NULL}: take \code{dbc::assertion_type_default()}
 \item \code{"general"}: just says that assertions did not pass without information
 as to whose fault this was --- just that some object was not as expected
 \item \code{"input"}: assertion error messages direct the attention towards the

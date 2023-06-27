@@ -72,11 +72,12 @@ to check; See \strong{Examples}
 \item \code{NULL}: the call is attempted to be inferred
 }}
 
-\item{assertion_type}{\verb{[character]}
-(default usually \code{"general"})
+\item{assertion_type}{\verb{[NULL, character]}
+(default \code{NULL})
 
-Must be exactly one of the following:
+Must be one of the following:
 \itemize{
+\item \code{NULL}: take \code{dbc::assertion_type_default()}
 \item \code{"general"}: just says that assertions did not pass without information
 as to whose fault this was --- just that some object was not as expected
 \item \code{"input"}: assertion error messages direct the attention towards the

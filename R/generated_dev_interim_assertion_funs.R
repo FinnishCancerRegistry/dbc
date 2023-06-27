@@ -16,7 +16,9 @@ assert_dev_interim_all_are_TRUE <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_all_are_TRUE(
@@ -46,7 +48,9 @@ assert_dev_interim_atom_is_in_set <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_atom_is_in_set(
@@ -77,7 +81,9 @@ assert_dev_interim_data_table_has_no_duplicates <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_data_table_has_no_duplicates(
@@ -107,7 +113,9 @@ assert_dev_interim_dir_exists <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_dir_exists(
@@ -136,7 +144,9 @@ assert_dev_interim_file_exists <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_file_exists(
@@ -166,7 +176,9 @@ assert_dev_interim_has_class <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_class(
@@ -197,7 +209,9 @@ assert_dev_interim_has_length <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_length(
@@ -228,7 +242,9 @@ assert_dev_interim_has_names <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_names(
@@ -258,7 +274,9 @@ assert_dev_interim_has_no_duplicates <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_no_duplicates(
@@ -288,7 +306,9 @@ assert_dev_interim_has_one_of_classes <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_one_of_classes(
@@ -319,7 +339,9 @@ assert_dev_interim_has_only_names <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_only_names(
@@ -354,7 +376,9 @@ assert_dev_interim_has_only_valid_observations <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_has_only_valid_observations(
@@ -389,7 +413,9 @@ assert_dev_interim_inherits <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_inherits(
@@ -432,7 +458,9 @@ assert_dev_interim_is <- function(
   if (is.null(env)) {
     env <- parent.frame(1L)
   }
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is(
@@ -465,11 +493,13 @@ assert_dev_interim_is_all_equal <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call)
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
 is.null(y) # trigger lazy eval
 y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_all_equal(
     x = x,
     x_nm = x_nm,
@@ -499,7 +529,9 @@ assert_dev_interim_is_assertion_type <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_assertion_type(
@@ -528,7 +560,9 @@ assert_dev_interim_is_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_atom(
@@ -559,7 +593,9 @@ assert_dev_interim_is_between_exclusive <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_between_exclusive(
@@ -592,7 +628,9 @@ assert_dev_interim_is_between_inclusive <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_between_inclusive(
@@ -623,7 +661,9 @@ assert_dev_interim_is_call <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_call(
@@ -652,7 +692,9 @@ assert_dev_interim_is_character <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character(
@@ -681,7 +723,9 @@ assert_dev_interim_is_character_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character_atom(
@@ -710,7 +754,9 @@ assert_dev_interim_is_character_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character_matrix(
@@ -739,7 +785,9 @@ assert_dev_interim_is_character_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character_nonNA_atom(
@@ -768,7 +816,9 @@ assert_dev_interim_is_character_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character_nonNA_matrix(
@@ -797,7 +847,9 @@ assert_dev_interim_is_character_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character_nonNA_vector(
@@ -826,7 +878,9 @@ assert_dev_interim_is_character_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_character_vector(
@@ -855,7 +909,9 @@ assert_dev_interim_is_data.frame <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_data.frame(
@@ -885,7 +941,9 @@ assert_dev_interim_is_data.frame_with_required_names <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_data.frame_with_required_names(
@@ -915,7 +973,9 @@ assert_dev_interim_is_data.table <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_data.table(
@@ -945,7 +1005,9 @@ assert_dev_interim_is_data.table_with_required_names <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_data.table_with_required_names(
@@ -975,7 +1037,9 @@ assert_dev_interim_is_data_table <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_data_table(
@@ -1005,7 +1069,9 @@ assert_dev_interim_is_data_table_with_required_names <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_data_table_with_required_names(
@@ -1035,7 +1101,9 @@ assert_dev_interim_is_Date <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date(
@@ -1064,7 +1132,9 @@ assert_dev_interim_is_Date_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date_atom(
@@ -1093,7 +1163,9 @@ assert_dev_interim_is_Date_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date_matrix(
@@ -1122,7 +1194,9 @@ assert_dev_interim_is_Date_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date_nonNA_atom(
@@ -1151,7 +1225,9 @@ assert_dev_interim_is_Date_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date_nonNA_matrix(
@@ -1180,7 +1256,9 @@ assert_dev_interim_is_Date_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date_nonNA_vector(
@@ -1209,7 +1287,9 @@ assert_dev_interim_is_Date_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_Date_vector(
@@ -1238,7 +1318,9 @@ assert_dev_interim_is_double <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double(
@@ -1267,7 +1349,9 @@ assert_dev_interim_is_double_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_atom(
@@ -1296,7 +1380,9 @@ assert_dev_interim_is_double_gtezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_gtezero_atom(
@@ -1325,7 +1411,9 @@ assert_dev_interim_is_double_gtezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_gtezero_matrix(
@@ -1354,7 +1442,9 @@ assert_dev_interim_is_double_gtezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_gtezero_vector(
@@ -1383,7 +1473,9 @@ assert_dev_interim_is_double_gtzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_gtzero_atom(
@@ -1412,7 +1504,9 @@ assert_dev_interim_is_double_gtzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_gtzero_matrix(
@@ -1441,7 +1535,9 @@ assert_dev_interim_is_double_gtzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_gtzero_vector(
@@ -1470,7 +1566,9 @@ assert_dev_interim_is_double_ltezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_ltezero_atom(
@@ -1499,7 +1597,9 @@ assert_dev_interim_is_double_ltezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_ltezero_matrix(
@@ -1528,7 +1628,9 @@ assert_dev_interim_is_double_ltezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_ltezero_vector(
@@ -1557,7 +1659,9 @@ assert_dev_interim_is_double_ltzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_ltzero_atom(
@@ -1586,7 +1690,9 @@ assert_dev_interim_is_double_ltzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_ltzero_matrix(
@@ -1615,7 +1721,9 @@ assert_dev_interim_is_double_ltzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_ltzero_vector(
@@ -1644,7 +1752,9 @@ assert_dev_interim_is_double_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_matrix(
@@ -1673,7 +1783,9 @@ assert_dev_interim_is_double_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_atom(
@@ -1702,7 +1814,9 @@ assert_dev_interim_is_double_nonNA_gtezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_gtezero_atom(
@@ -1731,7 +1845,9 @@ assert_dev_interim_is_double_nonNA_gtezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_gtezero_matrix(
@@ -1760,7 +1876,9 @@ assert_dev_interim_is_double_nonNA_gtezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_gtezero_vector(
@@ -1789,7 +1907,9 @@ assert_dev_interim_is_double_nonNA_gtzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_gtzero_atom(
@@ -1818,7 +1938,9 @@ assert_dev_interim_is_double_nonNA_gtzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_gtzero_matrix(
@@ -1847,7 +1969,9 @@ assert_dev_interim_is_double_nonNA_gtzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_gtzero_vector(
@@ -1876,7 +2000,9 @@ assert_dev_interim_is_double_nonNA_ltezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_ltezero_atom(
@@ -1905,7 +2031,9 @@ assert_dev_interim_is_double_nonNA_ltezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_ltezero_matrix(
@@ -1934,7 +2062,9 @@ assert_dev_interim_is_double_nonNA_ltezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_ltezero_vector(
@@ -1963,7 +2093,9 @@ assert_dev_interim_is_double_nonNA_ltzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_ltzero_atom(
@@ -1992,7 +2124,9 @@ assert_dev_interim_is_double_nonNA_ltzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_ltzero_matrix(
@@ -2021,7 +2155,9 @@ assert_dev_interim_is_double_nonNA_ltzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_ltzero_vector(
@@ -2050,7 +2186,9 @@ assert_dev_interim_is_double_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_matrix(
@@ -2079,7 +2217,9 @@ assert_dev_interim_is_double_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_nonNA_vector(
@@ -2108,7 +2248,9 @@ assert_dev_interim_is_double_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_double_vector(
@@ -2137,7 +2279,9 @@ assert_dev_interim_is_environment <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_environment(
@@ -2166,7 +2310,9 @@ assert_dev_interim_is_expression <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_expression(
@@ -2195,7 +2341,9 @@ assert_dev_interim_is_factor <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor(
@@ -2224,7 +2372,9 @@ assert_dev_interim_is_factor_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_atom(
@@ -2253,7 +2403,9 @@ assert_dev_interim_is_factor_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_matrix(
@@ -2282,7 +2434,9 @@ assert_dev_interim_is_factor_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_nonNA_atom(
@@ -2311,7 +2465,9 @@ assert_dev_interim_is_factor_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_nonNA_matrix(
@@ -2340,7 +2496,9 @@ assert_dev_interim_is_factor_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_nonNA_vector(
@@ -2369,7 +2527,9 @@ assert_dev_interim_is_factor_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_vector(
@@ -2399,7 +2559,9 @@ assert_dev_interim_is_factor_with_levels <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_factor_with_levels(
@@ -2429,7 +2591,9 @@ assert_dev_interim_is_function <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_function(
@@ -2459,7 +2623,9 @@ assert_dev_interim_is_function_with_required_argument_names <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_function_with_required_argument_names(
@@ -2490,7 +2656,9 @@ assert_dev_interim_is_gt <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_gt(
@@ -2521,7 +2689,9 @@ assert_dev_interim_is_gte <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_gte(
@@ -2551,7 +2721,9 @@ assert_dev_interim_is_gtezero <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_gtezero(
@@ -2580,7 +2752,9 @@ assert_dev_interim_is_gtzero <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_gtzero(
@@ -2611,11 +2785,13 @@ assert_dev_interim_is_identical <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call)
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
 is.null(y) # trigger lazy eval
 y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_identical(
     x = x,
     x_nm = x_nm,
@@ -2644,7 +2820,9 @@ assert_dev_interim_is_integer <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer(
@@ -2673,7 +2851,9 @@ assert_dev_interim_is_integer_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_atom(
@@ -2702,7 +2882,9 @@ assert_dev_interim_is_integer_gtezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_gtezero_atom(
@@ -2731,7 +2913,9 @@ assert_dev_interim_is_integer_gtezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_gtezero_matrix(
@@ -2760,7 +2944,9 @@ assert_dev_interim_is_integer_gtezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_gtezero_vector(
@@ -2789,7 +2975,9 @@ assert_dev_interim_is_integer_gtzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_gtzero_atom(
@@ -2818,7 +3006,9 @@ assert_dev_interim_is_integer_gtzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_gtzero_matrix(
@@ -2847,7 +3037,9 @@ assert_dev_interim_is_integer_gtzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_gtzero_vector(
@@ -2876,7 +3068,9 @@ assert_dev_interim_is_integer_ltezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_ltezero_atom(
@@ -2905,7 +3099,9 @@ assert_dev_interim_is_integer_ltezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_ltezero_matrix(
@@ -2934,7 +3130,9 @@ assert_dev_interim_is_integer_ltezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_ltezero_vector(
@@ -2963,7 +3161,9 @@ assert_dev_interim_is_integer_ltzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_ltzero_atom(
@@ -2992,7 +3192,9 @@ assert_dev_interim_is_integer_ltzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_ltzero_matrix(
@@ -3021,7 +3223,9 @@ assert_dev_interim_is_integer_ltzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_ltzero_vector(
@@ -3050,7 +3254,9 @@ assert_dev_interim_is_integer_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_matrix(
@@ -3079,7 +3285,9 @@ assert_dev_interim_is_integer_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_atom(
@@ -3108,7 +3316,9 @@ assert_dev_interim_is_integer_nonNA_gtezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_gtezero_atom(
@@ -3137,7 +3347,9 @@ assert_dev_interim_is_integer_nonNA_gtezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_gtezero_matrix(
@@ -3166,7 +3378,9 @@ assert_dev_interim_is_integer_nonNA_gtezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_gtezero_vector(
@@ -3195,7 +3409,9 @@ assert_dev_interim_is_integer_nonNA_gtzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_gtzero_atom(
@@ -3224,7 +3440,9 @@ assert_dev_interim_is_integer_nonNA_gtzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_gtzero_matrix(
@@ -3253,7 +3471,9 @@ assert_dev_interim_is_integer_nonNA_gtzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_gtzero_vector(
@@ -3282,7 +3502,9 @@ assert_dev_interim_is_integer_nonNA_ltezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_ltezero_atom(
@@ -3311,7 +3533,9 @@ assert_dev_interim_is_integer_nonNA_ltezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_ltezero_matrix(
@@ -3340,7 +3564,9 @@ assert_dev_interim_is_integer_nonNA_ltezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_ltezero_vector(
@@ -3369,7 +3595,9 @@ assert_dev_interim_is_integer_nonNA_ltzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_ltzero_atom(
@@ -3398,7 +3626,9 @@ assert_dev_interim_is_integer_nonNA_ltzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_ltzero_matrix(
@@ -3427,7 +3657,9 @@ assert_dev_interim_is_integer_nonNA_ltzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_ltzero_vector(
@@ -3456,7 +3688,9 @@ assert_dev_interim_is_integer_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_matrix(
@@ -3485,7 +3719,9 @@ assert_dev_interim_is_integer_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_nonNA_vector(
@@ -3514,7 +3750,9 @@ assert_dev_interim_is_integer_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_integer_vector(
@@ -3543,7 +3781,9 @@ assert_dev_interim_is_language_object <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_language_object(
@@ -3574,7 +3814,9 @@ assert_dev_interim_is_like_template <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_like_template(
@@ -3605,7 +3847,9 @@ assert_dev_interim_is_list <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_list(
@@ -3634,7 +3878,9 @@ assert_dev_interim_is_logical <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical(
@@ -3663,7 +3909,9 @@ assert_dev_interim_is_logical_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical_atom(
@@ -3692,7 +3940,9 @@ assert_dev_interim_is_logical_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical_matrix(
@@ -3721,7 +3971,9 @@ assert_dev_interim_is_logical_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical_nonNA_atom(
@@ -3750,7 +4002,9 @@ assert_dev_interim_is_logical_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical_nonNA_matrix(
@@ -3779,7 +4033,9 @@ assert_dev_interim_is_logical_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical_nonNA_vector(
@@ -3808,7 +4064,9 @@ assert_dev_interim_is_logical_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_logical_vector(
@@ -3838,7 +4096,9 @@ assert_dev_interim_is_lt <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_lt(
@@ -3869,7 +4129,9 @@ assert_dev_interim_is_lte <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_lte(
@@ -3899,7 +4161,9 @@ assert_dev_interim_is_ltezero <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_ltezero(
@@ -3928,7 +4192,9 @@ assert_dev_interim_is_ltzero <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_ltzero(
@@ -3957,7 +4223,9 @@ assert_dev_interim_is_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_matrix(
@@ -3986,7 +4254,9 @@ assert_dev_interim_is_name <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_name(
@@ -4015,7 +4285,9 @@ assert_dev_interim_is_named <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_named(
@@ -4044,7 +4316,9 @@ assert_dev_interim_is_named_list <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_named_list(
@@ -4073,7 +4347,9 @@ assert_dev_interim_is_nonNA <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_nonNA(
@@ -4102,7 +4378,9 @@ assert_dev_interim_is_NULL <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_NULL(
@@ -4131,7 +4409,9 @@ assert_dev_interim_is_number <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number(
@@ -4160,7 +4440,9 @@ assert_dev_interim_is_number_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_atom(
@@ -4189,7 +4471,9 @@ assert_dev_interim_is_number_gtezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_gtezero_atom(
@@ -4218,7 +4502,9 @@ assert_dev_interim_is_number_gtezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_gtezero_matrix(
@@ -4247,7 +4533,9 @@ assert_dev_interim_is_number_gtezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_gtezero_vector(
@@ -4276,7 +4564,9 @@ assert_dev_interim_is_number_gtzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_gtzero_atom(
@@ -4305,7 +4595,9 @@ assert_dev_interim_is_number_gtzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_gtzero_matrix(
@@ -4334,7 +4626,9 @@ assert_dev_interim_is_number_gtzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_gtzero_vector(
@@ -4363,7 +4657,9 @@ assert_dev_interim_is_number_ltezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_ltezero_atom(
@@ -4392,7 +4688,9 @@ assert_dev_interim_is_number_ltezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_ltezero_matrix(
@@ -4421,7 +4719,9 @@ assert_dev_interim_is_number_ltezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_ltezero_vector(
@@ -4450,7 +4750,9 @@ assert_dev_interim_is_number_ltzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_ltzero_atom(
@@ -4479,7 +4781,9 @@ assert_dev_interim_is_number_ltzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_ltzero_matrix(
@@ -4508,7 +4812,9 @@ assert_dev_interim_is_number_ltzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_ltzero_vector(
@@ -4537,7 +4843,9 @@ assert_dev_interim_is_number_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_matrix(
@@ -4566,7 +4874,9 @@ assert_dev_interim_is_number_nonNA_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_atom(
@@ -4595,7 +4905,9 @@ assert_dev_interim_is_number_nonNA_gtezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_gtezero_atom(
@@ -4624,7 +4936,9 @@ assert_dev_interim_is_number_nonNA_gtezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_gtezero_matrix(
@@ -4653,7 +4967,9 @@ assert_dev_interim_is_number_nonNA_gtezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_gtezero_vector(
@@ -4682,7 +4998,9 @@ assert_dev_interim_is_number_nonNA_gtzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_gtzero_atom(
@@ -4711,7 +5029,9 @@ assert_dev_interim_is_number_nonNA_gtzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_gtzero_matrix(
@@ -4740,7 +5060,9 @@ assert_dev_interim_is_number_nonNA_gtzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_gtzero_vector(
@@ -4769,7 +5091,9 @@ assert_dev_interim_is_number_nonNA_ltezero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_ltezero_atom(
@@ -4798,7 +5122,9 @@ assert_dev_interim_is_number_nonNA_ltezero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_ltezero_matrix(
@@ -4827,7 +5153,9 @@ assert_dev_interim_is_number_nonNA_ltezero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_ltezero_vector(
@@ -4856,7 +5184,9 @@ assert_dev_interim_is_number_nonNA_ltzero_atom <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_ltzero_atom(
@@ -4885,7 +5215,9 @@ assert_dev_interim_is_number_nonNA_ltzero_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_ltzero_matrix(
@@ -4914,7 +5246,9 @@ assert_dev_interim_is_number_nonNA_ltzero_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_ltzero_vector(
@@ -4943,7 +5277,9 @@ assert_dev_interim_is_number_nonNA_matrix <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_matrix(
@@ -4972,7 +5308,9 @@ assert_dev_interim_is_number_nonNA_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_nonNA_vector(
@@ -5001,7 +5339,9 @@ assert_dev_interim_is_number_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_number_vector(
@@ -5030,7 +5370,9 @@ assert_dev_interim_is_numeric <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_numeric(
@@ -5060,7 +5402,9 @@ assert_dev_interim_is_of_length <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_of_length(
@@ -5090,7 +5434,9 @@ assert_dev_interim_is_report_df <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_report_df(
@@ -5119,7 +5465,9 @@ assert_dev_interim_is_TRUE <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_TRUE(
@@ -5148,7 +5496,9 @@ assert_dev_interim_is_uniquely_named <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_uniquely_named(
@@ -5177,7 +5527,9 @@ assert_dev_interim_is_uniquely_named_list <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_uniquely_named_list(
@@ -5206,7 +5558,9 @@ assert_dev_interim_is_vector <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_is_vector(
@@ -5236,7 +5590,9 @@ assert_dev_interim_match_regex <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_match_regex(
@@ -5267,7 +5623,9 @@ assert_dev_interim_vector_elems_are_in_set <- function(
     return(invisible(NULL))
   }
 
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_df <- dbc::report_vector_elems_are_in_set(

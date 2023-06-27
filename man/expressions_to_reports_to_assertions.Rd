@@ -14,11 +14,7 @@ expressions_to_report(
   call = NULL
 )
 
-report_to_assertion(
-  report_df,
-  assertion_type = dbc::assertion_type_default(),
-  raise_error_call = NULL
-)
+report_to_assertion(report_df, assertion_type = NULL, raise_error_call = NULL)
 }
 \arguments{
 \item{expressions}{\verb{[character, list]} (no default)
@@ -72,11 +68,12 @@ They all have \code{env} as the parent environment (\emph{context environment}).
 
 a report \code{data.frame} as returned by \code{expressions_to_report}}
 
-\item{assertion_type}{\verb{[character]}
-(default usually \code{"general"})
+\item{assertion_type}{\verb{[NULL, character]}
+(default \code{NULL})
 
-Must be exactly one of the following:
+Must be one of the following:
 \itemize{
+\item \code{NULL}: take \code{dbc::assertion_type_default()}
 \item \code{"general"}: just says that assertions did not pass without information
 as to whose fault this was --- just that some object was not as expected
 \item \code{"input"}: assertion error messages direct the attention towards the
