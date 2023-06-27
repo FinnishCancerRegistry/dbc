@@ -122,6 +122,7 @@ assert_is_one_of__ <- function(
     inherits(funs, c("list", "character"))
   )
   call <- dbc::handle_arg_call(call)
+  assertion_type <- dbc::handle_arg_assertion_type(assertion_type)
 
   report_df <- dbc::report_is_one_of(
     x = x, x_nm = x_nm, funs = funs, call = call

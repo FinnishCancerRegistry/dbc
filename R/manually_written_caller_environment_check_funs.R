@@ -105,6 +105,7 @@ assert_function_caller_environment_is_not_global_environment <- function(
     x_nm <- deparse(parent_call[[1L]])
   }
   call <- dbc::handle_arg_call(call)
+  assertion_type <- dbc::handle_arg_assertion_type(assertion_type)
   report_df <- report_function_caller_environment_is_not_global_environment(
     x = x, x_nm = x_nm, call = call
   )
@@ -131,6 +132,7 @@ assert_function_caller_environment_is_global_environment <- function(
     x_nm <- deparse(parent_call[[1L]])
   }
   call <- dbc::handle_arg_call(call)
+  assertion_type <- dbc::handle_arg_assertion_type(assertion_type)
   report_df <- report_function_caller_environment_is_global_environment(
     x = x, x_nm = x_nm, call = call
   )
