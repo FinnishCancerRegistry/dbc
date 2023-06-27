@@ -295,7 +295,7 @@ generate_report_derivative_funs <- function(
   fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {
     formals <- formals(fun_env[[report_fun_nm]])
     if (assertion_type == "general") {
-      formals[["assertion_type"]] <- quote(NULL)
+      formals["assertion_type"] <- list(NULL)
     }
     if (type != "assert") {
       formals["assertion_type"] <- NULL
