@@ -1,7 +1,7 @@
 Type: Package
 Package: dbc
 Title: Utilities To Design By Contract
-Version: 0.4.13
+Version: 0.4.14
 Author: Joonas Miettinen
 Maintainer: Joonas Miettinen <joonas.miettinen@cancer.fi>
 Description: Enables easy verification of function arguments, interim
