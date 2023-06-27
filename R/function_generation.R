@@ -202,7 +202,7 @@ generate_report_derivative_funs <- function(
   }
 
   fun_df <- data.frame(fun_nm = fun_nms, report_fun_nm = report_fun_nms)
-  body_part <- switch(
+  body_tail <- switch(
     type,
     assert = switch(
       assertion_type,
@@ -235,7 +235,7 @@ generate_report_derivative_funs <- function(
         "  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")
       ),
       ")",
-      body_part
+      body_tail
     ))
     if (all(c("y_nm", "y") %in% names(formals(fun_env[[report_fun_nm]])))) {
       body <- c(
@@ -278,10 +278,12 @@ generate_report_derivative_funs <- function(
       )
     } else if (type == "assert" && assertion_type == "general") {
       body <- c(
+        "  if (identical(assertion_type, NULL)) {",
+        "    assertion_type <- dbc::assertion_type_default()",
+        "  }",
         "  if (identical(assertion_type, \"none\")) {",
         "    return(invisible(NULL))",
         "  }",
-        "",
         "  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {",
         "    return(invisible(NULL))",
         "  }",
