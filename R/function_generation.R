@@ -191,7 +191,7 @@ generate_report_derivative_funs <- function(
     x = obj_nms
   )
   report_fun_nms <- gsub("\\Q <- \\E.+", "", obj_nms[is_report_fun_nm])
-  if (type == "assert" && !assertion_type != "general") {
+  if (type == "assert" && assertion_type != "general") {
     fun_nms <- sub(
       "^report_", paste0(type, "_", assertion_type, "_"), report_fun_nms
     )
@@ -399,7 +399,7 @@ report_function_variant_space <- function() {
   data.table::setDT(fun_nm_dt)
 
   fun_def_prefix <- "report_is_"
-  fun_nms <- vapply(1:nrow(fun_nm_dt), function(i) {
+  fun_nms <- vapply(seq_len(nrow(fun_nm_dt)), function(i) {
     paste0(setdiff(unlist(fun_nm_dt[i, ]), ""), collapse = "_")
   }, character(1L))
   fun_nms <- paste0(fun_def_prefix, fun_nms)
