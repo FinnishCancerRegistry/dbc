@@ -202,26 +202,22 @@ generate_report_derivative_funs <- function(
   }
 
   fun_df <- data.frame(fun_nm = fun_nms, report_fun_nm = report_fun_nms)
+  assertion_body_tail <- c(
+    "dbc::report_to_assertion(",
+    "  report_df,",
+    "  assertion_type = assertion_type,",
+    "  raise_error_call = call",
+    ")",
+    "return(invisible(NULL))"
+  )
   body_tail <- switch(
     type,
     assert = switch(
       assertion_type,
-      general = c(
-        "dbc::report_to_assertion(",
-        "  report_df,",
-        "  assertion_type = assertion_type,",
-        "  raise_error_call = call",
-        ")",
-        "return(invisible(NULL))"
-      ),
+      general = assertion_body_tail,
       c(
         paste0("assertion_type <- \"", assertion_type, "\""),
-        "dbc::report_to_assertion(",
-        "  report_df,",
-        "  assertion_type = assertion_type",
-        "  raise_error_call = call",
-        ")",
-        "return(invisible(NULL))"
+        assertion_body_tail
       )
     ),
     test = c(
