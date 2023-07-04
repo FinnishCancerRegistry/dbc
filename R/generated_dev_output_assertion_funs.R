@@ -27,7 +27,11 @@ assert_dev_output_all_are_TRUE <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -60,7 +64,11 @@ assert_dev_output_atom_is_in_set <- function(
     set = set
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -93,7 +101,11 @@ assert_dev_output_data_table_has_no_duplicates <- function(
     by = by
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -124,7 +136,11 @@ assert_dev_output_dir_exists <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -155,7 +171,11 @@ assert_dev_output_file_exists <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -188,7 +208,11 @@ assert_dev_output_has_class <- function(
     required_class = required_class
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -221,7 +245,11 @@ assert_dev_output_has_length <- function(
     expected_length = expected_length
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -254,7 +282,11 @@ assert_dev_output_has_names <- function(
     required_names = required_names
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -285,7 +317,11 @@ assert_dev_output_has_no_duplicates <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -318,7 +354,11 @@ assert_dev_output_has_one_of_classes <- function(
     classes = classes
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -351,7 +391,11 @@ assert_dev_output_has_only_names <- function(
     required_names = required_names
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -392,7 +436,11 @@ assert_dev_output_has_only_valid_observations <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -425,7 +473,11 @@ assert_dev_output_inherits <- function(
     required_class = required_class
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -470,7 +522,11 @@ assert_dev_output_is <- function(
     env = env
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -509,7 +565,11 @@ y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
     all_equal_arg_list = all_equal_arg_list
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -540,7 +600,11 @@ assert_dev_output_is_assertion_type <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -571,7 +635,11 @@ assert_dev_output_is_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -606,7 +674,11 @@ assert_dev_output_is_between_exclusive <- function(
     hi = hi
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -641,7 +713,11 @@ assert_dev_output_is_between_inclusive <- function(
     hi = hi
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -672,7 +748,11 @@ assert_dev_output_is_call <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -703,7 +783,11 @@ assert_dev_output_is_character <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -734,7 +818,11 @@ assert_dev_output_is_character_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -765,7 +853,11 @@ assert_dev_output_is_character_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -796,7 +888,11 @@ assert_dev_output_is_character_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -827,7 +923,11 @@ assert_dev_output_is_character_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -858,7 +958,11 @@ assert_dev_output_is_character_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -889,7 +993,11 @@ assert_dev_output_is_character_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -920,7 +1028,11 @@ assert_dev_output_is_data.frame <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -953,7 +1065,11 @@ assert_dev_output_is_data.frame_with_required_names <- function(
     required_names = required_names
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -984,7 +1100,11 @@ assert_dev_output_is_data.table <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1017,7 +1137,11 @@ assert_dev_output_is_data.table_with_required_names <- function(
     required_names = required_names
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1048,7 +1172,11 @@ assert_dev_output_is_data_table <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1081,7 +1209,11 @@ assert_dev_output_is_data_table_with_required_names <- function(
     required_names = required_names
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1112,7 +1244,11 @@ assert_dev_output_is_Date <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1143,7 +1279,11 @@ assert_dev_output_is_Date_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1174,7 +1314,11 @@ assert_dev_output_is_Date_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1205,7 +1349,11 @@ assert_dev_output_is_Date_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1236,7 +1384,11 @@ assert_dev_output_is_Date_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1267,7 +1419,11 @@ assert_dev_output_is_Date_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1298,7 +1454,11 @@ assert_dev_output_is_Date_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1329,7 +1489,11 @@ assert_dev_output_is_double <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1360,7 +1524,11 @@ assert_dev_output_is_double_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1391,7 +1559,11 @@ assert_dev_output_is_double_gtezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1422,7 +1594,11 @@ assert_dev_output_is_double_gtezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1453,7 +1629,11 @@ assert_dev_output_is_double_gtezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1484,7 +1664,11 @@ assert_dev_output_is_double_gtzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1515,7 +1699,11 @@ assert_dev_output_is_double_gtzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1546,7 +1734,11 @@ assert_dev_output_is_double_gtzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1577,7 +1769,11 @@ assert_dev_output_is_double_ltezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1608,7 +1804,11 @@ assert_dev_output_is_double_ltezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1639,7 +1839,11 @@ assert_dev_output_is_double_ltezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1670,7 +1874,11 @@ assert_dev_output_is_double_ltzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1701,7 +1909,11 @@ assert_dev_output_is_double_ltzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1732,7 +1944,11 @@ assert_dev_output_is_double_ltzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1763,7 +1979,11 @@ assert_dev_output_is_double_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1794,7 +2014,11 @@ assert_dev_output_is_double_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1825,7 +2049,11 @@ assert_dev_output_is_double_nonNA_gtezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1856,7 +2084,11 @@ assert_dev_output_is_double_nonNA_gtezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1887,7 +2119,11 @@ assert_dev_output_is_double_nonNA_gtezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1918,7 +2154,11 @@ assert_dev_output_is_double_nonNA_gtzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1949,7 +2189,11 @@ assert_dev_output_is_double_nonNA_gtzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -1980,7 +2224,11 @@ assert_dev_output_is_double_nonNA_gtzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2011,7 +2259,11 @@ assert_dev_output_is_double_nonNA_ltezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2042,7 +2294,11 @@ assert_dev_output_is_double_nonNA_ltezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2073,7 +2329,11 @@ assert_dev_output_is_double_nonNA_ltezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2104,7 +2364,11 @@ assert_dev_output_is_double_nonNA_ltzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2135,7 +2399,11 @@ assert_dev_output_is_double_nonNA_ltzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2166,7 +2434,11 @@ assert_dev_output_is_double_nonNA_ltzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2197,7 +2469,11 @@ assert_dev_output_is_double_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2228,7 +2504,11 @@ assert_dev_output_is_double_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2259,7 +2539,11 @@ assert_dev_output_is_double_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2290,7 +2574,11 @@ assert_dev_output_is_environment <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2321,7 +2609,11 @@ assert_dev_output_is_expression <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2352,7 +2644,11 @@ assert_dev_output_is_factor <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2383,7 +2679,11 @@ assert_dev_output_is_factor_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2414,7 +2714,11 @@ assert_dev_output_is_factor_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2445,7 +2749,11 @@ assert_dev_output_is_factor_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2476,7 +2784,11 @@ assert_dev_output_is_factor_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2507,7 +2819,11 @@ assert_dev_output_is_factor_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2538,7 +2854,11 @@ assert_dev_output_is_factor_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2571,7 +2891,11 @@ assert_dev_output_is_factor_with_levels <- function(
     expected_levels = expected_levels
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2602,7 +2926,11 @@ assert_dev_output_is_function <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2635,7 +2963,11 @@ assert_dev_output_is_function_with_required_argument_names <- function(
     required_argument_names = required_argument_names
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2668,7 +3000,11 @@ assert_dev_output_is_gt <- function(
     lo = lo
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2701,7 +3037,11 @@ assert_dev_output_is_gte <- function(
     lo = lo
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2732,7 +3072,11 @@ assert_dev_output_is_gtezero <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2763,7 +3107,11 @@ assert_dev_output_is_gtzero <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2800,7 +3148,11 @@ y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
     y_nm = y_nm
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2831,7 +3183,11 @@ assert_dev_output_is_integer <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2862,7 +3218,11 @@ assert_dev_output_is_integer_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2893,7 +3253,11 @@ assert_dev_output_is_integer_gtezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2924,7 +3288,11 @@ assert_dev_output_is_integer_gtezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2955,7 +3323,11 @@ assert_dev_output_is_integer_gtezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -2986,7 +3358,11 @@ assert_dev_output_is_integer_gtzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3017,7 +3393,11 @@ assert_dev_output_is_integer_gtzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3048,7 +3428,11 @@ assert_dev_output_is_integer_gtzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3079,7 +3463,11 @@ assert_dev_output_is_integer_ltezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3110,7 +3498,11 @@ assert_dev_output_is_integer_ltezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3141,7 +3533,11 @@ assert_dev_output_is_integer_ltezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3172,7 +3568,11 @@ assert_dev_output_is_integer_ltzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3203,7 +3603,11 @@ assert_dev_output_is_integer_ltzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3234,7 +3638,11 @@ assert_dev_output_is_integer_ltzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3265,7 +3673,11 @@ assert_dev_output_is_integer_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3296,7 +3708,11 @@ assert_dev_output_is_integer_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3327,7 +3743,11 @@ assert_dev_output_is_integer_nonNA_gtezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3358,7 +3778,11 @@ assert_dev_output_is_integer_nonNA_gtezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3389,7 +3813,11 @@ assert_dev_output_is_integer_nonNA_gtezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3420,7 +3848,11 @@ assert_dev_output_is_integer_nonNA_gtzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3451,7 +3883,11 @@ assert_dev_output_is_integer_nonNA_gtzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3482,7 +3918,11 @@ assert_dev_output_is_integer_nonNA_gtzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3513,7 +3953,11 @@ assert_dev_output_is_integer_nonNA_ltezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3544,7 +3988,11 @@ assert_dev_output_is_integer_nonNA_ltezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3575,7 +4023,11 @@ assert_dev_output_is_integer_nonNA_ltezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3606,7 +4058,11 @@ assert_dev_output_is_integer_nonNA_ltzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3637,7 +4093,11 @@ assert_dev_output_is_integer_nonNA_ltzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3668,7 +4128,11 @@ assert_dev_output_is_integer_nonNA_ltzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3699,7 +4163,11 @@ assert_dev_output_is_integer_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3730,7 +4198,11 @@ assert_dev_output_is_integer_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3761,7 +4233,11 @@ assert_dev_output_is_integer_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3792,7 +4268,11 @@ assert_dev_output_is_language_object <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3827,7 +4307,11 @@ assert_dev_output_is_like_template <- function(
     compare = compare
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3858,7 +4342,11 @@ assert_dev_output_is_list <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3889,7 +4377,11 @@ assert_dev_output_is_logical <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3920,7 +4412,11 @@ assert_dev_output_is_logical_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3951,7 +4447,11 @@ assert_dev_output_is_logical_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -3982,7 +4482,11 @@ assert_dev_output_is_logical_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4013,7 +4517,11 @@ assert_dev_output_is_logical_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4044,7 +4552,11 @@ assert_dev_output_is_logical_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4075,7 +4587,11 @@ assert_dev_output_is_logical_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4108,7 +4624,11 @@ assert_dev_output_is_lt <- function(
     hi = hi
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4141,7 +4661,11 @@ assert_dev_output_is_lte <- function(
     hi = hi
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4172,7 +4696,11 @@ assert_dev_output_is_ltezero <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4203,7 +4731,11 @@ assert_dev_output_is_ltzero <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4234,7 +4766,11 @@ assert_dev_output_is_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4265,7 +4801,11 @@ assert_dev_output_is_name <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4296,7 +4836,11 @@ assert_dev_output_is_named <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4327,7 +4871,11 @@ assert_dev_output_is_named_list <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4358,7 +4906,11 @@ assert_dev_output_is_nonNA <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4389,7 +4941,11 @@ assert_dev_output_is_NULL <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4420,7 +4976,11 @@ assert_dev_output_is_number <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4451,7 +5011,11 @@ assert_dev_output_is_number_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4482,7 +5046,11 @@ assert_dev_output_is_number_gtezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4513,7 +5081,11 @@ assert_dev_output_is_number_gtezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4544,7 +5116,11 @@ assert_dev_output_is_number_gtezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4575,7 +5151,11 @@ assert_dev_output_is_number_gtzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4606,7 +5186,11 @@ assert_dev_output_is_number_gtzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4637,7 +5221,11 @@ assert_dev_output_is_number_gtzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4668,7 +5256,11 @@ assert_dev_output_is_number_ltezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4699,7 +5291,11 @@ assert_dev_output_is_number_ltezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4730,7 +5326,11 @@ assert_dev_output_is_number_ltezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4761,7 +5361,11 @@ assert_dev_output_is_number_ltzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4792,7 +5396,11 @@ assert_dev_output_is_number_ltzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4823,7 +5431,11 @@ assert_dev_output_is_number_ltzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4854,7 +5466,11 @@ assert_dev_output_is_number_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4885,7 +5501,11 @@ assert_dev_output_is_number_nonNA_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4916,7 +5536,11 @@ assert_dev_output_is_number_nonNA_gtezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4947,7 +5571,11 @@ assert_dev_output_is_number_nonNA_gtezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -4978,7 +5606,11 @@ assert_dev_output_is_number_nonNA_gtezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5009,7 +5641,11 @@ assert_dev_output_is_number_nonNA_gtzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5040,7 +5676,11 @@ assert_dev_output_is_number_nonNA_gtzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5071,7 +5711,11 @@ assert_dev_output_is_number_nonNA_gtzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5102,7 +5746,11 @@ assert_dev_output_is_number_nonNA_ltezero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5133,7 +5781,11 @@ assert_dev_output_is_number_nonNA_ltezero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5164,7 +5816,11 @@ assert_dev_output_is_number_nonNA_ltezero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5195,7 +5851,11 @@ assert_dev_output_is_number_nonNA_ltzero_atom <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5226,7 +5886,11 @@ assert_dev_output_is_number_nonNA_ltzero_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5257,7 +5921,11 @@ assert_dev_output_is_number_nonNA_ltzero_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5288,7 +5956,11 @@ assert_dev_output_is_number_nonNA_matrix <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5319,7 +5991,11 @@ assert_dev_output_is_number_nonNA_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5350,7 +6026,11 @@ assert_dev_output_is_number_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5381,7 +6061,11 @@ assert_dev_output_is_numeric <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5414,7 +6098,11 @@ assert_dev_output_is_of_length <- function(
     expected_length = expected_length
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5445,7 +6133,11 @@ assert_dev_output_is_report_df <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5476,7 +6168,11 @@ assert_dev_output_is_TRUE <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5507,7 +6203,11 @@ assert_dev_output_is_uniquely_named <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5538,7 +6238,11 @@ assert_dev_output_is_uniquely_named_list <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5569,7 +6273,11 @@ assert_dev_output_is_vector <- function(
     call = call
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5602,7 +6310,11 @@ assert_dev_output_match_regex <- function(
     grepl.arg.list = grepl.arg.list
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
@@ -5635,7 +6347,11 @@ assert_dev_output_vector_elems_are_in_set <- function(
     set = set
   )
   assertion_type <- "dev_output"
-  dbc::report_to_assertion(report_df, assertion_type = assertion_type)
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type
+    raise_error_call = call
+  )
   return(invisible(NULL))
 }
 
