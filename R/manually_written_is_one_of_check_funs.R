@@ -140,7 +140,7 @@ assert_is_one_of__ <- function(
       assertion_type %in% dev_assertion_types()
     emit_error <- emit_error || !assertion_type %in% dev_assertion_types()
     if (emit_error) {
-      stop(msg)
+      stop(msg, call. = call)
     }
   }
   invisible(NULL)
