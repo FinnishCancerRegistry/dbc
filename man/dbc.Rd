@@ -53,6 +53,9 @@ Raises an error if \code{assertion_type} is not \code{NULL} nor one of
 \code{dbc::assertion_types()}.
 }
 
+\subsection{Object dbc::report_is_one_of news:}{
+}
+
 \subsection{Object dbc::report_to_assertion news:}{
 
 \verb{[dbc::report_to_assertion]} now accepts (and has as default)

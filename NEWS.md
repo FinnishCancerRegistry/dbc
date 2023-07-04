@@ -10,6 +10,10 @@ is replaced with `assertion_type <- dbc::assertion_type_default()`.
 Raises an error if `assertion_type` is not `NULL` nor one of
 `dbc::assertion_types()`.
 
+### Object dbc::report_is_one_of news:
+
+
+
 ### Object dbc::report_to_assertion news:
 
 `[dbc::report_to_assertion]` now accepts (and has as default)

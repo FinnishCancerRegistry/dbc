@@ -8,8 +8,7 @@
 %   R/generated_prod_interim_assertion_funs.R,
 %   R/generated_prod_output_assertion_funs.R, R/generated_report_funs.R,
 %   R/generated_test_funs.R, R/generated_user_input_assertion_funs.R,
-%   R/manually_written_dataset_check_funs.R,
-%   R/manually_written_is_one_of_check_funs.R, R/manually_written_report_funs.R
+%   R/manually_written_dataset_check_funs.R, R/manually_written_report_funs.R
 \name{assertions}
 \alias{assertions}
 \alias{report_is}
@@ -185,6 +184,7 @@
 \alias{assert_dev_input_is_number_vector}
 \alias{assert_dev_input_is_numeric}
 \alias{assert_dev_input_is_of_length}
+\alias{assert_dev_input_is_one_of}
 \alias{assert_dev_input_is_report_df}
 \alias{assert_dev_input_is_TRUE}
 \alias{assert_dev_input_is_uniquely_named}
@@ -364,6 +364,7 @@
 \alias{assert_dev_interim_is_number_vector}
 \alias{assert_dev_interim_is_numeric}
 \alias{assert_dev_interim_is_of_length}
+\alias{assert_dev_interim_is_one_of}
 \alias{assert_dev_interim_is_report_df}
 \alias{assert_dev_interim_is_TRUE}
 \alias{assert_dev_interim_is_uniquely_named}
@@ -543,6 +544,7 @@
 \alias{assert_dev_output_is_number_vector}
 \alias{assert_dev_output_is_numeric}
 \alias{assert_dev_output_is_of_length}
+\alias{assert_dev_output_is_one_of}
 \alias{assert_dev_output_is_report_df}
 \alias{assert_dev_output_is_TRUE}
 \alias{assert_dev_output_is_uniquely_named}
@@ -722,6 +724,7 @@
 \alias{assert_is_number_vector}
 \alias{assert_is_numeric}
 \alias{assert_is_of_length}
+\alias{assert_is_one_of}
 \alias{assert_is_report_df}
 \alias{assert_is_TRUE}
 \alias{assert_is_uniquely_named}
@@ -901,6 +904,7 @@
 \alias{assert_input_is_number_vector}
 \alias{assert_input_is_numeric}
 \alias{assert_input_is_of_length}
+\alias{assert_input_is_one_of}
 \alias{assert_input_is_report_df}
 \alias{assert_input_is_TRUE}
 \alias{assert_input_is_uniquely_named}
@@ -1080,6 +1084,7 @@
 \alias{assert_prod_input_is_number_vector}
 \alias{assert_prod_input_is_numeric}
 \alias{assert_prod_input_is_of_length}
+\alias{assert_prod_input_is_one_of}
 \alias{assert_prod_input_is_report_df}
 \alias{assert_prod_input_is_TRUE}
 \alias{assert_prod_input_is_uniquely_named}
@@ -1259,6 +1264,7 @@
 \alias{assert_prod_interim_is_number_vector}
 \alias{assert_prod_interim_is_numeric}
 \alias{assert_prod_interim_is_of_length}
+\alias{assert_prod_interim_is_one_of}
 \alias{assert_prod_interim_is_report_df}
 \alias{assert_prod_interim_is_TRUE}
 \alias{assert_prod_interim_is_uniquely_named}
@@ -1438,6 +1444,7 @@
 \alias{assert_prod_output_is_number_vector}
 \alias{assert_prod_output_is_numeric}
 \alias{assert_prod_output_is_of_length}
+\alias{assert_prod_output_is_one_of}
 \alias{assert_prod_output_is_report_df}
 \alias{assert_prod_output_is_TRUE}
 \alias{assert_prod_output_is_uniquely_named}
@@ -1791,6 +1798,7 @@
 \alias{test_is_number_vector}
 \alias{test_is_numeric}
 \alias{test_is_of_length}
+\alias{test_is_one_of}
 \alias{test_is_report_df}
 \alias{test_is_TRUE}
 \alias{test_is_uniquely_named}
@@ -1970,6 +1978,7 @@
 \alias{assert_user_input_is_number_vector}
 \alias{assert_user_input_is_numeric}
 \alias{assert_user_input_is_of_length}
+\alias{assert_user_input_is_one_of}
 \alias{assert_user_input_is_report_df}
 \alias{assert_user_input_is_TRUE}
 \alias{assert_user_input_is_uniquely_named}
@@ -1978,19 +1987,11 @@
 \alias{assert_user_input_match_regex}
 \alias{assert_user_input_vector_elems_are_in_set}
 \alias{identify_invalid_observations}
-\alias{report_is_one_of}
-\alias{assert_is_one_of}
-\alias{assert_prod_input_is_one_of}
-\alias{assert_prod_output_is_one_of}
-\alias{assert_prod_interim_is_one_of}
-\alias{assert_user_input_is_one_of}
-\alias{assert_dev_input_is_one_of}
-\alias{assert_dev_interim_is_one_of}
-\alias{assert_dev_output_is_one_of}
 \alias{report_has_only_valid_observations}
 \alias{report_is_like_template}
 \alias{report_is_identical}
 \alias{report_is_all_equal}
+\alias{report_is_one_of}
 \title{Assertions}
 \usage{
 report_is(x, x_nm = NULL, call = NULL, env = NULL)
@@ -2390,6 +2391,8 @@ assert_dev_input_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_dev_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_dev_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
 
 assert_dev_input_is_report_df(x, x_nm = NULL, call = NULL)
 
@@ -2806,6 +2809,8 @@ assert_dev_interim_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_dev_interim_is_one_of(x, x_nm = NULL, call = NULL, funs)
+
 assert_dev_interim_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_TRUE(x, x_nm = NULL, call = NULL)
@@ -3220,6 +3225,8 @@ assert_dev_output_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_dev_output_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_dev_output_is_one_of(x, x_nm = NULL, call = NULL, funs)
 
 assert_dev_output_is_report_df(x, x_nm = NULL, call = NULL)
 
@@ -4143,6 +4150,8 @@ assert_is_of_length(
   assertion_type = NULL
 )
 
+assert_is_one_of(x, x_nm = NULL, call = NULL, funs, assertion_type = NULL)
+
 assert_is_report_df(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = NULL)
@@ -4570,6 +4579,8 @@ assert_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
+
 assert_input_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_input_is_TRUE(x, x_nm = NULL, call = NULL)
@@ -4979,6 +4990,8 @@ assert_prod_input_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_prod_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_prod_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
 
 assert_prod_input_is_report_df(x, x_nm = NULL, call = NULL)
 
@@ -5411,6 +5424,8 @@ assert_prod_interim_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_prod_interim_is_one_of(x, x_nm = NULL, call = NULL, funs)
+
 assert_prod_interim_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_TRUE(x, x_nm = NULL, call = NULL)
@@ -5825,6 +5840,8 @@ assert_prod_output_is_number_vector(x, x_nm = NULL, call = NULL)
 assert_prod_output_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
+
+assert_prod_output_is_one_of(x, x_nm = NULL, call = NULL, funs)
 
 assert_prod_output_is_report_df(x, x_nm = NULL, call = NULL)
 
@@ -6593,6 +6610,8 @@ test_is_numeric(x, x_nm = NULL, call = NULL)
 
 test_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+test_is_one_of(x, x_nm = NULL, call = NULL, funs)
+
 test_is_report_df(x, x_nm = NULL, call = NULL)
 
 test_is_TRUE(x, x_nm = NULL, call = NULL)
@@ -7003,6 +7022,8 @@ assert_user_input_is_numeric(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
+assert_user_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
+
 assert_user_input_is_report_df(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_TRUE(x, x_nm = NULL, call = NULL)
@@ -7023,24 +7044,6 @@ assert_user_input_match_regex(
 assert_user_input_vector_elems_are_in_set(x, x_nm = NULL, call = NULL, set)
 
 identify_invalid_observations(x, report_df)
-
-report_is_one_of(x, x_nm = NULL, call = NULL, funs)
-
-assert_is_one_of(x, x_nm = NULL, funs, call = NULL, assertion_type = NULL)
-
-assert_prod_input_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-assert_prod_output_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-assert_prod_interim_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-assert_user_input_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-assert_dev_input_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-assert_dev_interim_is_one_of(x, x_nm = NULL, funs, call = NULL)
-
-assert_dev_output_is_one_of(x, x_nm = NULL, funs, call = NULL)
 
 report_has_only_valid_observations(
   x,
@@ -7065,6 +7068,8 @@ report_is_all_equal(
   y_nm = NULL,
   all_equal_arg_list = NULL
 )
+
+report_is_one_of(x, x_nm = NULL, call = NULL, funs)
 }
 \arguments{
 \item{x}{R object to be tested (mandatory, no default)}
@@ -7184,6 +7189,14 @@ If \code{template} and \code{x} return \code{TRUE} for \code{is.list}, compariso
 recursively on all elements and their elements, and so on, until a list
 object is no longer encountered. See \strong{Examples}.}
 
+\item{funs}{\verb{[character, list]} (mandatory, no default)
+
+report functions that return a report (data.frame);
+\itemize{
+\item \code{character}: names of functions that can be found by \verb{[match.fun]}
+\item \code{list}: list of functions
+}}
+
 \item{grepl.arg.list}{\verb{[list]} (default \code{list()})
 
 list of (optional) arguments passed to \verb{[grepl]}}
@@ -7218,14 +7231,6 @@ was not as expected
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
 a report \code{data.frame} as produced by e.g. \link{expressions_to_report}}
-
-\item{funs}{\verb{[character, list]} (mandatory, no default)
-
-report functions that return a report (data.frame);
-\itemize{
-\item \code{character}: names of functions that can be found by \verb{[match.fun]}
-\item \code{list}: list of functions
-}}
 }
 \value{
 \itemize{
@@ -7287,21 +7292,6 @@ report_df <- report_has_only_valid_observations(
 )
 
 identify_invalid_observations(x = df, report_df = report_df)
-my_var <- 1:3
-df1 <- dbc::report_is_one_of(
-  my_var,
-  funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
-)
-df2 <- dbc::report_is_NULL(my_var)
-df3 <- dbc::report_is_character_nonNA_vector(my_var)
-stopifnot(
-  identical(names(df1), names(df2)),
-  identical(lapply(df1, class), lapply(df2, class)),
-  nrow(df1) == 2L,
-  nrow(df2) + nrow(df3) > 2L,
-  is.na(df1[["error"]])
-)
-
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
   x = df,
@@ -7373,4 +7363,23 @@ stopifnot(
   rdf2[["pass"]]
 )
 
+
+# dbc::report_is_one_of
+my_var <- 1:3
+rdf <- dbc::report_is_one_of(
+  my_var,
+  funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
+)
+stopifnot(
+  nrow(rdf) == 1L,
+  identical(rdf[["pass"]], FALSE)
+)
+rdf <- dbc::report_is_one_of(
+  "hello there",
+  funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
+)
+stopifnot(
+  nrow(rdf) == 1L,
+  identical(rdf[["pass"]], TRUE)
+)
 }

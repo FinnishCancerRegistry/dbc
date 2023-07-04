@@ -5425,6 +5425,39 @@ assert_prod_interim_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_prod_interim_is_one_of <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs
+) {
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_one_of(
+    x = x,
+    x_nm = x_nm,
+    call = call,
+    funs = funs
+  )
+  assertion_type <- "prod_interim"
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type,
+    raise_error_call = call
+  )
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_prod_interim_is_report_df <- function(
   x,
   x_nm = NULL,

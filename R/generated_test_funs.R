@@ -4393,6 +4393,33 @@ test_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+test_is_one_of <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs
+) {
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_one_of(
+    x = x,
+    x_nm = x_nm,
+    call = call,
+    funs = funs
+  )
+  return(all(report_df[["pass"]]))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 test_is_report_df <- function(
   x,
   x_nm = NULL,

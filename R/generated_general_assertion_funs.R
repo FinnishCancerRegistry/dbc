@@ -6801,6 +6801,47 @@ assert_is_of_length <- function(
 # this function was generated automatically. do not edit by hand!
 #' @rdname assertions
 #' @export
+assert_is_one_of <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs,
+  assertion_type = NULL
+) {
+  assertion_type <- dbc::handle_arg_assertion_type(assertion_type)
+  if (identical(assertion_type, "none")) {
+    return(invisible(NULL))
+  }
+  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {
+    return(invisible(NULL))
+  }
+
+  # trigger lazy eval of x
+  # -> no "restarting interrupted promise evaluation"
+  is.null(x)
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_df <- dbc::report_is_one_of(
+    x = x,
+    x_nm = x_nm,
+    call = call,
+    funs = funs
+  )
+  dbc::report_to_assertion(
+    report_df,
+    assertion_type = assertion_type,
+    raise_error_call = call
+  )
+  return(invisible(NULL))
+}
+
+
+
+
+
+# this function was generated automatically. do not edit by hand!
+#' @rdname assertions
+#' @export
 assert_is_report_df <- function(
   x,
   x_nm = NULL,
