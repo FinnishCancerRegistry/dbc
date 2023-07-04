@@ -77,7 +77,6 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
       x_nm = paste0("funs[[", i,"]](x = x, x_nm = x_nm, call = call)"),
       call = report_is_one_of_call
     )
-    is_valid_report_df <- all(names(report_df_template) %in% names(report_df))
     report_df[["all_pass"]] <- all(report_df[["pass"]] %in% TRUE)
     total_report_df <- data.frame(
       test = paste0(report_df[["test"]], collapse = " & "),
