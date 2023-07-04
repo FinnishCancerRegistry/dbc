@@ -425,7 +425,14 @@ aggregate_report_df <- function(x, pass) {
     col <- x[[col_nm]]
     switch(
       col_nm,
-      test = paste0(col, collapse = ifelse(pass == "any", "; ", " & ")),
+      test = {
+        if (pass == "any") {
+          out <- paste0("(", paste0(col, collapse = ") | ("), ")")
+        } else {
+          out <- paste0(col, collapse = " & ")
+        }
+        out
+      },
       call = list(col[[1]]),
       n_fail = max(ifelse(is.na(col), 0L, col)),
       wh_fail = {
