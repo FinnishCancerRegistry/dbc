@@ -209,7 +209,7 @@ generate_report_derivative_funs <- function(
       general = c(
         "dbc::report_to_assertion(",
         "  report_df,",
-        "  assertion_type = assertion_type",
+        "  assertion_type = assertion_type,",
         "  raise_error_call = call",
         ")",
         "return(invisible(NULL))"
