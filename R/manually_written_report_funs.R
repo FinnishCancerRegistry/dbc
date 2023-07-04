@@ -438,9 +438,11 @@ report_is_all_equal <- function(
 #'   identical(rdf[["pass"]], TRUE)
 #' )
 report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
-  # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.14")
-  # 
-  # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.14")
+  # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.15")
+  # `dbc::report_is_one_of` now always returns a report `data.frame` with only
+  # one row. All `is_one_of` assertion funs are now generated instead of being
+  # manually generated. Their error messages have therefore changed.
+  # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.15")
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
   report_is_one_of_call <- match.call()

@@ -202,6 +202,12 @@ generate_report_derivative_funs <- function(
   }
 
   fun_df <- data.frame(fun_nm = fun_nms, report_fun_nm = report_fun_nms)
+  # @codedoc_comment_block news("dbc", "2023-07-04", "0.4.15")
+  # All generated assertion functions now pass `call` to
+  # `dbc::report_to_assertion` arg `raise_error_call`. Therefore, now an error
+  # message begins with the call of the guilty function instead of the
+  # assertion function.
+  # @codedoc_comment_block news("dbc", "2023-07-04", "0.4.15")
   assertion_body_tail <- c(
     "dbc::report_to_assertion(",
     "  report_df,",

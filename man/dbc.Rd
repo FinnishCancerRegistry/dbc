@@ -43,6 +43,24 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.4.15}{
+\subsection{Object dbc news:}{
+
+All generated assertion functions now pass \code{call} to
+\code{dbc::report_to_assertion} arg \code{raise_error_call}. Therefore, now an error
+message begins with the call of the guilty function instead of the
+assertion function.
+}
+
+\subsection{Object dbc::report_is_one_of news:}{
+
+\code{dbc::report_is_one_of} now always returns a report \code{data.frame} with only
+one row. All \code{is_one_of} assertion funs are now generated instead of being
+manually generated. Their error messages have therefore changed.
+}
+
+}
+
 \subsection{News for version 0.4.14}{
 \subsection{Object dbc::handle_arg_assertion_type news:}{
 
@@ -51,9 +69,6 @@ New function \verb{[dbc::handle_arg_assertion_type]}. Currently returns
 is replaced with \code{assertion_type <- dbc::assertion_type_default()}.
 Raises an error if \code{assertion_type} is not \code{NULL} nor one of
 \code{dbc::assertion_types()}.
-}
-
-\subsection{Object dbc::report_is_one_of news:}{
 }
 
 \subsection{Object dbc::report_to_assertion news:}{
