@@ -410,6 +410,64 @@ report_is_all_equal <- function(
   return(df)
 }
 
-
-
-
+#' @rdname assertions
+#' @export
+#' @param funs `[character, list]` (mandatory, no default)
+#'
+#' report functions that return a report (data.frame);
+#' - `character`: names of functions that can be found by `[match.fun]`
+#' - `list`: list of functions
+#' @examples
+#'
+#' # dbc::report_is_one_of
+#' my_var <- 1:3
+#' rdf <- dbc::report_is_one_of(
+#'   my_var,
+#'   funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
+#' )
+#' stopifnot(
+#'   nrow(rdf) == 1L,
+#'   identical(rdf[["pass"]], FALSE)
+#' )
+#' rdf <- dbc::report_is_one_of(
+#'   "hello there",
+#'   funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
+#' )
+#' stopifnot(
+#'   nrow(rdf) == 1L,
+#'   identical(rdf[["pass"]], TRUE)
+#' )
+report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
+  # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.14")
+  # 
+  # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.14")
+  x_nm <- dbc::handle_arg_x_nm(x_nm)
+  call <- dbc::handle_arg_call(call)
+  report_is_one_of_call <- match.call()
+  raise_internal_error_if_not(
+    inherits(funs, c("list", "character"))
+  )
+  funs <- as.list(funs)
+  funs <- lapply(seq_along(funs), function(i) {
+    fun <- funs[[i]]
+    fun <- get_function(fun)
+    dbc::assert_prod_input_is_function_with_required_argument_names(
+      fun,
+      x_nm = paste0("funs[[", i, "]]"),
+      call = report_is_one_of_call,
+      required_argument_names = c("x", "x_nm", "call")
+    )
+    fun
+  })
+  report_df <- do.call(rbind, lapply(seq_along(funs), function(i) {
+    expr <- substitute(funs[[i]](x = x, x_nm = x_nm, call = call), list(i = i))
+    report_df <- eval(expr)
+    dbc::assert_prod_interim_is_report_df(
+      report_df,
+      x_nm = deparse1(expr),
+      call = report_is_one_of_call
+    )
+    aggregate_report_df(report_df, pass = "all")
+  }), quote = TRUE)
+  return(aggregate_report_df(report_df, pass = "any"))
+}

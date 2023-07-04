@@ -390,3 +390,77 @@ get_report_df_template <- function() {
 
 
 
+
+get_function <- function(x, env = environment(get_function)) {
+  if (is.character(x)) {
+    fun <- tryCatch(
+      get(x = x, envir = env, mode = "function"),
+      error = function(e) e
+    )
+    if (inherits(fun, "error")) {
+      fun <- tryCatch(
+        eval(parse(text = x)[[1]], envir = env),
+        error = function(e) e
+      )
+    }
+    if (inherits(fun, "error")) {
+      stop("Internal error: Cannot find function based on string ", deparse(x),
+           "; if you can see this, complain to the maintainer of the command ",
+           "you just used")
+    }
+  } else if (!is.function(x)) {
+    stop("Internal error: neither string nor function passed to get_function; ",
+         "if you can see this, complain to the maintainer of the command ",
+         "you just used")
+  } else {
+    fun <- x
+  }
+  return(fun)
+}
+
+aggregate_report_df <- function(x, pass) {
+  raise_internal_error_if_not(pass %in% c("any", "all"))
+  aggregated <- x[1L, ]
+  aggregated[, names(aggregated)] <- lapply(names(x), function(col_nm) {
+    col <- x[[col_nm]]
+    switch(
+      col_nm,
+      test = paste0(col, collapse = ifelse(pass == "any", "; ", " & ")),
+      call = list(col[[1]]),
+      n_fail = max(ifelse(is.na(col), 0L, col)),
+      wh_fail = {
+        wh_fail <- sort(unique(unlist(col)))
+        wh_fail <- setdiff(wh_fail, NA)
+        if (length(wh_fail) == 0) {
+          wh_fail <- NA
+        }
+        list(wh_fail)
+      },
+      pass = switch(pass, any = any(col), all = all(col)),
+      {
+        if (is.character(col)) {
+          col <- col[!col %in% c("NA", NA)]
+          if (length(col) == 0L) {
+            out <- NA_character_
+          } else {
+            out <- paste0(col, collapse = "; ")
+          }
+          out
+        } else if (is.numeric(col)) {
+          sum(col)
+        } else if (is.logical(col)) {
+          all(col %in% TRUE)
+        } else {
+          stop("internal error --- function has programming error. ",
+               "no handling for report_df column ", deparse1(col_nm),
+               "has been defined. complain to the ",
+               "package maintainer.")
+        }
+      }
+    )
+  })
+  if (identical(aggregated[["pass"]], TRUE)) {
+    aggregated[["message"]] <- NA_character_
+  }
+  return(aggregated)
+}
