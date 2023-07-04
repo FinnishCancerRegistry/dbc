@@ -5,13 +5,13 @@ stopifnot(
 )
 
 s1 <- git2r::status()
-e <- new.env()
-source("data-raw/sysdata.R", local = e)
-
 unlink(
   dir("R/", pattern = "^generated_", full.names = TRUE),
   force = TRUE
 )
+
+e <- new.env()
+source("data-raw/sysdata.R", local = e)
 
 pkgload::load_all(export_all = TRUE)
 dbc:::generate_report_funs(
