@@ -44,6 +44,7 @@ dbc:::generate_test_funs(
 
 devtools::document()
 
+Sys.sleep(5)
 s2 <- git2r::status()
 if (!identical(s1, s2)) {
   git2r::add(path = ".")
