@@ -94,7 +94,7 @@ generate_report_funs <- function(
   )
 
 
-  fun_df[["body"]] <- lapply(1:nrow(fun_df), function(fun_no) {
+  fun_df[["body"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
     expression_set <- fun_df[["expression_set"]][[fun_no]]
     fail_message_set <- fun_df[["fail_message_set"]][[fun_no]]
     pass_message_set <- fun_df[["pass_message_set"]][[fun_no]]
@@ -109,9 +109,7 @@ generate_report_funs <- function(
     }
 
     body <- paste0("  ", c(
-      "is.null(x) # trigger lazy eval -> no \"restarting interrupted promise evaluation\"",
-      "x_nm <- dbc::handle_arg_x_nm(x_nm)",
-      "call <- dbc::handle_arg_call(call)",
+      generated_function_header(),
       "report_env <- environment()",
       "expression_set <- c(",
       paste0("  ", expression_set),
@@ -133,7 +131,7 @@ generate_report_funs <- function(
     ))
     body
   })
-  fun_df[["fun_def"]] <- lapply(1:nrow(fun_df), function(fun_no) {
+  fun_df[["fun_def"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
     body <- fun_df[["body"]][[fun_no]]
     arg_set <- c("x", "x_nm = NULL", "call = NULL")
     arg_set <- setdiff(
@@ -148,6 +146,7 @@ generate_report_funs <- function(
       body,
       "}"
     )
+    return(def)
   })
 
   lines <- c(
@@ -165,6 +164,21 @@ generate_report_funs <- function(
   writeLines(text = lines, con = target_script)
 }
 
+generated_function_header <- function() {
+  c(
+    "x_nm <- dbc::handle_arg_x_nm(x_nm)",
+    "call <- dbc::handle_arg_call(call)",
+    "if (missing(x)) {",
+    "  stop(simpleError(",
+    "    message = paste0(",
+    "      \"Argument \", x_nm, \" was missing --- it has no default so \",",
+    "      \"some value must be supplied!\"",
+    "    ),",
+    "    call = call",
+    "  ))",
+    "}"
+  )
+}
 
 generate_report_derivative_funs <- function(
   source_scripts = c(
@@ -235,11 +249,7 @@ generate_report_derivative_funs <- function(
     report_fun_nm <- report_fun_nms[fun_no]
     arg_nms <- names(formals(fun_env[[report_fun_nm]]))
     body <- paste0("  ", c(
-      "# trigger lazy eval of x",
-      "# -> no \"restarting interrupted promise evaluation\"",
-      "is.null(x)",
-      "x_nm <- dbc::handle_arg_x_nm(x_nm)",
-      "call <- dbc::handle_arg_call(call)",
+      generated_function_header(),
       paste0("report_df <- dbc::", fun_df[["report_fun_nm"]][fun_no], "("),
       paste0(
         "  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")
