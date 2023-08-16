@@ -43,6 +43,17 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.4.16}{
+\subsection{Object dbc news:}{
+
+All generated assertion, report and test functions now check whether
+\code{x} is missing and raise an informative error. There were edge cases
+where \code{x} was attempted to be evaluated only in a call to \code{eval} which
+resulted in cryptic error messages --- now those can no longer occur.
+}
+
+}
+
 \subsection{News for version 0.4.15}{
 \subsection{Object dbc news:}{
 
