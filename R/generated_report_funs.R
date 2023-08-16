@@ -8,9 +8,17 @@
 #' @rdname assertions
 #' @export
 report_all_are_TRUE <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "all(x %in% TRUE)"
@@ -37,9 +45,17 @@ report_all_are_TRUE <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_atom(x)", 
@@ -72,9 +88,17 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
 #' @rdname assertions
 #' @export
 report_data_table_has_no_duplicates <- function(x, x_nm = NULL, call = NULL, by = names(x)) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "!(dup <- duplicated(x, by = by))"
@@ -101,9 +125,17 @@ report_data_table_has_no_duplicates <- function(x, x_nm = NULL, call = NULL, by 
 #' @rdname assertions
 #' @export
 report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(bad_dirs <- x[!dir.exists(x)]) == 0L"
@@ -130,9 +162,17 @@ report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_file_exists <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(bad_files <- x[!file.exists(x)]) == 0L"
@@ -159,9 +199,17 @@ report_file_exists <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_atom(required_class)", 
@@ -191,9 +239,17 @@ report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
 #' @rdname assertions
 #' @export
 report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == expected_length"
@@ -220,9 +276,17 @@ report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
 #' @rdname assertions
 #' @export
 report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(required_names)", 
@@ -255,9 +319,17 @@ report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
 #' @rdname assertions
 #' @export
 report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "!duplicated(x)"
@@ -284,9 +356,17 @@ report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(classes)", 
@@ -316,9 +396,17 @@ report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
 #' @rdname assertions
 #' @export
 report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(required_names)", 
@@ -354,9 +442,17 @@ report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
 #' @rdname assertions
 #' @export
 report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_atom(required_class)", 
@@ -386,9 +482,17 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
 #' @rdname assertions
 #' @export
 report_is_assertion_type <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_atom(x)", 
@@ -424,9 +528,17 @@ report_is_assertion_type <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L"
@@ -453,9 +565,17 @@ report_is_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_number_nonNA_vector(lo)", 
@@ -488,9 +608,17 @@ report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
 #' @rdname assertions
 #' @export
 report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_number_nonNA_vector(lo)", 
@@ -523,9 +651,17 @@ report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
 #' @rdname assertions
 #' @export
 report_is_call <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.call(x)"
@@ -552,9 +688,17 @@ report_is_call <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.character(x)"
@@ -581,9 +725,17 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -613,9 +765,17 @@ report_is_character_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.character(x)", 
@@ -645,9 +805,17 @@ report_is_character_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -680,9 +848,17 @@ report_is_character_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.character(x)", 
@@ -715,9 +891,17 @@ report_is_character_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.character(x)", 
@@ -753,9 +937,17 @@ report_is_character_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_character_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.character(x)", 
@@ -788,9 +980,17 @@ report_is_character_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.data.frame(x)"
@@ -817,9 +1017,17 @@ report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(required_names)", 
@@ -852,9 +1060,17 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
 #' @rdname assertions
 #' @export
 report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'data.table')"
@@ -881,9 +1097,17 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(required_names)", 
@@ -916,9 +1140,17 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL
 #' @rdname assertions
 #' @export
 report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'data.table')"
@@ -945,9 +1177,17 @@ report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL, required_names) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(required_names)", 
@@ -980,9 +1220,17 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL
 #' @rdname assertions
 #' @export
 report_is_Date <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'Date')"
@@ -1009,9 +1257,17 @@ report_is_Date <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_Date_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1041,9 +1297,17 @@ report_is_Date_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_Date_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'Date')", 
@@ -1073,9 +1337,17 @@ report_is_Date_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_Date_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1108,9 +1380,17 @@ report_is_Date_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_Date_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'Date')", 
@@ -1143,9 +1423,17 @@ report_is_Date_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_Date_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'Date')", 
@@ -1181,9 +1469,17 @@ report_is_Date_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_Date_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'Date')", 
@@ -1216,9 +1512,17 @@ report_is_Date_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)"
@@ -1245,9 +1549,17 @@ report_is_double <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1277,9 +1589,17 @@ report_is_double_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1312,9 +1632,17 @@ report_is_double_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1347,9 +1675,17 @@ report_is_double_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1385,9 +1721,17 @@ report_is_double_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1420,9 +1764,17 @@ report_is_double_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1455,9 +1807,17 @@ report_is_double_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1493,9 +1853,17 @@ report_is_double_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1528,9 +1896,17 @@ report_is_double_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1563,9 +1939,17 @@ report_is_double_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1601,9 +1985,17 @@ report_is_double_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1636,9 +2028,17 @@ report_is_double_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1671,9 +2071,17 @@ report_is_double_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1709,9 +2117,17 @@ report_is_double_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1741,9 +2157,17 @@ report_is_double_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1776,9 +2200,17 @@ report_is_double_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1814,9 +2246,17 @@ report_is_double_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1852,9 +2292,17 @@ report_is_double_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1893,9 +2341,17 @@ report_is_double_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -1931,9 +2387,17 @@ report_is_double_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -1969,9 +2433,17 @@ report_is_double_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2010,9 +2482,17 @@ report_is_double_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -2048,9 +2528,17 @@ report_is_double_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2086,9 +2574,17 @@ report_is_double_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2127,9 +2623,17 @@ report_is_double_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -2165,9 +2669,17 @@ report_is_double_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2203,9 +2715,17 @@ report_is_double_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2244,9 +2764,17 @@ report_is_double_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2279,9 +2807,17 @@ report_is_double_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2317,9 +2853,17 @@ report_is_double_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_double_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.double(x)", 
@@ -2352,9 +2896,17 @@ report_is_double_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_environment <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.environment(x)"
@@ -2381,9 +2933,17 @@ report_is_environment <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_expression <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.expression(x)"
@@ -2410,9 +2970,17 @@ report_is_expression <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.factor(x)"
@@ -2439,9 +3007,17 @@ report_is_factor <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -2471,9 +3047,17 @@ report_is_factor_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.factor(x)", 
@@ -2503,9 +3087,17 @@ report_is_factor_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -2538,9 +3130,17 @@ report_is_factor_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.factor(x)", 
@@ -2573,9 +3173,17 @@ report_is_factor_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.factor(x)", 
@@ -2611,9 +3219,17 @@ report_is_factor_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.factor(x)", 
@@ -2646,9 +3262,17 @@ report_is_factor_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_levels) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_character_nonNA_vector(expected_levels)", 
@@ -2684,9 +3308,17 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_l
 #' @rdname assertions
 #' @export
 report_is_function <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.function(x)"
@@ -2713,9 +3345,17 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call = NULL, required_argument_names) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.function(x)", 
@@ -2745,9 +3385,17 @@ report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call
 #' @rdname assertions
 #' @export
 report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > lo"
@@ -2774,9 +3422,17 @@ report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
 #' @rdname assertions
 #' @export
 report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= lo"
@@ -2803,9 +3459,17 @@ report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
 #' @rdname assertions
 #' @export
 report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0"
@@ -2832,9 +3496,17 @@ report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0"
@@ -2861,9 +3533,17 @@ report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)"
@@ -2890,9 +3570,17 @@ report_is_integer <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -2922,9 +3610,17 @@ report_is_integer_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -2957,9 +3653,17 @@ report_is_integer_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -2992,9 +3696,17 @@ report_is_integer_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -3030,9 +3742,17 @@ report_is_integer_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3065,9 +3785,17 @@ report_is_integer_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -3100,9 +3828,17 @@ report_is_integer_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -3138,9 +3874,17 @@ report_is_integer_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3173,9 +3917,17 @@ report_is_integer_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3208,9 +3960,17 @@ report_is_integer_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3246,9 +4006,17 @@ report_is_integer_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3281,9 +4049,17 @@ report_is_integer_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3316,9 +4092,17 @@ report_is_integer_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3354,9 +4138,17 @@ report_is_integer_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3386,9 +4178,17 @@ report_is_integer_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3421,9 +4221,17 @@ report_is_integer_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3459,9 +4267,17 @@ report_is_integer_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -3497,9 +4313,17 @@ report_is_integer_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) 
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -3538,9 +4362,17 @@ report_is_integer_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) 
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3576,9 +4408,17 @@ report_is_integer_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -3614,9 +4454,17 @@ report_is_integer_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -3655,9 +4503,17 @@ report_is_integer_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3693,9 +4549,17 @@ report_is_integer_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3731,9 +4595,17 @@ report_is_integer_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) 
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3772,9 +4644,17 @@ report_is_integer_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) 
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -3810,9 +4690,17 @@ report_is_integer_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3848,9 +4736,17 @@ report_is_integer_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3889,9 +4785,17 @@ report_is_integer_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3924,9 +4828,17 @@ report_is_integer_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3962,9 +4874,17 @@ report_is_integer_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_integer_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.integer(x)", 
@@ -3997,9 +4917,17 @@ report_is_integer_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.language(x)"
@@ -4026,9 +4954,17 @@ report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_list <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'list')"
@@ -4055,9 +4991,17 @@ report_is_list <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.logical(x)"
@@ -4084,9 +5028,17 @@ report_is_logical <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -4116,9 +5068,17 @@ report_is_logical_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.logical(x)", 
@@ -4148,9 +5108,17 @@ report_is_logical_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -4183,9 +5151,17 @@ report_is_logical_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.logical(x)", 
@@ -4218,9 +5194,17 @@ report_is_logical_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.logical(x)", 
@@ -4256,9 +5240,17 @@ report_is_logical_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_logical_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.logical(x)", 
@@ -4291,9 +5283,17 @@ report_is_logical_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x < hi"
@@ -4320,9 +5320,17 @@ report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
 #' @rdname assertions
 #' @export
 report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x <= hi"
@@ -4349,9 +5357,17 @@ report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
 #' @rdname assertions
 #' @export
 report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x <= 0"
@@ -4378,9 +5394,17 @@ report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x < 0"
@@ -4407,9 +5431,17 @@ report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.matrix(x)"
@@ -4436,9 +5468,17 @@ report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_name <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.name(x)"
@@ -4465,9 +5505,17 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_named <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "!is.null(names(x))"
@@ -4494,9 +5542,17 @@ report_is_named <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'list')", 
@@ -4526,9 +5582,17 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "if (!is.function(x)) !is.na(x) else TRUE"
@@ -4555,9 +5619,17 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.null(x)"
@@ -4584,9 +5656,17 @@ report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.numeric(x)"
@@ -4613,9 +5693,17 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -4645,9 +5733,17 @@ report_is_number_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -4680,9 +5776,17 @@ report_is_number_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -4715,9 +5819,17 @@ report_is_number_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -4753,9 +5865,17 @@ report_is_number_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -4788,9 +5908,17 @@ report_is_number_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -4823,9 +5951,17 @@ report_is_number_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -4861,9 +5997,17 @@ report_is_number_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -4896,9 +6040,17 @@ report_is_number_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x <= 0", 
@@ -4931,9 +6083,17 @@ report_is_number_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x <= 0", 
@@ -4969,9 +6129,17 @@ report_is_number_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -5004,9 +6172,17 @@ report_is_number_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x < 0", 
@@ -5039,9 +6215,17 @@ report_is_number_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x < 0", 
@@ -5077,9 +6261,17 @@ report_is_number_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.matrix(x)", 
@@ -5109,9 +6301,17 @@ report_is_number_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -5144,9 +6344,17 @@ report_is_number_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -5182,9 +6390,17 @@ report_is_number_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -5220,9 +6436,17 @@ report_is_number_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x >= 0", 
@@ -5261,9 +6485,17 @@ report_is_number_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -5299,9 +6531,17 @@ report_is_number_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -5337,9 +6577,17 @@ report_is_number_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x > 0", 
@@ -5378,9 +6626,17 @@ report_is_number_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -5416,9 +6672,17 @@ report_is_number_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x <= 0", 
@@ -5454,9 +6718,17 @@ report_is_number_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x <= 0", 
@@ -5495,9 +6767,17 @@ report_is_number_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == 1L", 
@@ -5533,9 +6813,17 @@ report_is_number_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x < 0", 
@@ -5571,9 +6859,17 @@ report_is_number_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x < 0", 
@@ -5612,9 +6908,17 @@ report_is_number_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.matrix(x)", 
@@ -5647,9 +6951,17 @@ report_is_number_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "if (!is.function(x)) !is.na(x) else TRUE", 
@@ -5685,9 +6997,17 @@ report_is_number_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_number_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.numeric(x)", 
@@ -5720,9 +7040,17 @@ report_is_number_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.numeric(x)"
@@ -5749,9 +7077,17 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "length(x) == expected_length"
@@ -5778,9 +7114,17 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
 #' @rdname assertions
 #' @export
 report_is_report_df <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.data.frame(x)", 
@@ -5810,9 +7154,17 @@ report_is_report_df <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_TRUE <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "x %in% TRUE"
@@ -5839,9 +7191,17 @@ report_is_TRUE <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "!is.null(names(x))", 
@@ -5871,9 +7231,17 @@ report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "inherits(x, 'list')", 
@@ -5906,9 +7274,17 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_is_vector <- function(x, x_nm = NULL, call = NULL) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "is.null(dim(x))", 
@@ -5938,9 +7314,17 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
 #' @rdname assertions
 #' @export
 report_match_regex <- function(x, x_nm = NULL, call = NULL, grepl.arg.list = list()) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}"
@@ -5967,9 +7351,17 @@ report_match_regex <- function(x, x_nm = NULL, call = NULL, grepl.arg.list = lis
 #' @rdname assertions
 #' @export
 report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
-  is.null(x) # trigger lazy eval -> no "restarting interrupted promise evaluation"
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   call <- dbc::handle_arg_call(call)
+  if (missing(x)) {
+    stop(simpleError(
+      message = paste0(
+        "Argument ", x_nm, " was missing --- it has no default so ",
+        "some value must be supplied!"
+      ),
+      call = call
+    ))
+  }
   report_env <- environment()
   expression_set <- c(
     "dbc::test_is_vector(x)", 
