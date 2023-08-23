@@ -2,7 +2,7 @@
 
 ## News for version 0.4.16
 
-### Object dbc news:
+### dbc
 
 All generated assertion, report and test functions now check whether
 `x` is missing and raise an informative error. There were edge cases
@@ -12,14 +12,14 @@ resulted in cryptic error messages --- now those can no longer occur.
 
 ## News for version 0.4.15
 
-### Object dbc news:
+### dbc
 
 All generated assertion functions now pass `call` to
 `dbc::report_to_assertion` arg `raise_error_call`. Therefore, now an error
 message begins with the call of the guilty function instead of the
 assertion function.
 
-### Object dbc::report_is_one_of news:
+### dbc::report_is_one_of
 
 `dbc::report_is_one_of` now always returns a report `data.frame` with only
 one row. All `is_one_of` assertion funs are now generated instead of being
@@ -28,7 +28,7 @@ manually generated. Their error messages have therefore changed.
 
 ## News for version 0.4.14
 
-### Object dbc::handle_arg_assertion_type news:
+### dbc::handle_arg_assertion_type
 
 New function `[dbc::handle_arg_assertion_type]`. Currently returns
 `assertion_type` as-is, except `assertion_type = NULL`
@@ -36,7 +36,7 @@ is replaced with `assertion_type <- dbc::assertion_type_default()`.
 Raises an error if `assertion_type` is not `NULL` nor one of
 `dbc::assertion_types()`.
 
-### Object dbc::report_to_assertion news:
+### dbc::report_to_assertion
 
 `[dbc::report_to_assertion]` now accepts (and has as default)
 `assertion_type = NULL`. Arg `assertion_type` is handled by
@@ -48,7 +48,7 @@ value `NULL`.
 
 ## News for version 0.4.13
 
-### Object dbc news:
+### dbc
 
 Improved `*_vector_elems_are_in_set` funs: assertion failure message
 also shows first ten elems of `set`.
@@ -56,7 +56,7 @@ also shows first ten elems of `set`.
 
 ## News for version 0.4.12
 
-### Object dbc::assertion_type_default news:
+### dbc::assertion_type_default
 
 New fun `dbc::assertion_type_default`.
 This returns the default value for the `assertion_type` arg used by all
@@ -65,19 +65,19 @@ funs that have that arg.
 
 ## News for version 0.4.11
 
-### Object dbc::report_data_table_has_no_duplicates news:
+### dbc::report_data_table_has_no_duplicates
 
 New fun `dbc::report_data_table_has_no_duplicates` and derivatives.
 
 
 ## News for version 0.4.10
 
-### Object dbc::report_is_all_equal news:
+### dbc::report_is_all_equal
 
 New fun `dbc::report_is_all_equal`. Generated correspoding assertion
 funs.
 
-### Object dbc::report_is_identical news:
+### dbc::report_is_identical
 
 New fun `dbc::report_is_identical`. Generated correspoding assertion
 funs.
@@ -85,7 +85,7 @@ funs.
 
 ## News for version 0.4.9
 
-### Object dbc::assertion_types news:
+### dbc::assertion_types
 
 Added new assertion type `"none"`. This was added for convenience:
 using `assertion_type = "none"` means that the assertion is not performed.
@@ -94,14 +94,14 @@ This can save computation time.
 
 ## News for version 0.4.8
 
-### Object dbc::report_has_class news:
+### dbc::report_has_class
 
 
 `dbc::report_has_class` and `dbc::report_inherits` error message improved for
 when `required_class` is improper.
 
 
-### Object dbc::report_inherits news:
+### dbc::report_inherits
 
 
 `dbc::report_has_class` and `dbc::report_inherits` error message improved for
@@ -111,12 +111,12 @@ when `required_class` is improper.
 
 ## News for version 0.4.7
 
-### Object dbc::report_is news:
+### dbc::report_is
 
 `dbc::report_is` and all corresponding assertion functions now handle
 string and expression inputs more robustly.
 
-### Object dbc::report_is_like_template news:
+### dbc::report_is_like_template
 
 New fun `dbc::report_is_like_template`. Generated correspoding assertion
 funs. Compare an object's names, class, and length to a template. Recursive
@@ -125,7 +125,7 @@ for lists.
 
 ## News for version 0.4.6
 
-### Object dbc::report_is news:
+### dbc::report_is
 
 `dbc::report_is` gains arg `env` it is passed to
 `dbc::expressions_to_report`, so that's where `x` will be evaluated.

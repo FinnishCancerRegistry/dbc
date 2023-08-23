@@ -1,11 +1,12 @@
-#' @name dbc
-#' @docType package
-#' @title dbc: Functions To Aid Design By Contract
-#'
 #' @eval c(
 #'   codedoc::codedoc_R_package_description("dbc"),
 #'   codedoc::codedoc_news_for_R_package()
 #' )
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+## usethis namespace: end
 NULL
 
 # @codedoc_comment_block R_package_example(dbc)
