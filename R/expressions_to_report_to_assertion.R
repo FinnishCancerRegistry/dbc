@@ -376,7 +376,7 @@ report_to_assertion <- function(
         call_string <- "in unknown call, "
       } else {
         call_string <- paste0(
-          "in call ", paste0(deparse(call), collapse = ""), ", "
+          "in call `", paste0(deparse(call), collapse = ""), "`, "
         )
       }
       gsub("\\s+", " ", call_string)
