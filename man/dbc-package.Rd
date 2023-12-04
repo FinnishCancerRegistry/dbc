@@ -10,7 +10,7 @@
 philosophy, where function inputs and outputs are programmatically
 asserted to adhere to specifications.
 
-\href{https://github.com/WetRobot/dbc/actions/workflows/R-CMD-check.yaml}{\if{html}{\figure{https://github.com/WetRobot/dbc/actions/workflows/R-CMD-check.yaml/badge.svg}}}
+\href{https://github.com/FinnishCancerRegistry/dbc/actions/workflows/R-CMD-check.yaml}{\if{html}{\figure{https://github.com/FinnishCancerRegistry/dbc/actions/workflows/R-CMD-check.yaml/badge.svg}}}
 }
 \section{Recommended installation}{
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{devtools::install_github(
