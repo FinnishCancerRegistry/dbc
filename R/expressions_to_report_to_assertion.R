@@ -151,7 +151,7 @@ expressions_to_report <- function(
     fail_messages <- rep(fail_messages, length(expressions))
   }
   fail_messages[is.na(fail_messages)] <- paste0(
-    "test failed: ", expressions[is.na(fail_messages)]
+    "test failed: `", expression_strings[is.na(fail_messages)], "`"
   )
   if (is.null(pass_messages)) {
     pass_messages <- rep(NA_character_, length(expressions))
@@ -159,7 +159,7 @@ expressions_to_report <- function(
     pass_messages <- rep(pass_messages, length(expressions))
   }
   pass_messages[is.na(pass_messages)] <- paste0(
-    "test passed: ", expressions[is.na(pass_messages)]
+    "test passed: `", expression_strings[is.na(pass_messages)], "`"
   )
 
   # report_df ------------------------------------------------------------------
@@ -365,10 +365,8 @@ report_to_assertion <- function(
         if (!is.na(error_msg)) {
           suffix <- paste0("encountered an ERROR: ", error_msg)
         }
-        expression_string <- paste0(deparse(
-          report_df[["test"]][test_no]
-        ), collapse = "")
-        paste0("test ", expression_string, " ", suffix)
+        expression_string <- paste0(report_df[["test"]][test_no], collapse = "")
+        paste0("test `", expression_string, "` ", suffix)
       },
       character(1L)
     )

@@ -1,95 +1,95 @@
 "test_set_nm";"call";"fail_message";"pass_message";"extra_arg_nm_set"
-"dir_exists";"length(bad_dirs <- x[!dir.exists(x)]) == 0L";"the following directory/directories in object ${deparse(x_nm)} do not exist: ${deparse(bad_dirs)}";NA;NA
-"file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"the following file(s) in object ${deparse(x_nm)} do not exist: ${bad_files}";NA;NA
-"is_number";"is.numeric(x)";"object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_numeric";"is.numeric(x)";"object ${deparse(x_nm)} was not numeric; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_double";"is.double(x)";"object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_integer";"is.integer(x)";"object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_character";"is.character(x)";"object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_logical";"is.logical(x)";"object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_Date";"inherits(x, 'Date')";"object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_factor";"is.factor(x)";"object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_function";"is.function(x)";"object ${deparse(x_nm)} was not a function; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_function_with_required_argument_names";"is.function(x)";"object ${deparse(x_nm)} was not a function";NA;required_argument_names
-"is_function_with_required_argument_names";"all(required_argument_names %in% names(formals(x)))";"object ${deparse(x_nm)} did not have all required arguments ${deparse(required_argument_names)}";NA;required_argument_names
-"is_environment";"is.environment(x)";"object ${deparse(x_nm)} was not an environment object";NA;NA
-"is_call";"is.call(x)";"object ${deparse(x_nm)} was not a call object; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_name";"is.name(x)";"object ${deparse(x_nm)} was not a name object; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_expression";"is.expression(x)";"object ${deparse(x_nm)} was not an R expression object; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_language_object";"is.language(x)";"object ${deparse(x_nm)} was not an R language object; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_of_length";"length(x) == expected_length";"object ${deparse(x_nm)} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
-"has_length";"length(x) == expected_length";"object ${deparse(x_nm)} had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
+"dir_exists";"length(bad_dirs <- x[!dir.exists(x)]) == 0L";"the following directory/directories in object `${x_nm}` do not exist: ${deparse(bad_dirs)}";NA;NA
+"file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"the following file(s) in object `${x_nm}` do not exist: ${bad_files}";NA;NA
+"is_number";"is.numeric(x)";"object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_numeric";"is.numeric(x)";"object `${x_nm}` was not numeric; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_double";"is.double(x)";"object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_integer";"is.integer(x)";"object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_character";"is.character(x)";"object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_logical";"is.logical(x)";"object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_Date";"inherits(x, 'Date')";"object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_factor";"is.factor(x)";"object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_function";"is.function(x)";"object `${x_nm}` was not a function; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_function_with_required_argument_names";"is.function(x)";"object `${x_nm}` was not a function";NA;required_argument_names
+"is_function_with_required_argument_names";"all(required_argument_names %in% names(formals(x)))";"object `${x_nm}` did not have all required arguments ${deparse(required_argument_names)}";NA;required_argument_names
+"is_environment";"is.environment(x)";"object `${x_nm}` was not an environment object";NA;NA
+"is_call";"is.call(x)";"object `${x_nm}` was not a call object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_name";"is.name(x)";"object `${x_nm}` was not a name object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_expression";"is.expression(x)";"object `${x_nm}` was not an R expression object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_language_object";"is.language(x)";"object `${x_nm}` was not an R language object; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_of_length";"length(x) == expected_length";"object `${x_nm}` had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
+"has_length";"length(x) == expected_length";"object `${x_nm}` had length ${length(x)} instead of ${expected_length}";NA;"expected_length"
 "has_class";"dbc::test_is_character_nonNA_atom(required_class)";"Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ";NA;"required_class"
-"has_class";"inherits(x, required_class)";"expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
+"has_class";"inherits(x, required_class)";"expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
 "inherits";"dbc::test_is_character_nonNA_atom(required_class)";"Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ";NA;"required_class"
-"inherits";"inherits(x, required_class)";"expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
+"inherits";"inherits(x, required_class)";"expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}";NA;"required_class"
 "has_one_of_classes";"dbc::test_is_character_nonNA_vector(classes)";NA;NA;"classes"
-"has_one_of_classes";"inherits(x, classes)";"expected object ${deparse(x_nm)} to have class ${classes}, but it had class(es) ${deparse(class(x))}";NA;"classes"
+"has_one_of_classes";"inherits(x, classes)";"expected object `${x_nm}` to have class ${classes}, but it had class(es) ${deparse(class(x))}";NA;"classes"
 "is_factor_with_levels";"dbc::test_is_character_nonNA_vector(expected_levels)";NA;NA;"expected_levels"
-"is_factor_with_levels";"is.factor(x)";"object ${deparse(x_nm)} is not a factor; instead it had class(es) ${deparse(class(x))}";NA;"expected_levels"
-"is_factor_with_levels";"length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L";"factor object ${deparse(x_nm)} had these unexpected levels: ${deparse(extra_levels)}";NA;"expected_levels"
-"is_factor_with_levels";"length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L";"factor object ${deparse(x_nm)} did not have these expected levels: ${deparse(miss_levels)}";NA;"expected_levels"
-"is_named";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;NA
+"is_factor_with_levels";"is.factor(x)";"object `${x_nm}` is not a factor; instead it had class(es) ${deparse(class(x))}";NA;"expected_levels"
+"is_factor_with_levels";"length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L";"factor object `${x_nm}` had these unexpected levels: ${deparse(extra_levels)}";NA;"expected_levels"
+"is_factor_with_levels";"length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L";"factor object `${x_nm}` did not have these expected levels: ${deparse(miss_levels)}";NA;"expected_levels"
+"is_named";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
 "has_names";"dbc::test_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"has_names";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;"required_names"
-"has_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object ${deparse(x_nm)} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
-"is_uniquely_named";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;NA
-"is_uniquely_named";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object ${deparse(x_nm)} has a different name";NA;NA
+"has_names";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;"required_names"
+"has_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"is_uniquely_named";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
+"is_uniquely_named";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object `${x_nm}` has a different name";NA;NA
 "has_only_names";"dbc::test_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"has_only_names";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;"required_names"
-"has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object ${deparse(x_nm)} did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
-"has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"object ${deparse(x_nm)} had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
+"has_only_names";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;"required_names"
+"has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
+"has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"object `${x_nm}` had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
 "atom_is_in_set";"dbc::test_is_atom(x)";NA;NA;"set"
 "atom_is_in_set";"dbc::test_is_vector(set)";NA;NA;"set"
-"atom_is_in_set";"x %in% set";"object ${deparse(x_nm)} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}";NA;"set"
+"atom_is_in_set";"x %in% set";"object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}";NA;"set"
 "vector_elems_are_in_set";"dbc::test_is_vector(x)";NA;NA;"set"
-"vector_elems_are_in_set";"in_set <- x %in% set";"some values of object ${deparse(x_nm)} were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}";NA;"set"
-"is_atom";"length(x) == 1L";"length of object ${deparse(x_nm)} was ${length(x)} instead of 1";NA;NA
-"is_vector";"is.null(dim(x))";"object ${deparse(x_nm)} had dimensions but was expected to have none";NA;NA
-"is_vector";"!is.list(x)";"object ${deparse(x_nm)} was a list";NA;""
-"is_matrix";"is.matrix(x)";"object ${deparse(x_nm)} was not a matrix";NA;NA
-"is_NULL";"is.null(x)";"object ${deparse(x_nm)} was not NULL";NA;NA
-"is_list";"inherits(x, 'list')";"object ${deparse(x_nm)} was not of class list";NA;NA
-"is_named_list";"inherits(x, 'list')";"object ${deparse(x_nm)} was not of class list";NA;NA
-"is_named_list";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;NA
-"is_uniquely_named_list";"inherits(x, 'list')";"object ${deparse(x_nm)} was not of class list";NA;NA
-"is_uniquely_named_list";"!is.null(names(x))";"object ${deparse(x_nm)} did not have any names";NA;NA
-"is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object ${deparse(x_nm)} has a different name";NA;NA
-"is_data.frame";"is.data.frame(x)";"object ${deparse(x_nm)} was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_data.table";"inherits(x, 'data.table')";"object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
-"is_data_table";"inherits(x, 'data.table')";"object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
+"vector_elems_are_in_set";"in_set <- x %in% set";"some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}";NA;"set"
+"is_atom";"length(x) == 1L";"length of object `${x_nm}` was ${length(x)} instead of 1";NA;NA
+"is_vector";"is.null(dim(x))";"object `${x_nm}` had dimensions but was expected to have none";NA;NA
+"is_vector";"!is.list(x)";"object `${x_nm}` was a list";NA;""
+"is_matrix";"is.matrix(x)";"object `${x_nm}` was not a matrix";NA;NA
+"is_NULL";"is.null(x)";"object `${x_nm}` was not NULL";NA;NA
+"is_list";"inherits(x, 'list')";"object `${x_nm}` was not of class list";NA;NA
+"is_named_list";"inherits(x, 'list')";"object `${x_nm}` was not of class list";NA;NA
+"is_named_list";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
+"is_uniquely_named_list";"inherits(x, 'list')";"object `${x_nm}` was not of class list";NA;NA
+"is_uniquely_named_list";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
+"is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object `${x_nm}` has a different name";NA;NA
+"is_data.frame";"is.data.frame(x)";"object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_data.table";"inherits(x, 'data.table')";"object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
+"is_data_table";"inherits(x, 'data.table')";"object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_data.frame_with_required_names";"dbc::test_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"is_data.frame_with_required_names";"is.data.frame(x)";"object ${deparse(x_nm)} was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
-"is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
+"is_data.frame_with_required_names";"is.data.frame(x)";"object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
+"is_data.frame_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
 "is_data.table_with_required_names";"dbc::test_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"is_data.table_with_required_names";"inherits(x, 'data.table')";"object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
-"is_data.table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
+"is_data.table_with_required_names";"inherits(x, 'data.table')";"object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
+"is_data.table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
 "is_data_table_with_required_names";"dbc::test_is_character_nonNA_vector(required_names)";NA;NA;"required_names"
-"is_data_table_with_required_names";"inherits(x, 'data.table')";"object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
-"is_data_table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
-"is_nonNA";"if (!is.function(x)) !is.na(x) else TRUE";"object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed";NA;NA
+"is_data_table_with_required_names";"inherits(x, 'data.table')";"object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}";NA;"required_names"
+"is_data_table_with_required_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}";NA;"required_names"
+"is_nonNA";"if (!is.function(x)) !is.na(x) else TRUE";"object `${x_nm}` had ${n_fail} NA values - none are allowed";NA;NA
 "is_between_inclusive";"dbc::test_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"
 "is_between_inclusive";"dbc::test_is_number_nonNA_vector(hi)";NA;NA;"lo, hi"
-"is_between_inclusive";"dbc::is_between_inclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of ${deparse(x_nm)} were outside inclusive bounds ${lo}, ${hi}";NA;"lo, hi"
+"is_between_inclusive";"dbc::is_between_inclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}";NA;"lo, hi"
 "is_between_exclusive";"dbc::test_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"
 "is_between_exclusive";"dbc::test_is_number_nonNA_vector(hi)";NA;NA;"lo, hi"
-"is_between_exclusive";"!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of ${deparse(x_nm)} were outside exclusive bounds ${lo}, ${hi}";NA;"lo, hi"
-"is_gte";"x >= lo";"${n_fail} elements of ${deparse(x_nm)} were < ${lo}";NA;"lo"
-"is_gt";"x > lo";"${n_fail} elements of ${deparse(x_nm)} were <= ${lo}";NA;"lo"
-"is_lte";"x <= hi";"${n_fail} elements of ${deparse(x_nm)} were > ${hi}";NA;"hi"
-"is_lt";"x < hi";"${n_fail} elements of ${deparse(x_nm)} were >= ${hi}";NA;"hi"
-"is_gtezero";"x >= 0";"${n_fail} elements of ${deparse(x_nm)} were < 0";NA;NA
-"is_gtzero";"x > 0";"${n_fail} elements of ${deparse(x_nm)} were <= 0";NA;NA
-"is_ltezero";"x <= 0";"${n_fail} elements of ${deparse(x_nm)} were > 0";NA;NA
-"is_ltzero";"x < 0";"${n_fail} elements of ${deparse(x_nm)} were >= 0";NA;NA
-"has_no_duplicates";"!duplicated(x)";"In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}";"object ${deparse(x_nm)} had no duplicates";NA
+"is_between_exclusive";"!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}";NA;"lo, hi"
+"is_gte";"x >= lo";"${n_fail} elements of `${x_nm}` were < ${lo}";NA;"lo"
+"is_gt";"x > lo";"${n_fail} elements of `${x_nm}` were <= ${lo}";NA;"lo"
+"is_lte";"x <= hi";"${n_fail} elements of `${x_nm}` were > ${hi}";NA;"hi"
+"is_lt";"x < hi";"${n_fail} elements of `${x_nm}` were >= ${hi}";NA;"hi"
+"is_gtezero";"x >= 0";"${n_fail} elements of `${x_nm}` were < 0";NA;NA
+"is_gtzero";"x > 0";"${n_fail} elements of `${x_nm}` were <= 0";NA;NA
+"is_ltezero";"x <= 0";"${n_fail} elements of `${x_nm}` were > 0";NA;NA
+"is_ltzero";"x < 0";"${n_fail} elements of `${x_nm}` were >= 0";NA;NA
+"has_no_duplicates";"!duplicated(x)";"In total ${n_fail} elements of object/param `${x_nm}` were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}";"object `${x_nm}` had no duplicates";NA
 "data_table_has_no_duplicates";"!(dup <- duplicated(x, by = by))";"In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse1(utils::head(which(dup), 5))}";"data.table ${deparse1(x_nm)} had no duplicates (by ${deparse1(by)})";by = names(x)
-"all_are_TRUE";"all(x %in% TRUE)";"Not all elements of ${deparse(x_nm)} were TRUE";NA;NA
-"is_TRUE";"x %in% TRUE";"${n_fail} elements of ${deparse(x_nm)} were FALSE or NA";NA;NA
-"match_regex";"{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}";"${n_fail} elements of ${deparse(x_nm)} did not match regex ${deparse(grepl.arg.list[['pattern']])}";"All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}";"grepl.arg.list = list()"
-"is_assertion_type";"dbc::test_is_atom(x)";"${deparse(x_nm)} was not atomic";NA;NA
-"is_assertion_type";"dbc::test_is_character(x)";"${deparse(x_nm)} was not a string";NA;NA
-"is_assertion_type";"dbc::test_is_nonNA(x)";"${deparse(x_nm)} was NA";NA;NA
-"is_assertion_type";"dbc::test_atom_is_in_set(x, set = dbc::assertion_types())";"${deparse(x_nm)} was not one of the strings given by dbc::assertion_types()";NA;NA
-"is_report_df";"is.data.frame(x)";"${deparse(x_nm)} was not a data.frame";NA;NA
-"is_report_df";"length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L";"Following columns were expected but not in ${deparse(x_nm)}: ${deparse(miss_col_nms)}";NA;NA
+"all_are_TRUE";"all(x %in% TRUE)";"Not all elements of `${x_nm}` were TRUE";NA;NA
+"is_TRUE";"x %in% TRUE";"${n_fail} elements of `${x_nm}` were FALSE or NA";NA;NA
+"match_regex";"{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}";"${n_fail} elements of `${x_nm}` did not match regex ${deparse(grepl.arg.list[['pattern']])}";"All elements of `${x_nm}` matched regex ${deparse(grepl.arg.list[['pattern']])}";"grepl.arg.list = list()"
+"is_assertion_type";"dbc::test_is_atom(x)";"`${x_nm}` was not atomic";NA;NA
+"is_assertion_type";"dbc::test_is_character(x)";"`${x_nm}` was not a string";NA;NA
+"is_assertion_type";"dbc::test_is_nonNA(x)";"`${x_nm}` was NA";NA;NA
+"is_assertion_type";"dbc::test_atom_is_in_set(x, set = dbc::assertion_types())";"`${x_nm}` was not one of the strings given by dbc::assertion_types()";NA;NA
+"is_report_df";"is.data.frame(x)";"`${x_nm}` was not a data.frame";NA;NA
+"is_report_df";"length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L";"Following columns were expected but not in `${x_nm}`: ${deparse(miss_col_nms)}";NA;NA
