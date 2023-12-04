@@ -24,7 +24,7 @@ report_all_are_TRUE <- function(x, x_nm = NULL, call = NULL) {
     "all(x %in% TRUE)"
   )
   fail_message_set <- c(
-    "Not all elements of ${deparse(x_nm)} were TRUE"
+    "Not all elements of `${x_nm}` were TRUE"
   )
   pass_message_set <- c(
     "NA"
@@ -65,7 +65,7 @@ report_atom_is_in_set <- function(x, x_nm = NULL, call = NULL, set) {
   fail_message_set <- c(
     "NA", 
     "NA", 
-    "object ${deparse(x_nm)} = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}"
+    "object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -141,7 +141,7 @@ report_dir_exists <- function(x, x_nm = NULL, call = NULL) {
     "length(bad_dirs <- x[!dir.exists(x)]) == 0L"
   )
   fail_message_set <- c(
-    "the following directory/directories in object ${deparse(x_nm)} do not exist: ${deparse(bad_dirs)}"
+    "the following directory/directories in object `${x_nm}` do not exist: ${deparse(bad_dirs)}"
   )
   pass_message_set <- c(
     "NA"
@@ -178,7 +178,7 @@ report_file_exists <- function(x, x_nm = NULL, call = NULL) {
     "length(bad_files <- x[!file.exists(x)]) == 0L"
   )
   fail_message_set <- c(
-    "the following file(s) in object ${deparse(x_nm)} do not exist: ${bad_files}"
+    "the following file(s) in object `${x_nm}` do not exist: ${bad_files}"
   )
   pass_message_set <- c(
     "NA"
@@ -217,7 +217,7 @@ report_has_class <- function(x, x_nm = NULL, call = NULL, required_class) {
   )
   fail_message_set <- c(
     "Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ", 
-    "expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
+    "expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -255,7 +255,7 @@ report_has_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
     "length(x) == expected_length"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} had length ${length(x)} instead of ${expected_length}"
+    "object `${x_nm}` had length ${length(x)} instead of ${expected_length}"
   )
   pass_message_set <- c(
     "NA"
@@ -295,8 +295,8 @@ report_has_names <- function(x, x_nm = NULL, call = NULL, required_names) {
   )
   fail_message_set <- c(
     "NA", 
-    "object ${deparse(x_nm)} did not have any names", 
-    "object ${deparse(x_nm)} did not have the following expected names: ${deparse(miss_nms)}"
+    "object `${x_nm}` did not have any names", 
+    "object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -335,10 +335,10 @@ report_has_no_duplicates <- function(x, x_nm = NULL, call = NULL) {
     "!duplicated(x)"
   )
   fail_message_set <- c(
-    "In total ${n_fail} elements of object/param ${deparse(x_nm)} were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}"
+    "In total ${n_fail} elements of object/param `${x_nm}` were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}"
   )
   pass_message_set <- c(
-    "object ${deparse(x_nm)} had no duplicates"
+    "object `${x_nm}` had no duplicates"
   )
   report_df <- dbc::expressions_to_report(
     expressions = expression_set,
@@ -374,7 +374,7 @@ report_has_one_of_classes <- function(x, x_nm = NULL, call = NULL, classes) {
   )
   fail_message_set <- c(
     "NA", 
-    "expected object ${deparse(x_nm)} to have class ${classes}, but it had class(es) ${deparse(class(x))}"
+    "expected object `${x_nm}` to have class ${classes}, but it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -416,9 +416,9 @@ report_has_only_names <- function(x, x_nm = NULL, call = NULL, required_names) {
   )
   fail_message_set <- c(
     "NA", 
-    "object ${deparse(x_nm)} did not have any names", 
-    "object ${deparse(x_nm)} did not have the following expected names: ${deparse(miss_nms)}", 
-    "object ${deparse(x_nm)} had the following unexpected names: ${deparse(extra_nms)}"
+    "object `${x_nm}` did not have any names", 
+    "object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}", 
+    "object `${x_nm}` had the following unexpected names: ${deparse(extra_nms)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -460,7 +460,7 @@ report_inherits <- function(x, x_nm = NULL, call = NULL, required_class) {
   )
   fail_message_set <- c(
     "Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ", 
-    "expected object ${deparse(x_nm)} to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
+    "expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -501,10 +501,10 @@ report_is_assertion_type <- function(x, x_nm = NULL, call = NULL) {
     "dbc::test_atom_is_in_set(x, set = dbc::assertion_types())"
   )
   fail_message_set <- c(
-    "${deparse(x_nm)} was not atomic", 
-    "${deparse(x_nm)} was not a string", 
-    "${deparse(x_nm)} was NA", 
-    "${deparse(x_nm)} was not one of the strings given by dbc::assertion_types()"
+    "`${x_nm}` was not atomic", 
+    "`${x_nm}` was not a string", 
+    "`${x_nm}` was NA", 
+    "`${x_nm}` was not one of the strings given by dbc::assertion_types()"
   )
   pass_message_set <- c(
     "NA", 
@@ -544,7 +544,7 @@ report_is_atom <- function(x, x_nm = NULL, call = NULL) {
     "length(x) == 1L"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1"
+    "length of object `${x_nm}` was ${length(x)} instead of 1"
   )
   pass_message_set <- c(
     "NA"
@@ -585,7 +585,7 @@ report_is_between_exclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
   fail_message_set <- c(
     "NA", 
     "NA", 
-    "${n_fail} elements of ${deparse(x_nm)} were outside exclusive bounds ${lo}, ${hi}"
+    "${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}"
   )
   pass_message_set <- c(
     "NA", 
@@ -628,7 +628,7 @@ report_is_between_inclusive <- function(x, x_nm = NULL, call = NULL, lo, hi) {
   fail_message_set <- c(
     "NA", 
     "NA", 
-    "${n_fail} elements of ${deparse(x_nm)} were outside inclusive bounds ${lo}, ${hi}"
+    "${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}"
   )
   pass_message_set <- c(
     "NA", 
@@ -667,7 +667,7 @@ report_is_call <- function(x, x_nm = NULL, call = NULL) {
     "is.call(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a call object; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a call object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -704,7 +704,7 @@ report_is_character <- function(x, x_nm = NULL, call = NULL) {
     "is.character(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -742,8 +742,8 @@ report_is_character_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.character(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -782,8 +782,8 @@ report_is_character_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -823,9 +823,9 @@ report_is_character_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -866,9 +866,9 @@ report_is_character_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -910,10 +910,10 @@ report_is_character_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -955,9 +955,9 @@ report_is_character_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class character; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -996,7 +996,7 @@ report_is_data.frame <- function(x, x_nm = NULL, call = NULL) {
     "is.data.frame(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a data.frame; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -1036,8 +1036,8 @@ report_is_data.frame_with_required_names <- function(x, x_nm = NULL, call = NULL
   )
   fail_message_set <- c(
     "NA", 
-    "object ${deparse(x_nm)} was not a data.frame; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}"
+    "object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -1076,7 +1076,7 @@ report_is_data.table <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'data.table')"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -1116,8 +1116,8 @@ report_is_data.table_with_required_names <- function(x, x_nm = NULL, call = NULL
   )
   fail_message_set <- c(
     "NA", 
-    "object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}"
+    "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -1156,7 +1156,7 @@ report_is_data_table <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'data.table')"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -1196,8 +1196,8 @@ report_is_data_table_with_required_names <- function(x, x_nm = NULL, call = NULL
   )
   fail_message_set <- c(
     "NA", 
-    "object ${deparse(x_nm)} was not a data.table; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} did not have the following expected columns: ${deparse(miss_nms)}"
+    "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -1236,7 +1236,7 @@ report_is_Date <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'Date')"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -1274,8 +1274,8 @@ report_is_Date_atom <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'Date')"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -1314,8 +1314,8 @@ report_is_Date_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -1355,9 +1355,9 @@ report_is_Date_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -1398,9 +1398,9 @@ report_is_Date_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -1442,10 +1442,10 @@ report_is_Date_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -1487,9 +1487,9 @@ report_is_Date_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class Date; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -1528,7 +1528,7 @@ report_is_double <- function(x, x_nm = NULL, call = NULL) {
     "is.double(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -1566,8 +1566,8 @@ report_is_double_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.double(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -1607,9 +1607,9 @@ report_is_double_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "x >= 0"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were < 0"
   )
   pass_message_set <- c(
     "NA", 
@@ -1650,9 +1650,9 @@ report_is_double_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -1694,10 +1694,10 @@ report_is_double_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -1739,9 +1739,9 @@ report_is_double_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "x > 0"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were <= 0"
   )
   pass_message_set <- c(
     "NA", 
@@ -1782,9 +1782,9 @@ report_is_double_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -1826,10 +1826,10 @@ report_is_double_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -1871,9 +1871,9 @@ report_is_double_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "x <= 0"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0"
   )
   pass_message_set <- c(
     "NA", 
@@ -1914,9 +1914,9 @@ report_is_double_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -1958,10 +1958,10 @@ report_is_double_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2003,9 +2003,9 @@ report_is_double_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "x < 0"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0"
   )
   pass_message_set <- c(
     "NA", 
@@ -2046,9 +2046,9 @@ report_is_double_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -2090,10 +2090,10 @@ report_is_double_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2134,8 +2134,8 @@ report_is_double_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -2175,9 +2175,9 @@ report_is_double_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2219,10 +2219,10 @@ report_is_double_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2265,10 +2265,10 @@ report_is_double_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2312,11 +2312,11 @@ report_is_double_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2360,10 +2360,10 @@ report_is_double_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2406,10 +2406,10 @@ report_is_double_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2453,11 +2453,11 @@ report_is_double_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2501,10 +2501,10 @@ report_is_double_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2547,10 +2547,10 @@ report_is_double_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2594,11 +2594,11 @@ report_is_double_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2642,10 +2642,10 @@ report_is_double_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2688,10 +2688,10 @@ report_is_double_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2735,11 +2735,11 @@ report_is_double_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2782,9 +2782,9 @@ report_is_double_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -2826,10 +2826,10 @@ report_is_double_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2871,9 +2871,9 @@ report_is_double_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -2912,7 +2912,7 @@ report_is_environment <- function(x, x_nm = NULL, call = NULL) {
     "is.environment(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not an environment object"
+    "object `${x_nm}` was not an environment object"
   )
   pass_message_set <- c(
     "NA"
@@ -2949,7 +2949,7 @@ report_is_expression <- function(x, x_nm = NULL, call = NULL) {
     "is.expression(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not an R expression object; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not an R expression object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -2986,7 +2986,7 @@ report_is_factor <- function(x, x_nm = NULL, call = NULL) {
     "is.factor(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -3024,8 +3024,8 @@ report_is_factor_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.factor(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -3064,8 +3064,8 @@ report_is_factor_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -3105,9 +3105,9 @@ report_is_factor_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -3148,9 +3148,9 @@ report_is_factor_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -3192,10 +3192,10 @@ report_is_factor_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -3237,9 +3237,9 @@ report_is_factor_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class factor; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -3282,9 +3282,9 @@ report_is_factor_with_levels <- function(x, x_nm = NULL, call = NULL, expected_l
   )
   fail_message_set <- c(
     "NA", 
-    "object ${deparse(x_nm)} is not a factor; instead it had class(es) ${deparse(class(x))}", 
-    "factor object ${deparse(x_nm)} had these unexpected levels: ${deparse(extra_levels)}", 
-    "factor object ${deparse(x_nm)} did not have these expected levels: ${deparse(miss_levels)}"
+    "object `${x_nm}` is not a factor; instead it had class(es) ${deparse(class(x))}", 
+    "factor object `${x_nm}` had these unexpected levels: ${deparse(extra_levels)}", 
+    "factor object `${x_nm}` did not have these expected levels: ${deparse(miss_levels)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -3324,7 +3324,7 @@ report_is_function <- function(x, x_nm = NULL, call = NULL) {
     "is.function(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a function; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a function; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -3362,8 +3362,8 @@ report_is_function_with_required_argument_names <- function(x, x_nm = NULL, call
     "all(required_argument_names %in% names(formals(x)))"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a function", 
-    "object ${deparse(x_nm)} did not have all required arguments ${deparse(required_argument_names)}"
+    "object `${x_nm}` was not a function", 
+    "object `${x_nm}` did not have all required arguments ${deparse(required_argument_names)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -3401,7 +3401,7 @@ report_is_gt <- function(x, x_nm = NULL, call = NULL, lo) {
     "x > lo"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= ${lo}"
+    "${n_fail} elements of `${x_nm}` were <= ${lo}"
   )
   pass_message_set <- c(
     "NA"
@@ -3438,7 +3438,7 @@ report_is_gte <- function(x, x_nm = NULL, call = NULL, lo) {
     "x >= lo"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < ${lo}"
+    "${n_fail} elements of `${x_nm}` were < ${lo}"
   )
   pass_message_set <- c(
     "NA"
@@ -3475,7 +3475,7 @@ report_is_gtezero <- function(x, x_nm = NULL, call = NULL) {
     "x >= 0"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0"
+    "${n_fail} elements of `${x_nm}` were < 0"
   )
   pass_message_set <- c(
     "NA"
@@ -3512,7 +3512,7 @@ report_is_gtzero <- function(x, x_nm = NULL, call = NULL) {
     "x > 0"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0"
+    "${n_fail} elements of `${x_nm}` were <= 0"
   )
   pass_message_set <- c(
     "NA"
@@ -3549,7 +3549,7 @@ report_is_integer <- function(x, x_nm = NULL, call = NULL) {
     "is.integer(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -3587,8 +3587,8 @@ report_is_integer_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.integer(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -3628,9 +3628,9 @@ report_is_integer_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.integer(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -3671,9 +3671,9 @@ report_is_integer_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -3715,10 +3715,10 @@ report_is_integer_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -3760,9 +3760,9 @@ report_is_integer_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.integer(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -3803,9 +3803,9 @@ report_is_integer_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -3847,10 +3847,10 @@ report_is_integer_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -3892,9 +3892,9 @@ report_is_integer_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "x <= 0"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0"
   )
   pass_message_set <- c(
     "NA", 
@@ -3935,9 +3935,9 @@ report_is_integer_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -3979,10 +3979,10 @@ report_is_integer_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4024,9 +4024,9 @@ report_is_integer_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "x < 0"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0"
   )
   pass_message_set <- c(
     "NA", 
@@ -4067,9 +4067,9 @@ report_is_integer_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -4111,10 +4111,10 @@ report_is_integer_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4155,8 +4155,8 @@ report_is_integer_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -4196,9 +4196,9 @@ report_is_integer_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4240,10 +4240,10 @@ report_is_integer_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4286,10 +4286,10 @@ report_is_integer_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) 
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4333,11 +4333,11 @@ report_is_integer_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) 
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4381,10 +4381,10 @@ report_is_integer_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4427,10 +4427,10 @@ report_is_integer_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4474,11 +4474,11 @@ report_is_integer_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4522,10 +4522,10 @@ report_is_integer_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4568,10 +4568,10 @@ report_is_integer_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) 
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4615,11 +4615,11 @@ report_is_integer_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) 
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4663,10 +4663,10 @@ report_is_integer_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4709,10 +4709,10 @@ report_is_integer_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4756,11 +4756,11 @@ report_is_integer_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4803,9 +4803,9 @@ report_is_integer_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -4847,10 +4847,10 @@ report_is_integer_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4892,9 +4892,9 @@ report_is_integer_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class integer; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -4933,7 +4933,7 @@ report_is_language_object <- function(x, x_nm = NULL, call = NULL) {
     "is.language(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not an R language object; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not an R language object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -4970,7 +4970,7 @@ report_is_list <- function(x, x_nm = NULL, call = NULL) {
     "inherits(x, 'list')"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class list"
+    "object `${x_nm}` was not of class list"
   )
   pass_message_set <- c(
     "NA"
@@ -5007,7 +5007,7 @@ report_is_logical <- function(x, x_nm = NULL, call = NULL) {
     "is.logical(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -5045,8 +5045,8 @@ report_is_logical_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.logical(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -5085,8 +5085,8 @@ report_is_logical_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA", 
@@ -5126,9 +5126,9 @@ report_is_logical_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -5169,9 +5169,9 @@ report_is_logical_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA", 
@@ -5213,10 +5213,10 @@ report_is_logical_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -5258,9 +5258,9 @@ report_is_logical_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class logical; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -5299,7 +5299,7 @@ report_is_lt <- function(x, x_nm = NULL, call = NULL, hi) {
     "x < hi"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were >= ${hi}"
+    "${n_fail} elements of `${x_nm}` were >= ${hi}"
   )
   pass_message_set <- c(
     "NA"
@@ -5336,7 +5336,7 @@ report_is_lte <- function(x, x_nm = NULL, call = NULL, hi) {
     "x <= hi"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were > ${hi}"
+    "${n_fail} elements of `${x_nm}` were > ${hi}"
   )
   pass_message_set <- c(
     "NA"
@@ -5373,7 +5373,7 @@ report_is_ltezero <- function(x, x_nm = NULL, call = NULL) {
     "x <= 0"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were > 0"
+    "${n_fail} elements of `${x_nm}` were > 0"
   )
   pass_message_set <- c(
     "NA"
@@ -5410,7 +5410,7 @@ report_is_ltzero <- function(x, x_nm = NULL, call = NULL) {
     "x < 0"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0"
+    "${n_fail} elements of `${x_nm}` were >= 0"
   )
   pass_message_set <- c(
     "NA"
@@ -5447,7 +5447,7 @@ report_is_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.matrix(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a matrix"
+    "object `${x_nm}` was not a matrix"
   )
   pass_message_set <- c(
     "NA"
@@ -5484,7 +5484,7 @@ report_is_name <- function(x, x_nm = NULL, call = NULL) {
     "is.name(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a name object; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a name object; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -5521,7 +5521,7 @@ report_is_named <- function(x, x_nm = NULL, call = NULL) {
     "!is.null(names(x))"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} did not have any names"
+    "object `${x_nm}` did not have any names"
   )
   pass_message_set <- c(
     "NA"
@@ -5559,8 +5559,8 @@ report_is_named_list <- function(x, x_nm = NULL, call = NULL) {
     "!is.null(names(x))"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class list", 
-    "object ${deparse(x_nm)} did not have any names"
+    "object `${x_nm}` was not of class list", 
+    "object `${x_nm}` did not have any names"
   )
   pass_message_set <- c(
     "NA", 
@@ -5598,7 +5598,7 @@ report_is_nonNA <- function(x, x_nm = NULL, call = NULL) {
     "if (!is.function(x)) !is.na(x) else TRUE"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed"
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   )
   pass_message_set <- c(
     "NA"
@@ -5635,7 +5635,7 @@ report_is_NULL <- function(x, x_nm = NULL, call = NULL) {
     "is.null(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not NULL"
+    "object `${x_nm}` was not NULL"
   )
   pass_message_set <- c(
     "NA"
@@ -5672,7 +5672,7 @@ report_is_number <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -5710,8 +5710,8 @@ report_is_number_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -5751,9 +5751,9 @@ report_is_number_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -5794,9 +5794,9 @@ report_is_number_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -5838,10 +5838,10 @@ report_is_number_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -5883,9 +5883,9 @@ report_is_number_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -5926,9 +5926,9 @@ report_is_number_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -5970,10 +5970,10 @@ report_is_number_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6015,9 +6015,9 @@ report_is_number_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6058,9 +6058,9 @@ report_is_number_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6102,10 +6102,10 @@ report_is_number_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6147,9 +6147,9 @@ report_is_number_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6190,9 +6190,9 @@ report_is_number_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6234,10 +6234,10 @@ report_is_number_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6278,8 +6278,8 @@ report_is_number_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6319,9 +6319,9 @@ report_is_number_nonNA_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6363,10 +6363,10 @@ report_is_number_nonNA_gtezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6409,10 +6409,10 @@ report_is_number_nonNA_gtezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6456,11 +6456,11 @@ report_is_number_nonNA_gtezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were < 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were < 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6504,10 +6504,10 @@ report_is_number_nonNA_gtzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6550,10 +6550,10 @@ report_is_number_nonNA_gtzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6597,11 +6597,11 @@ report_is_number_nonNA_gtzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were <= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were <= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6645,10 +6645,10 @@ report_is_number_nonNA_ltezero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6691,10 +6691,10 @@ report_is_number_nonNA_ltezero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6738,11 +6738,11 @@ report_is_number_nonNA_ltezero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were > 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were > 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6786,10 +6786,10 @@ report_is_number_nonNA_ltzero_atom <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "length of object ${deparse(x_nm)} was ${length(x)} instead of 1", 
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "length of object `${x_nm}` was ${length(x)} instead of 1", 
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6832,10 +6832,10 @@ report_is_number_nonNA_ltzero_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6879,11 +6879,11 @@ report_is_number_nonNA_ltzero_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were >= 0", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "${n_fail} elements of `${x_nm}` were >= 0", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -6926,9 +6926,9 @@ report_is_number_nonNA_matrix <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a matrix", 
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not a matrix", 
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA", 
@@ -6970,10 +6970,10 @@ report_is_number_nonNA_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} had ${n_fail} NA values - none are allowed", 
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` had ${n_fail} NA values - none are allowed", 
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -7015,9 +7015,9 @@ report_is_number_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not a number; instead it had class(es) ${deparse(class(x))}", 
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", 
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -7056,7 +7056,7 @@ report_is_numeric <- function(x, x_nm = NULL, call = NULL) {
     "is.numeric(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not numeric; instead it had class(es) ${deparse(class(x))}"
+    "object `${x_nm}` was not numeric; instead it had class(es) ${deparse(class(x))}"
   )
   pass_message_set <- c(
     "NA"
@@ -7093,7 +7093,7 @@ report_is_of_length <- function(x, x_nm = NULL, call = NULL, expected_length) {
     "length(x) == expected_length"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} had length ${length(x)} instead of ${expected_length}"
+    "object `${x_nm}` had length ${length(x)} instead of ${expected_length}"
   )
   pass_message_set <- c(
     "NA"
@@ -7131,8 +7131,8 @@ report_is_report_df <- function(x, x_nm = NULL, call = NULL) {
     "length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L"
   )
   fail_message_set <- c(
-    "${deparse(x_nm)} was not a data.frame", 
-    "Following columns were expected but not in ${deparse(x_nm)}: ${deparse(miss_col_nms)}"
+    "`${x_nm}` was not a data.frame", 
+    "Following columns were expected but not in `${x_nm}`: ${deparse(miss_col_nms)}"
   )
   pass_message_set <- c(
     "NA", 
@@ -7170,7 +7170,7 @@ report_is_TRUE <- function(x, x_nm = NULL, call = NULL) {
     "x %in% TRUE"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} were FALSE or NA"
+    "${n_fail} elements of `${x_nm}` were FALSE or NA"
   )
   pass_message_set <- c(
     "NA"
@@ -7208,8 +7208,8 @@ report_is_uniquely_named <- function(x, x_nm = NULL, call = NULL) {
     "(n_unique_names <- length(unique(names(x)))) == length(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} did not have any names", 
-    "not every element of object ${deparse(x_nm)} has a different name"
+    "object `${x_nm}` did not have any names", 
+    "not every element of object `${x_nm}` has a different name"
   )
   pass_message_set <- c(
     "NA", 
@@ -7249,9 +7249,9 @@ report_is_uniquely_named_list <- function(x, x_nm = NULL, call = NULL) {
     "(n_unique_names <- length(unique(names(x)))) == length(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} was not of class list", 
-    "object ${deparse(x_nm)} did not have any names", 
-    "not every element of object ${deparse(x_nm)} has a different name"
+    "object `${x_nm}` was not of class list", 
+    "object `${x_nm}` did not have any names", 
+    "not every element of object `${x_nm}` has a different name"
   )
   pass_message_set <- c(
     "NA", 
@@ -7291,8 +7291,8 @@ report_is_vector <- function(x, x_nm = NULL, call = NULL) {
     "!is.list(x)"
   )
   fail_message_set <- c(
-    "object ${deparse(x_nm)} had dimensions but was expected to have none", 
-    "object ${deparse(x_nm)} was a list"
+    "object `${x_nm}` had dimensions but was expected to have none", 
+    "object `${x_nm}` was a list"
   )
   pass_message_set <- c(
     "NA", 
@@ -7330,10 +7330,10 @@ report_match_regex <- function(x, x_nm = NULL, call = NULL, grepl.arg.list = lis
     "{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}"
   )
   fail_message_set <- c(
-    "${n_fail} elements of ${deparse(x_nm)} did not match regex ${deparse(grepl.arg.list[['pattern']])}"
+    "${n_fail} elements of `${x_nm}` did not match regex ${deparse(grepl.arg.list[['pattern']])}"
   )
   pass_message_set <- c(
-    "All elements of ${deparse(x_nm)} matched regex ${deparse(grepl.arg.list[['pattern']])}"
+    "All elements of `${x_nm}` matched regex ${deparse(grepl.arg.list[['pattern']])}"
   )
   report_df <- dbc::expressions_to_report(
     expressions = expression_set,
@@ -7369,7 +7369,7 @@ report_vector_elems_are_in_set <- function(x, x_nm = NULL, call = NULL, set) {
   )
   fail_message_set <- c(
     "NA", 
-    "some values of object ${deparse(x_nm)} were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}"
+    "some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}"
   )
   pass_message_set <- c(
     "NA", 
