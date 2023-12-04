@@ -44,6 +44,15 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.4.17}{
+\subsection{dbc::report_to_assertion}{
+
+Made assertion fail messages a bit prettier by surrounding object names
+and expressions with \link{`} instead of \link{"}.
+}
+
+}
+
 \subsection{News for version 0.4.16}{
 \subsection{dbc}{
 

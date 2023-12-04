@@ -370,6 +370,10 @@ report_to_assertion <- function(
       },
       character(1L)
     )
+    # @codedoc_comment_block news("dbc::report_to_assertion", "2023-12-04", "0.4.17")
+    # Made assertion fail messages a bit prettier by surrounding object names
+    # and expressions with [`] instead of ["].
+    # @codedoc_comment_block news("dbc::report_to_assertion", "2023-12-04", "0.4.17")
     call_strings <- vapply(wh_nonpass, function(test_no) {
       call <- report_df[["call"]][[test_no]]
       if (is.null(call)) {
