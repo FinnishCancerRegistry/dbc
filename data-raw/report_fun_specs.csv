@@ -73,7 +73,7 @@
 "is_between_inclusive";"dbc::is_between_inclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}";NA;"lo, hi"
 "is_between_exclusive";"dbc::test_is_number_nonNA_vector(lo)";NA;NA;"lo, hi"
 "is_between_exclusive";"dbc::test_is_number_nonNA_vector(hi)";NA;NA;"lo, hi"
-"is_between_exclusive";"!dbc::is_between_exclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}";NA;"lo, hi"
+"is_between_exclusive";"dbc::is_between_exclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}";NA;"lo, hi"
 "is_gte";"x >= lo";"${n_fail} elements of `${x_nm}` were < ${lo}";NA;"lo"
 "is_gt";"x > lo";"${n_fail} elements of `${x_nm}` were <= ${lo}";NA;"lo"
 "is_lte";"x <= hi";"${n_fail} elements of `${x_nm}` were > ${hi}";NA;"hi"
