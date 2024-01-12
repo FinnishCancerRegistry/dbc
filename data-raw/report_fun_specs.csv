@@ -1,4 +1,4 @@
-"test_set_nm";"call";"fail_message";"pass_message";"extra_arg_nm_set"
+"test_set_nm";"call";"fail_message";"pass_message";"extra_arg_set"
 "dir_exists";"length(bad_dirs <- x[!dir.exists(x)]) == 0L";"the following directory/directories in object `${x_nm}` do not exist: ${deparse(bad_dirs)}";NA;NA
 "file_exists";"length(bad_files <- x[!file.exists(x)]) == 0L";"the following file(s) in object `${x_nm}` do not exist: ${bad_files}";NA;NA
 "is_number";"is.numeric(x)";"object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}";NA;NA

@@ -1,410 +1,8 @@
-
-
-
-
-
-
-
-
 get_report_fun_specs <- function() {
   report_fun_specs
 }
 
-
-get_report_fun_df <- function() {
-  requireNamespace("data.table")
-  specs_df <- get_report_fun_specs()
-  specs_df_col_nms <- c("test_set_nm", "call",
-                        "fail_message", "pass_message",
-                        "extra_arg_nm_set")
-  raise_internal_error_if_not(
-    is.data.frame(specs_df),
-    specs_df_col_nms %in% names(specs_df)
-  )
-  specs_df[, names(specs_df)] <- lapply(specs_df, as.character)
-  base_prefix <- "report_"
-  fun_df <- data.table::copy(specs_df)
-
-  deriv_fun_df <- report_function_variant_space()
-  deriv_fun_df <- data.table::melt(
-    deriv_fun_df,
-    id.vars = "fun_nm",
-    measure.vars = setdiff(names(deriv_fun_df), "fun_nm"),
-    value.name = "test_set_nm",
-    variable.name = "type"
-  )
-  data.table::setnames(deriv_fun_df, "fun_nm", "deriv_fun_nm")
-  data.table::set(deriv_fun_df, j = "type", value = NULL)
-  data.table::set(deriv_fun_df, j = "test_set_nm", value = sub(
-    "^report_",
-    "",
-    sub("\\(.+", "", deriv_fun_df[["test_set_nm"]])
-  ))
-  deriv_fun_df <- merge(
-    x = fun_df,
-    y = deriv_fun_df,
-    by = "test_set_nm",
-    all.x = FALSE, all.y = FALSE
-  )
-  data.table::setDT(deriv_fun_df)
-  data.table::set(deriv_fun_df, j = "test_set_nm", value = sub(
-    "^report_", "", deriv_fun_df[["deriv_fun_nm"]]
-  ))
-  data.table::set(deriv_fun_df, j = "deriv_fun_nm", value = NULL)
-  data.table::setcolorder(deriv_fun_df, names(fun_df))
-
-  fun_df <- rbind(fun_df, deriv_fun_df)
-  rm("deriv_fun_df")
-  data.table::setDF(fun_df)
-  fun_df[["fun_nm"]] <- paste0(base_prefix, fun_df[["test_set_nm"]])
-  fun_df <- unique(fun_df, by = c("test_set_nm", "call"))
-
-  fun_df <- stats::aggregate(
-    fun_df[, c("call", "fail_message", "pass_message", "extra_arg_nm_set")],
-    by = list(fun_nm = fun_df[["fun_nm"]], test_set_nm = fun_df[["test_set_nm"]]),
-    FUN = function(x) list(unlist(x))
-  )
-  data.table::setnames(
-    fun_df,
-    c("call", "fail_message", "pass_message"),
-    c("expression_set", "fail_message_set", "pass_message_set")
-  )
-  return(fun_df)
-}
-
-
-
-generate_report_funs <- function(
-  target_script = "R/generated_report_funs.R"
-) {
-  requireNamespace("data.table")
-  fun_df <- get_report_fun_df()
-  fun_df_col_nms <- c(
-    "test_set_nm", "fun_nm",
-    "expression_set", "fail_message_set", "pass_message_set", "extra_arg_nm_set"
-  )
-  stopifnot(
-    is.character(target_script),
-    length(target_script) == 1L,
-    !is.na(target_script),
-
-    is.data.frame(fun_df),
-    fun_df_col_nms %in% names(fun_df),
-    !duplicated(fun_df[["fun_nm"]])
-  )
-
-
-  fun_df[["body"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
-    expression_set <- fun_df[["expression_set"]][[fun_no]]
-    fail_message_set <- fun_df[["fail_message_set"]][[fun_no]]
-    pass_message_set <- fun_df[["pass_message_set"]][[fun_no]]
-    expression_set <- paste0("\"", expression_set, "\"")
-    fail_message_set <- paste0("\"", fail_message_set, "\"")
-    pass_message_set <- paste0("\"", pass_message_set, "\"")
-    n <- length(expression_set)
-    if (n > 1L) {
-      expression_set[1:(n - 1L)] <- paste0(expression_set[1:(n - 1L)], ", ")
-      fail_message_set[1:(n - 1L)] <- paste0(fail_message_set[1:(n - 1L)], ", ")
-      pass_message_set[1:(n - 1L)] <- paste0(pass_message_set[1:(n - 1L)], ", ")
-    }
-
-    body <- paste0("  ", c(
-      generated_function_header(),
-      "report_env <- environment()",
-      "expression_set <- c(",
-      paste0("  ", expression_set),
-      ")",
-      "fail_message_set <- c(",
-      paste0("  ", fail_message_set),
-      ")",
-      "pass_message_set <- c(",
-      paste0("  ", pass_message_set),
-      ")",
-      "report_df <- dbc::expressions_to_report(",
-      "  expressions = expression_set,",
-      "  fail_messages = fail_message_set,",
-      "  pass_messages = pass_message_set,",
-      "  env = report_env, ",
-      "  call = call",
-      ")",
-      "return(report_df)"
-    ))
-    body
-  })
-  fun_df[["fun_def"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
-    body <- fun_df[["body"]][[fun_no]]
-    arg_set <- c("x", "x_nm = NULL", "call = NULL")
-    arg_set <- setdiff(
-      c(arg_set, fun_df[["extra_arg_nm_set"]][[fun_no]]),
-      c(NA_character_, "")
-    )
-    arg_set <- paste0(arg_set, collapse = ", ")
-    def <- c(
-      "#' @rdname assertions",
-      "#' @export",
-      paste0(fun_df[["fun_nm"]][fun_no], " <- function(", arg_set, ") {"),
-      body,
-      "}"
-    )
-    return(def)
-  })
-
-  lines <- c(
-    "# this script was generated automatically. do not edit by hand!",
-    rep("", 5),
-    unlist(lapply(fun_df[["fun_def"]], function(x) {
-      c(
-        "# this function was generated automatically. do not edit by hand!",
-        x,
-        rep("", 3)
-      )
-    }))
-  )
-
-  writeLines(text = lines, con = target_script)
-}
-
-generated_function_header <- function() {
-  # @codedoc_comment_block news("dbc", "2023-08-16", "0.4.16")
-  # All generated assertion, report and test functions now check whether
-  # `x` is missing and raise an informative error. There were edge cases
-  # where `x` was attempted to be evaluated only in a call to `eval` which
-  # resulted in cryptic error messages --- now those can no longer occur.
-  # @codedoc_comment_block news("dbc", "2023-08-16", "0.4.16")
-  c(
-    "x_nm <- dbc::handle_arg_x_nm(x_nm)",
-    "call <- dbc::handle_arg_call(call)",
-    "if (missing(x)) {",
-    "  stop(simpleError(",
-    "    message = paste0(",
-    "      \"Argument \", x_nm, \" was missing --- it has no default so \",",
-    "      \"some value must be supplied!\"",
-    "    ),",
-    "    call = call",
-    "  ))",
-    "}"
-  )
-}
-
-generate_report_derivative_funs <- function(
-  source_scripts = c(
-    "R/generated_report_funs.R"
-  ),
-  target_script = "R/generated_assertion_funs.R",
-  type = c("assert", "test")[1],
-  assertion_type = "general"
-) {
-  stopifnot(
-    type %in% c("assert", "test"),
-    length(type) == 1L,
-
-    length(assertion_type) == 1L, is.character(assertion_type)
-  )
-  fun_env <- new.env()
-  invisible(lapply(source_scripts, function(script_path) {
-    source(script_path, local = fun_env)
-  }))
-
-  obj_nms <- ls(envir = fun_env)
-  is_report_fun_nm <- grepl(
-    pattern = "^report_[_.a-zA-Z0-9]+",
-    x = obj_nms
-  )
-  report_fun_nms <- gsub("\\Q <- \\E.+", "", obj_nms[is_report_fun_nm])
-  if (type == "assert" && assertion_type != "general") {
-    fun_nms <- sub(
-      "^report_", paste0(type, "_", assertion_type, "_"), report_fun_nms
-    )
-  } else {
-    fun_nms <- sub(
-      "^report_", paste0(type, "_"), report_fun_nms
-    )
-  }
-
-  fun_df <- data.frame(fun_nm = fun_nms, report_fun_nm = report_fun_nms)
-  # @codedoc_comment_block news("dbc", "2023-07-04", "0.4.15")
-  # All generated assertion functions now pass `call` to
-  # `dbc::report_to_assertion` arg `raise_error_call`. Therefore, now an error
-  # message begins with the call of the guilty function instead of the
-  # assertion function.
-  # @codedoc_comment_block news("dbc", "2023-07-04", "0.4.15")
-  assertion_body_tail <- c(
-    "dbc::report_to_assertion(",
-    "  report_df,",
-    "  assertion_type = assertion_type,",
-    "  raise_error_call = call",
-    ")",
-    "return(invisible(NULL))"
-  )
-  body_tail <- switch(
-    type,
-    assert = switch(
-      assertion_type,
-      general = assertion_body_tail,
-      c(
-        paste0("assertion_type <- \"", assertion_type, "\""),
-        assertion_body_tail
-      )
-    ),
-    test = c(
-      "return(all(report_df[[\"pass\"]]))"
-    )
-  )
-
-  fun_df[["body"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
-    report_fun_nm <- report_fun_nms[fun_no]
-    arg_nms <- names(formals(fun_env[[report_fun_nm]]))
-    body <- paste0("  ", c(
-      generated_function_header(),
-      paste0("report_df <- dbc::", fun_df[["report_fun_nm"]][fun_no], "("),
-      paste0(
-        "  ", arg_nms, " = ", arg_nms, c(rep(", ", length(arg_nms) - 1L), "")
-      ),
-      ")",
-      body_tail
-    ))
-    if (all(c("y_nm", "y") %in% names(formals(fun_env[[report_fun_nm]])))) {
-      body <- c(
-        body[1:3],
-        "is.null(y) # trigger lazy eval",
-        "y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = \"y\")",
-        body[4:length(body)]
-      )
-    }
-    if ("env" %in% names(formals(fun_env[[report_fun_nm]]))) {
-      body <- c(
-        "  if (is.null(env)) {",
-        "    env <- parent.frame(1L)",
-        "  }",
-        body
-      )
-    }
-    if (report_fun_nm == "report_is") {
-      body <- c(
-        "  x_test <- tryCatch(",
-        "    is.character(x) || is.language(x),",
-        "    error = function(e) e,",
-        "    warning = function(w) w",
-        "  )",
-        "  if (!identical(x_test, TRUE)) {",
-        "    x <- substitute(x)",
-        "  }",
-        "",
-        body
-      )
-    }
-
-    if (type == "assert" && assertion_type %in% dev_assertion_types()) {
-      body <- c(
-        "  if (!dbc::get_dev_mode()) {",
-        "    return(invisible(NULL))",
-        "  }",
-        "",
-        body
-      )
-    } else if (type == "assert" && assertion_type == "general") {
-      body <- c(
-        "  assertion_type <- dbc::handle_arg_assertion_type(assertion_type)",
-        "  if (identical(assertion_type, \"none\")) {",
-        "    return(invisible(NULL))",
-        "  }",
-        "  if (!dbc::get_dev_mode() && assertion_type %in% dev_assertion_types()) {",
-        "    return(invisible(NULL))",
-        "  }",
-        "",
-        body
-      )
-    }
-    return(body)
-  })
-
-  fun_df[["arg_set"]] <- lapply(report_fun_nms, function(report_fun_nm) {
-    formals <- formals(fun_env[[report_fun_nm]])
-    if (assertion_type == "general") {
-      formals["assertion_type"] <- list(NULL)
-    }
-    if (type != "assert") {
-      formals["assertion_type"] <- NULL
-    }
-    arg_set <- vapply(
-      seq_along(formals),
-      function(formal_no) {
-        formal_nm <- names(formals)[formal_no]
-        formal_default <- paste0(deparse(formals[[formal_no]]), collapse = "")
-        ifelse(formal_default %in% c("", NA_character_), formal_nm,
-               paste0(formal_nm, " = ", formal_default))
-      },
-      character(1L)
-    )
-    arg_set
-  })
-
-  fun_df[["def"]] <- lapply(seq_len(nrow(fun_df)), function(fun_no) {
-    fun_nm <- fun_df[["fun_nm"]][fun_no]
-    assign_line <- paste0(fun_nm, " <- function(")
-    body <- fun_df[["body"]][[fun_no]]
-    arg_set <- fun_df[["arg_set"]][[fun_no]]
-    arg_lines <- paste0("  ", arg_set, c(rep(", ", length(arg_set) - 1L), ""))
-    def <- c(
-      assign_line,
-      arg_lines,
-      ") {",
-      body,
-      "}"
-    )
-    def
-  })
-
-  lines <- unlist(lapply(fun_df[["def"]], function(lines) {
-    c(
-      rep("", 5),
-      "# this function was generated automatically. do not edit by hand!",
-      "#' @rdname assertions",
-      "#' @export",
-      lines
-    )
-  }))
-
-  lines <- c(
-    "# this script was generated automatically. do not edit by hand!",
-    lines, rep("", 5)
-  )
-
-  lines <- sub("[ ]+$", "", lines)
-
-  writeLines(lines, con = target_script)
-
-}
-
-generate_test_funs <- function(
-  source_scripts = c(
-    "R/generated_report_funs.R"
-  ),
-  target_script = "R/generated_assertion_funs.R"
-) {
-  generate_report_derivative_funs(
-    source_scripts = source_scripts,
-    target_script = target_script,
-    type = "test"
-  )
-}
-
-generate_assertion_funs <- function(
-  source_scripts = c(
-    "R/generated_report_funs.R"
-  ),
-  target_script = "R/generated_test_funs.R",
-  assertion_type = "general"
-) {
-  generate_report_derivative_funs(
-    source_scripts = source_scripts,
-    target_script = target_script,
-    type = "assert",
-    assertion_type = assertion_type
-  )
-}
-
-report_function_variant_space <- function() {
+get_report_function_variant_space <- function() {
   requireNamespace("data.table")
 
   levels <- list(
@@ -445,5 +43,660 @@ report_function_variant_space <- function() {
   return(fun_nm_dt[])
 }
 
+get_report_fun_df <- function() {
+  requireNamespace("data.table")
+  specs_df <- get_report_fun_specs()
+  specs_df_col_nms <- c("test_set_nm", "call",
+                        "fail_message", "pass_message",
+                        "extra_arg_set")
+  raise_internal_error_if_not(
+    is.data.frame(specs_df),
+    specs_df_col_nms %in% names(specs_df)
+  )
+  specs_df[, names(specs_df)] <- lapply(specs_df, as.character)
+  base_prefix <- "report_"
+  fun_df <- data.table::copy(specs_df)
+
+  deriv_fun_df <- get_report_function_variant_space()
+  deriv_fun_df <- data.table::melt(
+    deriv_fun_df,
+    id.vars = "fun_nm",
+    measure.vars = setdiff(names(deriv_fun_df), "fun_nm"),
+    value.name = "test_set_nm",
+    variable.name = "type"
+  )
+  data.table::setnames(deriv_fun_df, "fun_nm", "deriv_fun_nm")
+  data.table::set(deriv_fun_df, j = "type", value = NULL)
+  data.table::set(deriv_fun_df, j = "test_set_nm", value = sub(
+    "^report_",
+    "",
+    sub("\\(.+", "", deriv_fun_df[["test_set_nm"]])
+  ))
+  deriv_fun_df <- merge(
+    x = fun_df,
+    y = deriv_fun_df,
+    by = "test_set_nm",
+    all.x = FALSE, all.y = FALSE
+  )
+  data.table::setDT(deriv_fun_df)
+  data.table::set(deriv_fun_df, j = "test_set_nm", value = sub(
+    "^report_", "", deriv_fun_df[["deriv_fun_nm"]]
+  ))
+  data.table::set(deriv_fun_df, j = "deriv_fun_nm", value = NULL)
+  data.table::setcolorder(deriv_fun_df, names(fun_df))
+
+  fun_df <- rbind(fun_df, deriv_fun_df)
+  rm("deriv_fun_df")
+  data.table::setDF(fun_df)
+  fun_df[["fun_nm"]] <- paste0(base_prefix, fun_df[["test_set_nm"]])
+  fun_df <- unique(fun_df, by = c("test_set_nm", "call"))
+
+  fun_df <- stats::aggregate(
+    fun_df[, c("call", "fail_message", "pass_message", "extra_arg_set")],
+    by = list(fun_nm = fun_df[["fun_nm"]], test_set_nm = fun_df[["test_set_nm"]]),
+    FUN = function(x) list(unlist(x))
+  )
+  data.table::setnames(
+    fun_df,
+    c("call", "fail_message", "pass_message", "test_set_nm"),
+    c("expression_set", "fail_message_set", "pass_message_set", "fun_nm_suffix")
+  )
+
+  fun_df[["extra_arg_set"]] <- lapply(
+    fun_df[["extra_arg_set"]],
+    function(x) {
+      setdiff(unlist(strsplit(x, ", *")), NA_character_)
+    }
+  )
+
+  return(fun_df)
+}
+
+get_generated_function_chunk <- function(chunk_name) {
+  stopifnot(chunk_name %in% names(function_chunks))
+  function_chunks[[chunk_name]]
+}
+
+generated_function_header <- function() {
+  get_generated_function_chunk("body_start")
+}
 
 
+
+generate_function_start <- function(
+  fun_nm,
+  fun_type,
+  assertion_type = NULL,
+  extra_args = NULL
+) {
+  stopifnot(
+    fun_type %in% c("report", "test", "assertion"),
+    is.null(extra_args) || is.character(extra_args)
+  )
+  if (fun_type == "assertion") {
+    stopifnot(assertion_type %in% dbc::assertion_types())
+    if (assertion_type == "general") {
+      extra_args <- c(
+        "assertion_type" = "NULL",
+        extra_args
+      )
+    }
+  } else {
+    stopifnot(is.null(assertion_type))
+  }
+  lines <- paste0(fun_nm, " <- function(")
+  arg_lines <- get_generated_function_chunk("args_start")
+  if (length(extra_args) > 0) {
+    arg_lines <- c(
+      arg_lines,
+      paste0(names(extra_args), " = ", extra_args, ",")
+    )
+    arg_lines <- gsub(" = ,", ",", arg_lines)
+  }
+  arg_lines[length(arg_lines)] <- sub(",$", "", arg_lines[length(arg_lines)])
+  lines <- c(
+    lines,
+    paste0("  ", arg_lines),
+    ") {"
+  )
+  return(lines)
+}
+
+#' @title Function Generation
+#' @description
+#' Generate report, test, and assertion functions.
+#' @name function_generation
+NULL
+
+#' @rdname function_generation
+#' @export
+#' @param fun_nm `[character]` (no default)
+#' 
+#' Name of function to generate.
+#' @param fun_type `[character]` (no default)
+#' 
+#' One of `c("test", "report", "assertion")`.
+#' @param expressions `[character]` (no default)
+#' 
+#' One or more R expressions as `character` strings. These will be evaluted
+#' in the given order in the generated function.
+#' @param assertion_type `[NULL, character]` (default `NULL`)
+#' 
+#' If `fun_type == "assertion"`, this must be one of the alternatives given
+#' by `[assertion_types]`.
+#' @param fail_messages `[NULL, character]` (default `NULL`)
+#' 
+#' If `fun_type != "test"`, this cannot be `NULL` but must give a failure
+#' message for each `expressions` element --- though `NA_character_` is allowed.
+#' `NA_character_` will be replaced internally by a generic message.
+#' @param pass_messages `[NULL, character]` (default `NULL`)
+#' 
+#' If `fun_type == "report"`, see `[expressions_to_report]`. Else ignored.
+#' @param extra_args `[NULL, character]` (default `NULL`)
+#' 
+#' - `NULL`: The function will take no extra arguments.
+#' - `character`: The function will take extra arguments corresponding to the
+#'   names of this object, and their defaults will be the elements of the
+#'   object. E.g. `c(my_extra_arg = "NULL")`.
+generate_function_from_expressions <- function(
+  fun_nm,
+  fun_type,
+  expressions,
+  assertion_type = NULL,
+  fail_messages = NULL,
+  pass_messages = NULL,
+  extra_args = NULL
+) {
+  # @codedoc_comment_block news("dbc", "2024-01-11", "0.5.0")
+  # New exported function `dbc::generate_function_from_expressions`. It is
+  # used to produce all generated functions in `dbc`.
+  # @codedoc_comment_block news("dbc", "2024-01-11", "0.5.0")
+
+  lines <- generate_function_start(
+    fun_nm = fun_nm,
+    fun_type = fun_type,
+    assertion_type = assertion_type
+  )
+  if (fun_type == "report") {
+    body_lines <- generate_report_function_body_from_expressions(
+      expressions = expressions,
+      fail_messages = fail_messages,
+      pass_messages = pass_messages
+    )
+  } else if (fun_type == "test") {    
+    body_lines <- generate_test_function_body_from_expressions(
+      expressions = expressions
+    )
+  } else if (fun_type == "assertion") {    
+    body_lines <- generate_assertion_function_body_from_expressions(
+      expressions = expressions,
+      fail_messages = fail_messages,
+      assertion_type = assertion_type
+    )
+  }
+
+  lines <- c(
+    lines,
+    paste0("  ", body_lines),
+    "}" 
+  )
+  return(lines)
+}
+
+generate_report_function_body_from_expressions <- function(
+  expressions,
+  fail_messages,
+  pass_messages
+) {
+  # @codedoc_comment_block news("dbc", "2023-07-04", "0.4.15")
+  # All generated assertion functions now pass `call` to
+  # `dbc::report_to_assertion` arg `raise_error_call`. Therefore, now an error
+  # message begins with the call of the guilty function instead of the
+  # assertion function.
+  # @codedoc_comment_block news("dbc", "2023-07-04", "0.4.15")
+
+  stopifnot(    
+    is.character(expressions),
+    is.character(fail_messages),
+    is.character(pass_messages),
+    length(expressions) == length(fail_messages),
+    length(expressions) == length(pass_messages)
+  )
+
+  lines <- c(
+    get_generated_function_chunk("body_start"),
+    "",
+    "expressions <- ",
+    paste0("  ", deparse1(expressions)),
+    "fail_messages <- ",
+    paste0("  ", deparse1(fail_messages)),
+    "pass_messages <- ",
+    paste0("  ", deparse1(pass_messages)),
+    "report_env <- environment()",  
+    "report_df <- dbc::expressions_to_report(",
+    "  expressions = expressions,",
+    "  fail_messages = fail_messages,",
+    "  pass_messages = pass_messages,",
+    "  env = report_env, ",
+    "  call = call",
+    ")",
+    "return(report_df)"
+  )
+  return(lines)
+}
+
+assertion_function_error_message <- function(
+  fail_message,
+  expression,
+  assertion_type
+) {
+  stopifnot(
+    is.character(expression),
+    is.character(fail_message),
+    length(expression) == 1,
+    length(fail_message) == 1,
+    !grepl("^\"", fail_message),
+    !grepl("\"$", fail_message),
+    assertion_type %in% dbc::assertion_types()
+  )
+  if (is.na(fail_message)) {
+    replacements <- c(
+      "${x_nm}" = "(?!<\\w)x(?!\\w)",
+      "${y_nm}" = "(?!<\\w)y(?!\\w)"
+    )
+    for (repl in names(replacements)) {
+      expression <- sub(
+        replacements[repl],
+        repl,
+        expression,
+        perl = TRUE
+      )
+    }
+    fail_message <- paste0(
+      "Test `",
+      expression,
+      "`, was FALSE/NA ${n_fail} times."
+    )
+  }
+  if (assertion_type == "none") {
+    return(fail_message)
+  }
+  fail_prefix <- "Invalid object"
+  if (grepl("input", assertion_type)) {
+    fail_prefix <- "Invalid argument passed"
+  } else if (grepl("output", assertion_type)) {
+    fail_prefix <- "Invalid output produced"
+  } else if (grepl("interim", assertion_type)) {
+    fail_prefix <- "Invalid interim object produced"
+  }
+  if (assertion_type == "user_input") {
+    fail_prefix <- paste0(fail_prefix, " by user")
+  } else if (grepl("(dev)|(prod)", assertion_type)) {
+    fail_prefix <- paste0(
+      fail_prefix,
+      " internally. Contact the author of the guilty function!"
+    )
+  }
+  fail_prefix <- paste0(
+    fail_prefix,
+    ". Use dbc::get_newest_error_data() to see more precisely where the error ",
+    "occurred. Test failure message(s):"
+  )
+  fail_message <- paste0(fail_prefix, "\n - ", fail_message)
+  return(fail_message)
+}
+
+generate_assertion_function_body_start <- function(
+  assertion_type
+) {
+  stopifnot(
+    assertion_type %in% dbc::assertion_types(),
+    length(assertion_type) == 1
+  )
+  if (assertion_type == "general") {
+    append <- "assertion_type <- dbc::handle_arg_assertion_type(assertion_type)"
+  } else {
+    append <- sprintf("assertion_type <- \"%s\"", assertion_type)
+  }
+  c(
+    get_generated_function_chunk("body_start"),
+    "",
+    append,
+    ""
+  )
+}
+
+generate_assertion_function_body_from_expressions <- function(
+  expressions,
+  fail_messages,
+  assertion_type
+) {
+  # @codedoc_comment_block news("dbc", "2024-01-11", "0.5.0")
+  # All generated assertion functions no longer create reports and pass those
+  # to `dbc::report_to_assertion`. Instead generated assertion functions use
+  # `stop` directly. This reduced wall clock time used in evaluation by ~90%.
+  # @codedoc_comment_block news("dbc", "2024-01-11", "0.5.0")
+  stopifnot(
+    is.character(expressions),
+    is.character(fail_messages),
+    length(expressions) == length(fail_messages),
+    !grepl("^\"", fail_messages),
+    !grepl("\"$", fail_messages),
+    assertion_type %in% dbc::assertion_types()
+  )
+  fail_messages <- vapply(
+    seq_along(fail_messages),
+    function(i) {
+      assertion_function_error_message(
+        fail_message = fail_messages[i],
+        expression = expressions[i],
+        assertion_type = assertion_type
+      )
+    },
+    character(1L)
+  )
+  fail_messages <- paste0("\"", fail_messages, "\"")
+
+  lines <- c(
+    generate_assertion_function_body_start(
+      assertion_type = assertion_type
+    ),
+    unlist(lapply(seq_along(expressions), function(i) {
+      lines <- get_generated_function_chunk("assertion_eval")
+      replace <- c(
+        "EXPRESSION" = expressions[i],
+        "FAIL_MESSAGE" = fail_messages[i]
+      )
+      for (re in names(replace)) {
+        lines <- gsub(re, replace[re], lines)
+      }
+      c(lines, "")
+    })) 
+  )
+
+  return(lines)
+}
+
+generate_test_function_body_from_expressions <- function(
+  expressions
+) {
+  stopifnot(
+    is.character(expressions)
+  )
+
+  lines <- c(
+    get_generated_function_chunk("body_start"),
+    "",
+    "out <- TRUE",
+    "",
+    unlist(lapply(seq_along(expressions), function(i) {
+      lines <- get_generated_function_chunk("test_eval")
+      replace <- c(
+        "EXPRESSION" = expressions[i]
+      )
+      for (re in names(replace)) {
+        lines <- gsub(re, replace[re], lines)
+      }
+      c(lines, "")
+    })) 
+  )
+  return(lines)
+}
+
+generate_report_function_call <- function(
+  report_fun_nm,
+  extra_arg_nms = NULL
+) {
+  report_fun_args <- c(   
+    "x",
+    "x_nm",
+    "call"
+  )
+  report_fun_args <- union(report_fun_args, extra_arg_nms)
+  report_fun_arg_lines <- paste0(
+    report_fun_args, " = ", report_fun_args, ","
+  )
+  report_fun_arg_lines[length(report_fun_arg_lines)] <- sub(
+    ",$",
+    "",
+    report_fun_arg_lines[length(report_fun_arg_lines)]
+  )
+  report_fun_arg_lines <- paste0("  ", report_fun_arg_lines)
+  lines <- c(
+    "report_df <- REPORT_FUN(",
+    report_fun_arg_lines,
+    ")"
+  )
+  
+  replacements <- c(
+    "REPORT_FUN" = report_fun_nm
+  )
+  for (re in names(replacements)) {
+    lines <- gsub(re, replacements[re], lines)
+  }
+
+  return(lines)
+}
+
+generate_assertion_function_body_to_wrap_report_function <- function(
+  report_fun_nm,
+  assertion_type,
+  extra_arg_nms = NULL
+) {
+  lines <- c(
+    generate_assertion_function_body_start(
+      assertion_type = assertion_type
+    ),
+    generate_report_function_call(
+      report_fun_nm = report_fun_nm,
+      extra_arg_nms = extra_arg_nms
+    ),
+    "dbc::report_to_assertion(",
+    "  report_df = report_df,",
+    "  assertion_type = assertion_type,",
+    "  raise_error_call = call",
+    ")"
+  )
+  return(lines)
+}
+
+generate_test_function_body_to_wrap_report_function <- function(
+  report_fun_nm,
+  extra_arg_nms = NULL
+) {
+  lines <- c(
+    get_generated_function_chunk("body_start"),
+    generate_report_function_call(
+      report_fun_nm = report_fun_nm,
+      extra_arg_nms = extra_arg_nms
+    ),
+    "return(all(report_df[[\"pass\"]]))"
+  )
+  return(lines)
+}
+
+#' @rdname function_generation
+#' @param report_fun_nm `[character]` (no default)
+#' 
+#' Name of function to generate wrapper for --- e.g. `"dbc::report_is_integer"`.
+#' @export 
+generate_report_function_wrapper <- function(
+  report_fun_nm,
+  fun_nm,
+  fun_type,
+  assertion_type = NULL,
+  extra_args = NULL
+) {
+  # @codedoc_comment_block news("dbc", "2024-01-12", "0.5.0")
+  # New exported function `dbc::generate_report_function_wrapper`.
+  # @codedoc_comment_block news("dbc", "2024-01-12", "0.5.0")
+  stopifnot(
+    fun_type %in% c("test", "assertion")
+  )
+  lines <- generate_function_start(
+    fun_nm = fun_nm,
+    fun_type = fun_type,
+    assertion_type = assertion_type,
+    extra_args = extra_args
+  )
+  if (fun_type == "test") {
+    body_lines <- generate_test_function_body_to_wrap_report_function(
+      report_fun_nm = report_fun_nm,
+      extra_arg_nms = names(extra_args)
+    )
+  } else {
+    body_lines <- generate_assertion_function_body_to_wrap_report_function(
+      report_fun_nm = report_fun_nm,
+      extra_arg_nms = names(extra_args),
+      assertion_type = assertion_type
+    )
+  }
+  lines <- c(
+    lines,
+    paste0("  ", body_lines),
+    "}"
+  )
+  return(lines)
+}
+
+#' @rdname function_generation
+#' @export
+generate_script_from_expressions <- function(
+  tgt_script_path,
+  df,
+  fun_type,
+  assertion_type = NULL
+) {
+  exp_col_nms <- c(
+    "fun_nm_suffix",
+    "expression_set",
+    "fail_message_set",
+    "pass_message_set",
+    "extra_arg_set"
+  )
+  stopifnot(
+    #' @param df `[data.frame]` (no default)
+    #' 
+    #' `data.frame` of metadata on functions to generate. Columns:
+    #'  - `fun_nm_suffix`: These will be the suffixes of generated function
+    #'    names. E.g. `"has_length_one"`.
+    #'  - `expression_set`: A list column, where each element is a vector of
+    #'    character strings of R expressions. These will be the actual tests
+    #'    performed. See
+    #'    `expressions` of `dbc::generate_function_from_expressions`.
+    #'  - `fail_message_set`: This list column contains one `fail_message`
+    #'    per corresponding expression in `expression_set`. See
+    #'    `fail_messages` of `dbc::generate_function_from_expressions`.
+    #'  - `pass_message_set`: This list column contains one `pass_message`
+    #'    per corresponding expression in `expression_set`. See
+    #'    `pass_messages` of `dbc::generate_function_from_expressions`.
+    #'  - `extra_arg_set`: This list column contains a character string vector
+    #'    or `NULL` for every function. See arg `extra_args` of
+    #'    `dbc::generate_function_from_expressions`.
+    #' 
+    #' 
+    is.data.frame(df),
+    exp_col_nms %in% names(df),
+
+    #' @param tgt_script_path `[character]` (no default)
+    #' 
+    #' Path to script to be generated. Will be overwritten if it exists.
+    is.character(tgt_script_path),
+    length(tgt_script_path) == 1,
+    dir.exists(dirname(tgt_script_path))
+  )
+
+  lines <- unlist(lapply(seq_len(nrow(df)), function(i) {
+    fun_nm_prefix <- sub("assertion", "assert", fun_type)
+    if (!is.null(assertion_type) && !assertion_type %in% c("general", "none")) {
+      fun_nm_prefix <- paste0(fun_nm_prefix, "_", assertion_type)
+    }
+    fun_nm <- paste0(
+      fun_nm_prefix,
+      "_",
+      df[["fun_nm_suffix"]][i]
+    )
+    lines_i <- dbc::generate_function_from_expressions(
+      fun_nm = fun_nm,
+      fun_type = fun_type,
+      assertion_type = assertion_type,
+      expressions = df[["expression_set"]][[i]],
+      fail_messages = df[["fail_message_set"]][[i]],
+      pass_messages = df[["pass_message_set"]][[i]],
+      extra_args = df[["extra_arg_set"]][[i]]
+    )
+    lines_i <- c(
+      "# generated by dbc::generate_script_from_expressions.",
+      "# do no modify by hand!",
+      "#' @rdname assertions",
+      "#' @export",
+      lines_i,
+      ""
+    )
+    return(lines_i)
+  }))
+  lines <- c(
+    "# generated by dbc::generate_script_from_expressions.",
+    "# do no modify by hand!",
+    "",
+    lines
+  )
+  writeLines(lines, tgt_script_path)
+}
+
+#' @rdname function_generation
+#' @export
+generate_report_function_wrapper_script <- function(
+  tgt_script_path,
+  report_fun_nms,
+  extra_arg_sets,
+  fun_type,
+  assertion_type = NULL
+) {
+  stopifnot(
+    #' @param report_fun_nms `[character]` (no default)
+    #' 
+    #' One or more report function names. Each in turn passed to
+    #' `dbc::generate_report_function_wrapper` arg `report_fun_nm`.
+    is.character(report_fun_nms),
+
+    #' @param extra_arg_sets `[list]` (no default)
+    #' 
+    #' A set of of `extra_args` for each element of `report_fun_nms` ---
+    #' each `NULL` or a character string vector.
+    inherits(extra_arg_sets, "list"),
+    length(extra_arg_sets) == length(report_fun_nms),
+    vapply(extra_arg_sets, inherits, logical(1L), what = c("NULL", "character"))
+  )
+  lines <- unlist(lapply(seq_along(report_fun_nms), function(i) {
+    fun_nm_prefix <- sub("assertion", "assert", fun_type)
+    if (!is.null(assertion_type) && !assertion_type %in% c("general", "none")) {
+      fun_nm_prefix <- paste0(fun_nm_prefix, "_", assertion_type)
+    }
+    fun_nm <- sub("[a-zA-Z_.-]+:+", "", report_fun_nms[i])
+    fun_nm <- sub("^report", fun_nm_prefix, fun_nm)
+    lines_i <- generate_report_function_wrapper(
+      report_fun_nm = report_fun_nms[i],
+      fun_nm = fun_nm,
+      fun_type = fun_type,
+      assertion_type = assertion_type,
+      extra_args = extra_arg_sets[[i]]
+    )
+    lines_i <- c(
+      "# generated by dbc::generate_report_function_wrapper_script.",
+      "# do no modify by hand!",
+      "#' @rdname assertions",
+      "#' @export",
+      lines_i,
+      ""
+    )
+    return(lines_i)
+  }))
+  lines <- c(
+    "# generated by dbc::generate_report_function_wrapper_script.",
+    "# do no modify by hand!",
+    "",
+    lines
+  )
+  writeLines(lines, tgt_script_path)
+}

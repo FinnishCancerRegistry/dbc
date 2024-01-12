@@ -44,6 +44,27 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.0}{
+\subsection{dbc}{
+
+New exported function \code{dbc::generate_function_from_expressions}. It is
+used to produce all generated functions in \code{dbc}.
+}
+
+\subsection{dbc}{
+
+All generated assertion functions no longer create reports and pass those
+to \code{dbc::report_to_assertion}. Instead generated assertion functions use
+\code{stop} directly. This reduced wall clock time used in evaluation by ~90\%.
+}
+
+\subsection{dbc}{
+
+New exported function \code{dbc::generate_report_function_wrapper}.
+}
+
+}
+
 \subsection{News for version 0.4.17}{
 \subsection{dbc::report_to_assertion}{
 
