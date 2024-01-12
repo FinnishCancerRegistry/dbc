@@ -15,6 +15,22 @@ report_fun_specs <- as.data.frame(lapply(report_fun_specs, as.character))
 pkgload::load_all(export_all = FALSE)
 report_df_template <- dbc::expressions_to_report("1 == 1")
 
+r_script_paths <- dir("data-raw/function_chunks/", full.names = TRUE)
+function_chunks <- lapply(r_script_paths, function(r_script_path) {
+  lines <- suppressWarnings(readLines(r_script_path, encoding = "UTF-8"))
+  lines <- lines[!grepl("^[ ]*#+[ ]*", lines)]
+  return(lines)
+})
+names(function_chunks) <- gsub(
+  "[.][rR]$",
+  "",
+  dir("data-raw/function_chunks/", full.names = FALSE)
+)
+
 usethis::use_data(
-  report_fun_specs, report_df_template, internal = TRUE, overwrite = TRUE
+  report_fun_specs,
+  report_df_template,
+  function_chunks,
+  internal = TRUE,
+  overwrite = TRUE
 )
