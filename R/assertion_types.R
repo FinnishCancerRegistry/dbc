@@ -114,17 +114,15 @@ arg_assertion_type_docs <- function() {
 }
 
 assertion_type_error_messages <- function() {
-  msg_append <- c(
-    "You can use dbc::get_newest_error_data() to inspect ",
-    "in more detail where the error occurred. ",
-    "These were the errors: "
-  )
+  # @codedoc_comment_block news("dbc", "2024-01-15", "0.5.0")
+  # Improved assertion some error messages --- avoided term "mis-specified".
+  # @codedoc_comment_block news("dbc", "2024-01-15", "0.5.0")
   out <- list(
     general = c(
-      "One or more assertions failed. Object(s) were mis-specified. "
+      "Invalid objects --- assertions did not pass."
     ),
     input = c(
-      "One or more function inputs (arguments) were mis-specified. "
+      "One or more function inputs (arguments) were invalid."
     ),
     user_input = c(
       "Hi user! One or more arguments you supplied did not comply with ",
@@ -135,40 +133,81 @@ assertion_type_error_messages <- function() {
       "Internal error: one or more arguments supplied to an internally used ",
       "function did not comply with specfications. ",
       "Please report this error ",
-      "to the author or maintainer of the command you used."
+      "to the author or maintainer of the function you used."
     ),
     dev_input = c(
       "Internal error: one or more arguments supplied to an internally used ",
       "function did not comply with specfications tested in development ",
-      "mode. "
+      "mode."
     ),
     prod_output = c(
       "Internal error: the output of an internally used function did not ",
       "comply with specifications. ",
       "Please report this error ",
-      "to the author or maintainer of the command you used. "
+      "to the author or maintainer of the command you used."
     ),
     dev_output = c(
       "Internal error: the output of an internally used function did not ",
-      "comply with specifications tested in development mode. ",
-      "These were the errors: "
+      "comply with specifications tested in development mode."
     ),
     prod_interim = c(
       "Internal error: an interim result inside a function was not as ",
       "expected. ",
       "Please report this error ",
-      "to the author or maintainer of the command you used. "
+      "to the author or maintainer of the command you used."
     ),
     dev_interim = c(
       "Internal error: an interim results of inside a function was not as ",
-      "expected when in development mode. "
+      "expected when in development mode."
     ),
     none = c(
-      "One or more assertions failed. Object(s) were mis-specified. "
+      "If you see this error message, report to the maintainer of dbc."
     )
   )
+  msg_append <- c(
+    " You can use dbc::get_newest_error_data() to track down the mistake. ",
+    "Assertion failures: "
+  )
   out <- lapply(out, c, msg_append)
+  out <- lapply(out, paste0, collapse = "")
   return(out)
+}
+
+.__ASSERTION_ERROR_MESSAGES <- assertion_type_error_messages()
+
+assertion_error_message <- function(assertion_type) {
+  .__ASSERTION_ERROR_MESSAGES[[assertion_type]]
+}
+
+#' @rdname assertion_types
+#' @param messages `[character]` (no default)
+#' 
+#' Error messages of failed assertions.
+#' @template arg_call
+#' @eval arg_assertion_type_docs()
+raise_assertion_error <- function(
+  messages,
+  call,
+  assertion_type
+) {
+  # @codedoc_comment_block news("dbc::raise_assertion_error", "2024-01-15", "0.5.0")
+  # New function `dbc::raise_assertion_error`. This is used every time `dbc`
+  # raises an error over an assertion that did not pass.
+  # @codedoc_comment_block news("dbc::raise_assertion_error", "2024-01-15", "0.5.0")
+  message <- paste0(
+    assertion_error_message(assertion_type),
+    "\n",
+    paste0(" - ", messages, collapse = "\n")
+  )
+  sys_calls <- sys.calls()
+  add_error_data(
+    list(
+      call = call,
+      msg = message,
+      sys.calls = sys_calls[-length(sys_calls)]
+    )
+  )
+  stop(simpleError(message, call))
 }
 
 #' @rdname assertion_types

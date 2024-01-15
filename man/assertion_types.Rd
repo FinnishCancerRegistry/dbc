@@ -4,6 +4,7 @@
 \alias{assertion_types}
 \alias{assertion_type_default}
 \alias{dev_assertion_types}
+\alias{raise_assertion_error}
 \alias{handle_arg_assertion_type}
 \title{Assertion Types}
 \usage{
@@ -13,9 +14,22 @@ assertion_types()
 
 dev_assertion_types()
 
+raise_assertion_error(messages, call, assertion_type)
+
 handle_arg_assertion_type(assertion_type)
 }
 \arguments{
+\item{messages}{\verb{[character]} (no default)
+
+Error messages of failed assertions.}
+
+\item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
+\itemize{
+\item \code{language}: an R language object such as one produced by \link{match.call} or
+\code{quote}; this call will be reported in an error
+\item \code{NULL}: the call is attempted to be inferred
+}}
+
 \item{assertion_type}{\verb{[NULL, character]}
 (default \code{NULL})
 

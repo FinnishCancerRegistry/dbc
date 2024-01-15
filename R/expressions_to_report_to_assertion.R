@@ -374,34 +374,11 @@ report_to_assertion <- function(
     # Made assertion fail messages a bit prettier by surrounding object names
     # and expressions with [`] instead of ["].
     # @codedoc_comment_block news("dbc::report_to_assertion", "2023-12-04", "0.4.17")
-    call_strings <- vapply(wh_nonpass, function(test_no) {
-      call <- report_df[["call"]][[test_no]]
-      if (is.null(call)) {
-        call_string <- "in unknown call, "
-      } else {
-        call_string <- paste0(
-          "in call `", paste0(deparse(call), collapse = ""), "`, "
-        )
-      }
-      gsub("\\s+", " ", call_string)
-    }, character(1L))
-    msgs <- paste0(call_strings, msgs)
-
-    msg_start <- paste0(assertion_type_error_messages()[[assertion_type]],
-                        collapse = "")
-    msg <- paste0(
-      c(msg_start, paste0(" - ", msgs)),
-      collapse = "\n"
+    raise_assertion_error(
+      messages = msgs,
+      call = raise_error_call,
+      assertion_type = assertion_type
     )
-    sys_calls <- sys.calls()
-    add_error_data(
-      list(
-        call = raise_error_call,
-        msg = msg,
-        sys.calls = sys_calls[-length(sys_calls)]
-      )
-    )
-    stop(simpleError(msg, raise_error_call))
   }
 
   return(invisible(NULL))

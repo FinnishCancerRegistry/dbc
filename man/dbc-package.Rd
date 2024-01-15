@@ -47,6 +47,11 @@ my_fun_2 <- function(df) \{
 \subsection{News for version 0.5.0}{
 \subsection{dbc}{
 
+Improved assertion some error messages --- avoided term "mis-specified".
+}
+
+\subsection{dbc}{
+
 New exported function \code{dbc::generate_function_from_expressions}. It is
 used to produce all generated functions in \code{dbc}.
 }
@@ -61,6 +66,12 @@ to \code{dbc::report_to_assertion}. Instead generated assertion functions use
 \subsection{dbc}{
 
 New exported function \code{dbc::generate_report_function_wrapper}.
+}
+
+\subsection{dbc::raise_assertion_error}{
+
+New function \code{dbc::raise_assertion_error}. This is used every time \code{dbc}
+raises an error over an assertion that did not pass.
 }
 
 }
