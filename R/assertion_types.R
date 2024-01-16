@@ -225,6 +225,7 @@ assertion_raise <- function(
 #' @param env `[environment]` (default `parent.frame(1L)`, i.e. calling env)
 #' 
 #' Environment where `expression` will be evaluated.
+#' @template arg_x_nm
 #' @template arg_call
 #' @eval arg_assertion_type_docs()
 #' @export

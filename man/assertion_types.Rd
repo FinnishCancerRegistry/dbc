@@ -80,6 +80,14 @@ Expression to evaluate.}
 Error message of failed assertion. Passed to \link{interpolate} before it is
 emitted.}
 
+\item{x_nm}{\verb{[NULL, character]} (optional, default \code{NULL})
+
+the name of the object \code{x} to mention in possible error message.
+\itemize{
+\item \code{NULL}: taken as \code{deparse(substitute(x))}
+\item \code{character}: the name as a string
+}}
+
 \item{env}{\verb{[environment]} (default \code{parent.frame(1L)}, i.e. calling env)
 
 Environment where \code{expression} will be evaluated.}
