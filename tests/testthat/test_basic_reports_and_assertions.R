@@ -26,16 +26,17 @@ testthat::test_that("basic report / assertion funs work", {
 testthat::test_that("enclosing function call included in report", {
 
   my_fun <- function(x) {
-    assert_is_integer_gtzero_atom(x)
+    dbc::assert_is_integer_gtzero_atom(x)
     x ^ 5
   }
 
   call_string <- "my_fun(x = 0L)"
   call <- parse(text = call_string)[[1L]]
 
-  testthat::expect_error(
-    eval(call),
-    regexp = paste0("\\Q", call_string, "\\E")
+  err <- tryCatch(eval(call), error = function(e) e)
+  testthat::expect_identical(
+    deparse1(err[["call"]]),
+    call_string
   )
 })
 
