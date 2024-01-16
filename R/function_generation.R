@@ -312,9 +312,7 @@ generate_assertion_function_body_start <- function(
     assertion_type %in% dbc::assertion_types(),
     length(assertion_type) == 1
   )
-  if (assertion_type == "general") {
-    append <- "assertion_type <- dbc::handle_arg_assertion_type(assertion_type)"
-  } else {
+  if (assertion_type != "general") {
     append <- sprintf("assertion_type <- \"%s\"", assertion_type)
   }
   c(
