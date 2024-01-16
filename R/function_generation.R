@@ -105,7 +105,15 @@ get_report_fun_df <- function() {
   fun_df[["extra_arg_set"]] <- lapply(
     fun_df[["extra_arg_set"]],
     function(x) {
-      setdiff(unlist(strsplit(x, ", *")), NA_character_)
+      set <- setdiff(unlist(strsplit(x, ", *")), NA_character_)
+      if (length(set) == 0) {
+        return(NULL)
+      }
+      split_set <- strsplit(set, split = "[ ]*=[ ]*")
+      set <- vapply(split_set, utils::tail, character(1L), n = 1L)
+      names(set) <- vapply(split_set, utils::head, character(1L), n = 1L)
+      set[set == names(set)] <- ""
+      return(set)
     }
   )
 
@@ -133,6 +141,16 @@ generate_function_start <- function(
     fun_type %in% c("report", "test", "assertion"),
     is.null(extra_args) || is.character(extra_args)
   )
+  if (is.character(extra_args)) {
+    if (length(extra_args) == 0) {
+      extra_args <- NULL
+    } else {
+      stopifnot(
+        !is.null(names(extra_args)),
+        !"" %in% names(extra_args)
+      )
+    }
+  }
   if (fun_type == "assertion") {
     stopifnot(assertion_type %in% dbc::assertion_types())
     if (assertion_type == "general") {
@@ -215,7 +233,8 @@ generate_function_from_expressions <- function(
   lines <- generate_function_start(
     fun_nm = fun_nm,
     fun_type = fun_type,
-    assertion_type = assertion_type
+    assertion_type = assertion_type,
+    extra_args = extra_args
   )
   if (fun_type == "report") {
     body_lines <- generate_report_function_body_from_expressions(
@@ -285,67 +304,6 @@ generate_report_function_body_from_expressions <- function(
   return(lines)
 }
 
-assertion_function_error_message <- function(
-  fail_message,
-  expression,
-  assertion_type
-) {
-  stopifnot(
-    is.character(expression),
-    is.character(fail_message),
-    length(expression) == 1,
-    length(fail_message) == 1,
-    !grepl("^\"", fail_message),
-    !grepl("\"$", fail_message),
-    assertion_type %in% dbc::assertion_types()
-  )
-  if (is.na(fail_message)) {
-    replacements <- c(
-      "${x_nm}" = "(?!<\\w)x(?!\\w)",
-      "${y_nm}" = "(?!<\\w)y(?!\\w)"
-    )
-    for (repl in names(replacements)) {
-      expression <- sub(
-        replacements[repl],
-        repl,
-        expression,
-        perl = TRUE
-      )
-    }
-    fail_message <- paste0(
-      "Test `",
-      expression,
-      "`, was FALSE/NA ${n_fail} times."
-    )
-  }
-  if (assertion_type == "none") {
-    return(fail_message)
-  }
-  fail_prefix <- "Invalid object"
-  if (grepl("input", assertion_type)) {
-    fail_prefix <- "Invalid argument passed"
-  } else if (grepl("output", assertion_type)) {
-    fail_prefix <- "Invalid output produced"
-  } else if (grepl("interim", assertion_type)) {
-    fail_prefix <- "Invalid interim object produced"
-  }
-  if (assertion_type == "user_input") {
-    fail_prefix <- paste0(fail_prefix, " by user")
-  } else if (grepl("(dev)|(prod)", assertion_type)) {
-    fail_prefix <- paste0(
-      fail_prefix,
-      " internally. Contact the author of the guilty function!"
-    )
-  }
-  fail_prefix <- paste0(
-    fail_prefix,
-    ". Use dbc::get_newest_error_data() to see more precisely where the error ",
-    "occurred. Test failure message(s):"
-  )
-  fail_message <- paste0(fail_prefix, "\n - ", fail_message)
-  return(fail_message)
-}
-
 generate_assertion_function_body_start <- function(
   assertion_type
 ) {
@@ -384,28 +342,24 @@ generate_assertion_function_body_from_expressions <- function(
     !grepl("\"$", fail_messages),
     assertion_type %in% dbc::assertion_types()
   )
-  fail_messages <- vapply(
-    seq_along(fail_messages),
-    function(i) {
-      assertion_function_error_message(
-        fail_message = fail_messages[i],
-        expression = expressions[i],
-        assertion_type = assertion_type
-      )
-    },
-    character(1L)
-  )
-  fail_messages <- paste0("\"", fail_messages, "\"")
 
   lines <- c(
     generate_assertion_function_body_start(
       assertion_type = assertion_type
     ),
     unlist(lapply(seq_along(expressions), function(i) {
-      lines <- get_generated_function_chunk("assertion_eval")
+      lines <- c(
+        "dbc::assertion_eval(",
+        "  expression = quote(EXPRESSION),",
+        "  fail_message = FAIL_MESSAGE,",
+        "  assertion_type = assertion_type,",
+        "  x_nm = x_nm,",
+        "  call = call",
+        ")"
+      )
       replace <- c(
         "EXPRESSION" = expressions[i],
-        "FAIL_MESSAGE" = fail_messages[i]
+        "FAIL_MESSAGE" = paste0("\"", fail_messages[i], "\"")
       )
       for (re in names(replace)) {
         lines <- gsub(re, replace[re], lines)
