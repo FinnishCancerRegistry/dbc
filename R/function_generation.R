@@ -312,14 +312,13 @@ generate_assertion_function_body_start <- function(
     assertion_type %in% dbc::assertion_types(),
     length(assertion_type) == 1
   )
+  append <- NULL
   if (assertion_type != "general") {
     append <- sprintf("assertion_type <- \"%s\"", assertion_type)
   }
   c(
     get_generated_function_chunk("body_start"),
-    "",
-    append,
-    ""
+    append
   )
 }
 
@@ -363,7 +362,7 @@ generate_assertion_function_body_from_expressions <- function(
       for (re in names(replace)) {
         lines <- gsub(re, replace[re], lines)
       }
-      c(lines, "")
+      lines
     })) 
   )
 
