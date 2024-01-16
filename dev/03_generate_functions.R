@@ -69,7 +69,9 @@ invisible(lapply(c("report", "test", "assertion"), function(fun_type) {
     script_path <- gsub("_+", "_", script_path)
     dbc:::generate_report_function_wrapper_script(
       tgt_script_path = script_path,
-      report_fun_nms = manually_written_report_df[["report_fun_nm"]],
+      report_fun_nms = paste0(
+        "dbc::", manually_written_report_df[["report_fun_nm"]]
+      ),
       extra_arg_sets = manually_written_report_df[["extra_arg_set"]],
       fun_type = fun_type,
       assertion_type = assertion_type
