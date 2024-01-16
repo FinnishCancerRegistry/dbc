@@ -225,10 +225,11 @@ generate_function_from_expressions <- function(
   pass_messages = NULL,
   extra_args = NULL
 ) {
-  # @codedoc_comment_block news("dbc", "2024-01-11", "0.5.0")
+  # @codedoc_comment_block news("dbc::generate_function_from_expressions", "2024-01-11", "0.5.0")
   # New exported function `dbc::generate_function_from_expressions`. It is
-  # used to produce all generated functions in `dbc`.
-  # @codedoc_comment_block news("dbc", "2024-01-11", "0.5.0")
+  # used to produce all generated functions in `dbc` that are based on
+  # expressions.
+  # @codedoc_comment_block news("dbc::generate_function_from_expressions", "2024-01-11", "0.5.0")
 
   lines <- generate_function_start(
     fun_nm = fun_nm,
@@ -481,9 +482,10 @@ generate_report_function_wrapper <- function(
   assertion_type = NULL,
   extra_args = NULL
 ) {
-  # @codedoc_comment_block news("dbc", "2024-01-12", "0.5.0")
+  # @codedoc_comment_block news("dbc::generate_report_function_wrapper", "2024-01-12", "0.5.0")
   # New exported function `dbc::generate_report_function_wrapper`.
-  # @codedoc_comment_block news("dbc", "2024-01-12", "0.5.0")
+  # This function is used to generate all report function wrappers in `dbc`.
+  # @codedoc_comment_block news("dbc::generate_report_function_wrapper", "2024-01-12", "0.5.0")
   stopifnot(
     fun_type %in% c("test", "assertion")
   )
@@ -521,6 +523,11 @@ generate_script_from_expressions <- function(
   fun_type,
   assertion_type = NULL
 ) {
+  # @codedoc_comment_block news("dbc::generate_script_from_expressions", "2024-01-12", "0.5.0")
+  # New exported function `dbc::generate_script_from_expressions`.
+  # This function is used to produce all generated expression-based functions
+  # in `dbc`.
+  # @codedoc_comment_block news("dbc::generate_script_from_expressions", "2024-01-12", "0.5.0")
   exp_col_nms <- c(
     "fun_nm_suffix",
     "expression_set",
@@ -607,6 +614,11 @@ generate_report_function_wrapper_script <- function(
   fun_type,
   assertion_type = NULL
 ) {
+  # @codedoc_comment_block news("dbc::generate_report_function_wrapper_script", "2024-01-12", "0.5.0")
+  # New exported function `dbc::generate_report_function_wrapper_script`.
+  # This function is used to produce all generated report wrapper functions
+  # in `dbc`.
+  # @codedoc_comment_block news("dbc::generate_report_function_wrapper_script", "2024-01-12", "0.5.0")
   stopifnot(
     #' @param report_fun_nms `[character]` (no default)
     #' 

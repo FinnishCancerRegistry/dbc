@@ -4,22 +4,13 @@
 
 ### dbc
 
-Improved assertion some error messages --- avoided term "mis-specified".
-
-### dbc
-
-New exported function `dbc::generate_function_from_expressions`. It is
-used to produce all generated functions in `dbc`.
+Improved some assertion error messages --- avoided term "mis-specified".
 
 ### dbc
 
 All generated assertion functions no longer create reports and pass those
 to `dbc::report_to_assertion`. Instead generated assertion functions use
 `stop` directly. This reduced wall clock time used in evaluation by ~90%.
-
-### dbc
-
-New exported function `dbc::generate_report_function_wrapper`.
 
 ### dbc::assertion_eval
 
@@ -35,6 +26,29 @@ raises an error over an assertion that did not pass.
 
 New fun `dbc::expression_eval`. Every assertion expression in `dbc` is
 evaluated by this function.
+
+### dbc::generate_function_from_expressions
+
+New exported function `dbc::generate_function_from_expressions`. It is
+used to produce all generated functions in `dbc` that are based on
+expressions.
+
+### dbc::generate_report_function_wrapper
+
+New exported function `dbc::generate_report_function_wrapper`.
+This function is used to generate all report function wrappers in `dbc`.
+
+### dbc::generate_report_function_wrapper_script
+
+New exported function `dbc::generate_report_function_wrapper_script`.
+This function is used to produce all generated report wrapper functions
+in `dbc`.
+
+### dbc::generate_script_from_expressions
+
+New exported function `dbc::generate_script_from_expressions`.
+This function is used to produce all generated expression-based functions
+in `dbc`.
 
 ### dbc::handle_args_inplace
 

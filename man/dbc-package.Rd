@@ -47,13 +47,7 @@ my_fun_2 <- function(df) \{
 \subsection{News for version 0.5.0}{
 \subsection{dbc}{
 
-Improved assertion some error messages --- avoided term "mis-specified".
-}
-
-\subsection{dbc}{
-
-New exported function \code{dbc::generate_function_from_expressions}. It is
-used to produce all generated functions in \code{dbc}.
+Improved some assertion error messages --- avoided term "mis-specified".
 }
 
 \subsection{dbc}{
@@ -61,11 +55,6 @@ used to produce all generated functions in \code{dbc}.
 All generated assertion functions no longer create reports and pass those
 to \code{dbc::report_to_assertion}. Instead generated assertion functions use
 \code{stop} directly. This reduced wall clock time used in evaluation by ~90\%.
-}
-
-\subsection{dbc}{
-
-New exported function \code{dbc::generate_report_function_wrapper}.
 }
 
 \subsection{dbc::assertion_eval}{
@@ -84,6 +73,33 @@ raises an error over an assertion that did not pass.
 
 New fun \code{dbc::expression_eval}. Every assertion expression in \code{dbc} is
 evaluated by this function.
+}
+
+\subsection{dbc::generate_function_from_expressions}{
+
+New exported function \code{dbc::generate_function_from_expressions}. It is
+used to produce all generated functions in \code{dbc} that are based on
+expressions.
+}
+
+\subsection{dbc::generate_report_function_wrapper}{
+
+New exported function \code{dbc::generate_report_function_wrapper}.
+This function is used to generate all report function wrappers in \code{dbc}.
+}
+
+\subsection{dbc::generate_report_function_wrapper_script}{
+
+New exported function \code{dbc::generate_report_function_wrapper_script}.
+This function is used to produce all generated report wrapper functions
+in \code{dbc}.
+}
+
+\subsection{dbc::generate_script_from_expressions}{
+
+New exported function \code{dbc::generate_script_from_expressions}.
+This function is used to produce all generated expression-based functions
+in \code{dbc}.
 }
 
 \subsection{dbc::handle_args_inplace}{

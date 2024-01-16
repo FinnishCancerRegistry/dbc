@@ -115,7 +115,7 @@ arg_assertion_type_docs <- function() {
 
 assertion_type_error_messages <- function() {
   # @codedoc_comment_block news("dbc", "2024-01-15", "0.5.0")
-  # Improved assertion some error messages --- avoided term "mis-specified".
+  # Improved some assertion error messages --- avoided term "mis-specified".
   # @codedoc_comment_block news("dbc", "2024-01-15", "0.5.0")
   out <- list(
     general = c(
