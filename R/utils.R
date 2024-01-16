@@ -120,7 +120,7 @@ get_nth_call <- function(n = 1L) {
 #'   failure to guess the call
 handle_arg_call <- function(call = NULL, env = NULL) {
   raise_internal_error_if_not(
-    is.environment(env) || is.null(env),
+    is.null(env) || is.environment(env),
     is.language(call) || is.null(call)
   )
   if (is.language(call)) {
@@ -235,8 +235,8 @@ handle_args_inplace <- function() {
   }
   if ("call" %in% ls(parent_env)) {
     parent_env[["call"]] <- dbc::handle_arg_call(
-      parent_env[["call"]],
-      env = parent_env
+      call = parent_env[["call"]],
+      env = parent.frame(2L)
     )
   }
   if ("assertion_type" %in% ls(parent_env)) {
