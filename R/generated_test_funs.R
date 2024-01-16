@@ -70,7 +70,7 @@ test_atom_is_in_set <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_atom(x),
+          length(x) == 1,
           error = function(e) e
         )
       },
@@ -79,7 +79,7 @@ test_atom_is_in_set <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::test_is_atom(x)` resulted in error: ", test_result[["message"]]
+          "Test `length(x) == 1` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -89,42 +89,7 @@ test_atom_is_in_set <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::test_is_atom(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_vector(set),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_vector(set)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_vector(set)` is misspecified. ",
+          "Internal error: Test `length(x) == 1` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -342,41 +307,6 @@ test_has_class <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_character_nonNA_atom(required_class),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_atom(required_class)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_atom(required_class)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           inherits(x, required_class),
           error = function(e) e
         )
@@ -473,41 +403,6 @@ test_has_names <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_character_nonNA_vector(required_names),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(required_names)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(required_names)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())
@@ -650,41 +545,6 @@ test_has_one_of_classes <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_character_nonNA_vector(classes),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(classes)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(classes)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           inherits(x, classes),
           error = function(e) e
         )
@@ -730,41 +590,6 @@ test_has_only_names <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_character_nonNA_vector(required_names),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(required_names)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(required_names)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())
@@ -892,41 +717,6 @@ test_inherits <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_character_nonNA_atom(required_class),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_atom(required_class)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_atom(required_class)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           inherits(x, required_class),
           error = function(e) e
         )
@@ -977,7 +767,7 @@ test_is_assertion_type <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_atom(x),
+          length(x) == 1,
           error = function(e) e
         )
       },
@@ -986,7 +776,7 @@ test_is_assertion_type <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::test_is_atom(x)` resulted in error: ", test_result[["message"]]
+          "Test `length(x) == 1` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -996,7 +786,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::test_is_atom(x)` is misspecified. ",
+          "Internal error: Test `length(x) == 1` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1012,7 +802,7 @@ test_is_assertion_type <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_character(x),
+          is.character(x),
           error = function(e) e
         )
       },
@@ -1021,7 +811,7 @@ test_is_assertion_type <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::test_is_character(x)` resulted in error: ", test_result[["message"]]
+          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1031,7 +821,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::test_is_character(x)` is misspecified. ",
+          "Internal error: Test `is.character(x)` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1047,7 +837,7 @@ test_is_assertion_type <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_nonNA(x),
+          !is.na(x),
           error = function(e) e
         )
       },
@@ -1056,7 +846,7 @@ test_is_assertion_type <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::test_is_nonNA(x)` resulted in error: ", test_result[["message"]]
+          "Test `!is.na(x)` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1066,7 +856,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::test_is_nonNA(x)` is misspecified. ",
+          "Internal error: Test `!is.na(x)` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1082,7 +872,7 @@ test_is_assertion_type <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_atom_is_in_set(x, set = dbc::assertion_types()),
+          x %in% dbc::assertion_types(),
           error = function(e) e
         )
       },
@@ -1091,7 +881,7 @@ test_is_assertion_type <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::test_atom_is_in_set(x, set = dbc::assertion_types())` resulted in error: ", test_result[["message"]]
+          "Test `x %in% dbc::assertion_types()` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1101,7 +891,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::test_atom_is_in_set(x, set = dbc::assertion_types())` is misspecified. ",
+          "Internal error: Test `x %in% dbc::assertion_types()` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1184,76 +974,6 @@ test_is_between_exclusive <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_number_nonNA_vector(lo),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_number_nonNA_vector(lo)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_number_nonNA_vector(lo)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_number_nonNA_vector(hi),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_number_nonNA_vector(hi)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_number_nonNA_vector(hi)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           dbc::is_between_exclusive(x = x, lo = lo, hi = hi),
           error = function(e) e
         )
@@ -1300,76 +1020,6 @@ test_is_between_inclusive <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_number_nonNA_vector(lo),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_number_nonNA_vector(lo)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_number_nonNA_vector(lo)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_number_nonNA_vector(hi),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_number_nonNA_vector(hi)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_number_nonNA_vector(hi)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())
@@ -2006,41 +1656,6 @@ test_is_character_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -2061,6 +1676,41 @@ test_is_character_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2126,41 +1776,6 @@ test_is_character_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -2181,6 +1796,41 @@ test_is_character_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2256,41 +1906,6 @@ test_is_data.frame_with_required_names <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_character_nonNA_vector(required_names),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(required_names)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(required_names)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())
@@ -2433,41 +2048,6 @@ test_is_data.table_with_required_names <- function(
     test_result <- local(
       {
         tryCatch(
-          dbc::test_is_character_nonNA_vector(required_names),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(required_names)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(required_names)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           inherits(x, 'data.table'),
           error = function(e) e
         )
@@ -2598,41 +2178,6 @@ test_is_data_table_with_required_names <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_character_nonNA_vector(required_names),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(required_names)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(required_names)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())
@@ -3254,41 +2799,6 @@ test_is_Date_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -3309,6 +2819,41 @@ test_is_Date_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3374,41 +2919,6 @@ test_is_Date_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -3429,6 +2939,41 @@ test_is_Date_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3904,41 +3449,6 @@ test_is_double_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -3959,6 +3469,41 @@ test_is_double_gtezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4299,41 +3844,6 @@ test_is_double_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -4354,6 +3864,41 @@ test_is_double_gtzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4694,41 +4239,6 @@ test_is_double_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -4749,6 +4259,41 @@ test_is_double_ltezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5089,41 +4634,6 @@ test_is_double_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -5144,6 +4654,41 @@ test_is_double_ltzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5794,41 +5339,6 @@ test_is_double_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -5849,6 +5359,41 @@ test_is_double_nonNA_gtezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6294,41 +5839,6 @@ test_is_double_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -6349,6 +5859,41 @@ test_is_double_nonNA_gtzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6794,41 +6339,6 @@ test_is_double_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -6849,6 +6359,41 @@ test_is_double_nonNA_ltezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7294,41 +6839,6 @@ test_is_double_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -7349,6 +6859,41 @@ test_is_double_nonNA_ltzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7569,41 +7114,6 @@ test_is_double_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -7624,6 +7134,41 @@ test_is_double_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7689,41 +7234,6 @@ test_is_double_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -7744,6 +7254,41 @@ test_is_double_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8404,41 +7949,6 @@ test_is_factor_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -8459,6 +7969,41 @@ test_is_factor_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8524,41 +8069,6 @@ test_is_factor_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -8589,6 +8099,41 @@ test_is_factor_vector <- function(
     all(test_result)
   })
   
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
 }
 
 # generated by dbc::generate_script_from_expressions.
@@ -8604,41 +8149,6 @@ test_is_factor_with_levels <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_character_nonNA_vector(expected_levels),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_character_nonNA_vector(expected_levels)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_character_nonNA_vector(expected_levels)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())
@@ -9548,41 +9058,6 @@ test_is_integer_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -9603,6 +9078,41 @@ test_is_integer_gtezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9943,41 +9453,6 @@ test_is_integer_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -9998,6 +9473,41 @@ test_is_integer_gtzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10338,41 +9848,6 @@ test_is_integer_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -10393,6 +9868,41 @@ test_is_integer_ltezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10733,41 +10243,6 @@ test_is_integer_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -10788,6 +10263,41 @@ test_is_integer_ltzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11438,41 +10948,6 @@ test_is_integer_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -11493,6 +10968,41 @@ test_is_integer_nonNA_gtezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11938,41 +11448,6 @@ test_is_integer_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -11993,6 +11468,41 @@ test_is_integer_nonNA_gtzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12438,41 +11948,6 @@ test_is_integer_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -12493,6 +11968,41 @@ test_is_integer_nonNA_ltezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12938,41 +12448,6 @@ test_is_integer_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -12993,6 +12468,41 @@ test_is_integer_nonNA_ltzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13213,41 +12723,6 @@ test_is_integer_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -13268,6 +12743,41 @@ test_is_integer_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13333,41 +12843,6 @@ test_is_integer_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -13388,6 +12863,41 @@ test_is_integer_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14048,41 +13558,6 @@ test_is_logical_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -14103,6 +13578,41 @@ test_is_logical_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14168,41 +13678,6 @@ test_is_logical_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -14223,6 +13698,41 @@ test_is_logical_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15235,41 +14745,6 @@ test_is_number_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -15290,6 +14765,41 @@ test_is_number_gtezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15630,41 +15140,6 @@ test_is_number_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -15685,6 +15160,41 @@ test_is_number_gtzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16025,41 +15535,6 @@ test_is_number_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -16080,6 +15555,41 @@ test_is_number_ltezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16420,41 +15930,6 @@ test_is_number_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -16475,6 +15950,41 @@ test_is_number_ltzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17125,41 +16635,6 @@ test_is_number_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -17180,6 +16655,41 @@ test_is_number_nonNA_gtezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17625,41 +17135,6 @@ test_is_number_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -17680,6 +17155,41 @@ test_is_number_nonNA_gtzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18125,41 +17635,6 @@ test_is_number_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -18180,6 +17655,41 @@ test_is_number_nonNA_ltezero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18625,41 +18135,6 @@ test_is_number_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -18680,6 +18155,41 @@ test_is_number_nonNA_ltzero_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18900,41 +18410,6 @@ test_is_number_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -18955,6 +18430,41 @@ test_is_number_nonNA_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -19020,41 +18530,6 @@ test_is_number_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          is.null(dim(x)),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
           !is.list(x),
           error = function(e) e
         )
@@ -19075,6 +18550,41 @@ test_is_number_vector <- function(
       stop(simpleError(
         paste0(
           "Internal error: Test `!is.list(x)` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.null(dim(x)),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `is.null(dim(x))` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -19677,41 +19187,6 @@ test_vector_elems_are_in_set <- function(
   dbc::handle_args_inplace()
   
   out <- TRUE
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          dbc::test_is_vector(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `dbc::test_is_vector(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `dbc::test_is_vector(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
   
   out <- out && local({
     eval_env <- new.env(parent = environment())

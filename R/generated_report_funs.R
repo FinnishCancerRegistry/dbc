@@ -42,11 +42,11 @@ report_atom_is_in_set <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_atom(x)", "dbc::test_is_vector(set)", "x %in% set")
+    c("length(x) == 1", "x %in% set")
   fail_messages <- 
-    c(NA, NA, "object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}")
+    c(NA, "object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -156,11 +156,11 @@ report_has_class <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_atom(required_class)", "inherits(x, required_class)")
+    "inherits(x, required_class)"
   fail_messages <- 
-    c("Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ", "expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}")
+    "expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
   pass_messages <- 
-    c(NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -214,11 +214,11 @@ report_has_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(required_names)", "!is.null(names(x))", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+    c("!is.null(names(x))", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   fail_messages <- 
-    c(NA, "object `${x_nm}` did not have any names", "object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}")
+    c("object `${x_nm}` did not have any names", "object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -271,11 +271,11 @@ report_has_one_of_classes <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(classes)", "inherits(x, classes)")
+    "inherits(x, classes)"
   fail_messages <- 
-    c(NA, "expected object `${x_nm}` to have class ${classes}, but it had class(es) ${deparse(class(x))}")
+    "expected object `${x_nm}` to have class ${classes}, but it had class(es) ${deparse(class(x))}"
   pass_messages <- 
-    c(NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -300,11 +300,11 @@ report_has_only_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(required_names)", "!is.null(names(x))", "length(miss_nms <- setdiff(required_names, names(x))) == 0L", "length(extra_nms <- setdiff(names(x), required_names)) == 0L")
+    c("!is.null(names(x))", "length(miss_nms <- setdiff(required_names, names(x))) == 0L", "length(extra_nms <- setdiff(names(x), required_names)) == 0L")
   fail_messages <- 
-    c(NA, "object `${x_nm}` did not have any names", "object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}", "object `${x_nm}` had the following unexpected names: ${deparse(extra_nms)}")
+    c("object `${x_nm}` did not have any names", "object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}", "object `${x_nm}` had the following unexpected names: ${deparse(extra_nms)}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -329,11 +329,11 @@ report_inherits <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_atom(required_class)", "inherits(x, required_class)")
+    "inherits(x, required_class)"
   fail_messages <- 
-    c("Internal error: expected required_class to be a non-NA character string (vector of length one), but required_class = ${deparse(required_class)} ", "expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}")
+    "expected object `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
   pass_messages <- 
-    c(NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -357,7 +357,7 @@ report_is_assertion_type <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_atom(x)", "dbc::test_is_character(x)", "dbc::test_is_nonNA(x)", "dbc::test_atom_is_in_set(x, set = dbc::assertion_types())")
+    c("length(x) == 1", "is.character(x)", "!is.na(x)", "x %in% dbc::assertion_types()")
   fail_messages <- 
     c("`${x_nm}` was not atomic", "`${x_nm}` was not a string", "`${x_nm}` was NA", "`${x_nm}` was not one of the strings given by dbc::assertion_types()")
   pass_messages <- 
@@ -415,11 +415,11 @@ report_is_between_exclusive <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_number_nonNA_vector(lo)", "dbc::test_is_number_nonNA_vector(hi)", "dbc::is_between_exclusive(x = x, lo = lo, hi = hi)")
+    "dbc::is_between_exclusive(x = x, lo = lo, hi = hi)"
   fail_messages <- 
-    c(NA, NA, "${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}")
+    "${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}"
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -445,11 +445,11 @@ report_is_between_inclusive <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_number_nonNA_vector(lo)", "dbc::test_is_number_nonNA_vector(hi)", "dbc::is_between_inclusive(x = x, lo = lo, hi = hi)")
+    "dbc::is_between_inclusive(x = x, lo = lo, hi = hi)"
   fail_messages <- 
-    c(NA, NA, "${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}")
+    "${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}"
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -641,9 +641,9 @@ report_is_character_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.character(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.character(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -669,9 +669,9 @@ report_is_character_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.character(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.character(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -726,11 +726,11 @@ report_is_data.frame_with_required_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(required_names)", "is.data.frame(x)", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+    c("is.data.frame(x)", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   fail_messages <- 
-    c(NA, "object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
+    c("object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -783,11 +783,11 @@ report_is_data.table_with_required_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+    c("inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   fail_messages <- 
-    c(NA, "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
+    c("object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -840,11 +840,11 @@ report_is_data_table_with_required_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(required_names)", "inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+    c("inherits(x, 'data.table')", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   fail_messages <- 
-    c(NA, "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
+    c("object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -1008,9 +1008,9 @@ report_is_Date_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(x, 'Date')", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("inherits(x, 'Date')", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1036,9 +1036,9 @@ report_is_Date_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(x, 'Date')", "is.null(dim(x))", "!is.list(x)")
+    c("inherits(x, 'Date')", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1176,9 +1176,9 @@ report_is_double_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x >= 0", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x >= 0", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1260,9 +1260,9 @@ report_is_double_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x > 0", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x > 0", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1344,9 +1344,9 @@ report_is_double_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x <= 0", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x <= 0", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1428,9 +1428,9 @@ report_is_double_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x < 0", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x < 0", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1568,9 +1568,9 @@ report_is_double_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1652,9 +1652,9 @@ report_is_double_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1736,9 +1736,9 @@ report_is_double_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1820,9 +1820,9 @@ report_is_double_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1876,9 +1876,9 @@ report_is_double_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -1904,9 +1904,9 @@ report_is_double_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.double(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2128,9 +2128,9 @@ report_is_factor_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.factor(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.factor(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2156,9 +2156,9 @@ report_is_factor_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.factor(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.factor(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2185,11 +2185,11 @@ report_is_factor_with_levels <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_character_nonNA_vector(expected_levels)", "is.factor(x)", "length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L", "length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L")
+    c("is.factor(x)", "length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L", "length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L")
   fail_messages <- 
-    c(NA, "object `${x_nm}` is not a factor; instead it had class(es) ${deparse(class(x))}", "factor object `${x_nm}` had these unexpected levels: ${deparse(extra_levels)}", "factor object `${x_nm}` did not have these expected levels: ${deparse(miss_levels)}")
+    c("object `${x_nm}` is not a factor; instead it had class(es) ${deparse(class(x))}", "factor object `${x_nm}` had these unexpected levels: ${deparse(extra_levels)}", "factor object `${x_nm}` did not have these expected levels: ${deparse(miss_levels)}")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
@@ -2496,9 +2496,9 @@ report_is_integer_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "is.integer(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x >= 0", "is.integer(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2580,9 +2580,9 @@ report_is_integer_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "is.integer(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x > 0", "is.integer(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2664,9 +2664,9 @@ report_is_integer_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x <= 0", "is.null(dim(x))", "!is.list(x)")
+    c("is.integer(x)", "x <= 0", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2748,9 +2748,9 @@ report_is_integer_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x < 0", "is.null(dim(x))", "!is.list(x)")
+    c("is.integer(x)", "x < 0", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2888,9 +2888,9 @@ report_is_integer_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("x >= 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -2972,9 +2972,9 @@ report_is_integer_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("x > 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3056,9 +3056,9 @@ report_is_integer_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.integer(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3140,9 +3140,9 @@ report_is_integer_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.integer(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3196,9 +3196,9 @@ report_is_integer_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3224,9 +3224,9 @@ report_is_integer_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.integer(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3448,9 +3448,9 @@ report_is_logical_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.logical(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.null(dim(x))", "!is.list(x)")
+    c("is.logical(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3476,9 +3476,9 @@ report_is_logical_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.logical(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.logical(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3898,9 +3898,9 @@ report_is_number_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x >= 0", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -3982,9 +3982,9 @@ report_is_number_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x > 0", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4066,9 +4066,9 @@ report_is_number_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x <= 0", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x <= 0", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4150,9 +4150,9 @@ report_is_number_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x < 0", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x < 0", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4290,9 +4290,9 @@ report_is_number_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4374,9 +4374,9 @@ report_is_number_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4458,9 +4458,9 @@ report_is_number_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4542,9 +4542,9 @@ report_is_number_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4598,9 +4598,9 @@ report_is_number_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4626,9 +4626,9 @@ report_is_number_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.numeric(x)", "is.null(dim(x))", "!is.list(x)")
+    c("is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
-    c("object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had dimensions but was expected to have none", "object `${x_nm}` was a list")
+    c("object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4881,11 +4881,11 @@ report_vector_elems_are_in_set <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("dbc::test_is_vector(x)", "in_set <- x %in% set")
+    "in_set <- x %in% set"
   fail_messages <- 
-    c(NA, "some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}")
+    "some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}"
   pass_messages <- 
-    c(NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
