@@ -26,6 +26,10 @@ New exported function `dbc::generate_report_function_wrapper`.
 New function `dbc::raise_assertion_error`. This is used every time `dbc`
 raises an error over an assertion that did not pass.
 
+### dbc::interpolate
+
+New exported fun `dbc::interpolate`.
+
 
 ## News for version 0.4.17
 
