@@ -7114,6 +7114,11 @@ see e.g. \link{report_is_atom}}
 
 Passed to \verb{[dbc::expressions_to_report]}.}
 
+\item{...}{(no default)
+
+\code{dbc::assert}, \code{dbc::report}, and \code{dbc::test} evaluate all R expressions
+passed via \code{...} in the calling environment.}
+
 \item{assertion_type}{\verb{[NULL, character]}
 (default \code{NULL})
 
@@ -7286,7 +7291,8 @@ stopifnot(
 )
 
 # dbc::assert_is
-dbc::assert_is(quote(1 + 1 == 2))
+my_var <- 2
+dbc::assert_is(quote(1 + 1 == my_var))
 dbc::assert_is(list(quote(1 + 1 == 2), quote(2 + 2 == 4)))
 my_fun <- function(x) {
   dbc::assert_is(quote(length(x) == 1))

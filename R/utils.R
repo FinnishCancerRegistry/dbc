@@ -219,7 +219,9 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
 #' @section Functions:
 #' - `dbc::handle_args_inplace` calls `dbc::handle_arg_x_nm`,
 #'   `dbc::handle_arg_call`, and `dbc::handle_arg_assertion_type` in its
-#'   calling env. It also checks that `x` is not missing.
+#'   calling env. It also handles `x` and `env`: It checks that `x` is not
+#'   missing and uses the calling env of the function that called
+#'   `dbc::handle_args_inplace` if `env` is `NULL`.
 #' @return
 #' - `dbc::handle_args_inplace`: always `NULL` invisibly.
 handle_args_inplace <- function() {
@@ -243,6 +245,9 @@ handle_args_inplace <- function() {
     parent_env[["assertion_type"]] <- dbc::handle_arg_assertion_type(
       parent_env[["assertion_type"]]
     )
+  }
+  if ("env" %in% ls(parent_env) && is.null(parent_env[["env"]])) {
+    parent_env[["env"]] <- parent.frame(2L)
   }
   eval(quote({
     if ("x" %in% ls() && missing(x)) {

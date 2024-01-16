@@ -75,7 +75,9 @@ to guess \code{x_nm} if it is \code{NULL}.
 \itemize{
 \item \code{dbc::handle_args_inplace} calls \code{dbc::handle_arg_x_nm},
 \code{dbc::handle_arg_call}, and \code{dbc::handle_arg_assertion_type} in its
-calling env. It also checks that \code{x} is not missing.
+calling env. It also handles \code{x} and \code{env}: It checks that \code{x} is not
+missing and uses the calling env of the function that called
+\code{dbc::handle_args_inplace} if \code{env} is \code{NULL}.
 }
 }
 
