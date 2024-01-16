@@ -1,52 +1,87 @@
-
-
+s1 <- system2("git", "status", stdout = TRUE)
 stopifnot(
-  vapply(git2r::status(), length, 1L) == 0L
+  "nothing to commit, working tree clean" %in% s1
 )
 
-s1 <- git2r::status()
 unlink(
   dir("R/", pattern = "^generated_", full.names = TRUE),
   force = TRUE
 )
 
-e <- new.env()
-source("data-raw/sysdata.R", local = e)
-
-pkgload::load_all(export_all = TRUE)
-dbc:::generate_report_funs(
-  target_script = "R/generated_report_funs.R"
-)
-
-report_fun_scripts <- c(
-  "R/generated_report_funs.R",
-  "R/manually_written_report_funs.R",
-  "R/expr_based.R"
-)
-
-assertion_types <- dbc::assertion_types()
-assertion_types <- setdiff(assertion_types, "none")
-invisible(lapply(assertion_types, function(assertion_type) {
-  message("* generating assertion_type = ", deparse(assertion_type),
-          " funs...")
-  dbc:::generate_assertion_funs(
-    source_scripts = report_fun_scripts,
-    target_script = paste0("R/generated_", assertion_type, "_assertion_funs.R"),
-    assertion_type = assertion_type
+suppressWarnings(pkgload::load_all(export_all = TRUE))
+expression_df <- dbc:::get_report_fun_df()
+manually_written_report_df <- local({
+  report_fun_scripts <- c(
+    "R/manually_written_report_funs.R",
+    "R/expr_based.R"
   )
-  NULL
+  e <- new.env()
+  lapply(report_fun_scripts, function(r_script_path) {
+    source(r_script_path, local = e)
+  })
+  obj_nms <- ls(e)
+  df <- data.frame(report_fun_nm = obj_nms[grepl("^report_", obj_nms)])
+  df[["extra_arg_set"]] <- lapply(df[["report_fun_nm"]], function(fun_nm) {
+    args <- formals(e[[fun_nm]])
+    extra_args <- args[!names(args) %in% c("x", "x_nm", "call")]
+    if (length(extra_args) == 0) {
+      return(NULL)
+    }
+    out <- vapply(extra_args, deparse1, character(1))
+    names(out) <- names(extra_args)
+    return(out)
+  })
+  df
+})
+invisible(lapply(c("report", "test", "assertion"), function(fun_type) {
+  message("* generating fun_type = ", deparse(fun_type),
+          " funs...")
+  assertion_types <- list(NULL)
+  if (fun_type == "assertion") {
+    assertion_types <- dbc::assertion_types()
+    assertion_types <- setdiff(assertion_types, "none")
+  }
+  lapply(assertion_types, function(assertion_type) {
+    if (!is.null(assertion_type)) {
+      message("* generating assertion_type = ", deparse(assertion_type),
+              " funs...")
+    }
+    script_path <- paste0(
+      "R/generated_", assertion_type, "_", fun_type, "_funs.R"
+    )
+    script_path <- gsub("_+", "_", script_path)
+    dbc:::generate_script_from_expressions(
+      tgt_script_path = script_path,
+      df = expression_df,
+      fun_type = fun_type,
+      assertion_type = assertion_type
+    )
+    if (fun_type == "report") {
+      return(NULL)
+    }
+    script_path <- paste0(
+      "R/generated_",
+      assertion_type,
+      "_",
+      fun_type,
+      "_report_function_wrappers.R"
+    )
+    script_path <- gsub("_+", "_", script_path)
+    dbc:::generate_report_function_wrapper_script(
+      tgt_script_path = script_path,
+      report_fun_nms = manually_written_report_df[["report_fun_nm"]],
+      extra_arg_sets = manually_written_report_df[["extra_arg_set"]],
+      fun_type = fun_type,
+      assertion_type = assertion_type
+    )
+  })
 }))
-
-dbc:::generate_test_funs(
-  source_scripts = report_fun_scripts,
-  target_script = "R/generated_test_funs.R"
-)
 
 devtools::document()
 
 Sys.sleep(5)
-s2 <- git2r::status()
+s2 <- system2("git", "status", stdout = TRUE)
 if (!identical(s1, s2)) {
-  git2r::add(path = ".")
-  git2r::commit(message = "feat: run dev/1_generate_functions.R")
+  system2("git", c("add", "-A"))
+  system2("git", c("commit", "-m", "\"feat: run dev/03_generate_functions.R\""))
 }
