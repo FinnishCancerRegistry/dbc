@@ -16,10 +16,8 @@ assert_user_input_has_only_valid_observations <- function(
   col_nm_set_list = NULL
 ) {
   dbc::handle_args_inplace()
-  
   assertion_type <- "user_input"
-  
-  report_df <- report_has_only_valid_observations(
+  report_df <- dbc::report_has_only_valid_observations(
     x = x,
     x_nm = x_nm,
     call = call,
@@ -47,10 +45,8 @@ assert_user_input_is <- function(
   env = NULL
 ) {
   dbc::handle_args_inplace()
-  
   assertion_type <- "user_input"
-  
-  report_df <- report_is(
+  report_df <- dbc::report_is(
     x = x,
     x_nm = x_nm,
     call = call,
@@ -76,10 +72,8 @@ assert_user_input_is_all_equal <- function(
   all_equal_arg_list = NULL
 ) {
   dbc::handle_args_inplace()
-  
   assertion_type <- "user_input"
-  
-  report_df <- report_is_all_equal(
+  report_df <- dbc::report_is_all_equal(
     x = x,
     x_nm = x_nm,
     call = call,
@@ -106,10 +100,8 @@ assert_user_input_is_identical <- function(
   y_nm = NULL
 ) {
   dbc::handle_args_inplace()
-  
   assertion_type <- "user_input"
-  
-  report_df <- report_is_identical(
+  report_df <- dbc::report_is_identical(
     x = x,
     x_nm = x_nm,
     call = call,
@@ -135,10 +127,8 @@ assert_user_input_is_like_template <- function(
   compare = NULL
 ) {
   dbc::handle_args_inplace()
-  
   assertion_type <- "user_input"
-  
-  report_df <- report_is_like_template(
+  report_df <- dbc::report_is_like_template(
     x = x,
     x_nm = x_nm,
     call = call,
@@ -163,10 +153,8 @@ assert_user_input_is_one_of <- function(
   funs
 ) {
   dbc::handle_args_inplace()
-  
   assertion_type <- "user_input"
-  
-  report_df <- report_is_one_of(
+  report_df <- dbc::report_is_one_of(
     x = x,
     x_nm = x_nm,
     call = call,
