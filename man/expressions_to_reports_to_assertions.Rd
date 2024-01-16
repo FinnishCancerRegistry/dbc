@@ -2,10 +2,13 @@
 % Please edit documentation in R/expressions_to_report_to_assertion.R
 \name{expressions_to_reports_to_assertions}
 \alias{expressions_to_reports_to_assertions}
+\alias{expression_eval}
 \alias{expressions_to_report}
 \alias{report_to_assertion}
 \title{Expressions to Reports to Assertions}
 \usage{
+expression_eval(expression, eval_parent_env)
+
 expressions_to_report(
   expressions,
   fail_messages = NULL,
@@ -17,6 +20,14 @@ expressions_to_report(
 report_to_assertion(report_df, assertion_type = NULL, raise_error_call = NULL)
 }
 \arguments{
+\item{expression}{\verb{[call]} (no default)
+
+A call such as \code{x + 1}. Evaluated in a new, unpopulated environment.}
+
+\item{eval_parent_env}{\verb{[environment]} (no default)
+
+Environment to be the evaluation environment's parent.}
+
 \item{expressions}{\verb{[character, list]} (no default)
 \itemize{
 \item \code{character}: vector of expressions to perform; after parsing each string
@@ -49,13 +60,13 @@ as \code{fail_messages} but for tests successes}
 
 \item{env}{\verb{[environment]} (default \code{parent.frame(1L)})
 
-\code{env} will be the parent environment of the environment where each element
-of \code{expressions} is evaluated. A new, separate environment is created for
+\code{env} is passed to \code{dbc::expression_eval}:
+A new, separate environment is created for
 each separate expression (\emph{expression evaluation environment}).
 They all have \code{env} as the parent environment (\emph{context environment}).
 
-\code{env} is also used in interpolation --- see section
-\strong{Message interpolation}.}
+\code{env} is also used in interpolation --- see \verb{[interpolate]}
+and section \strong{Message interpolation}.}
 
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
 \itemize{
@@ -151,26 +162,6 @@ where the \code{expressions} element was evaluated.
 These environment tricks allows one to use objects in the
 \emph{context environment} in both expression evaluation and in interpolation.
 The objects in the \emph{report environment} can be used in interpolation.
-
-Given the \emph{interpolation environment} and a string, interpolation is
-performed as follows:
-\enumerate{
-\item Expressions to interpolate in a string are detected using regex
-\code{"[$][{][^{]+[}]"}. E.g. in \code{"A total of $ {1 + 1} things"}
-substring \verb{$ \{1 + 1\}} is detected (without the whitespace after $).
-Multiline expressions are not detected.
-Expressions that contain \verb{\}} (e.g. \code{"One is $ {{my_var <- 1; my_var}}"})
-will not be parsed correctly.
-\item Each expression substring is evaluated in the
-\emph{interpolation environment}, via
-\code{eval(parse(text = expression_substring)[[1]])}.
-Evaluation is done within a \verb{[tryCatch]} call; if an error or warning
-is caught, interpolation fails, and the original expression substring
-is used as the result of the evaluation. Otherwise the result is
-what \code{eval} gives.
-\item Each expression substring in the original string is substituted with
-its result. This modified string is returned.
-}
 }
 
 \examples{

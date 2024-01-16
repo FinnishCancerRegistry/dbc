@@ -80,6 +80,12 @@ New function \code{dbc::assertion_raise}. This is used every time \code{dbc}
 raises an error over an assertion that did not pass.
 }
 
+\subsection{dbc::expression_eval}{
+
+New fun \code{dbc::expression_eval}. Every assertion expression in \code{dbc} is
+evaluated by this function.
+}
+
 \subsection{dbc::handle_args_inplace}{
 
 New exported function \code{dbc::handle_args_inplace}.

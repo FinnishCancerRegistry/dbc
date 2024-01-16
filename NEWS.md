@@ -31,6 +31,11 @@ expressions make use of this.
 New function `dbc::assertion_raise`. This is used every time `dbc`
 raises an error over an assertion that did not pass.
 
+### dbc::expression_eval
+
+New fun `dbc::expression_eval`. Every assertion expression in `dbc` is
+evaluated by this function.
+
 ### dbc::handle_args_inplace
 
 New exported function `dbc::handle_args_inplace`.

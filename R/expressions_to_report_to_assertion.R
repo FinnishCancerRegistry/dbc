@@ -7,6 +7,55 @@
 NULL
 
 #' @rdname expressions_to_reports_to_assertions
+#' @param expression `[call]` (no default)
+#' 
+#' A call such as `x + 1`. Evaluated in a new, unpopulated environment.
+#' @param eval_parent_env `[environment]` (no default)
+#' 
+#' Environment to be the evaluation environment's parent.
+#' @export
+expression_eval <- function(expression, eval_parent_env) {
+  # @codedoc_comment_block news("dbc::expression_eval", "2024-01-16", "0.5.0")
+  # New fun `dbc::expression_eval`. Every assertion expression in `dbc` is
+  # evaluated by this function.
+  # @codedoc_comment_block news("dbc::expression_eval", "2024-01-16", "0.5.0")
+  stopifnot(
+    is.call(expression),
+    is.environment(eval_parent_env)
+  )
+  eval_env <- new.env(parent = eval_parent_env)
+  result <- tryCatch(
+    eval(expression, envir = eval_env),
+    error = function(e) e
+  )
+  pass <- FALSE
+  error <- NA_character_
+  n_fail <- NA_integer_
+  n_pass <- NA_integer_
+  wh_fail <- NA_integer_
+  if (inherits(result, "error")) {
+    error <- result[["message"]]
+  } else if (is.null(result)) {
+    pass <- TRUE
+  } else if (is.logical(result)) {
+    passing_elems <- result %in% TRUE # %in% avoids NA's. NA == TRUE -> NA
+    pass <- all(passing_elems)
+    if (length(result) != 1L) {
+      wh_fail <- which(!passing_elems)
+    }
+    n_fail <- sum(!passing_elems)
+    n_pass <- length(result) - n_fail
+  } else {
+    stop(
+      "Test `", deparse1(expression), "` returned result of class(es) ",
+      deparse1(class(result)), "; logical or NULL was expected; see ",
+      "help for argument 'tests'"
+    )
+  }
+  return(mget(c("pass", "error", "wh_fail", "n_fail", "n_pass", "eval_env")))
+}
+
+#' @rdname expressions_to_reports_to_assertions
 #' @export
 #' @eval codedoc::codedoc_lines("^dbc::expressions_to_report")
 #' @param fail_messages `[NULL, character]` (default `NULL`)
@@ -180,47 +229,18 @@ expressions_to_report <- function(
   fun_env <- environment()
   lapply(seq_along(expressions), function(i) {
     expression_string <- expressions[i]
-    test_expr <- parse(text = expression_string)[[1L]]
-
+    expression_call <- parse(text = expression_string)[[1L]]
+    result <- expression_eval(expression_call, env)
     # @codedoc_comment_block dbc::expressions_to_report::env
     # @param env `[environment]` (default `parent.frame(1L)`)
     #
-    # `env` will be the parent environment of the environment where each element
-    # of `expressions` is evaluated. A new, separate environment is created for
+    # `env` is passed to `dbc::expression_eval`:
+    # A new, separate environment is created for
     # each separate expression (*expression evaluation environment*).
     # They all have `env` as the parent environment (*context environment*).
-    # @codedoc_comment_block dbc::expressions_to_report::env
-    eval_env <- new.env(parent = env)
-    result <- tryCatch(
-      eval(test_expr, envir = eval_env),
-      error = function(e) e
-    )
-    pass <- FALSE
-    error <- NA_character_
-    n_fail <- NA_integer_
-    wh_fail <- NA_integer_
-    if (inherits(result, "error")) {
-      error <- result[["message"]]
-    } else if (is.null(result)) {
-      pass <- TRUE
-    } else if (is.logical(result)) {
-      passing_elems <- result %in% TRUE # %in% avoids NA's. NA == TRUE -> NA
-      pass <- all(passing_elems)
-      if (length(result) != 1L) {
-        wh_fail <- which(!passing_elems)
-      }
-      n_fail <- sum(!passing_elems)
-    } else {
-      stop(
-        "test ", deparse(expression_string), " returned result of class(es) ",
-        deparse(class(result)), "; logical or NULL was expected; see ",
-        "help for argument 'tests'"
-      )
-    }
-    # @codedoc_comment_block dbc::expressions_to_report::env
     #
-    # `env` is also used in interpolation --- see section
-    # **Message interpolation**.
+    # `env` is also used in interpolation --- see `[interpolate]`
+    # and section **Message interpolation**.
     # @codedoc_comment_block dbc::expressions_to_report::env
 
     # @codedoc_comment_block dbc::expressions_to_report::interpolation
@@ -248,18 +268,15 @@ expressions_to_report <- function(
     # *context environment* in both expression evaluation and in interpolation.
     # The objects in the *report environment* can be used in interpolation.
     #
-    # @codedoc_insert_comment_block dbc:::interpolate
     # @codedoc_comment_block dbc::expressions_to_report::interpolation
-    fun_env[["report_df"]][["error"]][i] <- error
-    fun_env[["report_df"]][["pass"]][i]  <- pass
-    fun_env[["report_df"]][["n_fail"]][i] <- n_fail
-    fun_env[["report_df"]][["wh_fail"]][[i]] <- wh_fail
+    fun_env[["report_df"]][["error"]][i] <- result[["error"]]
+    fun_env[["report_df"]][["pass"]][i]  <- result[["pass"]]
+    fun_env[["report_df"]][["n_fail"]][i] <- result[["n_fail"]]
+    fun_env[["report_df"]][["wh_fail"]][[i]] <- result[["wh_fail"]]
 
-    report_environment <- as.environment(mget(
-      c("error", "pass", "n_fail")
-    ))
-    report_environment[["wh_fail"]] <- fun_env[["report_df"]][["wh_fail"]][[1L]]
-    interpolation_environment <- eval_env
+    interpolation_environment <- result[["eval_env"]]
+    result["eval_env"] <- NULL
+    report_environment <- as.environment(result)
     parent.env(interpolation_environment) <- report_environment
     parent.env(report_environment) <- env
     msg <- pass_messages[i]
@@ -374,7 +391,7 @@ report_to_assertion <- function(
     # Made assertion fail messages a bit prettier by surrounding object names
     # and expressions with [`] instead of ["].
     # @codedoc_comment_block news("dbc::report_to_assertion", "2023-12-04", "0.4.17")
-    raise_assertion_error(
+    assertion_raise(
       messages = msgs,
       call = raise_error_call,
       assertion_type = assertion_type
