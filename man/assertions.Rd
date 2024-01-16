@@ -24,6 +24,9 @@
 \name{assertions}
 \alias{assertions}
 \alias{report_is}
+\alias{assert}
+\alias{report}
+\alias{test}
 \alias{assert_dev_input_all_are_TRUE}
 \alias{assert_dev_input_atom_is_in_set}
 \alias{assert_dev_input_data_table_has_no_duplicates}
@@ -2007,6 +2010,12 @@
 \title{Assertions}
 \usage{
 report_is(x, x_nm = NULL, call = NULL, env = NULL)
+
+assert(..., x_nm = NULL, call = NULL, assertion_type = NULL)
+
+report(..., x_nm = NULL, call = NULL)
+
+test(..., x_nm = NULL, call = NULL)
 
 assert_dev_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -7105,6 +7114,33 @@ see e.g. \link{report_is_atom}}
 
 Passed to \verb{[dbc::expressions_to_report]}.}
 
+\item{assertion_type}{\verb{[NULL, character]}
+(default \code{NULL})
+
+Must be one of the following:
+\itemize{
+\item \code{NULL}: take \code{dbc::assertion_type_default()}
+\item \code{"general"}: just says that assertions did not pass without information
+as to whose fault this was --- just that some object was not as expected
+\item \code{"input"}: assertion error messages direct the attention towards the
+inputs (arguments) of guilty function
+\item \code{"user_input"}: the end-user is directed to adjust their arguments.
+\item \code{"prod_input"}: the assertion error is considered to be an internal error,
+and the end-user is directed to report it; the inputs of some function
+were not as expected
+\item \code{"dev_input"}: only the developer is notified (see
+\verb{[dbc::set_dev_mode]})
+\item \code{"prod_output"}: like \code{"prod_input"}, but the output of some function
+was not as expected
+\item \code{"dev_output"}: like \code{"prod_output"}, but only raised in development mode
+(see \verb{[dbc::set_dev_mode]})
+\item \code{"prod_interim"}: like \code{"prod_input"}, but the interim result somewhere
+was not as expected
+\item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
+(see \verb{[dbc::set_dev_mode]})
+\item \code{"none"}: added for convenience, this means that the assertion is not performed
+}}
+
 \item{set}{\verb{[any vector]} (mandatory, no default)
 set of values to compare to}
 
@@ -7213,33 +7249,6 @@ report functions that return a report (data.frame);
 \item \code{list}: list of functions
 }}
 
-\item{assertion_type}{\verb{[NULL, character]}
-(default \code{NULL})
-
-Must be one of the following:
-\itemize{
-\item \code{NULL}: take \code{dbc::assertion_type_default()}
-\item \code{"general"}: just says that assertions did not pass without information
-as to whose fault this was --- just that some object was not as expected
-\item \code{"input"}: assertion error messages direct the attention towards the
-inputs (arguments) of guilty function
-\item \code{"user_input"}: the end-user is directed to adjust their arguments.
-\item \code{"prod_input"}: the assertion error is considered to be an internal error,
-and the end-user is directed to report it; the inputs of some function
-were not as expected
-\item \code{"dev_input"}: only the developer is notified (see
-\verb{[dbc::set_dev_mode]})
-\item \code{"prod_output"}: like \code{"prod_input"}, but the output of some function
-was not as expected
-\item \code{"dev_output"}: like \code{"prod_output"}, but only raised in development mode
-(see \verb{[dbc::set_dev_mode]})
-\item \code{"prod_interim"}: like \code{"prod_input"}, but the interim result somewhere
-was not as expected
-\item \code{"dev_interim"}: like \code{"prod_interim"}, but only raised in development mode
-(see \verb{[dbc::set_dev_mode]})
-\item \code{"none"}: added for convenience, this means that the assertion is not performed
-}}
-
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
 a report \code{data.frame} as produced by e.g. \link{expressions_to_report}}
@@ -7285,6 +7294,31 @@ my_fun <- function(x) {
   x ^ 2
 }
 my_fun(1L)
+
+# dbc::assert
+my_var <- 1
+dbc::assert(length(my_var) == 1, my_var > 0, is.numeric(my_var))
+my_fun <- function(x) {
+  dbc::assert(
+    length(x) == 1,
+    x > 0,
+    is.numeric(x)
+  )
+  x ^ 2
+}
+my_fun(1L)
+
+# dbc::report
+my_var <- 1
+df <- dbc::report(length(my_var) == 1, my_var > 0, is.numeric(my_var))
+stopifnot(
+  is.data.frame(df)
+)
+
+# dbc::test
+stopifnot(
+  dbc::test(length(my_var) == 1, my_var > 0, is.numeric(my_var))
+)
 
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(

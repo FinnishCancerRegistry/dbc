@@ -57,6 +57,12 @@ to \code{dbc::report_to_assertion}. Instead generated assertion functions use
 \code{stop} directly. This reduced wall clock time used in evaluation by ~90\%.
 }
 
+\subsection{dbc::assert}{
+
+New exported function \code{dbc::assert}. Evaluate arbitrary assertion
+expressions.
+}
+
 \subsection{dbc::assertion_eval}{
 
 New function \code{dbc::assertion_eval}. Assertion functions generated based on
@@ -112,10 +118,22 @@ New exported function \code{dbc::handle_args_inplace}.
 New exported fun \code{dbc::interpolate}.
 }
 
+\subsection{dbc::report}{
+
+New exported function \code{dbc::report}. Evaluate arbitrary report
+expressions.
+}
+
 \subsection{dbc::report_is}{
 
 \code{dbc::report_is} now only accepts objects of type \code{call} and \code{list}.
 A \code{list} is assumed to contain \code{call}s.
+}
+
+\subsection{dbc::test}{
+
+New exported function \code{dbc::test}. Evaluate arbitrary test
+expressions.
 }
 
 }

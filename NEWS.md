@@ -12,6 +12,11 @@ All generated assertion functions no longer create reports and pass those
 to `dbc::report_to_assertion`. Instead generated assertion functions use
 `stop` directly. This reduced wall clock time used in evaluation by ~90%.
 
+### dbc::assert
+
+New exported function `dbc::assert`. Evaluate arbitrary assertion
+expressions.
+
 ### dbc::assertion_eval
 
 New function `dbc::assertion_eval`. Assertion functions generated based on
@@ -58,10 +63,20 @@ New exported function `dbc::handle_args_inplace`.
 
 New exported fun `dbc::interpolate`.
 
+### dbc::report
+
+New exported function `dbc::report`. Evaluate arbitrary report
+expressions.
+
 ### dbc::report_is
 
 `dbc::report_is` now only accepts objects of type `call` and `list`.
 A `list` is assumed to contain `call`s.
+
+### dbc::test
+
+New exported function `dbc::test`. Evaluate arbitrary test
+expressions.
 
 
 ## News for version 0.4.17
