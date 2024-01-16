@@ -345,25 +345,35 @@ generate_assertion_function_body_from_expressions <- function(
     generate_assertion_function_body_start(
       assertion_type = assertion_type
     ),
-    unlist(lapply(seq_along(expressions), function(i) {
-      lines <- c(
-        "dbc::assertion_eval(",
-        "  expression = quote(EXPRESSION),",
-        "  fail_message = FAIL_MESSAGE,",
-        "  assertion_type = assertion_type,",
-        "  x_nm = x_nm,",
-        "  call = call",
+    local({
+      arg_lines <- paste0("quote(", expressions, "),")
+      n <- length(arg_lines)
+      arg_lines[n] <- sub(",$", "", arg_lines[n])
+      c(
+        "expressions <- list(",
+        paste0("  ", arg_lines),
         ")"
       )
-      replace <- c(
-        "EXPRESSION" = expressions[i],
-        "FAIL_MESSAGE" = paste0("\"", fail_messages[i], "\"")
+    }),
+    local({
+      elems <- vapply(fail_messages, deparse1, character(1L))
+      elems <- paste0(elems, ",")
+      elems[length(elems)] <- sub(",$", "", elems[length(elems)])
+      c(
+        "fail_messages <- c(",
+        paste0("  ", elems),
+        ")"
       )
-      for (re in names(replace)) {
-        lines <- gsub(re, replace[re], lines)
-      }
-      lines
-    })) 
+    }),
+    "for (i in seq_along(expressions)) {",
+    "  dbc::assertion_eval(",
+    "    expression = expressions[[i]],",
+    "    fail_message = fail_messages[i],",
+    "    assertion_type = assertion_type,",
+    "    x_nm = x_nm,",
+    "    call = call",
+    "  )",
+    "}"
   )
 
   return(lines)
