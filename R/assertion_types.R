@@ -185,15 +185,16 @@ assertion_error_message <- function(assertion_type) {
 #' Error messages of failed assertions.
 #' @template arg_call
 #' @eval arg_assertion_type_docs()
-raise_assertion_error <- function(
+#' @export
+assertion_raise <- function(
   messages,
   call,
   assertion_type
 ) {
-  # @codedoc_comment_block news("dbc::raise_assertion_error", "2024-01-15", "0.5.0")
-  # New function `dbc::raise_assertion_error`. This is used every time `dbc`
+  # @codedoc_comment_block news("dbc::assertion_raise", "2024-01-15", "0.5.0")
+  # New function `dbc::assertion_raise`. This is used every time `dbc`
   # raises an error over an assertion that did not pass.
-  # @codedoc_comment_block news("dbc::raise_assertion_error", "2024-01-15", "0.5.0")
+  # @codedoc_comment_block news("dbc::assertion_raise", "2024-01-15", "0.5.0")
   message <- paste0(
     assertion_error_message(assertion_type),
     "\n",
@@ -211,13 +212,78 @@ raise_assertion_error <- function(
 }
 
 #' @rdname assertion_types
+#' @param expression `[call]` (no default)
+#' 
+#' Expression to evaluate.
+#' @param fail_message `[NULL, character]` (default `NULL`)
+#' 
+#' - `NULL`: Use a default message.
+#' - `character`: Use this message.
+#' 
+#' Error message of failed assertion. Passed to [interpolate] before it is
+#' emitted.
+#' @param env `[environment]` (default `parent.frame(1L)`, i.e. calling env)
+#' 
+#' Environment where `expression` will be evaluated.
+#' @template arg_call
+#' @eval arg_assertion_type_docs()
+#' @export
+assertion_eval <- function(
+  expression,
+  fail_message = NULL,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = NULL,
+  env = NULL
+) {
+  # @codedoc_comment_block news("dbc::assertion_eval", "2024-01-16", "0.5.0")
+  # New function `dbc::assertion_eval`. Assertion functions generated based on
+  # expressions make use of this.
+  # @codedoc_comment_block news("dbc::assertion_eval", "2024-01-16", "0.5.0")
+  if (is.null(env)) {
+    env <- parent.frame(1L)
+  }
+  stopifnot(
+    is.call(expression),
+    is.environment(env),
+    inherits(fail_message, c("NULL", "character"))
+  )
+  dbc::handle_args_inplace()
+  if (is.null(fail_message)) {
+    fail_message <- sprintf("Test `%s` failed.", deparse1(expression))
+  }
+  result <- dbc::expression_eval(
+    expression = expression,
+    eval_parent_env = env
+  )
+  if (!identical(result[["pass"]], TRUE)) {
+    interpolate_env <- result[["eval_env"]]
+    result["eval_env"] <- NULL
+    lapply(names(result), function(result_name) {
+      interpolate_env[[result_name]] <- result[[result_name]]
+    })
+    interpolate_env[["x_nm"]] <- x_nm
+    interpolate_env[["call"]] <- call
+    parent.env(interpolate_env) <- env
+    fail_message <- dbc::interpolate(fail_message, env = interpolate_env)
+    dbc::assertion_raise(
+      messages = fail_message,
+      call = call,
+      assertion_type = assertion_type
+    )
+  }
+}
+
+#' @rdname assertion_types
 #' @export
 #' @eval arg_assertion_type_docs()
 #' @return
 #' `[dbc::handle_assertion_type]` returns `assertion_type`,
 #' except `assertion_type = NULL`
 #' is replaced with `assertion_type <- dbc::assertion_type_default()`.
-handle_arg_assertion_type <- function(assertion_type) {
+handle_arg_assertion_type <- function(
+  assertion_type
+) {
   # @codedoc_comment_block news("dbc::handle_arg_assertion_type", "2023-06-27", "0.4.14")
   # New function `[dbc::handle_arg_assertion_type]`. Currently returns
   # `assertion_type` as-is, except `assertion_type = NULL`

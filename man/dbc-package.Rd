@@ -68,10 +68,26 @@ to \code{dbc::report_to_assertion}. Instead generated assertion functions use
 New exported function \code{dbc::generate_report_function_wrapper}.
 }
 
-\subsection{dbc::raise_assertion_error}{
+\subsection{dbc::assertion_eval}{
 
-New function \code{dbc::raise_assertion_error}. This is used every time \code{dbc}
+New function \code{dbc::assertion_eval}. Assertion functions generated based on
+expressions make use of this.
+}
+
+\subsection{dbc::assertion_raise}{
+
+New function \code{dbc::assertion_raise}. This is used every time \code{dbc}
 raises an error over an assertion that did not pass.
+}
+
+\subsection{dbc::handle_args_inplace}{
+
+New exported function \code{dbc::handle_args_inplace}.
+}
+
+\subsection{dbc::interpolate}{
+
+New exported fun \code{dbc::interpolate}.
 }
 
 }

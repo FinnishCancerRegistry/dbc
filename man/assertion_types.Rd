@@ -4,7 +4,8 @@
 \alias{assertion_types}
 \alias{assertion_type_default}
 \alias{dev_assertion_types}
-\alias{raise_assertion_error}
+\alias{assertion_raise}
+\alias{assertion_eval}
 \alias{handle_arg_assertion_type}
 \title{Assertion Types}
 \usage{
@@ -14,7 +15,16 @@ assertion_types()
 
 dev_assertion_types()
 
-raise_assertion_error(messages, call, assertion_type)
+assertion_raise(messages, call, assertion_type)
+
+assertion_eval(
+  expression,
+  fail_message = NULL,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = NULL,
+  env = NULL
+)
 
 handle_arg_assertion_type(assertion_type)
 }
@@ -56,6 +66,23 @@ was not as expected
 (see \verb{[dbc::set_dev_mode]})
 \item \code{"none"}: added for convenience, this means that the assertion is not performed
 }}
+
+\item{expression}{\verb{[call]} (no default)
+
+Expression to evaluate.}
+
+\item{fail_message}{\verb{[NULL, character]} (default \code{NULL})
+\itemize{
+\item \code{NULL}: Use a default message.
+\item \code{character}: Use this message.
+}
+
+Error message of failed assertion. Passed to \link{interpolate} before it is
+emitted.}
+
+\item{env}{\verb{[environment]} (default \code{parent.frame(1L)}, i.e. calling env)
+
+Environment where \code{expression} will be evaluated.}
 }
 \value{
 \verb{[dbc::assertion_type_default]} returns

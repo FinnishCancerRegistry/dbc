@@ -21,9 +21,14 @@ to `dbc::report_to_assertion`. Instead generated assertion functions use
 
 New exported function `dbc::generate_report_function_wrapper`.
 
-### dbc::raise_assertion_error
+### dbc::assertion_eval
 
-New function `dbc::raise_assertion_error`. This is used every time `dbc`
+New function `dbc::assertion_eval`. Assertion functions generated based on
+expressions make use of this.
+
+### dbc::assertion_raise
+
+New function `dbc::assertion_raise`. This is used every time `dbc`
 raises an error over an assertion that did not pass.
 
 ### dbc::handle_args_inplace
