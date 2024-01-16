@@ -247,10 +247,11 @@ assertion_eval <- function(
   stopifnot(
     is.call(expression),
     is.environment(env),
-    inherits(fail_message, c("NULL", "character"))
+    inherits(fail_message, c("NULL", "character")),
+    length(fail_message) %in% 0:1
   )
   dbc::handle_args_inplace()
-  if (is.null(fail_message)) {
+  if (is.null(fail_message) || is.na(fail_message)) {
     fail_message <- sprintf("Test `%s` failed.", deparse1(expression))
   }
   result <- dbc::expression_eval(
