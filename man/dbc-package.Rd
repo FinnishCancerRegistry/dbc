@@ -112,6 +112,12 @@ New exported function \code{dbc::handle_args_inplace}.
 New exported fun \code{dbc::interpolate}.
 }
 
+\subsection{dbc::report_is}{
+
+\code{dbc::report_is} now only accepts objects of type \code{call} and \code{list}.
+A \code{list} is assumed to contain \code{call}s.
+}
+
 }
 
 \subsection{News for version 0.4.17}{

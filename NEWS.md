@@ -58,6 +58,11 @@ New exported function `dbc::handle_args_inplace`.
 
 New exported fun `dbc::interpolate`.
 
+### dbc::report_is
+
+`dbc::report_is` now only accepts objects of type `call` and `list`.
+A `list` is assumed to contain `call`s.
+
 
 ## News for version 0.4.17
 

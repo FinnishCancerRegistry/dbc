@@ -7269,33 +7269,22 @@ dataset \code{x} becomes the environment where the expressions are evaluated
 \examples{
 
 # dbc::report_is
-df_1 <- dbc::report_is(1 + 1 == 2)
-df_2 <- dbc::report_is("1 + 1 == 2")
-df_3 <- dbc::report_is(list(quote(1 + 1 == 2), "1 + 1 == 2"))
+df_1 <- dbc::report_is(quote(1 + 1 == 2))
+df_2 <- dbc::report_is(list(quote(1 + 1 == 2), quote(2 + 2 == 4)))
 stopifnot(
   df_1[["pass"]],
-  df_2[["pass"]],
-  df_3[["pass"]]
+  df_2[["pass"]]
 )
 
 # dbc::assert_is
-dbc::assert_is(1 + 1 == 2)
-dbc::assert_is("1 + 1 == 2")
-dbc::assert_is(list(quote(1 + 1 == 2), "1 + 1 == 2"))
+dbc::assert_is(quote(1 + 1 == 2))
+dbc::assert_is(list(quote(1 + 1 == 2), quote(2 + 2 == 4)))
 my_fun <- function(x) {
-  dbc::assert_is(length(x) == 1)
-  dbc::assert_is("length(x) == 1")
-  dbc::assert_is(list(quote(length(x) == 1), "length(x) == 1"))
+  dbc::assert_is(quote(length(x) == 1))
+  dbc::assert_is(list(quote(length(x) == 1), quote(is.numeric(x))))
   x ^ 2
 }
 my_fun(1L)
-my_assert_is_fun <- function(x) {
-  env <- parent.frame(1L)
-  dbc::assert_is(x, env = env)
-}
-my_obj <- 1:3
-my_assert_is_fun("length(my_obj) == 3")
-
 
 df <- data.frame(a = 1:5, b = 1:5)
 report_df <- report_has_only_valid_observations(
