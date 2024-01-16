@@ -4,11 +4,14 @@
 \alias{argument_handlers}
 \alias{handle_arg_call}
 \alias{handle_arg_x_nm}
+\alias{handle_args_inplace}
 \title{Argument Handlers}
 \usage{
 handle_arg_call(call = NULL, env = NULL)
 
 handle_arg_x_nm(x_nm, env = NULL, arg_nm = "x")
+
+handle_args_inplace()
 }
 \arguments{
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
@@ -45,6 +48,10 @@ failure to guess the call
 \itemize{
 \item \code{dbc::handle_arg_x_nm}: always returns a character vector of length 1
 }
+
+\itemize{
+\item \code{dbc::handle_args_inplace}: always \code{NULL} invisibly.
+}
 }
 \description{
 Functions which handle arguments of check functions.
@@ -63,6 +70,13 @@ to guess the name of the object passed to argument \code{x} when it is not
 supplied explicitly. It uses object \code{x} in its caller environment
 to guess \code{x_nm} if it is \code{NULL}.
 }
+
+
+\itemize{
+\item \code{dbc::handle_args_inplace} calls \code{dbc::handle_arg_x_nm},
+\code{dbc::handle_arg_call}, and \code{dbc::handle_arg_assertion_type} in its
+calling env. It also checks that \code{x} is not missing.
+}
 }
 
 \examples{
@@ -79,4 +93,12 @@ stopifnot(identical(
   fun(x = obj_for_x, y = obj_for_y),
   list(x_nm = "obj_for_x", y_nm = "obj_for_y")
 ))
+tf <- function(x, x_nm = NULL, call = NULL, assertion_type = NULL) {
+  dbc::handle_args_inplace()
+  return(mget(ls()))
+}
+stopifnot(
+  tf(1)[["x_nm"]] == "1",
+  tf(1)[["assertion_type"]] == dbc::assertion_type_default()
+)
 }

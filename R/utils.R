@@ -205,7 +205,58 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
   x_nm
 }
 
-
+#' @rdname argument_handlers
+#' @export
+#' @examples
+#' tf <- function(x, x_nm = NULL, call = NULL, assertion_type = NULL) {
+#'   dbc::handle_args_inplace()
+#'   return(mget(ls()))
+#' }
+#' stopifnot(
+#'   tf(1)[["x_nm"]] == "1",
+#'   tf(1)[["assertion_type"]] == dbc::assertion_type_default()
+#' )
+#' @section Functions:
+#' - `dbc::handle_args_inplace` calls `dbc::handle_arg_x_nm`,
+#'   `dbc::handle_arg_call`, and `dbc::handle_arg_assertion_type` in its
+#'   calling env. It also checks that `x` is not missing.
+#' @return
+#' - `dbc::handle_args_inplace`: always `NULL` invisibly.
+handle_args_inplace <- function() {
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.0")
+  # New exported function `dbc::handle_args_inplace`.
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.0")
+  parent_env <- parent.frame(1L)
+  if ("x_nm" %in% ls(parent_env)) {
+    parent_env[["x_nm"]] <- dbc::handle_arg_x_nm(
+      parent_env[["x_nm"]],
+      env = parent_env
+    )
+  }
+  if ("call" %in% ls(parent_env)) {
+    parent_env[["call"]] <- dbc::handle_arg_call(
+      parent_env[["call"]],
+      env = parent_env
+    )
+  }
+  if ("assertion_type" %in% ls(parent_env)) {
+    parent_env[["assertion_type"]] <- dbc::handle_arg_assertion_type(
+      parent_env[["assertion_type"]]
+    )
+  }
+  eval(quote({
+    if ("x" %in% ls() && missing(x)) {
+      stop(simpleError(
+        message = paste0(
+          "Argument `", x_nm, "` was missing --- it has no default so ",
+          "some value must be supplied!"
+        ),
+        call = call
+      ))
+    }
+  }), envir = parent.frame(1L))
+  return(invisible(NULL))
+}
 
 raise_internal_error_if_not <- function(...) {
   this_call <- match.call(expand.dots = TRUE)
