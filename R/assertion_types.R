@@ -267,7 +267,16 @@ assertion_eval <- function(
     interpolate_env[["x_nm"]] <- x_nm
     interpolate_env[["call"]] <- call
     parent.env(interpolate_env) <- env
-    fail_message <- dbc::interpolate(fail_message, env = interpolate_env)
+    if (!identical(result[["error"]], NA_character_)) {
+      fail_message <- sprintf(
+        "Test `%s` with x = %s raised an error: \"%s\"",
+        deparse1(expression),
+        x_nm,
+        result[["error"]]
+      )
+    } else {
+      fail_message <- dbc::interpolate(fail_message, env = interpolate_env)
+    }
     dbc::assertion_raise(
       messages = fail_message,
       call = call,
