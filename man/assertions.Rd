@@ -55,6 +55,7 @@
 \alias{assert_dev_input_is_data.frame_with_required_names}
 \alias{assert_dev_input_is_data.table}
 \alias{assert_dev_input_is_data.table_with_required_names}
+\alias{assert_dev_input_is_data_frame}
 \alias{assert_dev_input_is_data_table}
 \alias{assert_dev_input_is_data_table_with_required_names}
 \alias{assert_dev_input_is_Date}
@@ -235,6 +236,7 @@
 \alias{assert_dev_interim_is_data.frame_with_required_names}
 \alias{assert_dev_interim_is_data.table}
 \alias{assert_dev_interim_is_data.table_with_required_names}
+\alias{assert_dev_interim_is_data_frame}
 \alias{assert_dev_interim_is_data_table}
 \alias{assert_dev_interim_is_data_table_with_required_names}
 \alias{assert_dev_interim_is_Date}
@@ -415,6 +417,7 @@
 \alias{assert_dev_output_is_data.frame_with_required_names}
 \alias{assert_dev_output_is_data.table}
 \alias{assert_dev_output_is_data.table_with_required_names}
+\alias{assert_dev_output_is_data_frame}
 \alias{assert_dev_output_is_data_table}
 \alias{assert_dev_output_is_data_table_with_required_names}
 \alias{assert_dev_output_is_Date}
@@ -595,6 +598,7 @@
 \alias{assert_is_data.frame_with_required_names}
 \alias{assert_is_data.table}
 \alias{assert_is_data.table_with_required_names}
+\alias{assert_is_data_frame}
 \alias{assert_is_data_table}
 \alias{assert_is_data_table_with_required_names}
 \alias{assert_is_Date}
@@ -775,6 +779,7 @@
 \alias{assert_input_is_data.frame_with_required_names}
 \alias{assert_input_is_data.table}
 \alias{assert_input_is_data.table_with_required_names}
+\alias{assert_input_is_data_frame}
 \alias{assert_input_is_data_table}
 \alias{assert_input_is_data_table_with_required_names}
 \alias{assert_input_is_Date}
@@ -955,6 +960,7 @@
 \alias{assert_prod_input_is_data.frame_with_required_names}
 \alias{assert_prod_input_is_data.table}
 \alias{assert_prod_input_is_data.table_with_required_names}
+\alias{assert_prod_input_is_data_frame}
 \alias{assert_prod_input_is_data_table}
 \alias{assert_prod_input_is_data_table_with_required_names}
 \alias{assert_prod_input_is_Date}
@@ -1135,6 +1141,7 @@
 \alias{assert_prod_interim_is_data.frame_with_required_names}
 \alias{assert_prod_interim_is_data.table}
 \alias{assert_prod_interim_is_data.table_with_required_names}
+\alias{assert_prod_interim_is_data_frame}
 \alias{assert_prod_interim_is_data_table}
 \alias{assert_prod_interim_is_data_table_with_required_names}
 \alias{assert_prod_interim_is_Date}
@@ -1315,6 +1322,7 @@
 \alias{assert_prod_output_is_data.frame_with_required_names}
 \alias{assert_prod_output_is_data.table}
 \alias{assert_prod_output_is_data.table_with_required_names}
+\alias{assert_prod_output_is_data_frame}
 \alias{assert_prod_output_is_data_table}
 \alias{assert_prod_output_is_data_table_with_required_names}
 \alias{assert_prod_output_is_Date}
@@ -1495,6 +1503,7 @@
 \alias{report_is_data.frame_with_required_names}
 \alias{report_is_data.table}
 \alias{report_is_data.table_with_required_names}
+\alias{report_is_data_frame}
 \alias{report_is_data_table}
 \alias{report_is_data_table_with_required_names}
 \alias{report_is_Date}
@@ -1669,6 +1678,7 @@
 \alias{test_is_data.frame_with_required_names}
 \alias{test_is_data.table}
 \alias{test_is_data.table_with_required_names}
+\alias{test_is_data_frame}
 \alias{test_is_data_table}
 \alias{test_is_data_table_with_required_names}
 \alias{test_is_Date}
@@ -1849,6 +1859,7 @@
 \alias{assert_user_input_is_data.frame_with_required_names}
 \alias{assert_user_input_is_data.table}
 \alias{assert_user_input_is_data.table_with_required_names}
+\alias{assert_user_input_is_data_frame}
 \alias{assert_user_input_is_data_table}
 \alias{assert_user_input_is_data_table_with_required_names}
 \alias{assert_user_input_is_Date}
@@ -2087,6 +2098,8 @@ assert_dev_input_is_data.table_with_required_names(
   call = NULL,
   required_names
 )
+
+assert_dev_input_is_data_frame(x, x_nm = NULL, call = NULL)
 
 assert_dev_input_is_data_table(x, x_nm = NULL, call = NULL)
 
@@ -2505,6 +2518,8 @@ assert_dev_interim_is_data.table_with_required_names(
   required_names
 )
 
+assert_dev_interim_is_data_frame(x, x_nm = NULL, call = NULL)
+
 assert_dev_interim_is_data_table(x, x_nm = NULL, call = NULL)
 
 assert_dev_interim_is_data_table_with_required_names(
@@ -2921,6 +2936,8 @@ assert_dev_output_is_data.table_with_required_names(
   call = NULL,
   required_names
 )
+
+assert_dev_output_is_data_frame(x, x_nm = NULL, call = NULL)
 
 assert_dev_output_is_data_table(x, x_nm = NULL, call = NULL)
 
@@ -3406,6 +3423,8 @@ assert_is_data.table_with_required_names(
   assertion_type = NULL,
   required_names
 )
+
+assert_is_data_frame(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_data_table(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
@@ -4275,6 +4294,8 @@ assert_input_is_data.table_with_required_names(
   required_names
 )
 
+assert_input_is_data_frame(x, x_nm = NULL, call = NULL)
+
 assert_input_is_data_table(x, x_nm = NULL, call = NULL)
 
 assert_input_is_data_table_with_required_names(
@@ -4686,6 +4707,8 @@ assert_prod_input_is_data.table_with_required_names(
   call = NULL,
   required_names
 )
+
+assert_prod_input_is_data_frame(x, x_nm = NULL, call = NULL)
 
 assert_prod_input_is_data_table(x, x_nm = NULL, call = NULL)
 
@@ -5103,6 +5126,8 @@ assert_prod_interim_is_data.table_with_required_names(
   call = NULL,
   required_names
 )
+
+assert_prod_interim_is_data_frame(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_data_table(x, x_nm = NULL, call = NULL)
 
@@ -5537,6 +5562,8 @@ assert_prod_output_is_data.table_with_required_names(
   required_names
 )
 
+assert_prod_output_is_data_frame(x, x_nm = NULL, call = NULL)
+
 assert_prod_output_is_data_table(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_data_table_with_required_names(
@@ -5949,6 +5976,8 @@ report_is_data.table_with_required_names(
   required_names
 )
 
+report_is_data_frame(x, x_nm = NULL, call = NULL)
+
 report_is_data_table(x, x_nm = NULL, call = NULL)
 
 report_is_data_table_with_required_names(
@@ -6316,6 +6345,8 @@ test_is_data.table_with_required_names(
   call = NULL,
   required_names
 )
+
+test_is_data_frame(x, x_nm = NULL, call = NULL)
 
 test_is_data_table(x, x_nm = NULL, call = NULL)
 
@@ -6717,6 +6748,8 @@ assert_user_input_is_data.table_with_required_names(
   call = NULL,
   required_names
 )
+
+assert_user_input_is_data_frame(x, x_nm = NULL, call = NULL)
 
 assert_user_input_is_data_table(x, x_nm = NULL, call = NULL)
 
