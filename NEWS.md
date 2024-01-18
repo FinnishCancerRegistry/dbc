@@ -73,6 +73,10 @@ expressions.
 `dbc::report_is` now only accepts objects of type `call` and `list`.
 A `list` is assumed to contain `call`s.
 
+### dbc::report_is_data_frame
+
+New fun `dbc::report_data_table_has_no_duplicates` and derivatives.
+
 ### dbc::test
 
 New exported function `dbc::test`. Evaluate arbitrary test

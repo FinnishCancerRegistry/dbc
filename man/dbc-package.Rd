@@ -130,6 +130,11 @@ expressions.
 A \code{list} is assumed to contain \code{call}s.
 }
 
+\subsection{dbc::report_is_data_frame}{
+
+New fun \code{dbc::report_data_table_has_no_duplicates} and derivatives.
+}
+
 \subsection{dbc::test}{
 
 New exported function \code{dbc::test}. Evaluate arbitrary test
