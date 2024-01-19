@@ -278,7 +278,7 @@ assert_dev_input_has_one_of_classes <- function(
     quote(inherits(x, classes))
   )
   fail_messages <- c(
-    "expected object `${x_nm}` to have class ${classes}, but it had class(es) ${deparse(class(x))}"
+    "expected object `${x_nm}` to have one of classes ${deparse1(classes)}, but it had class(es) ${deparse1(class(x))}"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(

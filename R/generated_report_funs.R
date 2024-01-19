@@ -273,7 +273,7 @@ report_has_one_of_classes <- function(
   expressions <- 
     "inherits(x, classes)"
   fail_messages <- 
-    "expected object `${x_nm}` to have class ${classes}, but it had class(es) ${deparse(class(x))}"
+    "expected object `${x_nm}` to have one of classes ${deparse1(classes)}, but it had class(es) ${deparse1(class(x))}"
   pass_messages <- 
     NA_character_
   report_env <- environment()
