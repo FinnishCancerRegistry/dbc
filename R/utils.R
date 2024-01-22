@@ -202,6 +202,16 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
       collapse = ""
     )
   }
+  # @codedoc_comment_block news("dbc::handle_arg_x_nm", "2024-01-22", "0.5.0")
+  # `dbc::handle_arg_x_nm` now redacts `x_nm` if it is longer than 50
+  # characters.
+  # @codedoc_comment_block news("dbc::handle_arg_x_nm", "2024-01-22", "0.5.0")
+  nc <- nchar(x_nm)
+  if (nc > 50) {
+    head <- substr(x_nm, 1, 22)
+    tail <- substr(x_nm, nc - 22, nc)
+    x_nm <- paste0(head, "[...]", tail)
+  }
   x_nm
 }
 

@@ -55,6 +55,11 @@ New exported function `dbc::generate_script_from_expressions`.
 This function is used to produce all generated expression-based functions
 in `dbc`.
 
+### dbc::handle_arg_x_nm
+
+`dbc::handle_arg_x_nm` now redacts `x_nm` if it is longer than 50
+characters.
+
 ### dbc::handle_args_inplace
 
 New exported function `dbc::handle_args_inplace`.

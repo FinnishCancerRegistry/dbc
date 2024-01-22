@@ -108,6 +108,12 @@ This function is used to produce all generated expression-based functions
 in \code{dbc}.
 }
 
+\subsection{dbc::handle_arg_x_nm}{
+
+\code{dbc::handle_arg_x_nm} now redacts \code{x_nm} if it is longer than 50
+characters.
+}
+
 \subsection{dbc::handle_args_inplace}{
 
 New exported function \code{dbc::handle_args_inplace}.
