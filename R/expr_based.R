@@ -48,15 +48,10 @@ report_is <- function(
   # `dbc::report_is` gains arg `env` it is passed to
   # `dbc::expressions_to_report`, so that's where `x` will be evaluated.
   # @codedoc_comment_block news("dbc::report_is", "2022-07-19", "0.4.6")
-  # dbc::assert_prod_input_is_one_of(
-  #   x = x,
-  #   funs = list(dbc::report_is_language_object,
-  #               dbc::report_is_list)
-  # )
   if (is.null(env)) {
     env <- parent.frame(1L)
   }
-  if (!is.list(x)) {
+  if (!inherits(x, "list")) {
     x <- list(x)
   }
   dbc::expressions_to_report(
