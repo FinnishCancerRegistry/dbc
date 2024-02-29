@@ -315,6 +315,7 @@ call_with_arg_list <- function(
   UseMethod("call_with_arg_list")
 }
 
+#' @export
 call_with_arg_list.function <- function(
   fun,
   arg_list,
@@ -331,6 +332,7 @@ call_with_arg_list.function <- function(
   eval(expr = call, envir = call_env)
 }
 
+#' @export
 call_with_arg_list.character <- function(
   fun,
   arg_list,
