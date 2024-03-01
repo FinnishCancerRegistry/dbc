@@ -17,7 +17,7 @@ Suggests:
     git2r (>= 0.32.0),
     testthat (>= 3.1.7)
 Remotes:
-    github::FinnishCancerRegistry/codedoc
+    github::FinnishCancerRegistry/codedoc@release
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
