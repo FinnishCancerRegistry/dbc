@@ -95,12 +95,22 @@ stopifnot(identical(
   fun(x = obj_for_x, y = obj_for_y),
   list(x_nm = "obj_for_x", y_nm = "obj_for_y")
 ))
-tf <- function(x, x_nm = NULL, call = NULL, assertion_type = NULL) {
+tf <- function(
+  x,
+  y,
+  x_nm = NULL,
+  y_nm = NULL,
+  call = NULL,
+  assertion_type = NULL
+) {
   dbc::handle_args_inplace()
   return(mget(ls()))
 }
+obs <- tf(1, 2)
 stopifnot(
-  tf(1)[["x_nm"]] == "1",
-  tf(1)[["assertion_type"]] == dbc::assertion_type_default()
+  obs[["x_nm"]] == "1",
+  obs[["y_nm"]] == "2",
+  grepl("^tf", deparse1(obs[["call"]])),
+  obs[["assertion_type"]] == dbc::assertion_type_default()
 )
 }

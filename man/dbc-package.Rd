@@ -44,6 +44,14 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.1}{
+\subsection{dbc::handle_args_inplace}{
+
+\code{dbc::handle_args_inplace} now also handles \code{y_nm}.
+}
+
+}
+
 \subsection{News for version 0.5.0}{
 \subsection{dbc}{
 

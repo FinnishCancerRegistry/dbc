@@ -218,13 +218,23 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
 #' @rdname argument_handlers
 #' @export
 #' @examples
-#' tf <- function(x, x_nm = NULL, call = NULL, assertion_type = NULL) {
+#' tf <- function(
+#'   x,
+#'   y,
+#'   x_nm = NULL,
+#'   y_nm = NULL,
+#'   call = NULL,
+#'   assertion_type = NULL
+#' ) {
 #'   dbc::handle_args_inplace()
 #'   return(mget(ls()))
 #' }
+#' obs <- tf(1, 2)
 #' stopifnot(
-#'   tf(1)[["x_nm"]] == "1",
-#'   tf(1)[["assertion_type"]] == dbc::assertion_type_default()
+#'   obs[["x_nm"]] == "1",
+#'   obs[["y_nm"]] == "2",
+#'   grepl("^tf", deparse1(obs[["call"]])),
+#'   obs[["assertion_type"]] == dbc::assertion_type_default()
 #' )
 #' @section Functions:
 #' - `dbc::handle_args_inplace` calls `dbc::handle_arg_x_nm`,
@@ -238,11 +248,21 @@ handle_args_inplace <- function() {
   # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.0")
   # New exported function `dbc::handle_args_inplace`.
   # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.0")
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.1")
+  # `dbc::handle_args_inplace` now also handles `y_nm`.
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.1")
   parent_env <- parent.frame(1L)
   if ("x_nm" %in% ls(parent_env)) {
     parent_env[["x_nm"]] <- dbc::handle_arg_x_nm(
       parent_env[["x_nm"]],
       env = parent_env
+    )
+  }
+  if ("y_nm" %in% ls(parent_env)) {
+    parent_env[["y_nm"]] <- dbc::handle_arg_x_nm(
+      x_nm = parent_env[["y_nm"]],
+      env = parent_env,
+      arg_nm = "y"
     )
   }
   if ("call" %in% ls(parent_env)) {
