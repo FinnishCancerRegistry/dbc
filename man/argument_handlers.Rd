@@ -22,10 +22,19 @@ handle_args_inplace()
 }}
 
 \item{env}{\verb{[NULL, environment, other]} (optional, default \code{NULL})
+\itemize{
+\item \code{NULL}: Use \code{parent.frame(1L)} or \code{parent.frame(2L)} --- see below.
+\item \code{environment}: Use this environment.
+}
 
-Environment where \code{call} / \code{x.nm} is inferred in using \verb{[substitute]}
-(\code{substitute(call, env)} / \code{substitute(x, env = env)}), if
-\code{call} is \code{NULL}.}
+For \code{dbc::handle_arg_call} and \code{dbc::handle_arg_x_nm}, the temporary
+evaluation environment of the
+"main" function (the environment where the assertion function
+was called in). Hence the default for these is \code{parent.frame(2L)}.
+
+For others, the
+evaluation environment of the assertion / report / test function. Their
+default is \code{parent.frame(1L)}.}
 
 \item{x_nm}{\verb{[NULL, character]} (optional, default \code{NULL})
 
@@ -75,7 +84,8 @@ to guess \code{x_nm} if it is \code{NULL}.
 \itemize{
 \item \code{dbc::handle_args_inplace} calls \code{dbc::handle_arg_x_nm},
 \code{dbc::handle_arg_call}, and \code{dbc::handle_arg_assertion_type} in its
-calling env. It also handles \code{x} and \code{env}: It checks that \code{x} is not
+calling env (by default). It also handles \code{x} and \code{env}:
+It checks that \code{x} is not
 missing and uses the calling env of the function that called
 \code{dbc::handle_args_inplace} if \code{env} is \code{NULL}.
 }
@@ -84,17 +94,26 @@ missing and uses the calling env of the function that called
 \examples{
 
 # dbc::handle_arg_x_nm
-fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
+my_assert_fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)
   y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
   return(mget(c("x_nm", "y_nm")))
 }
+my_fun <- function(x, y) {
+  my_assert_fun(x = x, y = y)
+}
 obj_for_x <- 1
 obj_for_y <- 2
-stopifnot(identical(
-  fun(x = obj_for_x, y = obj_for_y),
-  list(x_nm = "obj_for_x", y_nm = "obj_for_y")
-))
+stopifnot(
+  identical(
+    my_fun(x = obj_for_x, y = obj_for_y),
+    list(x_nm = "obj_for_x", y_nm = "obj_for_y")
+  ),
+  identical(
+    my_assert_fun(x = 11, y = 22),
+    list(x_nm = "11", y_nm = "22")
+  )
+)
 tf <- function(
   x,
   y,
