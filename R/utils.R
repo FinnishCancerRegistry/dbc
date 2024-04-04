@@ -160,11 +160,11 @@ handle_arg_call <- function(call = NULL, env = NULL) {
   # @codedoc_comment_block news("dbc::handle_arg_call", "2024-04-04", "0.5.2")
   main_eval_env_candidate_set <- list(
     env,
-    parent_frame_of_env(env),
     child_frame_of_env(env),
     parent.frame(2L), # yes, 2-3-1 order
     parent.frame(3L),
-    parent.frame(1L)
+    parent.frame(1L),
+    parent_frame_of_env(env)
   )
   is_bad_call <- TRUE
   for (i in seq_along(main_eval_env_candidate_set)) {
