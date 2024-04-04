@@ -343,7 +343,7 @@ child_frame_of_env <- function(env) {
 #'   x_nm = NULL,
 #'   y_nm = NULL,
 #'   call = NULL,
-#'   assertion.type = NULL,
+#'   assertion_type = NULL,
 #'   env = NULL
 #' ) {
 #'   dbc::handle_args_inplace()
@@ -360,7 +360,7 @@ child_frame_of_env <- function(env) {
 #'   identical(obs[["x_nm"]], "11"),
 #'   identical(obs[["y_nm"]], "22"),
 #'   identical(deparse1(obs[["call"]]), "my_fun(x = 11, y = 22)"),
-#'   obs[["assertion.type"]] == dbc::assertion_type_default(),
+#'   identical(obs[["assertion_type"]], dbc::assertion_type_default()),
 #'   names(formals(my_fun)) %in% ls(obs[["env"]])
 #' )
 #' @section Functions:
