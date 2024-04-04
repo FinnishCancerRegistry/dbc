@@ -2,6 +2,19 @@
 
 ## News for version 0.5.2
 
+### dbc::handle_arg_call
+
+`dbc::handle_arg_call` robustified in the same way as
+`dbc::handle_arg_x_nm`, and additionally it looks at each `parent.frame(i)`
+for `i = c(2L, 3L, 1L)` (yes, in that order).
+
+### dbc::handle_arg_call
+
+`dbc::handle_arg_call` returns the call from `sys.calls()` that has the
+corresponding environment in `sys.frames()` as `env` if call cannot be
+otherwise determined. If even that fails, return
+`quote(could_not_determine_call)`.
+
 ### dbc::handle_arg_x_nm
 
 `dbc::handle_arg_x_nm` now more robust as it also looks at the

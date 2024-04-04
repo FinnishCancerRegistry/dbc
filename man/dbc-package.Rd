@@ -44,6 +44,30 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.2}{
+\subsection{dbc::handle_arg_call}{
+
+\code{dbc::handle_arg_call} robustified in the same way as
+\code{dbc::handle_arg_x_nm}, and additionally it looks at each \code{parent.frame(i)}
+for \code{i = c(2L, 3L, 1L)} (yes, in that order).
+}
+
+\subsection{dbc::handle_arg_call}{
+
+\code{dbc::handle_arg_call} returns the call from \code{sys.calls()} that has the
+corresponding environment in \code{sys.frames()} as \code{env} if call cannot be
+otherwise determined. If even that fails, return
+\code{quote(could_not_determine_call)}.
+}
+
+\subsection{dbc::handle_arg_x_nm}{
+
+\code{dbc::handle_arg_x_nm} now more robust as it also looks at the
+environments surrounding \code{env} (the one preceding and one proceeding it
+in the list of environments gotten by looping through \code{parent.frame(i)}).
+}
+
+
 \subsection{News for version 0.5.1}{
 \subsection{dbc::handle_args_inplace}{
 

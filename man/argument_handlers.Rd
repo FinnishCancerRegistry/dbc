@@ -93,6 +93,18 @@ missing and uses the calling env of the function that called
 
 \examples{
 
+# dbc::handle_arg_call
+my_assert_fun <- function(x, x.nm = NULL, call = NULL) {
+  return(dbc::handle_arg_call(call))
+}
+my_fun <- function(x) {
+  return(my_assert_fun(x))
+}
+obs <- my_fun(1L)
+stopifnot(
+  deparse1(obs) == "my_fun(x = 1L)"
+)
+
 # dbc::handle_arg_x_nm
 my_assert_fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
   x_nm <- dbc::handle_arg_x_nm(x_nm)

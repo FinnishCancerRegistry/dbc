@@ -106,53 +106,107 @@ get_nth_call <- function(n = 1L) {
 
 #' @rdname argument_handlers
 #' @export
-#' @template arg_call
-#' @param env `[NULL, environment, other]` (optional, default `NULL`)
-#'
-#' Environment where `call` / `x.nm` is inferred in using `[substitute]`
-#' (`substitute(call, env)` / `substitute(x, env = env)`), if
-#' `call` is `NULL`.
 #' @section Functions:
 #' - `dbc::handle_arg_call` is used internally in other functions
 #'   to guess `call` which is to be reported if there is a problem
 #' @return
 #' - `dbc::handle_arg_call`: returns an R `language` object, or `NULL` upon
 #'   failure to guess the call
+#' @examples
+#'
+#' # dbc::handle_arg_call
+#' my_assert_fun <- function(x, x.nm = NULL, call = NULL) {
+#'   return(dbc::handle_arg_call(call))
+#' }
+#' my_fun <- function(x) {
+#'   return(my_assert_fun(x))
+#' }
+#' obs <- my_fun(1L)
+#' stopifnot(
+#'   deparse1(obs) == "my_fun(x = 1L)"
+#' )
 handle_arg_call <- function(call = NULL, env = NULL) {
+  #' @template arg_call
   raise_internal_error_if_not(
-    is.null(env) || is.environment(env),
-    is.language(call) || is.null(call)
+    is.null(call) || is.language(call)
   )
   if (is.language(call)) {
     return(call)
   }
+  #' @param env `[NULL, environment, other]` (optional, default `NULL`)
+  #'
+  #' - `NULL`: Use `parent.frame(1L)` or `parent.frame(2L)` --- see below.
+  #' - `environment`: Use this environment.
+  #'
+  #' For `dbc::handle_arg_call` and `dbc::handle_arg_x_nm`, the temporary
+  #' evaluation environment of the
+  #' "main" function (the environment where the assertion function
+  #' was called in). Hence the default for these is `parent.frame(2L)`.
+  #'
+  #' For others, the
+  #' evaluation environment of the assertion / report / test function. Their
+  #' default is `parent.frame(1L)`.
+  raise_internal_error_if_not(
+    is.null(env) || is.environment(env)
+  )
   if (is.null(env)) {
     env <- parent.frame(2L)
   }
-  if (is.null(call)) {
-    call_inferrer <- quote(match.call())
+  call_inferrer <- quote(match.call())
+  # @codedoc_comment_block news("dbc::handle_arg_call", "2024-04-04", "0.5.2")
+  # `dbc::handle_arg_call` robustified in the same way as
+  # `dbc::handle_arg_x_nm`, and additionally it looks at each `parent.frame(i)`
+  # for `i = c(2L, 3L, 1L)` (yes, in that order).
+  # @codedoc_comment_block news("dbc::handle_arg_call", "2024-04-04", "0.5.2")
+  main_eval_env_candidate_set <- list(
+    env,
+    parent_frame_of_env(env),
+    child_frame_of_env(env),
+    parent.frame(2L), # yes, 2-3-1 order
+    parent.frame(3L),
+    parent.frame(1L)
+  )
+  is_bad_call <- TRUE
+  for (i in seq_along(main_eval_env_candidate_set)) {
+    main_eval_env_candidate <- main_eval_env_candidate_set[[i]]
+    if (
+      identical(main_eval_env_candidate, globalenv()) ||
+        identical(main_eval_env_candidate, emptyenv)
+    ) {
+      next()
+    }
     call <- tryCatch(
-      eval(call_inferrer, envir = env),
-      error = function(e) e
+      eval(call_inferrer, envir = main_eval_env_candidate),
+      error = function(e) {
+        return(e)
+      }
     )
     is_bad_call <- inherits(call, "error") || identical(call, call_inferrer)
-    if (is_bad_call) {
-      for (i in 2:1) {
-        call <- tryCatch(
-          eval(call_inferrer, envir = parent.frame(i)),
-          error = function(e) e
-        )
-        is_bad_call <- inherits(call, "error") || identical(call, call_inferrer)
-        if (!is_bad_call) {
-          break()
-        }
-      }
-      if (is_bad_call) {
-        warning("Could not infer in which call an assertion was used, ",
-                "\"could_not_infer_call\" will be reported as the call in ",
-                "any error message")
-        call <- parse(text = "could_not_infer_call")[[1L]]
-      }
+    if (!is_bad_call) {
+      break()
+    }
+  }
+  if (is_bad_call) {
+    # @codedoc_comment_block news("dbc::handle_arg_call", "2024-04-04", "0.5.2")
+    # `dbc::handle_arg_call` returns the call from `sys.calls()` that has the
+    # corresponding environment in `sys.frames()` as `env` if call cannot be
+    # otherwise determined. If even that fails, return
+    # `quote(could_not_determine_call)`.
+    # @codedoc_comment_block news("dbc::handle_arg_call", "2024-04-04", "0.5.2")
+    call <- sys.calls()[[which(vapply(
+      sys.frames(),
+      identical,
+      logical(1L),
+      y = env
+    ))]]
+    if (!is.language(call)) {
+      call <- quote(could_not_determine_call)
+      warning("Could not infer in which call an assertion was used, ",
+              sprintf(
+                "`%s` will be reported as the call in ",
+                deparse1(call)
+              ),
+              "the error message, if emitted")
     }
   }
   return(call)
@@ -209,6 +263,11 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
     # expr is now e.g. `substitute(x, env = main_eval_env)`
     # and evaluating it gives e.g. `"my_value"` if `env` is the evaluation env
     # of the "main" function which was called via `main_fun(x = "my_value")`
+    # @codedoc_comment_block news("dbc::handle_arg_x_nm", "2024-04-04", "0.5.2")
+    # `dbc::handle_arg_x_nm` now more robust as it also looks at the
+    # environments surrounding `env` (the one preceding and one proceeding it
+    # in the list of environments gotten by looping through `parent.frame(i)`).
+    # @codedoc_comment_block news("dbc::handle_arg_x_nm", "2024-04-04", "0.5.2")
     main_eval_env_candidate_set <- list(
       env,
       child_frame_of_env(env),
