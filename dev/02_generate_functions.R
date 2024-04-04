@@ -85,5 +85,5 @@ Sys.sleep(5)
 s2 <- system2("git", "status", stdout = TRUE)
 if (!identical(s1, s2)) {
   system2("git", c("add", "-A"))
-  system2("git", c("commit", "-m", "\"feat: run dev/03_generate_functions.R\""))
+  system2("git", c("commit", "-m", "\"feat: run dev/02_generate_functions.R\""))
 }
