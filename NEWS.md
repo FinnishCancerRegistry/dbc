@@ -21,6 +21,11 @@ otherwise determined. If even that fails, return
 environments surrounding `env` (the one preceding and one proceeding it
 in the list of environments gotten by looping through `parent.frame(i)`).
 
+### dbc::handle_args_inplace
+
+`dbc::handle_args_inplace` gains optional arg
+`env`.
+
 
 ## News for version 0.5.1
 

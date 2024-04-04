@@ -11,7 +11,7 @@ handle_arg_call(call = NULL, env = NULL)
 
 handle_arg_x_nm(x_nm, env = NULL, arg_nm = "x")
 
-handle_args_inplace()
+handle_args_inplace(env = NULL)
 }
 \arguments{
 \item{call}{\verb{[language, NULL]} (optional, default \code{NULL})
@@ -126,22 +126,32 @@ stopifnot(
     list(x_nm = "11", y_nm = "22")
   )
 )
-tf <- function(
+
+# dbc::handle_args_inplace
+my_assert_fun <- function(
   x,
   y,
   x_nm = NULL,
   y_nm = NULL,
   call = NULL,
-  assertion_type = NULL
+  assertion.type = NULL,
+  env = NULL
 ) {
   dbc::handle_args_inplace()
   return(mget(ls()))
 }
-obs <- tf(1, 2)
+my_fun <- function(
+  x,
+  y
+) {
+  return(my_assert_fun(x, y))
+}
+obs <- my_fun(11, 22)
 stopifnot(
-  obs[["x_nm"]] == "1",
-  obs[["y_nm"]] == "2",
-  grepl("^tf", deparse1(obs[["call"]])),
-  obs[["assertion_type"]] == dbc::assertion_type_default()
+  identical(obs[["x_nm"]], "11"),
+  identical(obs[["y_nm"]], "22"),
+  identical(deparse1(obs[["call"]]), "my_fun(x = 11, y = 22)"),
+  obs[["assertion.type"]] == dbc::assertion_type_default(),
+  names(formals(my_fun)) \%in\% ls(obs[["env"]])
 )
 }

@@ -67,6 +67,13 @@ environments surrounding \code{env} (the one preceding and one proceeding it
 in the list of environments gotten by looping through \code{parent.frame(i)}).
 }
 
+\subsection{dbc::handle_args_inplace}{
+
+\code{dbc::handle_args_inplace} gains optional arg
+\code{env}.
+}
+
+}
 
 \subsection{News for version 0.5.1}{
 \subsection{dbc::handle_args_inplace}{

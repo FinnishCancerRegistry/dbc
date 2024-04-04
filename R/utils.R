@@ -335,66 +335,90 @@ child_frame_of_env <- function(env) {
 #' @rdname argument_handlers
 #' @export
 #' @examples
-#' tf <- function(
+#'
+#' # dbc::handle_args_inplace
+#' my_assert_fun <- function(
 #'   x,
 #'   y,
 #'   x_nm = NULL,
 #'   y_nm = NULL,
 #'   call = NULL,
-#'   assertion_type = NULL
+#'   assertion.type = NULL,
+#'   env = NULL
 #' ) {
 #'   dbc::handle_args_inplace()
 #'   return(mget(ls()))
 #' }
-#' obs <- tf(1, 2)
+#' my_fun <- function(
+#'   x,
+#'   y
+#' ) {
+#'   return(my_assert_fun(x, y))
+#' }
+#' obs <- my_fun(11, 22)
 #' stopifnot(
-#'   obs[["x_nm"]] == "1",
-#'   obs[["y_nm"]] == "2",
-#'   grepl("^tf", deparse1(obs[["call"]])),
-#'   obs[["assertion_type"]] == dbc::assertion_type_default()
+#'   identical(obs[["x_nm"]], "11"),
+#'   identical(obs[["y_nm"]], "22"),
+#'   identical(deparse1(obs[["call"]]), "my_fun(x = 11, y = 22)"),
+#'   obs[["assertion.type"]] == dbc::assertion_type_default(),
+#'   names(formals(my_fun)) %in% ls(obs[["env"]])
 #' )
 #' @section Functions:
 #' - `dbc::handle_args_inplace` calls `dbc::handle_arg_x_nm`,
 #'   `dbc::handle_arg_call`, and `dbc::handle_arg_assertion_type` in its
-#'   calling env. It also handles `x` and `env`: It checks that `x` is not
+#'   calling env (by default). It also handles `x` and `env`:
+#'   It checks that `x` is not
 #'   missing and uses the calling env of the function that called
 #'   `dbc::handle_args_inplace` if `env` is `NULL`.
 #' @return
 #' - `dbc::handle_args_inplace`: always `NULL` invisibly.
-handle_args_inplace <- function() {
+handle_args_inplace <- function(
+  env = NULL
+) {
   # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.0")
   # New exported function `dbc::handle_args_inplace`.
   # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.0")
-  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.1")
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-03-21", "0.5.1")
   # `dbc::handle_args_inplace` now also handles `y_nm`.
-  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-01-15", "0.5.1")
-  parent_env <- parent.frame(1L)
-  if ("x_nm" %in% ls(parent_env)) {
-    parent_env[["x_nm"]] <- dbc::handle_arg_x_nm(
-      parent_env[["x_nm"]],
-      env = parent_env
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-03-21", "0.5.1")
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-03-21", "0.5.2")
+  # `dbc::handle_args_inplace` gains optional arg
+  # `env`.
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-03-21", "0.5.2")
+  raise_internal_error_if_not(
+    inherits(env, c("NULL", "environment"))
+  )
+  if (is.null(env)) {
+    env <- parent.frame(1L)
+  }
+  main_eval_env <- parent_frame_of_env(env)
+
+  if ("x_nm" %in% ls(env)) {
+    env[["x_nm"]] <- dbc::handle_arg_x_nm(
+      env[["x_nm"]],
+      env = env
     )
   }
-  if ("y_nm" %in% ls(parent_env)) {
-    parent_env[["y_nm"]] <- dbc::handle_arg_x_nm(
-      x_nm = parent_env[["y_nm"]],
-      env = parent_env,
+  if ("y_nm" %in% ls(env)) {
+    env[["y_nm"]] <- dbc::handle_arg_x_nm(
+      x_nm = env[["y_nm"]],
+      env = env,
       arg_nm = "y"
     )
   }
-  if ("call" %in% ls(parent_env)) {
-    parent_env[["call"]] <- dbc::handle_arg_call(
-      call = parent_env[["call"]],
-      env = parent.frame(2L)
+  if ("call" %in% ls(env)) {
+    env[["call"]] <- dbc::handle_arg_call(
+      call = env[["call"]],
+      env = main_eval_env
     )
   }
-  if ("assertion_type" %in% ls(parent_env)) {
-    parent_env[["assertion_type"]] <- dbc::handle_arg_assertion_type(
-      parent_env[["assertion_type"]]
+  if ("assertion_type" %in% ls(env)) {
+    env[["assertion_type"]] <- dbc::handle_arg_assertion_type(
+      env[["assertion_type"]]
     )
   }
-  if ("env" %in% ls(parent_env) && is.null(parent_env[["env"]])) {
-    parent_env[["env"]] <- parent.frame(2L)
+  if ("env" %in% ls(env) && is.null(env[["env"]])) {
+    env[["env"]] <- main_eval_env
   }
   eval(quote({
     if ("x" %in% ls() && missing(x)) {
@@ -403,10 +427,10 @@ handle_args_inplace <- function() {
           "Argument `", x_nm, "` was missing --- it has no default so ",
           "some value must be supplied!"
         ),
-        call = call
+        call = env[["call"]]
       ))
     }
-  }), envir = parent.frame(1L))
+  }), envir = main_eval_env)
   return(invisible(NULL))
 }
 
