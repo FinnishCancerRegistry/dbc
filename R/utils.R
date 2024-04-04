@@ -173,34 +173,58 @@ handle_arg_call <- function(call = NULL, env = NULL) {
 #' - `dbc::handle_arg_x_nm`: always returns a character vector of length 1
 #' @examples
 #'
+
 #' # dbc::handle_arg_x_nm
-#' fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
+#' my_assert_fun <- function(x, x_nm = NULL, y, y_nm = NULL) {
 #'   x_nm <- dbc::handle_arg_x_nm(x_nm)
 #'   y_nm <- dbc::handle_arg_x_nm(y_nm, arg_nm = "y")
 #'   return(mget(c("x_nm", "y_nm")))
 #' }
+#' my_fun <- function(x, y) {
+#'   my_assert_fun(x = x, y = y)
+#' }
 #' obj_for_x <- 1
 #' obj_for_y <- 2
-#' stopifnot(identical(
-#'   fun(x = obj_for_x, y = obj_for_y),
-#'   list(x_nm = "obj_for_x", y_nm = "obj_for_y")
-#' ))
+#' stopifnot(
+#'   identical(
+#'     my_fun(x = obj_for_x, y = obj_for_y),
+#'     list(x_nm = "obj_for_x", y_nm = "obj_for_y")
+#'   ),
+#'   identical(
+#'     my_assert_fun(x = 11, y = 22),
+#'     list(x_nm = "11", y_nm = "22")
+#'   )
+#' )
 handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
-  if (is.null(env)) {
-    env <- parent.frame(1L)
-  }
   raise_internal_error_if_not(
     (is.character(x_nm) && length(x_nm) == 1L && !is.na(x_nm)) || is.null(x_nm),
     is.environment(env) || is.null(env)
   )
+  if (is.null(env)) {
+    env <- parent.frame(2L)
+  }
   if (is.null(x_nm)) {
-    expr <- substitute(substitute(arg_nm, env = env),
-                       list(arg_nm = parse(text = arg_nm)[[1]]))
-    expr <- eval(expr)
-    x_nm <- paste0(
-      deparse(expr),
-      collapse = ""
+    expr <- substitute(substitute(ARG_NM, env = main_eval_env_candidate),
+                       list(ARG_NM = parse(text = arg_nm)[[1]]))
+    # expr is now e.g. `substitute(x, env = main_eval_env)`
+    # and evaluating it gives e.g. `"my_value"` if `env` is the evaluation env
+    # of the "main" function which was called via `main_fun(x = "my_value")`
+    main_eval_env_candidate_set <- list(
+      env,
+      child_frame_of_env(env),
+      parent_frame_of_env(env)
     )
+    x_nm <- arg_nm
+    for (i  in seq_along(main_eval_env_candidate_set)) {
+      main_eval_env_candidate <- main_eval_env_candidate_set[[i]]
+      if (!arg_nm %in% ls(main_eval_env_candidate)) {
+        next()
+      }
+      x_nm <- deparse1(eval(expr))
+      if (x_nm != arg_nm) {
+        break()
+      }
+    }
   }
   # @codedoc_comment_block news("dbc::handle_arg_x_nm", "2024-01-22", "0.5.0")
   # `dbc::handle_arg_x_nm` now redacts `x_nm` if it is longer than 50
@@ -213,6 +237,40 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
     x_nm <- paste0(head, "[...]", tail)
   }
   x_nm
+}
+
+parent_frame_stack <- function(n = 1L) {
+  pfs <- list()
+  pf <- NULL
+  while (!identical(pf, globalenv())) {
+    n <- n + 1L
+    pf <- parent.frame(n)
+    pfs[[n - 1L]] <- pf
+  }
+  return(pfs)
+}
+
+relative_frame_of_env <- function(env, n) {
+  raise_internal_error_if_not(
+    is.environment(env)
+  )
+  pfs <- parent_frame_stack(1L)
+  env_idx <- which(vapply(pfs, identical, logical(1L), y = env))
+  if (length(env_idx) != 1) {
+    stop("Internal error: could not determine parent frame from the context ",
+         "of `env`. If you see this message, contact the package maintainer ",
+         utils::maintainer(pkg = "dbc"))
+  }
+  if (env_idx + n < 1 || env_idx + n > length(pfs)) {
+    return(emptyenv())
+  }
+  pfs[[env_idx + n]]
+}
+parent_frame_of_env <- function(env) {
+  relative_frame_of_env(env, 1L)
+}
+child_frame_of_env <- function(env) {
+  relative_frame_of_env(env, -1L)
 }
 
 #' @rdname argument_handlers
