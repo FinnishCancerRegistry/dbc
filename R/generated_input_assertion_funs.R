@@ -5387,12 +5387,10 @@ assert_input_is_uniquely_named <- function(
   dbc::handle_args_inplace()
   assertion_type <- "input"
   expressions <- list(
-    quote(!is.null(names(x))),
     quote((n_unique_names <- length(unique(names(x)))) == length(x))
   )
   fail_messages <- c(
-    "object `${x_nm}` did not have any names",
-    "not every element of object `${x_nm}` has a different name"
+    "`${x_nm}` has ${n_unique_names} unique names but is of length ${length(x)}; expected the same numbers"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(

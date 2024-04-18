@@ -4795,11 +4795,11 @@ report_is_uniquely_named <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)")
+    "(n_unique_names <- length(unique(names(x)))) == length(x)"
   fail_messages <- 
-    c("object `${x_nm}` did not have any names", "not every element of object `${x_nm}` has a different name")
+    "`${x_nm}` has ${n_unique_names} unique names but is of length ${length(x)}; expected the same numbers"
   pass_messages <- 
-    c(NA_character_, NA_character_)
+    NA_character_
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,
