@@ -28,8 +28,7 @@
 "is_named";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
 "has_names";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;"required_names"
 "has_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
-"is_uniquely_named";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
-"is_uniquely_named";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object `${x_nm}` has a different name";NA;NA
+"is_uniquely_named";"(n_unique_names <- length(unique(names(x)))) == length(x)";"`${x_nm}` has ${n_unique_names} unique names but is of length ${length(x)}; expected the same numbers";NA;NA
 "has_only_names";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;"required_names"
 "has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
 "has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"object `${x_nm}` had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
