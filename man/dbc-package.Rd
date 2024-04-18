@@ -44,6 +44,15 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.3}{
+\subsection{dbc}{
+
+\verb{dbc::*_is_uniquely_named_*} funs now pass objects of length zero.
+E.g. \code{dbc::test_is_uniquely_named(list()) == TRUE}.
+}
+
+}
+
 \subsection{News for version 0.5.2}{
 \subsection{dbc::handle_arg_call}{
 

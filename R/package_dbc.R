@@ -68,3 +68,8 @@ NULL
 # Improved `*_vector_elems_are_in_set` funs: assertion failure message
 # also shows first ten elems of `set`.
 # @codedoc_comment_block news("dbc", "2023-04-18", "0.4.13")
+
+# @codedoc_comment_block news("dbc", "2024-04-18", "0.5.3")
+# `dbc::*_is_uniquely_named_*` funs now pass objects of length zero.
+# E.g. `dbc::test_is_uniquely_named(list()) == TRUE`.
+# @codedoc_comment_block news("dbc", "2024-04-18", "0.5.3")
