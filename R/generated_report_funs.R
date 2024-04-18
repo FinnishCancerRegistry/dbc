@@ -4823,11 +4823,11 @@ report_is_uniquely_named_list <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(x, 'list')", "!is.null(names(x))", "(n_unique_names <- length(unique(names(x)))) == length(x)")
+    c("inherits(x, 'list')", "(n_unique_names <- length(unique(names(x)))) == length(x)")
   fail_messages <- 
-    c("object `${x_nm}` was not of class list", "object `${x_nm}` did not have any names", "not every element of object `${x_nm}` has a different name")
+    c("object `${x_nm}` was not of class list", "not every element of object `${x_nm}` has a different name")
   pass_messages <- 
-    c(NA_character_, NA_character_, NA_character_)
+    c(NA_character_, NA_character_)
   report_env <- environment()
   report_df <- dbc::expressions_to_report(
     expressions = expressions,

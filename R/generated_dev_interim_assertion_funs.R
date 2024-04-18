@@ -5416,12 +5416,10 @@ assert_dev_interim_is_uniquely_named_list <- function(
   assertion_type <- "dev_interim"
   expressions <- list(
     quote(inherits(x, 'list')),
-    quote(!is.null(names(x))),
     quote((n_unique_names <- length(unique(names(x)))) == length(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class list",
-    "object `${x_nm}` did not have any names",
     "not every element of object `${x_nm}` has a different name"
   )
   for (i in seq_along(expressions)) {
