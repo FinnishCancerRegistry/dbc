@@ -44,7 +44,6 @@
 "is_named_list";"inherits(x, 'list')";"object `${x_nm}` was not of class list";NA;NA
 "is_named_list";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
 "is_uniquely_named_list";"inherits(x, 'list')";"object `${x_nm}` was not of class list";NA;NA
-"is_uniquely_named_list";"!is.null(names(x))";"object `${x_nm}` did not have any names";NA;NA
 "is_uniquely_named_list";"(n_unique_names <- length(unique(names(x)))) == length(x)";"not every element of object `${x_nm}` has a different name";NA;NA
 "is_data.frame";"is.data.frame(x)";"object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;NA
 "is_data_frame";"is.data.frame(x)";"object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}";NA;NA
