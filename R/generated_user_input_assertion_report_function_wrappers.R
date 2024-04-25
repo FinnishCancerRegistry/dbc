@@ -150,7 +150,8 @@ assert_user_input_is_one_of <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  funs
+  funs,
+  arg_list = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "user_input"
@@ -158,7 +159,8 @@ assert_user_input_is_one_of <- function(
     x = x,
     x_nm = x_nm,
     call = call,
-    funs = funs
+    funs = funs,
+    arg_list = arg_list
   )
   dbc::report_to_assertion(
     report_df = report_df,

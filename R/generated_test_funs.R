@@ -1416,7 +1416,7 @@ test_is_character_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -1425,7 +1425,7 @@ test_is_character_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1435,7 +1435,7 @@ test_is_character_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1536,7 +1536,7 @@ test_is_character_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -1545,7 +1545,7 @@ test_is_character_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1555,7 +1555,7 @@ test_is_character_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1621,7 +1621,7 @@ test_is_character_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -1630,7 +1630,7 @@ test_is_character_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1640,7 +1640,7 @@ test_is_character_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2609,7 +2609,7 @@ test_is_Date_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -2618,7 +2618,7 @@ test_is_Date_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2628,7 +2628,7 @@ test_is_Date_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2729,7 +2729,7 @@ test_is_Date_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -2738,7 +2738,7 @@ test_is_Date_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2748,7 +2748,7 @@ test_is_Date_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2814,7 +2814,7 @@ test_is_Date_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -2823,7 +2823,7 @@ test_is_Date_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2833,7 +2833,7 @@ test_is_Date_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4924,7 +4924,7 @@ test_is_double_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -4933,7 +4933,7 @@ test_is_double_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4943,7 +4943,7 @@ test_is_double_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5079,7 +5079,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -5088,7 +5088,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5098,7 +5098,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5234,7 +5234,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -5243,7 +5243,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5253,7 +5253,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5354,7 +5354,7 @@ test_is_double_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -5363,7 +5363,7 @@ test_is_double_nonNA_gtezero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5373,7 +5373,7 @@ test_is_double_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5579,7 +5579,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -5588,7 +5588,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5598,7 +5598,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5734,7 +5734,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -5743,7 +5743,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5753,7 +5753,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5854,7 +5854,7 @@ test_is_double_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -5863,7 +5863,7 @@ test_is_double_nonNA_gtzero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5873,7 +5873,7 @@ test_is_double_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6079,7 +6079,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -6088,7 +6088,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6098,7 +6098,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6234,7 +6234,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -6243,7 +6243,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6253,7 +6253,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6354,7 +6354,7 @@ test_is_double_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -6363,7 +6363,7 @@ test_is_double_nonNA_ltezero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6373,7 +6373,7 @@ test_is_double_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6579,7 +6579,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -6588,7 +6588,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6598,7 +6598,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6734,7 +6734,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -6743,7 +6743,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6753,7 +6753,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6854,7 +6854,7 @@ test_is_double_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -6863,7 +6863,7 @@ test_is_double_nonNA_ltzero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6873,7 +6873,7 @@ test_is_double_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7044,7 +7044,7 @@ test_is_double_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -7053,7 +7053,7 @@ test_is_double_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7063,7 +7063,7 @@ test_is_double_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7129,7 +7129,7 @@ test_is_double_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -7138,7 +7138,7 @@ test_is_double_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7148,7 +7148,7 @@ test_is_double_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7759,7 +7759,7 @@ test_is_factor_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -7768,7 +7768,7 @@ test_is_factor_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7778,7 +7778,7 @@ test_is_factor_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7879,7 +7879,7 @@ test_is_factor_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -7888,7 +7888,7 @@ test_is_factor_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7898,7 +7898,7 @@ test_is_factor_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7964,7 +7964,7 @@ test_is_factor_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -7973,7 +7973,7 @@ test_is_factor_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7983,7 +7983,7 @@ test_is_factor_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10533,7 +10533,7 @@ test_is_integer_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -10542,7 +10542,7 @@ test_is_integer_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10552,7 +10552,7 @@ test_is_integer_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10688,7 +10688,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -10697,7 +10697,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10707,7 +10707,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10843,7 +10843,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -10852,7 +10852,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10862,7 +10862,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10963,7 +10963,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -10972,7 +10972,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10982,7 +10982,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11188,7 +11188,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -11197,7 +11197,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11207,7 +11207,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11343,7 +11343,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -11352,7 +11352,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11362,7 +11362,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11463,7 +11463,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -11472,7 +11472,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11482,7 +11482,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11688,7 +11688,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -11697,7 +11697,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11707,7 +11707,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11843,7 +11843,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -11852,7 +11852,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11862,7 +11862,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11963,7 +11963,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -11972,7 +11972,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11982,7 +11982,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12188,7 +12188,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -12197,7 +12197,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12207,7 +12207,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12343,7 +12343,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -12352,7 +12352,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12362,7 +12362,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12463,7 +12463,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -12472,7 +12472,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12482,7 +12482,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12653,7 +12653,7 @@ test_is_integer_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -12662,7 +12662,7 @@ test_is_integer_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12672,7 +12672,7 @@ test_is_integer_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12738,7 +12738,7 @@ test_is_integer_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -12747,7 +12747,7 @@ test_is_integer_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12757,7 +12757,7 @@ test_is_integer_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13368,7 +13368,7 @@ test_is_logical_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -13377,7 +13377,7 @@ test_is_logical_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13387,7 +13387,7 @@ test_is_logical_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13488,7 +13488,7 @@ test_is_logical_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -13497,7 +13497,7 @@ test_is_logical_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13507,7 +13507,7 @@ test_is_logical_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13573,7 +13573,7 @@ test_is_logical_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -13582,7 +13582,7 @@ test_is_logical_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13592,7 +13592,7 @@ test_is_logical_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14250,7 +14250,7 @@ test_is_nonNA <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -14259,7 +14259,7 @@ test_is_nonNA <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14269,7 +14269,7 @@ test_is_nonNA <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16185,7 +16185,7 @@ test_is_number_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -16194,7 +16194,7 @@ test_is_number_nonNA_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16204,7 +16204,7 @@ test_is_number_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16340,7 +16340,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -16349,7 +16349,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16359,7 +16359,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16495,7 +16495,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -16504,7 +16504,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16514,7 +16514,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16615,7 +16615,7 @@ test_is_number_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -16624,7 +16624,7 @@ test_is_number_nonNA_gtezero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16634,7 +16634,7 @@ test_is_number_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16840,7 +16840,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -16849,7 +16849,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16859,7 +16859,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16995,7 +16995,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -17004,7 +17004,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17014,7 +17014,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17115,7 +17115,7 @@ test_is_number_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -17124,7 +17124,7 @@ test_is_number_nonNA_gtzero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17134,7 +17134,7 @@ test_is_number_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17340,7 +17340,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -17349,7 +17349,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17359,7 +17359,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17495,7 +17495,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -17504,7 +17504,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17514,7 +17514,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17615,7 +17615,7 @@ test_is_number_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -17624,7 +17624,7 @@ test_is_number_nonNA_ltezero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17634,7 +17634,7 @@ test_is_number_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17840,7 +17840,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -17849,7 +17849,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17859,7 +17859,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17995,7 +17995,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -18004,7 +18004,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18014,7 +18014,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18115,7 +18115,7 @@ test_is_number_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -18124,7 +18124,7 @@ test_is_number_nonNA_ltzero_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18134,7 +18134,7 @@ test_is_number_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18305,7 +18305,7 @@ test_is_number_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -18314,7 +18314,7 @@ test_is_number_nonNA_matrix <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18324,7 +18324,7 @@ test_is_number_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18390,7 +18390,7 @@ test_is_number_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          if (!is.function(x)) !is.na(x) else TRUE,
+          if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE,
           error = function(e) e
         )
       },
@@ -18399,7 +18399,7 @@ test_is_number_nonNA_vector <- function(
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (!is.function(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18409,7 +18409,7 @@ test_is_number_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (!is.function(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."

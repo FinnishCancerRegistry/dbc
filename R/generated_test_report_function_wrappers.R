@@ -125,14 +125,16 @@ test_is_one_of <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  funs
+  funs,
+  arg_list = NULL
 ) {
   dbc::handle_args_inplace()
   report_df <- dbc::report_is_one_of(
     x = x,
     x_nm = x_nm,
     call = call,
-    funs = funs
+    funs = funs,
+    arg_list = arg_list
   )
   return(all(report_df[["pass"]]))
 }

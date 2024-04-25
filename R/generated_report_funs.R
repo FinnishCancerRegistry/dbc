@@ -585,7 +585,7 @@ report_is_character_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.character(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.character(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -613,7 +613,7 @@ report_is_character_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.character(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.character(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -641,7 +641,7 @@ report_is_character_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.character(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.character(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -980,7 +980,7 @@ report_is_Date_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "inherits(x, 'Date')", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "inherits(x, 'Date')", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1008,7 +1008,7 @@ report_is_Date_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(x, 'Date')", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("inherits(x, 'Date')", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1036,7 +1036,7 @@ report_is_Date_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(x, 'Date')", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("inherits(x, 'Date')", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -1512,7 +1512,7 @@ report_is_double_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.double(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.double(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1540,7 +1540,7 @@ report_is_double_nonNA_gtezero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.double(x)", "x >= 0", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.double(x)", "x >= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1568,7 +1568,7 @@ report_is_double_nonNA_gtezero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x >= 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.double(x)", "x >= 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1596,7 +1596,7 @@ report_is_double_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.double(x)", "x >= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -1624,7 +1624,7 @@ report_is_double_nonNA_gtzero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.double(x)", "x > 0", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.double(x)", "x > 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1652,7 +1652,7 @@ report_is_double_nonNA_gtzero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x > 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.double(x)", "x > 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1680,7 +1680,7 @@ report_is_double_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.double(x)", "x > 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -1708,7 +1708,7 @@ report_is_double_nonNA_ltezero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.double(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.double(x)", "x <= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1736,7 +1736,7 @@ report_is_double_nonNA_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x <= 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.double(x)", "x <= 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1764,7 +1764,7 @@ report_is_double_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.double(x)", "x <= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -1792,7 +1792,7 @@ report_is_double_nonNA_ltzero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.double(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.double(x)", "x < 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1820,7 +1820,7 @@ report_is_double_nonNA_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x < 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.double(x)", "x < 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1848,7 +1848,7 @@ report_is_double_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.double(x)", "x < 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -1876,7 +1876,7 @@ report_is_double_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.double(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -1904,7 +1904,7 @@ report_is_double_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.double(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.double(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -2100,7 +2100,7 @@ report_is_factor_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.factor(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.factor(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -2128,7 +2128,7 @@ report_is_factor_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.factor(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.factor(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -2156,7 +2156,7 @@ report_is_factor_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.factor(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.factor(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -2832,7 +2832,7 @@ report_is_integer_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.integer(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -2860,7 +2860,7 @@ report_is_integer_nonNA_gtezero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "x >= 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "x >= 0", "is.integer(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -2888,7 +2888,7 @@ report_is_integer_nonNA_gtezero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "is.integer(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("x >= 0", "is.integer(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -2916,7 +2916,7 @@ report_is_integer_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("x >= 0", "is.integer(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -2944,7 +2944,7 @@ report_is_integer_nonNA_gtzero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "x > 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "x > 0", "is.integer(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -2972,7 +2972,7 @@ report_is_integer_nonNA_gtzero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "is.integer(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("x > 0", "is.integer(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3000,7 +3000,7 @@ report_is_integer_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("x > 0", "is.integer(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -3028,7 +3028,7 @@ report_is_integer_nonNA_ltezero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.integer(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.integer(x)", "x <= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3056,7 +3056,7 @@ report_is_integer_nonNA_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x <= 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.integer(x)", "x <= 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3084,7 +3084,7 @@ report_is_integer_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.integer(x)", "x <= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -3112,7 +3112,7 @@ report_is_integer_nonNA_ltzero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.integer(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.integer(x)", "x < 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3140,7 +3140,7 @@ report_is_integer_nonNA_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x < 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.integer(x)", "x < 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3168,7 +3168,7 @@ report_is_integer_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.integer(x)", "x < 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -3196,7 +3196,7 @@ report_is_integer_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.integer(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3224,7 +3224,7 @@ report_is_integer_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.integer(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.integer(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -3420,7 +3420,7 @@ report_is_logical_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "is.logical(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("length(x) == 1L", "is.logical(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3448,7 +3448,7 @@ report_is_logical_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.logical(x)", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE")
+    c("is.logical(x)", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE")
   fail_messages <- 
     c("object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed")
   pass_messages <- 
@@ -3476,7 +3476,7 @@ report_is_logical_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.logical(x)", "if (!is.function(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
+    c("is.logical(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -3758,7 +3758,7 @@ report_is_nonNA <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    "if (!is.function(x)) !is.na(x) else TRUE"
+    "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE"
   fail_messages <- 
     "object `${x_nm}` had ${n_fail} NA values - none are allowed"
   pass_messages <- 
@@ -4234,7 +4234,7 @@ report_is_number_nonNA_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("length(x) == 1L", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4262,7 +4262,7 @@ report_is_number_nonNA_gtezero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("length(x) == 1L", "x >= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4290,7 +4290,7 @@ report_is_number_nonNA_gtezero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("x >= 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4318,7 +4318,7 @@ report_is_number_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x >= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
+    c("x >= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were < 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -4346,7 +4346,7 @@ report_is_number_nonNA_gtzero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("length(x) == 1L", "x > 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4374,7 +4374,7 @@ report_is_number_nonNA_gtzero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("x > 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4402,7 +4402,7 @@ report_is_number_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x > 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
+    c("x > 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were <= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -4430,7 +4430,7 @@ report_is_number_nonNA_ltezero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("length(x) == 1L", "x <= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4458,7 +4458,7 @@ report_is_number_nonNA_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x <= 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("x <= 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4486,7 +4486,7 @@ report_is_number_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x <= 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
+    c("x <= 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were > 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -4514,7 +4514,7 @@ report_is_number_nonNA_ltzero_atom <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("length(x) == 1L", "x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("length(x) == 1L", "x < 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("length of object `${x_nm}` was ${length(x)} instead of 1", "${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4542,7 +4542,7 @@ report_is_number_nonNA_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x < 0", "is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("x < 0", "is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4570,7 +4570,7 @@ report_is_number_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("x < 0", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
+    c("x < 0", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("${n_fail} elements of `${x_nm}` were >= 0", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 
@@ -4598,7 +4598,7 @@ report_is_number_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.matrix(x)", "if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)")
+    c("is.matrix(x)", "if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)")
   fail_messages <- 
     c("object `${x_nm}` was not a matrix", "object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}")
   pass_messages <- 
@@ -4626,7 +4626,7 @@ report_is_number_nonNA_vector <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("if (!is.function(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
+    c("if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE", "is.numeric(x)", "!is.list(x)", "is.null(dim(x))")
   fail_messages <- 
     c("object `${x_nm}` had ${n_fail} NA values - none are allowed", "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` was a list", "object `${x_nm}` had dimensions but was expected to have none")
   pass_messages <- 

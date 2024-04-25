@@ -151,14 +151,16 @@ assert_is_one_of <- function(
   x_nm = NULL,
   call = NULL,
   assertion_type = NULL,
-  funs
+  funs,
+  arg_list = NULL
 ) {
   dbc::handle_args_inplace()
   report_df <- dbc::report_is_one_of(
     x = x,
     x_nm = x_nm,
     call = call,
-    funs = funs
+    funs = funs,
+    arg_list = arg_list
   )
   dbc::report_to_assertion(
     report_df = report_df,

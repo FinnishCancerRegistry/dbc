@@ -605,7 +605,7 @@ assert_input_is_character_nonNA_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.character(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -637,7 +637,7 @@ assert_input_is_character_nonNA_matrix <- function(
   expressions <- list(
     quote(is.character(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
@@ -668,7 +668,7 @@ assert_input_is_character_nonNA_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(is.character(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -1028,7 +1028,7 @@ assert_input_is_Date_nonNA_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(inherits(x, 'Date')),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1060,7 +1060,7 @@ assert_input_is_Date_nonNA_matrix <- function(
   expressions <- list(
     quote(inherits(x, 'Date')),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
@@ -1091,7 +1091,7 @@ assert_input_is_Date_nonNA_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(inherits(x, 'Date')),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -1638,7 +1638,7 @@ assert_input_is_double_nonNA_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1671,7 +1671,7 @@ assert_input_is_double_nonNA_gtezero_atom <- function(
     quote(length(x) == 1L),
     quote(is.double(x)),
     quote(x >= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1705,7 +1705,7 @@ assert_input_is_double_nonNA_gtezero_matrix <- function(
     quote(is.double(x)),
     quote(x >= 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
@@ -1738,7 +1738,7 @@ assert_input_is_double_nonNA_gtezero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x >= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -1775,7 +1775,7 @@ assert_input_is_double_nonNA_gtzero_atom <- function(
     quote(length(x) == 1L),
     quote(is.double(x)),
     quote(x > 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1809,7 +1809,7 @@ assert_input_is_double_nonNA_gtzero_matrix <- function(
     quote(is.double(x)),
     quote(x > 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
@@ -1842,7 +1842,7 @@ assert_input_is_double_nonNA_gtzero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x > 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -1879,7 +1879,7 @@ assert_input_is_double_nonNA_ltezero_atom <- function(
     quote(length(x) == 1L),
     quote(is.double(x)),
     quote(x <= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1913,7 +1913,7 @@ assert_input_is_double_nonNA_ltezero_matrix <- function(
     quote(is.double(x)),
     quote(x <= 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
@@ -1946,7 +1946,7 @@ assert_input_is_double_nonNA_ltezero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x <= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -1983,7 +1983,7 @@ assert_input_is_double_nonNA_ltzero_atom <- function(
     quote(length(x) == 1L),
     quote(is.double(x)),
     quote(x < 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -2017,7 +2017,7 @@ assert_input_is_double_nonNA_ltzero_matrix <- function(
     quote(is.double(x)),
     quote(x < 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
@@ -2050,7 +2050,7 @@ assert_input_is_double_nonNA_ltzero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x < 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -2086,7 +2086,7 @@ assert_input_is_double_nonNA_matrix <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
@@ -2117,7 +2117,7 @@ assert_input_is_double_nonNA_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(is.double(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -2328,7 +2328,7 @@ assert_input_is_factor_nonNA_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.factor(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -2360,7 +2360,7 @@ assert_input_is_factor_nonNA_matrix <- function(
   expressions <- list(
     quote(is.factor(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
@@ -2391,7 +2391,7 @@ assert_input_is_factor_nonNA_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(is.factor(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -3144,7 +3144,7 @@ assert_input_is_integer_nonNA_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.integer(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3177,7 +3177,7 @@ assert_input_is_integer_nonNA_gtezero_atom <- function(
     quote(length(x) == 1L),
     quote(x >= 0),
     quote(is.integer(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3211,7 +3211,7 @@ assert_input_is_integer_nonNA_gtezero_matrix <- function(
     quote(x >= 0),
     quote(is.integer(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < 0",
@@ -3244,7 +3244,7 @@ assert_input_is_integer_nonNA_gtezero_vector <- function(
   expressions <- list(
     quote(x >= 0),
     quote(is.integer(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -3281,7 +3281,7 @@ assert_input_is_integer_nonNA_gtzero_atom <- function(
     quote(length(x) == 1L),
     quote(x > 0),
     quote(is.integer(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3315,7 +3315,7 @@ assert_input_is_integer_nonNA_gtzero_matrix <- function(
     quote(x > 0),
     quote(is.integer(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= 0",
@@ -3348,7 +3348,7 @@ assert_input_is_integer_nonNA_gtzero_vector <- function(
   expressions <- list(
     quote(x > 0),
     quote(is.integer(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -3385,7 +3385,7 @@ assert_input_is_integer_nonNA_ltezero_atom <- function(
     quote(length(x) == 1L),
     quote(is.integer(x)),
     quote(x <= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3419,7 +3419,7 @@ assert_input_is_integer_nonNA_ltezero_matrix <- function(
     quote(is.integer(x)),
     quote(x <= 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
@@ -3452,7 +3452,7 @@ assert_input_is_integer_nonNA_ltezero_vector <- function(
   expressions <- list(
     quote(is.integer(x)),
     quote(x <= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -3489,7 +3489,7 @@ assert_input_is_integer_nonNA_ltzero_atom <- function(
     quote(length(x) == 1L),
     quote(is.integer(x)),
     quote(x < 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3523,7 +3523,7 @@ assert_input_is_integer_nonNA_ltzero_matrix <- function(
     quote(is.integer(x)),
     quote(x < 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
@@ -3556,7 +3556,7 @@ assert_input_is_integer_nonNA_ltzero_vector <- function(
   expressions <- list(
     quote(is.integer(x)),
     quote(x < 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -3592,7 +3592,7 @@ assert_input_is_integer_nonNA_matrix <- function(
   expressions <- list(
     quote(is.integer(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
@@ -3623,7 +3623,7 @@ assert_input_is_integer_nonNA_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(is.integer(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -3834,7 +3834,7 @@ assert_input_is_logical_nonNA_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.logical(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3866,7 +3866,7 @@ assert_input_is_logical_nonNA_matrix <- function(
   expressions <- list(
     quote(is.logical(x)),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
@@ -3897,7 +3897,7 @@ assert_input_is_logical_nonNA_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(is.logical(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
   )
@@ -4190,7 +4190,7 @@ assert_input_is_nonNA <- function(
   dbc::handle_args_inplace()
   assertion_type <- "input"
   expressions <- list(
-    quote(if (!is.function(x)) !is.na(x) else TRUE)
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
     "object `${x_nm}` had ${n_fail} NA values - none are allowed"
@@ -4727,7 +4727,7 @@ assert_input_is_number_nonNA_atom <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(length(x) == 1L),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4760,7 +4760,7 @@ assert_input_is_number_nonNA_gtezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(x >= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4794,7 +4794,7 @@ assert_input_is_number_nonNA_gtezero_matrix <- function(
   expressions <- list(
     quote(x >= 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4827,7 +4827,7 @@ assert_input_is_number_nonNA_gtezero_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(x >= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
@@ -4864,7 +4864,7 @@ assert_input_is_number_nonNA_gtzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(x > 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4898,7 +4898,7 @@ assert_input_is_number_nonNA_gtzero_matrix <- function(
   expressions <- list(
     quote(x > 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4931,7 +4931,7 @@ assert_input_is_number_nonNA_gtzero_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(x > 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
@@ -4968,7 +4968,7 @@ assert_input_is_number_nonNA_ltezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(x <= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -5002,7 +5002,7 @@ assert_input_is_number_nonNA_ltezero_matrix <- function(
   expressions <- list(
     quote(x <= 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -5035,7 +5035,7 @@ assert_input_is_number_nonNA_ltezero_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(x <= 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
@@ -5072,7 +5072,7 @@ assert_input_is_number_nonNA_ltzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(x < 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -5106,7 +5106,7 @@ assert_input_is_number_nonNA_ltzero_matrix <- function(
   expressions <- list(
     quote(x < 0),
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -5139,7 +5139,7 @@ assert_input_is_number_nonNA_ltzero_vector <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(x < 0),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(!is.list(x)),
     quote(is.null(dim(x)))
@@ -5175,7 +5175,7 @@ assert_input_is_number_nonNA_matrix <- function(
   assertion_type <- "input"
   expressions <- list(
     quote(is.matrix(x)),
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -5206,7 +5206,7 @@ assert_input_is_number_nonNA_vector <- function(
   dbc::handle_args_inplace()
   assertion_type <- "input"
   expressions <- list(
-    quote(if (!is.function(x)) !is.na(x) else TRUE),
+    quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(!is.list(x)),
     quote(is.null(dim(x)))

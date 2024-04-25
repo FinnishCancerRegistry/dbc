@@ -2445,7 +2445,7 @@ assert_dev_input_is_like_template(
   compare = NULL
 )
 
-assert_dev_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_dev_input_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 
 assert_dev_interim_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -2864,7 +2864,13 @@ assert_dev_interim_is_like_template(
   compare = NULL
 )
 
-assert_dev_interim_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_dev_interim_is_one_of(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs,
+  arg_list = NULL
+)
 
 assert_dev_output_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -3283,7 +3289,7 @@ assert_dev_output_is_like_template(
   compare = NULL
 )
 
-assert_dev_output_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_dev_output_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 
 assert_all_are_TRUE(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
@@ -4221,7 +4227,14 @@ assert_is_like_template(
   compare = NULL
 )
 
-assert_is_one_of(x, x_nm = NULL, call = NULL, assertion_type = NULL, funs)
+assert_is_one_of(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = NULL,
+  funs,
+  arg_list = NULL
+)
 
 assert_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -4635,7 +4648,7 @@ assert_input_is_like_template(
   compare = NULL
 )
 
-assert_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_input_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 
 assert_prod_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5054,7 +5067,7 @@ assert_prod_input_is_like_template(
   compare = NULL
 )
 
-assert_prod_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_prod_input_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 
 assert_prod_interim_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5489,7 +5502,13 @@ assert_prod_interim_is_like_template(
   compare = NULL
 )
 
-assert_prod_interim_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_prod_interim_is_one_of(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs,
+  arg_list = NULL
+)
 
 assert_prod_output_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5908,7 +5927,13 @@ assert_prod_output_is_like_template(
   compare = NULL
 )
 
-assert_prod_output_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_prod_output_is_one_of(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs,
+  arg_list = NULL
+)
 
 report_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -6676,7 +6701,7 @@ test_is_identical(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 test_is_like_template(x, x_nm = NULL, call = NULL, template, compare = NULL)
 
-test_is_one_of(x, x_nm = NULL, call = NULL, funs)
+test_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 
 assert_user_input_all_are_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -7095,7 +7120,7 @@ assert_user_input_is_like_template(
   compare = NULL
 )
 
-assert_user_input_is_one_of(x, x_nm = NULL, call = NULL, funs)
+assert_user_input_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 
 identify_invalid_observations(x, report_df)
 
@@ -7287,10 +7312,6 @@ report functions that return a report (data.frame);
 \item \code{list}: list of functions
 }}
 
-\item{report_df}{\verb{[data.frame]} (mandatory, no default)
-
-a report \code{data.frame} as produced by e.g. \link{expressions_to_report}}
-
 \item{arg_list}{\verb{[NULL, list]}
 
 Additional arguments to pass to \code{funs}. Only those arguments are passed
@@ -7299,6 +7320,10 @@ that have a matching argument name in the function definition.
 \item \code{NULL}: Pass no additional arguments.
 \item \code{list}: Pass these.
 }}
+
+\item{report_df}{\verb{[data.frame]} (mandatory, no default)
+
+a report \code{data.frame} as produced by e.g. \link{expressions_to_report}}
 }
 \value{
 \itemize{
