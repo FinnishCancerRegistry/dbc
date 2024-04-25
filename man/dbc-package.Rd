@@ -44,6 +44,14 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.4}{
+\subsection{dbc::report_is_one_of}{
+
+\code{dbc::report_is_one_of} gains arg \code{arg_list}.
+}
+
+}
+
 \subsection{News for version 0.5.3}{
 \subsection{dbc}{
 

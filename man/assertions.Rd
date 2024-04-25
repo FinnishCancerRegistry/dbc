@@ -7123,7 +7123,7 @@ report_is_all_equal(
   all_equal_arg_list = NULL
 )
 
-report_is_one_of(x, x_nm = NULL, call = NULL, funs)
+report_is_one_of(x, x_nm = NULL, call = NULL, funs, arg_list = NULL)
 }
 \arguments{
 \item{x}{R object to be tested (mandatory, no default)}
@@ -7290,6 +7290,15 @@ report functions that return a report (data.frame);
 \item{report_df}{\verb{[data.frame]} (mandatory, no default)
 
 a report \code{data.frame} as produced by e.g. \link{expressions_to_report}}
+
+\item{arg_list}{\verb{[NULL, list]}
+
+Additional arguments to pass to \code{funs}. Only those arguments are passed
+that have a matching argument name in the function definition.
+\itemize{
+\item \code{NULL}: Pass no additional arguments.
+\item \code{list}: Pass these.
+}}
 }
 \value{
 \itemize{
@@ -7454,6 +7463,15 @@ rdf <- dbc::report_is_one_of(
 )
 stopifnot(
   nrow(rdf) == 1L,
+  identical(rdf[["pass"]], TRUE)
+)
+
+rdf <- dbc::report_is_one_of(
+  "hello there",
+  funs = list(dbc::report_has_length, dbc::report_is_NULL),
+  arg_list = list(expected_length = 1L)
+)
+stopifnot(
   identical(rdf[["pass"]], TRUE)
 )
 }

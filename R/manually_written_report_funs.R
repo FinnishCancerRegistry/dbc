@@ -437,14 +437,31 @@ report_is_all_equal <- function(
 #'   nrow(rdf) == 1L,
 #'   identical(rdf[["pass"]], TRUE)
 #' )
-report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
+#'
+#' rdf <- dbc::report_is_one_of(
+#'   "hello there",
+#'   funs = list(dbc::report_has_length, dbc::report_is_NULL),
+#'   arg_list = list(expected_length = 1L)
+#' )
+#' stopifnot(
+#'   identical(rdf[["pass"]], TRUE)
+#' )
+report_is_one_of <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  funs,
+  arg_list = NULL
+) {
   # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.15")
   # `dbc::report_is_one_of` now always returns a report `data.frame` with only
   # one row. All `is_one_of` assertion funs are now generated instead of being
   # manually generated. Their error messages have therefore changed.
   # @codedoc_comment_block news("dbc::report_is_one_of", "2023-07-04", "0.4.15")
-  x_nm <- dbc::handle_arg_x_nm(x_nm)
-  call <- dbc::handle_arg_call(call)
+  # @codedoc_comment_block news("dbc::report_is_one_of", "2024-04-25", "0.5.4")
+  # `dbc::report_is_one_of` gains arg `arg_list`.
+  # @codedoc_comment_block news("dbc::report_is_one_of", "2024-04-25", "0.5.4")
+  dbc::handle_args_inplace()
   report_is_one_of_call <- match.call()
   raise_internal_error_if_not(
     inherits(funs, c("list", "character"))
@@ -461,15 +478,35 @@ report_is_one_of <- function(x, x_nm = NULL, call = NULL, funs) {
     )
     fun
   })
+  #' @param arg_list `[NULL, list]`
+  #'
+  #' Additional arguments to pass to `funs`. Only those arguments are passed
+  #' that have a matching argument name in the function definition.
+  #'
+  #' - `NULL`: Pass no additional arguments.
+  #' - `list`: Pass these.
+  arg_list <- as.list(arg_list)
+  add_arg_nms <- setdiff(names(formals(report_is_one_of)), "arg_list")
+  arg_list[add_arg_nms] <- mget(add_arg_nms)
+  eval_env <- as.environment(arg_list)
+  parent.env(eval_env) <- parent.frame(1L)
   report_df <- do.call(rbind, lapply(seq_along(funs), function(i) {
-    expr <- substitute(funs[[i]](x = x, x_nm = x_nm, call = call), list(i = i))
-    report_df <- eval(expr)
+    arg_nms <- intersect(names(formals(funs[[i]])), ls(eval_env))
+    expr_lines <- c(
+      sprintf("funs[[%i]](", i),
+      paste0("  ", arg_nms, " = ", arg_nms,
+             c(rep(",", length(arg_nms) - 1L), "")),
+      ")"
+    )
+    expr <- parse(text = expr_lines)[[1]]
+    report_df <- eval(expr, eval_env)
     dbc::assert_prod_interim_is_report_df(
       report_df,
       x_nm = deparse1(expr),
       call = report_is_one_of_call
     )
-    aggregate_report_df(report_df, pass = "all")
+    report_df <- aggregate_report_df(report_df, pass = "all")
+    return(report_df)
   }), quote = TRUE)
   return(aggregate_report_df(report_df, pass = "any"))
 }
