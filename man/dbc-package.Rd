@@ -45,6 +45,12 @@ my_fun_2 <- function(df) \{
 \section{News}{
 
 \subsection{News for version 0.5.4}{
+\subsection{dbc}{
+
+\verb{dbc::*_is_nonNA_*} funs now pass all objects that are not vectors (e.g.
+lists, language objects). Only vectors are tested with \code{is.na}.
+}
+
 \subsection{dbc::report_is_one_of}{
 
 \code{dbc::report_is_one_of} gains arg \code{arg_list}.

@@ -73,3 +73,8 @@ NULL
 # `dbc::*_is_uniquely_named_*` funs now pass objects of length zero.
 # E.g. `dbc::test_is_uniquely_named(list()) == TRUE`.
 # @codedoc_comment_block news("dbc", "2024-04-18", "0.5.3")
+
+# @codedoc_comment_block news("dbc", "2024-04-25", "0.5.4")
+# `dbc::*_is_nonNA_*` funs now pass all objects that are not vectors (e.g.
+# lists, language objects). Only vectors are tested with `is.na`.
+# @codedoc_comment_block news("dbc", "2024-04-25", "0.5.4")

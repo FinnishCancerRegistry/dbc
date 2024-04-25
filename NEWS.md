@@ -2,6 +2,11 @@
 
 ## News for version 0.5.4
 
+### dbc
+
+`dbc::*_is_nonNA_*` funs now pass all objects that are not vectors (e.g.
+lists, language objects). Only vectors are tested with `is.na`.
+
 ### dbc::report_is_one_of
 
 `dbc::report_is_one_of` gains arg `arg_list`.
