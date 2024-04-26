@@ -8,12 +8,16 @@
 report_fun_specs <- read.table(
   file = "data-raw/report_fun_specs.csv",
   sep = ";",
+  quote = "\"",
   header = TRUE,
   stringsAsFactors = FALSE,
   fileEncoding = "UTF-8",
   blank.lines.skip = TRUE
 )
-report_fun_specs <- as.data.frame(lapply(report_fun_specs, as.character))
+report_fun_specs <- as.data.frame(lapply(report_fun_specs, function(col) {
+  col <- as.character(col)
+  gsub("'", "\"", col)
+}))
 
 pkgload::load_all(export_all = FALSE)
 report_df_template <- dbc::expressions_to_report("1 == 1")
