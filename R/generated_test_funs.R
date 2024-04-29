@@ -25,10 +25,11 @@ test_all_are_TRUE <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(all(x %in% TRUE)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `all(x %in% TRUE)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -38,7 +39,7 @@ test_all_are_TRUE <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `all(x %in% TRUE)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -76,10 +77,11 @@ test_atom_is_in_set <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -89,7 +91,7 @@ test_atom_is_in_set <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -111,10 +113,11 @@ test_atom_is_in_set <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x %in% set))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x %in% set` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -124,7 +127,7 @@ test_atom_is_in_set <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x %in% set` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -162,10 +165,11 @@ test_data_table_has_no_duplicates <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!(dup <- duplicated(x, by = by))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!(dup <- duplicated(x, by = by))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -175,7 +179,7 @@ test_data_table_has_no_duplicates <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!(dup <- duplicated(x, by = by))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -212,10 +216,11 @@ test_dir_exists <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(bad_dirs <- x[!dir.exists(x)]) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(bad_dirs <- x[!dir.exists(x)]) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -225,7 +230,7 @@ test_dir_exists <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(bad_dirs <- x[!dir.exists(x)]) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -262,10 +267,11 @@ test_file_exists <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(bad_files <- x[!file.exists(x)]) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(bad_files <- x[!file.exists(x)]) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -275,7 +281,7 @@ test_file_exists <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(bad_files <- x[!file.exists(x)]) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -313,10 +319,11 @@ test_has_class <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, required_class)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, required_class)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -326,7 +333,7 @@ test_has_class <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, required_class)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -364,10 +371,11 @@ test_has_length <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == expected_length))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == expected_length` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -377,7 +385,7 @@ test_has_length <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == expected_length` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -415,10 +423,11 @@ test_has_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!is.null(names(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!is.null(names(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -428,7 +437,7 @@ test_has_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!is.null(names(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -450,10 +459,11 @@ test_has_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -463,7 +473,7 @@ test_has_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -500,10 +510,11 @@ test_has_no_duplicates <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!duplicated(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!duplicated(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -513,7 +524,7 @@ test_has_no_duplicates <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!duplicated(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -551,10 +562,11 @@ test_has_one_of_classes <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, classes)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, classes)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -564,7 +576,7 @@ test_has_one_of_classes <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, classes)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -602,10 +614,11 @@ test_has_only_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!is.null(names(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!is.null(names(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -615,7 +628,7 @@ test_has_only_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!is.null(names(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -637,10 +650,11 @@ test_has_only_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -650,7 +664,7 @@ test_has_only_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -672,10 +686,11 @@ test_has_only_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(extra_nms <- setdiff(names(x), required_names)) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(extra_nms <- setdiff(names(x), required_names)) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -685,7 +700,7 @@ test_has_only_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(extra_nms <- setdiff(names(x), required_names)) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -723,10 +738,11 @@ test_inherits <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, required_class)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, required_class)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -736,7 +752,7 @@ test_inherits <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, required_class)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -773,10 +789,11 @@ test_is_assertion_type <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -786,7 +803,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -808,10 +825,11 @@ test_is_assertion_type <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -821,7 +839,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -843,10 +861,11 @@ test_is_assertion_type <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!is.na(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!is.na(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -856,7 +875,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!is.na(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -878,10 +897,11 @@ test_is_assertion_type <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x %in% dbc::assertion_types()))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x %in% dbc::assertion_types()` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -891,7 +911,7 @@ test_is_assertion_type <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x %in% dbc::assertion_types()` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -928,10 +948,11 @@ test_is_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -941,7 +962,7 @@ test_is_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -980,10 +1001,11 @@ test_is_between_exclusive <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(dbc::is_between_exclusive(x = x, lo = lo, hi = hi)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::is_between_exclusive(x = x, lo = lo, hi = hi)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -993,7 +1015,7 @@ test_is_between_exclusive <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::is_between_exclusive(x = x, lo = lo, hi = hi)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1032,10 +1054,11 @@ test_is_between_inclusive <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(dbc::is_between_inclusive(x = x, lo = lo, hi = hi)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `dbc::is_between_inclusive(x = x, lo = lo, hi = hi)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1045,7 +1068,7 @@ test_is_between_inclusive <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `dbc::is_between_inclusive(x = x, lo = lo, hi = hi)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1082,10 +1105,11 @@ test_is_call <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.call(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.call(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1095,7 +1119,7 @@ test_is_call <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.call(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1132,10 +1156,11 @@ test_is_character <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1145,7 +1170,7 @@ test_is_character <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1182,10 +1207,11 @@ test_is_character_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1195,7 +1221,7 @@ test_is_character_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1217,10 +1243,11 @@ test_is_character_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1230,7 +1257,7 @@ test_is_character_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1267,10 +1294,11 @@ test_is_character_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1280,7 +1308,7 @@ test_is_character_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1302,10 +1330,11 @@ test_is_character_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1315,7 +1344,7 @@ test_is_character_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1352,10 +1381,11 @@ test_is_character_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1365,7 +1395,7 @@ test_is_character_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1387,10 +1417,11 @@ test_is_character_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1400,7 +1431,7 @@ test_is_character_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1422,10 +1453,11 @@ test_is_character_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1435,7 +1467,7 @@ test_is_character_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1472,10 +1504,11 @@ test_is_character_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1485,7 +1518,7 @@ test_is_character_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1507,10 +1540,11 @@ test_is_character_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1520,7 +1554,7 @@ test_is_character_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1542,10 +1576,11 @@ test_is_character_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1555,7 +1590,7 @@ test_is_character_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1592,10 +1627,11 @@ test_is_character_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1605,7 +1641,7 @@ test_is_character_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1627,10 +1663,11 @@ test_is_character_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1640,42 +1677,7 @@ test_is_character_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1697,10 +1699,11 @@ test_is_character_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1710,7 +1713,43 @@ test_is_character_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1747,10 +1786,11 @@ test_is_character_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.character(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.character(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1760,42 +1800,7 @@ test_is_character_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.character(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1817,10 +1822,11 @@ test_is_character_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1830,7 +1836,43 @@ test_is_character_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1867,10 +1909,11 @@ test_is_data.frame <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.data.frame(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.data.frame(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1880,7 +1923,7 @@ test_is_data.frame <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.data.frame(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1918,10 +1961,11 @@ test_is_data.frame_with_required_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.data.frame(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.data.frame(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1931,7 +1975,7 @@ test_is_data.frame_with_required_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.data.frame(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1953,10 +1997,11 @@ test_is_data.frame_with_required_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -1966,7 +2011,7 @@ test_is_data.frame_with_required_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -1997,16 +2042,17 @@ test_is_data.table <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'data.table'),
+          inherits(x, "data.table"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "data.table")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'data.table')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2016,7 +2062,7 @@ test_is_data.table <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'data.table')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2048,16 +2094,17 @@ test_is_data.table_with_required_names <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'data.table'),
+          inherits(x, "data.table"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "data.table")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'data.table')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2067,7 +2114,7 @@ test_is_data.table_with_required_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'data.table')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2089,10 +2136,11 @@ test_is_data.table_with_required_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2102,7 +2150,7 @@ test_is_data.table_with_required_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2139,10 +2187,11 @@ test_is_data_frame <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.data.frame(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.data.frame(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2152,7 +2201,7 @@ test_is_data_frame <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.data.frame(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2183,16 +2232,17 @@ test_is_data_table <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'data.table'),
+          inherits(x, "data.table"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "data.table")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'data.table')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2202,7 +2252,7 @@ test_is_data_table <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'data.table')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2234,16 +2284,17 @@ test_is_data_table_with_required_names <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'data.table'),
+          inherits(x, "data.table"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "data.table")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'data.table')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2253,7 +2304,7 @@ test_is_data_table_with_required_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'data.table')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2275,10 +2326,11 @@ test_is_data_table_with_required_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2288,7 +2340,7 @@ test_is_data_table_with_required_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_nms <- setdiff(required_names, names(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2319,16 +2371,17 @@ test_is_Date <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2338,7 +2391,7 @@ test_is_Date <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2375,10 +2428,11 @@ test_is_Date_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2388,7 +2442,7 @@ test_is_Date_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2404,16 +2458,17 @@ test_is_Date_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2423,7 +2478,7 @@ test_is_Date_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2454,16 +2509,17 @@ test_is_Date_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2473,7 +2529,7 @@ test_is_Date_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2495,10 +2551,11 @@ test_is_Date_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2508,7 +2565,7 @@ test_is_Date_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2545,10 +2602,11 @@ test_is_Date_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2558,7 +2616,7 @@ test_is_Date_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2574,16 +2632,17 @@ test_is_Date_nonNA_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2593,7 +2652,7 @@ test_is_Date_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2615,10 +2674,11 @@ test_is_Date_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2628,7 +2688,7 @@ test_is_Date_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2659,16 +2719,17 @@ test_is_Date_nonNA_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2678,7 +2739,7 @@ test_is_Date_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2700,10 +2761,11 @@ test_is_Date_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2713,7 +2775,7 @@ test_is_Date_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2735,10 +2797,11 @@ test_is_Date_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2748,7 +2811,7 @@ test_is_Date_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2779,16 +2842,17 @@ test_is_Date_nonNA_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2798,7 +2862,7 @@ test_is_Date_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2820,10 +2884,11 @@ test_is_Date_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2833,42 +2898,7 @@ test_is_Date_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2890,10 +2920,11 @@ test_is_Date_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2903,7 +2934,43 @@ test_is_Date_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -2934,16 +3001,17 @@ test_is_Date_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'Date'),
+          inherits(x, "Date"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "Date")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'Date')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -2953,42 +3021,7 @@ test_is_Date_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'Date')` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3010,10 +3043,11 @@ test_is_Date_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3023,7 +3057,43 @@ test_is_Date_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3060,10 +3130,11 @@ test_is_double <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3073,7 +3144,7 @@ test_is_double <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3110,10 +3181,11 @@ test_is_double_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3123,7 +3195,7 @@ test_is_double_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3145,10 +3217,11 @@ test_is_double_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3158,7 +3231,7 @@ test_is_double_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3195,10 +3268,11 @@ test_is_double_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3208,7 +3282,7 @@ test_is_double_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3230,10 +3304,11 @@ test_is_double_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3243,7 +3318,7 @@ test_is_double_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3265,10 +3340,11 @@ test_is_double_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3278,7 +3354,7 @@ test_is_double_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3315,10 +3391,11 @@ test_is_double_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3328,7 +3405,7 @@ test_is_double_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3350,10 +3427,11 @@ test_is_double_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3363,7 +3441,7 @@ test_is_double_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3385,10 +3463,11 @@ test_is_double_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3398,7 +3477,7 @@ test_is_double_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3435,10 +3514,11 @@ test_is_double_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3448,7 +3528,7 @@ test_is_double_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3470,10 +3550,11 @@ test_is_double_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3483,42 +3564,7 @@ test_is_double_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3540,10 +3586,11 @@ test_is_double_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3553,7 +3600,43 @@ test_is_double_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3590,10 +3673,11 @@ test_is_double_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3603,7 +3687,7 @@ test_is_double_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3625,10 +3709,11 @@ test_is_double_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3638,7 +3723,7 @@ test_is_double_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3660,10 +3745,11 @@ test_is_double_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3673,7 +3759,7 @@ test_is_double_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3710,10 +3796,11 @@ test_is_double_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3723,7 +3810,7 @@ test_is_double_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3745,10 +3832,11 @@ test_is_double_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3758,7 +3846,7 @@ test_is_double_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3780,10 +3868,11 @@ test_is_double_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3793,7 +3882,7 @@ test_is_double_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3830,10 +3919,11 @@ test_is_double_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3843,7 +3933,7 @@ test_is_double_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3865,10 +3955,11 @@ test_is_double_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3878,42 +3969,7 @@ test_is_double_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3935,10 +3991,11 @@ test_is_double_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3948,7 +4005,43 @@ test_is_double_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -3985,10 +4078,11 @@ test_is_double_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -3998,7 +4092,7 @@ test_is_double_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4020,10 +4114,11 @@ test_is_double_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4033,7 +4128,7 @@ test_is_double_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4055,10 +4150,11 @@ test_is_double_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4068,7 +4164,7 @@ test_is_double_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4105,10 +4201,11 @@ test_is_double_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4118,7 +4215,7 @@ test_is_double_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4140,10 +4237,11 @@ test_is_double_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4153,7 +4251,7 @@ test_is_double_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4175,10 +4273,11 @@ test_is_double_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4188,7 +4287,7 @@ test_is_double_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4225,10 +4324,11 @@ test_is_double_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4238,7 +4338,7 @@ test_is_double_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4260,10 +4360,11 @@ test_is_double_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4273,42 +4374,7 @@ test_is_double_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4330,10 +4396,11 @@ test_is_double_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4343,7 +4410,43 @@ test_is_double_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4380,10 +4483,11 @@ test_is_double_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4393,7 +4497,7 @@ test_is_double_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4415,10 +4519,11 @@ test_is_double_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4428,7 +4533,7 @@ test_is_double_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4450,10 +4555,11 @@ test_is_double_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4463,7 +4569,7 @@ test_is_double_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4500,10 +4606,11 @@ test_is_double_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4513,7 +4620,7 @@ test_is_double_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4535,10 +4642,11 @@ test_is_double_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4548,7 +4656,7 @@ test_is_double_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4570,10 +4678,11 @@ test_is_double_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4583,7 +4692,7 @@ test_is_double_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4620,10 +4729,11 @@ test_is_double_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4633,7 +4743,7 @@ test_is_double_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4655,10 +4765,11 @@ test_is_double_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4668,42 +4779,7 @@ test_is_double_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4725,10 +4801,11 @@ test_is_double_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4738,7 +4815,43 @@ test_is_double_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4775,10 +4888,11 @@ test_is_double_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4788,7 +4902,7 @@ test_is_double_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4810,10 +4924,11 @@ test_is_double_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4823,7 +4938,7 @@ test_is_double_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4860,10 +4975,11 @@ test_is_double_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4873,7 +4989,7 @@ test_is_double_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4895,10 +5011,11 @@ test_is_double_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4908,7 +5025,7 @@ test_is_double_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4930,10 +5047,11 @@ test_is_double_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4943,7 +5061,7 @@ test_is_double_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -4980,10 +5098,11 @@ test_is_double_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -4993,7 +5112,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5015,10 +5134,11 @@ test_is_double_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5028,7 +5148,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5050,10 +5170,11 @@ test_is_double_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5063,7 +5184,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5085,10 +5206,11 @@ test_is_double_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5098,7 +5220,7 @@ test_is_double_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5135,10 +5257,11 @@ test_is_double_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5148,7 +5271,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5170,10 +5293,11 @@ test_is_double_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5183,7 +5307,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5205,10 +5329,11 @@ test_is_double_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5218,7 +5343,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5240,10 +5365,11 @@ test_is_double_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5253,7 +5379,7 @@ test_is_double_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5290,10 +5416,11 @@ test_is_double_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5303,7 +5430,7 @@ test_is_double_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5325,10 +5452,11 @@ test_is_double_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5338,7 +5466,7 @@ test_is_double_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5360,10 +5488,11 @@ test_is_double_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5373,42 +5502,7 @@ test_is_double_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5430,10 +5524,11 @@ test_is_double_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5443,7 +5538,43 @@ test_is_double_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5480,10 +5611,11 @@ test_is_double_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5493,7 +5625,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5515,10 +5647,11 @@ test_is_double_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5528,7 +5661,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5550,10 +5683,11 @@ test_is_double_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5563,7 +5697,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5585,10 +5719,11 @@ test_is_double_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5598,7 +5733,7 @@ test_is_double_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5635,10 +5770,11 @@ test_is_double_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5648,7 +5784,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5670,10 +5806,11 @@ test_is_double_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5683,7 +5820,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5705,10 +5842,11 @@ test_is_double_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5718,7 +5856,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5740,10 +5878,11 @@ test_is_double_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5753,7 +5892,7 @@ test_is_double_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5790,10 +5929,11 @@ test_is_double_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5803,7 +5943,7 @@ test_is_double_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5825,10 +5965,11 @@ test_is_double_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5838,7 +5979,7 @@ test_is_double_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5860,10 +6001,11 @@ test_is_double_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5873,42 +6015,7 @@ test_is_double_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5930,10 +6037,11 @@ test_is_double_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5943,7 +6051,43 @@ test_is_double_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -5980,10 +6124,11 @@ test_is_double_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -5993,7 +6138,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6015,10 +6160,11 @@ test_is_double_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6028,7 +6174,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6050,10 +6196,11 @@ test_is_double_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6063,7 +6210,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6085,10 +6232,11 @@ test_is_double_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6098,7 +6246,7 @@ test_is_double_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6135,10 +6283,11 @@ test_is_double_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6148,7 +6297,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6170,10 +6319,11 @@ test_is_double_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6183,7 +6333,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6205,10 +6355,11 @@ test_is_double_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6218,7 +6369,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6240,10 +6391,11 @@ test_is_double_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6253,7 +6405,7 @@ test_is_double_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6290,10 +6442,11 @@ test_is_double_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6303,7 +6456,7 @@ test_is_double_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6325,10 +6478,11 @@ test_is_double_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6338,7 +6492,7 @@ test_is_double_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6360,10 +6514,11 @@ test_is_double_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6373,42 +6528,7 @@ test_is_double_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6430,10 +6550,11 @@ test_is_double_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6443,7 +6564,43 @@ test_is_double_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6480,10 +6637,11 @@ test_is_double_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6493,7 +6651,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6515,10 +6673,11 @@ test_is_double_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6528,7 +6687,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6550,10 +6709,11 @@ test_is_double_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6563,7 +6723,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6585,10 +6745,11 @@ test_is_double_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6598,7 +6759,7 @@ test_is_double_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6635,10 +6796,11 @@ test_is_double_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6648,7 +6810,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6670,10 +6832,11 @@ test_is_double_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6683,7 +6846,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6705,10 +6868,11 @@ test_is_double_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6718,7 +6882,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6740,10 +6904,11 @@ test_is_double_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6753,7 +6918,7 @@ test_is_double_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6790,10 +6955,11 @@ test_is_double_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6803,7 +6969,7 @@ test_is_double_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6825,10 +6991,11 @@ test_is_double_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6838,7 +7005,7 @@ test_is_double_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6860,10 +7027,11 @@ test_is_double_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6873,42 +7041,7 @@ test_is_double_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6930,10 +7063,11 @@ test_is_double_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6943,7 +7077,43 @@ test_is_double_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -6980,10 +7150,11 @@ test_is_double_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -6993,7 +7164,7 @@ test_is_double_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7015,10 +7186,11 @@ test_is_double_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7028,7 +7200,7 @@ test_is_double_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7050,10 +7222,11 @@ test_is_double_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7063,7 +7236,7 @@ test_is_double_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7100,10 +7273,11 @@ test_is_double_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7113,7 +7287,7 @@ test_is_double_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7135,10 +7309,11 @@ test_is_double_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7148,42 +7323,7 @@ test_is_double_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7205,10 +7345,11 @@ test_is_double_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7218,7 +7359,43 @@ test_is_double_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7255,10 +7432,11 @@ test_is_double_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.double(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.double(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7268,42 +7446,7 @@ test_is_double_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.double(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7325,10 +7468,11 @@ test_is_double_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7338,7 +7482,43 @@ test_is_double_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7375,10 +7555,11 @@ test_is_environment <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.environment(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.environment(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7388,7 +7569,7 @@ test_is_environment <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.environment(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7425,10 +7606,11 @@ test_is_expression <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.expression(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.expression(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7438,7 +7620,7 @@ test_is_expression <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.expression(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7475,10 +7657,11 @@ test_is_factor <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7488,7 +7671,7 @@ test_is_factor <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7525,10 +7708,11 @@ test_is_factor_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7538,7 +7722,7 @@ test_is_factor_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7560,10 +7744,11 @@ test_is_factor_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7573,7 +7758,7 @@ test_is_factor_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7610,10 +7795,11 @@ test_is_factor_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7623,7 +7809,7 @@ test_is_factor_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7645,10 +7831,11 @@ test_is_factor_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7658,7 +7845,7 @@ test_is_factor_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7695,10 +7882,11 @@ test_is_factor_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7708,7 +7896,7 @@ test_is_factor_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7730,10 +7918,11 @@ test_is_factor_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7743,7 +7932,7 @@ test_is_factor_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7765,10 +7954,11 @@ test_is_factor_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7778,7 +7968,7 @@ test_is_factor_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7815,10 +8005,11 @@ test_is_factor_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7828,7 +8019,7 @@ test_is_factor_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7850,10 +8041,11 @@ test_is_factor_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7863,7 +8055,7 @@ test_is_factor_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7885,10 +8077,11 @@ test_is_factor_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7898,7 +8091,7 @@ test_is_factor_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7935,10 +8128,11 @@ test_is_factor_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7948,7 +8142,7 @@ test_is_factor_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -7970,10 +8164,11 @@ test_is_factor_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -7983,42 +8178,7 @@ test_is_factor_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8040,10 +8200,11 @@ test_is_factor_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8053,7 +8214,43 @@ test_is_factor_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8090,10 +8287,11 @@ test_is_factor_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8103,42 +8301,7 @@ test_is_factor_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8160,10 +8323,11 @@ test_is_factor_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8173,7 +8337,43 @@ test_is_factor_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8211,10 +8411,11 @@ test_is_factor_with_levels <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.factor(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.factor(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8224,7 +8425,7 @@ test_is_factor_with_levels <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.factor(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8246,10 +8447,11 @@ test_is_factor_with_levels <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8259,7 +8461,7 @@ test_is_factor_with_levels <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8281,10 +8483,11 @@ test_is_factor_with_levels <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8294,7 +8497,7 @@ test_is_factor_with_levels <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8331,10 +8534,11 @@ test_is_function <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.function(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.function(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8344,7 +8548,7 @@ test_is_function <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.function(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8382,10 +8586,11 @@ test_is_function_with_required_argument_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.function(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.function(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8395,7 +8600,7 @@ test_is_function_with_required_argument_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.function(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8417,10 +8622,11 @@ test_is_function_with_required_argument_names <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(all(required_argument_names %in% names(formals(x)))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `all(required_argument_names %in% names(formals(x)))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8430,7 +8636,7 @@ test_is_function_with_required_argument_names <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `all(required_argument_names %in% names(formals(x)))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8468,10 +8674,11 @@ test_is_gt <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > lo))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > lo` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8481,7 +8688,7 @@ test_is_gt <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > lo` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8519,10 +8726,11 @@ test_is_gte <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= lo))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= lo` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8532,7 +8740,7 @@ test_is_gte <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= lo` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8569,10 +8777,11 @@ test_is_gtezero <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8582,7 +8791,7 @@ test_is_gtezero <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8619,10 +8828,11 @@ test_is_gtzero <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8632,7 +8842,7 @@ test_is_gtzero <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8669,10 +8879,11 @@ test_is_integer <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8682,7 +8893,7 @@ test_is_integer <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8719,10 +8930,11 @@ test_is_integer_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8732,7 +8944,7 @@ test_is_integer_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8754,10 +8966,11 @@ test_is_integer_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8767,7 +8980,7 @@ test_is_integer_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8804,10 +9017,11 @@ test_is_integer_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8817,7 +9031,7 @@ test_is_integer_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8839,10 +9053,11 @@ test_is_integer_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8852,7 +9067,7 @@ test_is_integer_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8874,10 +9089,11 @@ test_is_integer_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8887,7 +9103,7 @@ test_is_integer_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8924,10 +9140,11 @@ test_is_integer_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8937,7 +9154,7 @@ test_is_integer_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8959,10 +9176,11 @@ test_is_integer_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -8972,7 +9190,7 @@ test_is_integer_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -8994,10 +9212,11 @@ test_is_integer_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9007,7 +9226,7 @@ test_is_integer_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9044,10 +9263,11 @@ test_is_integer_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9057,7 +9277,7 @@ test_is_integer_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9079,10 +9299,11 @@ test_is_integer_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9092,42 +9313,7 @@ test_is_integer_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9149,10 +9335,11 @@ test_is_integer_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9162,7 +9349,43 @@ test_is_integer_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9199,10 +9422,11 @@ test_is_integer_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9212,7 +9436,7 @@ test_is_integer_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9234,10 +9458,11 @@ test_is_integer_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9247,7 +9472,7 @@ test_is_integer_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9269,10 +9494,11 @@ test_is_integer_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9282,7 +9508,7 @@ test_is_integer_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9319,10 +9545,11 @@ test_is_integer_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9332,7 +9559,7 @@ test_is_integer_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9354,10 +9581,11 @@ test_is_integer_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9367,7 +9595,7 @@ test_is_integer_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9389,10 +9617,11 @@ test_is_integer_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9402,7 +9631,7 @@ test_is_integer_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9439,10 +9668,11 @@ test_is_integer_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9452,7 +9682,7 @@ test_is_integer_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9474,10 +9704,11 @@ test_is_integer_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9487,42 +9718,7 @@ test_is_integer_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9544,10 +9740,11 @@ test_is_integer_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9557,7 +9754,43 @@ test_is_integer_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9594,10 +9827,11 @@ test_is_integer_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9607,7 +9841,7 @@ test_is_integer_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9629,10 +9863,11 @@ test_is_integer_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9642,7 +9877,7 @@ test_is_integer_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9664,10 +9899,11 @@ test_is_integer_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9677,7 +9913,7 @@ test_is_integer_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9714,10 +9950,11 @@ test_is_integer_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9727,7 +9964,7 @@ test_is_integer_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9749,10 +9986,11 @@ test_is_integer_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9762,7 +10000,7 @@ test_is_integer_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9784,10 +10022,11 @@ test_is_integer_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9797,7 +10036,7 @@ test_is_integer_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9834,10 +10073,11 @@ test_is_integer_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9847,7 +10087,7 @@ test_is_integer_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9869,10 +10109,11 @@ test_is_integer_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9882,42 +10123,7 @@ test_is_integer_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9939,10 +10145,11 @@ test_is_integer_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -9952,7 +10159,43 @@ test_is_integer_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -9989,10 +10232,11 @@ test_is_integer_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10002,7 +10246,7 @@ test_is_integer_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10024,10 +10268,11 @@ test_is_integer_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10037,7 +10282,7 @@ test_is_integer_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10059,10 +10304,11 @@ test_is_integer_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10072,7 +10318,7 @@ test_is_integer_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10109,10 +10355,11 @@ test_is_integer_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10122,7 +10369,7 @@ test_is_integer_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10144,10 +10391,11 @@ test_is_integer_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10157,7 +10405,7 @@ test_is_integer_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10179,10 +10427,11 @@ test_is_integer_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10192,7 +10441,7 @@ test_is_integer_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10229,10 +10478,11 @@ test_is_integer_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10242,7 +10492,7 @@ test_is_integer_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10264,10 +10514,11 @@ test_is_integer_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10277,42 +10528,7 @@ test_is_integer_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10334,10 +10550,11 @@ test_is_integer_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10347,7 +10564,43 @@ test_is_integer_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10384,10 +10637,11 @@ test_is_integer_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10397,7 +10651,7 @@ test_is_integer_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10419,10 +10673,11 @@ test_is_integer_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10432,7 +10687,7 @@ test_is_integer_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10469,10 +10724,11 @@ test_is_integer_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10482,7 +10738,7 @@ test_is_integer_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10504,10 +10760,11 @@ test_is_integer_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10517,7 +10774,7 @@ test_is_integer_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10539,10 +10796,11 @@ test_is_integer_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10552,7 +10810,7 @@ test_is_integer_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10589,10 +10847,11 @@ test_is_integer_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10602,7 +10861,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10624,10 +10883,11 @@ test_is_integer_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10637,7 +10897,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10659,10 +10919,11 @@ test_is_integer_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10672,7 +10933,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10694,10 +10955,11 @@ test_is_integer_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10707,7 +10969,7 @@ test_is_integer_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10744,10 +11006,11 @@ test_is_integer_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10757,7 +11020,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10779,10 +11042,11 @@ test_is_integer_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10792,7 +11056,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10814,10 +11078,11 @@ test_is_integer_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10827,7 +11092,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10849,10 +11114,11 @@ test_is_integer_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10862,7 +11128,7 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10899,10 +11165,11 @@ test_is_integer_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10912,7 +11179,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10934,10 +11201,11 @@ test_is_integer_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10947,7 +11215,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -10969,10 +11237,11 @@ test_is_integer_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -10982,42 +11251,7 @@ test_is_integer_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11039,10 +11273,11 @@ test_is_integer_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11052,7 +11287,43 @@ test_is_integer_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11089,10 +11360,11 @@ test_is_integer_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11102,7 +11374,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11124,10 +11396,11 @@ test_is_integer_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11137,7 +11410,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11159,10 +11432,11 @@ test_is_integer_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11172,7 +11446,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11194,10 +11468,11 @@ test_is_integer_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11207,7 +11482,7 @@ test_is_integer_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11244,10 +11519,11 @@ test_is_integer_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11257,7 +11533,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11279,10 +11555,11 @@ test_is_integer_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11292,7 +11569,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11314,10 +11591,11 @@ test_is_integer_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11327,7 +11605,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11349,10 +11627,11 @@ test_is_integer_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11362,7 +11641,7 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11399,10 +11678,11 @@ test_is_integer_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11412,7 +11692,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11434,10 +11714,11 @@ test_is_integer_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11447,7 +11728,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11469,10 +11750,11 @@ test_is_integer_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11482,42 +11764,7 @@ test_is_integer_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11539,10 +11786,11 @@ test_is_integer_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11552,7 +11800,43 @@ test_is_integer_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11589,10 +11873,11 @@ test_is_integer_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11602,7 +11887,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11624,10 +11909,11 @@ test_is_integer_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11637,7 +11923,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11659,10 +11945,11 @@ test_is_integer_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11672,7 +11959,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11694,10 +11981,11 @@ test_is_integer_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11707,7 +11995,7 @@ test_is_integer_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11744,10 +12032,11 @@ test_is_integer_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11757,7 +12046,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11779,10 +12068,11 @@ test_is_integer_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11792,7 +12082,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11814,10 +12104,11 @@ test_is_integer_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11827,7 +12118,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11849,10 +12140,11 @@ test_is_integer_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11862,7 +12154,7 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11899,10 +12191,11 @@ test_is_integer_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11912,7 +12205,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11934,10 +12227,11 @@ test_is_integer_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11947,7 +12241,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -11969,10 +12263,11 @@ test_is_integer_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -11982,42 +12277,7 @@ test_is_integer_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12039,10 +12299,11 @@ test_is_integer_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12052,7 +12313,43 @@ test_is_integer_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12089,10 +12386,11 @@ test_is_integer_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12102,7 +12400,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12124,10 +12422,11 @@ test_is_integer_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12137,7 +12436,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12159,10 +12458,11 @@ test_is_integer_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12172,7 +12472,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12194,10 +12494,11 @@ test_is_integer_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12207,7 +12508,7 @@ test_is_integer_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12244,10 +12545,11 @@ test_is_integer_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12257,7 +12559,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12279,10 +12581,11 @@ test_is_integer_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12292,7 +12595,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12314,10 +12617,11 @@ test_is_integer_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12327,7 +12631,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12349,10 +12653,11 @@ test_is_integer_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12362,7 +12667,7 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12399,10 +12704,11 @@ test_is_integer_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12412,7 +12718,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12434,10 +12740,11 @@ test_is_integer_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12447,7 +12754,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12469,10 +12776,11 @@ test_is_integer_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12482,42 +12790,7 @@ test_is_integer_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12539,10 +12812,11 @@ test_is_integer_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12552,7 +12826,43 @@ test_is_integer_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12589,10 +12899,11 @@ test_is_integer_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12602,7 +12913,7 @@ test_is_integer_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12624,10 +12935,11 @@ test_is_integer_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12637,7 +12949,7 @@ test_is_integer_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12659,10 +12971,11 @@ test_is_integer_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12672,7 +12985,7 @@ test_is_integer_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12709,10 +13022,11 @@ test_is_integer_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12722,7 +13036,7 @@ test_is_integer_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12744,10 +13058,11 @@ test_is_integer_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12757,42 +13072,7 @@ test_is_integer_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12814,10 +13094,11 @@ test_is_integer_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12827,7 +13108,43 @@ test_is_integer_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12864,10 +13181,11 @@ test_is_integer_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.integer(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.integer(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12877,42 +13195,7 @@ test_is_integer_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.integer(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12934,10 +13217,11 @@ test_is_integer_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12947,7 +13231,43 @@ test_is_integer_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -12984,10 +13304,11 @@ test_is_language_object <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.language(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.language(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -12997,7 +13318,7 @@ test_is_language_object <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.language(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13028,16 +13349,17 @@ test_is_list <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'list'),
+          inherits(x, "list"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "list")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'list')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13047,7 +13369,7 @@ test_is_list <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'list')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13084,10 +13406,11 @@ test_is_logical <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13097,7 +13420,7 @@ test_is_logical <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13134,10 +13457,11 @@ test_is_logical_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13147,7 +13471,7 @@ test_is_logical_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13169,10 +13493,11 @@ test_is_logical_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13182,7 +13507,7 @@ test_is_logical_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13219,10 +13544,11 @@ test_is_logical_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13232,7 +13558,7 @@ test_is_logical_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13254,10 +13580,11 @@ test_is_logical_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13267,7 +13594,7 @@ test_is_logical_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13304,10 +13631,11 @@ test_is_logical_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13317,7 +13645,7 @@ test_is_logical_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13339,10 +13667,11 @@ test_is_logical_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13352,7 +13681,7 @@ test_is_logical_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13374,10 +13703,11 @@ test_is_logical_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13387,7 +13717,7 @@ test_is_logical_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13424,10 +13754,11 @@ test_is_logical_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13437,7 +13768,7 @@ test_is_logical_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13459,10 +13790,11 @@ test_is_logical_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13472,7 +13804,7 @@ test_is_logical_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13494,10 +13826,11 @@ test_is_logical_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13507,7 +13840,7 @@ test_is_logical_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13544,10 +13877,11 @@ test_is_logical_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13557,7 +13891,7 @@ test_is_logical_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13579,10 +13913,11 @@ test_is_logical_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13592,42 +13927,7 @@ test_is_logical_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13649,10 +13949,11 @@ test_is_logical_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13662,7 +13963,43 @@ test_is_logical_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13699,10 +14036,11 @@ test_is_logical_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.logical(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.logical(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13712,42 +14050,7 @@ test_is_logical_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.logical(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13769,10 +14072,11 @@ test_is_logical_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13782,7 +14086,43 @@ test_is_logical_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13820,10 +14160,11 @@ test_is_lt <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < hi))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < hi` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13833,7 +14174,7 @@ test_is_lt <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < hi` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13871,10 +14212,11 @@ test_is_lte <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= hi))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= hi` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13884,7 +14226,7 @@ test_is_lte <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= hi` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13921,10 +14263,11 @@ test_is_ltezero <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13934,7 +14277,7 @@ test_is_ltezero <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -13971,10 +14314,11 @@ test_is_ltzero <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -13984,7 +14328,7 @@ test_is_ltzero <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14021,10 +14365,11 @@ test_is_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14034,7 +14379,7 @@ test_is_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14071,10 +14416,11 @@ test_is_name <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.name(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.name(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14084,7 +14430,7 @@ test_is_name <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.name(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14121,10 +14467,11 @@ test_is_named <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!is.null(names(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!is.null(names(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14134,7 +14481,7 @@ test_is_named <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!is.null(names(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14165,16 +14512,17 @@ test_is_named_list <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'list'),
+          inherits(x, "list"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "list")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'list')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14184,7 +14532,7 @@ test_is_named_list <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'list')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14206,10 +14554,11 @@ test_is_named_list <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!is.null(names(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!is.null(names(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14219,7 +14568,7 @@ test_is_named_list <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!is.null(names(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14256,10 +14605,11 @@ test_is_nonNA <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14269,7 +14619,7 @@ test_is_nonNA <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14306,10 +14656,11 @@ test_is_NULL <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14319,7 +14670,7 @@ test_is_NULL <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14356,10 +14707,11 @@ test_is_number <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14369,7 +14721,7 @@ test_is_number <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14406,10 +14758,11 @@ test_is_number_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14419,7 +14772,7 @@ test_is_number_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14441,10 +14794,11 @@ test_is_number_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14454,7 +14808,7 @@ test_is_number_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14491,10 +14845,11 @@ test_is_number_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14504,7 +14859,7 @@ test_is_number_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14526,10 +14881,11 @@ test_is_number_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14539,7 +14895,7 @@ test_is_number_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14561,10 +14917,11 @@ test_is_number_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14574,7 +14931,7 @@ test_is_number_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14611,10 +14968,11 @@ test_is_number_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14624,7 +14982,7 @@ test_is_number_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14646,10 +15004,11 @@ test_is_number_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14659,7 +15018,7 @@ test_is_number_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14681,10 +15040,11 @@ test_is_number_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14694,7 +15054,7 @@ test_is_number_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14731,10 +15091,11 @@ test_is_number_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14744,7 +15105,7 @@ test_is_number_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14766,10 +15127,11 @@ test_is_number_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14779,42 +15141,7 @@ test_is_number_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14836,10 +15163,11 @@ test_is_number_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14849,7 +15177,43 @@ test_is_number_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14886,10 +15250,11 @@ test_is_number_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14899,7 +15264,7 @@ test_is_number_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14921,10 +15286,11 @@ test_is_number_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14934,7 +15300,7 @@ test_is_number_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -14956,10 +15322,11 @@ test_is_number_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -14969,7 +15336,7 @@ test_is_number_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15006,10 +15373,11 @@ test_is_number_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15019,7 +15387,7 @@ test_is_number_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15041,10 +15409,11 @@ test_is_number_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15054,7 +15423,7 @@ test_is_number_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15076,10 +15445,11 @@ test_is_number_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15089,7 +15459,7 @@ test_is_number_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15126,10 +15496,11 @@ test_is_number_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15139,7 +15510,7 @@ test_is_number_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15161,10 +15532,11 @@ test_is_number_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15174,42 +15546,7 @@ test_is_number_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15231,10 +15568,11 @@ test_is_number_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15244,7 +15582,43 @@ test_is_number_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15281,10 +15655,11 @@ test_is_number_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15294,7 +15669,7 @@ test_is_number_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15316,10 +15691,11 @@ test_is_number_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15329,7 +15705,7 @@ test_is_number_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15351,10 +15727,11 @@ test_is_number_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15364,7 +15741,7 @@ test_is_number_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15401,10 +15778,11 @@ test_is_number_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15414,7 +15792,7 @@ test_is_number_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15436,10 +15814,11 @@ test_is_number_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15449,7 +15828,7 @@ test_is_number_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15471,10 +15850,11 @@ test_is_number_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15484,7 +15864,7 @@ test_is_number_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15521,10 +15901,11 @@ test_is_number_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15534,7 +15915,7 @@ test_is_number_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15556,10 +15937,11 @@ test_is_number_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15569,42 +15951,7 @@ test_is_number_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15626,10 +15973,11 @@ test_is_number_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15639,7 +15987,43 @@ test_is_number_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15676,10 +16060,11 @@ test_is_number_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15689,7 +16074,7 @@ test_is_number_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15711,10 +16096,11 @@ test_is_number_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15724,7 +16110,7 @@ test_is_number_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15746,10 +16132,11 @@ test_is_number_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15759,7 +16146,7 @@ test_is_number_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15796,10 +16183,11 @@ test_is_number_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15809,7 +16197,7 @@ test_is_number_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15831,10 +16219,11 @@ test_is_number_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15844,7 +16233,7 @@ test_is_number_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15866,10 +16255,11 @@ test_is_number_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15879,7 +16269,7 @@ test_is_number_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15916,10 +16306,11 @@ test_is_number_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15929,7 +16320,7 @@ test_is_number_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -15951,10 +16342,11 @@ test_is_number_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -15964,42 +16356,7 @@ test_is_number_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16021,10 +16378,11 @@ test_is_number_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16034,7 +16392,43 @@ test_is_number_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16071,10 +16465,11 @@ test_is_number_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16084,7 +16479,7 @@ test_is_number_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16106,10 +16501,11 @@ test_is_number_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16119,7 +16515,7 @@ test_is_number_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16156,10 +16552,11 @@ test_is_number_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16169,7 +16566,7 @@ test_is_number_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16191,10 +16588,11 @@ test_is_number_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16204,7 +16602,7 @@ test_is_number_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16226,10 +16624,11 @@ test_is_number_nonNA_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16239,7 +16638,7 @@ test_is_number_nonNA_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16276,10 +16675,11 @@ test_is_number_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16289,7 +16689,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16311,10 +16711,11 @@ test_is_number_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16324,7 +16725,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16346,10 +16747,11 @@ test_is_number_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16359,7 +16761,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16381,10 +16783,11 @@ test_is_number_nonNA_gtezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16394,7 +16797,7 @@ test_is_number_nonNA_gtezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16431,10 +16834,11 @@ test_is_number_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16444,7 +16848,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16466,10 +16870,11 @@ test_is_number_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16479,7 +16884,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16501,10 +16906,11 @@ test_is_number_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16514,7 +16920,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16536,10 +16942,11 @@ test_is_number_nonNA_gtezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16549,7 +16956,7 @@ test_is_number_nonNA_gtezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16586,10 +16993,11 @@ test_is_number_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x >= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16599,7 +17007,7 @@ test_is_number_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x >= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16621,10 +17029,11 @@ test_is_number_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16634,7 +17043,7 @@ test_is_number_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16656,10 +17065,11 @@ test_is_number_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16669,42 +17079,7 @@ test_is_number_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16726,10 +17101,11 @@ test_is_number_nonNA_gtezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16739,7 +17115,43 @@ test_is_number_nonNA_gtezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16776,10 +17188,11 @@ test_is_number_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16789,7 +17202,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16811,10 +17224,11 @@ test_is_number_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16824,7 +17238,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16846,10 +17260,11 @@ test_is_number_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16859,7 +17274,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16881,10 +17296,11 @@ test_is_number_nonNA_gtzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16894,7 +17310,7 @@ test_is_number_nonNA_gtzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16931,10 +17347,11 @@ test_is_number_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16944,7 +17361,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -16966,10 +17383,11 @@ test_is_number_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -16979,7 +17397,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17001,10 +17419,11 @@ test_is_number_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17014,7 +17433,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17036,10 +17455,11 @@ test_is_number_nonNA_gtzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17049,7 +17469,7 @@ test_is_number_nonNA_gtzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17086,10 +17506,11 @@ test_is_number_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x > 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17099,7 +17520,7 @@ test_is_number_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x > 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17121,10 +17542,11 @@ test_is_number_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17134,7 +17556,7 @@ test_is_number_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17156,10 +17578,11 @@ test_is_number_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17169,42 +17592,7 @@ test_is_number_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17226,10 +17614,11 @@ test_is_number_nonNA_gtzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17239,7 +17628,43 @@ test_is_number_nonNA_gtzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17276,10 +17701,11 @@ test_is_number_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17289,7 +17715,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17311,10 +17737,11 @@ test_is_number_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17324,7 +17751,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17346,10 +17773,11 @@ test_is_number_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17359,7 +17787,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17381,10 +17809,11 @@ test_is_number_nonNA_ltezero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17394,7 +17823,7 @@ test_is_number_nonNA_ltezero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17431,10 +17860,11 @@ test_is_number_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17444,7 +17874,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17466,10 +17896,11 @@ test_is_number_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17479,7 +17910,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17501,10 +17932,11 @@ test_is_number_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17514,7 +17946,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17536,10 +17968,11 @@ test_is_number_nonNA_ltezero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17549,7 +17982,7 @@ test_is_number_nonNA_ltezero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17586,10 +18019,11 @@ test_is_number_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x <= 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17599,7 +18033,7 @@ test_is_number_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x <= 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17621,10 +18055,11 @@ test_is_number_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17634,7 +18069,7 @@ test_is_number_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17656,10 +18091,11 @@ test_is_number_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17669,42 +18105,7 @@ test_is_number_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17726,10 +18127,11 @@ test_is_number_nonNA_ltezero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17739,7 +18141,43 @@ test_is_number_nonNA_ltezero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17776,10 +18214,11 @@ test_is_number_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == 1L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == 1L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17789,7 +18228,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == 1L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17811,10 +18250,11 @@ test_is_number_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17824,7 +18264,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17846,10 +18286,11 @@ test_is_number_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17859,7 +18300,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17881,10 +18322,11 @@ test_is_number_nonNA_ltzero_atom <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17894,7 +18336,7 @@ test_is_number_nonNA_ltzero_atom <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17931,10 +18373,11 @@ test_is_number_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17944,7 +18387,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -17966,10 +18409,11 @@ test_is_number_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -17979,7 +18423,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18001,10 +18445,11 @@ test_is_number_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18014,7 +18459,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18036,10 +18481,11 @@ test_is_number_nonNA_ltzero_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18049,7 +18495,7 @@ test_is_number_nonNA_ltzero_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18086,10 +18532,11 @@ test_is_number_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x < 0` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18099,7 +18546,7 @@ test_is_number_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x < 0` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18121,10 +18568,11 @@ test_is_number_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18134,7 +18582,7 @@ test_is_number_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18156,10 +18604,11 @@ test_is_number_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18169,42 +18618,7 @@ test_is_number_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18226,10 +18640,11 @@ test_is_number_nonNA_ltzero_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18239,7 +18654,43 @@ test_is_number_nonNA_ltzero_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18276,10 +18727,11 @@ test_is_number_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.matrix(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.matrix(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18289,7 +18741,7 @@ test_is_number_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.matrix(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18311,10 +18763,11 @@ test_is_number_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18324,7 +18777,7 @@ test_is_number_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18346,10 +18799,11 @@ test_is_number_nonNA_matrix <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18359,7 +18813,7 @@ test_is_number_nonNA_matrix <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18396,10 +18850,11 @@ test_is_number_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18409,7 +18864,7 @@ test_is_number_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18431,10 +18886,11 @@ test_is_number_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18444,42 +18900,7 @@ test_is_number_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18501,10 +18922,11 @@ test_is_number_nonNA_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18514,7 +18936,43 @@ test_is_number_nonNA_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18551,10 +19009,11 @@ test_is_number_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18564,42 +19023,7 @@ test_is_number_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
-          "It resulted in output of class(es) ",
-          deparse1(test_result),
-          ". Output should be either logical or NULL."
-        ),
-        call = call
-      ))
-    }
-    all(test_result)
-  })
-  
-  out <- out && local({
-    eval_env <- new.env(parent = environment())
-    test_result <- local(
-      {
-        tryCatch(
-          !is.list(x),
-          error = function(e) e
-        )
-      },
-      envir = eval_env
-    )
-    if (inherits(test_result, "error")) {
-      stop(simpleError(
-        paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
-        ),
-        call = call
-      ))
-      test_result <- FALSE
-    } else if (is.null(test_result)) {
-      test_result <- TRUE
-    } else if (!is.logical(test_result)) {
-      stop(simpleError(
-        paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18621,10 +19045,11 @@ test_is_number_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18634,7 +19059,43 @@ test_is_number_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          !is.list(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(!is.list(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18671,10 +19132,11 @@ test_is_numeric <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.numeric(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.numeric(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18684,7 +19146,7 @@ test_is_numeric <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.numeric(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18722,10 +19184,11 @@ test_is_of_length <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(x) == expected_length))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(x) == expected_length` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18735,7 +19198,7 @@ test_is_of_length <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(x) == expected_length` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18772,10 +19235,11 @@ test_is_report_df <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.data.frame(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.data.frame(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18785,7 +19249,7 @@ test_is_report_df <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.data.frame(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18807,10 +19271,11 @@ test_is_report_df <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18820,7 +19285,328 @@ test_is_report_df <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+test_is_subset_of_data_frame <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  df,
+  dt
+) {
+  dbc::handle_args_inplace()
+  
+  out <- TRUE
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.data.frame(df),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(is.data.frame(df)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.data.frame(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(is.data.frame(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          names(x) %in% names(dt),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(names(x) %in% names(dt)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          {nrow(merge(x = x, y = df[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)},
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote({nrow(merge(x = x, y = df[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+test_is_subset_of_data_table <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  dt
+) {
+  dbc::handle_args_inplace()
+  
+  out <- TRUE
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          inherits(dt, "data.table"),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(inherits(dt, "data.table")))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          is.data.frame(x),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(is.data.frame(x)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          names(x) %in% names(dt),
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote(names(x) %in% names(dt)))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
+          "It resulted in output of class(es) ",
+          deparse1(test_result),
+          ". Output should be either logical or NULL."
+        ),
+        call = call
+      ))
+    }
+    all(test_result)
+  })
+  
+  out <- out && local({
+    eval_env <- new.env(parent = environment())
+    test_result <- local(
+      {
+        tryCatch(
+          {nrow(merge(x = x, y = dt[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)},
+          error = function(e) e
+        )
+      },
+      envir = eval_env
+    )
+    expr_string <- deparse1(quote({nrow(merge(x = x, y = dt[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}))
+    if (inherits(test_result, "error")) {
+      stop(simpleError(
+        paste0(
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
+        ),
+        call = call
+      ))
+      test_result <- FALSE
+    } else if (is.null(test_result)) {
+      test_result <- TRUE
+    } else if (!is.logical(test_result)) {
+      stop(simpleError(
+        paste0(
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18857,10 +19643,11 @@ test_is_TRUE <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(x %in% TRUE))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `x %in% TRUE` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18870,7 +19657,7 @@ test_is_TRUE <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `x %in% TRUE` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18907,10 +19694,11 @@ test_is_uniquely_named <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote((n_unique_names <- length(unique(names(x)))) == length(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `(n_unique_names <- length(unique(names(x)))) == length(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18920,7 +19708,7 @@ test_is_uniquely_named <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `(n_unique_names <- length(unique(names(x)))) == length(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18951,16 +19739,17 @@ test_is_uniquely_named_list <- function(
     test_result <- local(
       {
         tryCatch(
-          inherits(x, 'list'),
+          inherits(x, "list"),
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(inherits(x, "list")))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `inherits(x, 'list')` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -18970,7 +19759,7 @@ test_is_uniquely_named_list <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `inherits(x, 'list')` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -18992,10 +19781,11 @@ test_is_uniquely_named_list <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote((n_unique_names <- length(unique(names(x)))) == length(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `(n_unique_names <- length(unique(names(x)))) == length(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -19005,7 +19795,7 @@ test_is_uniquely_named_list <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `(n_unique_names <- length(unique(names(x)))) == length(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -19042,10 +19832,11 @@ test_is_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(is.null(dim(x))))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `is.null(dim(x))` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -19055,7 +19846,7 @@ test_is_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `is.null(dim(x))` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -19077,10 +19868,11 @@ test_is_vector <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(!is.list(x)))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `!is.list(x)` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -19090,7 +19882,7 @@ test_is_vector <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `!is.list(x)` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -19122,16 +19914,17 @@ test_match_regex <- function(
     test_result <- local(
       {
         tryCatch(
-          {grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t},
+          {grepl.arg.list[["x"]] <- x; t <- do.call(grepl, grepl.arg.list); t},
           error = function(e) e
         )
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote({grepl.arg.list[["x"]] <- x; t <- do.call(grepl, grepl.arg.list); t}))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -19141,7 +19934,7 @@ test_match_regex <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `{grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t}` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."
@@ -19179,10 +19972,11 @@ test_vector_elems_are_in_set <- function(
       },
       envir = eval_env
     )
+    expr_string <- deparse1(quote(in_set <- x %in% set))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
-          "Test `in_set <- x %in% set` resulted in error: ", test_result[["message"]]
+          "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
         ),
         call = call
       ))
@@ -19192,7 +19986,7 @@ test_vector_elems_are_in_set <- function(
     } else if (!is.logical(test_result)) {
       stop(simpleError(
         paste0(
-          "Internal error: Test `in_set <- x %in% set` is misspecified. ",
+          "Internal error: Test `", expr_string, "` is misspecified. ",
           "It resulted in output of class(es) ",
           deparse1(test_result),
           ". Output should be either logical or NULL."

@@ -669,14 +669,14 @@ assert_dev_output_is_character_nonNA_vector <- function(
   expressions <- list(
     quote(is.character(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -702,13 +702,13 @@ assert_dev_output_is_character_vector <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(is.character(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -792,7 +792,7 @@ assert_dev_output_is_data.table <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'data.table'))
+    quote(inherits(x, "data.table"))
   )
   fail_messages <- c(
     "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
@@ -821,7 +821,7 @@ assert_dev_output_is_data.table_with_required_names <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'data.table')),
+    quote(inherits(x, "data.table")),
     quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
   )
   fail_messages <- c(
@@ -879,7 +879,7 @@ assert_dev_output_is_data_table <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'data.table'))
+    quote(inherits(x, "data.table"))
   )
   fail_messages <- c(
     "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
@@ -908,7 +908,7 @@ assert_dev_output_is_data_table_with_required_names <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'data.table')),
+    quote(inherits(x, "data.table")),
     quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
   )
   fail_messages <- c(
@@ -938,7 +938,7 @@ assert_dev_output_is_Date <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'Date'))
+    quote(inherits(x, "Date"))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
@@ -967,7 +967,7 @@ assert_dev_output_is_Date_atom <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(length(x) == 1L),
-    quote(inherits(x, 'Date'))
+    quote(inherits(x, "Date"))
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -996,7 +996,7 @@ assert_dev_output_is_Date_matrix <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'Date')),
+    quote(inherits(x, "Date")),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -1027,7 +1027,7 @@ assert_dev_output_is_Date_nonNA_atom <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(length(x) == 1L),
-    quote(inherits(x, 'Date')),
+    quote(inherits(x, "Date")),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -1058,7 +1058,7 @@ assert_dev_output_is_Date_nonNA_matrix <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'Date')),
+    quote(inherits(x, "Date")),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -1090,16 +1090,16 @@ assert_dev_output_is_Date_nonNA_vector <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'Date')),
+    quote(inherits(x, "Date")),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1124,14 +1124,14 @@ assert_dev_output_is_Date_vector <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'Date')),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(inherits(x, "Date")),
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1280,14 +1280,14 @@ assert_dev_output_is_double_gtezero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x >= 0),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were < 0",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1378,14 +1378,14 @@ assert_dev_output_is_double_gtzero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x > 0),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were <= 0",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1476,14 +1476,14 @@ assert_dev_output_is_double_ltezero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x <= 0),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were > 0",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1574,14 +1574,14 @@ assert_dev_output_is_double_ltzero_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(x < 0),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were >= 0",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1739,15 +1739,15 @@ assert_dev_output_is_double_nonNA_gtezero_vector <- function(
     quote(is.double(x)),
     quote(x >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were < 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1843,15 +1843,15 @@ assert_dev_output_is_double_nonNA_gtzero_vector <- function(
     quote(is.double(x)),
     quote(x > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were <= 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -1947,15 +1947,15 @@ assert_dev_output_is_double_nonNA_ltezero_vector <- function(
     quote(is.double(x)),
     quote(x <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were > 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2051,15 +2051,15 @@ assert_dev_output_is_double_nonNA_ltzero_vector <- function(
     quote(is.double(x)),
     quote(x < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were >= 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2118,14 +2118,14 @@ assert_dev_output_is_double_nonNA_vector <- function(
   expressions <- list(
     quote(is.double(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2151,13 +2151,13 @@ assert_dev_output_is_double_vector <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(is.double(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2392,14 +2392,14 @@ assert_dev_output_is_factor_nonNA_vector <- function(
   expressions <- list(
     quote(is.factor(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2425,13 +2425,13 @@ assert_dev_output_is_factor_vector <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(is.factor(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2786,14 +2786,14 @@ assert_dev_output_is_integer_gtezero_vector <- function(
   expressions <- list(
     quote(x >= 0),
     quote(is.integer(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < 0",
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2884,14 +2884,14 @@ assert_dev_output_is_integer_gtzero_vector <- function(
   expressions <- list(
     quote(x > 0),
     quote(is.integer(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= 0",
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -2982,14 +2982,14 @@ assert_dev_output_is_integer_ltezero_vector <- function(
   expressions <- list(
     quote(is.integer(x)),
     quote(x <= 0),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were > 0",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3080,14 +3080,14 @@ assert_dev_output_is_integer_ltzero_vector <- function(
   expressions <- list(
     quote(is.integer(x)),
     quote(x < 0),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were >= 0",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3245,15 +3245,15 @@ assert_dev_output_is_integer_nonNA_gtezero_vector <- function(
     quote(x >= 0),
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < 0",
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3349,15 +3349,15 @@ assert_dev_output_is_integer_nonNA_gtzero_vector <- function(
     quote(x > 0),
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= 0",
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3453,15 +3453,15 @@ assert_dev_output_is_integer_nonNA_ltezero_vector <- function(
     quote(is.integer(x)),
     quote(x <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were > 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3557,15 +3557,15 @@ assert_dev_output_is_integer_nonNA_ltzero_vector <- function(
     quote(is.integer(x)),
     quote(x < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "${n_fail} elements of `${x_nm}` were >= 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3624,14 +3624,14 @@ assert_dev_output_is_integer_nonNA_vector <- function(
   expressions <- list(
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3657,13 +3657,13 @@ assert_dev_output_is_integer_vector <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(is.integer(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3716,7 +3716,7 @@ assert_dev_output_is_list <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'list'))
+    quote(inherits(x, "list"))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class list"
@@ -3898,14 +3898,14 @@ assert_dev_output_is_logical_nonNA_vector <- function(
   expressions <- list(
     quote(is.logical(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -3931,13 +3931,13 @@ assert_dev_output_is_logical_vector <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(is.logical(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -4160,7 +4160,7 @@ assert_dev_output_is_named_list <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'list')),
+    quote(inherits(x, "list")),
     quote(!is.null(names(x)))
   )
   fail_messages <- c(
@@ -4370,14 +4370,14 @@ assert_dev_output_is_number_gtezero_vector <- function(
   expressions <- list(
     quote(x >= 0),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < 0",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -4468,14 +4468,14 @@ assert_dev_output_is_number_gtzero_vector <- function(
   expressions <- list(
     quote(x > 0),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= 0",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -4566,14 +4566,14 @@ assert_dev_output_is_number_ltezero_vector <- function(
   expressions <- list(
     quote(x <= 0),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were > 0",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -4664,14 +4664,14 @@ assert_dev_output_is_number_ltzero_vector <- function(
   expressions <- list(
     quote(x < 0),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were >= 0",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -4829,15 +4829,15 @@ assert_dev_output_is_number_nonNA_gtezero_vector <- function(
     quote(x >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -4933,15 +4933,15 @@ assert_dev_output_is_number_nonNA_gtzero_vector <- function(
     quote(x > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5037,15 +5037,15 @@ assert_dev_output_is_number_nonNA_ltezero_vector <- function(
     quote(x <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were > 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5141,15 +5141,15 @@ assert_dev_output_is_number_nonNA_ltzero_vector <- function(
     quote(x < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were >= 0",
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5208,14 +5208,14 @@ assert_dev_output_is_number_nonNA_vector <- function(
   expressions <- list(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` had ${n_fail} NA values - none are allowed",
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5241,13 +5241,13 @@ assert_dev_output_is_number_vector <- function(
   assertion_type <- "dev_output"
   expressions <- list(
     quote(is.numeric(x)),
-    quote(!is.list(x)),
-    quote(is.null(dim(x)))
+    quote(is.null(dim(x))),
+    quote(!is.list(x))
   )
   fail_messages <- c(
     "object `${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "object `${x_nm}` was a list",
-    "object `${x_nm}` had dimensions but was expected to have none"
+    "object `${x_nm}` had dimensions but was expected to have none",
+    "object `${x_nm}` was a list"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5351,6 +5351,77 @@ assert_dev_output_is_report_df <- function(
 # do no modify by hand!
 #' @rdname assertions
 #' @export
+assert_dev_output_is_subset_of_data_frame <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  df,
+  dt
+) {
+  dbc::handle_args_inplace()
+  assertion_type <- "dev_output"
+  expressions <- list(
+    quote(is.data.frame(df)),
+    quote(is.data.frame(x)),
+    quote(names(x) %in% names(dt)),
+    quote({nrow(merge(x = x, y = df[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
+  )
+  fail_messages <- c(
+    "Internal error: `df` to test against was not a data.frame",
+    "`${x_nm}` to test was not a data.frame",
+    "Not all column names of `${x_nm}` were found in `df` to test against",
+    "Not all rows of `${x_nm}` were found in the `dt` tested against."
+  )
+  for (i in seq_along(expressions)) {
+    dbc::assertion_eval(
+      expression = expressions[[i]],
+      fail_message = fail_messages[i],
+      assertion_type = assertion_type,
+      x_nm = x_nm,
+      call = call
+    )
+  }
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+assert_dev_output_is_subset_of_data_table <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  dt
+) {
+  dbc::handle_args_inplace()
+  assertion_type <- "dev_output"
+  expressions <- list(
+    quote(inherits(dt, "data.table")),
+    quote(is.data.frame(x)),
+    quote(names(x) %in% names(dt)),
+    quote({nrow(merge(x = x, y = dt[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
+  )
+  fail_messages <- c(
+    "Internal error: `dt` to test against was not a data.table",
+    "`${x_nm}` was not a data.frame",
+    "Not all column names of `${x_nm}` were found in `dt` to test against",
+    "Not all rows of `${x_nm}` were found in the `dt` tested against."
+  )
+  for (i in seq_along(expressions)) {
+    dbc::assertion_eval(
+      expression = expressions[[i]],
+      fail_message = fail_messages[i],
+      assertion_type = assertion_type,
+      x_nm = x_nm,
+      call = call
+    )
+  }
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
 assert_dev_output_is_TRUE <- function(
   x,
   x_nm = NULL,
@@ -5415,7 +5486,7 @@ assert_dev_output_is_uniquely_named_list <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote(inherits(x, 'list')),
+    quote(inherits(x, "list")),
     quote((n_unique_names <- length(unique(names(x)))) == length(x))
   )
   fail_messages <- c(
@@ -5476,10 +5547,10 @@ assert_dev_output_match_regex <- function(
   dbc::handle_args_inplace()
   assertion_type <- "dev_output"
   expressions <- list(
-    quote({grepl.arg.list[['x']] <- x; t <- do.call(grepl, grepl.arg.list); t})
+    quote({grepl.arg.list[["x"]] <- x; t <- do.call(grepl, grepl.arg.list); t})
   )
   fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` did not match regex ${deparse(grepl.arg.list[['pattern']])}"
+    "${n_fail} elements of `${x_nm}` did not match regex ${deparse(grepl.arg.list[[\"pattern\"]])}"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(

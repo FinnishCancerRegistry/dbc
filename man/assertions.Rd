@@ -196,6 +196,8 @@
 \alias{assert_dev_input_is_numeric}
 \alias{assert_dev_input_is_of_length}
 \alias{assert_dev_input_is_report_df}
+\alias{assert_dev_input_is_subset_of_data_frame}
+\alias{assert_dev_input_is_subset_of_data_table}
 \alias{assert_dev_input_is_TRUE}
 \alias{assert_dev_input_is_uniquely_named}
 \alias{assert_dev_input_is_uniquely_named_list}
@@ -377,6 +379,8 @@
 \alias{assert_dev_interim_is_numeric}
 \alias{assert_dev_interim_is_of_length}
 \alias{assert_dev_interim_is_report_df}
+\alias{assert_dev_interim_is_subset_of_data_frame}
+\alias{assert_dev_interim_is_subset_of_data_table}
 \alias{assert_dev_interim_is_TRUE}
 \alias{assert_dev_interim_is_uniquely_named}
 \alias{assert_dev_interim_is_uniquely_named_list}
@@ -558,6 +562,8 @@
 \alias{assert_dev_output_is_numeric}
 \alias{assert_dev_output_is_of_length}
 \alias{assert_dev_output_is_report_df}
+\alias{assert_dev_output_is_subset_of_data_frame}
+\alias{assert_dev_output_is_subset_of_data_table}
 \alias{assert_dev_output_is_TRUE}
 \alias{assert_dev_output_is_uniquely_named}
 \alias{assert_dev_output_is_uniquely_named_list}
@@ -739,6 +745,8 @@
 \alias{assert_is_numeric}
 \alias{assert_is_of_length}
 \alias{assert_is_report_df}
+\alias{assert_is_subset_of_data_frame}
+\alias{assert_is_subset_of_data_table}
 \alias{assert_is_TRUE}
 \alias{assert_is_uniquely_named}
 \alias{assert_is_uniquely_named_list}
@@ -920,6 +928,8 @@
 \alias{assert_input_is_numeric}
 \alias{assert_input_is_of_length}
 \alias{assert_input_is_report_df}
+\alias{assert_input_is_subset_of_data_frame}
+\alias{assert_input_is_subset_of_data_table}
 \alias{assert_input_is_TRUE}
 \alias{assert_input_is_uniquely_named}
 \alias{assert_input_is_uniquely_named_list}
@@ -1101,6 +1111,8 @@
 \alias{assert_prod_input_is_numeric}
 \alias{assert_prod_input_is_of_length}
 \alias{assert_prod_input_is_report_df}
+\alias{assert_prod_input_is_subset_of_data_frame}
+\alias{assert_prod_input_is_subset_of_data_table}
 \alias{assert_prod_input_is_TRUE}
 \alias{assert_prod_input_is_uniquely_named}
 \alias{assert_prod_input_is_uniquely_named_list}
@@ -1282,6 +1294,8 @@
 \alias{assert_prod_interim_is_numeric}
 \alias{assert_prod_interim_is_of_length}
 \alias{assert_prod_interim_is_report_df}
+\alias{assert_prod_interim_is_subset_of_data_frame}
+\alias{assert_prod_interim_is_subset_of_data_table}
 \alias{assert_prod_interim_is_TRUE}
 \alias{assert_prod_interim_is_uniquely_named}
 \alias{assert_prod_interim_is_uniquely_named_list}
@@ -1463,6 +1477,8 @@
 \alias{assert_prod_output_is_numeric}
 \alias{assert_prod_output_is_of_length}
 \alias{assert_prod_output_is_report_df}
+\alias{assert_prod_output_is_subset_of_data_frame}
+\alias{assert_prod_output_is_subset_of_data_table}
 \alias{assert_prod_output_is_TRUE}
 \alias{assert_prod_output_is_uniquely_named}
 \alias{assert_prod_output_is_uniquely_named_list}
@@ -1644,6 +1660,8 @@
 \alias{report_is_numeric}
 \alias{report_is_of_length}
 \alias{report_is_report_df}
+\alias{report_is_subset_of_data_frame}
+\alias{report_is_subset_of_data_table}
 \alias{report_is_TRUE}
 \alias{report_is_uniquely_named}
 \alias{report_is_uniquely_named_list}
@@ -1819,6 +1837,8 @@
 \alias{test_is_numeric}
 \alias{test_is_of_length}
 \alias{test_is_report_df}
+\alias{test_is_subset_of_data_frame}
+\alias{test_is_subset_of_data_table}
 \alias{test_is_TRUE}
 \alias{test_is_uniquely_named}
 \alias{test_is_uniquely_named_list}
@@ -2000,6 +2020,8 @@
 \alias{assert_user_input_is_numeric}
 \alias{assert_user_input_is_of_length}
 \alias{assert_user_input_is_report_df}
+\alias{assert_user_input_is_subset_of_data_frame}
+\alias{assert_user_input_is_subset_of_data_table}
 \alias{assert_user_input_is_TRUE}
 \alias{assert_user_input_is_uniquely_named}
 \alias{assert_user_input_is_uniquely_named_list}
@@ -2395,6 +2417,10 @@ assert_dev_input_is_numeric(x, x_nm = NULL, call = NULL)
 assert_dev_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_input_is_report_df(x, x_nm = NULL, call = NULL)
+
+assert_dev_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_dev_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
 
 assert_dev_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -2814,6 +2840,10 @@ assert_dev_interim_is_numeric(x, x_nm = NULL, call = NULL)
 assert_dev_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_interim_is_report_df(x, x_nm = NULL, call = NULL)
+
+assert_dev_interim_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_dev_interim_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
 
 assert_dev_interim_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -3239,6 +3269,10 @@ assert_dev_output_is_numeric(x, x_nm = NULL, call = NULL)
 assert_dev_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_output_is_report_df(x, x_nm = NULL, call = NULL)
+
+assert_dev_output_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_dev_output_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
 
 assert_dev_output_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -4156,6 +4190,23 @@ assert_is_of_length(
 
 assert_is_report_df(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
+assert_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = NULL,
+  df,
+  dt
+)
+
+assert_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  assertion_type = NULL,
+  dt
+)
+
 assert_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = NULL)
 
 assert_is_uniquely_named(x, x_nm = NULL, call = NULL, assertion_type = NULL)
@@ -4604,6 +4655,10 @@ assert_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_input_is_report_df(x, x_nm = NULL, call = NULL)
 
+assert_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+
 assert_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_input_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -5017,6 +5072,10 @@ assert_prod_input_is_numeric(x, x_nm = NULL, call = NULL)
 assert_prod_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_input_is_report_df(x, x_nm = NULL, call = NULL)
+
+assert_prod_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_prod_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
 
 assert_prod_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5453,6 +5512,16 @@ assert_prod_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_interim_is_report_df(x, x_nm = NULL, call = NULL)
 
+assert_prod_interim_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  df,
+  dt
+)
+
+assert_prod_interim_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+
 assert_prod_interim_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_interim_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -5878,6 +5947,10 @@ assert_prod_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_output_is_report_df(x, x_nm = NULL, call = NULL)
 
+assert_prod_output_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_prod_output_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+
 assert_prod_output_is_TRUE(x, x_nm = NULL, call = NULL)
 
 assert_prod_output_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -6293,6 +6366,10 @@ report_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 report_is_report_df(x, x_nm = NULL, call = NULL)
 
+report_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+report_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+
 report_is_TRUE(x, x_nm = NULL, call = NULL)
 
 report_is_uniquely_named(x, x_nm = NULL, call = NULL)
@@ -6662,6 +6739,10 @@ test_is_numeric(x, x_nm = NULL, call = NULL)
 test_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 test_is_report_df(x, x_nm = NULL, call = NULL)
+
+test_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+test_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
 
 test_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -7070,6 +7151,10 @@ assert_user_input_is_numeric(x, x_nm = NULL, call = NULL)
 assert_user_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_user_input_is_report_df(x, x_nm = NULL, call = NULL)
+
+assert_user_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+
+assert_user_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
 
 assert_user_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
