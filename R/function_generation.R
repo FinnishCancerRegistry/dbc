@@ -373,7 +373,8 @@ generate_assertion_function_body_from_expressions <- function(
     "    x_nm = x_nm,",
     "    call = call",
     "  )",
-    "}"
+    "}",
+    "return(invisible(NULL))"
   )
 
   return(lines)
@@ -400,7 +401,9 @@ generate_test_function_body_from_expressions <- function(
         lines <- gsub(re, replace[re], lines)
       }
       c(lines, "")
-    })) 
+    })),
+    "",
+    "return(out)"
   )
   return(lines)
 }
@@ -409,7 +412,7 @@ generate_report_function_call <- function(
   report_fun_nm,
   extra_arg_nms = NULL
 ) {
-  report_fun_args <- c(   
+  report_fun_args <- c(
     "x",
     "x_nm",
     "call"
