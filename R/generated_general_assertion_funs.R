@@ -5356,21 +5356,21 @@ assert_is_subset_of_data_frame <- function(
   x_nm = NULL,
   call = NULL,
   assertion_type = NULL,
-  df,
-  dt
+  y,
+  y_nm = NULL
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(is.data.frame(df)),
+    quote(is.data.frame(y)),
     quote(is.data.frame(x)),
-    quote(names(x) %in% names(dt)),
-    quote({nrow(merge(x = x, y = df[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
+    quote(names(x) %in% names(y)),
+    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
   )
   fail_messages <- c(
-    "Internal error: `df` to test against was not a data.frame",
+    "Internal error: `${y_nm}` to test against was not a data.frame",
     "`${x_nm}` to test was not a data.frame",
-    "Not all column names of `${x_nm}` were found in `df` to test against",
-    "Not all rows of `${x_nm}` were found in the `dt` tested against."
+    "Not all column names of `${x_nm}` were found in `${y_nm}` to test against",
+    "Not all rows of `${x_nm}` were found in `${y_nm}`."
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5392,20 +5392,21 @@ assert_is_subset_of_data_table <- function(
   x_nm = NULL,
   call = NULL,
   assertion_type = NULL,
-  dt
+  y,
+  y_nm = NULL
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(inherits(dt, "data.table")),
+    quote(inherits(y, "data.table")),
     quote(is.data.frame(x)),
-    quote(names(x) %in% names(dt)),
-    quote({nrow(merge(x = x, y = dt[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
+    quote(names(x) %in% names(y)),
+    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
   )
   fail_messages <- c(
-    "Internal error: `dt` to test against was not a data.table",
+    "Internal error: `${y_nm}` to test against was not a data.table",
     "`${x_nm}` was not a data.frame",
-    "Not all column names of `${x_nm}` were found in `dt` to test against",
-    "Not all rows of `${x_nm}` were found in the `dt` tested against."
+    "Not all column names of `${x_nm}` were found in `${y_nm}` to test against",
+    "Not all rows of `${x_nm}` were found in `${y_nm}`."
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(

@@ -4763,15 +4763,15 @@ report_is_subset_of_data_frame <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  df,
-  dt
+  y,
+  y_nm = NULL
 ) {
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.data.frame(df)", "is.data.frame(x)", "names(x) %in% names(dt)", "{nrow(merge(x = x, y = df[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}")
+    c("is.data.frame(y)", "is.data.frame(x)", "names(x) %in% names(y)", "{nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}")
   fail_messages <- 
-    c("Internal error: `df` to test against was not a data.frame", "`${x_nm}` to test was not a data.frame", "Not all column names of `${x_nm}` were found in `df` to test against", "Not all rows of `${x_nm}` were found in the `dt` tested against.")
+    c("Internal error: `${y_nm}` to test against was not a data.frame", "`${x_nm}` to test was not a data.frame", "Not all column names of `${x_nm}` were found in `${y_nm}` to test against", "Not all rows of `${x_nm}` were found in `${y_nm}`.")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()
@@ -4793,14 +4793,15 @@ report_is_subset_of_data_table <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  dt
+  y,
+  y_nm = NULL
 ) {
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(dt, \"data.table\")", "is.data.frame(x)", "names(x) %in% names(dt)", "{nrow(merge(x = x, y = dt[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}")
+    c("inherits(y, \"data.table\")", "is.data.frame(x)", "names(x) %in% names(y)", "{nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}")
   fail_messages <- 
-    c("Internal error: `dt` to test against was not a data.table", "`${x_nm}` was not a data.frame", "Not all column names of `${x_nm}` were found in `dt` to test against", "Not all rows of `${x_nm}` were found in the `dt` tested against.")
+    c("Internal error: `${y_nm}` to test against was not a data.table", "`${x_nm}` was not a data.frame", "Not all column names of `${x_nm}` were found in `${y_nm}` to test against", "Not all rows of `${x_nm}` were found in `${y_nm}`.")
   pass_messages <- 
     c(NA_character_, NA_character_, NA_character_, NA_character_)
   report_env <- environment()

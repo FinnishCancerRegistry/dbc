@@ -2418,9 +2418,21 @@ assert_dev_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_input_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_dev_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_dev_input_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_dev_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_dev_input_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_dev_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -2841,9 +2853,21 @@ assert_dev_interim_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_interim_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_dev_interim_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_dev_interim_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_dev_interim_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_dev_interim_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_dev_interim_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -3270,9 +3294,21 @@ assert_dev_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_dev_output_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_dev_output_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_dev_output_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_dev_output_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_dev_output_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_dev_output_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -4195,8 +4231,8 @@ assert_is_subset_of_data_frame(
   x_nm = NULL,
   call = NULL,
   assertion_type = NULL,
-  df,
-  dt
+  y,
+  y_nm = NULL
 )
 
 assert_is_subset_of_data_table(
@@ -4204,7 +4240,8 @@ assert_is_subset_of_data_table(
   x_nm = NULL,
   call = NULL,
   assertion_type = NULL,
-  dt
+  y,
+  y_nm = NULL
 )
 
 assert_is_TRUE(x, x_nm = NULL, call = NULL, assertion_type = NULL)
@@ -4655,9 +4692,21 @@ assert_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_input_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_input_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_input_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5073,9 +5122,21 @@ assert_prod_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_input_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_prod_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_prod_input_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_prod_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_prod_input_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_prod_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5516,11 +5577,17 @@ assert_prod_interim_is_subset_of_data_frame(
   x,
   x_nm = NULL,
   call = NULL,
-  df,
-  dt
+  y,
+  y_nm = NULL
 )
 
-assert_prod_interim_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_prod_interim_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_prod_interim_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -5947,9 +6014,21 @@ assert_prod_output_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_prod_output_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_prod_output_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_prod_output_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_prod_output_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_prod_output_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_prod_output_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -6366,9 +6445,9 @@ report_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 report_is_report_df(x, x_nm = NULL, call = NULL)
 
-report_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+report_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
-report_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+report_is_subset_of_data_table(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 report_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -6740,9 +6819,9 @@ test_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 test_is_report_df(x, x_nm = NULL, call = NULL)
 
-test_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+test_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
-test_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+test_is_subset_of_data_table(x, x_nm = NULL, call = NULL, y, y_nm = NULL)
 
 test_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -7152,9 +7231,21 @@ assert_user_input_is_of_length(x, x_nm = NULL, call = NULL, expected_length)
 
 assert_user_input_is_report_df(x, x_nm = NULL, call = NULL)
 
-assert_user_input_is_subset_of_data_frame(x, x_nm = NULL, call = NULL, df, dt)
+assert_user_input_is_subset_of_data_frame(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
-assert_user_input_is_subset_of_data_table(x, x_nm = NULL, call = NULL, dt)
+assert_user_input_is_subset_of_data_table(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
+)
 
 assert_user_input_is_TRUE(x, x_nm = NULL, call = NULL)
 
@@ -7321,6 +7412,14 @@ set of levels factor is required to have}
 
 names of arguments that function \code{x} must have}
 
+\item{y}{\verb{[any R object]} (no default)
+
+Compare \code{x} to this.}
+
+\item{y_nm}{\verb{[NULL, character]} (no default)
+
+As \code{x_nm}, but for \code{y}.}
+
 \item{grepl.arg.list}{\verb{[list]} (default \code{list()})
 
 list of (optional) arguments passed to \verb{[grepl]}}
@@ -7351,14 +7450,6 @@ if \code{all(col_nm_set_list[[i]] \%in\% col_nms)} for all
 \verb{i in seq_along(expressions)}. this allows for easy limiting of expressions to run
 in when not all of them need to be run.
 }}
-
-\item{y}{\verb{[any R object]} (no default)
-
-Compare \code{x} to this.}
-
-\item{y_nm}{\verb{[NULL, character]} (no default)
-
-As \code{x_nm}, but for \code{y}.}
 
 \item{all_equal_arg_list}{\verb{[NULL, list]} (default \code{NULL})
 \itemize{
