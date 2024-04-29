@@ -78,3 +78,8 @@ NULL
 # `dbc::*_is_nonNA_*` funs now pass all objects that are not vectors (e.g.
 # lists, language objects). Only vectors are tested with `is.na`.
 # @codedoc_comment_block news("dbc", "2024-04-25", "0.5.4")
+
+# @codedoc_comment_block news("dbc", "2024-04-29", "0.5.5")
+# New functions `dbc::*_is_subset_of_data_frame_*` and
+# `dbc::*_is_subset_of_data_table_*`.
+# @codedoc_comment_block news("dbc", "2024-04-29", "0.5.5")

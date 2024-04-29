@@ -44,6 +44,15 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.5}{
+\subsection{dbc}{
+
+New functions \verb{dbc::*_is_subset_of_data_frame_*} and
+\verb{dbc::*_is_subset_of_data_table_*}.
+}
+
+}
+
 \subsection{News for version 0.5.4}{
 \subsection{dbc}{
 
