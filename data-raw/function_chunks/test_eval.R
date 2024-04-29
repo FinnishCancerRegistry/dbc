@@ -9,10 +9,11 @@ out <- out && local({
     },
     envir = eval_env
   )
+  expr_string <- deparse1(quote(EXPRESSION))
   if (inherits(test_result, "error")) {
     stop(simpleError(
       paste0(
-        "Test `EXPRESSION` resulted in error: ", test_result[["message"]]
+        "Test `", expr_string, "` resulted in error: ", test_result[["message"]]
       ),
       call = call
     ))
@@ -22,7 +23,7 @@ out <- out && local({
   } else if (!is.logical(test_result)) {
     stop(simpleError(
       paste0(
-        "Internal error: Test `EXPRESSION` is misspecified. ",
+        "Internal error: Test `", expr_string, "` is misspecified. ",
         "It resulted in output of class(es) ",
         deparse1(test_result),
         ". Output should be either logical or NULL."
