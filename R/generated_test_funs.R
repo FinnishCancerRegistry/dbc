@@ -19764,13 +19764,13 @@ test_is_subset_of_data_frame <- function(
     test_result <- local(
       {
         tryCatch(
-          {nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)},
+          {nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)},
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}))
+    expr_string <- deparse1(quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)}))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -19927,13 +19927,13 @@ test_is_subset_of_data_table <- function(
     test_result <- local(
       {
         tryCatch(
-          {nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)},
+          {nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)},
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}))
+    expr_string <- deparse1(quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)}))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(

@@ -4769,7 +4769,7 @@ report_is_subset_of_data_frame <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.data.frame(y)", "is.data.frame(x)", "names(x) %in% names(y)", "{nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}")
+    c("is.data.frame(y)", "is.data.frame(x)", "names(x) %in% names(y)", "{nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)}")
   fail_messages <- 
     c("Internal error: `${y_nm}` to test against was not a data.frame", "`${x_nm}` to test was not a data.frame", "Not all column names of `${x_nm}` were found in `${y_nm}` to test against", "Not all rows of `${x_nm}` were found in `${y_nm}`.")
   pass_messages <- 
@@ -4799,7 +4799,7 @@ report_is_subset_of_data_table <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(y, \"data.table\")", "is.data.frame(x)", "names(x) %in% names(y)", "{nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)}")
+    c("inherits(y, \"data.table\")", "is.data.frame(x)", "names(x) %in% names(y)", "{nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)}")
   fail_messages <- 
     c("Internal error: `${y_nm}` to test against was not a data.table", "`${x_nm}` was not a data.frame", "Not all column names of `${x_nm}` were found in `${y_nm}` to test against", "Not all rows of `${x_nm}` were found in `${y_nm}`.")
   pass_messages <- 

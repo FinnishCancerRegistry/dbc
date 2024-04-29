@@ -5533,7 +5533,7 @@ assert_user_input_is_subset_of_data_frame <- function(
     quote(is.data.frame(y)),
     quote(is.data.frame(x)),
     quote(names(x) %in% names(y)),
-    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
+    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)})
   )
   fail_messages <- c(
     "Internal error: `${y_nm}` to test against was not a data.frame",
@@ -5570,7 +5570,7 @@ assert_user_input_is_subset_of_data_table <- function(
     quote(inherits(y, "data.table")),
     quote(is.data.frame(x)),
     quote(names(x) %in% names(y)),
-    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = TRUE, all.y = FALSE)) == nrow(x)})
+    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)})
   )
   fail_messages <- c(
     "Internal error: `${y_nm}` to test against was not a data.table",
