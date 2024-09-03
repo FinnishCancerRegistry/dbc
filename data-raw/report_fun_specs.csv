@@ -33,8 +33,8 @@
 "has_only_names";"length(miss_nms <- setdiff(required_names, names(x))) == 0L";"object `${x_nm}` did not have the following expected names: ${deparse(miss_nms)}";NA;"required_names"
 "has_only_names";"length(extra_nms <- setdiff(names(x), required_names)) == 0L";"object `${x_nm}` had the following unexpected names: ${deparse(extra_nms)}";NA;"required_names"
 "atom_is_in_set";"length(x) == 1";NA;NA;"set"
-"atom_is_in_set";"x %in% set";"object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}";NA;"set"
-"vector_elems_are_in_set";"in_set <- x %in% set";"some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}";NA;"set"
+"atom_is_in_set";"x %in% set";"object `${x_nm}` with value `${deparse1(x)}` was not in set of expected values (first ten): `${deparse1(utils::head(set, 10L))}`";NA;"set"
+"vector_elems_are_in_set";"in_set <- x %in% set";"some values of object `${x_nm}` were not in set of expected values. First ten bad values: `${deparse1(utils::head(unique(x[!in_set]), 10L))}`. First ten elements in set of expected values: `${deparse1(utils::head(set, 10L))}`";NA;"set"
 "is_atom";"length(x) == 1L";"length of object `${x_nm}` was ${length(x)} instead of 1";NA;NA
 "is_vector";"is.null(dim(x))";"object `${x_nm}` had dimensions but was expected to have none";NA;NA
 "is_vector";"!is.list(x)";"object `${x_nm}` was a list";NA;""
