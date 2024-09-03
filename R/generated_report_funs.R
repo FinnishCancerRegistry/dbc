@@ -44,7 +44,7 @@ report_atom_is_in_set <- function(
   expressions <- 
     c("length(x) == 1", "x %in% set")
   fail_messages <- 
-    c(NA, "object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}")
+    c(NA, "object `${x_nm}` with value `${deparse1(x)}` was not in set of expected values (first ten): `${deparse1(utils::head(set, 10L))}`")
   pass_messages <- 
     c(NA_character_, NA_character_)
   report_env <- environment()
@@ -4971,7 +4971,7 @@ report_vector_elems_are_in_set <- function(
   expressions <- 
     "in_set <- x %in% set"
   fail_messages <- 
-    "some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}"
+    "some values of object `${x_nm}` were not in set of expected values. First ten bad values: `${deparse1(utils::head(unique(x[!in_set]), 10L))}`. First ten elements in set of expected values: `${deparse1(utils::head(set, 10L))}`"
   pass_messages <- 
     NA_character_
   report_env <- environment()

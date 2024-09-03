@@ -48,7 +48,7 @@ assert_dev_input_atom_is_in_set <- function(
   )
   fail_messages <- c(
     NA_character_,
-    "object `${x_nm}` = ${x} was not in set of expected values (first ten): ${deparse(utils::head(set, 10L))}"
+    "object `${x_nm}` with value `${deparse1(x)}` was not in set of expected values (first ten): `${deparse1(utils::head(set, 10L))}`"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
@@ -5756,7 +5756,7 @@ assert_dev_input_vector_elems_are_in_set <- function(
     quote(in_set <- x %in% set)
   )
   fail_messages <- c(
-    "some values of object `${x_nm}` were not in set of expected values. First ten bad values: ${deparse1(utils::head(unique(x[!in_set]), 10L))}. First ten elements in set of expected values: ${deparse1(utils::head(set, 10L))}"
+    "some values of object `${x_nm}` were not in set of expected values. First ten bad values: `${deparse1(utils::head(unique(x[!in_set]), 10L))}`. First ten elements in set of expected values: `${deparse1(utils::head(set, 10L))}`"
   )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
