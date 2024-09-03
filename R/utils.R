@@ -420,17 +420,23 @@ handle_args_inplace <- function(
   if ("env" %in% ls(env) && is.null(env[["env"]])) {
     env[["env"]] <- main_eval_env
   }
-  eval(quote({
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-08-03", "0.5.6")
+  # Fixed `dbc::handle_args_inplace` handling of case where `x_nm` was missing.
+  # It raised an incomprehensible error, ironically when trying to emit
+  # the error message concerning the missing `x_nm`.
+  # @codedoc_comment_block news("dbc::handle_args_inplace", "2024-08-03", "0.5.6")
+  error_expr <- substitute({
     if ("x" %in% ls() && missing(x)) {
       stop(simpleError(
         message = paste0(
           "Argument `", x_nm, "` was missing --- it has no default so ",
           "some value must be supplied!"
         ),
-        call = env[["call"]]
+        call = quote(CALL)
       ))
     }
-  }), envir = main_eval_env)
+  }, list(CALL = env[["call"]]))
+  eval(error_expr, envir = main_eval_env)
   return(invisible(NULL))
 }
 

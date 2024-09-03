@@ -44,6 +44,16 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.5.6}{
+\subsection{dbc::handle_args_inplace}{
+
+Fixed \code{dbc::handle_args_inplace} handling of case where \code{x_nm} was missing.
+It raised an incomprehensible error, ironically when trying to emit
+the error message concerning the missing \code{x_nm}.
+}
+
+}
+
 \subsection{News for version 0.5.5}{
 \subsection{dbc}{
 
