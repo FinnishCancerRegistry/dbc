@@ -1256,7 +1256,7 @@ assert_is_double_gtezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x >= 0)
+    quote(x[!is.na(x)] >= 0)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1288,7 +1288,7 @@ assert_is_double_gtezero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -1321,7 +1321,7 @@ assert_is_double_gtezero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
@@ -1357,7 +1357,7 @@ assert_is_double_gtzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x > 0)
+    quote(x[!is.na(x)] > 0)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1389,7 +1389,7 @@ assert_is_double_gtzero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -1422,7 +1422,7 @@ assert_is_double_gtzero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
@@ -1458,7 +1458,7 @@ assert_is_double_ltezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x <= 0)
+    quote(x[!is.na(x)] <= 0)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1490,7 +1490,7 @@ assert_is_double_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -1523,7 +1523,7 @@ assert_is_double_ltezero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
@@ -1559,7 +1559,7 @@ assert_is_double_ltzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x < 0)
+    quote(x[!is.na(x)] < 0)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -1591,7 +1591,7 @@ assert_is_double_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -1624,7 +1624,7 @@ assert_is_double_ltzero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
@@ -1724,7 +1724,7 @@ assert_is_double_nonNA_gtezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -1758,7 +1758,7 @@ assert_is_double_nonNA_gtezero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -1793,7 +1793,7 @@ assert_is_double_nonNA_gtezero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -1831,7 +1831,7 @@ assert_is_double_nonNA_gtzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -1865,7 +1865,7 @@ assert_is_double_nonNA_gtzero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -1900,7 +1900,7 @@ assert_is_double_nonNA_gtzero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -1938,7 +1938,7 @@ assert_is_double_nonNA_ltezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -1972,7 +1972,7 @@ assert_is_double_nonNA_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -2007,7 +2007,7 @@ assert_is_double_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -2045,7 +2045,7 @@ assert_is_double_nonNA_ltzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.double(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -2079,7 +2079,7 @@ assert_is_double_nonNA_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -2114,7 +2114,7 @@ assert_is_double_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.double(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -2630,7 +2630,7 @@ assert_is_gt <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > lo)
+    quote(x[!is.na(x)] > lo)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= ${lo}"
@@ -2660,7 +2660,7 @@ assert_is_gte <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= lo)
+    quote(x[!is.na(x)] >= lo)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < ${lo}"
@@ -2689,7 +2689,7 @@ assert_is_gtezero <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0)
+    quote(x[!is.na(x)] >= 0)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were < 0"
@@ -2718,7 +2718,7 @@ assert_is_gtzero <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0)
+    quote(x[!is.na(x)] > 0)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were <= 0"
@@ -2808,7 +2808,7 @@ assert_is_integer_gtezero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.integer(x))
   )
   fail_messages <- c(
@@ -2840,7 +2840,7 @@ assert_is_integer_gtezero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.integer(x)),
     quote(is.matrix(x))
   )
@@ -2873,7 +2873,7 @@ assert_is_integer_gtezero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.integer(x)),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -2909,7 +2909,7 @@ assert_is_integer_gtzero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.integer(x))
   )
   fail_messages <- c(
@@ -2941,7 +2941,7 @@ assert_is_integer_gtzero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.integer(x)),
     quote(is.matrix(x))
   )
@@ -2974,7 +2974,7 @@ assert_is_integer_gtzero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.integer(x)),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -3011,7 +3011,7 @@ assert_is_integer_ltezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.integer(x)),
-    quote(x <= 0)
+    quote(x[!is.na(x)] <= 0)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3043,7 +3043,7 @@ assert_is_integer_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -3076,7 +3076,7 @@ assert_is_integer_ltezero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
@@ -3112,7 +3112,7 @@ assert_is_integer_ltzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.integer(x)),
-    quote(x < 0)
+    quote(x[!is.na(x)] < 0)
   )
   fail_messages <- c(
     "length of object `${x_nm}` was ${length(x)} instead of 1",
@@ -3144,7 +3144,7 @@ assert_is_integer_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.matrix(x))
   )
   fail_messages <- c(
@@ -3177,7 +3177,7 @@ assert_is_integer_ltzero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
@@ -3276,7 +3276,7 @@ assert_is_integer_nonNA_gtezero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -3310,7 +3310,7 @@ assert_is_integer_nonNA_gtezero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.integer(x)),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
@@ -3345,7 +3345,7 @@ assert_is_integer_nonNA_gtezero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
@@ -3383,7 +3383,7 @@ assert_is_integer_nonNA_gtzero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -3417,7 +3417,7 @@ assert_is_integer_nonNA_gtzero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.integer(x)),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
@@ -3452,7 +3452,7 @@ assert_is_integer_nonNA_gtzero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
@@ -3491,7 +3491,7 @@ assert_is_integer_nonNA_ltezero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.integer(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -3525,7 +3525,7 @@ assert_is_integer_nonNA_ltezero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -3560,7 +3560,7 @@ assert_is_integer_nonNA_ltezero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -3598,7 +3598,7 @@ assert_is_integer_nonNA_ltzero_atom <- function(
   expressions <- list(
     quote(length(x) == 1L),
     quote(is.integer(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
   fail_messages <- c(
@@ -3632,7 +3632,7 @@ assert_is_integer_nonNA_ltzero_matrix <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
@@ -3667,7 +3667,7 @@ assert_is_integer_nonNA_ltzero_vector <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(is.integer(x)),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -4088,7 +4088,7 @@ assert_is_lt <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x < hi)
+    quote(x[!is.na(x)] < hi)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were >= ${hi}"
@@ -4118,7 +4118,7 @@ assert_is_lte <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x <= hi)
+    quote(x[!is.na(x)] <= hi)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were > ${hi}"
@@ -4147,7 +4147,7 @@ assert_is_ltezero <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x <= 0)
+    quote(x[!is.na(x)] <= 0)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were > 0"
@@ -4176,7 +4176,7 @@ assert_is_ltzero <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x < 0)
+    quote(x[!is.na(x)] < 0)
   )
   fail_messages <- c(
     "${n_fail} elements of `${x_nm}` were >= 0"
@@ -4442,7 +4442,7 @@ assert_is_number_gtezero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4474,7 +4474,7 @@ assert_is_number_gtezero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
@@ -4507,7 +4507,7 @@ assert_is_number_gtezero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -4543,7 +4543,7 @@ assert_is_number_gtzero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4575,7 +4575,7 @@ assert_is_number_gtzero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
@@ -4608,7 +4608,7 @@ assert_is_number_gtzero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -4644,7 +4644,7 @@ assert_is_number_ltezero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4676,7 +4676,7 @@ assert_is_number_ltezero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
@@ -4709,7 +4709,7 @@ assert_is_number_ltezero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -4745,7 +4745,7 @@ assert_is_number_ltzero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.numeric(x))
   )
   fail_messages <- c(
@@ -4777,7 +4777,7 @@ assert_is_number_ltzero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
@@ -4810,7 +4810,7 @@ assert_is_number_ltzero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
     quote(!is.list(x))
@@ -4910,7 +4910,7 @@ assert_is_number_nonNA_gtezero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
@@ -4944,7 +4944,7 @@ assert_is_number_nonNA_gtezero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
@@ -4979,7 +4979,7 @@ assert_is_number_nonNA_gtezero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x >= 0),
+    quote(x[!is.na(x)] >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
@@ -5017,7 +5017,7 @@ assert_is_number_nonNA_gtzero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
@@ -5051,7 +5051,7 @@ assert_is_number_nonNA_gtzero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
@@ -5086,7 +5086,7 @@ assert_is_number_nonNA_gtzero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x > 0),
+    quote(x[!is.na(x)] > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
@@ -5124,7 +5124,7 @@ assert_is_number_nonNA_ltezero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
@@ -5158,7 +5158,7 @@ assert_is_number_nonNA_ltezero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
@@ -5193,7 +5193,7 @@ assert_is_number_nonNA_ltezero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x <= 0),
+    quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),
@@ -5231,7 +5231,7 @@ assert_is_number_nonNA_ltzero_atom <- function(
   dbc::handle_args_inplace()
   expressions <- list(
     quote(length(x) == 1L),
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
@@ -5265,7 +5265,7 @@ assert_is_number_nonNA_ltzero_matrix <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
@@ -5300,7 +5300,7 @@ assert_is_number_nonNA_ltzero_vector <- function(
 ) {
   dbc::handle_args_inplace()
   expressions <- list(
-    quote(x < 0),
+    quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x)),
     quote(is.null(dim(x))),

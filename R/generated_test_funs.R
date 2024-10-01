@@ -3414,13 +3414,13 @@ test_is_double_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -3503,13 +3503,13 @@ test_is_double_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -3628,13 +3628,13 @@ test_is_double_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -3825,13 +3825,13 @@ test_is_double_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -3914,13 +3914,13 @@ test_is_double_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4039,13 +4039,13 @@ test_is_double_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4236,13 +4236,13 @@ test_is_double_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4325,13 +4325,13 @@ test_is_double_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4450,13 +4450,13 @@ test_is_double_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4647,13 +4647,13 @@ test_is_double_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4736,13 +4736,13 @@ test_is_double_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -4861,13 +4861,13 @@ test_is_double_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -5272,13 +5272,13 @@ test_is_double_nonNA_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -5397,13 +5397,13 @@ test_is_double_nonNA_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -5558,13 +5558,13 @@ test_is_double_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -5791,13 +5791,13 @@ test_is_double_nonNA_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -5916,13 +5916,13 @@ test_is_double_nonNA_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -6077,13 +6077,13 @@ test_is_double_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -6310,13 +6310,13 @@ test_is_double_nonNA_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -6435,13 +6435,13 @@ test_is_double_nonNA_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -6596,13 +6596,13 @@ test_is_double_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -6829,13 +6829,13 @@ test_is_double_nonNA_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -6954,13 +6954,13 @@ test_is_double_nonNA_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -7115,13 +7115,13 @@ test_is_double_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -8830,13 +8830,13 @@ test_is_gt <- function(
     test_result <- local(
       {
         tryCatch(
-          x > lo,
+          x[!is.na(x)] > lo,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > lo))
+    expr_string <- deparse1(quote(x[!is.na(x)] > lo))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -8884,13 +8884,13 @@ test_is_gte <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= lo,
+          x[!is.na(x)] >= lo,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= lo))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= lo))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -8937,13 +8937,13 @@ test_is_gtezero <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -8990,13 +8990,13 @@ test_is_gtzero <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -9221,13 +9221,13 @@ test_is_integer_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -9310,13 +9310,13 @@ test_is_integer_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -9435,13 +9435,13 @@ test_is_integer_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -9632,13 +9632,13 @@ test_is_integer_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -9721,13 +9721,13 @@ test_is_integer_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -9846,13 +9846,13 @@ test_is_integer_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -10079,13 +10079,13 @@ test_is_integer_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -10168,13 +10168,13 @@ test_is_integer_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -10293,13 +10293,13 @@ test_is_integer_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -10490,13 +10490,13 @@ test_is_integer_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -10579,13 +10579,13 @@ test_is_integer_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -10704,13 +10704,13 @@ test_is_integer_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -11079,13 +11079,13 @@ test_is_integer_nonNA_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -11204,13 +11204,13 @@ test_is_integer_nonNA_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -11365,13 +11365,13 @@ test_is_integer_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -11598,13 +11598,13 @@ test_is_integer_nonNA_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -11723,13 +11723,13 @@ test_is_integer_nonNA_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -11884,13 +11884,13 @@ test_is_integer_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -12153,13 +12153,13 @@ test_is_integer_nonNA_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -12278,13 +12278,13 @@ test_is_integer_nonNA_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -12439,13 +12439,13 @@ test_is_integer_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -12672,13 +12672,13 @@ test_is_integer_nonNA_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -12797,13 +12797,13 @@ test_is_integer_nonNA_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -12958,13 +12958,13 @@ test_is_integer_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -14404,13 +14404,13 @@ test_is_lt <- function(
     test_result <- local(
       {
         tryCatch(
-          x < hi,
+          x[!is.na(x)] < hi,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < hi))
+    expr_string <- deparse1(quote(x[!is.na(x)] < hi))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -14458,13 +14458,13 @@ test_is_lte <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= hi,
+          x[!is.na(x)] <= hi,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= hi))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= hi))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -14511,13 +14511,13 @@ test_is_ltezero <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -14564,13 +14564,13 @@ test_is_ltzero <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15149,13 +15149,13 @@ test_is_number_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15238,13 +15238,13 @@ test_is_number_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15363,13 +15363,13 @@ test_is_number_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15560,13 +15560,13 @@ test_is_number_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15649,13 +15649,13 @@ test_is_number_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15774,13 +15774,13 @@ test_is_number_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -15971,13 +15971,13 @@ test_is_number_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -16060,13 +16060,13 @@ test_is_number_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -16185,13 +16185,13 @@ test_is_number_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -16382,13 +16382,13 @@ test_is_number_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -16471,13 +16471,13 @@ test_is_number_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -16596,13 +16596,13 @@ test_is_number_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -17007,13 +17007,13 @@ test_is_number_nonNA_gtezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -17132,13 +17132,13 @@ test_is_number_nonNA_gtezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -17293,13 +17293,13 @@ test_is_number_nonNA_gtezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x >= 0,
+          x[!is.na(x)] >= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x >= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] >= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -17526,13 +17526,13 @@ test_is_number_nonNA_gtzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -17651,13 +17651,13 @@ test_is_number_nonNA_gtzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -17812,13 +17812,13 @@ test_is_number_nonNA_gtzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x > 0,
+          x[!is.na(x)] > 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x > 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] > 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -18045,13 +18045,13 @@ test_is_number_nonNA_ltezero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -18170,13 +18170,13 @@ test_is_number_nonNA_ltezero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -18331,13 +18331,13 @@ test_is_number_nonNA_ltezero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x <= 0,
+          x[!is.na(x)] <= 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x <= 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] <= 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -18564,13 +18564,13 @@ test_is_number_nonNA_ltzero_atom <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -18689,13 +18689,13 @@ test_is_number_nonNA_ltzero_matrix <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -18850,13 +18850,13 @@ test_is_number_nonNA_ltzero_vector <- function(
     test_result <- local(
       {
         tryCatch(
-          x < 0,
+          x[!is.na(x)] < 0,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(x < 0))
+    expr_string <- deparse1(quote(x[!is.na(x)] < 0))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
