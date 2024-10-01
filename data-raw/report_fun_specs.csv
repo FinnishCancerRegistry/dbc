@@ -58,14 +58,14 @@
 "is_nonNA";"if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE";"object `${x_nm}` had ${n_fail} NA values - none are allowed";NA;NA
 "is_between_inclusive";"dbc::is_between_inclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}";NA;"lo, hi"
 "is_between_exclusive";"dbc::is_between_exclusive(x = x, lo = lo, hi = hi)";"${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}";NA;"lo, hi"
-"is_gte";"x >= lo";"${n_fail} elements of `${x_nm}` were < ${lo}";NA;"lo"
-"is_gt";"x > lo";"${n_fail} elements of `${x_nm}` were <= ${lo}";NA;"lo"
-"is_lte";"x <= hi";"${n_fail} elements of `${x_nm}` were > ${hi}";NA;"hi"
-"is_lt";"x < hi";"${n_fail} elements of `${x_nm}` were >= ${hi}";NA;"hi"
-"is_gtezero";"x >= 0";"${n_fail} elements of `${x_nm}` were < 0";NA;NA
-"is_gtzero";"x > 0";"${n_fail} elements of `${x_nm}` were <= 0";NA;NA
-"is_ltezero";"x <= 0";"${n_fail} elements of `${x_nm}` were > 0";NA;NA
-"is_ltzero";"x < 0";"${n_fail} elements of `${x_nm}` were >= 0";NA;NA
+"is_gte";"x[!is.na(x)] >= lo";"${n_fail} elements of `${x_nm}` were < ${lo}";NA;"lo"
+"is_gt";"x[!is.na(x)] > lo";"${n_fail} elements of `${x_nm}` were <= ${lo}";NA;"lo"
+"is_lte";"x[!is.na(x)] <= hi";"${n_fail} elements of `${x_nm}` were > ${hi}";NA;"hi"
+"is_lt";"x[!is.na(x)] < hi";"${n_fail} elements of `${x_nm}` were >= ${hi}";NA;"hi"
+"is_gtezero";"x[!is.na(x)] >= 0";"${n_fail} elements of `${x_nm}` were < 0";NA;NA
+"is_gtzero";"x[!is.na(x)] > 0";"${n_fail} elements of `${x_nm}` were <= 0";NA;NA
+"is_ltezero";"x[!is.na(x)] <= 0";"${n_fail} elements of `${x_nm}` were > 0";NA;NA
+"is_ltzero";"x[!is.na(x)] < 0";"${n_fail} elements of `${x_nm}` were >= 0";NA;NA
 "has_no_duplicates";"!duplicated(x)";"In total ${n_fail} elements of object/param `${x_nm}` were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}";"object `${x_nm}` had no duplicates";NA
 "data_table_has_no_duplicates";"!(dup <- duplicated(x, by = by))";"In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse1(utils::head(which(dup), 5))}";"data.table ${deparse1(x_nm)} had no duplicates (by ${deparse1(by)})";by = names(x)
 "all_are_TRUE";"all(x %in% TRUE)";"Not all elements of `${x_nm}` were TRUE";NA;NA
