@@ -44,6 +44,16 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.6.0}{
+\subsection{dbc}{
+
+\code{is_lt} / \code{is_lte} / \code{is_gt} / \code{is_gte} functions now ignore \code{NA} values.
+Formerly \code{NA} values caused failures even in functions such as
+\code{dbc::assert_is_integer_gtzero_vector} which should allow them.
+}
+
+}
+
 \subsection{News for version 0.5.6}{
 \subsection{dbc::handle_args_inplace}{
 

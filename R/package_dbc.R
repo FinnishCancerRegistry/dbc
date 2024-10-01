@@ -83,3 +83,9 @@ NULL
 # New functions `dbc::*_is_subset_of_data_frame_*` and
 # `dbc::*_is_subset_of_data_table_*`.
 # @codedoc_comment_block news("dbc", "2024-04-29", "0.5.5")
+
+# @codedoc_comment_block news("dbc", "2024-10-01", "0.6.0")
+# `is_lt` / `is_lte` / `is_gt` / `is_gte` functions now ignore `NA` values.
+# Formerly `NA` values caused failures even in functions such as
+# `dbc::assert_is_integer_gtzero_vector` which should allow them.
+# @codedoc_comment_block news("dbc", "2024-10-01", "0.6.0")
