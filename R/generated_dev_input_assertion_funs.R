@@ -849,7 +849,7 @@ assert_dev_input_is_data.table_with_required_names <- function(
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, "data.table")),
-    quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
+    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
   )
   fail_messages <- c(
     "object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}",
@@ -910,7 +910,7 @@ assert_dev_input_is_data_frame_with_required_names <- function(
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.data.frame(x)),
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
+    quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
   )
   fail_messages <- c(
     "object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}",

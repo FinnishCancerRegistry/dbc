@@ -783,7 +783,7 @@ report_is_data.table_with_required_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("inherits(x, \"data.table\")", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
+    c("inherits(x, \"data.table\")", "{warning(\"*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)\"); length(miss_nms <- setdiff(required_names, names(x))) == 0L}")
   fail_messages <- 
     c("object `${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
   pass_messages <- 
@@ -840,7 +840,7 @@ report_is_data_frame_with_required_names <- function(
   dbc::handle_args_inplace()
   
   expressions <- 
-    c("is.data.frame(x)", "{warning(\"*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)\"); length(miss_nms <- setdiff(required_names, names(x))) == 0L}")
+    c("is.data.frame(x)", "length(miss_nms <- setdiff(required_names, names(x))) == 0L")
   fail_messages <- 
     c("object `${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}", "object `${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}")
   pass_messages <- 

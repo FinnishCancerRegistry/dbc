@@ -2184,13 +2184,13 @@ test_is_data.table_with_required_names <- function(
     test_result <- local(
       {
         tryCatch(
-          length(miss_nms <- setdiff(required_names, names(x))) == 0L,
+          {warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L},
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
+    expr_string <- deparse1(quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L}))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
@@ -2327,13 +2327,13 @@ test_is_data_frame_with_required_names <- function(
     test_result <- local(
       {
         tryCatch(
-          {warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L},
+          length(miss_nms <- setdiff(required_names, names(x))) == 0L,
           error = function(e) e
         )
       },
       envir = eval_env
     )
-    expr_string <- deparse1(quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L}))
+    expr_string <- deparse1(quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L))
     if (inherits(test_result, "error")) {
       stop(simpleError(
         paste0(
