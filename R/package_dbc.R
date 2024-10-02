@@ -17,7 +17,7 @@ NULL
 #     x = by,
 #     assertion_type = assertion_type
 #   )
-#   dbc::assert_is_data.frame_with_required_names(
+#   dbc::assert_is_data_frame_with_required_names(
 #     x = df,
 #     required_names = by,
 #     assertion_type = assertion_type
@@ -89,3 +89,8 @@ NULL
 # Formerly `NA` values caused failures even in functions such as
 # `dbc::assert_is_integer_gtzero_vector` which should allow them.
 # @codedoc_comment_block news("dbc", "2024-10-01", "0.6.0")
+
+# @codedoc_comment_block news("dbc", "2024-10-02", "0.7.0")
+# Marked `is_data.frame/table` (snail.case) for future removal.
+# New functions `*_is_data_frame_with_required_names`.
+# @codedoc_comment_block news("dbc", "2024-10-02", "0.7.0")

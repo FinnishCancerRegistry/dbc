@@ -28,7 +28,7 @@ my_fun <- function(df, by, assertion_type = NULL) \{
     x = by,
     assertion_type = assertion_type
   )
-  dbc::assert_is_data.frame_with_required_names(
+  dbc::assert_is_data_frame_with_required_names(
     x = df,
     required_names = by,
     assertion_type = assertion_type
@@ -43,6 +43,15 @@ my_fun_2 <- function(df) \{
 }
 
 \section{News}{
+
+\subsection{News for version 0.7.0}{
+\subsection{dbc}{
+
+Marked \code{is_data.frame/table} (snail.case) for future removal.
+New functions \verb{*_is_data_frame_with_required_names}.
+}
+
+}
 
 \subsection{News for version 0.6.0}{
 \subsection{dbc}{

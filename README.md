@@ -30,7 +30,7 @@ my_fun <- function(df, by, assertion_type = NULL) {
     x = by,
     assertion_type = assertion_type
   )
-  dbc::assert_is_data.frame_with_required_names(
+  dbc::assert_is_data_frame_with_required_names(
     x = df,
     required_names = by,
     assertion_type = assertion_type
