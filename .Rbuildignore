@@ -10,3 +10,4 @@
 ^dev$
 ^.*\.code-workspace$
 ^sandbox\.R$
+^\.radian_history$
