@@ -44,6 +44,14 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.7.1}{
+\subsection{dbc::handle_args_inplace}{
+
+Further robustification of how missing \code{x} is reported.
+}
+
+}
+
 \subsection{News for version 0.7.0}{
 \subsection{dbc}{
 
