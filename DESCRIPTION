@@ -8,7 +8,7 @@ Description: Enables easy verification of function arguments, interim
     results, and output.
 License: MIT + file LICENSE
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Suggests: 
     codedoc (>= 0.3.7),
     data.table (>= 1.14.8),
