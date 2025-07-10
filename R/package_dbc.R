@@ -94,3 +94,7 @@ NULL
 # Marked `is_data.frame/table` (snail.case) for future removal.
 # New functions `*_is_data_frame_with_required_names`.
 # @codedoc_comment_block news("dbc", "2024-10-02", "0.7.0")
+
+# @codedoc_comment_block news("dbc", "2025-07-10", "0.8.0")
+# Added `dbc::report_is_unevaluated_expression` and derivatives.
+# @codedoc_comment_block news("dbc", "2025-07-10", "0.8.0")

@@ -44,6 +44,14 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.8.0}{
+\subsection{dbc}{
+
+Added \code{dbc::report_is_unevaluated_expression} and derivatives.
+}
+
+}
+
 \subsection{News for version 0.7.1}{
 \subsection{dbc::handle_args_inplace}{
 
