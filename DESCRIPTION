@@ -12,9 +12,7 @@ Depends:
 Suggests: 
     codedoc (>= 0.3.7),
     data.table (>= 1.14.8),
-    desc (>= 1.4.2),
     devtools (>= 2.4.5),
-    git2r (>= 0.32.0),
     testthat (>= 3.1.7)
 Remotes:
     github::FinnishCancerRegistry/codedoc@release
