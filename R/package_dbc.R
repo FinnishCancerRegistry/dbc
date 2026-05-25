@@ -98,3 +98,7 @@ NULL
 # @codedoc_comment_block news("dbc", "2025-07-10", "0.8.0")
 # Added `dbc::report_is_unevaluated_expression` and derivatives.
 # @codedoc_comment_block news("dbc", "2025-07-10", "0.8.0")
+
+# @codedoc_comment_block news("dbc", "2026-05-25", "0.8.1")
+# Improved error messages a bit. The word "object" appears less often now.
+# @codedoc_comment_block news("dbc", "2026-05-25", "0.8.1")

@@ -44,6 +44,14 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.8.1}{
+\subsection{dbc}{
+
+Improved error messages a bit. The word "object" appears less often now.
+}
+
+}
+
 \subsection{News for version 0.8.0}{
 \subsection{dbc}{
 
