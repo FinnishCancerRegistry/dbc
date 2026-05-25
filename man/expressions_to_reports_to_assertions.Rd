@@ -109,7 +109,7 @@ was not as expected
 \item{raise_error_call}{\verb{[NULL, language]} (default \code{NULL})
 
 the call to display in the error call; passed to arg \code{call} of
-\link[base:conditions]{base::simpleError}.
+\link[base:simpleError]{base::simpleError}.
 \itemize{
 \item \code{NULL}: use the parent call; when this function is called in another
 function (as it is intended to be used), the function call of the
