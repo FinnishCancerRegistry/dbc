@@ -1,8 +1,3 @@
-
-
-
-
-
 #' @rdname assertions
 #' @export
 #' @return
@@ -32,7 +27,7 @@
 #'   `i in seq_along(expressions)`. this allows for easy limiting of expressions to run
 #'   in when not all of them need to be run.
 #' @param by `[character]` (no default)
-#' 
+#'
 #' Column names as strings.
 #' @details
 #' - `report_has_invalid_observations` calls [expressions_to_report] where the
@@ -118,7 +113,6 @@ report_has_only_valid_observations <- function(
 }
 
 
-
 #' @rdname assertions
 #' @param template `[any R object]` (no default)
 #'
@@ -182,15 +176,15 @@ report_is_like_template <- function(
   call <- dbc::handle_arg_call(call)
   dbc::assert_prod_input_is_one_of(
     x = compare,
-    funs = list(dbc::report_is_NULL,
-                dbc::report_is_character_nonNA_vector)
+    funs = list(dbc::report_is_NULL, dbc::report_is_character_nonNA_vector)
   )
   compare_options <- c("names", "classes", "lengths")
   if (is.null(compare)) {
     compare <- compare_options
   } else {
     dbc::assert_prod_input_vector_elems_are_in_set(
-      compare, set = compare_options
+      compare,
+      set = compare_options
     )
   }
 
@@ -208,8 +202,11 @@ report_is_like_template <- function(
     df_class <- dbc::expressions_to_report(
       expressions = "class(template) %in% class(x)",
       fail_messages = paste0(
-        "expected ", x_nm, " to have all of the following classes: ",
-        deparse(class(template)), "; instead it had this set of classes: ",
+        "expected ",
+        x_nm,
+        " to have all of the following classes: ",
+        deparse(class(template)),
+        "; instead it had this set of classes: ",
         deparse(class(x))
       ),
       call = call,
@@ -257,12 +254,6 @@ report_is_like_template <- function(
 }
 
 
-
-
-
-
-
-
 #' @rdname assertions
 #' @param y `[any R object]` (no default)
 #'
@@ -283,11 +274,11 @@ report_is_like_template <- function(
 #'
 #' @export
 report_is_identical <- function(
-    x,
-    x_nm = NULL,
-    call = NULL,
-    y,
-    y_nm = NULL
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL
 ) {
   # @codedoc_comment_block news("dbc::report_is_identical", "2022-08-18", "0.4.10")
   # New fun `dbc::report_is_identical`. Generated correspoding assertion
@@ -302,14 +293,15 @@ report_is_identical <- function(
   df <- dbc::expressions_to_report(
     expressions = "identical(x, y)",
     fail_messages = paste0(
-      x_nm, " was not identical to ", y_nm
+      x_nm,
+      " was not identical to ",
+      y_nm
     ),
     env = eval_env,
     call = call
   )
   return(df)
 }
-
 
 
 #' @rdname assertions
@@ -348,12 +340,12 @@ report_is_identical <- function(
 #'
 #' @export
 report_is_all_equal <- function(
-    x,
-    x_nm = NULL,
-    call = NULL,
-    y,
-    y_nm = NULL,
-    all_equal_arg_list = NULL
+  x,
+  x_nm = NULL,
+  call = NULL,
+  y,
+  y_nm = NULL,
+  all_equal_arg_list = NULL
 ) {
   # @codedoc_comment_block news("dbc::report_is_all_equal", "2022-08-18", "0.4.10")
   # New fun `dbc::report_is_all_equal`. Generated correspoding assertion
@@ -366,8 +358,7 @@ report_is_all_equal <- function(
   }
   dbc::assert_is_one_of(
     all_equal_arg_list,
-    funs = list(dbc::report_is_NULL,
-                dbc::report_is_list),
+    funs = list(dbc::report_is_NULL, dbc::report_is_list),
     assertion_type = "prod_input"
   )
   eval_env <- environment()
@@ -377,19 +368,22 @@ report_is_all_equal <- function(
   }
   arg_symbol_list <- c(
     list(target = quote(x), current = quote(y)),
-    structure(lapply(seq_along(all_equal_arg_list), function(i) {
-      obj <- all_equal_arg_list[[i]]
-      is_small <- is.vector(obj) && !is.list(obj) && length(obj) <= 5
-      if (is_small) {
-        return(all_equal_arg_list[[i]])
-      }
-      nm_i <- names(all_equal_arg_list)[i]
-      if (nm_i == "") {
-        substitute(all_equal_arg_list[[i]], list(i = i))
-      } else {
-        substitute(all_equal_arg_list[[nm]], list(nm = nm_i))
-      }
-    }), names = names(all_equal_arg_list))
+    structure(
+      lapply(seq_along(all_equal_arg_list), function(i) {
+        obj <- all_equal_arg_list[[i]]
+        is_small <- is.vector(obj) && !is.list(obj) && length(obj) <= 5
+        if (is_small) {
+          return(all_equal_arg_list[[i]])
+        }
+        nm_i <- names(all_equal_arg_list)[i]
+        if (nm_i == "") {
+          substitute(all_equal_arg_list[[i]], list(i = i))
+        } else {
+          substitute(all_equal_arg_list[[nm]], list(nm = nm_i))
+        }
+      }),
+      names = names(all_equal_arg_list)
+    )
   )
   expr <- do.call(
     what = "call",
@@ -400,7 +394,10 @@ report_is_all_equal <- function(
   df <- dbc::expressions_to_report(
     expressions = list(expr),
     fail_messages = paste0(
-      x_nm, " was not equal to ", y_nm, "; ",
+      x_nm,
+      " was not equal to ",
+      y_nm,
+      "; ",
       "message from all.equal: ",
       "${deparse(eq)}"
     ),
@@ -490,23 +487,32 @@ report_is_one_of <- function(
   arg_list[add_arg_nms] <- mget(add_arg_nms)
   eval_env <- as.environment(arg_list)
   parent.env(eval_env) <- parent.frame(1L)
-  report_df <- do.call(rbind, lapply(seq_along(funs), function(i) {
-    arg_nms <- intersect(names(formals(funs[[i]])), ls(eval_env))
-    expr_lines <- c(
-      sprintf("funs[[%i]](", i),
-      paste0("  ", arg_nms, " = ", arg_nms,
-             c(rep(",", length(arg_nms) - 1L), "")),
-      ")"
-    )
-    expr <- parse(text = expr_lines)[[1]]
-    report_df <- eval(expr, eval_env)
-    dbc::assert_prod_interim_is_report_df(
-      report_df,
-      x_nm = deparse1(expr),
-      call = report_is_one_of_call
-    )
-    report_df <- aggregate_report_df(report_df, pass = "all")
-    return(report_df)
-  }), quote = TRUE)
+  report_df <- do.call(
+    rbind,
+    lapply(seq_along(funs), function(i) {
+      arg_nms <- intersect(names(formals(funs[[i]])), ls(eval_env))
+      expr_lines <- c(
+        sprintf("funs[[%i]](", i),
+        paste0(
+          "  ",
+          arg_nms,
+          " = ",
+          arg_nms,
+          c(rep(",", length(arg_nms) - 1L), "")
+        ),
+        ")"
+      )
+      expr <- parse(text = expr_lines)[[1]]
+      report_df <- eval(expr, eval_env)
+      dbc::assert_prod_interim_is_report_df(
+        report_df,
+        x_nm = deparse1(expr),
+        call = report_is_one_of_call
+      )
+      report_df <- aggregate_report_df(report_df, pass = "all")
+      return(report_df)
+    }),
+    quote = TRUE
+  )
   return(aggregate_report_df(report_df, pass = "any"))
 }

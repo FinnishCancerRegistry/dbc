@@ -1,9 +1,3 @@
-
-
-
-
-
-
 #' @title Between
 #' @description
 #' Test if elements are between upper and lower bounds.
@@ -41,12 +35,3 @@ is_between_inclusive <- function(x, lo, hi) {
 is_between_exclusive <- function(x, lo, hi) {
   is_between(x, lo, hi, inclusive = FALSE)
 }
-
-
-
-
-
-
-
-
-

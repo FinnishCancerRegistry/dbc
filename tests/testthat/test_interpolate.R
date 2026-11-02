@@ -1,7 +1,4 @@
-
-
 testthat::test_that("interpolate works as intended", {
-
   x <- 1:5
   set <- 1:2
   x_nm <- "x"
@@ -17,7 +14,4 @@ testthat::test_that("interpolate works as intended", {
     result,
     "bad x values: deparse(setdiff(x, set))"
   )
-
 })
-
-

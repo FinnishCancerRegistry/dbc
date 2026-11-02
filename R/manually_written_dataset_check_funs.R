@@ -1,6 +1,3 @@
-
-
-
 #' @rdname assertions
 #' @export
 #' @param report_df `[data.frame]` (mandatory, no default)
@@ -66,9 +63,3 @@ identify_invalid_observations <- function(
 
   return(result_df[])
 }
-
-
-
-
-
-

@@ -1,4 +1,3 @@
-
 #' @title Caller Environment Checks
 #' @description Functions to check caller environment of a function.
 #' @param x `[NULL, environment]` (default `NULL`)
@@ -37,12 +36,18 @@ report_function_caller_environment_is_not_global_environment <- function(
       "!identical(x, globalenv())"
     ),
     fail_messages = paste0(
-      "Looks like function ", deparse(x_nm), " was called in the global ",
-      "environment; ", deparse(x_nm), " is intended to be only called in ",
+      "Looks like function ",
+      deparse(x_nm),
+      " was called in the global ",
+      "environment; ",
+      deparse(x_nm),
+      " is intended to be only called in ",
       "other environments, such as in other functions."
     ),
     pass_messages = paste0(
-      "Looks like function ", deparse(x_nm), " was not called in the global ",
+      "Looks like function ",
+      deparse(x_nm),
+      " was not called in the global ",
       "environment, as expected."
     ),
     call = call
@@ -72,8 +77,12 @@ report_function_caller_environment_is_global_environment <- function(
     fail_messages = c(
       "Object ${deparse(x)} is not an environment.",
       paste0(
-        "Looks like function ", deparse(x_nm), " was not called in the global ",
-        "environment; ", deparse(x_nm), " is intended to be only called in ",
+        "Looks like function ",
+        deparse(x_nm),
+        " was not called in the global ",
+        "environment; ",
+        deparse(x_nm),
+        " is intended to be only called in ",
         "the global environment, and not in other environments, such as in ",
         "other functions."
       )
@@ -81,7 +90,9 @@ report_function_caller_environment_is_global_environment <- function(
     pass_messages = c(
       "Object ${deparse(x)} is an environment.",
       paste0(
-        "Looks like function ", deparse(x_nm), " was called in the global ",
+        "Looks like function ",
+        deparse(x_nm),
+        " was called in the global ",
         "environment, as expected."
       )
     ),
@@ -107,7 +118,9 @@ assert_function_caller_environment_is_not_global_environment <- function(
   call <- dbc::handle_arg_call(call)
   assertion_type <- dbc::handle_arg_assertion_type(assertion_type)
   report_df <- report_function_caller_environment_is_not_global_environment(
-    x = x, x_nm = x_nm, call = call
+    x = x,
+    x_nm = x_nm,
+    call = call
   )
   dbc::report_to_assertion(
     report_df = report_df,
@@ -134,7 +147,9 @@ assert_function_caller_environment_is_global_environment <- function(
   call <- dbc::handle_arg_call(call)
   assertion_type <- dbc::handle_arg_assertion_type(assertion_type)
   report_df <- report_function_caller_environment_is_global_environment(
-    x = x, x_nm = x_nm, call = call
+    x = x,
+    x_nm = x_nm,
+    call = call
   )
   dbc::report_to_assertion(
     report_df = report_df,
@@ -189,5 +204,3 @@ test_function_caller_environment_is_global_environment <- function(
   )
   return(all(report_df[["pass"]]))
 }
-
-

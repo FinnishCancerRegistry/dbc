@@ -1,4 +1,3 @@
-
 #' @title Assertion Types
 #' @description
 #' Tools to process assertion types.
@@ -90,7 +89,7 @@ assertion_type_summaries <- function() {
     )
   )
 }
-assertion_type_summary_lines_in_markdown <- function()  {
+assertion_type_summary_lines_in_markdown <- function() {
   ats <- assertion_type_summaries()
   unlist(lapply(names(ats), function(at_nm) {
     lines <- ats[[at_nm]]
@@ -181,7 +180,7 @@ assertion_error_message <- function(assertion_type) {
 
 #' @rdname assertion_types
 #' @param messages `[character]` (no default)
-#' 
+#'
 #' Error messages of failed assertions.
 #' @template arg_call
 #' @eval arg_assertion_type_docs()
@@ -213,17 +212,17 @@ assertion_raise <- function(
 
 #' @rdname assertion_types
 #' @param expression `[call]` (no default)
-#' 
+#'
 #' Expression to evaluate.
 #' @param fail_message `[NULL, character]` (default `NULL`)
-#' 
+#'
 #' - `NULL`: Use a default message.
 #' - `character`: Use this message.
-#' 
+#'
 #' Error message of failed assertion. Passed to [interpolate] before it is
 #' emitted.
 #' @param env `[environment]` (default `parent.frame(1L)`, i.e. calling env)
-#' 
+#'
 #' Environment where `expression` will be evaluated.
 #' @template arg_x_nm
 #' @template arg_call
@@ -306,8 +305,10 @@ handle_arg_assertion_type <- function(
     assertion_type <- dbc::assertion_type_default()
   } else {
     if (!assertion_type %in% dbc::assertion_types()) {
-      stop("assertion_type must be NULL or one of ",
-           deparse1(dbc::assertion_types()))
+      stop(
+        "assertion_type must be NULL or one of ",
+        deparse1(dbc::assertion_types())
+      )
     }
   }
   return(assertion_type)

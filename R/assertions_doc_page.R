@@ -1,4 +1,3 @@
-
 #' @title Assertions
 #' @description
 #' Collection of assertion functions which raise an error if the test does not

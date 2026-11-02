@@ -138,4 +138,3 @@ test_is_one_of <- function(
   )
   return(all(report_df[["pass"]]))
 }
-

@@ -1,4 +1,3 @@
-
 #' @title Function Calls
 #' @description
 #' Retrieve upsteam function calls.
@@ -45,8 +44,10 @@ get_current_call <- function() {
     error = function(e) e
   )
   if (inherits(call, "error") || identical(call, quote(get_current_call()))) {
-    stop("Could not determine crreunt call. Was get_current_call not ",
-         "called in another function?")
+    stop(
+      "Could not determine crreunt call. Was get_current_call not ",
+      "called in another function?"
+    )
   }
   call
 }
@@ -67,8 +68,10 @@ get_parent_call <- function() {
     error = function(e) e
   )
   if (inherits(call, "error") || identical(call, quote(get_parent_call()))) {
-    stop("Could not determine parent call. get_parent_call can only be used ",
-         "in a function called by another.")
+    stop(
+      "Could not determine parent call. get_parent_call can only be used ",
+      "in a function called by another."
+    )
   }
   call
 }
@@ -92,8 +95,10 @@ get_nth_call <- function(n = 1L) {
     error = function(e) e
   )
   if (inherits(call, "error") || identical(call, quote(get_nth_call()))) {
-    stop("Could not determine nth call. get_nth_call can only be used ",
-         "in a function.")
+    stop(
+      "Could not determine nth call. get_nth_call can only be used ",
+      "in a function."
+    )
   }
   call
 }
@@ -201,12 +206,14 @@ handle_arg_call <- function(call = NULL, env = NULL) {
     ))]]
     if (!is.language(call)) {
       call <- quote(could_not_determine_call)
-      warning("Could not infer in which call an assertion was used, ",
-              sprintf(
-                "`%s` will be reported as the call in ",
-                deparse1(call)
-              ),
-              "the error message, if emitted")
+      warning(
+        "Could not infer in which call an assertion was used, ",
+        sprintf(
+          "`%s` will be reported as the call in ",
+          deparse1(call)
+        ),
+        "the error message, if emitted"
+      )
     }
   }
   return(call)
@@ -258,8 +265,10 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
     env <- parent.frame(2L)
   }
   if (is.null(x_nm)) {
-    expr <- substitute(substitute(ARG_NM, env = main_eval_env_candidate),
-                       list(ARG_NM = parse(text = arg_nm)[[1]]))
+    expr <- substitute(
+      substitute(ARG_NM, env = main_eval_env_candidate),
+      list(ARG_NM = parse(text = arg_nm)[[1]])
+    )
     # expr is now e.g. `substitute(x, env = main_eval_env)`
     # and evaluating it gives e.g. `"my_value"` if `env` is the evaluation env
     # of the "main" function which was called via `main_fun(x = "my_value")`
@@ -274,7 +283,7 @@ handle_arg_x_nm <- function(x_nm, env = NULL, arg_nm = "x") {
       parent_frame_of_env(env)
     )
     x_nm <- arg_nm
-    for (i  in seq_along(main_eval_env_candidate_set)) {
+    for (i in seq_along(main_eval_env_candidate_set)) {
       main_eval_env_candidate <- main_eval_env_candidate_set[[i]]
       if (!arg_nm %in% ls(main_eval_env_candidate)) {
         next()
@@ -316,9 +325,11 @@ relative_frame_of_env <- function(env, n) {
   pfs <- parent_frame_stack(1L)
   env_idx <- which(vapply(pfs, identical, logical(1L), y = env))
   if (length(env_idx) != 1) {
-    stop("Internal error: could not determine parent frame from the context ",
-         "of `env`. If you see this message, contact the package maintainer ",
-         utils::maintainer(pkg = "dbc"))
+    stop(
+      "Internal error: could not determine parent frame from the context ",
+      "of `env`. If you see this message, contact the package maintainer ",
+      utils::maintainer(pkg = "dbc")
+    )
   }
   if (env_idx + n < 1 || env_idx + n > length(pfs)) {
     return(emptyenv())
@@ -429,18 +440,22 @@ handle_args_inplace <- function(
   # Further robustification of how missing `x` is reported.
   # @codedoc_comment_block news("dbc::handle_args_inplace", "2025-02-11", "0.7.1")
   error_msg <- paste0(
-    "Argument `", env[["x_nm"]],
+    "Argument `",
+    env[["x_nm"]],
     "` was missing --- it has no default so ",
     "some value must be supplied!"
   )
-  error_expr <- substitute({
-    if ("x" %in% ls() && missing(x)) {
-      stop(simpleError(
-        message = ERROR_MSG,
-        call = quote(CALL)
-      ))
-    }
-  }, list(CALL = env[["call"]], ERROR_MSG = error_msg))
+  error_expr <- substitute(
+    {
+      if ("x" %in% ls() && missing(x)) {
+        stop(simpleError(
+          message = ERROR_MSG,
+          call = quote(CALL)
+        ))
+      }
+    },
+    list(CALL = env[["call"]], ERROR_MSG = error_msg)
+  )
   eval(error_expr, envir = main_eval_env)
   return(invisible(NULL))
 }
@@ -453,13 +468,16 @@ raise_internal_error_if_not <- function(...) {
     result <- eval(ddd_exprs[[i]], parent.frame(1L))
     if (!is.logical(result)) {
       error_msg <- paste0(
-        "internal error: test ", deparse(ddd_exprs[[i]]),
+        "internal error: test ",
+        deparse(ddd_exprs[[i]]),
         " did not evaluate to logical values; ",
-        "result had class(es) ", deparse(class(result))
+        "result had class(es) ",
+        deparse(class(result))
       )
     } else if (!all(result %in% TRUE)) {
       error_msg <- paste0(
-        "internal error: not all were TRUE: ", deparse(ddd_exprs[[i]])
+        "internal error: not all were TRUE: ",
+        deparse(ddd_exprs[[i]])
       )
     }
     if (!is.null(error_msg)) {
@@ -468,10 +486,6 @@ raise_internal_error_if_not <- function(...) {
   }
   invisible(NULL)
 }
-
-
-
-
 
 
 call_with_arg_list <- function(
@@ -522,7 +536,6 @@ call_with_arg_list.character <- function(
 }
 
 
-
 settings_env <- new.env(parent = emptyenv())
 settings_env[["in_dev_mode"]] <- FALSE
 #' @title Development Mode
@@ -549,9 +562,6 @@ set_dev_mode <- function(value) {
 get_dev_mode <- function() {
   identical(settings_env[["in_dev_mode"]], TRUE)
 }
-
-
-
 
 
 .__ERROR_DATA_ENV <- new.env(parent = emptyenv())
@@ -596,8 +606,14 @@ get_error_data <- function(n = 1L) {
   if (length(ds) == 0L) {
     stop("No errors recorded, cannot return anything")
   } else if (n > length(ds)) {
-    stop("n = ", n, " is too large: only ", length(ds), " errors have been ",
-         "recorded")
+    stop(
+      "n = ",
+      n,
+      " is too large: only ",
+      length(ds),
+      " errors have been ",
+      "recorded"
+    )
   }
   ds[[n]]
 }
@@ -607,7 +623,6 @@ get_error_data <- function(n = 1L) {
 get_newest_error_data <- function() {
   get_error_data(n = 1L)
 }
-
 
 
 list_union <- function(x) {
@@ -622,13 +637,9 @@ list_union <- function(x) {
 }
 
 
-
-
 get_report_df_template <- function() {
   report_df_template #internal dataset
 }
-
-
 
 
 get_function <- function(x, env = environment(get_function)) {
@@ -644,14 +655,19 @@ get_function <- function(x, env = environment(get_function)) {
       )
     }
     if (inherits(fun, "error")) {
-      stop("Internal error: Cannot find function based on string ", deparse(x),
-           "; if you can see this, complain to the maintainer of the command ",
-           "you just used")
+      stop(
+        "Internal error: Cannot find function based on string ",
+        deparse(x),
+        "; if you can see this, complain to the maintainer of the command ",
+        "you just used"
+      )
     }
   } else if (!is.function(x)) {
-    stop("Internal error: neither string nor function passed to get_function; ",
-         "if you can see this, complain to the maintainer of the command ",
-         "you just used")
+    stop(
+      "Internal error: neither string nor function passed to get_function; ",
+      "if you can see this, complain to the maintainer of the command ",
+      "you just used"
+    )
   } else {
     fun <- x
   }
@@ -698,10 +714,13 @@ aggregate_report_df <- function(x, pass) {
         } else if (is.logical(col)) {
           all(col %in% TRUE)
         } else {
-          stop("internal error --- function has programming error. ",
-               "no handling for report_df column ", deparse1(col_nm),
-               "has been defined. complain to the ",
-               "package maintainer.")
+          stop(
+            "internal error --- function has programming error. ",
+            "no handling for report_df column ",
+            deparse1(col_nm),
+            "has been defined. complain to the ",
+            "package maintainer."
+          )
         }
       }
     )

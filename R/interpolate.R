@@ -2,10 +2,10 @@
 #' @description
 #' Evaluate R expressions and interpolate result into string.
 #' @param x `[character]` (no default)
-#' 
+#'
 #' Text to interpolate into.
 #' @param env `[environment]` (default `parent.frame(1L)`)
-#' 
+#'
 #' Environment where any R expression in `x` will be evaluated.
 #' The default is the env where `dbc::interpolate` was called.
 #' @eval c(
@@ -62,15 +62,19 @@ interpolate <- function(
     #    what `eval` gives.
     # @codedoc_comment_block dbc::interpolate
     expr_string_vec <- substr(expr_string_vec, 3L, nchar(expr_string_vec) - 1L)
-    vapply(expr_string_vec, function(expression_substring) {
-      expr <- parse(text = expression_substring)[[1L]]
-      evaled <- tryCatch(
-        eval(expr, envir = env),
-        error = function(e) expression_substring,
-        warning = function(w) expression_substring
-      )
-      paste0(as.character(evaled), collapse = "")
-    }, character(1L))
+    vapply(
+      expr_string_vec,
+      function(expression_substring) {
+        expr <- parse(text = expression_substring)[[1L]]
+        evaled <- tryCatch(
+          eval(expr, envir = env),
+          error = function(e) expression_substring,
+          warning = function(w) expression_substring
+        )
+        paste0(as.character(evaled), collapse = "")
+      },
+      character(1L)
+    )
   })
   # @codedoc_comment_block dbc::interpolate
   # 3. Each expression substring in the original string is substituted with

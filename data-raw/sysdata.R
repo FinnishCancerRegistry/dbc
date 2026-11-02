@@ -1,4 +1,3 @@
-
 # @codedoc_comment_block news("dbc::report_data_table_has_no_duplicates", "2023-04-01", "0.4.11")
 # New fun `dbc::report_data_table_has_no_duplicates` and derivatives.
 # @codedoc_comment_block news("dbc::report_data_table_has_no_duplicates", "2023-04-01", "0.4.11")

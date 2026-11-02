@@ -168,4 +168,3 @@ assert_user_input_is_one_of <- function(
     raise_error_call = call
   )
 }
-

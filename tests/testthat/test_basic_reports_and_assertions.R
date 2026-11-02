@@ -1,9 +1,4 @@
-
-
-
-
 testthat::test_that("basic report / assertion funs work", {
-
   df_pass <- report_is_integer_nonNA_gtzero_atom(1L)
   df_fail <- report_is_integer_nonNA_gtzero_atom(0L)
 
@@ -19,15 +14,13 @@ testthat::test_that("basic report / assertion funs work", {
   testthat::expect_error(
     dbc::assert_atom_is_in_set(x = 0L, set = 1:5)
   )
-
 })
 
 
 testthat::test_that("enclosing function call included in report", {
-
   my_fun <- function(x) {
     dbc::assert_is_integer_gtzero_atom(x)
-    x ^ 5
+    x^5
   }
 
   call_string <- "my_fun(x = 0L)"
@@ -53,7 +46,3 @@ testthat::test_that("n_fail used even for atomic input", {
     0L
   )
 })
-
-
-
-

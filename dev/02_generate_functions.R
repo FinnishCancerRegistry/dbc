@@ -34,8 +34,7 @@ manually_written_report_df <- local({
   df
 })
 invisible(lapply(c("report", "test", "assertion"), function(fun_type) {
-  message("* generating fun_type = ", deparse(fun_type),
-          " funs...")
+  message("* generating fun_type = ", deparse(fun_type), " funs...")
   assertion_types <- list(NULL)
   if (fun_type == "assertion") {
     assertion_types <- dbc::assertion_types()
@@ -43,11 +42,18 @@ invisible(lapply(c("report", "test", "assertion"), function(fun_type) {
   }
   lapply(assertion_types, function(assertion_type) {
     if (!is.null(assertion_type)) {
-      message("* generating assertion_type = ", deparse(assertion_type),
-              " funs...")
+      message(
+        "* generating assertion_type = ",
+        deparse(assertion_type),
+        " funs..."
+      )
     }
     script_path <- paste0(
-      "R/generated_", assertion_type, "_", fun_type, "_funs.R"
+      "R/generated_",
+      assertion_type,
+      "_",
+      fun_type,
+      "_funs.R"
     )
     script_path <- gsub("_+", "_", script_path)
     dbc:::generate_script_from_expressions(
@@ -70,7 +76,8 @@ invisible(lapply(c("report", "test", "assertion"), function(fun_type) {
     dbc:::generate_report_function_wrapper_script(
       tgt_script_path = script_path,
       report_fun_nms = paste0(
-        "dbc::", manually_written_report_df[["report_fun_nm"]]
+        "dbc::",
+        manually_written_report_df[["report_fun_nm"]]
       ),
       extra_arg_sets = manually_written_report_df[["extra_arg_set"]],
       fun_type = fun_type,

@@ -1,5 +1,3 @@
-
-
 #' @rdname assertions
 #' @export
 #' @param env `[NULL, environment]` (default `NULL`)
@@ -88,7 +86,7 @@ assert <- function(
   # @codedoc_comment_block news("dbc::assert", "2024-01-16", "0.5.0")
   dbc::handle_args_inplace()
   #' @param ... (no default)
-  #' 
+  #'
   #' `dbc::assert`, `dbc::report`, and `dbc::test` evaluate all R expressions
   #' passed via `...` in the calling environment.
   expr_set <- as.list(substitute(list(...))[-1])
@@ -173,4 +171,3 @@ test <- function(
   }
   return(out)
 }
-

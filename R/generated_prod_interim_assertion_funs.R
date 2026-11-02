@@ -950,7 +950,12 @@ assert_prod_interim_is_data.frame <- function(
   dbc::handle_args_inplace()
   assertion_type <- "prod_interim"
   expressions <- list(
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); is.data.frame(x)})
+    quote({
+      warning(
+        "*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"
+      )
+      is.data.frame(x)
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -989,7 +994,12 @@ assert_prod_interim_is_data.frame_with_required_names <- function(
   assertion_type <- "prod_interim"
   expressions <- list(
     quote(is.data.frame(x)),
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
+    quote({
+      warning(
+        "*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"
+      )
+      length(miss_nms <- setdiff(required_names, names(x))) == 0L
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -1027,7 +1037,12 @@ assert_prod_interim_is_data.table <- function(
   dbc::handle_args_inplace()
   assertion_type <- "prod_interim"
   expressions <- list(
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); inherits(x, "data.table")})
+    quote({
+      warning(
+        "*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"
+      )
+      inherits(x, "data.table")
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -1066,7 +1081,12 @@ assert_prod_interim_is_data.table_with_required_names <- function(
   assertion_type <- "prod_interim"
   expressions <- list(
     quote(inherits(x, "data.table")),
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
+    quote({
+      warning(
+        "*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"
+      )
+      length(miss_nms <- setdiff(required_names, names(x))) == 0L
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -6883,7 +6903,12 @@ assert_prod_interim_is_report_df <- function(
   assertion_type <- "prod_interim"
   expressions <- list(
     quote(is.data.frame(x)),
-    quote(length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L)
+    quote(
+      length(
+        miss_col_nms <- setdiff(names(get_report_df_template()), names(x))
+      ) ==
+        0L
+    )
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -6926,7 +6951,16 @@ assert_prod_interim_is_subset_of_data_frame <- function(
     quote(is.data.frame(y)),
     quote(is.data.frame(x)),
     quote(names(x) %in% names(y)),
-    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)})
+    quote({
+      nrow(merge(
+        x = x,
+        y = y[, names(x)],
+        by = names(x),
+        all.x = FALSE,
+        all.y = FALSE
+      )) ==
+        nrow(x)
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -6971,7 +7005,16 @@ assert_prod_interim_is_subset_of_data_table <- function(
     quote(inherits(y, "data.table")),
     quote(is.data.frame(x)),
     quote(names(x) %in% names(y)),
-    quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)})
+    quote({
+      nrow(merge(
+        x = x,
+        y = y[, names(x)],
+        by = names(x),
+        all.x = FALSE,
+        all.y = FALSE
+      )) ==
+        nrow(x)
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -7201,7 +7244,11 @@ assert_prod_interim_match_regex <- function(
   dbc::handle_args_inplace()
   assertion_type <- "prod_interim"
   expressions <- list(
-    quote({grepl.arg.list[["x"]] <- x; t <- do.call(grepl, grepl.arg.list); t})
+    quote({
+      grepl.arg.list[["x"]] <- x
+      t <- do.call(grepl, grepl.arg.list)
+      t
+    })
   )
   if (is.null(messages)) {
     fail_messages <- c(
@@ -7262,4 +7309,3 @@ assert_prod_interim_vector_elems_are_in_set <- function(
   }
   return(invisible(NULL))
 }
-

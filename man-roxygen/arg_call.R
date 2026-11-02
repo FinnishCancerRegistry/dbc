@@ -1,4 +1,3 @@
-
 #' @param call `[language, NULL]` (optional, default `NULL`)
 #'
 #' - `language`: an R language object such as one produced by [match.call] or

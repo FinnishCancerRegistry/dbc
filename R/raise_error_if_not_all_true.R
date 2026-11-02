@@ -1,6 +1,3 @@
-
-
-
 # #' @title Yet Another Expression-to-Error Function
 # #' @description
 # #' Simple `stopifnot` substitute.
@@ -20,13 +17,19 @@ raise_error_if_not_all_true <- function(...) {
     )
     if (inherits(result, "error")) {
       error_msg <- paste0(
-        "Evaluation of \"", deparse(ddd_expr[[i]]), "\" resulted in ",
-        "this error: ", result[["message"]]
+        "Evaluation of \"",
+        deparse(ddd_expr[[i]]),
+        "\" resulted in ",
+        "this error: ",
+        result[["message"]]
       )
     } else if (!is.vector(result) || !is.logical(result)) {
       error_msg <- paste0(
-        "Evaluation of \"", deparse(ddd_expr[[i]]), "\" resulted in ",
-        "this error: ", result[["message"]]
+        "Evaluation of \"",
+        deparse(ddd_expr[[i]]),
+        "\" resulted in ",
+        "this error: ",
+        result[["message"]]
       )
     } else {
       is_fail <- !result %in% TRUE
@@ -34,12 +37,16 @@ raise_error_if_not_all_true <- function(...) {
       if (length(wh_fail) > 0L) {
         if (length(is_fail) == 1L) {
           error_msg <- paste0(
-            "\"", deparse(ddd_expr[[i]]), "\" evaluated to ",
+            "\"",
+            deparse(ddd_expr[[i]]),
+            "\" evaluated to ",
             deparse(result)
           )
         } else {
           error_msg <- paste0(
-            "Evaluation results of \"", deparse(ddd_expr[[i]]), "\" were not ",
+            "Evaluation results of \"",
+            deparse(ddd_expr[[i]]),
+            "\" were not ",
             "all TRUE. Positions of first five non-TRUE elements: ",
             deparse(utils::head(wh_fail, 5L))
           )
@@ -47,8 +54,11 @@ raise_error_if_not_all_true <- function(...) {
       }
     }
     if (!is.null(error_msg)) {
-      add_error_data(list(sys.calls = sys.calls(), call = this_call,
-                          msg = error_msg))
+      add_error_data(list(
+        sys.calls = sys.calls(),
+        call = this_call,
+        msg = error_msg
+      ))
       error_msg <- paste0(
         error_msg,
         ". You can use dbc::get_newest_error_data() to ",
@@ -60,7 +70,3 @@ raise_error_if_not_all_true <- function(...) {
   }
   return(invisible(NULL))
 }
-
-
-
-

@@ -1,4 +1,3 @@
-
 #' @title Expressions to Reports to Assertions
 #' @description
 #' Collect tests into a report data.frame, raise assertion errors in failed
@@ -8,10 +7,10 @@ NULL
 
 #' @rdname expressions_to_reports_to_assertions
 #' @param expression `[call]` (no default)
-#' 
+#'
 #' A call such as `x + 1`. Evaluated in a new, unpopulated environment.
 #' @param eval_parent_env `[environment]` (no default)
-#' 
+#'
 #' Environment to be the evaluation environment's parent.
 #' @export
 expression_eval <- function(expression, eval_parent_env) {
@@ -47,8 +46,11 @@ expression_eval <- function(expression, eval_parent_env) {
     n_pass <- length(result) - n_fail
   } else {
     stop(
-      "Test `", deparse1(expression), "` returned result of class(es) ",
-      deparse1(class(result)), "; logical or NULL was expected; see ",
+      "Test `",
+      deparse1(expression),
+      "` returned result of class(es) ",
+      deparse1(class(result)),
+      "; logical or NULL was expected; see ",
       "help for argument 'tests'"
     )
   }
@@ -175,20 +177,22 @@ expressions_to_report <- function(
     }
     return(expr)
   })
-  expression_strings <- vapply(expressions, function(expr) {
-    deparse1(expr)
-  }, character(1L))
+  expression_strings <- vapply(
+    expressions,
+    function(expr) {
+      deparse1(expr)
+    },
+    character(1L)
+  )
 
   raise_internal_error_if_not(
-    is.null(fail_messages) || (
-      is.character(fail_messages) &&
-        length(fail_messages) %in% c(1L, length(expressions))
-    ),
+    is.null(fail_messages) ||
+      (is.character(fail_messages) &&
+        length(fail_messages) %in% c(1L, length(expressions))),
 
-    is.null(pass_messages) || (
-      is.character(pass_messages) &&
-        length(pass_messages) %in% c(1L, length(expressions))
-    ),
+    is.null(pass_messages) ||
+      (is.character(pass_messages) &&
+        length(pass_messages) %in% c(1L, length(expressions))),
 
     is.environment(env)
   )
@@ -200,7 +204,9 @@ expressions_to_report <- function(
     fail_messages <- rep(fail_messages, length(expressions))
   }
   fail_messages[is.na(fail_messages)] <- paste0(
-    "test failed: `", expression_strings[is.na(fail_messages)], "`"
+    "test failed: `",
+    expression_strings[is.na(fail_messages)],
+    "`"
   )
   if (is.null(pass_messages)) {
     pass_messages <- rep(NA_character_, length(expressions))
@@ -208,7 +214,9 @@ expressions_to_report <- function(
     pass_messages <- rep(pass_messages, length(expressions))
   }
   pass_messages[is.na(pass_messages)] <- paste0(
-    "test passed: `", expression_strings[is.na(pass_messages)], "`"
+    "test passed: `",
+    expression_strings[is.na(pass_messages)],
+    "`"
   )
 
   # report_df ------------------------------------------------------------------
@@ -270,7 +278,7 @@ expressions_to_report <- function(
     #
     # @codedoc_comment_block dbc::expressions_to_report::interpolation
     fun_env[["report_df"]][["error"]][i] <- result[["error"]]
-    fun_env[["report_df"]][["pass"]][i]  <- result[["pass"]]
+    fun_env[["report_df"]][["pass"]][i] <- result[["pass"]]
     fun_env[["report_df"]][["n_fail"]][i] <- result[["n_fail"]]
     fun_env[["report_df"]][["wh_fail"]][[i]] <- result[["wh_fail"]]
 
@@ -284,7 +292,8 @@ expressions_to_report <- function(
       msg <- fail_messages[i]
     }
     fun_env[["report_df"]][["message"]][i] <- interpolate(
-      msg, env = interpolation_environment
+      msg,
+      env = interpolation_environment
     )
     NULL
   })
@@ -358,7 +367,7 @@ report_to_assertion <- function(
   # `[dbc::report_to_assertion]` now accepts (and has as default)
   # `assertion_type = NULL`. Arg `assertion_type` is handled by
   # `[dbc::handle_arg_assertion_type]`.
-  # 
+  #
   # Every assertion function with `assertion_type` argument now has as default
   # value `NULL`.
   # @codedoc_comment_block news("dbc::report_to_assertion", "2023-06-27", "0.4.14")
