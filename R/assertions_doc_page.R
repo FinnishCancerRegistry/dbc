@@ -32,4 +32,13 @@
 #'
 #' list of (optional) arguments passed to `[grepl]`
 #'
+#' @param messages `[NULL, character]` (default `NULL`)
+#'
+#' - `NULL`: Use the default failure message(s) of the assertion.
+#' - `character`: Override the default failure message(s). Either one message
+#'   used for every test performed by the assertion, or one message per test.
+#'   The messages are interpolated in the same way as the defaults, so e.g.
+#'   `"${x_nm}"` is replaced by the name of the object.
+#'   Only available in expression-based assertion functions.
+#'
 NULL

@@ -231,6 +231,16 @@ generate_function_from_expressions <- function(
   # expressions.
   # @codedoc_comment_block news("dbc::generate_function_from_expressions", "2024-01-11", "0.5.0")
 
+  if (fun_type == "assertion") {
+    # @codedoc_comment_block news("dbc", "2026-11-02", "0.8.2")
+    # All generated expression-based assertion functions now have argument
+    # `messages` (default `NULL`). It can be used to override the default
+    # failure messages of the assertion. Supply either one message for all
+    # tests or one message per test.
+    # @codedoc_comment_block news("dbc", "2026-11-02", "0.8.2")
+    stopifnot(!"messages" %in% names(extra_args))
+    extra_args <- c(extra_args, "messages" = "NULL")
+  }
   lines <- generate_function_start(
     fun_nm = fun_nm,
     fun_type = fun_type,
@@ -360,9 +370,16 @@ generate_assertion_function_body_from_expressions <- function(
       elems <- paste0(elems, ",")
       elems[length(elems)] <- sub(",$", "", elems[length(elems)])
       c(
-        "fail_messages <- c(",
-        paste0("  ", elems),
-        ")"
+        "if (is.null(messages)) {",
+        "  fail_messages <- c(",
+        paste0("    ", elems),
+        "  )",
+        "} else {",
+        "  fail_messages <- messages",
+        "  if (length(messages) == 1) {",
+        "    fail_messages <- rep(messages, length(expressions))",
+        "  }",
+        "}"
       )
     }),
     "for (i in seq_along(expressions)) {",

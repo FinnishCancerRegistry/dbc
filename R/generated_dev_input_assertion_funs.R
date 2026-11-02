@@ -8,16 +8,24 @@
 assert_dev_input_all_are_TRUE <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(all(x %in% TRUE))
   )
-  fail_messages <- c(
-    "Not all elements of `${x_nm}` were TRUE"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "Not all elements of `${x_nm}` were TRUE"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -38,7 +46,8 @@ assert_dev_input_atom_is_in_set <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  set
+  set,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -46,10 +55,17 @@ assert_dev_input_atom_is_in_set <- function(
     quote(length(x) == 1),
     quote(x %in% set)
   )
-  fail_messages <- c(
-    NA_character_,
-    "`${x_nm}` with value `${deparse1(x)}` was not in set of expected values (first ten): `${deparse1(utils::head(set, 10L))}`"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      NA_character_,
+      "`${x_nm}` with value `${deparse1(x)}` was not in set of expected values (first ten): `${deparse1(utils::head(set, 10L))}`"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -70,16 +86,24 @@ assert_dev_input_data_table_has_no_duplicates <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  by = names(x)
+  by = names(x),
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(!(dup <- duplicated(x, by = by)))
   )
-  fail_messages <- c(
-    "In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse1(utils::head(which(dup), 5))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "In total ${n_fail} rows of data.table ${deparse1(x_nm)} were duplicates (by ${deparse1(by)}); first five row numbers that were duplicated: ${deparse1(utils::head(which(dup), 5))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -99,16 +123,24 @@ assert_dev_input_data_table_has_no_duplicates <- function(
 assert_dev_input_dir_exists <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(length(bad_dirs <- x[!dir.exists(x)]) == 0L)
   )
-  fail_messages <- c(
-    "the following directory/directories in `${x_nm}` do not exist: ${deparse(bad_dirs)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "the following directory/directories in `${x_nm}` do not exist: ${deparse(bad_dirs)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -128,16 +160,24 @@ assert_dev_input_dir_exists <- function(
 assert_dev_input_file_exists <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(length(bad_files <- x[!file.exists(x)]) == 0L)
   )
-  fail_messages <- c(
-    "the following file(s) in `${x_nm}` do not exist: ${bad_files}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "the following file(s) in `${x_nm}` do not exist: ${bad_files}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -158,16 +198,24 @@ assert_dev_input_has_class <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_class
+  required_class,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, required_class))
   )
-  fail_messages <- c(
-    "expected `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "expected `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -188,16 +236,24 @@ assert_dev_input_has_length <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  expected_length
+  expected_length,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(length(x) == expected_length)
   )
-  fail_messages <- c(
-    "`${x_nm}` had length ${length(x)} instead of ${expected_length}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` had length ${length(x)} instead of ${expected_length}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -218,7 +274,8 @@ assert_dev_input_has_names <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -226,10 +283,17 @@ assert_dev_input_has_names <- function(
     quote(!is.null(names(x))),
     quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
   )
-  fail_messages <- c(
-    "`${x_nm}` did not have any names",
-    "`${x_nm}` did not have the following expected names: ${deparse(miss_nms)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` did not have any names",
+      "`${x_nm}` did not have the following expected names: ${deparse(miss_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -249,16 +313,24 @@ assert_dev_input_has_names <- function(
 assert_dev_input_has_no_duplicates <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(!duplicated(x))
   )
-  fail_messages <- c(
-    "In total ${n_fail} elements of object/param `${x_nm}` were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "In total ${n_fail} elements of object/param `${x_nm}` were duplicates; first five values that were duplicated: ${deparse(utils::head(unique(x[duplicated(x)]), 5L))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -279,16 +351,24 @@ assert_dev_input_has_one_of_classes <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  classes
+  classes,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, classes))
   )
-  fail_messages <- c(
-    "expected `${x_nm}` to have one of classes ${deparse1(classes)}, but it had class(es) ${deparse1(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "expected `${x_nm}` to have one of classes ${deparse1(classes)}, but it had class(es) ${deparse1(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -309,7 +389,8 @@ assert_dev_input_has_only_names <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -318,11 +399,18 @@ assert_dev_input_has_only_names <- function(
     quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L),
     quote(length(extra_nms <- setdiff(names(x), required_names)) == 0L)
   )
-  fail_messages <- c(
-    "`${x_nm}` did not have any names",
-    "`${x_nm}` did not have the following expected names: ${deparse(miss_nms)}",
-    "`${x_nm}` had the following unexpected names: ${deparse(extra_nms)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` did not have any names",
+      "`${x_nm}` did not have the following expected names: ${deparse(miss_nms)}",
+      "`${x_nm}` had the following unexpected names: ${deparse(extra_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -343,16 +431,24 @@ assert_dev_input_inherits <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_class
+  required_class,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, required_class))
   )
-  fail_messages <- c(
-    "expected `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "expected `${x_nm}` to have class ${required_class}, but it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -372,7 +468,8 @@ assert_dev_input_inherits <- function(
 assert_dev_input_is_assertion_type <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -382,12 +479,19 @@ assert_dev_input_is_assertion_type <- function(
     quote(!is.na(x)),
     quote(x %in% dbc::assertion_types())
   )
-  fail_messages <- c(
-    "`${x_nm}` was not atomic",
-    "`${x_nm}` was not a string",
-    "`${x_nm}` was NA",
-    "`${x_nm}` was not one of the strings given by dbc::assertion_types()"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not atomic",
+      "`${x_nm}` was not a string",
+      "`${x_nm}` was NA",
+      "`${x_nm}` was not one of the strings given by dbc::assertion_types()"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -407,16 +511,24 @@ assert_dev_input_is_assertion_type <- function(
 assert_dev_input_is_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(length(x) == 1L)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -438,16 +550,24 @@ assert_dev_input_is_between_exclusive <- function(
   x_nm = NULL,
   call = NULL,
   lo,
-  hi
+  hi,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(dbc::is_between_exclusive(x = x, lo = lo, hi = hi))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were outside exclusive bounds ${lo}, ${hi}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -469,16 +589,24 @@ assert_dev_input_is_between_inclusive <- function(
   x_nm = NULL,
   call = NULL,
   lo,
-  hi
+  hi,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(dbc::is_between_inclusive(x = x, lo = lo, hi = hi))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were outside inclusive bounds ${lo}, ${hi}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -498,16 +626,24 @@ assert_dev_input_is_between_inclusive <- function(
 assert_dev_input_is_call <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.call(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a call object; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a call object; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -527,16 +663,24 @@ assert_dev_input_is_call <- function(
 assert_dev_input_is_character <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.character(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -556,7 +700,8 @@ assert_dev_input_is_character <- function(
 assert_dev_input_is_character_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -564,10 +709,17 @@ assert_dev_input_is_character_atom <- function(
     quote(length(x) == 1L),
     quote(is.character(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -587,7 +739,8 @@ assert_dev_input_is_character_atom <- function(
 assert_dev_input_is_character_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -595,10 +748,17 @@ assert_dev_input_is_character_matrix <- function(
     quote(is.character(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -618,7 +778,8 @@ assert_dev_input_is_character_matrix <- function(
 assert_dev_input_is_character_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -627,11 +788,18 @@ assert_dev_input_is_character_nonNA_atom <- function(
     quote(is.character(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -651,7 +819,8 @@ assert_dev_input_is_character_nonNA_atom <- function(
 assert_dev_input_is_character_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -660,11 +829,18 @@ assert_dev_input_is_character_nonNA_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -684,7 +860,8 @@ assert_dev_input_is_character_nonNA_matrix <- function(
 assert_dev_input_is_character_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -694,12 +871,19 @@ assert_dev_input_is_character_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -719,7 +903,8 @@ assert_dev_input_is_character_nonNA_vector <- function(
 assert_dev_input_is_character_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -728,133 +913,18 @@ assert_dev_input_is_character_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
-  for (i in seq_along(expressions)) {
-    dbc::assertion_eval(
-      expression = expressions[[i]],
-      fail_message = fail_messages[i],
-      assertion_type = assertion_type,
-      x_nm = x_nm,
-      call = call
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class character; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
     )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
   }
-  return(invisible(NULL))
-}
-
-# generated by dbc::generate_script_from_expressions.
-# do no modify by hand!
-#' @rdname assertions
-#' @export
-assert_dev_input_is_data.frame <- function(
-  x,
-  x_nm = NULL,
-  call = NULL
-) {
-  dbc::handle_args_inplace()
-  assertion_type <- "dev_input"
-  expressions <- list(
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); is.data.frame(x)})
-  )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}"
-  )
-  for (i in seq_along(expressions)) {
-    dbc::assertion_eval(
-      expression = expressions[[i]],
-      fail_message = fail_messages[i],
-      assertion_type = assertion_type,
-      x_nm = x_nm,
-      call = call
-    )
-  }
-  return(invisible(NULL))
-}
-
-# generated by dbc::generate_script_from_expressions.
-# do no modify by hand!
-#' @rdname assertions
-#' @export
-assert_dev_input_is_data.frame_with_required_names <- function(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-) {
-  dbc::handle_args_inplace()
-  assertion_type <- "dev_input"
-  expressions <- list(
-    quote(is.data.frame(x)),
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
-  )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
-  )
-  for (i in seq_along(expressions)) {
-    dbc::assertion_eval(
-      expression = expressions[[i]],
-      fail_message = fail_messages[i],
-      assertion_type = assertion_type,
-      x_nm = x_nm,
-      call = call
-    )
-  }
-  return(invisible(NULL))
-}
-
-# generated by dbc::generate_script_from_expressions.
-# do no modify by hand!
-#' @rdname assertions
-#' @export
-assert_dev_input_is_data.table <- function(
-  x,
-  x_nm = NULL,
-  call = NULL
-) {
-  dbc::handle_args_inplace()
-  assertion_type <- "dev_input"
-  expressions <- list(
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); inherits(x, "data.table")})
-  )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
-  )
-  for (i in seq_along(expressions)) {
-    dbc::assertion_eval(
-      expression = expressions[[i]],
-      fail_message = fail_messages[i],
-      assertion_type = assertion_type,
-      x_nm = x_nm,
-      call = call
-    )
-  }
-  return(invisible(NULL))
-}
-
-# generated by dbc::generate_script_from_expressions.
-# do no modify by hand!
-#' @rdname assertions
-#' @export
-assert_dev_input_is_data.table_with_required_names <- function(
-  x,
-  x_nm = NULL,
-  call = NULL,
-  required_names
-) {
-  dbc::handle_args_inplace()
-  assertion_type <- "dev_input"
-  expressions <- list(
-    quote(inherits(x, "data.table")),
-    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
-  )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
-  )
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -874,16 +944,24 @@ assert_dev_input_is_data.table_with_required_names <- function(
 assert_dev_input_is_data_frame <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.data.frame(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -904,7 +982,8 @@ assert_dev_input_is_data_frame_with_required_names <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -912,10 +991,17 @@ assert_dev_input_is_data_frame_with_required_names <- function(
     quote(is.data.frame(x)),
     quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -935,16 +1021,24 @@ assert_dev_input_is_data_frame_with_required_names <- function(
 assert_dev_input_is_data_table <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, "data.table"))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -965,7 +1059,8 @@ assert_dev_input_is_data_table_with_required_names <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_names
+  required_names,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -973,10 +1068,171 @@ assert_dev_input_is_data_table_with_required_names <- function(
     quote(inherits(x, "data.table")),
     quote(length(miss_nms <- setdiff(required_names, names(x))) == 0L)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
+  for (i in seq_along(expressions)) {
+    dbc::assertion_eval(
+      expression = expressions[[i]],
+      fail_message = fail_messages[i],
+      assertion_type = assertion_type,
+      x_nm = x_nm,
+      call = call
+    )
+  }
+  return(invisible(NULL))
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+assert_dev_input_is_data.frame <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  messages = NULL
+) {
+  dbc::handle_args_inplace()
+  assertion_type <- "dev_input"
+  expressions <- list(
+    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); is.data.frame(x)})
   )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
+  for (i in seq_along(expressions)) {
+    dbc::assertion_eval(
+      expression = expressions[[i]],
+      fail_message = fail_messages[i],
+      assertion_type = assertion_type,
+      x_nm = x_nm,
+      call = call
+    )
+  }
+  return(invisible(NULL))
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+assert_dev_input_is_data.frame_with_required_names <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names,
+  messages = NULL
+) {
+  dbc::handle_args_inplace()
+  assertion_type <- "dev_input"
+  expressions <- list(
+    quote(is.data.frame(x)),
+    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
+  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.frame; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
+  for (i in seq_along(expressions)) {
+    dbc::assertion_eval(
+      expression = expressions[[i]],
+      fail_message = fail_messages[i],
+      assertion_type = assertion_type,
+      x_nm = x_nm,
+      call = call
+    )
+  }
+  return(invisible(NULL))
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+assert_dev_input_is_data.table <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  messages = NULL
+) {
+  dbc::handle_args_inplace()
+  assertion_type <- "dev_input"
+  expressions <- list(
+    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); inherits(x, "data.table")})
+  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
+  for (i in seq_along(expressions)) {
+    dbc::assertion_eval(
+      expression = expressions[[i]],
+      fail_message = fail_messages[i],
+      assertion_type = assertion_type,
+      x_nm = x_nm,
+      call = call
+    )
+  }
+  return(invisible(NULL))
+}
+
+# generated by dbc::generate_script_from_expressions.
+# do no modify by hand!
+#' @rdname assertions
+#' @export
+assert_dev_input_is_data.table_with_required_names <- function(
+  x,
+  x_nm = NULL,
+  call = NULL,
+  required_names,
+  messages = NULL
+) {
+  dbc::handle_args_inplace()
+  assertion_type <- "dev_input"
+  expressions <- list(
+    quote(inherits(x, "data.table")),
+    quote({warning("*_is_data.frame/table* functions will be removed in a future release; use *_is_data_frame/table* functions instead (fully snake_case)"); length(miss_nms <- setdiff(required_names, names(x))) == 0L})
+  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.table; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` did not have the following expected columns: ${deparse(miss_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -996,16 +1252,24 @@ assert_dev_input_is_data_table_with_required_names <- function(
 assert_dev_input_is_Date <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, "Date"))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1025,7 +1289,8 @@ assert_dev_input_is_Date <- function(
 assert_dev_input_is_Date_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1033,10 +1298,17 @@ assert_dev_input_is_Date_atom <- function(
     quote(length(x) == 1L),
     quote(inherits(x, "Date"))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1056,7 +1328,8 @@ assert_dev_input_is_Date_atom <- function(
 assert_dev_input_is_Date_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1064,10 +1337,17 @@ assert_dev_input_is_Date_matrix <- function(
     quote(inherits(x, "Date")),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1087,7 +1367,8 @@ assert_dev_input_is_Date_matrix <- function(
 assert_dev_input_is_Date_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1096,11 +1377,18 @@ assert_dev_input_is_Date_nonNA_atom <- function(
     quote(inherits(x, "Date")),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1120,7 +1408,8 @@ assert_dev_input_is_Date_nonNA_atom <- function(
 assert_dev_input_is_Date_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1129,11 +1418,18 @@ assert_dev_input_is_Date_nonNA_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1153,7 +1449,8 @@ assert_dev_input_is_Date_nonNA_matrix <- function(
 assert_dev_input_is_Date_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1163,12 +1460,19 @@ assert_dev_input_is_Date_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1188,7 +1492,8 @@ assert_dev_input_is_Date_nonNA_vector <- function(
 assert_dev_input_is_Date_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1197,11 +1502,18 @@ assert_dev_input_is_Date_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class Date; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1221,16 +1533,24 @@ assert_dev_input_is_Date_vector <- function(
 assert_dev_input_is_double <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.double(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1250,7 +1570,8 @@ assert_dev_input_is_double <- function(
 assert_dev_input_is_double_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1258,10 +1579,17 @@ assert_dev_input_is_double_atom <- function(
     quote(length(x) == 1L),
     quote(is.double(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1281,7 +1609,8 @@ assert_dev_input_is_double_atom <- function(
 assert_dev_input_is_double_gtezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1290,11 +1619,18 @@ assert_dev_input_is_double_gtezero_atom <- function(
     quote(is.double(x)),
     quote(x[!is.na(x)] >= 0)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were < 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were < 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1314,7 +1650,8 @@ assert_dev_input_is_double_gtezero_atom <- function(
 assert_dev_input_is_double_gtezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1323,11 +1660,18 @@ assert_dev_input_is_double_gtezero_matrix <- function(
     quote(x[!is.na(x)] >= 0),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1347,7 +1691,8 @@ assert_dev_input_is_double_gtezero_matrix <- function(
 assert_dev_input_is_double_gtezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1357,12 +1702,19 @@ assert_dev_input_is_double_gtezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1382,7 +1734,8 @@ assert_dev_input_is_double_gtezero_vector <- function(
 assert_dev_input_is_double_gtzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1391,11 +1744,18 @@ assert_dev_input_is_double_gtzero_atom <- function(
     quote(is.double(x)),
     quote(x[!is.na(x)] > 0)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were <= 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were <= 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1415,7 +1775,8 @@ assert_dev_input_is_double_gtzero_atom <- function(
 assert_dev_input_is_double_gtzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1424,11 +1785,18 @@ assert_dev_input_is_double_gtzero_matrix <- function(
     quote(x[!is.na(x)] > 0),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1448,7 +1816,8 @@ assert_dev_input_is_double_gtzero_matrix <- function(
 assert_dev_input_is_double_gtzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1458,12 +1827,19 @@ assert_dev_input_is_double_gtzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1483,7 +1859,8 @@ assert_dev_input_is_double_gtzero_vector <- function(
 assert_dev_input_is_double_ltezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1492,11 +1869,18 @@ assert_dev_input_is_double_ltezero_atom <- function(
     quote(is.double(x)),
     quote(x[!is.na(x)] <= 0)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1516,7 +1900,8 @@ assert_dev_input_is_double_ltezero_atom <- function(
 assert_dev_input_is_double_ltezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1525,11 +1910,18 @@ assert_dev_input_is_double_ltezero_matrix <- function(
     quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1549,7 +1941,8 @@ assert_dev_input_is_double_ltezero_matrix <- function(
 assert_dev_input_is_double_ltezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1559,12 +1952,19 @@ assert_dev_input_is_double_ltezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1584,7 +1984,8 @@ assert_dev_input_is_double_ltezero_vector <- function(
 assert_dev_input_is_double_ltzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1593,11 +1994,18 @@ assert_dev_input_is_double_ltzero_atom <- function(
     quote(is.double(x)),
     quote(x[!is.na(x)] < 0)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1617,7 +2025,8 @@ assert_dev_input_is_double_ltzero_atom <- function(
 assert_dev_input_is_double_ltzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1626,11 +2035,18 @@ assert_dev_input_is_double_ltzero_matrix <- function(
     quote(x[!is.na(x)] < 0),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1650,7 +2066,8 @@ assert_dev_input_is_double_ltzero_matrix <- function(
 assert_dev_input_is_double_ltzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1660,12 +2077,19 @@ assert_dev_input_is_double_ltzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1685,7 +2109,8 @@ assert_dev_input_is_double_ltzero_vector <- function(
 assert_dev_input_is_double_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1693,10 +2118,17 @@ assert_dev_input_is_double_matrix <- function(
     quote(is.double(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1716,7 +2148,8 @@ assert_dev_input_is_double_matrix <- function(
 assert_dev_input_is_double_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1725,11 +2158,18 @@ assert_dev_input_is_double_nonNA_atom <- function(
     quote(is.double(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1749,7 +2189,8 @@ assert_dev_input_is_double_nonNA_atom <- function(
 assert_dev_input_is_double_nonNA_gtezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1759,12 +2200,19 @@ assert_dev_input_is_double_nonNA_gtezero_atom <- function(
     quote(x[!is.na(x)] >= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1784,7 +2232,8 @@ assert_dev_input_is_double_nonNA_gtezero_atom <- function(
 assert_dev_input_is_double_nonNA_gtezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1794,12 +2243,19 @@ assert_dev_input_is_double_nonNA_gtezero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1819,7 +2275,8 @@ assert_dev_input_is_double_nonNA_gtezero_matrix <- function(
 assert_dev_input_is_double_nonNA_gtezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1830,13 +2287,20 @@ assert_dev_input_is_double_nonNA_gtezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1856,7 +2320,8 @@ assert_dev_input_is_double_nonNA_gtezero_vector <- function(
 assert_dev_input_is_double_nonNA_gtzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1866,12 +2331,19 @@ assert_dev_input_is_double_nonNA_gtzero_atom <- function(
     quote(x[!is.na(x)] > 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1891,7 +2363,8 @@ assert_dev_input_is_double_nonNA_gtzero_atom <- function(
 assert_dev_input_is_double_nonNA_gtzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1901,12 +2374,19 @@ assert_dev_input_is_double_nonNA_gtzero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1926,7 +2406,8 @@ assert_dev_input_is_double_nonNA_gtzero_matrix <- function(
 assert_dev_input_is_double_nonNA_gtzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1937,13 +2418,20 @@ assert_dev_input_is_double_nonNA_gtzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1963,7 +2451,8 @@ assert_dev_input_is_double_nonNA_gtzero_vector <- function(
 assert_dev_input_is_double_nonNA_ltezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -1973,12 +2462,19 @@ assert_dev_input_is_double_nonNA_ltezero_atom <- function(
     quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -1998,7 +2494,8 @@ assert_dev_input_is_double_nonNA_ltezero_atom <- function(
 assert_dev_input_is_double_nonNA_ltezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2008,12 +2505,19 @@ assert_dev_input_is_double_nonNA_ltezero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2033,7 +2537,8 @@ assert_dev_input_is_double_nonNA_ltezero_matrix <- function(
 assert_dev_input_is_double_nonNA_ltezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2044,13 +2549,20 @@ assert_dev_input_is_double_nonNA_ltezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2070,7 +2582,8 @@ assert_dev_input_is_double_nonNA_ltezero_vector <- function(
 assert_dev_input_is_double_nonNA_ltzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2080,12 +2593,19 @@ assert_dev_input_is_double_nonNA_ltzero_atom <- function(
     quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2105,7 +2625,8 @@ assert_dev_input_is_double_nonNA_ltzero_atom <- function(
 assert_dev_input_is_double_nonNA_ltzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2115,12 +2636,19 @@ assert_dev_input_is_double_nonNA_ltzero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2140,7 +2668,8 @@ assert_dev_input_is_double_nonNA_ltzero_matrix <- function(
 assert_dev_input_is_double_nonNA_ltzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2151,13 +2680,20 @@ assert_dev_input_is_double_nonNA_ltzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2177,7 +2713,8 @@ assert_dev_input_is_double_nonNA_ltzero_vector <- function(
 assert_dev_input_is_double_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2186,11 +2723,18 @@ assert_dev_input_is_double_nonNA_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2210,7 +2754,8 @@ assert_dev_input_is_double_nonNA_matrix <- function(
 assert_dev_input_is_double_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2220,12 +2765,19 @@ assert_dev_input_is_double_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2245,7 +2797,8 @@ assert_dev_input_is_double_nonNA_vector <- function(
 assert_dev_input_is_double_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2254,11 +2807,18 @@ assert_dev_input_is_double_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class numeric; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2278,16 +2838,24 @@ assert_dev_input_is_double_vector <- function(
 assert_dev_input_is_environment <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.environment(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not an environment object"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not an environment object"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2307,16 +2875,24 @@ assert_dev_input_is_environment <- function(
 assert_dev_input_is_expression <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.expression(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not an `expression` object; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not an `expression` object; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2336,16 +2912,24 @@ assert_dev_input_is_expression <- function(
 assert_dev_input_is_factor <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.factor(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2365,7 +2949,8 @@ assert_dev_input_is_factor <- function(
 assert_dev_input_is_factor_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2373,10 +2958,17 @@ assert_dev_input_is_factor_atom <- function(
     quote(length(x) == 1L),
     quote(is.factor(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2396,7 +2988,8 @@ assert_dev_input_is_factor_atom <- function(
 assert_dev_input_is_factor_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2404,10 +2997,17 @@ assert_dev_input_is_factor_matrix <- function(
     quote(is.factor(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2427,7 +3027,8 @@ assert_dev_input_is_factor_matrix <- function(
 assert_dev_input_is_factor_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2436,11 +3037,18 @@ assert_dev_input_is_factor_nonNA_atom <- function(
     quote(is.factor(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2460,7 +3068,8 @@ assert_dev_input_is_factor_nonNA_atom <- function(
 assert_dev_input_is_factor_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2469,11 +3078,18 @@ assert_dev_input_is_factor_nonNA_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2493,7 +3109,8 @@ assert_dev_input_is_factor_nonNA_matrix <- function(
 assert_dev_input_is_factor_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2503,12 +3120,19 @@ assert_dev_input_is_factor_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2528,7 +3152,8 @@ assert_dev_input_is_factor_nonNA_vector <- function(
 assert_dev_input_is_factor_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2537,11 +3162,18 @@ assert_dev_input_is_factor_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class factor; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2562,7 +3194,8 @@ assert_dev_input_is_factor_with_levels <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  expected_levels
+  expected_levels,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2571,11 +3204,18 @@ assert_dev_input_is_factor_with_levels <- function(
     quote(length(extra_levels <- setdiff(levels(x), expected_levels)) == 0L),
     quote(length(miss_levels <- setdiff(expected_levels, levels(x))) == 0L)
   )
-  fail_messages <- c(
-    "`${x_nm}` is not a factor; instead it had class(es) ${deparse(class(x))}",
-    "factor `${x_nm}` had these unexpected levels: ${deparse(extra_levels)}",
-    "factor `${x_nm}` did not have these expected levels: ${deparse(miss_levels)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` is not a factor; instead it had class(es) ${deparse(class(x))}",
+      "factor `${x_nm}` had these unexpected levels: ${deparse(extra_levels)}",
+      "factor `${x_nm}` did not have these expected levels: ${deparse(miss_levels)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2595,16 +3235,24 @@ assert_dev_input_is_factor_with_levels <- function(
 assert_dev_input_is_function <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.function(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a function; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a function; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2625,7 +3273,8 @@ assert_dev_input_is_function_with_required_argument_names <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  required_argument_names
+  required_argument_names,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2633,10 +3282,17 @@ assert_dev_input_is_function_with_required_argument_names <- function(
     quote(is.function(x)),
     quote(all(required_argument_names %in% names(formals(x))))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a function",
-    "`${x_nm}` did not have all required arguments ${deparse(required_argument_names)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a function",
+      "`${x_nm}` did not have all required arguments ${deparse(required_argument_names)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2657,16 +3313,24 @@ assert_dev_input_is_gt <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  lo
+  lo,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] > lo)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= ${lo}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= ${lo}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2687,16 +3351,24 @@ assert_dev_input_is_gte <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  lo
+  lo,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] >= lo)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < ${lo}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < ${lo}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2716,16 +3388,24 @@ assert_dev_input_is_gte <- function(
 assert_dev_input_is_gtezero <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] >= 0)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2745,16 +3425,24 @@ assert_dev_input_is_gtezero <- function(
 assert_dev_input_is_gtzero <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] > 0)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2774,16 +3462,24 @@ assert_dev_input_is_gtzero <- function(
 assert_dev_input_is_integer <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.integer(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2803,7 +3499,8 @@ assert_dev_input_is_integer <- function(
 assert_dev_input_is_integer_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2811,10 +3508,17 @@ assert_dev_input_is_integer_atom <- function(
     quote(length(x) == 1L),
     quote(is.integer(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2834,7 +3538,8 @@ assert_dev_input_is_integer_atom <- function(
 assert_dev_input_is_integer_gtezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2843,11 +3548,18 @@ assert_dev_input_is_integer_gtezero_atom <- function(
     quote(x[!is.na(x)] >= 0),
     quote(is.integer(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2867,7 +3579,8 @@ assert_dev_input_is_integer_gtezero_atom <- function(
 assert_dev_input_is_integer_gtezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2876,11 +3589,18 @@ assert_dev_input_is_integer_gtezero_matrix <- function(
     quote(is.integer(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2900,7 +3620,8 @@ assert_dev_input_is_integer_gtezero_matrix <- function(
 assert_dev_input_is_integer_gtezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2910,12 +3631,19 @@ assert_dev_input_is_integer_gtezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2935,7 +3663,8 @@ assert_dev_input_is_integer_gtezero_vector <- function(
 assert_dev_input_is_integer_gtzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2944,11 +3673,18 @@ assert_dev_input_is_integer_gtzero_atom <- function(
     quote(x[!is.na(x)] > 0),
     quote(is.integer(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -2968,7 +3704,8 @@ assert_dev_input_is_integer_gtzero_atom <- function(
 assert_dev_input_is_integer_gtzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -2977,11 +3714,18 @@ assert_dev_input_is_integer_gtzero_matrix <- function(
     quote(is.integer(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3001,7 +3745,8 @@ assert_dev_input_is_integer_gtzero_matrix <- function(
 assert_dev_input_is_integer_gtzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3011,12 +3756,19 @@ assert_dev_input_is_integer_gtzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3036,7 +3788,8 @@ assert_dev_input_is_integer_gtzero_vector <- function(
 assert_dev_input_is_integer_ltezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3045,11 +3798,18 @@ assert_dev_input_is_integer_ltezero_atom <- function(
     quote(is.integer(x)),
     quote(x[!is.na(x)] <= 0)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3069,7 +3829,8 @@ assert_dev_input_is_integer_ltezero_atom <- function(
 assert_dev_input_is_integer_ltezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3078,11 +3839,18 @@ assert_dev_input_is_integer_ltezero_matrix <- function(
     quote(x[!is.na(x)] <= 0),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3102,7 +3870,8 @@ assert_dev_input_is_integer_ltezero_matrix <- function(
 assert_dev_input_is_integer_ltezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3112,12 +3881,19 @@ assert_dev_input_is_integer_ltezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3137,7 +3913,8 @@ assert_dev_input_is_integer_ltezero_vector <- function(
 assert_dev_input_is_integer_ltzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3146,11 +3923,18 @@ assert_dev_input_is_integer_ltzero_atom <- function(
     quote(is.integer(x)),
     quote(x[!is.na(x)] < 0)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3170,7 +3954,8 @@ assert_dev_input_is_integer_ltzero_atom <- function(
 assert_dev_input_is_integer_ltzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3179,11 +3964,18 @@ assert_dev_input_is_integer_ltzero_matrix <- function(
     quote(x[!is.na(x)] < 0),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3203,7 +3995,8 @@ assert_dev_input_is_integer_ltzero_matrix <- function(
 assert_dev_input_is_integer_ltzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3213,12 +4006,19 @@ assert_dev_input_is_integer_ltzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3238,7 +4038,8 @@ assert_dev_input_is_integer_ltzero_vector <- function(
 assert_dev_input_is_integer_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3246,10 +4047,17 @@ assert_dev_input_is_integer_matrix <- function(
     quote(is.integer(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3269,7 +4077,8 @@ assert_dev_input_is_integer_matrix <- function(
 assert_dev_input_is_integer_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3278,11 +4087,18 @@ assert_dev_input_is_integer_nonNA_atom <- function(
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3302,7 +4118,8 @@ assert_dev_input_is_integer_nonNA_atom <- function(
 assert_dev_input_is_integer_nonNA_gtezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3312,12 +4129,19 @@ assert_dev_input_is_integer_nonNA_gtezero_atom <- function(
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3337,7 +4161,8 @@ assert_dev_input_is_integer_nonNA_gtezero_atom <- function(
 assert_dev_input_is_integer_nonNA_gtezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3347,12 +4172,19 @@ assert_dev_input_is_integer_nonNA_gtezero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3372,7 +4204,8 @@ assert_dev_input_is_integer_nonNA_gtezero_matrix <- function(
 assert_dev_input_is_integer_nonNA_gtezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3383,13 +4216,20 @@ assert_dev_input_is_integer_nonNA_gtezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3409,7 +4249,8 @@ assert_dev_input_is_integer_nonNA_gtezero_vector <- function(
 assert_dev_input_is_integer_nonNA_gtzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3419,12 +4260,19 @@ assert_dev_input_is_integer_nonNA_gtzero_atom <- function(
     quote(is.integer(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3444,7 +4292,8 @@ assert_dev_input_is_integer_nonNA_gtzero_atom <- function(
 assert_dev_input_is_integer_nonNA_gtzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3454,12 +4303,19 @@ assert_dev_input_is_integer_nonNA_gtzero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3479,7 +4335,8 @@ assert_dev_input_is_integer_nonNA_gtzero_matrix <- function(
 assert_dev_input_is_integer_nonNA_gtzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3490,13 +4347,20 @@ assert_dev_input_is_integer_nonNA_gtzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3516,7 +4380,8 @@ assert_dev_input_is_integer_nonNA_gtzero_vector <- function(
 assert_dev_input_is_integer_nonNA_ltezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3526,12 +4391,19 @@ assert_dev_input_is_integer_nonNA_ltezero_atom <- function(
     quote(x[!is.na(x)] <= 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3551,7 +4423,8 @@ assert_dev_input_is_integer_nonNA_ltezero_atom <- function(
 assert_dev_input_is_integer_nonNA_ltezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3561,12 +4434,19 @@ assert_dev_input_is_integer_nonNA_ltezero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3586,7 +4466,8 @@ assert_dev_input_is_integer_nonNA_ltezero_matrix <- function(
 assert_dev_input_is_integer_nonNA_ltezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3597,13 +4478,20 @@ assert_dev_input_is_integer_nonNA_ltezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3623,7 +4511,8 @@ assert_dev_input_is_integer_nonNA_ltezero_vector <- function(
 assert_dev_input_is_integer_nonNA_ltzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3633,12 +4522,19 @@ assert_dev_input_is_integer_nonNA_ltzero_atom <- function(
     quote(x[!is.na(x)] < 0),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3658,7 +4554,8 @@ assert_dev_input_is_integer_nonNA_ltzero_atom <- function(
 assert_dev_input_is_integer_nonNA_ltzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3668,12 +4565,19 @@ assert_dev_input_is_integer_nonNA_ltzero_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3693,7 +4597,8 @@ assert_dev_input_is_integer_nonNA_ltzero_matrix <- function(
 assert_dev_input_is_integer_nonNA_ltzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3704,13 +4609,20 @@ assert_dev_input_is_integer_nonNA_ltzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3730,7 +4642,8 @@ assert_dev_input_is_integer_nonNA_ltzero_vector <- function(
 assert_dev_input_is_integer_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3739,11 +4652,18 @@ assert_dev_input_is_integer_nonNA_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3763,7 +4683,8 @@ assert_dev_input_is_integer_nonNA_matrix <- function(
 assert_dev_input_is_integer_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3773,12 +4694,19 @@ assert_dev_input_is_integer_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3798,7 +4726,8 @@ assert_dev_input_is_integer_nonNA_vector <- function(
 assert_dev_input_is_integer_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3807,11 +4736,18 @@ assert_dev_input_is_integer_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class integer; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3831,16 +4767,24 @@ assert_dev_input_is_integer_vector <- function(
 assert_dev_input_is_language_object <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.language(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not an R language object; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not an R language object; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3860,16 +4804,24 @@ assert_dev_input_is_language_object <- function(
 assert_dev_input_is_list <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(inherits(x, "list"))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3889,16 +4841,24 @@ assert_dev_input_is_list <- function(
 assert_dev_input_is_logical <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.logical(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3918,7 +4878,8 @@ assert_dev_input_is_logical <- function(
 assert_dev_input_is_logical_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3926,10 +4887,17 @@ assert_dev_input_is_logical_atom <- function(
     quote(length(x) == 1L),
     quote(is.logical(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3949,7 +4917,8 @@ assert_dev_input_is_logical_atom <- function(
 assert_dev_input_is_logical_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3957,10 +4926,17 @@ assert_dev_input_is_logical_matrix <- function(
     quote(is.logical(x)),
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -3980,7 +4956,8 @@ assert_dev_input_is_logical_matrix <- function(
 assert_dev_input_is_logical_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -3989,11 +4966,18 @@ assert_dev_input_is_logical_nonNA_atom <- function(
     quote(is.logical(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4013,7 +4997,8 @@ assert_dev_input_is_logical_nonNA_atom <- function(
 assert_dev_input_is_logical_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4022,11 +5007,18 @@ assert_dev_input_is_logical_nonNA_matrix <- function(
     quote(is.matrix(x)),
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4046,7 +5038,8 @@ assert_dev_input_is_logical_nonNA_matrix <- function(
 assert_dev_input_is_logical_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4056,12 +5049,19 @@ assert_dev_input_is_logical_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4081,7 +5081,8 @@ assert_dev_input_is_logical_nonNA_vector <- function(
 assert_dev_input_is_logical_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4090,11 +5091,18 @@ assert_dev_input_is_logical_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class logical; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4115,16 +5123,24 @@ assert_dev_input_is_lt <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  hi
+  hi,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] < hi)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were >= ${hi}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were >= ${hi}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4145,16 +5161,24 @@ assert_dev_input_is_lte <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  hi
+  hi,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] <= hi)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were > ${hi}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were > ${hi}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4174,16 +5198,24 @@ assert_dev_input_is_lte <- function(
 assert_dev_input_is_ltezero <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] <= 0)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were > 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were > 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4203,16 +5235,24 @@ assert_dev_input_is_ltezero <- function(
 assert_dev_input_is_ltzero <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x[!is.na(x)] < 0)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were >= 0"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were >= 0"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4232,16 +5272,24 @@ assert_dev_input_is_ltzero <- function(
 assert_dev_input_is_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.matrix(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a matrix"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a matrix"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4261,16 +5309,24 @@ assert_dev_input_is_matrix <- function(
 assert_dev_input_is_name <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.name(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a name object; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a name object; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4290,16 +5346,24 @@ assert_dev_input_is_name <- function(
 assert_dev_input_is_named <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(!is.null(names(x)))
   )
-  fail_messages <- c(
-    "`${x_nm}` did not have any names"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` did not have any names"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4319,7 +5383,8 @@ assert_dev_input_is_named <- function(
 assert_dev_input_is_named_list <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4327,10 +5392,17 @@ assert_dev_input_is_named_list <- function(
     quote(inherits(x, "list")),
     quote(!is.null(names(x)))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class list",
-    "`${x_nm}` did not have any names"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class list",
+      "`${x_nm}` did not have any names"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4350,16 +5422,24 @@ assert_dev_input_is_named_list <- function(
 assert_dev_input_is_nonNA <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE)
   )
-  fail_messages <- c(
-    "`${x_nm}` had ${n_fail} NA values - none are allowed"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` had ${n_fail} NA values - none are allowed"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4379,16 +5459,24 @@ assert_dev_input_is_nonNA <- function(
 assert_dev_input_is_NULL <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.null(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not NULL"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not NULL"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4408,16 +5496,24 @@ assert_dev_input_is_NULL <- function(
 assert_dev_input_is_number <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4437,7 +5533,8 @@ assert_dev_input_is_number <- function(
 assert_dev_input_is_number_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4445,10 +5542,17 @@ assert_dev_input_is_number_atom <- function(
     quote(length(x) == 1L),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4468,7 +5572,8 @@ assert_dev_input_is_number_atom <- function(
 assert_dev_input_is_number_gtezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4477,11 +5582,18 @@ assert_dev_input_is_number_gtezero_atom <- function(
     quote(x[!is.na(x)] >= 0),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4501,7 +5613,8 @@ assert_dev_input_is_number_gtezero_atom <- function(
 assert_dev_input_is_number_gtezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4510,11 +5623,18 @@ assert_dev_input_is_number_gtezero_matrix <- function(
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4534,7 +5654,8 @@ assert_dev_input_is_number_gtezero_matrix <- function(
 assert_dev_input_is_number_gtezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4544,12 +5665,19 @@ assert_dev_input_is_number_gtezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4569,7 +5697,8 @@ assert_dev_input_is_number_gtezero_vector <- function(
 assert_dev_input_is_number_gtzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4578,11 +5707,18 @@ assert_dev_input_is_number_gtzero_atom <- function(
     quote(x[!is.na(x)] > 0),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4602,7 +5738,8 @@ assert_dev_input_is_number_gtzero_atom <- function(
 assert_dev_input_is_number_gtzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4611,11 +5748,18 @@ assert_dev_input_is_number_gtzero_matrix <- function(
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4635,7 +5779,8 @@ assert_dev_input_is_number_gtzero_matrix <- function(
 assert_dev_input_is_number_gtzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4645,12 +5790,19 @@ assert_dev_input_is_number_gtzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4670,7 +5822,8 @@ assert_dev_input_is_number_gtzero_vector <- function(
 assert_dev_input_is_number_ltezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4679,11 +5832,18 @@ assert_dev_input_is_number_ltezero_atom <- function(
     quote(x[!is.na(x)] <= 0),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4703,7 +5863,8 @@ assert_dev_input_is_number_ltezero_atom <- function(
 assert_dev_input_is_number_ltezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4712,11 +5873,18 @@ assert_dev_input_is_number_ltezero_matrix <- function(
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4736,7 +5904,8 @@ assert_dev_input_is_number_ltezero_matrix <- function(
 assert_dev_input_is_number_ltezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4746,12 +5915,19 @@ assert_dev_input_is_number_ltezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4771,7 +5947,8 @@ assert_dev_input_is_number_ltezero_vector <- function(
 assert_dev_input_is_number_ltzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4780,11 +5957,18 @@ assert_dev_input_is_number_ltzero_atom <- function(
     quote(x[!is.na(x)] < 0),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4804,7 +5988,8 @@ assert_dev_input_is_number_ltzero_atom <- function(
 assert_dev_input_is_number_ltzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4813,11 +5998,18 @@ assert_dev_input_is_number_ltzero_matrix <- function(
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4837,7 +6029,8 @@ assert_dev_input_is_number_ltzero_matrix <- function(
 assert_dev_input_is_number_ltzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4847,12 +6040,19 @@ assert_dev_input_is_number_ltzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4872,7 +6072,8 @@ assert_dev_input_is_number_ltzero_vector <- function(
 assert_dev_input_is_number_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4880,10 +6081,17 @@ assert_dev_input_is_number_matrix <- function(
     quote(is.matrix(x)),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4903,7 +6111,8 @@ assert_dev_input_is_number_matrix <- function(
 assert_dev_input_is_number_nonNA_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4912,11 +6121,18 @@ assert_dev_input_is_number_nonNA_atom <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4936,7 +6152,8 @@ assert_dev_input_is_number_nonNA_atom <- function(
 assert_dev_input_is_number_nonNA_gtezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4946,12 +6163,19 @@ assert_dev_input_is_number_nonNA_gtezero_atom <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -4971,7 +6195,8 @@ assert_dev_input_is_number_nonNA_gtezero_atom <- function(
 assert_dev_input_is_number_nonNA_gtezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -4981,12 +6206,19 @@ assert_dev_input_is_number_nonNA_gtezero_matrix <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5006,7 +6238,8 @@ assert_dev_input_is_number_nonNA_gtezero_matrix <- function(
 assert_dev_input_is_number_nonNA_gtezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5017,13 +6250,20 @@ assert_dev_input_is_number_nonNA_gtezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were < 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were < 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5043,7 +6283,8 @@ assert_dev_input_is_number_nonNA_gtezero_vector <- function(
 assert_dev_input_is_number_nonNA_gtzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5053,12 +6294,19 @@ assert_dev_input_is_number_nonNA_gtzero_atom <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5078,7 +6326,8 @@ assert_dev_input_is_number_nonNA_gtzero_atom <- function(
 assert_dev_input_is_number_nonNA_gtzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5088,12 +6337,19 @@ assert_dev_input_is_number_nonNA_gtzero_matrix <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5113,7 +6369,8 @@ assert_dev_input_is_number_nonNA_gtzero_matrix <- function(
 assert_dev_input_is_number_nonNA_gtzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5124,13 +6381,20 @@ assert_dev_input_is_number_nonNA_gtzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were <= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were <= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5150,7 +6414,8 @@ assert_dev_input_is_number_nonNA_gtzero_vector <- function(
 assert_dev_input_is_number_nonNA_ltezero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5160,12 +6425,19 @@ assert_dev_input_is_number_nonNA_ltezero_atom <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5185,7 +6457,8 @@ assert_dev_input_is_number_nonNA_ltezero_atom <- function(
 assert_dev_input_is_number_nonNA_ltezero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5195,12 +6468,19 @@ assert_dev_input_is_number_nonNA_ltezero_matrix <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5220,7 +6500,8 @@ assert_dev_input_is_number_nonNA_ltezero_matrix <- function(
 assert_dev_input_is_number_nonNA_ltezero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5231,13 +6512,20 @@ assert_dev_input_is_number_nonNA_ltezero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were > 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were > 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5257,7 +6545,8 @@ assert_dev_input_is_number_nonNA_ltezero_vector <- function(
 assert_dev_input_is_number_nonNA_ltzero_atom <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5267,12 +6556,19 @@ assert_dev_input_is_number_nonNA_ltzero_atom <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "length of `${x_nm}` was ${length(x)} instead of 1",
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "length of `${x_nm}` was ${length(x)} instead of 1",
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5292,7 +6588,8 @@ assert_dev_input_is_number_nonNA_ltzero_atom <- function(
 assert_dev_input_is_number_nonNA_ltzero_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5302,12 +6599,19 @@ assert_dev_input_is_number_nonNA_ltzero_matrix <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5327,7 +6631,8 @@ assert_dev_input_is_number_nonNA_ltzero_matrix <- function(
 assert_dev_input_is_number_nonNA_ltzero_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5338,13 +6643,20 @@ assert_dev_input_is_number_nonNA_ltzero_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were >= 0",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were >= 0",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5364,7 +6676,8 @@ assert_dev_input_is_number_nonNA_ltzero_vector <- function(
 assert_dev_input_is_number_nonNA_matrix <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5373,11 +6686,18 @@ assert_dev_input_is_number_nonNA_matrix <- function(
     quote(if (is.vector(x) && !is.list(x)) !is.na(x) else TRUE),
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a matrix",
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a matrix",
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5397,7 +6717,8 @@ assert_dev_input_is_number_nonNA_matrix <- function(
 assert_dev_input_is_number_nonNA_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5407,12 +6728,19 @@ assert_dev_input_is_number_nonNA_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` had ${n_fail} NA values - none are allowed",
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` had ${n_fail} NA values - none are allowed",
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5432,7 +6760,8 @@ assert_dev_input_is_number_nonNA_vector <- function(
 assert_dev_input_is_number_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5441,11 +6770,18 @@ assert_dev_input_is_number_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a number; instead it had class(es) ${deparse(class(x))}",
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5465,16 +6801,24 @@ assert_dev_input_is_number_vector <- function(
 assert_dev_input_is_numeric <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.numeric(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not numeric; instead it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not numeric; instead it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5495,16 +6839,24 @@ assert_dev_input_is_of_length <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  expected_length
+  expected_length,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(length(x) == expected_length)
   )
-  fail_messages <- c(
-    "`${x_nm}` had length ${length(x)} instead of ${expected_length}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` had length ${length(x)} instead of ${expected_length}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5524,7 +6876,8 @@ assert_dev_input_is_of_length <- function(
 assert_dev_input_is_report_df <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5532,10 +6885,17 @@ assert_dev_input_is_report_df <- function(
     quote(is.data.frame(x)),
     quote(length(miss_col_nms <- setdiff(names(get_report_df_template()), names(x))) == 0L)
   )
-  fail_messages <- c(
-    "`${x_nm}` was not a data.frame",
-    "Following columns were expected but not in `${x_nm}`: ${deparse(miss_col_nms)}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not a data.frame",
+      "Following columns were expected but not in `${x_nm}`: ${deparse(miss_col_nms)}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5557,7 +6917,8 @@ assert_dev_input_is_subset_of_data_frame <- function(
   x_nm = NULL,
   call = NULL,
   y,
-  y_nm = NULL
+  y_nm = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5567,12 +6928,19 @@ assert_dev_input_is_subset_of_data_frame <- function(
     quote(names(x) %in% names(y)),
     quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)})
   )
-  fail_messages <- c(
-    "Internal error: `${y_nm}` to test against was not a data.frame",
-    "`${x_nm}` to test was not a data.frame",
-    "Not all column names of `${x_nm}` were found in `${y_nm}` to test against",
-    "Not all rows of `${x_nm}` were found in `${y_nm}`."
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "Internal error: `${y_nm}` to test against was not a data.frame",
+      "`${x_nm}` to test was not a data.frame",
+      "Not all column names of `${x_nm}` were found in `${y_nm}` to test against",
+      "Not all rows of `${x_nm}` were found in `${y_nm}`."
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5594,7 +6962,8 @@ assert_dev_input_is_subset_of_data_table <- function(
   x_nm = NULL,
   call = NULL,
   y,
-  y_nm = NULL
+  y_nm = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5604,12 +6973,19 @@ assert_dev_input_is_subset_of_data_table <- function(
     quote(names(x) %in% names(y)),
     quote({nrow(merge(x = x, y = y[, names(x)], by = names(x), all.x = FALSE, all.y = FALSE)) == nrow(x)})
   )
-  fail_messages <- c(
-    "Internal error: `${y_nm}` to test against was not a data.table",
-    "`${x_nm}` was not a data.frame",
-    "Not all column names of `${x_nm}` were found in `${y_nm}` to test against",
-    "Not all rows of `${x_nm}` were found in `${y_nm}`."
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "Internal error: `${y_nm}` to test against was not a data.table",
+      "`${x_nm}` was not a data.frame",
+      "Not all column names of `${x_nm}` were found in `${y_nm}` to test against",
+      "Not all rows of `${x_nm}` were found in `${y_nm}`."
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5629,16 +7005,24 @@ assert_dev_input_is_subset_of_data_table <- function(
 assert_dev_input_is_TRUE <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(x %in% TRUE)
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` were FALSE or NA"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` were FALSE or NA"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5658,16 +7042,24 @@ assert_dev_input_is_TRUE <- function(
 assert_dev_input_is_unevaluated_expression <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(is.language(x) && !inherits(x, "formula"))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not an expression object that can be evaluated by `eval`; it had class(es) ${deparse(class(x))}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not an expression object that can be evaluated by `eval`; it had class(es) ${deparse(class(x))}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5687,16 +7079,24 @@ assert_dev_input_is_unevaluated_expression <- function(
 assert_dev_input_is_uniquely_named <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote((n_unique_names <- length(unique(names(x)))) == length(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` has ${n_unique_names} unique names but is of length ${length(x)}; expected the same numbers"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` has ${n_unique_names} unique names but is of length ${length(x)}; expected the same numbers"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5716,7 +7116,8 @@ assert_dev_input_is_uniquely_named <- function(
 assert_dev_input_is_uniquely_named_list <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5724,10 +7125,17 @@ assert_dev_input_is_uniquely_named_list <- function(
     quote(inherits(x, "list")),
     quote((n_unique_names <- length(unique(names(x)))) == length(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` was not of class list",
-    "not every element of `${x_nm}` has a different name"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` was not of class list",
+      "not every element of `${x_nm}` has a different name"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5747,7 +7155,8 @@ assert_dev_input_is_uniquely_named_list <- function(
 assert_dev_input_is_vector <- function(
   x,
   x_nm = NULL,
-  call = NULL
+  call = NULL,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
@@ -5755,10 +7164,17 @@ assert_dev_input_is_vector <- function(
     quote(is.null(dim(x))),
     quote(!is.list(x))
   )
-  fail_messages <- c(
-    "`${x_nm}` had dimensions but was expected to have none",
-    "`${x_nm}` was a list"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "`${x_nm}` had dimensions but was expected to have none",
+      "`${x_nm}` was a list"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5779,16 +7195,24 @@ assert_dev_input_match_regex <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  grepl.arg.list = list()
+  grepl.arg.list = list(),
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote({grepl.arg.list[["x"]] <- x; t <- do.call(grepl, grepl.arg.list); t})
   )
-  fail_messages <- c(
-    "${n_fail} elements of `${x_nm}` did not match regex ${deparse(grepl.arg.list[[\"pattern\"]])}"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "${n_fail} elements of `${x_nm}` did not match regex ${deparse(grepl.arg.list[[\"pattern\"]])}"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
@@ -5809,16 +7233,24 @@ assert_dev_input_vector_elems_are_in_set <- function(
   x,
   x_nm = NULL,
   call = NULL,
-  set
+  set,
+  messages = NULL
 ) {
   dbc::handle_args_inplace()
   assertion_type <- "dev_input"
   expressions <- list(
     quote(in_set <- x %in% set)
   )
-  fail_messages <- c(
-    "some values of `${x_nm}` were not in set of expected values. First ten bad values: `${deparse1(utils::head(unique(x[!in_set]), 10L))}`. First ten elements in set of expected values: `${deparse1(utils::head(set, 10L))}`"
-  )
+  if (is.null(messages)) {
+    fail_messages <- c(
+      "some values of `${x_nm}` were not in set of expected values. First ten bad values: `${deparse1(utils::head(unique(x[!in_set]), 10L))}`. First ten elements in set of expected values: `${deparse1(utils::head(set, 10L))}`"
+    )
+  } else {
+    fail_messages <- messages
+    if (length(messages) == 1) {
+      fail_messages <- rep(messages, length(expressions))
+    }
+  }
   for (i in seq_along(expressions)) {
     dbc::assertion_eval(
       expression = expressions[[i]],
