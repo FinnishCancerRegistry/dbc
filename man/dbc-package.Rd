@@ -44,6 +44,17 @@ my_fun_2 <- function(df) \{
 
 \section{News}{
 
+\subsection{News for version 0.8.2}{
+\subsection{dbc}{
+
+All generated expression-based assertion functions now have argument
+\code{messages} (default \code{NULL}). It can be used to override the default
+failure messages of the assertion. Supply either one message for all
+tests or one message per test.
+}
+
+}
+
 \subsection{News for version 0.8.1}{
 \subsection{dbc}{
 
